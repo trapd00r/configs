@@ -1,0 +1,158 @@
+;; vim: set ts=2 filetype=lisp:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;																									;;																
+;; .stumpwmrc																				;;
+;; Sane windows management (vim-bindings)						;;
+;; Basic mode-line, quick hack for dual head setups	;;
+;; trapd00r@trapd00r.se															;;
+;; Feel free to send me the diff										;;
+;; Updated: 2009.08.26															;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; COLORS(SteelBlue, ForestGreen, SlateGrey
+
+
+;-*-lisp-*-
+
+
+;; ekvavilent med "using namespace std;"
+(in-package :stumpwm)
+
+(setf *default-package* :stumpwm)
+
+;(load-module "mpd")
+;(load-module "disk")
+;(load "/home/scp1/bin/mpd.lisp")
+(set-prefix-key (kbd "C-f"))
+
+;; Variables
+
+;;(defparameter terminal "exec urxvtc -e screen -dr -X screen zsh && screen -x")
+;;(defparameter terminal "$HOME/bin/fuckingscreenbugshit")
+
+(setf *shell-program* (stumpwm::getenv "SHELL")) ;getenv is not exported
+
+;;(setf *debug-level*   10
+
+;;      *mouse-focus-policy* :click)
+
+; ditch the x
+(stumpwm:run-shell-command "xsetroot -cursor_name left_ptr -fg white -bg black")
+
+
+(set-contrib-dir "/usr/share/stumpwm")
+
+;(head-resize 0 0 0 1680 1040)
+;(head-resize nr x y width height)
+
+;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1")
+;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-7")
+;(set-font "-*-dina-medium-r-normal-*-*-*-*-*-*-*-*-*")
+;(set-font "-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
+
+
+
+
+(setf *mode-line-background-color* "DarkRed"
+      *mode-line-foreground-color* "White"
+      *mode-line-border-color* "White"
+      *mode-line-timeout* 1
+      *mode-line-screen-position* :bottom
+      *window-format* "^B^8*%n%s%m%30t :: ^7*"
+      *group-format* "%t")
+
+;(setf *disk-usage-paths* '("/mnt/Books" "/mnt/Docs" "/mnt/Games" "/mnt/Movies_1" "/mnt/Movies_2" "/mnt/Movies_3" "/mnt/Music_1" "/mnt/Music_2/" "/mnt/Music_3" "/mnt/Music_4" "/mnt/Music_5" "/mnt/Mvids" "/mnt/Porn" "/mnt/TV" "/mnt/TV_2""))
+;(setf stumpwm:*screen-mode-line-format*
+;      "%D")
+
+
+;(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head 
+;                t *screen-mode-line-format*
+;                ))
+
+;; Mode line setup - separate setup per head
+;(setf stumpwm:*mode-line-timeout* 1)
+
+;(defun set-mode-line-formats ()
+;  (let ((heads (screen-heads (current-screen))))
+;    (defun set-ml (h-idx format)
+;      (enable-mode-line (current-screen) (nth h-idx heads) t format))
+
+;    (set-ml 0 "%D ")
+;    (set-ml 1 "%m ")
+;    ))
+;(set-mode-line-formats)
+
+
+;;;; The Message Window
+(set-fg-color "lightblue")
+(set-bg-color "grey10")
+(set-border-color "SteelBlue")
+(set-msg-border-width 3)
+
+(setf *maxsize-border-width* 3
+ *normal-border-width* 0 
+ *window-border-style* :thick
+ *transient-border-width* 4) ; popups \o/
+
+(setf *message-window-gravity* :center
+      *timeout-wait*           3
+      *input-window-gravity*   :center)
+
+
+;; Turn of welcome message
+(setf *startup-message* nil)
+
+;;;; Windows
+
+(set-focus-color   "black") 
+(set-unfocus-color "black")
+(set-normal-gravity :center)
+(setf *normal-border-width* 0)
+
+;(defvar *maximized-frame-size* (make-frame :number -1 :x 0 :y 0 :width 1680 :height 1040))
+(defvar *maximized-frame-size* (make-frame :number -1 :x 0 :y 0 :width 1680 :height 1050))
+(defvar *current-frame-size* (make-frame :number -1 :x 0 :y 0 :width 0 :height 0))
+(defvar *current-maximized-frame* nil)
+
+;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
+;(define-key *root-map* (kbd "aring") "exec sh /home/scp1/bin/mpdfav")
+(define-key *root-map* (kbd ",") "exec xdotool click 1")
+(define-key *root-map* (kbd "DEL") "exec pimpd --rand 20")
+(define-key *root-map* (kbd "b") "exec sh /home/scp1/bin/dmenumpd.sh")
+(define-key *root-map* (kbd "e") "exec sh /home/scp1/bin/dmenu.sh")
+(define-key *root-map* (kbd "x") "exec urxvtc")
+(define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
+(define-key *root-map* (kbd "c") "exec urxvt -name URxvt.shiva")
+(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
+(define-key *root-map* (kbd "o") "exec mpc toggle")
+(define-key *root-map* (kbd "n") "exec sh /home/scp1/bin/np.sh")
+(define-key *root-map* (kbd "g") "exec google")
+(define-key *root-map* (kbd "u") "exec sh $HOME/.config/uzbl/urlload")
+(define-key *root-map* (kbd "SunPrint_Screen") "exec sh $HOME/bin/shot")
+(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - (%album%) -  %title% [ %file% ]'|head -1`")
+;(define-key *root-map* (kbd "SPC") "exec stumpish echo `ppc -i`")
+(define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
+(define-key *root-map* (kbd "RET") "exec sh $HOME/bin/firefox-eval")
+(define-key *root-map* (kbd "KP_Add") "exec ossmix mpd +2")
+(define-key *root-map* (kbd "KP_Subtract") "exec ossmix mpd -- -2")
+(define-key *root-map* (kbd "Pause") "exec killall X")
+(define-key *root-map* (kbd "Delete") "exec stumpish echo `xclip -o`")
+
+;; sane bindings for window management
+(define-key *root-map* (kbd "h") "move-focus left")
+(define-key *root-map* (kbd "j") "move-focus down")
+(define-key *root-map* (kbd "k") "move-focus up")
+(define-key *root-map* (kbd "l") "move-focus right")
+
+(define-key *root-map* (kbd "C-h") "move-window left")
+(define-key *root-map* (kbd "C-j") "move-window down")
+(define-key *root-map* (kbd "C-k") "move-window up")
+(define-key *root-map* (kbd "C-l") "move-window right")
+
+(define-key *top-map* (kbd "SunPrint_Screen") "exec xclip -o")
+
+;;; The End
+
+
+

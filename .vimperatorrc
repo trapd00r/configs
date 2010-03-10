@@ -1,0 +1,6 @@
+source .vimperator/colors/desert_revisited.vimp
+set guioptions-=rlb
+set showtabline=0
+set editor="urxvt -name URxvt.shiva -e vim -f -c ':set ft=perl'"
+set insertmode=1
+set focuscontent 

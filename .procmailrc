@@ -1,0 +1,34 @@
+SHELL=/bin/sh
+VERBOSE=on
+MAILDIR=/mnt/Docs/Mail
+LOGFILE=/mnt/Docs/Mail/.procmail.log
+DEFAULT=$MAILDIR/inbox/
+
+################################################################################
+## recipes!                                                                   ##
+################################################################################
+# denyhost mails
+
+# mails addressed directly to me
+
+###############################################
+# debian lists                                #
+###############################################
+:0:
+* ^TO_arch-general@archlinux.org
+/mnt/Docs/Mail/lists/arch-general/
+
+:0:
+* ^TO_arch-dev-public@archlinux.org
+lists/arch-dev-public/
+
+:0:
+* ^TO_libtorrent-devel@rakshasa.no
+lists/rtorrent/
+
+:0:
+* ^TO_full-disclosure@lists.grok.org.uk
+lists/full-disclosure/
+# base case, to inbox
+:0:
+$DEFAULT

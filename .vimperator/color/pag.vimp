@@ -1,0 +1,33 @@
+" ==Vimperator_Color_Scheme==
+" name: pag
+" author: trapd00r
+
+hi Normal    background: #1C1C1C; color: #afafaf; font-size: 8pt; font-family: terminus; 
+hi CmdLine   background: #1C1C1C; color: #FF4500; font-size: 8pt; font-family: terminus; font-weight: bold; padding:  0px 0px;
+
+hi CompGroup          background: #1C1C1C; color: #afafaf; 
+hi CompTitle          background: #1C1C1C; color: #afafaf; font-weight: bold;
+hi CompItem           background: #1C1C1C; color: #afafaf; padding: 0px 3px;
+hi CompItem[selected] background: #1C1C1C; color: #FF4500; font-weight: bold; 
+hi CompDesc           background: #1C1C1C; color: #afafaf; 
+hi CompDesc[selected] background: #FF4500; color: #afafaf; 
+hi CompMsg            background: #1C1C1C; color: #afafaf; 
+
+hi Gradient           background: #1C1C1C;
+hi GradientLeft       background: #1C1C1C;
+hi GradientRight      background: #1C1C1C;
+
+hi ErrorMsg           background: #ff6565; color: #ffffff;
+hi Filter             color: #FF8B00; font-weight: bold; 
+
+hi StatusLine         font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #1C1C1C;
+hi StatusLineBroken   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #1C1C1C;
+hi StatusLineSecure   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #1C1C1C;
+
+hi Hint               font-family: terminus; font-size:10pt;font-weight:bold;color: #CF5E06; background-color: #1C1C1C; padding: 0px 0px;border: 1px solid #252525;
+hi Title              font-size: 7pt; color: #1C1C1C; background: #afafaf;
+
+style -name statusbar chrome://* <<EOM
+#status-bar statusbarpanel { padding: 0 1px !important; }
+statusbarpanel > * { margin: 0 !important; padding: 0 0px 0 0 !important; }
+EOM

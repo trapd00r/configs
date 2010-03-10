@@ -1,0 +1,117 @@
+source /etc/Muttrc.gpg.dist
+
+set mbox_type=Maildir
+set folder=/mnt/Docs/Mail/inbox
+set mbox=+mbox
+set spoolfile=+
+set postponed=+drafts
+set header_cache=/mnt/Docs/Mail/.hcache
+mailboxes +inbox
+set sendmail="/usr/bin/msmtp"
+set signature="~/.signature"
+set from=trapd00r@trapd00r.se
+set query_command = "abook --mutt-query '%s'"
+macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
+macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+
+
+
+
+
+
+hdr_order From: Date: To: Cc: Subject:
+set editor="vim +':set textwidth=77' +':set wrap' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s" 
+#set web_browser="lynx %s"
+mailboxes `echo /mnt/Docs/Mail/*`
+
+macro index .. "c=\n" "Go to inbox"
+
+
+# color patterns for mutt
+ color normal     white		default # normal text
+ color indicator  brightblue     default # actual message
+ color tree       brightmagenta  default # thread arrows
+ color status     yellow         default # status line
+ color error      brightred      default # errors
+ color message    magenta        default # info messages
+ color signature  magenta        default # signature
+ color attachment brightyellow   red     # MIME attachments
+ color search     brightyellow   red     # search matches
+ color tilde      brightmagenta  default # ~ at bottom of msg
+ color markers    red            default # + at beginning of wrapped lines
+ color hdrdefault cyan           default # default header lines
+ color bold       red            default # hiliting bold patterns in body
+ color underline  green          default # hiliting underlined patterns in body
+ color quoted     cyan           default # quoted text
+ color quoted1    magenta        default
+ color quoted2    red            default
+ color quoted3    green          default
+ color quoted4    magenta           default
+ color quoted5    cyan           default
+ color quoted6    magenta        default
+ color quoted7    red            default
+ color quoted8    green          default
+ color quoted9    cyan           default
+ color body   cyan  default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+ color body   cyan  default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+ color body   red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+ color body   green default  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
+ color body   red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+ color body   green default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+ color index  cyan  default  ~F         # Flagged
+ color index  brightred   default  ~N         # New
+ color index  blue    default  ~T         # Tagged
+ color index  cyan       default  ~D         # Deleted
+
+set move=no
+bind pager k previous-line
+bind pager < previous-line
+bind pager j next-line
+bind pager > next-line
+bind pager down next-page
+bind pager up previous-page
+# dual window view in mutt
+# set pager_index_lines=10
+
+# Similar settings for the index
+bind index [ previous-line
+bind index ] next-line
+
+set index_format   = "%4C %Z %{%b %d} %-15.15F (%4l) %s"
+set forward_format="Fw: %s"     # subject in forwarded messages
+set date_format="%d/%m/%y %H:%M %Z"
+set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
+#set reply_regexp="^(re([\\[0-9\\]+])*|aw):[ \t]*"
+set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
+set edit_headers
+set text_flowed
+set record="=sent-mail"
+set reply_to=yes
+set mbox="=received"
+
+folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
+
+# Ignore all headers
+ ignore *
+
+## Then un-ignore the ones I want to see
+ unignore From:
+ unignore To:
+# unignore Reply-To:
+# unignore Mail-Followup-To:
+# unignore Subject:
+ unignore Date:
+# unignore Organization:
+# unignore Newsgroups:
+# unignore CC:
+# unignore BCC:
+# unignore Message-ID:
+# unignore X-Mailer:
+# unignore User-Agent:
+# unignore X-Junked-Because:
+# unignore X-SpamProbe:
+# unignore X-Virus-hagbard:
+
+# # Now order the visable header lines
+ hdr_order From: Subject: To: CC: BCC: Reply-To: Mail-Followup-To: Date: Organization: User-Agent: X-Mailer:
+  

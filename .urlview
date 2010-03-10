@@ -1,0 +1,3 @@
+REGEXP ((http|https|ftp|gopher):(//)?[^ <>"\t]*|www\.[-a-z0-9.]+)[^ .,;\t<">\):]
+COMMAND /usr/bin/nohup firefox -remote "openURL("%s", new-tab)" >/dev/null 2>&1 &
+
