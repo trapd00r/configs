@@ -103,8 +103,7 @@ URxvt.shiva.title:                laleh
 !URxvt.shiva.iconFile:            (file)
 
 
-!... colorscheme
-!. trapd00r
+/* trapd00r original colorscheme */
 
 !*color0:              rgb:00/00/00
 !*color1:              rgb:4C/8C/38
@@ -124,183 +123,7 @@ URxvt.shiva.title:                laleh
 !*color14:             rgb:36/7F/C5
 !*color15:             rgb:ff/ff/ff
 
-!*color0:              rgb:00/00/00 
-!*color1:              rgb:C3/30/30 !red
-!*color2:              rgb:57/B6/00 !green
-!*color3:              rgb:A4/00/8a !pink
-!*color4:              rgb:0B/7B/B7 !blue
-!*color5:              rgb:F3/8E/26 !orange
-!*color6:              rgb:68/68/68 !grey
-!*color7:              rgb:25/25/25 !white ? 
-!*color8:              rgb:3c/3c/3c !dgrey
-!*color9:              rgb:cd/57/00 !hotorange
-!*color10:             rgb:6c/92/31 !dgreen
-!*color11:             rgb:BB/00/8F !hotpink
-!*color12:             rgb:07/84/F9 !blue
-!*color13:             rgb:b5/2d/1d !dred
-!*color14:             rgb:49/bb/0c !hotgreen
-!*color15:             rgb:ff/ff/ff
 
-!Theme Twenty
-!*foreground: rgb:aa/aa/aa
-!*background: rgb:00/00/00
-!*color0:     rgb:30/34/30
-!*color1:     rgb:bf/79/79
-!*color2:     rgb:97/b2/6b
-!*color3:     rgb:cd/cd/c1
-!*color4:     rgb:86/a2/be
-!*color5:     rgb:d9/b7/98
-!*color6:     rgb:a1/b5/cd
-!*color7:     rgb:ff/ff/ff
-!*color8:     rgb:cd/b5/cd
-!*color9:     rgb:f4/a4/5f
-!*color10:    rgb:c5/f7/79
-!*color11:    rgb:ff/ff/ef
-!*color12:    rgb:98/af/d9
-!*color13:    rgb:d7/d9/98
-!*color14:    rgb:a1/b5/cd
-!*color15:    rgb:de/de/de
-
-!!colors ripped from rezza: http://metawire.org/~rezza/index.php
-!*foreground:     rgb:dd/dd/dd
-!*background:     rgb:22/22/22
-!!black
-!*color0:         rgb:19/19/19
-!*color8:         rgb:25/25/25
-!!red
-!*color1:         rgb:80/32/32
-!*color9:         rgb:98/2b/2b
-!!green
-!*color2:         rgb:5b/76/2f
-!*color10:        rgb:89/b8/3f
-!!brown/yellow
-!*color3:         rgb:aa/99/43
-!*color11:        rgb:ef/ef/60
-!!blue
-!*color4:         rgb:32/4c/80
-!*color12:        rgb:2b/4f/98
-!!magenta
-!*color5:         rgb:70/6c/9a
-!*color13:        rgb:82/6a/b1
-!!cyan
-!*color6:         rgb:92/b1/9e
-!*color14:        rgb:a1/cd/cd
-!!white
-!*color7:         rgb:ff/ff/ff
-!*color15:        rgb:dd/dd/dd
-
-!Theme Two
-! *background: rgb:00/00/00
-! *foreground: rgb:7f/7f/7f
-! *color0:     rgb:00/00/00
-! *color1:     rgb:9e/18/28
-! *color2:     rgb:ae/ce/92
-! *color3:     rgb:96/8a/38
-! *color4:     rgb:41/41/71
-! *color5:     rgb:96/3c/59
-! *color6:     rgb:41/81/79
-! *color7:     rgb:be/be/be
-! *color8:     rgb:66/66/66
-! *color9:     rgb:cf/61/71
-! *color10:    rgb:c5/f7/79
-! *color11:    rgb:ff/f7/96
-! *color12:    rgb:41/86/be
-! *color13:    rgb:cf/9e/be
-! *color14:    rgb:71/be/be
-! *color15:    rgb:ff/ff/ff
-
-! terminal colours
-!*foreground:#a0a0a0
-!*background:#1b1d1e
-
-!!!! molokai inspired colors !!!!
-!!black
-!*color0:    #1b1d1e
-!*color8:    #505354
-!!red
-!*color1:    #f92672
-!*color9:    #ff5995
-!!green
-!*color2:    #82b414
-!*color10:   #b6e354
-!!yellow
-!*color3:    #FF8A00 !orange
-!*color11:   #feed6c
-!!blue
-!*color4:    #56c2d6
-!*color12:   #188DCC !magenta
-!!magenta
-!*color5:    #8c54fe
-!*color13:   #9e6ffe
-!!cyan
-!*color6:    #465457
-!*color14:   #899ca1
-!!white
-!*color7:    #ccccc6
-!*color15:   #f8f8f2
-
-!*color0:      #000000
-!*color1:      #9e1828
-!*color2:      #aece92
-!*color3:      #968a38
-!*color4:      #414171
-!*color5:      #963c59
-!*color6:      #418179
-!*color7:      #bebebe
-!*color8:      #666666
-!*color9:      #cf6171
-!*color10:     #c5f779
-!*color11:     #fff796
-!*color12:     #4186be
-!*color13:     #cf9ebe
-!*color14:     #71bebe
-!*color15:     #ffffff
-
-!/*Cyan3*/
-!*color6: #68b4b1
-!/*Gray90*/
-!*color7: #707678
-!/*Gray30*/
-!*color8: #a3a5a6
-!/*Red*/
-!*color9: #ee6363
-!/*Green*/
-!*color10: #90a57d
-!/*Yellow*/
-!*color11: #d0c54d
-!/*Light Blue*/
-!*color12: #7c96b0
-!/*Magenta*/
-!*color13: #8f4c70
-!/*Cyan*/
-!*color14: #2d8285
-!/*White*/
-!*color15: #e2e2e2
-
-! Black + DarkGrey
-!*color0: #000000
-!*color8: #222222
-!!! DarkRed + Red
-!*color1: #434343
-!*color9: #434343
-!! DarkGreen + Green
-!*color2: #6B6B6B
-!*color10: #A5A5A5
-!!! DarkYellow + Yellow
-!*color3: #969696
-!*color11: #E5E5E5
-!!! DarkBlue + Blue
-!*color4: #4A4A4A
-!*color12: #4D4D4D
-!!! DarkMangenta + Mangenta
-!*color5: #707070
-!*color13: #747474
-!!!DarkCyan + Cyan
-!*color6: #A9A9A9
-!*color14: #C4C4C4
-!!! LightGrey + White
-!*color7: #FFFFFF
-!*color15: #DEDEDE
 
 ! Black
 *color0:      #5A5A5A
@@ -309,7 +132,7 @@ URxvt.shiva.title:                laleh
 *color1:      #FF4747
 *color9:      #FF6767
 ! Green
-*color2:      #2D2C2C /* green => grey */
+*color2:      #4D4C4C /* green => grey */
 *color10:     #bFC81C
 ! Yellow
 *color3:      #FF8F00
@@ -318,10 +141,10 @@ URxvt.shiva.title:                laleh
 *color4:      #619AF4
 *color12:     #5496FF
 ! Purple
-*color5:      #5F5A90
-*color13:     #826AB1
+*color5:      #89005A 
+*color13:     #B50077
 ! Cyan
-*color6:      #1B94AC /* 47E0FF */
+*color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
 *color14:     #2ED9FB
 ! White
 *color7:      #FFFFFF
