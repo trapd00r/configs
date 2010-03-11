@@ -1,0 +1,90 @@
+alias -s {pl,pm,c,cpp,h,sh}='vim'
+alias -s {mkv,avi}='mplayer'
+alias -s PKGBUILD='vim'
+
+# Sane defaults
+alias ..='cd ..'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias prename='prename -v'
+alias grep='grep -E --color=auto'
+alias less='vimpager'
+alias make='make -j3'
+alias :q='exit'
+
+
+# shortcuts
+alias b='cd $HOME/bin'
+alias d='cd $HOME/devel'
+alias g='cd $HOME/devel/golf'
+alias p='cd $HOME/devel/pimpd'
+alias t='cd $HOME/temp'
+alias x='cd $XDG_CONFIG_HOME'
+
+# documentation
+alias man='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && \man'
+perldoc='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" \
+         && perldoc'
+
+ 
+# quick fontswitch
+alias medbold='echo -en "
+              \033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007"'
+alias medium='echo -en "
+              \033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007"'
+alias large='echo -en "
+            \033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007"'
+
+
+# git
+alias gp='git push origin master'
+
+# cope
+alias df='$HOME/bin/cope/df'
+alias fdisk='$HOME/bin/cope/fdisk'
+alias free='$HOME/bin/cope/free'
+alias g++='$HOME/bin/cope/g++'
+alias ifconfig='$HOME/bin/cope/ifconfig'
+alias netstat='$HOME/bin/cope/netstat'
+alias nmap='$HOME/bin/cope/nmap'
+
+# file management
+alias ls='\ls -hovA --indicator-style=file-type \
+          --color=always --group-directories-first --time=ctime \
+          --time-style=long-iso'
+alias ls1='\ls -1 --color=auto'
+alias lsa='\ls --color=auto'
+alias lsd='find . -maxdepth 2 -type d | sort'
+alias lss="\ls -1|grep '(^\w*[^_-])'"
+alias lsq='ls -AlQ --color=always'
+
+
+# random
+alias dmesg='dmesg|matchline -dmesg'
+alias dvdc='ssh 192.168.1.33 -p 19216'
+alias feh='feh -FZrd'
+alias fevil='find . -regextype posix-extended -regex'
+alias lspci='lspci|matchline -lspci'
+alias lsusb='lsusb|matchline -random'
+alias memusage='ps -e -orss=,args= | sort -b -k1,1n | pr -TW$COLUMNS'
+#alias mntmp3="mount /dev/$(dmesg|\tail -1|awk {'print $3'}| \
+alias mountfixbug='echo 64 > /sys/block/sdn/device/max_sectors && mount -a'
+alias np='pimpd -i'
+alias ob='startx /usr/bin/openbox-session -- /usr/bin/Xnest :2'
+alias pacman='pacman-color'
+alias pacrem='pacman -Rs $(pacman -Qtdq)'
+alias pasta='wgetpaste -l Perl -X -s ca'
+alias pdb='perl -d -e 1'
+alias ps='/home/scp1/bin/cope/ps'
+alias qi='qemu -cdrom iso -boot d hd'
+alias rmvi='rm *.swp'
+alias R='rehash'
+alias scp='scp -P 19216'
+alias scx='screen -x'
+alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
+alias sortbycolumn='sort -n -k3'
+alias tree='tree -dA'
+alias urxvt='urxvt -name URxvt.shiva'
+alias vim='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && vim'
+alias wgeturlfromfile='wget -r -l1 -H -t1 -nd -N -np -A.jpg -erobots=off -i' 

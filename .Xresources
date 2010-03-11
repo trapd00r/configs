@@ -1,8 +1,5 @@
-! .Xresources
-! trapd00r.se
-! ===========
+/* .Xresources | trapd00r.se */
 
-!... colors
 XTerm*background:                 #000000
 XTerm*foreground:                 #FFFFFF
 XTerm*colorMode:                  On
@@ -12,17 +9,17 @@ XTerm*colorUL:                    #FFFFFF
 XTerm*colorULMode:                On
 Xterm*dynamicColors:              On
 
-!... terminal
+/* terminal stuff */
 XTerm*metaSendsEscape:            True
 XTerm*vt100.scrollBar:            False
 XTerm*multiScroll:                on
 XTerm*jumpScroll:                 on
 xterm*SaveLines:                  2500
 
-!... eyecandy
+/* eyecandy */
 XTerm*scrollBar:                  false
 
-!... colors
+/* colors */
 URxvt.shiva.background:           [100]#000000
 URxvt.shiva.foreground:           #FFFFFF
 URxvt.shiva.cursorColor:          #F65F01
@@ -37,12 +34,12 @@ URxvt.shiva.fadeColor:            #F01600
 URxvt.shiva.pointerColor:         #1793D1
 URxvt.shiva.pointerColor2:        #0092FF
 
-!... fonts
+/* fonts */
 URxvt.shiva*font:                 -*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*
 URxvt.shiva*boldFont:             -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
 URxvt.shiva*italicFont:           -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
 
-!... matchings
+/* matches */
 URxvt.shiva.underlineURLs:        false
 URxvt.shiva.urlLauncher:          /usr/bin/firefox
 URxvt.shiva.matcher.button:       1
@@ -52,15 +49,16 @@ URxvt.shiva.matcher.launcher.1:   /usr/bin/firefox
 URxvt.shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
 URxvt.shiva.matcher.launcher.2:   gvim +$2 $1
 
-!... libs
+/* libs */
 URxvt.shiva.perl-lib:             /usr/lib/urxvt/perl
 URxvt.shiva.perl-ext-common:      default,matcher
 URxvt.shiva.perl-eval:            print $1
 
-!... perl
+/* perl magic */
 URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
 URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
-!... terminal
+
+/* terminal stuff */
 URxvt.shiva.scrollKey:            true
 URxvt.shiva.scrollWithBuffer:     true
 URxvt.shiva.scrollBack:           true
@@ -95,10 +93,11 @@ URxvt.shiva.scrollBar:            false
 !URxvt.shiva.borderLess           true
 !URxvt.lineSpace:                 3
 URxvt.shiva.title:                laleh
-!URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
-!                                 colorize, darken, diff, dissipate, hue,
-!                                 lighten, overlay, saturate, screen, sub,
-!                                 tint, value)
+/*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
+                                  colorize, darken, diff, dissipate, hue,
+                                  lighten, overlay, saturate, screen, sub,
+                                  tint, value)
+*/
 !URxvt.shiva.blurRadius:          (0-128)
 !URxvt.shiva.iconFile:            (file)
 
@@ -124,32 +123,31 @@ URxvt.shiva.title:                laleh
 !*color15:             rgb:ff/ff/ff
 
 
-
-! Black
+/* black */
 *color0:      #5A5A5A
 *color8:      #3e3e3e
-! Red
+/* red */
 *color1:      #FF4747
 *color9:      #FF6767
-! Green
+/* green */
 *color2:      #4D4C4C /* green => grey */
 *color10:     #bFC81C
-! Yellow
+/* yellow */
 *color3:      #FF8F00
 *color11:     #F1973D
-! Blue
+/* blue */
 *color4:      #619AF4
 *color12:     #5496FF
-! Purple
+/* purple */
 *color5:      #89005A 
 *color13:     #B50077
-! Cyan
+/* cyan */
 *color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
 *color14:     #2ED9FB
-! White
+/* white */
 *color7:      #FFFFFF
 *color15:     #DEDEDE
-! Orange
+/* orange */
 *color16:     #FFB000
 
 

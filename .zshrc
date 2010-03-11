@@ -11,6 +11,8 @@
 # auth with every newspawn shell
 eval `keychain -q --eval id_dsa`
 
+. $HOME/.zsh/zsh-alias
+
 # autocomplete /mnt/*
 export CDPATH='.:~:/mnt'
 
@@ -26,7 +28,8 @@ export GCONF_LOCAL_LOCKS=1
 # or = orphan
 # ex = +x
 
-LS_COLORS='*.pl=01;31:*.sh=01;36:*.mp3=01;32:*.tar=01;33:*.tgz=01;33 \
+#eval $(dircolors -b $HOME/.dircolors)
+LS_COLORS='ow=01;33:*.pl=01;31:*.sh=01;36:*.mp3=01;32:*.tar=01;33:*.tgz=01;33 \
            :*.zip=01;33:*.rar=01;33:*.gz=01;33:*.png=01;34:*.jpg=01;34'
 #LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01\
 #           :cd=33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31\
@@ -69,122 +72,12 @@ setopt   extended_history
 setopt   share_history
 function history-all { history -E 1 }
 
-export TERM=xterm
+export TERM='rxvt-256color'
 export PATH=~/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
 
-alias gp='git push origin master'
-# git init
-# git add .
-# git commit
-# git remote add origin git@github.com:trapd00r/foo.git
-# git push origin master
-
-
-alias ..='cd ..'
-alias b='cd $HOME/bin'
-alias cp='cp -v'
-alias d='cd $HOME/devel/'
-alias def='echo -e "
-          \033]50;-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*\007"'
-alias df='/home/scp1/bin/cope/df'
-alias dmesg='dmesg|matchline -dmesg'
-alias dvdc='ssh 192.168.1.33 -p 19216'
-alias fdisk='/home/scp1/bin/cope/fdisk'
-alias feh='feh -FZrd'
-alias fevil='find . -regextype posix-extended -regex'
-alias free='/home/scp1/bin/cope/free'
-alias g1='cd /mnt/Games'
-alias g2='cd /mnt/Games_2'
-alias g='cd $HOME/devel/golf'
-alias getpics='cp -r /mnt/camera/dcim/100canon /home/scp1/temp && \
-               chown -R scp1:users /home/scp1/temp/100canon'
-alias g++='/home/scp1/bin/cope/g++'
-alias grep='grep -iE --color=auto '
-alias hchk='rhash -c'
-alias hide='echo -en "\033]50;nil2\007"'
-alias horny='feh -FZr /mnt/Porn/01-Pics /mnt/Docs/.pik'
-alias huge='echo -en "
-           \033]50;-*-terminus-*-*-*-*-32-*-72-72-*-160-*-*\007"'
-alias ifconfig='/home/scp1/bin/cope/ifconfig'
-alias large='echo -en "
-            \033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007"'
-alias less='vimpager'
-alias ls1='\ls -1 --color=auto'
-alias lsa='\ls --color=auto'
-alias lsd='find . -maxdepth 2 -type d | sort'
-alias ls='\ls -hovA --indicator-style=file-type \
-          --color=always --group-directories-first --time=ctime \
-          --time-style=long-iso'
-alias lspci='lspci|matchline -lspci'
-alias lsq='ls -AlQ --color=always'
-alias lss="\ls -1|grep '(^\w*[^_-])'"
-alias lsusb='lsusb|matchline -random'
-alias m1='cd /mnt/Music_1'
-alias m2='cd /mnt/Music_2'
-alias m3='cd /mnt/Music_3'
-alias m4='cd /mnt/Music_4'
-alias m5='cd /mnt/Music_5'
-alias make='make -j3'
-alias man='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && \man'
-alias m='cd $HOME/bin/mess'
-alias medbold='echo -en "
-              \033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007"'
-alias medium='echo -en "
-              \033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007"'
-alias memusage='ps -e -orss=,args= | sort -b -k1,1n | pr -TW$COLUMNS'
-alias mntmp3="mount /dev/$(dmesg|\tail -1|awk {'print $3'}| \
-              perl -pe 's/[^a-z]//g') /mnt/mp3"
-alias mo1='cd /mnt/Movies_1'
-alias mo2='cd /mnt/Movies_2'
-alias mo3='cd /mnt/Movies_3'
-alias mountfixbug='echo 64 > /sys/block/sdn/device/max_sectors && mount -a'
-alias mpd='mpd && scmpc && \tail -f $HOME/.scmpc.log'
-alias mplayer='mplayer '
-alias mv1='cd /mnt/Mvids'
-alias mv='mv -v'
-alias netstat='/home/scp1/bin/cope/netstat'
-alias nmap='/home/scp1/bin/cope/nmap'
-alias np='pimpd -i'
-alias ob='startx /usr/bin/openbox-session -- /usr/bin/Xnest :2'
-alias pacman='pacman-color'
-alias pacrem='pacman -Rs $(pacman -Qtdq)'
-alias pasta='wgetpaste -l Perl -X -s ca'
-alias p='cd $HOME/devel/pimpd'
-alias pdb='perl -d -e 1'
-alias perldoc='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" \
-               && perldoc'
-alias ping='/home/scp1/bin/cope/ping'
-alias prename='prename -v '
-alias ps='/home/scp1/bin/cope/ps'
-alias :q='exit'
-alias qi='qemu -cdrom iso -boot d hd'
-alias rm='rm -v'
-alias rmvi='rm *.swp'
-alias R='rehash'
-alias -s cbr=comical
-alias -s chm=xchm
-alias scp='scp -P 19216'
-alias scx='screen -x'
-alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
-alias small='echo -en "\033]50;6x10\007"'
-alias sortbycolumn='sort -n -k3'
-alias -s PKGBUILD=vim
-alias t='cd $HOME/temp'
-alias toy='mencoder -ovc lavc -lavcopts \
-           vcodec=mpeg4:vbitrate=1000:vhq:keyint=250:threads=2:vpass=1 \
-           -oac mp3lame -lameopts cbr:br=320'
-alias tree='tree -dA'
-alias tv1='cd /mnt/TV'
-alias tv2='cd /mnt/TV_2'
-alias urxvt='urxvt -name URxvt.shiva'
-alias vol='ossmix mpd|awk ''{print $5,$10,$11}'''
-alias vim='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && vim'
-#alias wget='aria2c -Z'
-alias wgeturlfromfile='wget -r -l1 -H -t1 -nd -N -np -A.jpg -erobots=off -i' 
-alias x='cd $XDG_CONFIG_HOME'
 
 # find bloat
 du1 () { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
