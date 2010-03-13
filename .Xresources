@@ -28,9 +28,8 @@ URxvt.shiva.colorIT:              #FFFFFF
 URxvt.shiva.colorBD:              #FFFFFF
 URxvt.shiva.colorUL:              #FFFFFF
 URxvt.shiva.colorRV:              #333333
-URxvt.shiva.underlineColor:       #6084FF
+URxvt.shiva.underlineColor:       #252525
 URxvt.shiva.borderColor:          #000000
-URxvt.shiva.fadeColor:            #F01600
 URxvt.shiva.pointerColor:         #1793D1
 URxvt.shiva.pointerColor2:        #0092FF
 
@@ -52,7 +51,7 @@ URxvt.shiva.matcher.launcher.2:   gvim +$2 $1
 /* libs */
 URxvt.shiva.perl-lib:             /usr/lib/urxvt/perl
 URxvt.shiva.perl-ext-common:      default,matcher
-URxvt.shiva.perl-eval:            print $1
+URxvt.shiva.perl-eval:            $^O
 
 /* perl magic */
 URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
@@ -68,7 +67,7 @@ URxvt.shiva.jumpScroll:           true
 URxvt.shiva.skipScroll:           true
 URxvt.shiva.loginShell:           true
 URxvt.shiva.urgentOnBell:         true
-URxvt.shiva.saveLines:            25000
+URxvt.shiva.saveLines:            512
 !URxvt.shiva.termName:            rxvt-unicode
 URxvt.shiva.trippleclickwords:    true
 !URxvt.shiva.modifier:            (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
@@ -78,19 +77,22 @@ URxvt.shiva.scrollstyle:          next
 URxvt.shiva.pasteableTabs:        true
 URxvt.shiva.pointerBlank:         true
 URxvt.shiva.pointerBlankDelay:    2
+URxvt.shiva.hold:                 0
+URxvt.shiva.chdir:                /home/scp1/devel
 
-!... eyecandy
-!URxvt.shiva.transparent:         true
-!URxvt.shiva.shading:             151
-URxvt.shiva.fading:               true
+/* eyecandy */
+URxvt.shiva.transparent:          true
+URxvt.shiva.shading:              5
+!URxvt.shiva.fading:               30%
+!URxvt.shiva.fadeColor:            #000000
 !URxvt.shiva.inheritPixmap:       true
 URxvt.shiva.scrollBar:            false
 !URxvt.shiva.cursorBlink:         false
 !URxvt.shiva.reverseVideo:        true
-!URxvt.shiva.depth:               24
+URxvt.shiva.depth:                24
 !URxvt.internalBorder:            0
 !URxvt.externalBorder:            0
-!URxvt.shiva.borderLess           true
+URxvt.shiva.borderLess:           true
 !URxvt.lineSpace:                 3
 URxvt.shiva.title:                laleh
 /*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
@@ -131,19 +133,19 @@ URxvt.shiva.title:                laleh
 *color9:      #FF6767
 /* green */
 *color2:      #4D4C4C /* green => grey */
-*color10:     #bFC81C
+*color10:     #B03B31 /* green => faluröd */
 /* yellow */
 *color3:      #FF8F00
 *color11:     #F1973D
 /* blue */
-*color4:      #619AF4
+*color4:      #1165E9
 *color12:     #5496FF
 /* purple */
 *color5:      #89005A 
 *color13:     #B50077
 /* cyan */
 *color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
-*color14:     #2ED9FB
+*color14:     #6BE603 /* cyan => green */
 /* white */
 *color7:      #FFFFFF
 *color15:     #DEDEDE

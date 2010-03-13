@@ -16,6 +16,7 @@ alias :q='exit'
 
 # shortcuts
 alias b='cd $HOME/bin'
+alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
 alias g='cd $HOME/devel/golf'
 alias p='cd $HOME/devel/pimpd'
@@ -28,13 +29,15 @@ perldoc='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" \
          && perldoc'
 
  
-# quick fontswitch
-alias medbold='echo -en "
-              \033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007"'
-alias medium='echo -en "
-              \033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007"'
-alias large='echo -en "
-            \033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007"'
+# quick fontswitch / deprecated - http://github.com/trapd00r/pickyfont
+#alias medbold='echo -en "
+#              \033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007"'
+#alias medium='echo -en "
+#              \033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007"'
+#alias large='echo -en "
+#            \033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007"'
+#alias font1="printf '\e]710;%s\007' "9x15bold,xft:Kochi Gothic""
+
 
 
 # git
@@ -56,7 +59,8 @@ alias ls='\ls -hovA --indicator-style=file-type \
 alias ls1='\ls -1 --color=auto'
 alias lsa='\ls --color=auto'
 alias lsd='find . -maxdepth 2 -type d | sort'
-alias lss="\ls -1|grep '(^\w*[^_-])'"
+alias lsl='ls -L'
+alias lss="\ls -1 --color=auto|grep '(^\w*[^_-])'"
 alias lsq='ls -AlQ --color=always'
 
 
