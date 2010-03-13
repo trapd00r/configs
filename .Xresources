@@ -20,7 +20,7 @@ xterm*SaveLines:                  2500
 XTerm*scrollBar:                  false
 
 /* colors */
-URxvt.shiva.background:           [100]#000000
+URxvt.shiva.background:           #252525
 URxvt.shiva.foreground:           #FFFFFF
 URxvt.shiva.cursorColor:          #F65F01
 URxvt.shiva.cursorColor2:         #252525
@@ -29,8 +29,8 @@ URxvt.shiva.colorBD:              #FFFFFF
 URxvt.shiva.colorUL:              #FFFFFF
 URxvt.shiva.colorRV:              #333333
 URxvt.shiva.underlineColor:       #252525
-URxvt.shiva.borderColor:          #000000
-URxvt.shiva.pointerColor:         #1793D1
+URxvt.shiva.borderColor:          #252525
+URxvt.shiva.pointerColor:         #252525
 URxvt.shiva.pointerColor2:        #0092FF
 
 /* fonts */
@@ -82,9 +82,9 @@ URxvt.shiva.chdir:                /home/scp1/devel
 
 /* eyecandy */
 URxvt.shiva.transparent:          true
-URxvt.shiva.shading:              5
-!URxvt.shiva.fading:               30%
-!URxvt.shiva.fadeColor:            #000000
+URxvt.shiva.shading:              9
+!URxvt.shiva.fading:              30%
+!URxvt.shiva.fadeColor:           #000000
 !URxvt.shiva.inheritPixmap:       true
 URxvt.shiva.scrollBar:            false
 !URxvt.shiva.cursorBlink:         false
@@ -151,9 +151,6 @@ URxvt.shiva.title:                laleh
 *color15:     #DEDEDE
 /* orange */
 *color16:     #FFB000
-
-
-
 
 
 XFontSel*sampleText.background:       TEXTBG
