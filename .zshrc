@@ -79,6 +79,7 @@ export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
 
+horny() { wget $(pump -fetch graphics $1); }
 
 # find bloat
 du1 () { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
