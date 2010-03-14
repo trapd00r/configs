@@ -77,7 +77,7 @@ URxvt.shiva.scrollstyle:          next
 URxvt.shiva.pasteableTabs:        true
 URxvt.shiva.pointerBlank:         true
 URxvt.shiva.pointerBlankDelay:    2
-URxvt.shiva.hold:                 0
+!URxvt.shiva.hold:                 0
 URxvt.shiva.chdir:                /home/scp1/devel
 
 /* eyecandy */
@@ -92,7 +92,7 @@ URxvt.shiva.scrollBar:            false
 URxvt.shiva.depth:                24
 !URxvt.internalBorder:            0
 !URxvt.externalBorder:            0
-URxvt.shiva.borderLess:           true
+!URxvt.shiva.borderLess:           true
 !URxvt.lineSpace:                 3
 URxvt.shiva.title:                laleh
 /*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
