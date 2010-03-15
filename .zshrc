@@ -11,7 +11,8 @@
 # auth with every newspawn shell
 eval `keychain -q --eval id_dsa`
 
-. $HOME/.zsh/zsh-alias
+source $HOME/.zsh/zsh-alias
+source $HOME/.zsh/zsh-functions
 
 # autocomplete /mnt/*
 export CDPATH='.:~:/mnt'
@@ -79,31 +80,6 @@ export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
 
-horny() { wget $(pump -fetch graphics $1); }
-
-# find bloat
-du1 () { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
-
-# ls-on-cd
-cd() {builtin cd $@; ls }
-
-# n/p pwd cd
-xp () {
-    echo $PWD | xclip -i
-    xclip -o
-}
-
-xcd () {
-    cd `xclip -o`
-}
-
-# PCRE regcheck
-regcheck() {
-    emulate -L zsh
-    zmodload -i zsh/pcre
-    pcre_compile $1 && \
-    pcre_match $2 && echo "regex matches" || echo "regex does not match"
-}
 
 
 setopt PROMPT_SUBST
