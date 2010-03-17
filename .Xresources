@@ -136,7 +136,7 @@ URxvt.shiva.title:                laleh
 *color10:     #B03B31 /* green => faluröd */
 /* yellow */
 *color3:      #FF8F00
-*color11:     #F1973D
+*color11:     #BDF13D
 /* blue */
 *color4:      #1165E9
 *color12:     #5496FF

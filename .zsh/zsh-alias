@@ -12,6 +12,7 @@ alias grep='grep -Ei --color=auto'
 alias less='vimpager'
 alias make='make -j3'
 alias :q='exit'
+alias cat='vimpager'
 
 
 # shortcuts
@@ -56,13 +57,13 @@ alias nmap='$HOME/bin/cope/nmap'
 # file management
 alias ls='\ls -hovA --indicator-style=file-type \
           --color=always --group-directories-first --time=ctime \
-          --time-style=long-iso'
-alias ls1='\ls -1 --color=auto'
-alias lsa='\ls --color=auto'
+          --time-style=full-iso'
+alias ls1='\ls -1 --color=auto --time-style=full-iso'
+alias lsa='\ls --color=auto --time-style=full-iso'
 alias lsd='find . -maxdepth 2 -type d | sort'
-alias lsl='ls -L'
+alias lsl='ls -L --time-style=full-iso'
 alias lss="\ls -1 --color=auto|grep '(^\w*[^_-])'"
-alias lsq='ls -AlQ --color=always'
+alias lsq='ls -AlQ --color=always --time-style=full-iso'
 
 
 # random
