@@ -24,9 +24,8 @@ alias t='cd $HOME/temp'
 alias x='cd $XDG_CONFIG_HOME'
 
 # documentation
-alias man='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && \man'
-perldoc='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" \
-         && perldoc'
+alias man="pickyfont -f terminus2 && man"
+alias perldoc="pickyfont -f terminus2 && perldoc"
 
  
 # quick fontswitch / deprecated - http://github.com/trapd00r/pickyfont
@@ -37,6 +36,8 @@ perldoc='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" \
 #alias large='echo -en "
 #            \033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007"'
 #alias font1="printf '\e]710;%s\007' "9x15bold,xft:Kochi Gothic""
+alias h='pickyfont -f terminus1'
+alias j='pickyfont -f terminus2'
 
 
 
