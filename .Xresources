@@ -35,8 +35,10 @@ URxvt.shiva.pointerColor2:        #0092FF
 
 /* fonts */
 URxvt.shiva*font:                 -*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*
+/*
 URxvt.shiva*boldFont:             -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
 URxvt.shiva*italicFont:           -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
+*/
 
 /* matches */
 URxvt.shiva.underlineURLs:        false

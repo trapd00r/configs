@@ -135,7 +135,9 @@
 (define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
 (define-key *root-map* (kbd "RET") "exec sh $HOME/bin/firefox-eval")
 (define-key *root-map* (kbd "KP_Add") "exec ossmix mpd +2")
+(define-key *root-map* (kbd "KP_Add") "exec ossmix mplayer +2")
 (define-key *root-map* (kbd "KP_Subtract") "exec ossmix mpd -- -2")
+(define-key *root-map* (kbd "KP_Subtract") "exec ossmix mplayer -- -2")
 (define-key *root-map* (kbd "Pause") "exec killall X")
 (define-key *root-map* (kbd "Delete") "exec stumpish echo `xclip -o`")
 

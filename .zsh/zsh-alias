@@ -30,15 +30,19 @@ alias perldoc="pickyfont -f terminus2 && perldoc"
 
  
 # quick fontswitch / deprecated - http://github.com/trapd00r/pickyfont
-#alias medbold='echo -en "
-#              \033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007"'
-#alias medium='echo -en "
-#              \033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007"'
-#alias large='echo -en "
-#            \033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007"'
-#alias font1="printf '\e]710;%s\007' "9x15bold,xft:Kochi Gothic""
-alias h='pickyfont -f terminus1'
-alias j='pickyfont -f terminus2'
+alias 1="printf '\e]710;%s\007' "9x15bold,xft:Kochi Gothic""
+alias 2='pickyfont -f speedy2'
+alias 3='pickyfont -f progsole'
+alias j='pickyfont -f terminus1'
+alias jj='pickyfont -f terminus2'
+alias h='pickyfont -f fixed6'
+alias hh='pickyfont -f fixed7'
+alias k='pickyfont -f proggy1'
+alias kk='pickyfont -f clea3'
+alias l='pickyfont -f profont2'
+alias ll='pickyfont -f profont3'
+alias lll='pickyfont -f profont4'
+
 
 
 
@@ -67,6 +71,7 @@ alias lsq='ls -AlQ --color=always --time-style=full-iso'
 
 
 # random
+alias rec='ffmpeg -f x11grab -s 1680x1050 -r 120 -i :0.0 -sameq foo.mpg'
 alias dmesg='dmesg|matchline -dmesg'
 alias dvdc='ssh 192.168.1.33 -p 19216'
 alias feh='feh -FZrd'
