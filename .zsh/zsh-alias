@@ -8,7 +8,7 @@ alias cp='cp -v'
 alias mv='mv -v'
 alias rm='rm -v'
 alias prename='prename -v'
-alias grep='grep -Ei --color=auto'
+alias grep='grep -Pi --color=auto'
 alias less='vimpager'
 alias make='make -j3'
 alias :q='exit'
@@ -25,8 +25,8 @@ alias t='cd $HOME/temp'
 alias x='cd $XDG_CONFIG_HOME'
 
 # documentation
-alias man="pickyfont -f terminus2 && man"
-alias perldoc="pickyfont -f terminus2 && perldoc"
+alias man="pickyfont -f profont4 && man"
+alias perldoc="pickyfont -f profont4 && perldoc"
 
  
 # quick fontswitch / deprecated - http://github.com/trapd00r/pickyfont
@@ -71,6 +71,9 @@ alias lsq='ls -AlQ --color=always --time-style=full-iso'
 
 
 # random
+alias s='stumpish restore code'
+alias v+='ossmix vmix0.pcm8 -- +2'
+alias v-='ossmix vmix0.pcm8 -- -2'
 alias rec='ffmpeg -f x11grab -s 1680x1050 -r 120 -i :0.0 -sameq foo.mpg'
 alias dmesg='dmesg|matchline -dmesg'
 alias dvdc='ssh 192.168.1.33 -p 19216'
@@ -97,5 +100,5 @@ alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias sortbycolumn='sort -n -k3'
 alias tree='tree -dA'
 alias urxvt='urxvt -name URxvt.shiva'
-alias vim='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && vim'
+#alias vim='echo -en "\033]50;-*-terminus-*-*-*-*-14-*-72-72-*-*-*-*\007" && vim'
 alias wgeturlfromfile='wget -r -l1 -H -t1 -nd -N -np -A.jpg -erobots=off -i' 
