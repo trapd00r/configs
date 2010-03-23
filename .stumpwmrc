@@ -11,6 +11,8 @@
 
 ; COLORS(SteelBlue, ForestGreen, SlateGrey
 
+; dump-group-to-file
+; restore-from-file
 
 ;-*-lisp-*-
 
@@ -19,6 +21,7 @@
 (in-package :stumpwm)
 
 (setf *default-package* :stumpwm)
+
 
 ;(load-module "mpd")
 ;(load-module "disk")
@@ -42,10 +45,10 @@
 
 (set-contrib-dir "/usr/share/stumpwm")
 
-;(head-resize 0 0 0 1680 1040)
+;(head-resize 1 0 0 1680 1040)
 ;(head-resize nr x y width height)
 
-;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1")
+(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1")
 ;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-7")
 ;(set-font "-*-dina-medium-r-normal-*-*-*-*-*-*-*-*-*")
 ;(set-font "-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
@@ -53,9 +56,9 @@
 
 
 
-(setf *mode-line-background-color* "DarkRed"
+(setf *mode-line-background-color* "black"
       *mode-line-foreground-color* "White"
-      *mode-line-border-color* "White"
+      *mode-line-border-color* "black"
       *mode-line-timeout* 1
       *mode-line-screen-position* :bottom
       *window-format* "^B^8*%n%s%m%30t :: ^7*"
@@ -65,10 +68,10 @@
 ;(setf stumpwm:*screen-mode-line-format*
 ;      "%D")
 
-
-;(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head 
-;                t *screen-mode-line-format*
-;                ))
+; FIXME dont wanna have to use mode-line just so I can use dzen2
+(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head 
+                t *screen-mode-line-format*
+                ))
 
 ;; Mode line setup - separate setup per head
 ;(setf stumpwm:*mode-line-timeout* 1)
@@ -90,7 +93,7 @@
 (set-border-color "SteelBlue")
 (set-msg-border-width 3)
 
-(setf *maxsize-border-width* 3
+(setf *maxsize-border-width* 1
  *normal-border-width* 0 
  *window-border-style* :thick
  *transient-border-width* 4) ; popups \o/
@@ -110,10 +113,12 @@
 (set-normal-gravity :center)
 (setf *normal-border-width* 0)
 
-;(defvar *maximized-frame-size* (make-frame :number -1 :x 0 :y 0 :width 1680 :height 1040))
-(defvar *maximized-frame-size* (make-frame :number -1 :x 0 :y 0 :width 1680 :height 1050))
-(defvar *current-frame-size* (make-frame :number -1 :x 0 :y 0 :width 0 :height 0))
+(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+(defvar *current-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
 (defvar *current-maximized-frame* nil)
+
+
 
 ;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
 ;(define-key *root-map* (kbd "aring") "exec sh /home/scp1/bin/mpdfav")
@@ -134,9 +139,8 @@
 ;(define-key *root-map* (kbd "SPC") "exec stumpish echo `ppc -i`")
 (define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
 (define-key *root-map* (kbd "RET") "exec sh $HOME/bin/firefox-eval")
-(define-key *root-map* (kbd "KP_Add") "exec ossmix mpd +2")
-(define-key *root-map* (kbd "KP_Add") "exec ossmix mplayer +2")
-(define-key *root-map* (kbd "KP_Subtract") "exec ossmix mpd -- -2")
+(define-key *root-map* (kbd "KP_Add") "exec ossmix vmix.0.pcm8 -- +2")
+(define-key *root-map* (kbd "KP_Subtract") "exec ossmix vmix.0.pcm8 -- -2")
 (define-key *root-map* (kbd "KP_Subtract") "exec ossmix mplayer -- -2")
 (define-key *root-map* (kbd "Pause") "exec killall X")
 (define-key *root-map* (kbd "Delete") "exec stumpish echo `xclip -o`")
