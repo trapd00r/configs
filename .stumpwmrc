@@ -69,9 +69,9 @@
 ;      "%D")
 
 ; FIXME dont wanna have to use mode-line just so I can use dzen2
-(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head 
-                t *screen-mode-line-format*
-                ))
+;(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head 
+;                t *screen-mode-line-format*
+;                ))
 
 ;; Mode line setup - separate setup per head
 ;(setf stumpwm:*mode-line-timeout* 1)
@@ -113,10 +113,10 @@
 (set-normal-gravity :center)
 (setf *normal-border-width* 0)
 
-(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-(defvar *current-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-(defvar *current-maximized-frame* nil)
+;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+;(defvar *current-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+;(defvar *current-maximized-frame* nil)
 
 
 
@@ -155,8 +155,10 @@
 (define-key *root-map* (kbd "C-j") "move-window down")
 (define-key *root-map* (kbd "C-k") "move-window up")
 (define-key *root-map* (kbd "C-l") "move-window right")
-
-(define-key *top-map* (kbd "SunPrint_Screen") "exec xclip -o")
+(define-key *top-map* (kbd "KP_Begin") "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
+(define-key *top-map* (kbd "KP_Right") "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
+(define-key *top-map* (kbd "KP_Insert") "exec echo pause > $HOME/.mplayer/fifo")
+(define-key *top-map* (kbd "KP_Up") "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 
 ;;; The End
 
