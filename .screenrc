@@ -7,8 +7,8 @@
 # escape ^aa  # default
 # escape ^pp  # suggested binding for emacs users
 
-defutf8 on
-utf8 on on
+#defutf8 on
+#utf8 on on
 
 # PASSWORD
 # ===============================================================
@@ -285,11 +285,11 @@ utf8 on on
 
 
 # hardstatus alwaysignore
-hardstatus alwayslastline '%{= M} %H%{= B} %l %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w}%+w %= %{c}%d %D %{B}%c ' 
+#hardstatus alwayslastline '%H%{= Y} %1` %= %{= b}%{+b m}%t%{-b r}%{w}%+w %= %{c}%d %D %{B}%c ' 
 
-#hardstatus string "%{.kc}%-w%{.kY}%n*%t%{-}%+w %= | %1 %2`"
-#hardstatus string '%{= k.}%-Lw%{= ..}%50> %n*%f %t%{= kR}%+Lw%< %{= kc}%-=%D (%m/%d/%y) | %1`%{-}'
-
+# "%{.kc}%-w%{.kY}%n*%t%{-}%+w %= | %1 %2`"
+#hardstatus alwayslastline '%{= k.}%-Lw%{= ..}%50> %n*%f %t%{= kR}%+Lw%< %{= kc}%-=%D (%m/%d/%y) | %1`%{-}'
+hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} |%{cK} %1`"
 
 
 # Resize the current region. The space will be removed from or added to 
@@ -317,31 +317,22 @@ hardstatus alwayslastline '%{= M} %H%{= B} %l %= %{= w}%-w%{+b r}%n*%t%{-b r}%{w
 #  msgwait 1
 #  version
 
-# Welcome the user:
-# echo "welcome :-)"
-# echo "I love you today."
-
-# Uncomment one/some following lines to automatically let
-# SCREEN start some programs in the given window numbers:
-screen -t mutt mutt
-screen -t rtorrent rtorrent
-screen -t ppc --scrobble ppc --scrobble
+screen -t mail mutt
+screen -t rt rtorrent
 bindkey "^h" prev
 bindkey "^j" next
-#bindkey "^[Od" prev  # change window with ctrl-left
-#bindkey "^[Oc" next  # change window with ctrl-right
 
 # Set the environment variable var to value string. If only var is specified,
 # you'll be prompted to enter a value. If no parameters are specified,
 # you'll be prompted for both variable and value. The environment is
 # inherited by all subsequently forked shells.
-# setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
+ setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
 
 # Don't you want to start programs which need a DISPLAY ?
 #setenv DISPLAY ''
 
 # A better caption string.
-backtick 1 1 1 uptime
+backtick 1 5 5 $HOME/configs/screen/mpd_status
 #backtick 40 5 5 $HOME/bin/screenrc/np.screenrc
 #caption always '%{= R} %200` %= %100` %='
 #caption string "%{-b wb} %L=%-Lw%45>%{+b yb}%n%f*%t%{-}%+Lw%-0<"
