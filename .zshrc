@@ -19,6 +19,7 @@ export CDPATH='.:~:/mnt'
 
 # FUCKING STUPID PIECE OF SHIT GNOMEBUG
 export GCONF_LOCAL_LOCKS=1
+GREP_COLOR="1;35m"
 
 
 # ln = link
@@ -31,7 +32,9 @@ export GCONF_LOCAL_LOCKS=1
 
 #eval $(dircolors -b $HOME/.dircolors)
 # ow=01;30:
-LS_COLORS='ex=01;31:ln=01;32:*.pl=01;36:*.sh=01;31:*.tar=01;33:*.tgz=01;33:*.zip=01;33:*.rar=01;33:*.gz=01;33:*.png=01;34:*.jpg=01;34:di=01;34;1:*.patch=45;37'
+LS_COLORS='ex=38;5;202:ln=38;5;95:pi=38;5;126:ow=38;5;208:di=38;5;33:*.pl=38;5;172:*.sh=38;5;240:*.patch=45;37:*.tar=38;5;118:*.tar.gz=38;5;118:*.zip=38;5;11::*.rar=38;5;11:*.tgz=38;5;11:*.7z=38;5;11:*.mp3=38;5;173:*.flac=38;5;166:*.mkv=38;5;115:*.avi=38;5;114:*.wmv=38;5;113:*.jpg=38;5;66:*.jpeg=38;5;67:*.png=38;5;68'
+# 8(16) ANSI colors
+#LS_COLORS='ex=01;31:ln=01;32:*.pl=01;36:*.sh=01;31:*.tar=01;33:*.tgz=01;33:*.zip=01;33:*.rar=01;33:*.gz=01;33:*.png=01;34:*.jpg=01;34:di=01;34;1:*.patch=45;37'
 #LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01\
 #           :cd=33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31\
 #           :*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31\
