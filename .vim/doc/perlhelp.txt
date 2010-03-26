@@ -1,0 +1,100 @@
+*perlhelp.txt* perldoc interface
+
+last changed:   2007-06-22
+maintainer:     Lorance Stinson <LoranceStinson+perlhelp@gmail.com>
+version:        1.5
+license:        vim license
+
+==============================================================================
+1. Contents                                             *perlhelp-contents*
+
+    Installation            : |perlhelp-install|
+    Manual                  : |perlhelp-manual|
+    Bugs                    : |perlhelp-bugs|
+
+==============================================================================
+1. Installation                                         *perlhelp-install*
+
+Copy the plugin file perlhelp.vim into a plugin directory in your runtime path
+(please see |add-global-plugin| and |'runtimepath'|).
+
+This help file can be included in the VIM help system by copying it into a
+'doc' directory in your runtime path and then executing the |:helptags|
+command, specifying the full path of the 'doc' directory.  Please see
+|add-local-help| for more details.
+
+If the perldoc command is not in your path add the following to your vimrc
+file:
+    let perlhelp_prog=/path/to/perldoc
+
+Change the path to where the perldoc executable resides.
+
+Adding the following to your vimrc file will make POD documentation in Perl
+modules easier to read:
+    let perl_include_pod=1
+
+==============================================================================
+2. Manual                                               *perlhelp-manual*
+                                                        *perlhelp*
+
+perlhelp looks up information using the perldoc command and displays it in a
+new window.  The window will be reused on subsequent lookups if left open.
+
+2.1 Functions                                           *perlhelp-functions*
+
+:PerlFAQ                                                *:PerlFAQ*
+
+Looks up a FAQ entry using the command 'perldoc -q'.  The headings in
+perlfaq[1-9] are searched using the supplied regular expression.  If no
+regular expression is specified prompts for one.
+
+:PerlFunc                                               *:PerlFunc*
+
+Looks up a function using the command 'perldoc -f'.  If no funciton is
+specified prompts for one.
+
+:PerlMod                                                *:PerlMod*
+
+Loads the source for a module using the command 'perldoc -m'.  The file type
+is set to perl to enable syntax highlighting.  If no module is specified
+prompts for one.
+
+:PerlHelp                                               *:PerlHelp*
+
+Looks up a topic using perldoc.  If no topic is specified prompts for one.
+
+:PerlVar                                                *:PerlVar*
+
+Loads the perlvar man page and searches for the specified variable.  If no
+variable is provided prompts for one.
+
+2.1 Mappings                                            *perlhelp-mappings*
+
+Mappings come in two forms, lower case and upper case.  Lower case uses the
+visually selected text or the word under the cursor.  Upper case prompts for
+an argument.  Mappings can be overridden by changing them in your vimrc file.
+
+nmap <silent> <unique> <Leader>ph <Plug>PerlHelpNormal
+vmap <silent> <unique> <Leader>ph <Plug>PerlHelpVisual
+nmap <silent> <unique> <Leader>PH <Plug>PerlHelpAsk
+nmap <silent> <unique> <Leader>pf <Plug>PerlHelpFuncNormal
+vmap <silent> <unique> <Leader>pf <Plug>PerlHelpFuncVisual
+nmap <silent> <unique> <Leader>PF <Plug>PerlHelpFuncAsk
+nmap <silent> <unique> <Leader>pm <Plug>PerlHelpModNormal
+vmap <silent> <unique> <Leader>pm <Plug>PerlHelpModVisual
+nmap <silent> <unique> <Leader>PM <Plug>PerlHelpModAsk
+nmap <silent> <unique> <Leader>pq <Plug>PerlHelpFAQNormal
+vmap <silent> <unique> <Leader>pq <Plug>PerlHelpFAQVisual
+nmap <silent> <unique> <Leader>PQ <Plug>PerlHelpFAQAsk
+nmap <silent> <unique> <Leader>pv <Plug>PerlHelpVarNormal
+vmap <silent> <unique> <Leader>pv <Plug>PerlHelpVarVisual
+nmap <silent> <unique> <Leader>PV <Plug>PerlHelpVarAsk
+
+==============================================================================
+3. Bugs                                                 *perlhelp-bugs*
+
+Please contact me with any problems you may experience:
+Lorance Stinson <LoranceStinson+perlhelp@gmail.com>
+http://lorance.freeshell.org/perlhelp/
+
+vim:tw=78:ft=help
