@@ -1,4 +1,4 @@
-source /etc/Muttrc.gpg.dist
+#source /etc/Muttrc.gpg.dist
 
 set mbox_type=Maildir
 set folder=/mnt/Docs/Mail/inbox

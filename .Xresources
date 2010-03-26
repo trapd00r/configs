@@ -96,7 +96,7 @@ URxvt.shiva.depth:                24
 !URxvt.externalBorder:            0
 !URxvt.shiva.borderLess:           true
 !URxvt.lineSpace:                 3
-URxvt.shiva.title:                laleh
+!URxvt.shiva.title:                laleh
 /*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
                                   colorize, darken, diff, dissipate, hue,
                                   lighten, overlay, saturate, screen, sub,
@@ -128,8 +128,8 @@ URxvt.shiva.title:                laleh
 
 
 /* black */
-*color0:      #5A5A5A
-*color8:      #3e3e3e
+*color0:      #3E3E3E
+*color8:      #1C1C1C 
 /* red */
 *color1:      #FF4747
 *color9:      #FF6767

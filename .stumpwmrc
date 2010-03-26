@@ -88,10 +88,10 @@
 
 
 ;;;; The Message Window
-(set-fg-color "lightblue")
+(set-fg-color "red")
 (set-bg-color "grey10")
-(set-border-color "SteelBlue")
-(set-msg-border-width 3)
+(set-border-color "red")
+(set-msg-border-width 1)
 
 (setf *maxsize-border-width* 1
  *normal-border-width* 0 
@@ -108,8 +108,8 @@
 
 ;;;; Windows
 
-(set-focus-color   "black") 
-(set-unfocus-color "black")
+(set-focus-color   "Black") 
+(set-unfocus-color "Black")
 (set-normal-gravity :center)
 (setf *normal-border-width* 0)
 

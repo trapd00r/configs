@@ -79,7 +79,7 @@
 # caption always "%3n %t%? @%u%?%? [%h]%?%=%c"
 
 # advertise hardstatus support to $TERMCAP
-# termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+ termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
 
 # set every new windows hardstatus line to somenthing descriptive
 # defhstatus "screen: ^En (^Et)"
@@ -102,27 +102,27 @@
   termcapinfo  xterm Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
 
 # Make the output buffer large for (fast) xterms.
-# termcapinfo xterm* OL=10000
-  termcapinfo xterm* OL=100
+ termcapinfo xterm* OL=10000
+#termcapinfo xterm* OL=100
 
 # tell screen that xterm can switch to dark background and has function
 # keys.
-  termcapinfo xterm 'VR=\E[?5h:VN=\E[?5l'
-  termcapinfo xterm 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
-  termcapinfo xterm 'kh=\EOH:kI=\E[2~:kD=\E[3~:kH=\EOF:kP=\E[5~:kN=\E[6~'
+  termcapinfo rxvt-256-color 'VR=\E[?5h:VN=\E[?5l'
+  termcapinfo rxvt-256-color 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
+  termcapinfo rxvt-256-color 'kh=\EOH:kI=\E[2~:kD=\E[3~:kH=\EOF:kP=\E[5~:kN=\E[6~'
 
 # special xterm hardstatus: use the window title.
-  termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+  termcapinfo rxvt-256-color 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
 
 #terminfo xterm 'vb=\E[?5h$<200/>\E[?5l'
-  termcapinfo xterm 'vi=\E[?25l:ve=\E[34h\E[?25h:vs=\E[34l'
+  termcapinfo rxvt-256-color 'vi=\E[?25l:ve=\E[34h\E[?25h:vs=\E[34l'
 
 # emulate part of the 'K' charset
-  termcapinfo xterm 'XC=K%,%\E(B,[\304,\\\\\326,]\334,{\344,|\366,}\374,~\337'
+  termcapinfo rxvt-256-color 'XC=K%,%\E(B,[\304,\\\\\326,]\334,{\344,|\366,}\374,~\337'
 
 # xterm-52 tweaks:
 # - uses background color for delete operations
-  termcapinfo xterm* be
+  termcapinfo rxvt-256-color be
 
 # Do not use xterm's alternative window buffer, it breaks scrollback (see bug #61195)
   termcapinfo xterm|xterms|xs ti@:te=\E[2J
@@ -299,6 +299,10 @@ hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} 
   bind - resize -3
 # bind _ resize max
 #
+# for 256 color?
+  attrcolor b ".I"
+  termcapinfo rxvt-256-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+  termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' 
 # attrcolor u "-u b"
 # attrcolor b "R"
 
