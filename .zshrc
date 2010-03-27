@@ -1,24 +1,13 @@
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.zsh/oh-my-zsh
+export ZSH_THEME="trapd00r2-w-git"
 
-# Set to the name theme to load.
-# Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="u@h_pipe_pwd_git"
-
-# Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
-
 
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/functions.zsh
+source $HOME/.zsh/git.zsh
 source $HOME/.zsh/appearance.zsh
 source $HOME/.zsh/colors.zsh
-source $HOME/.zsh/git.zsh
-source $HOME/.zsh/u@h_pipe_pwd_git.zsh-theme
+source $HOME/.zsh/$ZSH_THEME.zsh-theme
 
 export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'

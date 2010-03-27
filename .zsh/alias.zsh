@@ -26,6 +26,7 @@ alias p='cd $HOME/devel/pimpd'
 alias t='cd $HOME/temp'
 alias q='cd $HOME/devel/begperl'
 alias x='cd $XDG_CONFIG_HOME'
+alias z='cd $HOME/.zsh'
 
 # documentation
 #alias man="pickyfont -f profont4 && man"
