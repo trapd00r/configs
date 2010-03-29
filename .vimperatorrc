@@ -2,5 +2,16 @@ source /home/scp1/configs/.vimperator/color/desert_revisited.vimp
 set guioptions-=rlb
 set showtabline=0
 set editor="urxvt -name URxvt.shiva -e vim -f -c ':set ft=perl'"
-set insertmode=1
-set focuscontent 
+set insertmode=0
+set focuscontent=on
+set complete=tb
+set defsearch=google
+set followhints=0
+set hintinputs="label,name,value"
+set hintmatching=wordstartswith
+set laststatus=0
+set shell=zsh
+set titlestring=Fx
+set wildmode="full"
+set wildoptions=auto
+
