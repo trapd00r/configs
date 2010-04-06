@@ -5,19 +5,26 @@ sub-bg-alpha="0" #background color ala closed captions
 sub-bg-color="0" #black to white
 subfont-text-scale="1"	#truetype font scaling
 ffactor="10" #black outline
-#font=/home/scp1/.mplayer/subfont.ttf
 sid="0"	#subtitle set
 subfont-encoding=unicode
 unicode=yes
 utf8=yes
 # Set font size. (2: proportional to movie width)
 subfont-autoscale=2
-subfont-osd-scale=3
+subfont-osd-scale=2
 # Set autoscale coefficient. (default: 5)
-subfont-text-scale=4
+subfont-text-scale=2
 
 # Align subs. (-1: as they want to align themselves)
 spualign=-1
 
 # Anti-alias subs. (4: best and slowest)
 spuaa=4
+
+font="Anonymous Pro"
+monitoraspect=16:9
+mixer=/dev/mixer
+cache=47683
+slang=en
+alang=en
+
