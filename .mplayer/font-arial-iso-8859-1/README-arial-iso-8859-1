@@ -1,5 +1,0 @@
-These font sets were generated using TOOLS/subfont-c from the MPlayer package.
-
-Usage:
-select font size and copy the content of the directory to ~/.mplayer/font/
-example: cp font-arial-18-iso-8859-1/* ~/.mplayer/font/
