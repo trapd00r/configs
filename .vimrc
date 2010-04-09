@@ -38,13 +38,13 @@ set guioptions=-T               " ..be using gvim
 set cursorline                  " hilight line where cursor is
 set cot+=menuone                " show preview of function prototype
 "set fo+=r                       " annoying comments on far left
-"filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
+filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
                                 " cindent is on in C files etc
                                 " loads indent files to automatically do
                                 " language specific indenting
 
 augroup vimrc_autocmds
-  autocmd BufRead * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufRead * highlight OverLength ctermbg=darkred guibg=#592929
   autocmd BufRead * match OverLength /\%74v.*/
 augroup END
 
@@ -52,6 +52,7 @@ augroup END
 "set backspace=indent,eol,start
 "colorscheme darkburn
 colorscheme wombat256
+colorscheme charged-256
 syntax on
 au FileType pl,pm,t set filetype=perl
 "au FileType perl set makeprg=perl\ -c\ %\ $*
