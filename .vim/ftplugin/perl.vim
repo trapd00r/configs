@@ -396,12 +396,12 @@ endif
 "  Generate (possibly exuberant) Ctags style tags for Perl sourcecode.
 "  Controlled by g:Perl_PerlTags, enabled by default.
 " ----------------------------------------------------------------------------
-if has('perl') && g:Perl_PerlTags == 'enabled'
-	let g:Perl_PerlTagsTempfile = tempname()
-	if getfsize( expand('%') ) > 0
-		call Perl_do_tags( expand('%'), g:Perl_PerlTagsTempfile )
-	endif
-endif
+"if has('perl') && g:Perl_PerlTags == 'enabled'
+"	let g:Perl_PerlTagsTempfile = tempname()
+"	if getfsize( expand('%') ) > 0
+"		call Perl_do_tags( expand('%'), g:Perl_PerlTagsTempfile )
+"	endif
+"endif
 "
 "-------------------------------------------------------------------------------
 " additional mapping : {<CR> always opens a block
