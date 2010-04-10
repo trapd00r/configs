@@ -58,7 +58,7 @@
 
 (setf *mode-line-background-color* "black"
       *mode-line-foreground-color* "White"
-      *mode-line-border-color* "black"
+      *mode-line-border-color* "darkgrey"
       *mode-line-timeout* 1
       *mode-line-screen-position* :bottom
       *window-format* "^B^8*%n%s%m%30t :: ^7*"
@@ -108,10 +108,10 @@
 
 ;;;; Windows
 
-(set-focus-color   "Black") 
-(set-unfocus-color "Black")
+(set-focus-color   "grey10") 
+(set-unfocus-color "grey10")
 (set-normal-gravity :center)
-(setf *normal-border-width* 0)
+(setf *normal-border-width* 1)
 
 ;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
 ;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
