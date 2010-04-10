@@ -1,11 +1,11 @@
 # canvas patch :)
 # 0 = black 1 = red 2 = green 3 = yellow 4 = blue 5 = magenta 6 = cyan 7 = white 
-#set_done_fg_color = 2
-#set_done_bg_color = -1
-#set_active_fg_color = 1
-#set_active_bg_color = -1
+set_done_fg_color = 2
+set_done_bg_color = -1
+set_active_fg_color = 3
+set_active_bg_color = -1
 
-download_rate = 0
+download_rate = 5000
 upload_rate = 0
 
 # Default directory to save the downloaded torrents.
@@ -37,6 +37,7 @@ schedule = movies2,5,5,"load_start=/mnt/Movies_2/.torrents/*.torrent,d.set_direc
 schedule = docs1,5,5,"load_start=/mnt/Docs/.torrents/*.torrent,d.set_directory=/mnt/Docs/.new/"
 schedule = games1,5,5,"load_start=/mnt/Games_1/.torrents/*.torrent,d.set_directory=/mnt/Games_1/.new/"
 schedule = mvids1,5,5,"load_start=/mnt/Mvids/.torrents/*.torrent,d.set_directory=/mnt/Mvids/.new/"
+schedule = mvids2,5,5,"load_start=/mnt/Mvids_2/.torrents/*.torrent,d.set_directory=/mnt/Mvids_2/"
 schedule = porn1,5,5,"load_start=/mnt/Porn/.torrents/*.torrent,d.set_directory=/mnt/Porn/.new/"
 schedule = tv1,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mnt/TV_1/.new/"
 #schedule = musicspec1,5,5,"load_start=/mnt/Music_1/.torrents/A/*.torrent,d.set_directory=/mnt/Music_1/A/"
