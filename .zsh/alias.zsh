@@ -17,7 +17,6 @@ alias :q='exit'
 alias cat='vimpager'
 
 alias c256='printf "\033[38;5;11m foobar"'
-# shortcuts
 alias a='cd $HOME/devel/trunk'
 alias b='cd $HOME/bin'
 alias c='cd $HOME/configs'
@@ -26,17 +25,12 @@ alias f="$(grep xmod $HOME/.xinitrc|perl -pe 's/&//')"
 alias g='cd $HOME/devel/golf'
 alias p='cd $HOME/devel/pimpd'
 alias s='stumpish restore code.group'
-#alias s='stumpish restore-from-file code'
 alias t='cd $HOME/temp'
 alias q='cd $HOME/devel/begperl'
 alias u='cd $HOME/devel/utils'
 alias x='cd $XDG_CONFIG_HOME'
 alias z='cd $HOME/.zsh'
-
-# documentation
-#alias man="pickyfont -f profont4 && man"
-#alias perldoc="pickyfont -f profont4 && perldoc"
-
+alias sf='chmod +t,o+w "$@"'
  
 # quick fontswitch / deprecated - http://github.com/trapd00r/pickyfont
 alias 1="printf '\e]710;%s\007' "9x15bold,xft:Kochi Gothic""
@@ -51,9 +45,6 @@ alias kk='pickyfont -f clea3'
 alias l='pickyfont -f profont2'
 alias ll='pickyfont -f profont3'
 alias lll='pickyfont -f profont4'
-
-
-
 
 # git
 alias gp='git push origin master'

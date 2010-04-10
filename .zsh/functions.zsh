@@ -16,7 +16,25 @@ horny() {
 zsh_stats() {
   history|awk '{print $2}'|sort|uniq -c|sort -rn|head
 }
-function mk() {
+mk() {
   mkdir -p $1
   cd $1
 }
+
+absurl() {
+  perl -MWWW::Mechanize -e "$m = WWW::Mechanize->new;$u=shift;$m->get($u)||die;print $_->url_abs, "\n" for  $m->links;"
+}
+
+tf() {
+    val=$?
+    if [ "$val" = "0" ]
+    then
+        echo ":-)"
+    else
+        echo ":-("
+    fi
+}
+goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
+cpf() { cp "$@" && goto "$_"; }
+mvf() { mv "$@" && goto "$_"; }
+
