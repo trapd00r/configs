@@ -1,4 +1,5 @@
 /* .Xresources | trapd00r.se */
+#include "/home/scp1/configs/trapd00r.xcolors"
 
 XTerm*background:                 #000000
 XTerm*foreground:                 #FFFFFF
@@ -20,24 +21,26 @@ xterm*SaveLines:                  2500
 XTerm*scrollBar:                  false
 
 /* colors */
-URxvt.shiva.background:           #252525
+URxvt.shiva.background:           #121212
 URxvt.shiva.foreground:           #FFFFFF
-URxvt.shiva.cursorColor:          #F65F01
+URxvt.shiva.cursorColor:          #FF005F
 URxvt.shiva.cursorColor2:         #252525
 URxvt.shiva.colorIT:              #FFFFFF
 URxvt.shiva.colorBD:              #FFFFFF
-URxvt.shiva.colorUL:              #FFFFFF
+URxvt.shiva.colorUL:              #FF8F00
 URxvt.shiva.colorRV:              #333333
-URxvt.shiva.underlineColor:       #252525
-URxvt.shiva.borderColor:          #252525
+URxvt.shiva.underlineColor:       #0E0E0E
+URxvt.shiva.borderColor:          #0E0E0E
 URxvt.shiva.pointerColor:         #252525
 URxvt.shiva.pointerColor2:        #0092FF
 
 /* fonts */
-URxvt.shiva*font:                 -*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*
-/*
-URxvt.shiva*boldFont:             -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
-URxvt.shiva*italicFont:           -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
+URxvt.shiva*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
+URxvt.shiva*boldFont:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
+URxvt.shiva*italicFont:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
+/*URxvt.shiva*font:                 -*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*
+URxvt.shiva*boldFont:             -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
+URxvt.shiva*italicFont:           -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
 */
 
 /* matches */
@@ -69,7 +72,7 @@ URxvt.shiva.jumpScroll:           true
 URxvt.shiva.skipScroll:           true
 URxvt.shiva.loginShell:           true
 URxvt.shiva.urgentOnBell:         true
-URxvt.shiva.saveLines:            512
+URxvt.shiva.saveLines:            1024
 !URxvt.shiva.termName:            rxvt-unicode
 URxvt.shiva.trippleclickwords:    true
 !URxvt.shiva.modifier:            (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
@@ -83,8 +86,8 @@ URxvt.shiva.pointerBlankDelay:    2
 URxvt.shiva.chdir:                /home/scp1/devel
 
 /* eyecandy */
-URxvt.shiva.transparent:          true
-URxvt.shiva.shading:              9
+!URxvt.shiva.transparent:          true
+!URxvt.shiva.shading:              9
 !URxvt.shiva.fading:              30%
 !URxvt.shiva.fadeColor:           #000000
 !URxvt.shiva.inheritPixmap:       true
