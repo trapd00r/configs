@@ -88,9 +88,9 @@
 
 
 ;;;; The Message Window
-(set-fg-color "red")
+(set-fg-color "sienna2")
 (set-bg-color "grey10")
-(set-border-color "red")
+(set-border-color "sienna4")
 (set-msg-border-width 1)
 
 (setf *maxsize-border-width* 1
@@ -98,9 +98,9 @@
  *window-border-style* :thick
  *transient-border-width* 4) ; popups \o/
 
-(setf *message-window-gravity* :center
-      *timeout-wait*           3
-      *input-window-gravity*   :center)
+(setf *message-window-gravity* :top-right
+      *timeout-wait*           10
+      *input-window-gravity*   :top-right)
 
 
 ;; Turn of welcome message
@@ -108,7 +108,7 @@
 
 ;;;; Windows
 
-(set-focus-color   "grey10") 
+(set-focus-color   "grey20") 
 (set-unfocus-color "grey10")
 (set-normal-gravity :center)
 (setf *normal-border-width* 1)
@@ -129,14 +129,16 @@
 (define-key *root-map* (kbd "x") "exec urxvt")
 (define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
 (define-key *root-map* (kbd "c") "exec urxvtc -name URxvt.shiva")
-(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
+;; deprecated - using self made daemon instead
+;(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
+(define-key *root-map* (kbd "p") "exec mpc next")
 (define-key *root-map* (kbd "o") "exec mpc toggle")
 (define-key *root-map* (kbd "n") "exec sh /home/scp1/bin/np.sh")
 (define-key *root-map* (kbd "g") "exec google")
 (define-key *root-map* (kbd "u") "exec sh $HOME/.config/uzbl/urlload")
 (define-key *root-map* (kbd "SunPrint_Screen") "exec sh $HOME/bin/shot")
 (define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - (%album%) -  %title% [ %file% ]'|head -1`")
-;(define-key *root-map* (kbd "SPC") "exec stumpish echo `ppc -i`")
+;(define-key *root-map* (kbd "SPC") "exec stumpish echo `pimpd -i`")
 (define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
 (define-key *root-map* (kbd "RET") "exec sh $HOME/bin/firefox-eval")
 (define-key *root-map* (kbd "KP_Add") "exec ossmix vmix.0.pcm8 -- +2")
