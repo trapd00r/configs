@@ -17,9 +17,9 @@ local c9=$(printf "\033[38;5;162m")
 local newtv=''
 
 zstyle ':vcs_info:*' actionformats \
-    '$c8(%f%s)$c7-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+    '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats \
-    "$c8%s$c7:$c7($c9%b$c7)%f "
+    "%{$c8%}%s%{$c7%}:%{$c7%}(%{$c9%}%b%{$c7%})%f "
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 
@@ -31,23 +31,24 @@ prompt_jnrowe_precmd () {
     if [ "${vcs_info_msg_0_}" = "" ]; then
         #dir_status="|%F{3}%n%F{7}@%F{3}%m%F{7}:%F{9}%l%f"
         #dir_status="$c1%n%F{7}@%F{9}%m%F{7}:%F{12}%/"
-        dir_status="$c1%n$c4@$c2%m$c0:$c3%l$c6->$c4%/ $c0($c5%?$c0)"
+        dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
         
         PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '
     elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
-        dir_status="$c1%n$c4@$c2%m$c0:$c3%l$c6->$c4%/ $c0($c5%?$c0)"
+        dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
         PROMPT='${vcs_info_msg_0_}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
     
     elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
-        dir_status="$c1%n$c4@$c2%m$c0:$c3%l$c6->$c4%/ $c0($c5%?$c0)"
+        dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
+
         PROMPT='${vcs_info_msg_0_}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
-$c9·>$c0 '
+%{$c9%}·>%{$c0%} '
     else
-        dir_status="$c1%n$c4@$c2%m$c0:$c3%l$c6->$c4%/ $c0($c5%?$c0)"
+        dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
         PROMPT='${vcs_info_msg_0_}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
