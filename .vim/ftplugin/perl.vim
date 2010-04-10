@@ -1,12 +1,5 @@
 " Vim filetype plugin file
 "
-"   Language :  Perl
-"     Plugin :  perl-support.vim
-" Maintainer :  Fritz Mehner <mehner@fh-swf.de>
-"   Revision :  $Id: perl.vim,v 1.60 2009/12/28 12:47:05 mehner Exp $
-"
-" ----------------------------------------------------------------------------
-"
 " Only do this when not done yet for this buffer
 "
 if exists("b:did_PERL_ftplugin")
@@ -22,8 +15,8 @@ let s:MSWIN = has("win16") || has("win32")   || has("win64")    || has("win95")
 "  Uncomment the next two lines to force these settings for all files with
 "  filetype 'perl' .
 "
-setlocal  tabstop=4
-setlocal  shiftwidth=4
+"setlocal  tabstop=4
+"setlocal  shiftwidth=4
 "
 " ---------- Add ':' to the keyword characters -------------------------------
 "            Tokens like 'File::Find' are recognized as

@@ -31,7 +31,7 @@
 " * You can now set a darker background for bright environments. To activate, use:
 "   contrast Zenburn, use:
 "
-     let g:darkburn_high_Contrast = 1
+"     let g:darkburn_high_Contrast = 1
 "
 " * To get more contrast to the Visual selection, use
 "   
