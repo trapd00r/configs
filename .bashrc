@@ -1,4 +1,5 @@
-PS1='[\u@\h \W]\$ '
 alias :q='exit'
+alias ls='ls -Al --color=always'
 alias ..='cd ..'
 alias c='echo -e \\033[38\;5\;11m'
+PROMPT_COMMAND='usercolor="\[\033[0;36m\]";[[ $EUID == 0 ]] && usercolor="\[\033[1;31m\]";PS1="$(pwd)";PS1="$usercolor\u\[\033[0m\]@\[\033[0;33m\]\h\[\033[0m\]:${PS1//\//$usercolor/\[\033[0m\]}$usercolor\\$\[\033[0m\] "'
