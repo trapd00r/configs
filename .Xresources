@@ -1,6 +1,6 @@
 /* .Xresources | trapd00r.se */
-#include "/home/scp1/configs/trapd00r.xcolors"
-
+/*#include "/home/scp1/configs/trapd00r.xcolors"
+*/
 XTerm*background:                 #000000
 XTerm*foreground:                 #FFFFFF
 XTerm*colorMode:                  On

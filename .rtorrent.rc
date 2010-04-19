@@ -152,7 +152,7 @@ schedule = tv1,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mn
 #schedule = musicmostyesyes1,5,5,"load_start=/mnt/Music_4/.torrents/FLAC/*.torrent,d.set_directory=/mnt/Music_4/FLAC/"
 #schedule = musicmostyesyes2,5,5,"load_start=/mnt/Music_4/.torrents/Not_Scene/*.torrent,d.set_directory=/mnt/Music_4/Not_Scene/"
 #schedule = musicmostyesyes3,5,5,"load_start=/mnt/Music_4/.torrents/VA/*.torrent,d.set_directory=/mnt/Music_4/VA/"
-#schedule = musicmostyesyes4,5,5,"load_start=/mnt/Music_4/.torrents/*.torrent,d.set_directory=/mnt/Music_4/.new/"
+schedule = musicmostyesyes4,5,5,"load_start=/mnt/Music_4/.torrents/*.torrent,d.set_directory=/mnt/Music_4/.new/"
 #
 #schedule = musiclessmostmore2,5,5,"load_start=/mnt/Music_5/.torrents/A/*.torrent,d.set_directory=/mnt/Music_5/A"
 #schedule = musiclessmostmore3,5,5,"load_start=/mnt/Music_5/.torrents/B/*.torrent,d.set_directory=/mnt/Music_5/B/"

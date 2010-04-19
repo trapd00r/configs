@@ -7,6 +7,5 @@ my $m = Audio::MPD->new;
 my $artist = $m->current->artist;
 my $album  = $m->current->album;
 my $title  = $m->current->title;
-
 my $foo = sprintf("%.20s - %.20s (%.20s)", $artist, $title, $album);
 print $foo;

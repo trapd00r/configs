@@ -51,8 +51,8 @@ augroup END
 "set list listchars=tab:\|-,trail:.
 "set backspace=indent,eol,start
 "colorscheme darkburn
-colorscheme wombat256
-colorscheme charged-256
+colorscheme molokai
+"colorscheme charged-256
 syntax on
 au FileType pl,pm,t set filetype=perl
 "au FileType perl set makeprg=perl\ -c\ %\ $*

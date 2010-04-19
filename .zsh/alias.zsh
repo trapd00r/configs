@@ -23,6 +23,7 @@ alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
 alias f="$(grep xmod $HOME/.xinitrc|perl -pe 's/&//')"
 alias g='cd $HOME/devel/golf'
+alias n='fc'
 alias p='cd $HOME/devel/pimpd'
 alias s='stumpish restore code.group'
 alias t='cd $HOME/temp'
@@ -48,6 +49,8 @@ alias lll='pickyfont -f profont4'
 
 # git
 alias gp='git push origin master'
+alias gd='git diff'
+alias gc='git commit'
 
 # cope
 alias df='$HOME/bin/cope/df'

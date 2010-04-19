@@ -16,8 +16,6 @@
 
 ;-*-lisp-*-
 
-
-;; ekvavilent med "using namespace std;"
 (in-package :stumpwm)
 
 (setf *default-package* :stumpwm)
@@ -48,7 +46,8 @@
 ;(head-resize 1 0 0 1680 1040)
 ;(head-resize nr x y width height)
 
-(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1")
+(set-font "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
+;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1")
 ;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-7")
 ;(set-font "-*-dina-medium-r-normal-*-*-*-*-*-*-*-*-*")
 ;(set-font "-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
@@ -88,7 +87,7 @@
 
 
 ;;;; The Message Window
-(set-fg-color "sienna2")
+(set-fg-color "sienna1")
 (set-bg-color "grey10")
 (set-border-color "sienna4")
 (set-msg-border-width 1)
@@ -98,9 +97,9 @@
  *window-border-style* :thick
  *transient-border-width* 4) ; popups \o/
 
-(setf *message-window-gravity* :top-right
+(setf *message-window-gravity* :bottom-right
       *timeout-wait*           10
-      *input-window-gravity*   :top-right)
+      *input-window-gravity*   :top-left)
 
 
 ;; Turn of welcome message
@@ -125,6 +124,8 @@
 (define-key *root-map* (kbd ",") "exec xdotool click 1")
 (define-key *root-map* (kbd "DEL") "exec pimpd --rand 20")
 (define-key *root-map* (kbd "b") "exec sh /home/scp1/bin/dmenumpd.sh")
+(define-key *root-map* (kbd "d") "exec perl /home/scp1/devel/clipbored/scripts/fmenuclip")
+(define-key *root-map* (kbd "m") "exec perl /home/scp1/bin/dmenurl")
 (define-key *root-map* (kbd "e") "exec sh /home/scp1/bin/dmenu.sh")
 (define-key *root-map* (kbd "x") "exec urxvt")
 (define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
@@ -133,11 +134,12 @@
 ;(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
 (define-key *root-map* (kbd "p") "exec mpc next")
 (define-key *root-map* (kbd "o") "exec mpc toggle")
-(define-key *root-map* (kbd "n") "exec sh /home/scp1/bin/np.sh")
-(define-key *root-map* (kbd "g") "exec google")
+(define-key *root-map* (kbd "n") "exec /home/scp1/bin/np")
+(define-key *root-map* (kbd "g") "exec perl /home/scp1/bin/google_dmenu.pl")
 (define-key *root-map* (kbd "u") "exec sh $HOME/.config/uzbl/urlload")
 (define-key *root-map* (kbd "SunPrint_Screen") "exec sh $HOME/bin/shot")
-(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - (%album%) -  %title% [ %file% ]'|head -1`")
+(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - %title% (%album%)'|head -1`")
+;(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - (%album%) -  %title% [ %file% ]'|head -1`")
 ;(define-key *root-map* (kbd "SPC") "exec stumpish echo `pimpd -i`")
 (define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
 (define-key *root-map* (kbd "RET") "exec sh $HOME/bin/firefox-eval")
@@ -145,7 +147,6 @@
 (define-key *root-map* (kbd "KP_Subtract") "exec ossmix vmix.0.pcm8 -- -2")
 (define-key *root-map* (kbd "KP_Subtract") "exec ossmix mplayer -- -2")
 (define-key *root-map* (kbd "Pause") "exec killall X")
-(define-key *root-map* (kbd "Delete") "exec stumpish echo `xclip -o`")
 
 ;; sane bindings for window management
 (define-key *root-map* (kbd "h") "move-focus left")
