@@ -43,6 +43,15 @@ filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
                                 " loads indent files to automatically do
                                 " language specific indenting
 
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+inoremap <Left> <NOP>
+inoremap <Right><NOP>
+inoremap <Up>   <NOP>
+inoremap <Down> <NOP>
+
 augroup vimrc_autocmds
   autocmd BufRead * highlight OverLength ctermbg=darkred guibg=#592929
   autocmd BufRead * match OverLength /\%74v.*/
@@ -51,7 +60,7 @@ augroup END
 "set list listchars=tab:\|-,trail:.
 "set backspace=indent,eol,start
 "colorscheme darkburn
-colorscheme molokai
+colorscheme neverland
 "colorscheme charged-256
 syntax on
 au FileType pl,pm,t set filetype=perl
@@ -63,7 +72,7 @@ au FileType pl,pm,t set filetype=perl
 "au FileType mail call TextMode()
 "au FileType vim  set iskeyword+=. iskeyword+=/ iskeyword+=~
 
-let perl_fold=1                   " let subs fold themselves
+"let perl_fold=1                   " let subs fold themselves
 let perl_include_pod=1            " no idea but seems nice
 let perl_extended_vars = 1        " syntax hl for 'complicated' stuff
 
