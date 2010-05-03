@@ -15,58 +15,79 @@ set sort=threads
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
 macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 
-hdr_order From: Date: To: Cc: Subject:
+hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
 set editor="vim +':set textwidth=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s" 
 mailboxes `echo /mnt/Docs/Mail/*`
 
 macro index .. "c=\n" "Go to inbox"
 
-# normal text     FG            BG
- color normal     white		      default 
-# message 
- color indicator  yellow        default 
-# thread arrows
- color tree       brightmagenta default 
-# status line
- color status     green         default 
- color error      brightred     default 
-# info msg
- color message    green         default 
- color signature  green         default
- color attachment black         yellow     
-# search match
- color search     brightyellow  red
- color tilde      brightmagenta default 
-# + at wrap
- color markers    yellow        default 
-# headers
- color hdrdefault green         default 
- color bold       yellow        default 
- color underline  yellow        default 
- color quoted     green         default 
- color quoted1    brightcyan    default
- color quoted2    brightblue    default
- color quoted3    green         default
- color quoted4    cyan          default
- color quoted5    magenta       default
- color quoted6    magenta       default
- color quoted7    red           default
- color quoted8    green         default
- color quoted9    cyan          default
- color body       brightblue    default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
- color body       yellow        default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
- color body       green         default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
- color body       green         default  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
- color body       red           default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
- color body       green         default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
-# flagged
- color index      cyan          default  ~F        
-# new
- color index      cyan          default  ~N
-# tagged
- color index      blue          default  ~T         
-# deleted
- color index      green         default  ~D  
+# The chosen color selection
+# 34 - green
+# 111 - blue
+# 124 - red
+# 142 - orange
+# 193 - tan
+# 233 - black
+
+# general-doesn't-fit stuff
+color normal color193 default
+color error color196 default
+#color markers color197 default
+color tilde color142 default
+color status color235 default
+
+# index stuff
+#color tree magenta default
+#color tree color172 color233
+#color indicator color100 color233
+color index     color23           default  ~l      # Mailing list
+color index     yellow         black  ~N      # New
+color index     default         default  ~O      # Old
+color index     magenta        black  "! ~C ." # No To: or Cc: (newsdeliver)
+color index     blue           black  ~T      # Tagged
+color index     white          color124    ~F      # Flagged (important)
+color index     red            black  ~D      # Deleted
+
+
+# header stuff
+color header color197 color233 "^Subject"
+color header color184 color233 "^From"
+color header color186 color233 "^To"
+color header color252 color233 "^User-Agent"
+color header color250 color233 "^X-.+"
+color hdrdefault color242 color233
+
+## gpg stuff
+#color body color34 color233 "^gpg: Good signature.*"
+#color body color193 color124 "^gpg: BAD signature.*"
+#color body color142 color233 "^gpg: Can't check signature.*"
+#color body color142 color233 "^-----BEGIN PGP SIGNED MESSAGE-----"
+#color body color142 color233 "^-----BEGIN PGP SIGNATURE-----"
+#color body color142 color233 "^-----END PGP SIGNED MESSAGE-----"
+#color body color142 color233 "^-----END PGP SIGNATURE-----"
+#color body color142 color233 "^Version: GnuPG.*"
+#color body color142 color233 "^Comment: .*"
+
+
+# misc body stuff
+color attachment color111 color233
+color signature color142 color233
+
+
+
+# quote levels
+color quoted color243 color233
+color quoted1 color242 color233
+color quoted2 color241 color233
+color quoted3 color240 color233
+color quoted4 color239 color233
+color quoted5 color238 color233
+color quoted6 color239 color233
+color quoted7 color240 color233
+color quoted8 color241 color233
+color quoted9 color242 color233
+
+color body      brightwhite     black "[;:]-[)/(|]"
 
 set move=no
 bind pager k previous-line
@@ -76,7 +97,7 @@ bind pager > next-line
 bind pager down next-page
 bind pager up previous-page
 # dual window view in mutt
-#set pager_index_lines=10
+set pager_index_lines=5
 
 # Similar settings for the index
 bind index [ previous-line
@@ -102,21 +123,19 @@ folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 ## Then un-ignore the ones I want to see
  unignore From:
  unignore To:
-# unignore Reply-To:
+ unignore Reply-To:
 # unignore Mail-Followup-To:
-# unignore Subject:
+ unignore Subject:
  unignore Date:
 # unignore Organization:
 # unignore Newsgroups:
-# unignore CC:
-# unignore BCC:
+ unignore CC:
+ unignore BCC:
 # unignore Message-ID:
-# unignore X-Mailer:
-# unignore User-Agent:
+ unignore X-Mailer:
+ unignore User-Agent:
 # unignore X-Junked-Because:
 # unignore X-SpamProbe:
 # unignore X-Virus-hagbard:
 
-# # Now order the visable header lines
- hdr_order From: Subject: To: CC: BCC: Reply-To: Mail-Followup-To: Date: Organization: User-Agent: X-Mailer:
   
