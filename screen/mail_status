@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+use strict;
+
+my $maildir = '/mnt/Docs/Mail/inbox/new';
+my @mails = glob("$maildir/*");
+
+my $output;
+if(scalar(@mails > 0)) {
+  $output = 'Mail: '. scalar(@mails). ' new';
+}
+else {
+  $output = 'No new mail';
+}
+
+print $output;
