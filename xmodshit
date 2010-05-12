@@ -1,0 +1,4 @@
+#!/bin/sh
+setsid urxvt -name URxvt.shiva -e zsh -c \
+  "xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'; \
+   exec zsh"
