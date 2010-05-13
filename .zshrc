@@ -2,23 +2,23 @@ export ZSH_THEME="trapd00r2-w-git"
 
 # export CASE_SENSITIVE="true"
 #
-zle-keymap-select () {
-    if [ $TERM = "rxvt-256color" ]; then
-        if [ $KEYMAP = vicmd ]; then
-            echo -ne "\033]12;Red\007"
-        else
-            echo -ne "\033]12;SteelBlue\007"
-        fi
-    fi
-}
-zle -N zle-keymap-select
-zle-line-init () {
-    zle -K viins
-    if [ $TERM = "rxvt-256color" ]; then
-        echo -ne "\033]12;SteelBlue\007"
-    fi
-}
-zle -N zle-line-init
+#zle-keymap-select () {
+#    if [ $TERM = "rxvt-256color" ]; then
+#        if [ $KEYMAP = vicmd ]; then
+#            echo -ne "\033]12;Red\007"
+#        else
+#            echo -ne "\033]12;SteelBlue\007"
+#        fi
+#    fi
+#}
+#zle -N zle-keymap-select
+#zle-line-init () {
+#    zle -K viins
+#    if [ $TERM = "rxvt-256color" ]; then
+#        echo -ne "\033]12;SteelBlue\007"
+#    fi
+#}
+#zle -N zle-line-init
 
 
 source $HOME/.zsh/alias.zsh
@@ -36,11 +36,11 @@ export EDITOR=vim
 export PAGER=vimpager
 setopt ALL_EXPORT
 
-if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P01c1c1c" #black
-    echo -en "\e]P81c1c1c" #darkgrey
-    echo -en "\e]P1ff4747" #darkred
-    echo -en "\e]P9ff6767" #red
+if [ "$TERM" = "linux" ]; then #
+    echo -en "\e]P01c1c1c" #black 
+    echo -en "\e]P81c1c1c" #darkgrey 
+    echo -en "\e]P1ff4747" #darkred 
+    echo -en "\e]P9ff6767" #red 
     echo -en "\e]P24d4c4c" #darkgreen
     echo -en "\e]PAb03b31" #green
     echo -en "\e]P3ff8f00" #brown
@@ -113,3 +113,4 @@ bindkey "^k" kill-line
 bindkey ' ' magic-space
 bindkey '^I' complete-word 
 
+eval `ssh-agent`>/dev/null

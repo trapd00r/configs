@@ -3,6 +3,8 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
+
 # Sane defaults
 alias .='pwd'
 alias ..='cd ..'
@@ -15,19 +17,28 @@ alias less='vimpager'
 alias make='make -j3'
 alias :q='exit'
 alias cat='vimpager'
+alias npd='srinfo -np'
+alias ptop='watch -n1 ps aux --sort=+%cpu'
+alias wget='wget -U=Mozilla'
+alias vim='vim -p'
 
-alias c256='printf "\033[38;5;11m foobar"'
 alias a='cd $HOME/devel/trunk'
 alias b='cd $HOME/bin'
 alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
+alias e='cd $HOME/devel/exercises'
 alias f="$(grep xmod $HOME/.xinitrc|perl -pe 's/&//')"
 alias g='cd $HOME/devel/golf'
+alias i='cd $HOME/devel/fetchit'
+alias l='cd $HOME/devel/libs'
+alias m='cd $HOME/devel/pimpd/pimpd-ng'
 alias n='fc'
+alias o='cd $HOME/devel/radiod'
 alias p='cd $HOME/devel/pimpd'
+alias q='cd $HOME/devel/pickyfont'
+alias r='cd $HOME/devel/rel'
 alias s='stumpish restore code.group'
 alias t='cd $HOME/temp'
-alias q='cd $HOME/devel/begperl'
 alias u='cd $HOME/devel/utils'
 alias x='cd $XDG_CONFIG_HOME'
 alias z='cd $HOME/.zsh'
@@ -43,8 +54,8 @@ alias h='pickyfont -f fixed6'
 alias hh='pickyfont -f fixed7'
 alias k='pickyfont -f proggy1'
 alias kk='pickyfont -f clea3'
-alias l='pickyfont -f profont2'
-alias ll='pickyfont -f profont3'
+#alias l='pickyfont -f profont2'
+alias ll='pickyfont -f profont2'
 alias lll='pickyfont -f profont4'
 
 # git
@@ -63,7 +74,7 @@ alias nmap='$HOME/bin/cope/nmap'
 alias ps='$HOME/bin/cope/ps'
 
 # file management
-alias ls='$HOME/bin/cope/ls -hovA --indicator-style=file-type \
+alias ls='\ls -hovA --indicator-style=file-type \
           --color=always --group-directories-first --time=ctime \
           --time-style=full-iso'
 alias ls1='\ls -1 --color=auto --time-style=full-iso'
@@ -75,7 +86,7 @@ alias lsq='ls -AlQ --color=always --time-style=full-iso'
 
 # application sane defaults
 alias iostat='iostat -mtx'
-alias mp='mplayer -slave -input file=$HOME/.mplayer/fifo'
+alias mp='mplayer -slave -input file=$HOME/.mplayer/fifo -msgcolor'
 alias dmesg='dmesg|matchline -dmesg'
 alias lsusb='lsusb|matchline -random'
 alias lspci='lspci|matchline -lspci'
