@@ -1,4 +1,7 @@
-# vim: set ts=2 textwidth=0 autoload -U add-zsh-hook autoload -Uz vcs_info 
+# vim: set ts=2 textwidth=0 
+
+autoload -U add-zsh-hook 
+autoload -Uz vcs_info 
 local c0=$(printf "\033[0m")
 local c1=$(printf "\033[38;5;215m")
 local c2=$(printf "\033[38;5;209m")
@@ -11,8 +14,8 @@ local c8=$(printf "\033[38;5;126m")
 local c9=$(printf "\033[38;5;162m")
 
 if [ "$TERM" = "linux" ]; then
-    c1=$(printf "\033[30m")
-    c2=$(printf "\033[30;1m")
+    c1=$(printf "\033[34;1m")
+    c2=$(printf "\033[35m")
     c3=$(printf "\033[31m")
     c4=$(printf "\033[31;1m")
     c5=$(printf "\033[32m")
