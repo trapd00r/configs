@@ -36,7 +36,7 @@ URxvt.shiva.pointerColor2:        #0092FF
 
 /* fonts */
 URxvt.shiva*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
-URxvt.shiva*boldFont:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
+URxvt.shiva*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
 URxvt.shiva*italicFont:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 /*URxvt.shiva*font:                 -*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*
 URxvt.shiva*boldFont:             -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
@@ -86,7 +86,7 @@ URxvt.shiva.pointerBlankDelay:    2
 URxvt.shiva.chdir:                /home/scp1/devel
 
 /* eyecandy */
-!URxvt.shiva.transparent:          true
+URxvt.shiva.transparent:          true
 !URxvt.shiva.shading:              9
 !URxvt.shiva.fading:              30%
 !URxvt.shiva.fadeColor:           #000000

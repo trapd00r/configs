@@ -1,3 +1,4 @@
+" perldo {$/='';if($_!~ /my/){$_='';print $_}}
 set autoread                    " auto read when file is changed
 set nobackup                    " I have git...
 set nowb
@@ -53,7 +54,7 @@ map <space> /
 map <c-space> ?
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
-
+map @ I#
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 noremap <Up>    <NOP>
@@ -109,3 +110,8 @@ set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%08O:%02B
 "autocmd BufNewFile,BufRead *.p? compiler perl
 "autocmd BufNewFile,BufRead *.p6 setf perl6
 "match Error80 /\%>80v.\+/ " highlight anything past 80 in red
+"
+" vertical indent
+set list
+set listchars=tab:\-\ ,trail:-
+

@@ -13,6 +13,8 @@ local c7=$(printf "\033[38;5;149m")
 local c8=$(printf "\033[38;5;126m")
 local c9=$(printf "\033[38;5;162m")
 
+local foopath=$(perl /home/scp1/bin/foopath)
+
 if [ "$TERM" = "linux" ]; then
     c1=$(printf "\033[34;1m")
     c2=$(printf "\033[35m")
@@ -44,6 +46,7 @@ prompt_jnrowe_precmd () {
         #dir_status="|%F{3}%n%F{7}@%F{3}%m%F{7}:%F{9}%l%f"
         #dir_status="$c1%n%F{7}@%F{9}%m%F{7}:%F{12}%/"
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
+        #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$foopath%} %{$c0%}(%{$c5%}%?%{$c0%})"
         
         PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '

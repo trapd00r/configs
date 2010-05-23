@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/scp1/httpd/NEWtrapd00r.se/all/perl'
+let g:netrw_dirhist_2='/home/scp1/httpd/NEWtrapd00r.se/all/perl/_posts'
+let g:netrw_dirhist_3='/home/scp1/devel/utils/pnfo'
+let g:netrw_dirhist_4='/home/scp1/configs/.vim/syntax/textile'
+let g:netrw_dirhist_5='/tmp/scp1/Audio-MPD-1.100430/examples'

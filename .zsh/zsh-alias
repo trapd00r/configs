@@ -21,7 +21,7 @@ alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
 alias g='cd $HOME/devel/golf'
 alias p='cd $HOME/devel/pimpd'
-alias t='cd $HOME/temp'
+alias t='cd /tmp/scp1'
 alias x='cd $XDG_CONFIG_HOME'
 
 # documentation

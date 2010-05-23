@@ -158,9 +158,13 @@
 (define-key *root-map* (kbd "C-j") "move-window down")
 (define-key *root-map* (kbd "C-k") "move-window up")
 (define-key *root-map* (kbd "C-l") "move-window right")
-(define-key *root-map* (kbd "t") "exec echo stop > $HOME/.mplayer/fifo")
-(define-key *root-map* (kbd "y") "exec echo pause > $HOME/.mplayer/fifo")
-(define-key *root-map* (kbd "u") "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
+(define-key *root-map* (kbd "y") "exec radioc pause")
+;(define-key *root-map* (kbd "u") "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
+; control firefox, remotely
+(define-key *root-map* (kbd "L") "exec fxr forward")
+(define-key *root-map* (kbd "H") "exec fxr back")
+(define-key *root-map* (kbd "J") "exec fxr refresh")
+
 (define-key *top-map* (kbd "F1") "exec radioc change dingata")
 (define-key *top-map* (kbd "F2") "exec radioc change gabber")
 (define-key *top-map* (kbd "F3") "exec radioc change hardstyle")
