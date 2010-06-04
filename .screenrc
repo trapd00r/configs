@@ -2,7 +2,7 @@
 # escape ^pp  # suggested binding for emacs users
 
 
-term screen-256color-bce-s
+term screen-256color
 
  vbell on				# default: off
  vbell_msg "   -- Bell,Bell!! --   "	# default: "Wuff,Wuff!!"
@@ -44,7 +44,8 @@ term screen-256color-bce-s
 # attrcolor u "-u b"
 # attrcolor b "R"
 
-hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} |%{CK} %1`"
+#hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} |%{CK} %1`"
+hardstatus alwayslastline "%?%{gk}%-Lw%?%{mk}%n*%f %t%?(%u)%?%?%{gk}%+Lw%?%{Yk} | %{yk}RPD: %{Bk}%1`"
 backtick 1 10 5 $HOME/configs/screen/radiod_status
 #backtick 1 10 5 $HOME/configs/screen/mail_status
 #backtick 40 5 5 $HOME/bin/screenrc/np.screenrc
@@ -82,14 +83,5 @@ setenv DISPLAY ''
 
   register [ "\033:se noai\015a"
   register ] "\033:se ai\015a"
-
-hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} |%{CK} %1`"
-
-backtick 1 10 5 $HOME/configs/screen/radiod_status
-#backtick 1 10 5 $HOME/configs/screen/mail_status
-#backtick 40 5 5 $HOME/bin/screenrc/np.screenrc
-
-#caption always '%{= R} %200` %= %100` %='
-#caption string "%{-b wb} %L=%-Lw%45>%{+b yb}%n%f*%t%{-}%+Lw%-0<"
 
 screen -t $ zsh
