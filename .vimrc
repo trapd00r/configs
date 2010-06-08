@@ -44,6 +44,7 @@ set wildmode=list:longest,full  " bash style completioness
 set guioptions-=m               " just in case we happened to..
 set guioptions=-T               " ..be using gvim
 set cursorline                  " hilight line where cursor is
+"set cursorcolumn
 set cot+=menuone                " show preview of function prototype
 "set fo+=r                       " annoying comments on far left
 filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
@@ -76,6 +77,10 @@ augroup END
 colorscheme neverland
 "colorscheme charged-256
 syntax on
+
+au BufRead,BufNewFile *.markdown set ft=md
+au BufRead,BufNewFile *.md set ft=md
+
 au FileType pl,pm,t set filetype=perl
 "au FileType perl set makeprg=perl\ -c\ %\ $*
 "au FileType perl set errorformat=%f:%l:%m
