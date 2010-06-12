@@ -23,6 +23,7 @@ alias npd='srinfo -np'
 alias ptop='watch -n1 ps aux --sort=+%cpu'
 alias wget='wget -U=Mozilla'
 alias vim='vim -p'
+alias mproot="mplayer -wid $( xwininfo -root|perl -lne '@c=<>;$c[$.-47] =~ s/^xwin.+id: ([0-9A-Za-z]+)\s\(.+/$1/;print $c[$.-47]')"
 
 alias a='cd $HOME/devel/trunk'
 alias b='cd $HOME/bin'
