@@ -1,5 +1,6 @@
-rpws init 4 -ak
+rpws init 4 -k
 escape C-f
+startup_message off
 
 bind h focusleft
 bind j focusdown
@@ -7,6 +8,6 @@ bind k focusup
 bind l focusright
 bind H rpwsp
 bind L rpwsn
-bind c exec urxvtc -name URxvt.shiva
+bind c exec urxvtc -name URxvt.india
 bind e exec sh dmenushit
 
