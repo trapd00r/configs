@@ -1,0 +1,12 @@
+rpws init 4 -ak
+escape C-f
+
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+bind H rpwsp
+bind L rpwsn
+bind c exec urxvtc -name URxvt.shiva
+bind e exec sh dmenushit
+

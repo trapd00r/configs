@@ -21,9 +21,9 @@ xterm*SaveLines:                  2500
 XTerm*scrollBar:                  false
 
 /* colors */
-URxvt.shiva.background:           #121212
+URxvt.shiva.background:           #080808
 URxvt.shiva.foreground:           #FFFFFF
-URxvt.shiva.cursorColor:          #FF005F
+URxvt.shiva.cursorColor:          #EB122E
 URxvt.shiva.cursorColor2:         #252525
 URxvt.shiva.colorIT:              #FFFFFF
 URxvt.shiva.colorBD:              #FFFFFF
@@ -34,15 +34,24 @@ URxvt.shiva.borderColor:          #0E0E0E
 URxvt.shiva.pointerColor:         #252525
 URxvt.shiva.pointerColor2:        #0092FF
 
+URxvt.india.background:           #080808
+URxvt.india.foreground:           #FFFFFF
+URxvt.india.cursorColor:          #EB122E
+URxvt.india.cursorColor2:         #252525
+URxvt.india.colorIT:              #FFFFFF
+URxvt.india.colorBD:              #FFFFFF
+URxvt.india.colorUL:              #FF8F00
+URxvt.india.colorRV:              #333333
+URxvt.india.underlineColor:       #0E0E0E
+URxvt.india.borderColor:          #0E0E0E
+URxvt.india.pointerColor:         #252525
 /* fonts */
 URxvt.shiva*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 URxvt.shiva*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
-URxvt.shiva*italicFont:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
-/*URxvt.shiva*font:                 -*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*
-URxvt.shiva*boldFont:             -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
-URxvt.shiva*italicFont:           -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
-*/
+URxvt.shiva*italicFont:            -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 
+URxvt.india*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
+URxvt.india*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
 /* matches */
 URxvt.shiva.underlineURLs:        false
 URxvt.shiva.urlLauncher:          /usr/bin/firefox
@@ -53,11 +62,21 @@ URxvt.shiva.matcher.launcher.1:   /usr/bin/firefox
 URxvt.shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
 URxvt.shiva.matcher.launcher.2:   gvim +$2 $1
 
+URxvt.india.underlineURLs:        false
+URxvt.india.urlLauncher:          /usr/bin/firefox
+URxvt.india.matcher.button:       1
+URxvt.india.cutchars:             "()*,<>[]{}|'"
+URxvt.india.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.india.matcher.launcher.1:   /usr/bin/firefox
+URxvt.india.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
 /* libs */
 URxvt.shiva.perl-lib:             /usr/lib/urxvt/perl
 URxvt.shiva.perl-ext-common:      default,matcher
 URxvt.shiva.perl-eval:            $^O
 
+URxvt.india.perl-lib:             /usr/lib/urxvt/perl
+URxvt.india.perl-ext-common:      default,matcher
+URxvt.india.perl-eval:            $^O
 /* perl magic */
 URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
 URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
@@ -85,8 +104,29 @@ URxvt.shiva.pointerBlankDelay:    2
 !URxvt.shiva.hold:                 0
 URxvt.shiva.chdir:                /home/scp1/devel
 
+URxvt.india.scrollKey:            true
+URxvt.india.scrollWithBuffer:     true
+URxvt.india.scrollBack:           true
+URxvt.india.scrollTtyOutput:      false
+URxvt.india.scrollTtyKeypress:    true
+URxvt.india.jumpScroll:           true
+URxvt.india.skipScroll:           true
+URxvt.india.loginShell:           true
+URxvt.india.urgentOnBell:         true
+URxvt.india.saveLines:            1024
+!URxvt.india.termName:            rxvt-unicode
+URxvt.india.trippleclickwords:    true
+!URxvt.india.modifier:            (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
+!URxvt.india.secondaryScreen:     true
+!URxvt.india.secondaryScroll:     true
+URxvt.india.scrollstyle:          next
+URxvt.india.pasteableTabs:        true
+URxvt.india.pointerBlank:         true
+URxvt.india.pointerBlankDelay:    2
+!URxvt.india.hold:                 0
+
 /* eyecandy */
-URxvt.shiva.transparent:          true
+!URxvt.shiva.transparent:          true
 !URxvt.shiva.shading:              9
 !URxvt.shiva.fading:              30%
 !URxvt.shiva.fadeColor:           #000000
@@ -108,6 +148,22 @@ URxvt.shiva.depth:                24
 !URxvt.shiva.blurRadius:          (0-128)
 !URxvt.shiva.iconFile:            (file)
 
+!URxvt.india.transparent:          true
+!URxvt.india.shading:              9
+!URxvt.india.fading:              30%
+!URxvt.india.fadeColor:           #000000
+!URxvt.india.inheritPixmap:       true
+URxvt.india.scrollBar:            false
+!URxvt.india.cursorBlink:         false
+!URxvt.india.reverseVideo:        true
+URxvt.india.depth:                24
+!URxvt.india.title:                laleh
+/*URxvt.india.blendType:           (add,alphablend,allanon), (averaging,
+                                  colorize, darken, diff, dissipate, hue,
+                                  lighten, overlay, saturate, screen, sub,
+                                  tint, value)
+*/
+!URxvt.india.blurRadius:          (0-128)
 
 /* trapd00r original colorscheme */
 
@@ -131,31 +187,58 @@ URxvt.shiva.depth:                24
 
 
 /* black */
-*color0:      #3E3E3E
-*color8:      #1C1C1C 
+URxvt.shiva.color0:      #3E3E3E
+URxvt.shiva.*color8:      #1C1C1C 
 /* red */
-*color1:      #FF4747
-*color9:      #FF6767
+URxvt.shiva.color1:      #FF4747
+URxvt.shiva.color9:      #FF6767
 /* green */
-*color2:      #4D4C4C /* green => grey */
-*color10:     #B03B31 /* green => faluröd */
+URxvt.shiva.color2:      #4D4C4C /* green => grey */
+URxvt.shiva.color10:     #B03B31 /* green => faluröd */
 /* yellow */
-*color3:      #FF8F00
-*color11:     #BDF13D
+URxvt.shiva.color3:      #FF8F00
+URxvt.shiva.color11:     #BDF13D
 /* blue */
-*color4:      #1165E9
-*color12:     #5496FF
+URxvt.shiva.color4:      #1165E9
+URxvt.shiva.color12:     #5496FF
 /* purple */
-*color5:      #89005A 
-*color13:     #B50077
+URxvt.shiva.color5:      #89005A 
+URxvt.shiva.color13:     #B50077
 /* cyan */
-*color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
-*color14:     #6BE603 /* cyan => green */
+URxvt.shiva.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
+URxvt.shiva.color14:     #6BE603 /* cyan => green */
 /* white */
-*color7:      #FFFFFF
-*color15:     #DEDEDE
+URxvt.shiva.color7:      #FFFFFF
+URxvt.shiva.color15:     #DEDEDE
 /* orange */
-*color16:     #FFB000
+URxvt.shiva.color16:     #FFB000
+
+
+URxvt.india.color0:      #0a0a0a
+URxvt.india.*color8:     #1C1C1C 
+/* red */
+URxvt.india.color1:      #FF4747
+URxvt.india.color9:      #FF6767
+/* green */
+URxvt.india.color2:      #4D4C4C /* green => grey */
+URxvt.india.color10:     #B03B31 /* green => faluröd */
+/* yellow */
+URxvt.india.color3:      #FF8F00
+URxvt.india.color11:     #BDF13D
+/* blue */
+URxvt.india.color4:      #1165E9
+URxvt.india.color12:     #5496FF
+/* purple */
+URxvt.india.color5:      #89005A 
+URxvt.india.color13:     #B50077
+/* cyan */
+URxvt.india.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
+URxvt.india.color14:     #6BE603 /* cyan => green */
+/* white */
+URxvt.india.color7:      #FFFFFF
+URxvt.india.color15:     #DEDEDE
+/* orange */
+URxvt.india.color16:     #FFB000
 
 
 XFontSel*sampleText.background:       TEXTBG
