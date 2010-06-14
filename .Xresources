@@ -1,6 +1,13 @@
 /* .Xresources | trapd00r.se */
 /*#include "/home/scp1/configs/trapd00r.xcolors"
 */
+ratmenu*font:                     -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
+ratmenu*fgcolor:                  #eb122e
+ratmenu*bgcolor:                  #080808
+ratmenu*style:                    dreary
+ratmenu*persist:                  false
+ratmenu*align:                    center
+
 XTerm*background:                 #000000
 XTerm*foreground:                 #FFFFFF
 XTerm*colorMode:                  On
@@ -239,6 +246,12 @@ URxvt.india.color7:      #FFFFFF
 URxvt.india.color15:     #DEDEDE
 /* orange */
 URxvt.india.color16:     #FFB000
+
+mplay*background:        #ffffff
+mplay*foreground:        #cb1c13
+mplay*scrollbar:         false
+mplay*color0:            #000000
+mplay*color1:            #93a0b2
 
 
 XFontSel*sampleText.background:       TEXTBG
