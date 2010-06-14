@@ -16,9 +16,14 @@ exec xsetroot -cursor_name left_ptr
 exec unclutter -idle 0 -root
 exec urxvt -name URxvt.india
 hsplit
+hsplit
+focusright
 exec urxvt name URxvt.india
+focusright
 vsplit
 
+bind = exec ratpoison -c "setenv fs1 $(ratpoison -c 'fdump')"
+bind 0 exec ratpoison -c "frestore $(ratpoison -c 'getenv fs1')"
 bind h focusleft
 bind j focusdown
 bind k focusup
