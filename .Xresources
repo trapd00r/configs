@@ -41,7 +41,7 @@ URxvt.shiva.borderColor:          #0E0E0E
 URxvt.shiva.pointerColor:         #252525
 URxvt.shiva.pointerColor2:        #0092FF
 
-URxvt.india.background:           #080808
+URxvt.india.background:           #030303
 URxvt.india.foreground:           #FFFFFF
 URxvt.india.cursorColor:          #EB122E
 URxvt.india.cursorColor2:         #252525
@@ -221,7 +221,7 @@ URxvt.shiva.color15:     #DEDEDE
 URxvt.shiva.color16:     #FFB000
 
 
-URxvt.india.color0:      #0a0a0a
+URxvt.india.color0:      #030303
 URxvt.india.*color8:     #1C1C1C 
 /* red */
 URxvt.india.color1:      #FF4747
