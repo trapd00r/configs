@@ -45,13 +45,13 @@ URxvt.india.background:           #030303
 URxvt.india.foreground:           #FFFFFF
 URxvt.india.cursorColor:          #EB122E
 URxvt.india.cursorColor2:         #252525
-URxvt.india.colorIT:              #FFFFFF
-URxvt.india.colorBD:              #FFFFFF
+!URxvt.india.colorIT:              #FFFFFF
+!URxvt.india.colorBD:              #FFFFFF
 URxvt.india.colorUL:              #FF8F00
 URxvt.india.colorRV:              #333333
-URxvt.india.underlineColor:       #0E0E0E
+URxvt.india.underlineColor:       #cb1c13
+URxvt.india.pointerColor:         #cb1c13
 URxvt.india.borderColor:          #0E0E0E
-URxvt.india.pointerColor:         #252525
 /* fonts */
 URxvt.shiva*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 URxvt.shiva*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
@@ -161,6 +161,7 @@ URxvt.shiva.depth:                24
 !URxvt.india.fadeColor:           #000000
 !URxvt.india.inheritPixmap:       true
 URxvt.india.scrollBar:            false
+URxvt.india.cursorUnderline:      true
 !URxvt.india.cursorBlink:         false
 !URxvt.india.reverseVideo:        true
 URxvt.india.depth:                24
@@ -227,7 +228,7 @@ URxvt.india.*color8:     #1C1C1C
 URxvt.india.color1:      #FF4747
 URxvt.india.color9:      #FF6767
 /* green */
-URxvt.india.color2:      #4D4C4C /* green => grey */
+URxvt.india.color2:      #2b4626/* green => grey */
 URxvt.india.color10:     #B03B31 /* green => faluröd */
 /* yellow */
 URxvt.india.color3:      #FF8F00
@@ -236,7 +237,7 @@ URxvt.india.color11:     #BDF13D
 URxvt.india.color4:      #1165E9
 URxvt.india.color12:     #5496FF
 /* purple */
-URxvt.india.color5:      #89005A 
+URxvt.india.color5:      #aef7a4 # light green 
 URxvt.india.color13:     #B50077
 /* cyan */
 URxvt.india.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
