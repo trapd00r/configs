@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+print my $np = `rpc npi`;
+
+

@@ -1,7 +1,0 @@
-#!/usr/bin/perl
-
-my $np = `radioc np`;
-$np =~ s/^np: /Radio: /;
-
-print $np;
-
