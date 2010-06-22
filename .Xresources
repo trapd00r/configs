@@ -57,8 +57,13 @@ URxvt.shiva*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 URxvt.shiva*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
 URxvt.shiva*italicFont:            -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
 
-URxvt.india*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
-URxvt.india*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
+URxvt.india*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+URxvt.india*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+URxvt.india*italicFont:            -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+
+
+!URxvt.india*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
+!URxvt.india*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
 /* matches */
 URxvt.shiva.underlineURLs:        false
 URxvt.shiva.urlLauncher:          /usr/bin/firefox
