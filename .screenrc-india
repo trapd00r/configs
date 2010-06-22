@@ -1,0 +1,87 @@
+# escape ^aa  # default
+# escape ^pp  # suggested binding for emacs users
+
+
+term screen-256color
+
+ vbell on				# default: off
+ vbell_msg "   -- Bell,Bell!! --   "	# default: "Wuff,Wuff!!"
+ autodetach on				# default: on
+ startup_message off			# default: on
+ nethack on				# default: off
+# Affects the copying of text regions
+  crlf off				# default: off
+  multiuser off				
+  defscrollback 5000			# default: 100
+  silencewait 15			# default: 30
+# If begins with a '-' character, the shell will be started as a login shell.
+  shell -$SHELL
+  pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+
+ termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+ termcap  xterm hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l
+ terminfo xterm hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l
+ termcapinfo  xterm Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+ termcapinfo xterm* OL=10000
+ termcapinfo rxvt-256-color 'VR=\E[?5h:VN=\E[?5l'
+ termcapinfo rxvt-256-color 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
+ termcapinfo rxvt-256-color 'kh=\EOH:kI=\E[2~:kD=\E[3~:kH=\EOF:kP=\E[5~:kN=\E[6~'
+ termcapinfo rxvt-256-color 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+ termcapinfo rxvt-256-color 'vi=\E[?25l:ve=\E[34h\E[?25h:vs=\E[34l'
+ termcapinfo rxvt-256-color 'XC=K%,%\E(B,[\304,\\\\\326,]\334,{\344,|\366,}\374,~\337'
+ termcapinfo rxvt-256-color be
+ termcapinfo xterm|xterms|xs ti@:te=\E[2J
+ termcapinfo wy75-42 xo:hs@
+ termcapinfo wy* CS=\E[?1h:CE=\E[?1l:vi=\E[?25l:ve=\E[?25h:VR=\E[?5h:VN=\E[?5l:cb=\E[1K:CD=\E[1J
+ termcapinfo  hp700 'Z0=\E[?3h:Z1=\E[?3l:hs:ts=\E[62"p\E[0$~\E[2$~\E[1$}:fs=\E[0}\E[61"p:ds=\E[62"p\E[1$~\E[61"p:ic@'
+ termcap  vt100* ms:AL=\E[%dL:DL=\E[%dM:UP=\E[%dA:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC
+ terminfo vt100* ms:AL=\E[%p1%dL:DL=\E[%p1%dM:UP=\E[%p1%dA:DO=\E[%p1%dB:LE=\E[%p1%dD:RI=\E[%p1%dC
+ termcapinfo linux C8
+# for 256 color
+ attrcolor b ".I"
+ termcapinfo rxvt-256-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+ termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' 
+# attrcolor u "-u b"
+# attrcolor b "R"
+
+#hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} |%{CK} %1`"
+hardstatus alwayslastline "%?%{ky}%-Lw%?%{yk}%n*%f %t%?(%u)%?%?%{ky}%+Lw%?%{Ky} | %{ky}RPD: %{ky}%1`"
+backtick 1 10 5 $HOME/configs/screen/rpd_status
+#backtick 1 10 5 $HOME/configs/screen/mail_status
+#backtick 40 5 5 $HOME/bin/screenrc/np.screenrc
+#caption always '%{= R} %200` %= %100` %='
+#caption string "%{-b wb} %L=%-Lw%45>%{+b yb}%n%f*%t%{-}%+Lw%-0<"
+
+setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
+setenv DISPLAY ''
+
+  bind k
+  bind ^k
+# bind .  dumptermcap # default
+  bind .
+# bind ^\ quit        # default
+  bind ^\
+# bind \\ quit        # default
+  bind \\
+# bind ^h ???         # default
+  bind ^h
+# bind h  hardcopy    # default
+  bind h
+
+  bind 'K' kill
+  bind 'I' login on
+  bind 'O' login off
+  bind '}' history
+  bind ^] paste [.]
+  bind = resize =
+  bind + resize +3
+  bind - resize -3
+  bind ^] paste [.]
+
+  bindkey "^h" prev
+  bindkey "^j" next
+
+  register [ "\033:se noai\015a"
+  register ] "\033:se ai\015a"
+
+screen -t $ zsh
