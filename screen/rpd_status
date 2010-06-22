@@ -1,5 +1,10 @@
 #!/usr/bin/perl
 
-print my $np = `rpc npi`;
+my $np = `rpc npi`;
+if(!$np or $np eq '') {
+  $np = `mpnp`;
+  $np =~ s/mplayer: //;
+}
+print $np;
 
 
