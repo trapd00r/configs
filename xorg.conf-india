@@ -2,6 +2,11 @@ Section "Device"
   Identifier "Intel Corporation Mobile 945GM/GMS, 943/940GML Express Integrated Graphics Controller"
   Driver   "intel"
   BusID    "PCI:0:2:0"
+  Option   "AccelMethod"  "UXA" # exa, XAA
+EndSection
+
+Section "DRI"
+  mode  0666
 EndSection
 
 Section "Monitor"
@@ -27,8 +32,8 @@ Section "ServerLayout"
 EndSection
 
 Section "ServerFlags"
-  Option  "AutoAddDevices"      "True"
-  Option  "AutoEnableDevices"   "True" 
+#  Option  "AutoAddDevices"      "True"
+#  Option  "AutoEnableDevices"   "True" 
   Option  "DontZap"             "False"
   Option  "AllowMouseOpenFail"  "True"
 EndSection
@@ -36,7 +41,17 @@ EndSection
 Section "Files"
   FontPath "/usr/local/share/fonts"
   FontPath "/usr/share/fonts/local"
+  FontPath "/usr/share/fonts/misc"
   FontPath "/usr/share/fonts"
+EndSection
+
+Section "Module"
+  Load "dbe"
+  Load "dri2"
+  Load "dri"
+  Load "glx"
+  Load "extmod"
+  Load "freetype"
 EndSection
 
 
