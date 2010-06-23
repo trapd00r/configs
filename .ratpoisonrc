@@ -14,11 +14,12 @@ gravity se
 
 
 #exec xsetroot -cursor_name left_ptr
-exec unclutter -idle 0 -root
+exec clipbored
+#exec rmshit
+#exec rpd
+#exec unclutter -idle 0 -root
 exec urxvt -name URxvt.india
 hsplit
-focusright
-exec urxvt -name URxvt.india
 focusright
 exec urxvt -name URxvt.india
 vsplit
@@ -29,13 +30,13 @@ focusdown
 exec urxvt -name URxvt.india
 focusright
 exec xterm
-exec urxvt -name URxvt.india 
 focusdown 
 exec urxvt -name URxvt.india
 focusdown
 exec urxvt -name URxvt.india -e top
 
-bind space exec ratpoison -c "echo $(mpnp)"
+bind C-f-k focusup 
+bind space exec ratpoison -c "echo $(rpc npi)"
 bind dead_acute exec rpws init 2 -ak
 bind = exec ratpoison -c "setenv fs1 $(ratpoison -c 'fdump')"
 bind 0 exec ratpoison -c "frestore $(ratpoison -c 'getenv fs1')"
