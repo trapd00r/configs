@@ -48,5 +48,8 @@ bind H rpwsp
 bind L rpwsn
 bind c exec urxvtc -name URxvt.india
 bind e exec sh dmenushit
-bind o exec perl $HOME/bin/expose
+bind t exec perl $HOME/bin/expose
+bind p exec mplayerd -c next
+bind o exec mplayerd -c toggle
+
 
