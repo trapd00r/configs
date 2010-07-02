@@ -29,6 +29,7 @@ EndSection
 Section "ServerLayout"
   Identifier "Default Layout"
   Screen   "Default Screen"
+  InputDevice "SynapticsTouchpad" "SendCoreEvents"
 EndSection
 
 Section "ServerFlags"
@@ -52,6 +53,38 @@ Section "Module"
   Load "glx"
   Load "extmod"
   Load "freetype"
+  Load "synaptics"
+EndSection
+
+Section "InputDevice"
+  Identifier "SynapticsTouchpad"
+   Driver      "synaptics"
+   Option      "AlwaysCore"        "true"  # send events to CorePointer
+   #Option      "Device"            "/dev/input/mice"
+   Option      "Device"            "/dev/psaux"
+   Option      "Protocol"          "auto-dev"
+   Option      "SHMConfig"         "false" # configurable at runtime? security risk
+   Option      "LeftEdge"          "1700"  # x coord left
+   Option      "RightEdge"         "5300"  # x coord right
+   Option      "TopEdge"           "1700"  # y coord top
+   Option      "BottomEdge"        "4200"  # y coord bottom
+   Option      "FingerLow"         "25"    # pressure below this level triggers release
+   Option      "FingerHigh"        "30"    # pressure above this level triggers touch
+   Option      "MaxTapTime"        "180"   # max time in ms for detecting tap
+   Option      "VertEdgeScroll"    "true"  # enable vertical scroll zone
+   Option      "HorizEdgeScroll"   "true"  # enable horizontal scroll zone
+   Option      "CornerCoasting"    "true"  # enable continuous scroll with finger in corner
+   Option      "CoastingSpeed"     "0.30"  # corner coasting speed
+   Option      "VertScrollDelta"   "100"   # edge-to-edge scroll distance of the vertical scroll
+   Option      "HorizScrollDelta"  "100"   # edge-to-edge scroll distance of the horizontal scroll
+   Option      "MinSpeed"          "0.10"  # speed factor for low pointer movement
+   Option      "MaxSpeed"          "0.60"  # maximum speed factor for fast pointer movement
+   Option      "AccelFactor"       "0.0020"    # acceleration factor for normal pointer movements
+   Option      "VertTwoFingerScroll"   "true"  # vertical scroll anywhere with two fingers
+   Option      "HorizTwoFingerScroll"  "true"  # horizontal scroll anywhere with two fingers
+   Option      "TapButton1" "1"
+   Option      "TapButton2" "2"
+   Option      "TapButton3" "3"
 EndSection
 
 
