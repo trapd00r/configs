@@ -1,4 +1,4 @@
-# vim: textwidth=0 nowrap ts=2:
+#vim: textwidth=0 nowrap ts=2:
 alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
@@ -30,7 +30,7 @@ alias b='cd $HOME/bin'
 alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
 alias e='cd $HOME/devel/exercises'
-alias f="$(grep xmod $HOME/.xinitrc|perl -pe 's/&//')"
+alias f="pickyfont monte1 normal && pickyfont monte2 bold && pickyfont pro1 italic"
 alias g='cd $HOME/devel/golf'
 alias h='cd $HOME/httpd/NEWtrapd00r.se'
 alias i='cd $HOME/devel/fetchit'
@@ -79,7 +79,8 @@ alias nmap='$HOME/bin/cope/nmap'
 alias ps='$HOME/bin/cope/ps'
 
 # file management
-alias ls='colorls'
+alias ls='ls2'
+#alias ls='colorls'
 #alias ls='\ls -hovA --indicator-style=file-type --color=always --group-directories-first --time=ctime --time-style=full-iso' 
 alias ls1='\ls -1 --color=auto --time-style=full-iso'
 alias lsa='\ls --color=auto --time-style=full-iso'
@@ -106,7 +107,6 @@ alias shiva="ps -eo pcpu,pid,user,args|sort -k 1 -r|head -10 && iostat -mtx && m
 alias cpuu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 alias ss='source $HOME/.zshrc'
 alias ssa='mpc search artist'
-alias paste='curlpaste -l perl -s codepad -X'
 alias v+='ossmix vmix0.pcm8 -- +2'
 alias v-='ossmix vmix0.pcm8 -- -2'
 alias rec='ffmpeg -f x11grab -s 3360x1050 -r 150 -i :0.0 -sameq /tmp/foo.mpg'
