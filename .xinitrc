@@ -2,7 +2,7 @@ urxvtd -q -f &
 unclutter -idle 4&
 xset m 1 1 &
 xsetroot -bg "#121212" -mod 3 3 &
-setxkbmap se &
+setxkbmap se -variant nodeadkeys &
 xrdb $HOME/.Xresources &
 zsh $HOME/bin/xmodshit &
 #xrandr --addmode DVI-I-1 1680x1050           
