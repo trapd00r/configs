@@ -30,16 +30,16 @@ macro index .. "c=\n" "Go to inbox"
 # 233 - black
 
 # general-doesn't-fit stuff
-color normal color193 default
+color normal blue default
 color error color196 default
-#color markers color197 default
+color markers color197 default
 color tilde color142 default
-color status color235 default
+color status blue default
 
 # index stuff
 #color tree magenta default
 #color tree color172 color233
-#color indicator color100 color233
+color indicator color100 color233
 color index     color23           default  ~l      # Mailing list
 color index     yellow         black  ~N      # New
 color index     default         default  ~O      # Old
