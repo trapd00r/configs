@@ -59,7 +59,8 @@ URxvt.shiva*italicFont:            -nil-profont-medium-r-normal--11-110-72-72-c-
 
 URxvt.india*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 URxvt.india*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-URxvt.india*italicFont:            -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+URxvt.india*italicFont:            -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+
 
 
 !URxvt.india*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
@@ -166,7 +167,7 @@ URxvt.shiva.depth:                24
 !URxvt.india.fadeColor:           #000000
 !URxvt.india.inheritPixmap:       true
 URxvt.india.scrollBar:            false
-URxvt.india.cursorUnderline:      true
+!URxvt.india.cursorUnderline:      true
 !URxvt.india.cursorBlink:         false
 !URxvt.india.reverseVideo:        true
 URxvt.india.depth:                24

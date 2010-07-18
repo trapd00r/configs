@@ -13,7 +13,7 @@ set fgcolor #E20014
 gravity se
 
 
-#exec xsetroot -cursor_name left_ptr
+exec xsetroot -cursor_name center_ptr
 exec clipbored
 #exec rmshit
 #exec rpd
@@ -23,13 +23,15 @@ hsplit
 focusright
 exec urxvt -name URxvt.india
 vsplit
-hsplit
-exec urxvt -name URxvt.india
+focusright
+exec xterm
 vsplit
 focusdown
 exec urxvt -name URxvt.india
-focusright
-exec xterm
+focusdown
+exec urxvt -name URxvt.india
+vsplit
+exec urxvt -name URxvt.india
 
 bind C-f-k focusup 
 bind space exec ratpoison -c "echo $(rpc npi)"
@@ -45,7 +47,9 @@ bind L rpwsn
 bind c exec urxvtc -name URxvt.india
 bind e exec sh dmenushit
 bind t exec perl $HOME/bin/expose
-bind p exec mplayerd -cmd next
-bind o exec mplayerd -cmd toggle
+bind p exec ssh scp1@192.168.1.101 -p 19216 'mpc next'
+bind o exec rmcd -t
+#bind p exec rmcd -n
+#bind o exec mplayerd -cmd toggle
 
 

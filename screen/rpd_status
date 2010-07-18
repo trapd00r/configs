@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
-my $np = `rpc npi`;
+#my $np = `rpc npi`;
+my $np;
 if(!$np or $np eq '') {
-  $np = `mpnp`;
-  $np =~ s/mplayer: //;
+  $np = `rmcd -si`;
 }
 print $np;
 
