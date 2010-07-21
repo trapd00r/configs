@@ -5,12 +5,12 @@ set winname class
 defborder 0
 defpadding 0 0 0 0
 defbarpadding 0 0 
-#set font -nil-profont-medium-r-normal--0-0-72-72-c-0-iso8859-1
-set font 'Terminus-10'
+set font -nil-profont-medium-r-normal--0-0-72-72-c-0-iso8859-1
 set border 0
 set bgcolor grey10
 set fgcolor #E20014
 gravity se
+set waitcursor 0
 
 
 exec xsetroot -cursor_name center_ptr
@@ -42,8 +42,12 @@ bind h focusleft
 bind j focusdown
 bind k focusup
 bind l focusright
-bind H rpwsp
-bind L rpwsn
+#bind H rpwsp
+#bind L rpwsn
+bind H exchangeleft
+bind J exchangedown
+bind K exchangeup
+bind L exchangeright
 bind c exec urxvtc -name URxvt.india
 bind e exec sh dmenushit
 bind t exec perl $HOME/bin/expose
