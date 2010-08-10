@@ -17,7 +17,7 @@ exec xsetroot -cursor_name center_ptr
 exec clipbored
 #exec rmshit
 #exec rpd
-#exec unclutter -idle 0 -root
+exec unclutter -idle 1 -root
 exec urxvt -name URxvt.india
 hsplit
 focusright
@@ -53,6 +53,7 @@ bind e exec sh dmenushit
 bind t exec perl $HOME/bin/expose
 bind p exec ssh scp1@192.168.1.101 -p 19216 'mpc next'
 bind o exec rmcd -t
+bind BackSpace rmcd -l shiva
 #bind p exec rmcd -n
 #bind o exec mplayerd -cmd toggle
 
