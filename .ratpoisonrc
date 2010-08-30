@@ -49,6 +49,7 @@ bind J exchangedown
 bind K exchangeup
 bind L exchangeright
 bind c exec urxvtc -name URxvt.india
+#bind c exec urxvtc -name URxvt.india -e zsh -c 'xtermcolorchange;exec zsh'
 bind e exec sh dmenushit
 bind t exec perl $HOME/bin/expose
 bind p exec ssh scp1@192.168.1.101 -p 19216 'mpc next'
