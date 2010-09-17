@@ -3,14 +3,17 @@ startup_message off
 
 set winname class
 defborder 0
-defpadding 0 0 0 0
+#defpadding 0 0 0 0
 defbarpadding 0 0 
-set font -nil-profont-medium-r-normal--0-0-72-72-c-0-iso8859-1
-set border 0
-set bgcolor grey10
-set fgcolor #E20014
+set padding 0 14 0 0 
+set font terminus-16
+set border 1
+set bgcolor #000000
+set fgcolor #f51b04
 gravity se
 set waitcursor 0
+set fwcolor #484848
+set bwcolor #000000
 
 
 exec xsetroot -cursor_name center_ptr
