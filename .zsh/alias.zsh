@@ -8,8 +8,8 @@ alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
 # Sane defaults
 alias .='pwd'
 alias ..='cd ..'
-#alias cp='cp -v'
-alias cp='ecp -th'
+alias cp='cp -v'
+#alias cp='ecp -th'
 alias mv='mv -v'
 alias rm='rm -v'
 alias prename='prename -v'
@@ -64,6 +64,7 @@ alias ll='pickyfont -f profont2'
 alias lll='pickyfont -f profont4'
 
 # git
+alias gl='git --no-pager log --pretty=oneline|tac'
 alias gp='git push origin master'
 alias gd='git diff'
 alias gc='git commit'
