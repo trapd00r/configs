@@ -201,8 +201,8 @@ URxvt.india.depth:                24
 
 
 /* black */
-URxvt.shiva.color0:      #3E3E3E
-URxvt.shiva.*color8:      #1C1C1C 
+URxvt.shiva.color0:      #1c1c1c
+URxvt.shiva.*color8:      #484848 
 /* red */
 URxvt.shiva.color1:      #FF4747
 URxvt.shiva.color9:      #FF6767
