@@ -1,5 +1,9 @@
 export ZSH_THEME="trapd00r2-w-git"
 
+pickyfont set monte1 normal && 
+pickyfont set monte2 bold && 
+pickyfont set pro1   italic
+
 # export CASE_SENSITIVE="true"
 #
 #zle-keymap-select () {
@@ -42,6 +46,24 @@ export CLIPBORED_DMENU_NORMAL_FG='#484848'
 export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
 export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
 export CLIPBORED_DMENU_SELECT_BG='#292929'
+export CLIPBORED_DMENU_LISTMODE='vertical'
+export CLIPBORED_DMENU_LINES=30
+
+export DMENU_FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
+export DMENU_NORMAL_FG='#484848'
+export DMENU_NORMAL_BG='#1c1c1c'
+export DMENU_SELECT_FG='#1c78ef'
+export DMENU_SELECT_BG='#292929'
+export DMENU_LINES='-l 30'
+
+export DZEN_FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
+export DZEN_FG='#ffffff'
+export DZEN_BG='#1c1c1c'
+export DZEN_WIDTH=1680
+export DZEN_X_POS=0
+export DZEN_Y_POS=1040
+export DZEN_ALIGNMENT='c'
+
 
 
 
