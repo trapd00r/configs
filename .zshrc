@@ -31,11 +31,19 @@ source $HOME/.zsh/$ZSH_THEME.zsh-theme
 
 #export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'
-export PATH=~/bin:/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
+export PATH=~/bin:/bin:/usr/bin:/usr/local/bin:/usr/lib/perl5/site_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
 setopt ALL_EXPORT
+
+export CLIPBORED_DMENU_FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
+export CLIPBORED_DMENU_NORMAL_FG='#484848'
+export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
+export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
+export CLIPBORED_DMENU_SELECT_BG='#292929'
+
+
 
 if [ "$TERM" = "linux" ]; then #
     echo -en "\e]P01c1c1c" #black 
