@@ -1,5 +1,7 @@
 " perldo {$/='';if($_!~ /my/){$_='';print $_}}
 set autoread                    " auto read when file is changed
+set relativenumber
+set undofile
 set nobackup                    " I have git...
 set nowb
 set noswapfile
@@ -64,6 +66,16 @@ inoremap <Left> <NOP>
 "inoremap <Right><NOP>
 inoremap <Up>   <NOP>
 inoremap <Down> <NOP>
+
+cmap W w
+nnoremap / /\v
+vnoremap / /\v
+set gdefault
+
+let mapleader = ","
+nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>p i<CR>=head1 AUTHOR<CR><CR>Written by Magnus Woldrich<CR><CR>=head1 REPORTING BUGS<CR><CR>Report bugs to trapd00r@trapd00r.se<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright (C) 2010 Magnus Woldrich<CR><CR>License GPLv2<CR><CR>=cut<CR>
+
 
 
 augroup vimrc_autocmds
