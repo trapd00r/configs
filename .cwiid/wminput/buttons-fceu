@@ -1,0 +1,11 @@
+Wiimote.A               = KEY_F7
+Wiimote.B               = KEY_F5
+Wiimote.Up              = KEY_A
+Wiimote.Down    = KEY_S
+Wiimote.Left    = KEY_Z
+Wiimote.Right   = KEY_W
+Wiimote.Minus   = KEY_TAB
+Wiimote.Plus    = KEY_ENTER
+Wiimote.Home    = KEY_F10
+Wiimote.1               = KEY_KP2
+Wiimote.2               = KEY_KP3
