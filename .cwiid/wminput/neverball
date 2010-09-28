@@ -1,4 +1,11 @@
 # neverball
+Wiimote.A   = BTN_LEFT
+Wiimote.B   = BTN_RIGHT
+Wiimote.Minus = KEY_BACK
+Wiimote.Plus  = KEY_FORWARD
+Wiimote.Home  = KEY_HOME
+Wiimote.1   = BTN_LEFT
+Wiimote.2   = BTN_RIGHT
 
 Plugin.acc.Roll = ABS_X
 Plugin.acc.Roll_Scale = 2.0
