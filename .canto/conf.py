@@ -5,7 +5,7 @@ add("http://reddit.com/r/vim.rss")
 add("http://reddit.com/r/git.rss")
 add("http://kerneltrap.org/node/feed")
 
-link_handler("firefox \"%u\"")
+link_handler("firefox --no-remote \"%u\"")
 link_handler("rmcd -l \"%u\"", ext="mp3")
 
 colors[0] = (250, 233)

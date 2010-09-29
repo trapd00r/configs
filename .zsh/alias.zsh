@@ -4,6 +4,7 @@ alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
 alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
+alias top20="\cat $HOME/.zsh-history|perl -pe 's/^: [0-9]+:[0-9]+;\s*//'|sort|uniq -c|sort -n -k1|tail -20|tac"
 
 # Sane defaults
 alias .='pwd'
@@ -64,6 +65,7 @@ alias ll='pickyfont -f profont2'
 alias lll='pickyfont -f profont4'
 
 # git
+alias gs='git status'
 alias gl='git --no-pager log --pretty=oneline|tac'
 alias gp='git push origin master'
 alias gd='git diff'
@@ -99,7 +101,8 @@ alias lsusb='lsusb|matchline -random'
 alias lspci='lspci|matchline -lspci'
 alias feh='feh -Fzrd'
 alias memusage='ps -e -orss=,args= | sort -b -k1,1n|pr -TW$COLUMNS'
-alias pacman='pacman-color'
+#alias pacman='pacman-color'
+alias pacman='packer'
 alias scp='scp -P 19216'
 alias urxvt='urxvt -name URxvt.shiva'
 alias tree='tree -dA'
@@ -125,3 +128,12 @@ alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias scx='screen -x'
 alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias sortbycolumn='sort -n -k3'
+
+alias win='wminput -c ir_ptr -w -c neverball&'
+alias wim='wminput -c ir_ptr -w -c buttons-mame&'
+alias wmp='wminput -c mplayer&'
+alias wig='wminput -c gamepad&'
+alias wit='wminput -c buttons-term&'
+alias wir='wminput -c ir_ptr -w -c ir_ptr&'
+alias wimp='(wminput -c mplayer&); mplayer'
+alias wmp='wminput -c mplayer&'

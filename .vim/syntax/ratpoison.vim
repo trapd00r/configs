@@ -1,0 +1,1 @@
+../../../devel/vim-syntax-ratpoison/syntax/ratpoison.vim

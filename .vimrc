@@ -86,7 +86,7 @@ augroup END
 "set list listchars=tab:\|-,trail:.
 "set backspace=indent,eol,start
 "colorscheme darkburn
-colorscheme neverland
+colorscheme neverland-ansi_bg
 "colorscheme charged-256
 syntax on
 

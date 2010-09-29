@@ -44,6 +44,7 @@
 (set-contrib-dir "/usr/share/stumpwm")
 
 ;(head-resize 1 0 0 1680 1040)
+;(head-resize 2 0 0 1680 1040)
 ;(head-resize nr x y width height)
 
 (set-font "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
@@ -94,7 +95,7 @@
 
 (setf *maxsize-border-width* 1
  *normal-border-width* 0 
- *window-border-style* :thick
+ *window-border-style* :thin
  *transient-border-width* 4) ; popups \o/
 
 (setf *message-window-gravity* :bottom-right
@@ -112,10 +113,10 @@
 (set-normal-gravity :center)
 (setf *normal-border-width* 1)
 
-;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-;(defvar *current-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-;(defvar *current-maximized-frame* nil)
+;;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+;;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+;;(defvar *current-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
+;;(defvar *current-maximized-frame* nil)
 
 
 

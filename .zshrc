@@ -1,8 +1,8 @@
 export ZSH_THEME="trapd00r2-w-git"
 
-pickyfont set monte1 normal && 
-pickyfont set monte2 bold && 
-pickyfont set pro1   italic
+# \x0d \E[2K --- redraw
+#pickyfont set monte1 normal && 
+#pickyfont set pro1   italic
 
 # export CASE_SENSITIVE="true"
 #
@@ -35,7 +35,7 @@ source $HOME/.zsh/$ZSH_THEME.zsh-theme
 
 #export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'
-export PATH=~/bin:/bin:/usr/bin:/usr/local/bin:/usr/lib/perl5/site_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
+export PATH=~/bin:/bin:/usr/bin:/usr/local/bin:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
@@ -92,15 +92,15 @@ eval `keychain -q --eval id_dsa`
 
 TZ='Europe/Stockholm'; export TZ
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=5000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=10000
 setopt extended_history
-#setopt share_history
+setopt share_history
 function history_all { history -E 1 }
 
 setopt notify globdots pushdtohome cdablevars autolist
 setopt autocd recexact longlistjobs
-setopt autoresume histignoredups pushdsilent
+setopt autoresume pushdsilent
 setopt autopushd pushdminus extendedglob rcquotes mailwarning
 unsetopt bgnice autoparamslash
 autoload -U compinit

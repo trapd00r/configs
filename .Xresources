@@ -28,7 +28,7 @@ xterm*SaveLines:                  2500
 XTerm*scrollBar:                  false
 
 /* colors */
-URxvt.shiva.background:           #080808
+URxvt.shiva.background:           #121212
 URxvt.shiva.foreground:           #FFFFFF
 URxvt.shiva.cursorColor:          #EB122E
 URxvt.shiva.cursorColor2:         #252525
@@ -201,7 +201,7 @@ URxvt.india.depth:                24
 
 
 /* black */
-URxvt.shiva.color0:      #1c1c1c
+URxvt.shiva.color0:      #121212
 URxvt.shiva.*color8:      #484848 
 /* red */
 URxvt.shiva.color1:      #FF4747

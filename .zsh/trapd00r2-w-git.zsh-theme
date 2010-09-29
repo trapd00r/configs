@@ -3,14 +3,14 @@
 autoload -U add-zsh-hook 
 autoload -Uz vcs_info 
 local c0=$(printf "\033[0m")
-local c1=$(printf "\033[38;5;215m")
-local c2=$(printf "\033[38;5;209m")
-local c3=$(printf "\033[38;5;203m")
-local c4=$(printf "\033[33;4m")
-local c5=$(printf "\033[38;5;137m")
+local c1=$(printf "\033[38;5;245m")
+local c2=$(printf "\033[38;5;250m")
+local c3=$(printf "\033[38;5;242m")
+local c4=$(printf "\033[38;5;197m")
+local c5=$(printf "\033[38;5;225m")
 local c6=$(printf "\033[38;5;240m")
-local c7=$(printf "\033[38;5;149m")
-local c8=$(printf "\033[38;5;126m")
+local c7=$(printf "\033[38;5;242m")
+local c8=$(printf "\033[38;5;244m")
 local c9=$(printf "\033[38;5;162m")
 
 local foopath=$(perl /home/scp1/bin/foopath)
