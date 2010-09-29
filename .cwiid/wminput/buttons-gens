@@ -1,0 +1,12 @@
+# Wiimote Gens
+Wiimote.A = KEY_F5
+Wiimote.B = KEY_F5
+Wiimote.Up = KEY_LEFT
+Wiimote.Down = KEY_RIGHT
+Wiimote.Left = KEY_DOWN
+Wiimote.Right = KEY_UP
+Wiimote.Minus = KEY_TAB
+Wiimote.Plus = KEY_ESC
+Wiimote.Home = KEY_ENTER
+Wiimote.1 = KEY_A
+Wiimote.2 = KEY_S

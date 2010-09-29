@@ -9,3 +9,15 @@ Wiimote.Plus    = KEY_ENTER
 Wiimote.Home    = KEY_F10
 Wiimote.1               = KEY_KP2
 Wiimote.2               = KEY_KP3
+
+Classic.Up      = KEY_A
+Classic.Down    = KEY_S
+Classic.Left    = KEY_Z
+Classic.Right   = KEY_W
+Classic.Minus   = KEY_TAB
+Classic.Plus    = KEY_ENTER
+Classic.Home    = KEY_F10
+Classic.A       = KEY_KP2
+Classic.B       = KEY_KP3
+Classic.X       = KEY_F7
+Classic.Y       = KEY_F5
