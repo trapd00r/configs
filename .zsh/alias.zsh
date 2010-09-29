@@ -66,7 +66,10 @@ alias lll='pickyfont -f profont4'
 
 # git
 alias gs='git status'
-alias gl='git --no-pager log --pretty=oneline|tac'
+alias gl="PAGER=less;git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative"
+alias glp='gl -p'
+
+#alias gl='git --no-pager log --pretty=oneline|tac'
 alias gp='git push origin master'
 alias gd='git diff'
 alias gc='git commit'
