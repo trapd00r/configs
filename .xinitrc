@@ -9,7 +9,7 @@ zsh $HOME/bin/xmodshit &
 #xrandr --output DVI-I-1 --auto --mode 1680x1050 
 #xrandr --output DVI-I-1 --right-of DVI-I-2
 #sh /home/devel/dzen-scripts/dzen.sh &
-#exec /usr/local/bin/stumpwm
+exec /usr/local/bin/stumpwm
 
 
 
@@ -24,9 +24,9 @@ zsh $HOME/bin/xmodshit &
 #wmii -r $HOME/.wmii-hg/wmiirc.sh
 #subtle
 #exec ck-launch-session sbcl --load $HOME/bin/startstump
-exec ck-launch-session /usr/local/bin/stumpwm
+#exec ck-launch-session /usr/local/bin/stumpwm
 
 
 
 
- vim: ft=conf:
+# vim: set ft=conf:

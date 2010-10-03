@@ -9,7 +9,7 @@ set header_cache=/mnt/Docs/Mail/.hcache
 mailboxes +inbox
 set sendmail="/usr/bin/msmtp"
 set signature="~/.signature"
-set from=trapd00r@trapd00r.se
+set from=magnus@trapd00r.se
 set query_command = "abook --mutt-query '%s'"
 set sort=threads
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
@@ -30,48 +30,48 @@ macro index .. "c=\n" "Go to inbox"
 # 233 - black
 
 # general-doesn't-fit stuff
-color normal blue default
-color error color196 default
-color markers color197 default
+color normal default default
+color error red default
+color markers blue default
 color tilde color142 default
-color status blue default
-
-# index stuff
-#color tree magenta default
-#color tree color172 color233
-color indicator color100 color233
-color index     color23           default  ~l      # Mailing list
-color index     yellow         black  ~N      # New
-color index     default         default  ~O      # Old
-color index     magenta        black  "! ~C ." # No To: or Cc: (newsdeliver)
-color index     blue           black  ~T      # Tagged
-color index     white          color124    ~F      # Flagged (important)
-color index     red            black  ~D      # Deleted
-
-
-# header stuff
+color status black default
+#
+## index stuff
+##color tree magenta default
+##color tree color172 color233
+color indicator red          default 
+color index     green        default  ~l      # Mailing list
+color index     yellow       default  ~N      # New
+color index     blue         default  ~O      # Old
+color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
+color index     blue         default  ~T      # Tagged
+color index     white        green    ~F      # Flagged (important)
+color index     brightblue    default  ~D      # Deleted
+#
+#
+## header stuff
 color header color197 color233 "^Subject"
 color header color184 color233 "^From"
 color header color186 color233 "^To"
 color header color252 color233 "^User-Agent"
 color header color250 color233 "^X-.+"
 color hdrdefault color242 color233
-
-## gpg stuff
-#color body color34 color233 "^gpg: Good signature.*"
-#color body color193 color124 "^gpg: BAD signature.*"
-#color body color142 color233 "^gpg: Can't check signature.*"
-#color body color142 color233 "^-----BEGIN PGP SIGNED MESSAGE-----"
-#color body color142 color233 "^-----BEGIN PGP SIGNATURE-----"
-#color body color142 color233 "^-----END PGP SIGNED MESSAGE-----"
-#color body color142 color233 "^-----END PGP SIGNATURE-----"
-#color body color142 color233 "^Version: GnuPG.*"
-#color body color142 color233 "^Comment: .*"
-
-
-# misc body stuff
-color attachment color111 color233
-color signature color142 color233
+#
+### gpg stuff
+##color body color34 color233 "^gpg: Good signature.*"
+##color body color193 color124 "^gpg: BAD signature.*"
+##color body color142 color233 "^gpg: Can't check signature.*"
+##color body color142 color233 "^-----BEGIN PGP SIGNED MESSAGE-----"
+##color body color142 color233 "^-----BEGIN PGP SIGNATURE-----"
+##color body color142 color233 "^-----END PGP SIGNED MESSAGE-----"
+##color body color142 color233 "^-----END PGP SIGNATURE-----"
+##color body color142 color233 "^Version: GnuPG.*"
+##color body color142 color233 "^Comment: .*"
+#
+#
+## misc body stuff
+#color attachment color111 color233
+#color signature color142 color233
 
 
 
@@ -137,5 +137,18 @@ folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 # unignore X-Junked-Because:
 # unignore X-SpamProbe:
 # unignore X-Virus-hagbard:
+
+set sidebar_visible=yes
+set sidebar_width=16
+set sidebar_delim='▕▏'
+# color of folders with new mail
+color sidebar_new yellow default
+bind index <esc>k sidebar-prev
+bind index <esc>j sidebar-next
+bind index <esc>l sidebar-open
+
+message-hook ~A 'unset sidebar_visible; exec refresh'
+macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
+
 
   

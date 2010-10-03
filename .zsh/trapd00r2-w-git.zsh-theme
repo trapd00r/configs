@@ -12,6 +12,7 @@ local c6=$(printf "\033[38;5;240m")
 local c7=$(printf "\033[38;5;242m")
 local c8=$(printf "\033[38;5;244m")
 local c9=$(printf "\033[38;5;162m")
+local c10=$(printf "\033[1m")
 
 local foopath=$(perl /home/scp1/bin/foopath)
 

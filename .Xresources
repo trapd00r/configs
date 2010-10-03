@@ -55,7 +55,7 @@ URxvt.india.borderColor:          #0E0E0E
 /* fonts */
 URxvt.shiva*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 URxvt.shiva*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-URxvt.shiva*italicFont:            -nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1
+URxvt.shiva.italicFont:            -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
 
 URxvt.india*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 URxvt.india*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252

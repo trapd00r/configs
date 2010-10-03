@@ -7,6 +7,7 @@ alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
 alias top20="\cat $HOME/.zsh-history|perl -pe 's/^: [0-9]+:[0-9]+;\s*//'|sort|uniq -c|sort -n -k1|tail -20|tac"
 
 # Sane defaults
+alias ,='cd -'
 alias .='pwd'
 alias ..='cd ..'
 alias cp='cp -v'
@@ -32,8 +33,8 @@ alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
 alias e='cd $HOME/devel/exercises'
 alias f="pickyfont monte1 normal && pickyfont monte2 bold && pickyfont pro1 italic"
-alias g='cd $HOME/devel/golf'
-alias h='cd $HOME/httpd/NEWtrapd00r.se'
+alias g="cd $HOME/Git"
+alias h='cd $HOME/devel/trapd00r.se'
 alias i='cd $HOME/devel/fetchit'
 alias l='cd $HOME/devel/lib'
 alias m='cd $HOME/devel/pimpd/pimpd-ng'
@@ -111,6 +112,7 @@ alias urxvt='urxvt -name URxvt.shiva'
 alias tree='tree -dA'
 
 # other useful stuff
+alias getmail='getmail --rcfile /home/scp1/.getmail/magnus_at_trapd00r.se && getmail --rcfile /home/scp1/.getmail/trapd00r_at_trapd00r.se'
 alias shiva="ps -eo pcpu,pid,user,args|sort -k 1 -r|head -10 && iostat -mtx && mpstat -P 'ALL' && sar"
 alias cpuu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 alias ss='source $HOME/.zshrc'

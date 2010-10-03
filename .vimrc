@@ -27,7 +27,7 @@ set hlsearch                    " hilight patterns
 set ignorecase                  " ignore case when searching
 set smartcase                   " ... unless there is capitals in the pattern
 set tabstop=2                   " tabstop
-"set softtabstop=2               " 
+"set softtabstop=2               "
 set expandtab                   " spaces, not tabs
 set shiftwidth=2
 "set shiftround                  " shift to next round tabstop
@@ -111,7 +111,7 @@ let perl_extended_vars = 1        " syntax hl for 'complicated' stuff
 "    \   exe "normal g`\"" |
 "    \ endif
 
-"setlocal omnifunc=syntaxcomplete#Complete  
+"setlocal omnifunc=syntaxcomplete#Complete
 "vmap_c:s/^/#/gi<Enter>
 "vmap_C:s/^#//gi<Enter>
 "nnoremap <silent> _d :.!perl -MO=Deparse 2>/dev/null<cr>
