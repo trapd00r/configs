@@ -16,8 +16,8 @@ macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
 macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 
 hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
-set editor="vim +':set textwidth=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s" 
-mailboxes `echo /mnt/Docs/Mail/*`
+set editor="vim +':set textwidth=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
+mailboxes `echo /mnt/Docs/Mail/inbox/*`
 
 macro index .. "c=\n" "Go to inbox"
 
@@ -39,14 +39,14 @@ color status black default
 ## index stuff
 ##color tree magenta default
 ##color tree color172 color233
-color indicator red          default 
+color indicator color161     default
 color index     green        default  ~l      # Mailing list
-color index     yellow       default  ~N      # New
-color index     blue         default  ~O      # Old
+color index     color166       default  ~N      # New
+color index     color65       default  ~O      # Old
 color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
-color index     blue         default  ~T      # Tagged
+color index     color220         default  ~T      # Tagged
 color index     white        green    ~F      # Flagged (important)
-color index     brightblue    default  ~D      # Deleted
+color index     color244    default  ~D      # Deleted
 #
 #
 ## header stuff
@@ -103,9 +103,10 @@ set pager_index_lines=5
 bind index [ previous-line
 bind index ] next-line
 
-set index_format   = "%4C %Z %{%b %d} %-15.15F (%4l) %s"
+set index_format = "%Z %4D %40.40s▕▏ %n"
+#set index_format   = "%4C %Z %{%b %d} %-15.15F (%4l) %s"
 set forward_format="Fw: %s"     # subject in forwarded messages
-set date_format="%d/%m/%y %H:%M %Z"
+set date_format="%Y-%m-%d %H:%M"
 set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 #set reply_regexp="^(re([\\[0-9\\]+])*|aw):[ \t]*"
 set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
@@ -142,7 +143,7 @@ set sidebar_visible=yes
 set sidebar_width=16
 set sidebar_delim='▕▏'
 # color of folders with new mail
-color sidebar_new yellow default
+color sidebar_new brightmagenta default
 bind index <esc>k sidebar-prev
 bind index <esc>j sidebar-next
 bind index <esc>l sidebar-open
@@ -151,4 +152,4 @@ message-hook ~A 'unset sidebar_visible; exec refresh'
 macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
 
 
-  
+
