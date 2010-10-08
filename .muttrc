@@ -9,7 +9,8 @@ set header_cache=/mnt/Docs/Mail/.hcache
 mailboxes +inbox
 set sendmail="/usr/bin/msmtp"
 set signature="~/.signature"
-set from=magnus@trapd00r.se
+#set from=magnus@trapd00r.se
+set from="Magnus Woldrich"
 set query_command = "abook --mutt-query '%s'"
 set sort=threads
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
@@ -44,7 +45,7 @@ color index     green        default  ~l      # Mailing list
 color index     color166       default  ~N      # New
 color index     color65       default  ~O      # Old
 color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
-color index     color220         default  ~T      # Tagged
+color index     color100         default  ~T      # Tagged
 color index     white        green    ~F      # Flagged (important)
 color index     color244    default  ~D      # Deleted
 #
@@ -140,10 +141,10 @@ folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 # unignore X-Virus-hagbard:
 
 set sidebar_visible=yes
-set sidebar_width=16
+set sidebar_width=30
 set sidebar_delim='▕▏'
 # color of folders with new mail
-color sidebar_new brightmagenta default
+color sidebar_new brightblue default
 bind index <esc>k sidebar-prev
 bind index <esc>j sidebar-next
 bind index <esc>l sidebar-open
@@ -152,4 +153,5 @@ message-hook ~A 'unset sidebar_visible; exec refresh'
 macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
 
 
+macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages" 
 

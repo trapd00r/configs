@@ -7,6 +7,7 @@ alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
 alias top20="\cat $HOME/.zsh-history|perl -pe 's/^: [0-9]+:[0-9]+;\s*//'|sort|uniq -c|sort -n -k1|tail -20|tac"
 
 # Sane defaults
+alias make='make && su -c "make install"'
 alias ,='cd -'
 alias .='pwd'
 alias ..='cd ..'
@@ -17,7 +18,7 @@ alias rm='rm -v'
 alias prename='prename -v'
 alias grep='grep -Pi --color=auto'
 alias less='vimpager'
-alias make='make -j3'
+#alias make='make -j3'
 alias :q='exit'
 alias cat='v'
 alias scat='source-highlight -o STDOUT -f esc -i'
@@ -44,7 +45,7 @@ alias o='cd $HOME/devel/radiod'
 alias p='cd $HOME/devel/pimpd'
 alias q='cd $HOME/devel/pickyfont'
 alias r='cd $HOME/devel/rel'
-alias s="stumpish restore /home/scp1/configs/stump.group.dump"
+#alias s="stumpish restore /home/scp1/configs/stump.group.dump"
 alias t='mkdir -p /tmp/scp1 ; cd /tmp/scp1'
 alias u='cd $HOME/devel/utils'
 alias x='cd $XDG_CONFIG_HOME'
@@ -71,7 +72,7 @@ alias gl="PAGER=less;git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)
 alias glp='gl -p'
 
 #alias gl='git --no-pager log --pretty=oneline|tac'
-alias gp='git push origin master'
+alias gp='git push'
 alias gd='git diff'
 alias gc='git commit'
 
@@ -131,7 +132,7 @@ alias rmvi='rm *.sw*'
 alias R='rehash'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias scx='screen -x'
-alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
+#alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias sortbycolumn='sort -n -k3'
 
 alias win='wminput -c ir_ptr -w -c neverball&'
