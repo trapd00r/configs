@@ -9,6 +9,7 @@ zsh $HOME/bin/xmodshit &
 #xrandr --output DVI-I-1 --auto --mode 1680x1050 
 #xrandr --output DVI-I-1 --right-of DVI-I-2
 #sh /home/devel/dzen-scripts/dzen.sh &
+feh --bg-tile /mnt/Docs/Wallpapers/HDSKIT.jpg &
 exec /usr/local/bin/stumpwm
 
 

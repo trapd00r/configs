@@ -133,8 +133,8 @@
 (define-key *root-map* (kbd "c") "exec urxvtc -name URxvt.shiva")
 ;; deprecated - using self made daemon instead
 ;(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
-(define-key *root-map* (kbd "p") "exec mpc next")
-(define-key *root-map* (kbd "o") "exec mpc toggle")
+(define-key *root-map* (kbd "p") "exec mpc -h 192.168.1.100 next")
+(define-key *root-map* (kbd "o") "exec rmcd -t")
 (define-key *root-map* (kbd "n") "exec /home/scp1/bin/np")
 (define-key *root-map* (kbd "g") "exec perl /home/scp1/bin/google_dmenu.pl")
 (define-key *root-map* (kbd "u") "exec sh $HOME/.config/uzbl/urlload")

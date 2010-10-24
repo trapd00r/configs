@@ -1,0 +1,33 @@
+#buttons
+
+Wiimote.A		  = KEY_SPACE # pause
+Wiimote.B		  = KEY_ENTER # play-menu
+Wiimote.Up		= KEY_UP
+Wiimote.Down	= KEY_DOWN
+Wiimote.Left	= KEY_LEFT
+Wiimote.Right	= KEY_RIGHT
+
+Wiimote.Minus	= KEY_ESC
+Wiimote.Plus	= KEY_TAB
+Wiimote.Home	= KEY_I   # np-menu-stuff
+Wiimote.1		= KEY_Z     # view-mode
+Wiimote.2		= KEY_C     # c-menu
+
+Nunchuk.C		= BTN_LEFT
+Nunchuk.Z		= BTN_RIGHT
+
+Classic.Up		= KEY_UP
+Classic.Down	= KEY_DOWN
+Classic.Left	= KEY_LEFT
+Classic.Right	= KEY_RIGHT
+Classic.Minus	= KEY_BACK
+Classic.Plus	= KEY_FORWARD
+Classic.Home	= KEY_HOME
+Classic.A		= BTN_LEFT
+Classic.B		= BTN_RIGHT
+#Classic.X		= 
+#Classic.Y		= 
+#Classic.ZL		= 
+#Classic.ZR		= 
+#Classic.L		= 
+#Classic.R		= 

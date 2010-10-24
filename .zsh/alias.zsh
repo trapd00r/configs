@@ -5,6 +5,7 @@ alias -s PKGBUILD='vim'
 
 alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
 alias top20="\cat $HOME/.zsh-history|perl -pe 's/^: [0-9]+:[0-9]+;\s*//'|sort|uniq -c|sort -n -k1|tail -20|tac"
+alias pf='pickyfont ter7'
 
 # Sane defaults
 alias make='make && su -c "make install"'
@@ -37,7 +38,7 @@ alias f="pickyfont monte1 normal && pickyfont monte2 bold && pickyfont pro1 ital
 alias g="cd $HOME/Git"
 alias h='cd $HOME/devel/trapd00r.se'
 alias i='cd $HOME/devel/fetchit'
-alias l='cd $HOME/devel/lib'
+#alias l='cd $HOME/devel/lib'
 alias m='cd $HOME/devel/pimpd/pimpd-ng'
 #alias n='fc'
 alias n='cd $HOME/httpd/NEWtrapd00r.se/all'
@@ -88,7 +89,8 @@ alias ps='$HOME/bin/cope/ps'
 
 # file management
 #alias ls='ls2'
-alias ls='pilsner'
+#alias ls='pilsner'
+alias ls='ls++'
 #alias ls='colorls'
 #alias ls='\ls -hovA --indicator-style=file-type --color=always --group-directories-first --time=ctime --time-style=full-iso' 
 alias ls1='\ls -1 --color=auto --time-style=full-iso'
@@ -120,6 +122,11 @@ alias ss='source $HOME/.zshrc'
 alias ssa='mpc search artist'
 alias v+='ossmix vmix0.pcm8 -- +2'
 alias v-='ossmix vmix0.pcm8 -- -2'
+alias vv+='ossmix vmix0.pcm9 -- +2'
+alias vv-='ossmix vmix0.pcm9 -- -2'
+alias vvv+='ossmix vmix0.pcm10 -- +2'
+alias vvv+='ossmix vmix0.pcm10 -- -2'
+
 alias rec='ffmpeg -f x11grab -s 3360x1050 -r 150 -i :0.0 -sameq /tmp/foo.mpg'
 alias dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias india='ssh scp1@192.168.1.102 -p 19216'

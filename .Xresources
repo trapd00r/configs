@@ -52,6 +52,19 @@ URxvt.india.colorRV:              #333333
 URxvt.india.underlineColor:       #cb1c13
 URxvt.india.pointerColor:         #cb1c13
 URxvt.india.borderColor:          #0E0E0E
+
+URxvt.htpc.background:           [45]#000000
+URxvt.htpc.foreground:           #FFFFFF
+URxvt.htpc.cursorColor:          #EB122E
+URxvt.htpc.cursorColor2:         #252525
+URxvt.htpc.colorIT:              #FFFFFF
+URxvt.htpc.colorBD:              #FFFFFF
+URxvt.htpc.colorUL:              #FF8F00
+URxvt.htpc.colorRV:              #333333
+URxvt.htpc.underlineColor:       #0E0E0E
+URxvt.htpc.borderColor:          #0E0E0E
+URxvt.htpc.pointerColor:         #252525
+
 /* fonts */
 URxvt.shiva*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 URxvt.shiva*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
@@ -61,6 +74,7 @@ URxvt.india*font:                  -windows-montecarlo-medium-r-normal--11-110-7
 URxvt.india*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
 URxvt.india*italicFont:            -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
 
+URxvt.htpc*font:                  -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
 
 
 !URxvt.india*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
@@ -104,7 +118,7 @@ URxvt.shiva.jumpScroll:           true
 URxvt.shiva.skipScroll:           true
 URxvt.shiva.loginShell:           true
 URxvt.shiva.urgentOnBell:         true
-URxvt.shiva.saveLines:            1024
+URxvt.shiva.saveLines:            1048586
 !URxvt.shiva.termName:            rxvt-unicode
 URxvt.shiva.trippleclickwords:    true
 !URxvt.shiva.modifier:            (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
@@ -139,15 +153,15 @@ URxvt.india.pointerBlankDelay:    2
 !URxvt.india.hold:                 0
 
 /* eyecandy */
-!URxvt.shiva.transparent:          true
-!URxvt.shiva.shading:              9
+URxvt.shiva.transparent:          true
+!URxvt.shiva.shading:              90
 !URxvt.shiva.fading:              30%
 !URxvt.shiva.fadeColor:           #000000
 !URxvt.shiva.inheritPixmap:       true
 URxvt.shiva.scrollBar:            false
 !URxvt.shiva.cursorBlink:         false
 !URxvt.shiva.reverseVideo:        true
-URxvt.shiva.depth:                24
+URxvt.shiva.depth:                32
 !URxvt.internalBorder:            0
 !URxvt.externalBorder:            0
 !URxvt.shiva.borderLess:           true
@@ -170,7 +184,7 @@ URxvt.india.scrollBar:            false
 !URxvt.india.cursorUnderline:      true
 !URxvt.india.cursorBlink:         false
 !URxvt.india.reverseVideo:        true
-URxvt.india.depth:                24
+URxvt.india.depth:                32
 !URxvt.india.title:                laleh
 /*URxvt.india.blendType:           (add,alphablend,allanon), (averaging,
                                   colorize, darken, diff, dissipate, hue,
@@ -178,6 +192,27 @@ URxvt.india.depth:                24
                                   tint, value)
 */
 !URxvt.india.blurRadius:          (0-128)
+
+URxvt.htpc.transparent:          true
+URxvt.htpc.shading:              19
+!URxvt.shiva.fading:              30%
+!URxvt.shiva.fadeColor:           #000000
+!URxvt.shiva.inheritPixmap:       true
+URxvt.htpc.scrollBar:            false
+!URxvt.shiva.cursorBlink:         false
+!URxvt.shiva.reverseVideo:        true
+URxvt.htpc.depth:                32
+!URxvt.internalBorder:            0
+!URxvt.externalBorder:            0
+!URxvt.htpc.borderLess:           true
+!URxvt.lineSpace:                 3
+!URxvt.shiva.title:                laleh
+/*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
+                                  colorize, darken, diff, dissipate, hue,
+                                  lighten, overlay, saturate, screen, sub,
+                                  tint, value)
+*/
+!URxvt.shiva.blurRadius:          (0-128)
 
 /* trapd00r original colorscheme */
 
@@ -243,7 +278,7 @@ URxvt.india.color11:     #BDF13D
 URxvt.india.color4:      #1165E9
 URxvt.india.color12:     #5496FF
 /* purple */
-URxvt.india.color5:      #aef7a4 # light green 
+URxvt.india.color5:      #aef7a4
 URxvt.india.color13:     #B50077
 /* cyan */
 URxvt.india.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
@@ -254,6 +289,24 @@ URxvt.india.color15:     #DEDEDE
 /* orange */
 URxvt.india.color16:     #FFB000
 
+
+
+URxvt.htpc.color0:      #030303
+URxvt.htpc.*color8:     #1C1C1C 
+URxvt.htpc.color1:      #FF4747
+URxvt.htpc.color9:      #FF6767
+URxvt.htpc.color2:      #2b4626/* green => grey */
+URxvt.htpc.color10:     #B03B31 /* green => faluröd */
+URxvt.htpc.color3:      #FF8F00
+URxvt.htpc.color11:     #BDF13D
+URxvt.htpc.color4:      #1165E9
+URxvt.htpc.color12:     #5496FF
+URxvt.htpc.color5:      #aef7a4
+URxvt.htpc.color13:     #B50077
+URxvt.htpc.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
+URxvt.htpc.color14:     #6BE603 /* cyan => green */
+URxvt.htpc.color7:      #FFFFFF
+URxvt.htpc.color15:     #DEDEDE
 mplay*background:        #ffffff
 mplay*foreground:        #cb1c13
 mplay*scrollbar:         false

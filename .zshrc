@@ -35,7 +35,7 @@ source $HOME/.zsh/$ZSH_THEME.zsh-theme
 
 #export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'
-export PATH=~/bin:/bin:/usr/bin:/usr/local/bin:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
+export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
@@ -93,7 +93,7 @@ eval `keychain -q --eval id_dsa`
 TZ='Europe/Stockholm'; export TZ
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=5000000
-SAVEHIST=000000
+SAVEHIST=1000000
 setopt extended_history
 setopt share_history
 function history_all { history -E 1 }
