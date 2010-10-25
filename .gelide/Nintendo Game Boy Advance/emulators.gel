@@ -1,0 +1,3 @@
+1;"/usr/share/gelide/pixmaps/visualboyadvance.png";"VisualBoy Advance";"VBA is one of the most known emulators for GBA";"1.8.0";"Jose Carlos Medeiros";"http://vba.ngemu.com";"/usr/bin/vba";"-F -f 7 \"$gf\"";
+2;"/usr/share/gelide/pixmaps/mednafen.png";"Mednafen";"Multiple-system emulator for various platforms";"0.8.B";"The Mednafen team";"http://mednafen.sourceforge.net";"/usr/games/mednafen";"-gba.stretch 0 -fs 1 -vdriver 0 \"$gf\"";
+3;"/usr/share/gelide/pixmaps/xe.png";"Xe Emulator";"Multiple-system emulator for Linux and Windows";"2.16.2";"James Li";"http://www.xe-emulator.com";"/usr/local/bin/xe";"--lite --fullscreen --render 1 -m gbadvance \"$gf\"";

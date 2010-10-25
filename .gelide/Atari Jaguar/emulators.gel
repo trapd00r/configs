@@ -1,0 +1,2 @@
+1;"/usr/share/gelide/pixmaps/virtualjaguar.png";"Virtual Jaguar Gcc/Sdl";"Portable emulator based in Virtual Jaguar";"1.0.7";"Niels Wagenaar, Carwin Jones, James L. Hammons and Adam Gree";"http://sdlemu.ngemu.com/";"/usr/bin/virtualjaguar";"\"$gf\" -fullscreen -gl";
+2;"/usr/share/gelide/pixmaps/sdlmess.png";"SdlMess";"Portable Mess version for POSIX-y systems with SDL";"0.130";"Olivier Galibert and R. Belmont";"http://rbelmont.mameworld.info/?page_id=163";"/usr/bin/sdlmess";"jaguar -ka -skip_gameinfo -sound -multithreading -video opengl -cart \"$gf\"";

@@ -1,0 +1,2 @@
+1;"/usr/share/gelide/pixmaps/sdlmess.png";"SdlMess";"Portable Mess version for POSIX-y systems with SDL";"0.130";"Olivier Galibert and R. Belmont";"http://rbelmont.mameworld.info/?page_id=163";"/usr/bin/sdlmess";"a7800 -ka -skip_gameinfo -sound -multithreading -video opengl -cart \"$gf\"";
+2;"/usr/share/gelide/pixmaps/xmess.png";"XMess";"Multiple Emulator Super System for UNIX/Linux";"0.106";"The XMame team";"http://x.mame.net";"/usr/games/xmess";"a7800p -fullscreen -ef 1 -ka -skip_warnings -skip_gameinfo -doublebuf -cart \"$gf\" -bp \"$bp\"";
