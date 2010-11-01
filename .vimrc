@@ -53,11 +53,14 @@ filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
                                 " cindent is on in C files etc
                                 " loads indent files to automatically do
                                 " language specific indenting
+"runtime ftplugin/man.vim
+setlocal nospell spelllang=en_us
 map <space> /
 map <c-space> ?
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map @ I#
+map ² :s/^#//<CR><ESC>$
 noremap <Left>  <NOP>
 noremap <Right> <NOP>
 noremap <Up>    <NOP>
@@ -83,6 +86,21 @@ set gdefault
 let mapleader = ","
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>p i#!/usr/bin/perl<CR><BS>our $APP     = undef;<CR>our $VERSION = '0.1.0';<CR>use strict;<CR>use Data::Dumper;<CR>use Pod::Usage;<CR>use Getopt::Long;<CR><CR><CR><CR><CR>=pod<CR><CR>=head1 NAME<CR><CR>=head1 USAGE<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 OPTIONS<CR><CR>=head1 AUTHOR<CR><CR>Written by Magnus Woldrich<CR><CR>=head1 REPORTING BUGS<CR><CR>Report bugs to trapd00r@trapd00r.se<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright (C) 2010 Magnus Woldrich<CR><CR>License GPLv2<CR><CR>=cut<CR><ESC>10ggi
+
+if has("cscope")
+    set csprg=/usr/local/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+endif
 
 augroup vimrc_autocmds
   autocmd BufRead * highlight OverLength ctermbg=236 guibg=#592929
