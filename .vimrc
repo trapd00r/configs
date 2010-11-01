@@ -67,6 +67,14 @@ inoremap <Left> <NOP>
 inoremap <Up>   <NOP>
 inoremap <Down> <NOP>
 
+" window switching
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+
+" ^d is easier
+noremap <C-D> <C-W>
 cmap W w
 nnoremap / /\v
 vnoremap / /\v
