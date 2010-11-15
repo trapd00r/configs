@@ -6,6 +6,7 @@ alias -s PKGBUILD='vim'
 alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
 alias top20="\cat $HOME/.zsh-history|perl -pe 's/^: [0-9]+:[0-9]+;\s*//'|sort|uniq -c|sort -n -k1|tail -20|tac"
 alias pf='pickyfont ter7'
+alias n900='ssh -p 19216 user@192.168.1.112'
 
 # Sane defaults
 alias make='make && su -c "make install"'
@@ -33,12 +34,13 @@ alias a='cd $HOME/devel/trunk'
 alias b='cd $HOME/bin'
 alias c='cd $HOME/configs'
 alias d='cd $HOME/devel'
+alias dl='cd $HOME/devel/lib/Term::ExtendedColor/lib/Term'
 alias e='cd $HOME/devel/exercises'
 alias f="pickyfont monte1 normal && pickyfont monte2 bold && pickyfont pro1 italic"
 alias g="cd $HOME/Git"
 alias h='cd $HOME/devel/trapd00r.se'
 alias i='cd $HOME/devel/fetchit'
-#alias l='cd $HOME/devel/lib'
+alias l='cd $HOME/devel/lib'
 alias m='cd $HOME/devel/pimpd/pimpd-ng'
 #alias n='fc'
 alias n='cd $HOME/httpd/NEWtrapd00r.se/all'
@@ -103,7 +105,8 @@ alias lsq='ls -AlQ --color=always --time-style=full-iso'
 # application sane defaults
 alias iostat='iostat -mtx'
 alias mp='mplayer -slave -input file=$HOME/.mplayer/fifo -msgcolor'
-alias dmesg='dmesg|matchline -dmesg'
+#alias dmesg='dmesg|matchline -dmesg'
+alias dmesg='dmesgc'
 alias lsusb='lsusb|matchline -random'
 alias lspci='lspci|matchline -lspci'
 alias feh='feh -Fzrd'
@@ -139,7 +142,7 @@ alias rmvi='rm *.sw*'
 alias R='rehash'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias scx='screen -x'
-#alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
+alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias sortbycolumn='sort -n -k3'
 
 alias win='wminput -c ir_ptr -w -c neverball&'
