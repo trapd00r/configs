@@ -86,6 +86,7 @@ set gdefault
 let mapleader = ","
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>p i#!/usr/bin/perl<CR><BS>our $APP     = undef;<CR>our $VERSION = '0.1.0';<CR>use strict;<CR>use Data::Dumper;<CR>use Pod::Usage;<CR>use Getopt::Long;<CR><CR><CR><CR><CR>=pod<CR><CR>=head1 NAME<CR><CR>=head1 USAGE<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 OPTIONS<CR><CR>=head1 AUTHOR<CR><CR>Written by Magnus Woldrich<CR><CR>=head1 REPORTING BUGS<CR><CR>Report bugs to trapd00r@trapd00r.se<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright (C) 2010 Magnus Woldrich<CR><CR>License GPLv2<CR><CR>=cut<CR><ESC>10ggi
+nnoremap <leader>d iuse Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><ESC>
 
 if has("cscope")
     set csprg=/usr/local/bin/cscope
