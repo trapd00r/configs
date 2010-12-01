@@ -76,6 +76,7 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
+:sign define fixme text=!! linehl=Todo
 " ^d is easier
 noremap <C-D> <C-W>
 cmap W w

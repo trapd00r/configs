@@ -9,7 +9,8 @@ alias pf='pickyfont ter7'
 alias n900='ssh -p 19216 user@192.168.1.112'
 
 # Sane defaults
-alias make='make && su -c "make install"'
+#alias make='make && su -c "make install"'
+alias make='/home/scp1/devel/utils/make'
 alias ,='cd -'
 alias .='pwd'
 alias ..='cd ..'
@@ -19,6 +20,7 @@ alias mv='mv -v'
 alias rm='rm -v'
 alias prename='prename -v'
 alias grep='grep -Pi --color=auto'
+alias grepp="grep -Pi --color=auto '^|pimpd'"
 alias less='vimpager'
 #alias make='make -j3'
 alias :q='exit'
@@ -26,9 +28,11 @@ alias cat='v'
 alias scat='source-highlight -o STDOUT -f esc -i'
 alias npd='srinfo -np'
 alias ptop='watch -n1 ps aux --sort=+%cpu'
-alias wget='wget -U=Mozilla'
-alias vim='vim -p'
+alias wget='wget --no-check-certificate -U=Mozilla'
+#alias vim="time vim -p $@ >> $HOME/vimtimes"
 alias mproot="mplayer -wid $( xwininfo -root|perl -lne '@c=<>;$c[$.-47] =~ s/^xwin.+id: ([0-9A-Za-z]+)\s\(.+/$1/;print $c[$.-47]')"
+
+#alias vimp="/home/scp1/devel/utils/vim $(find . |grep -Pi '.+(?:pl|pm)$'|perl -pe 's/\n/ /')"
 
 alias a='cd $HOME/devel/trunk'
 alias b='cd $HOME/bin'
@@ -46,6 +50,7 @@ alias m='cd $HOME/devel/pimpd/pimpd-ng'
 alias n='cd $HOME/httpd/NEWtrapd00r.se/all'
 alias o='cd $HOME/devel/radiod'
 alias p='cd $HOME/devel/pimpd'
+alias pp='cd $HOME/devel/pimpd-ng2'
 alias q='cd $HOME/devel/pickyfont'
 alias r='cd $HOME/devel/rel'
 #alias s="stumpish restore /home/scp1/configs/stump.group.dump"
@@ -106,7 +111,7 @@ alias lsq='ls -AlQ --color=always --time-style=full-iso'
 alias iostat='iostat -mtx'
 alias mp='mplayer -slave -input file=$HOME/.mplayer/fifo -msgcolor'
 #alias dmesg='dmesg|matchline -dmesg'
-alias dmesg='dmesgc'
+alias dmesg='dmesgc|grep -v "TCP"'
 alias lsusb='lsusb|matchline -random'
 alias lspci='lspci|matchline -lspci'
 alias feh='feh -Fzrd'
@@ -130,6 +135,8 @@ alias vv-='ossmix vmix0.pcm9 -- -2'
 alias vvv+='ossmix vmix0.pcm10 -- +2'
 alias vvv+='ossmix vmix0.pcm10 -- -2'
 
+alias trapd00r="printf '\t\033#3trapd00r\n\t\033#4trapd00r\n\tA simple, lightweight Perl hacker\n'"
+alias trapd00rc="printf '\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[38;5;32md\e[38;5;33m0\e[38;5;33m0\e[38;5;37mr\n\t\033#4\e[38;5;133mt\e[38;5;134mr\e[38;5;135ma\e[38;5;139mp\e[38;5;140md\e[38;5;141m00\e[38;5;145mr\n\t\e[38;5;240mA simple, lightweight Perl hacker\n'"
 alias rec='ffmpeg -f x11grab -s 3360x1050 -r 150 -i :0.0 -sameq /tmp/foo.mpg'
 alias dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias india='ssh scp1@192.168.1.102 -p 19216'
@@ -141,7 +148,7 @@ alias qi='qemu -cdrom iso -boot d hd'
 alias rmvi='rm *.sw*'
 alias R='rehash'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
-alias scx='screen -x'
+alias scx='TERM=xterm;screen -x'
 alias share='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'
 alias sortbycolumn='sort -n -k3'
 

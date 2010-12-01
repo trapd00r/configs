@@ -1,6 +1,12 @@
 du1() {
   du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f;
 }
+
+vimp() {
+  /home/scp1/devel/utils/vim $(find . |grep -Pi '.+(?:pl|pm)$'|perl -pe 's/\n/ /')
+}
+
+
 cd() {
   builtin cd $@; ls
 }

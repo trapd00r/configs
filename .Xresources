@@ -153,7 +153,7 @@ URxvt.india.pointerBlankDelay:    2
 !URxvt.india.hold:                 0
 
 /* eyecandy */
-URxvt.shiva.transparent:          true
+!URxvt.shiva.transparent:          true
 !URxvt.shiva.shading:              90
 !URxvt.shiva.fading:              30%
 !URxvt.shiva.fadeColor:           #000000
