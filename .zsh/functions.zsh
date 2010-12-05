@@ -6,6 +6,10 @@ vimp() {
   /home/scp1/devel/utils/vim $(find . |grep -Pi '.+(?:pl|pm)$'|perl -pe 's/\n/ /')
 }
 
+#func() {
+#  grep -Pi 'sub (.+) \{' $(find .|grep -Pi '.+(?:pl|pm)$')|perl -pe 's/^\S+\s*(.+)\s*\{.*/$1/'|sort
+#}
+
 
 cd() {
   builtin cd $@; ls

@@ -1,5 +1,6 @@
 " perldo {$/='';if($_!~ /my/){$_='';print $_}}
 set autoread                    " auto read when file is changed
+set tabpagemax=50
 set relativenumber
 set undofile
 set nobackup                    " I have git...

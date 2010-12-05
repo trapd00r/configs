@@ -3,10 +3,14 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+
 alias com="cd $HOME/temp &&fetchit http://digest.bayzaar.com/ && feh -Z *.jpg"
 alias top20="\cat $HOME/.zsh-history|perl -pe 's/^: [0-9]+:[0-9]+;\s*//'|sort|uniq -c|sort -n -k1|tail -20|tac"
 alias pf='pickyfont ter7'
 alias n900='ssh -p 19216 user@192.168.1.112'
+alias rampeak='dd if=/dev/mem|\cat|strings'
+
+alias lso='ls|pv -qL 10'
 
 # Sane defaults
 #alias make='make && su -c "make install"'
