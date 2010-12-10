@@ -67,6 +67,7 @@ export DZEN_ALIGNMENT='c'
 export MPD_HOST='192.168.1.100'
 export MPD_PORT=6600
 export MPD_PASS=`smokingkills`
+export MPD_USER='scp1'
 
 
 
