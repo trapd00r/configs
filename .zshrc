@@ -73,6 +73,10 @@ export MPD_USER='scp1'
 
 
 #if [ "$TERM" = "linux" ]; then 
+#
+## a [8] at the end of the string will store the color
+## as a default one
+#
 #    echo -en "\e]P01c1c1c" #black 
 #    echo -en "\e]P81c1c1c" #darkgrey 
 #    echo -en "\e]P1ff4747" #darkred 

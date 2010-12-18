@@ -239,7 +239,7 @@ URxvt.htpc.depth:                32
 URxvt.shiva.color0:      #121212
 URxvt.shiva.*color8:      #484848 
 /* red */
-URxvt.shiva.color1:      #FF4747
+URxvt.shiva.color1:      #262626
 URxvt.shiva.color9:      #FF6767
 /* green */
 URxvt.shiva.color2:      #4D4C4C /* green => grey */

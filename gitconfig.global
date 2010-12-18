@@ -1,0 +1,28 @@
+[user]
+	name = Magnus Woldrich
+	email = trapd00r@trapd00r.se
+[core]
+  #pager = v
+[color]
+  branch = auto
+  diff   = 0
+  grep   = auto
+  pager  = 0
+  showbranch = auto
+  status     = auto
+  ui         = auto
+
+[color "status"]
+  added     = magenta
+  changed   = cyan
+  untracked = green
+
+[color "branch"]
+  current = yellow reverse
+
+[man]
+  viewer = vimpager
+[receive]
+  denyCurrentBranch = ignore
+[core]
+	excludesfile = /etc/gitignore

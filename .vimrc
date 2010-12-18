@@ -1,6 +1,7 @@
 " perldo {$/='';if($_!~ /my/){$_='';print $_}}
 set autoread                    " auto read when file is changed
 set tabpagemax=50
+set colorcolumn=81
 set relativenumber
 set undofile
 set nobackup                    " I have git...
@@ -89,6 +90,8 @@ let mapleader = ","
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>p i#!/usr/bin/perl<CR><BS>use vars qw($APP $VERSION);<CR>$APP     = undef;<CR>$VERSION = '0.0.1';<CR>use strict;<CR>use Pod::Usage;<CR>use Getopt::Long;<CR>use Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><CR><CR><CR>=pod<CR><CR>=head1 NAME<CR><CR>=head1 USAGE<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 OPTIONS<CR><CR>=head1 AUTHOR<CR><CR><TAB>Magnus Woldrich<CR>CPAN ID: WOLDRICH<CR>magnus@trapd00r.se<CR>http://japh.se<CR><CR>=head1 REPORTING BUGS<CR><CR>Report bugs on rt.cpan.org or to magnus@trapd00r.se<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright (C) 2010 Magnus Woldrich. All right reserved.<CR>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.<CR><CR>License GPLv2<CR><CR>=cut<CR><ESC>16gg
 nnoremap <leader>d iuse Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><ESC>
+
+nnoremap <leader>f :set paste<CR>i
 
 if has("cscope")
     set csprg=/usr/local/bin/cscope
