@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/scp1/foo'
+let g:netrw_dirhist_2='/home/scp1/devel/pimpd-ng2/lib/App/Pimpd/Playlist'
+let g:netrw_dirhist_3='/home/scp1/devel/pimpd-ng2/lib/App/Pimpd'
+let g:netrw_dirhist_4='/home/scp1/devel/screenfo/src'

@@ -27,6 +27,8 @@ export ZSH_THEME="trapd00r2-w-git"
 
 #export ZDOTDIR=$HOME/configs/zsh
 
+#export VIMINIT=/home/scp1/configs/vim
+
 
 source $ZDOTDIR/zsh/colors.zsh
 source $ZDOTDIR/zsh/alias.zsh
