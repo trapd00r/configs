@@ -1,0 +1,19 @@
+pcm.oss {
+    type oss
+    device /dev/dsp
+}
+
+pcm.!default {
+    type oss
+    device /dev/dsp
+}
+
+ctl.oss {
+    type oss
+    device /dev/mixer
+}
+
+ctl.!default {
+    type oss
+    device /dev/mixer
+}
