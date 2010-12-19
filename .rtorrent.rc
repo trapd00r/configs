@@ -11,7 +11,7 @@ upload_rate = 0
 # Default directory to save the downloaded torrents.
 #directory = /mnt/Music/.new
 
-session = /home/scp1/.rtorrent_session/
+session = /home/scp1/.local/share/rtorrent/session/
 
 port_range = 50000-50000
 
@@ -151,7 +151,7 @@ schedule = porn1,5,5,"load_start=/mnt/Porn/.torrents/*.torrent,d.set_directory=/
 ##schedule = musicmostyes9,5,5,"load_start=/mnt/Music_4/.torrents/Z/*.torrent,d.set_directory=/mnt/Music_4/Z"
 ##schedule = musicmostyesno1,5,5,"load_start=/mnt/Music_4/.torrents/0-9/*.torrent,d.set_directory=/mnt/Music_4/0-9/"
 ##schedule = musicmostyesyes1,5,5,"load_start=/mnt/Music_4/.torrents/FLAC/*.torrent,d.set_directory=/mnt/Music_4/FLAC/"
-##schedule = musicmostyesyes2,5,5,"load_start=/mnt/Music_4/.torrents/Not_Scene/*.torrent,d.set_directory=/mnt/Music_4/Not_Scene/"
+schedule = musicmostyesyes2,5,5,"load_start=/mnt/Music_4/.torrents/Not_Scene/*.torrent,d.set_directory=/mnt/Music_4/Not_Scene/"
 ##schedule = musicmostyesyes3,5,5,"load_start=/mnt/Music_4/.torrents/VA/*.torrent,d.set_directory=/mnt/Music_4/VA/"
 #schedule = musicmostyesyes4,5,5,"load_start=/mnt/Music_4/.torrents/*.torrent,d.set_directory=/mnt/Music_4/.new/"
 ##
@@ -183,7 +183,7 @@ schedule = porn1,5,5,"load_start=/mnt/Porn/.torrents/*.torrent,d.set_directory=/
 ##schedule = musiclessmostyes9,5,5,"load_start=/mnt/Music_5/.torrents/Z/*.torrent,d.set_directory=/mnt/Music_5/Z"
 ##schedule = musiclessmostyesno1,5,5,"load_start=/mnt/Music_5/.torrents/0-9/*.torrent,d.set_directory=/mnt/Music_5/0-9/"
 ##schedule = musiclessmostyesyes1,5,5,"load_start=/mnt/Music_5/.torrents/FLAC/*.torrent,d.set_directory=/mnt/Music_5/FLAC/"
-##schedule = musiclessmostyesyes2,5,5,"load_start=/mnt/Music_5/.torrents/Not_Scene/*.torrent,d.set_directory=/mnt/Music_5/Not_Scene/"
+schedule = musiclessmostyesyes2,5,5,"load_start=/mnt/Music_5/.torrents/Not_Scene/*.torrent,d.set_directory=/mnt/Music_5/Not_Scene/"
 ##schedule = musiclessmostyesyes3,5,5,"load_start=/mnt/Music_5/.torrents/VA/*.torrent,d.set_directory=/mnt/Music_5/VA/"
 ##schedule = musiclessmostyesyes4,5,5,"load_start=/mnt/Music_5/.torrents/*.torrent,d.set_directory=/mnt/Music_5/.new/"
 #
