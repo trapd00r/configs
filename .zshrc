@@ -1,7 +1,7 @@
 export ZSH_THEME="trapd00r2-w-git"
 
 # \x0d \E[2K --- redraw
-#pickyfont set monte1 normal && 
+#pickyfont set monte1 normal &&
 #pickyfont set pro1   italic
 
 # export CASE_SENSITIVE="true"
@@ -23,15 +23,18 @@ export ZSH_THEME="trapd00r2-w-git"
 #    fi
 #}
 #zle -N zle-line-init
+#
+
+#export ZDOTDIR=$HOME/configs/zsh
 
 
-source $HOME/.zsh/colors.zsh
-source $HOME/.zsh/alias.zsh
-source $HOME/.zsh/functions.zsh
-source $HOME/.zsh/git.zsh
-source $HOME/.zsh/appearance.zsh
-source $HOME/.zsh/colors.zsh
-source $HOME/.zsh/$ZSH_THEME.zsh-theme
+source $ZDOTDIR/zsh/colors.zsh
+source $ZDOTDIR/zsh/alias.zsh
+source $ZDOTDIR/zsh/functions.zsh
+source $ZDOTDIR/zsh/git.zsh
+source $ZDOTDIR/zsh/appearance.zsh
+source $ZDOTDIR/zsh/colors.zsh
+source $ZDOTDIR/zsh/$ZSH_THEME.zsh-theme
 
 #export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'
@@ -72,15 +75,15 @@ export MPD_USER='scp1'
 
 
 
-#if [ "$TERM" = "linux" ]; then 
+#if [ "$TERM" = "linux" ]; then
 #
 ## a [8] at the end of the string will store the color
 ## as a default one
 #
-#    echo -en "\e]P01c1c1c" #black 
-#    echo -en "\e]P81c1c1c" #darkgrey 
-#    echo -en "\e]P1ff4747" #darkred 
-#    echo -en "\e]P9ff6767" #red 
+#    echo -en "\e]P01c1c1c" #black
+#    echo -en "\e]P81c1c1c" #darkgrey
+#    echo -en "\e]P1ff4747" #darkred
+#    echo -en "\e]P9ff6767" #red
 #    echo -en "\e]P24d4c4c" #darkgreen
 #    echo -en "\e]PAb03b31" #green
 #    echo -en "\e]P3ff8f00" #brown
@@ -100,7 +103,7 @@ export MPD_USER='scp1'
 eval `keychain -q --eval id_dsa`
 
 TZ='Europe/Stockholm'; export TZ
-HISTFILE=$HOME/.zsh-history
+HISTFILE=$XDG_DATA_HOME/zsh/history
 HISTSIZE=5000000
 SAVEHIST=1000000
 setopt extended_history
@@ -126,7 +129,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:processes' command 'ps -axw'
 zstyle ':completion:*:processes-names' command 'ps -awxho command'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}') 
+zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}')
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*:scp:*' tag-order \
@@ -151,4 +154,4 @@ bindkey "^f" forward-word
 bindkey "^d" delete-word
 bindkey "^k" kill-line
 bindkey ' ' magic-space
-bindkey '^I' complete-word 
+bindkey '^I' complete-word

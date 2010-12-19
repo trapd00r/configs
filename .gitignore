@@ -1,2 +1,4 @@
-*.un~
-*.log
+*~
+Makefile
+pm_to_lib
+.zcompdump
