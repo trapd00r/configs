@@ -35,6 +35,7 @@ max_memory_usage = 1000000000
 schedule = movies1,5,5,"load_start=/mnt/Movies_1/.torrents/*.torrent,d.set_directory=/mnt/Movies_1/.new/"
 schedule = movies2,5,5,"load_start=/mnt/Movies_2/.torrents/*.torrent,d.set_directory=/mnt/Movies_2/.new/"
 schedule = movies3,5,5,"load_start=/mnt/Movies_3/.torrents/*.torrent,d.set_directory=/mnt/Movies_3/"
+schedule = movies4,5,5,"load_start=/mnt/Movies_4/.torrents/*.torrent,d.set_directory=/mnt/Movies_4/"
 schedule = docs1,5,5,"load_start=/mnt/Docs/.torrents/*.torrent,d.set_directory=/mnt/Docs/.new/"
 schedule = games1,5,5,"load_start=/mnt/Games_1/.torrents/*.torrent,d.set_directory=/mnt/Games_1/.new/"
 schedule = mvids1,5,5,"load_start=/mnt/Mvids/.torrents/*.torrent,d.set_directory=/mnt/Mvids/.new/"

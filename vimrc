@@ -40,6 +40,7 @@ set smartindent
 "set cindent
 set showmode
 set textwidth=80                " be nice!
+set title
 set nowrap                      " dont wrap long lines
 set number                      " line numbering
 set scrolloff=3                 " number of lines to keep above cursor
@@ -48,6 +49,10 @@ set wildmode=list:longest,full  " bash style completioness
 set guioptions-=m               " just in case we happened to..
 set guioptions=-T               " ..be using gvim
 set cursorline                  " hilight line where cursor is
+set noerrorbells
+set vb t_vb=
+set scrolloff=5
+
 "set cursorcolumn
 set cot+=menuone                " show preview of function prototype
 "set fo+=r                       " annoying comments on far left
@@ -79,6 +84,7 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 :sign define fixme text=!! linehl=Todo
+
 " ^d is easier
 noremap <C-D> <C-W>
 cmap W w
@@ -92,6 +98,21 @@ nnoremap <leader>p i#!/usr/bin/perl<CR><BS>use vars qw($APP $VERSION);<CR>$APP  
 nnoremap <leader>d iuse Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><ESC>
 
 nnoremap <leader>f :set paste<CR>i
+
+" select the just pasted text
+nnoremap <leader>v V`]
+nnoremap ; :
+
+
+" toggle between number and relative number on
+nnoremap <leader>n :call ToggleRelativeAbsoluteNumber()<CR>
+function! ToggleRelativeAbsoluteNumber()
+  if &number
+    set relativenumber
+  else
+    set number
+  endif
+endfunction
 
 if has("cscope")
     set csprg=/usr/local/bin/cscope
@@ -108,10 +129,14 @@ if has("cscope")
     set csverb
 endif
 
+
+
 augroup vimrc_autocmds
   autocmd BufRead * highlight OverLength ctermbg=236 guibg=#592929
   autocmd BufRead * match OverLength /\%74v.*/
 augroup END
+
+
 
 "set list listchars=tab:\|-,trail:.
 "set backspace=indent,eol,start

@@ -124,6 +124,8 @@ compinit
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+# tabcomplete to files as well
+compdef _files mkdir
 
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST

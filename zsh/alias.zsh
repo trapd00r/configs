@@ -10,6 +10,8 @@ alias pf='pickyfont ter7'
 alias n900='ssh -p 19216 user@192.168.1.112'
 alias rampeak='dd if=/dev/mem|\cat|strings'
 
+alias mem="su -c mem"
+
 alias lso='ls|pv -qL 10'
 
 # Sane defaults
@@ -130,7 +132,7 @@ alias tree='tree -dA'
 alias getmail='getmail --rcfile /home/scp1/.getmail/magnus_at_trapd00r.se && getmail --rcfile /home/scp1/.getmail/trapd00r_at_trapd00r.se'
 alias shiva="ps -eo pcpu,pid,user,args|sort -k 1 -r|head -10 && iostat -mtx && mpstat -P 'ALL' && sar"
 alias cpuu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
-alias ss='source $HOME/.zshrc'
+alias ss='source $HOME/configs/.zshrc'
 alias ssa='mpc search artist'
 alias v+='ossmix vmix0.pcm8 -- +2'
 alias v-='ossmix vmix0.pcm8 -- -2'
@@ -142,6 +144,7 @@ alias vvv+='ossmix vmix0.pcm10 -- -2'
 alias trapd00r="printf '\t\033#3trapd00r\n\t\033#4trapd00r\n\tA simple, lightweight Perl hacker\n'"
 alias trapd00rc="printf '\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[38;5;32md\e[38;5;33m0\e[38;5;33m0\e[38;5;37mr\n\t\033#4\e[38;5;133mt\e[38;5;134mr\e[38;5;135ma\e[38;5;139mp\e[38;5;140md\e[38;5;141m00\e[38;5;145mr\n\t\e[38;5;240mA simple, lightweight Perl hacker\n'"
 alias rec='ffmpeg -f x11grab -s 3360x1050 -r 150 -i :0.0 -sameq /tmp/foo.mpg'
+alias brutus='ssh scp1@brutus.ethup.se'
 alias dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias india='ssh scp1@192.168.1.102 -p 19216'
 alias fevil='find . -regextype posix-extended -regex'

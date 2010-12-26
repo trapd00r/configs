@@ -2,13 +2,11 @@ du1() {
   du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f;
 }
 
+horny() { feh -FZrD3 /mnt/Porn/00-Pics/** && printf "Done!\n" }
+
 vimp() {
   /home/scp1/devel/utils/vim $(find . |grep -Pi '.+(?:pl|pm)$'|perl -pe 's/\n/ /')
 }
-
-#func() {
-#  grep -Pi 'sub (.+) \{' $(find .|grep -Pi '.+(?:pl|pm)$')|perl -pe 's/^\S+\s*(.+)\s*\{.*/$1/'|sort
-#}
 
 
 cd() {
@@ -19,9 +17,6 @@ regcheck() {
   zmodload -i zsh/pcre
   pcre_compile $1 && \
   pcre_match $2 && echo 'matches' || echo 'no match'
-}
-horny() {
-  wget $(pump -fetch graphics $@);
 }
 zsh_stats() {
   history|awk '{print $2}'|sort|uniq -c|sort -rn|head
@@ -44,6 +39,7 @@ tf() {
         echo ":-("
     fi
 }
+
 goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 cpf() { cp "$@" && goto "$_"; }
 mvf() { mv "$@" && goto "$_"; }
