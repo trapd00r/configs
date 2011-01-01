@@ -106,7 +106,7 @@ eval `keychain -q --eval id_dsa`
 
 TZ='Europe/Stockholm'; export TZ
 HISTFILE=$XDG_DATA_HOME/zsh/history
-HISTSIZE=5000000
+HISTSIZE=5000
 SAVEHIST=1000000
 setopt extended_history
 setopt share_history

@@ -35,6 +35,7 @@ set shiftwidth=2
 "set shiftround                  " shift to next round tabstop
 set smarttab                    " outdent by one level using bkspc
 set showmatch                   " show matching brackets etc
+set matchpairs+==:;
 set autoindent
 set smartindent
 "set cindent

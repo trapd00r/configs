@@ -8,6 +8,8 @@ ratmenu*style:                    dreary
 ratmenu*persist:                  false
 ratmenu*align:                    center
 
+Xterm.VT100.allowColorOps: 1
+
 XTerm*background:                 #000000
 XTerm*foreground:                 #FFFFFF
 XTerm*colorMode:                  On
