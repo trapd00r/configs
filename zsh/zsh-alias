@@ -59,9 +59,10 @@ alias netstat='$HOME/bin/cope/netstat'
 alias nmap='$HOME/bin/cope/nmap'
 
 # file management
-alias ls='\ls -hovA --indicator-style=file-type \
-          --color=always --group-directories-first --time=ctime \
-          --time-style=full-iso'
+alias ls='ls++'
+#alias ls='\ls -hovA --indicator-style=file-type \
+#          --color=always --group-directories-first --time=ctime \
+#          --time-style=full-iso'
 alias ls1='\ls -1 --color=auto --time-style=full-iso'
 alias lsa='\ls --color=auto --time-style=full-iso'
 alias lsd='find . -maxdepth 2 -type d | sort'
@@ -76,7 +77,7 @@ alias v+='ossmix vmix0.pcm8 -- +2'
 alias v-='ossmix vmix0.pcm8 -- -2'
 alias rec='ffmpeg -f x11grab -s 1680x1050 -r 120 -i :0.0 -sameq foo.mpg'
 alias dmesg='dmesg|matchline -dmesg'
-alias dvdc='ssh 192.168.1.33 -p 19216'
+alias dvdc='ssh 192.168.1.100 -p 19216'
 alias feh='feh -FZrd'
 alias fevil='find . -regextype posix-extended -regex'
 alias lspci='lspci|matchline -lspci'

@@ -53,7 +53,7 @@ hardstatus alwayslastline "%?%{gk}%-Lw%?%{mk}%n*%f %t%?(%u)%?%?%{gk}%+Lw%?%{Yk} 
 #caption string "%{-b wb} %L=%-Lw%45>%{+b yb}%n%f*%t%{-}%+Lw%-0<"
 
 setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
-setenv DISPLAY ''
+#setenv DISPLAY ''
 
   bind k
   bind ^k

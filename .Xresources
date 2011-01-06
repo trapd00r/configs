@@ -256,7 +256,7 @@ URxvt.shiva.color12:     #5496FF
 URxvt.shiva.color5:      #89005A 
 URxvt.shiva.color13:     #B50077
 /* cyan */
-URxvt.shiva.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
+URxvt.shiva.color6:      #ff3500 /* cyan => red */ /* 47E0FF */
 URxvt.shiva.color14:     #6BE603 /* cyan => green */
 /* white */
 URxvt.shiva.color7:      #FFFFFF
