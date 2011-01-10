@@ -132,10 +132,10 @@ endif
 
 
 
-augroup vimrc_autocmds
-  autocmd BufRead * highlight OverLength ctermbg=236 guibg=#592929
-  autocmd BufRead * match OverLength /\%74v.*/
-augroup END
+"augroup vimrc_autocmds
+"  autocmd BufRead * highlight OverLength ctermbg=236 guibg=#592929
+"  autocmd BufRead * match OverLength /\%74v.*/
+"augroup END
 
 
 
