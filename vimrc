@@ -104,6 +104,8 @@ nnoremap <leader>f :set paste<CR>i
 nnoremap <leader>v V`]
 nnoremap ; :
 
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
 
 " toggle between number and relative number on
 nnoremap <leader>n :call ToggleRelativeAbsoluteNumber()<CR>

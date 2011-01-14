@@ -10,7 +10,7 @@ alias japh='echo http://japh.se && echo http://japh.se|xclip'
 alias pst='echo http://p.japh.se && echo http://p.japh.se|xclip'
 
 alias dmesg='$HOME/devel/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
-alias vimtime='\cat $HOME/doc/vimtimes'
+alias vimtime='$HOME/devel/utils/vim --total'
 
 alias wmp='wminput -c mplayer&'
 alias win='wminput -c ir_ptr -w -c neverball&'
