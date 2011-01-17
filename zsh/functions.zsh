@@ -5,7 +5,7 @@ du1() {
 horny() { feh -FZrD3 /mnt/Porn/00-Pics/** && printf "Done!\n" }
 
 vimp() {
-  /home/scp1/devel/utils/vim $(find . |grep -Pi '.+(?:pl|pm)$'|grep -v 'blib'|perl -pe 's/\n/ /')
+  /home/scp1/devel/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:pl|pm)$'|grep -v 'blib'|perl -pe 's/\n/ /')
 }
 
 

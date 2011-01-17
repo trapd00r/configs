@@ -10,7 +10,8 @@ alias japh='echo http://japh.se && echo http://japh.se|xclip'
 alias pst='echo http://p.japh.se && echo http://p.japh.se|xclip'
 
 alias dmesg='$HOME/devel/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
-alias vimtime='$HOME/devel/utils/vim --total'
+alias vimtime='/home/scp1/devel/time-spent-in-vim/vim --total'
+alias vim='/home/scp1/devel/time-spent-in-vim/vim'
 
 alias wmp='wminput -c mplayer&'
 alias win='wminput -c ir_ptr -w -c neverball&'
@@ -25,6 +26,7 @@ alias vimpl='vim *.pl'
 
 alias urxvt='urxvt -name URxvt.shiva'
 
+alias repl='perl $HOME/devel/re.pl/re.pl'
 alias less='vimpager'
 alias wget='wget --no-check-certificate -U=Mozilla'
 alias ptop='watch -n1 ps aux --sort=+%cpu'
