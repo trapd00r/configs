@@ -107,6 +107,7 @@ nnoremap ; :
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 
+
 " toggle between number and relative number on
 nnoremap <leader>n :call ToggleRelativeAbsoluteNumber()<CR>
 function! ToggleRelativeAbsoluteNumber()
@@ -132,6 +133,8 @@ if has("cscope")
     set csverb
 endif
 
+
+autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
 
 
 "augroup vimrc_autocmds

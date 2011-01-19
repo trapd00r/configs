@@ -1,0 +1,1 @@
+/home/scp1/devel/vim-syntax-todo/syntax/todo.vim
