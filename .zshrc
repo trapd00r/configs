@@ -40,7 +40,7 @@ source $HOME/.zsh/$ZSH_THEME.zsh-theme
 
 #export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'
-export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
+export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
