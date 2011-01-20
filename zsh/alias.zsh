@@ -160,4 +160,5 @@ alias v-='ossmix vmix0.pcm8 -- -2'
 alias v++='ossmix vmix0.pcm9 -- +2'
 alias v--='ossmix vmix0.pcm9 -- -2'
 
+alias mplayer='mplayer -msgmodule 1 -msgcolor'
 alias :q='exit'

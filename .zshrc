@@ -28,6 +28,10 @@ export ZSH_THEME="trapd00r2-w-git"
 #export ZDOTDIR=$HOME/configs/zsh
 
 #export VIMINIT=/home/scp1/configs/vim
+#
+
+# Use Term::ReadLine::Zoid for vi-bindings
+export PERL_RL=Zoid
 
 
 source $HOME/.zsh/colors.zsh

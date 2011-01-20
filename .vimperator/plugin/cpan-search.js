@@ -48,7 +48,7 @@ commands.addUserCommand(
     'CPAN Search',
     function(args) {
         var name = (args.string || '').replace(/^\^|\s+/g, '');
-        var url = 'http://search.cpan.org/perldoc?' + name;
+        var url = 'http://search.cpan.org/search?' + name;
         liberator.open(url, args.bang ? liberator.NEW_TAB : null);
     }, {
         completer: function(context) {
