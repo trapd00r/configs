@@ -17,10 +17,6 @@ use Data::Dumper;
 
 
 
-1;
-
-__END__
-
 =pod
 
 =head1 NAME
@@ -49,3 +45,8 @@ This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
+
+1;
+
+
+# vim: set ts=2 et sw=2:

@@ -134,7 +134,7 @@ if has("cscope")
 endif
 
 
-autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
+autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e|40gg
 
 
 "augroup vimrc_autocmds
@@ -155,10 +155,16 @@ au BufRead,BufNewFile *.markdown set ft=md
 au BufRead,BufNewFile *.md set ft=md
 
 au FileType pl,pm,t set filetype=perl
+au! FileType perl :noremap <leader>c 
+    \ :!time perl -Mwarnings::unused -MVi::QuickFix -c %<cr>
+
+"set errorformat+=%m\ at\ %f\ line\ %l\.
+"set errorformat+=%m\ at\ %f\ line\ %l
+
 "au FileType perl set makeprg=perl\ -c\ %\ $*
 "au FileType perl set errorformat=%f:%l:%m
 "au FileType perl set autowrite
-"au FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
+au FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
 "au FileType text call TextMode()
 "au FileType mail call TextMode()
 "au FileType vim  set iskeyword+=. iskeyword+=/ iskeyword+=~

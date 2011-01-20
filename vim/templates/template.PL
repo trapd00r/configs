@@ -59,3 +59,4 @@ sub WriteMakefile1 {
     WriteMakefile(%params);
 }
 
+# vim: set ts=2 et sw=2:
