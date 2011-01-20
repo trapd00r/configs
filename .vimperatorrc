@@ -11,5 +11,10 @@ set laststatus=0
 set shell=zsh
 set titlestring=Fx
 
-# Use duckduckgo as the default search engine. Fuck you, Google.
+" Use duckduckgo as the default search engine. Fuck you, Google.
 set defsearch=d
+
+
+
+
+" vim: set ft=vim:
