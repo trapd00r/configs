@@ -12,6 +12,7 @@ set followhints=0
 set shell=zsh
 set titlestring=Fx
 set showtabline=never
+set autocomplete=/ex/(bmarks),^(/|/ex/?)$
 
 " Use duckduckgo as the default search engine. Fuck you, Google.
 set defsearch=d
