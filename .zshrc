@@ -31,7 +31,7 @@ export ZSH_THEME="trapd00r2-w-git"
 #
 
 # Use Term::ReadLine::Zoid for vi-bindings
-export PERL_RL=Zoid
+#export PERL_RL=Zoid
 
 
 source $HOME/.zsh/colors.zsh

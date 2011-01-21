@@ -134,7 +134,7 @@ if has("cscope")
 endif
 
 
-autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e|40gg
+autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
 
 
 "augroup vimrc_autocmds
