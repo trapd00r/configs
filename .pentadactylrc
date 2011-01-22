@@ -11,7 +11,7 @@ set defsearch=d
 set maxitems=10
 set cpt=l
 set nostrictfocus
-set wildmode=longest
+set wildmode=full
 set wildcase=smart
 set showstatuslinks=status
 set showmode
@@ -35,6 +35,7 @@ set mapleader=","
 nmap d <Nop>
 
 nmap dd :tabclose<CR>
+nmap <Leader>q :qa!<CR>
 
 nmap <Leader>d :tabclose<CR>
 nmap <Leader>p :pa<CR>

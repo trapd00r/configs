@@ -44,7 +44,8 @@ set textwidth=80                " be nice!
 set title
 set nowrap                      " dont wrap long lines
 set number                      " line numbering
-set scrolloff=3                 " number of lines to keep above cursor
+set scrolloff=5                 " number of lines to keep above cursor
+set shortmess=atI
 "set wildmenu                    " fancy menu
 set wildmode=list:longest,full  " bash style completioness
 set guioptions-=m               " just in case we happened to..
@@ -62,6 +63,7 @@ filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
                                 " loads indent files to automatically do
                                 " language specific indenting
 "runtime ftplugin/man.vim
+runtime macros/matchit.vim
 setlocal nospell spelllang=en_us
 map <space> /
 map <c-space> ?
