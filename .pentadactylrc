@@ -1,4 +1,4 @@
-source /home/scp1/configs/.pentadactyl/color/desert_revisited_pentadactyl.vimp
+source /home/scp1/configs/.pentadactyl/color/sanecrap.penta
 set guioptions-=rlb
 set hintkeys=asdfg;lkjh
 "set showtabline=0
@@ -16,6 +16,11 @@ set autocomplete=/ex/(bmarks),^(/|/ex/?)$
 
 " Use duckduckgo as the default search engine. Fuck you, Google.
 set defsearch=d
+set maxitems=10
+set cpt=l
+set mapleader=","
+set nostrictfocus
+
 
 
 
