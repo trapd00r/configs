@@ -1,4 +1,5 @@
 export ZSH_THEME="trapd00r2-w-git"
+export MOZ_DISABLE_PANGO=1
 
 # \x0d \E[2K --- redraw
 #pickyfont set monte1 normal &&

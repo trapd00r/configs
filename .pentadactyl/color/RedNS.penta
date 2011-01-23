@@ -1,0 +1,40 @@
+" ==Vimperator_Color_Scheme==
+" name: RedNS
+" ==RedNS_Color_Scheme==
+hi Hint			font-family: monospace; font-size: 15px; font-weight: normal; color: lightyellow; background-color: black; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 5px;
+
+hi HintElem		background-color: rgba(34,34,34,0.1);		color: black;
+hi HintActive   background-color: rgba(34,34,34,0.5);		color: Red;
+" hi HintActive		background-color: Red;	color: white;
+
+hi StatusLine 		color: #ffffff;	background: #121212;	font-weight: normal; font-size: 8pt;
+hi StatusLineBroken   color:  black; background: #ffa0a0; font-weight: normal; font-size: 8pt;
+hi StatusLineExtended color:  black; background: #a0ffa0; font-weight: normal; font-size: 8pt;
+hi StatusLineSecure   color:  black; background: #a0a0ff; font-weight: normal; font-size: 8pt;
+
+
+hi Normal 		color: Black;	background: rgba(51,51,51,0);	font-size: 8pt;
+hi InfoMsg		color: LightYellow;	background: #333;	font-size: 8pt;
+hi ModeMsg		color: LightYellow;	background: #333;	font-size: 8pt;
+hi MoreMsg		color: LimeGreen;	background: #333;
+hi LineNr		color: Red;	background: #333;	font-size: 8pt;
+hi Question		color: Yellow;		background: #333;	font-size: 8pt;
+hi WarningMsg		color: Red;	background: #333;	font-size: 8pt;
+hi NonText 		background: #333;
+hi Null			color: CornflowerBlue;
+hi Tag			color: CornflowerBlue;
+
+hi CompTitle		color: #ffffff;		background: Black;	font-weight: bold;
+hi CompItem[selected]	color: Red;	background: rgba(34,34,34,0.3)
+hi CompDesc		color: White;
+hi GradientRight	background-color: Black;
+
+hi Title		color: white;
+hi Indicator		color: DodgerBlue;
+hi String		color: Red;
+hi Number		color: Red;
+hi Object		color: Khaki;
+hi Function		color: SkyBlue;
+hi URL			color: Gray;
+
+hi TabNumber		color: black; font-weight: bold; font-size: 8pt;
