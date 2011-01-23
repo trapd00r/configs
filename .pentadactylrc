@@ -29,6 +29,10 @@ set pageinfo=gfm
 "set wildignore=\.o$,^\..*\.s[a-z]{2}$
 "set wordseparators="[.,!?:;\\/\"^$%&?()[\]{}<>#*+|=~ _-])"
 
+
+
+"set noscript-forbid=bookmarklet,fonts,java,media,placeholder,plugins,silverlight,xslt
+"set noscriptlist=base
 set mapleader=","
 
 
