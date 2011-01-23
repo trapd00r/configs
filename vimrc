@@ -1,4 +1,5 @@
 " perldo {$/='';if($_!~ /my/){$_='';print $_}}
+let g:tex_conceal="admgs"
 set autoread                    " auto read when file is changed
 set tabpagemax=50
 set colorcolumn=81

@@ -34,6 +34,8 @@ set mapleader=","
 
 nmap d <Nop>
 
+"nmap -b yy y
+
 nmap dd :tabclose<CR>
 nmap <Leader>q :qa!<CR>
 

@@ -3,6 +3,7 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+alias pkgclean="yes|rm -r $(find $HOME/devel/PKGBUILDS -name 'pkg' && find $HOME/devel/PKGBUILDS -name 'src')"
 alias devel='echo http://perl.japh.se/devel && echo http://perl.japh.se/devel|xclip'
 alias i='echo http://i.japh.se && echo http://i.japh.se|xclip'
 alias l='echo http://l.japh.se && echo http://l.japh.se|xclip'
