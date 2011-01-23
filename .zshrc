@@ -1,5 +1,6 @@
 export ZSH_THEME="trapd00r2-w-git"
 export MOZ_DISABLE_PANGO=1
+export PERL_MM_USE_DEFAULT=1
 
 # \x0d \E[2K --- redraw
 #pickyfont set monte1 normal &&
@@ -111,9 +112,10 @@ export MPD_USER='scp1'
 eval `keychain -q --eval id_dsa`
 
 TZ='Europe/Stockholm'; export TZ
-HISTFILE=$XDG_DATA_HOME/zsh/history
-HISTSIZE=5000
-SAVEHIST=1000000
+export HISTFILE=$XDG_DATA_HOME/zsh/history
+export HISTSIZE=5000
+export SAVEHIST=1000000
+export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
 setopt extended_history
 setopt share_history
 function history_all { history -E 1 }
