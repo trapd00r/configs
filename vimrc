@@ -81,6 +81,8 @@ inoremap <Left> <NOP>
 inoremap <Up>   <NOP>
 inoremap <Down> <NOP>
 
+iab dumper Dumper
+
 " window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>

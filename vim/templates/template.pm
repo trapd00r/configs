@@ -27,6 +27,8 @@ use Data::Dumper;
 
 =head1 OPTIONS
 
+=head1 SEE ALSO
+
 =head1 AUTHOR
 
   Magnus Woldrich
@@ -38,11 +40,18 @@ use Data::Dumper;
 
 Report bugs on rt.cpan.org or to magnus@trapd00r.se
 
+=head1 CONTRIBUTORS
+
+None required yet.
+
 =head1 COPYRIGHT
 
-Copyright (C) 2011 Magnus Woldrich. All right reserved.
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+Copyright 2011 B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
+
+=head1 LICENSE
+
+This library is free software; you may redistribute it and/or modify it under
+the same terms as Perl itself.
 
 =cut
 

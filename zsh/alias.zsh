@@ -143,7 +143,7 @@ alias lsa='\ls --color=auto --time-style=full-iso'
 alias scx='TERM=xterm;screen -x'
 
 alias top='cc-grey-ansi;top;cc-x-color-scheme-trapd00r'
-alias ncmpcpp='colorcoke -r 30 -g 10 -b 5 -s 0 -e 15;ncmpcpp;cc-x-colorscheme-trapd00r'
+alias ncmpcpp='colorcoke -r 30 -g 10 -b 5 -s 0 -e 15;ncmpcpp; cc-x-color-scheme-trapd00r'
 
 
 alias make='/home/scp1/devel/utils/make'
