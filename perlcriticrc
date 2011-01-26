@@ -1,0 +1,378 @@
+##############################################################################
+# This Perl::Critic configuration file sets the Policy severity levels
+# according to Damian Conway's own personal recommendations.  Feel free to
+# use this as your own, or make modifications.
+##############################################################################
+
+# use 4-arg substr
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitLvalueSubstr]
+severity   = 3
+
+# use reverse instead of sort { $b <=> $a }
+[-Perl::Critic::Policy::BuiltinFunctions::ProhibitReverseSortBlock]
+severity   = 1
+
+# dont allow select(undef, undef, undef, 0.25)
+[-Perl::Critic::Policy::BuiltinFunctions::ProhibitSleepViaSelect]
+severity   = 5
+
+# No string eval
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitStringyEval]
+severity   = 5
+
+# dont allow split '|´ $str;
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitStringySplit]
+severity   = 4
+
+# dont allow UNIVERSAL::can($foo, $name);
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitUniversalCan]
+severity   = 4
+
+# dont allow UNIVERSAL::isa($foo, $package);
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitUniversalIsa]
+severity   = 4
+
+# Dont use grep in void contexts
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitVoidGrep]
+severity   = 3
+
+# Dont use map in void contexts
+[Perl::Critic::Policy::BuiltinFunctions::ProhibitVoidMap]
+severity   = 3
+
+[Perl::Critic::Policy::BuiltinFunctions::RequireBlockGrep]
+severity   = 4
+
+[Perl::Critic::Policy::BuiltinFunctions::RequireBlockMap]
+severity   = 4
+
+# Dont allow <*>
+[Perl::Critic::Policy::BuiltinFunctions::RequireGlobFunction]
+severity   = 5
+
+[Perl::Critic::Policy::BuiltinFunctions::RequireSimpleSortBlock]
+severity   = 3
+
+# AUTOLOAD methods should be avoided
+[Perl::Critic::Policy::ClassHierarchies::ProhibitAutoloading]
+severity   = 3
+
+# use base instead of @ISA
+# use base qw(foo) happens at compile time, our @ISA = qw(foo) runtime
+# The base pragma also loads 'foo' for you
+[Perl::Critic::Policy::ClassHierarchies::ProhibitExplicitISA]
+severity   = 4
+
+[Perl::Critic::Policy::ClassHierarchies::ProhibitOneArgBless]
+severity   = 5
+
+[Perl::Critic::Policy::CodeLayout::ProhibitHardTabs]
+severity   = 5
+
+# Stupid.
+[-Perl::Critic::Policy::CodeLayout::ProhibitParensWithBuiltins]
+severity   = 1
+
+# Sometime there's no other choice, but ok
+[Perl::Critic::Policy::CodeLayout::ProhibitQuotedWordLists]
+severity   = 2
+
+# \r, \n, \r\n
+[Perl::Critic::Policy::CodeLayout::RequireConsistentNewlines]
+severity   = 4
+
+# No thank you
+[-Perl::Critic::Policy::CodeLayout::RequireTidyCode]
+severity   = 1
+
+# Agree 
+[Perl::Critic::Policy::CodeLayout::RequireTrailingCommas]
+severity   = 3
+
+# Stupid
+[-Perl::Critic::Policy::ControlStructures::ProhibitCStyleForLoops]
+severity   = 3
+
+# Agree
+[Perl::Critic::Policy::ControlStructures::ProhibitCascadingIfElse]
+max_elsif  = 3
+severity   = 3
+
+# Agree
+[Perl::Critic::Policy::ControlStructures::ProhibitDeepNests]
+severity   = 3
+
+# Do not agree
+[-Perl::Critic::Policy::ControlStructures::ProhibitMutatingListFunctions]
+severity   = 5
+
+# NOTE not sure yet...
+[Perl::Critic::Policy::ControlStructures::ProhibitPostfixControls]
+severity   = 4
+
+# Yeah, agree
+[Perl::Critic::Policy::ControlStructures::ProhibitUnlessBlocks]
+severity   = 4
+
+# Yep
+[Perl::Critic::Policy::ControlStructures::ProhibitUnreachableCode]
+severity   = 4
+
+# Agree
+[Perl::Critic::Policy::ControlStructures::ProhibitUntilBlocks]
+severity   = 4
+
+# Totally
+[Perl::Critic::Policy::Documentation::RequirePodAtEnd]
+severity   = 2
+
+# No thanks
+[-Perl::Critic::Policy::Documentation::RequirePodSections]
+severity   = 2
+
+# Sure
+[Perl::Critic::Policy::ErrorHandling::RequireCarping]
+severity   = 4
+
+# Agree
+[Perl::Critic::Policy::InputOutput::ProhibitBacktickOperators]
+severity   = 3
+
+# Oh yes
+[Perl::Critic::Policy::InputOutput::ProhibitBarewordFileHandles]
+severity   = 5
+
+# -t 
+[-Perl::Critic::Policy::InputOutput::ProhibitInteractiveTest]
+severity   = 4
+
+# wtf? no thank you
+[-Perl::Critic::Policy::InputOutput::ProhibitOneArgSelect]
+severity   = 4
+
+# Oh yes
+[Perl::Critic::Policy::InputOutput::ProhibitReadlineInForLoop]
+severity   = 5
+
+# Yes
+[Perl::Critic::Policy::InputOutput::ProhibitTwoArgOpen]
+severity   = 4
+
+# Uh, really?
+[-Perl::Critic::Policy::InputOutput::RequireBracedFileHandleWithPrint]
+severity   = 3
+
+# Ok :)
+[Perl::Critic::Policy::Miscellanea::ProhibitFormats]
+severity   = 3
+
+# Sure
+[Perl::Critic::Policy::Miscellanea::ProhibitTies]
+severity   = 4
+
+# Meh. Even Conway disagrees
+[-Perl::Critic::Policy::Miscellanea::RequireRcsKeywords]
+
+# Yes. Dont be evil
+[Perl::Critic::Policy::Modules::ProhibitAutomaticExportation]
+severity   = 4
+
+# Class::ISA, Pod::Plainer, Shell, and Switch
+[Perl::Critic::Policy::Modules::ProhibitEvilModules]
+severity   = 5
+
+# Oh yes
+[Perl::Critic::Policy::Modules::ProhibitMultiplePackages]
+severity   = 4
+
+# Yes.
+[Perl::Critic::Policy::Modules::RequireBarewordIncludes]
+severity   = 5
+
+#  We cannot tolerate such frivolity!
+[Perl::Critic::Policy::Modules::RequireEndWithOne]
+severity   = 4
+
+# 1 exception per file, checks shebang
+[Perl::Critic::Policy::Modules::RequireExplicitPackage]
+exempt_scripts = 1
+severity   = 4
+
+# Sure
+[Perl::Critic::Policy::Modules::RequireFilenameMatchesPackage]
+severity   = 5
+
+# Yes
+[Perl::Critic::Policy::Modules::RequireVersionVar]
+severity   = 4
+
+# Sure
+[Perl::Critic::Policy::NamingConventions::ProhibitAmbiguousNames]
+severity   = 3
+
+# YES EVIL
+[Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs]
+severity   = 1
+
+# YES EVIL
+[Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseVars]
+severity   = 1
+
+# Yes
+[Perl::Critic::Policy::References::ProhibitDoubleSigils]
+severity   = 4
+
+# Yes
+[Perl::Critic::Policy::RegularExpressions::ProhibitCaptureWithoutTest]
+severity   = 4
+
+# I use /x when I want to damnit
+[-Perl::Critic::Policy::RegularExpressions::RequireExtendedFormatting]
+severity   = 5
+
+# sure
+[Perl::Critic::Policy::RegularExpressions::RequireLineBoundaryMatching]
+severity   = 5
+
+# totally
+[Perl::Critic::Policy::Subroutines::ProhibitAmpersandSigils]
+severity   = 2
+
+# I can do that
+[Perl::Critic::Policy::Subroutines::ProhibitBuiltinHomonyms]
+severity   = 4
+
+# NOTE not sure yet
+[Perl::Critic::Policy::Subroutines::ProhibitExcessComplexity]
+max_mccabe = 30
+severity   = 3
+
+# return returns empty list / undef depending on context
+[Perl::Critic::Policy::Subroutines::ProhibitExplicitReturnUndef]
+severity   = 5
+
+# Prototypes are evil
+[Perl::Critic::Policy::Subroutines::ProhibitSubroutinePrototypes]
+severity   = 4
+
+# I really dont care for this one
+[-Perl::Critic::Policy::Subroutines::ProtectPrivateSubs]
+severity   = 3
+
+# absolutely
+[Perl::Critic::Policy::Subroutines::RequireFinalReturn]
+severity   = 5
+
+# sometimes I need some black magic, i.e symboltable hackery
+[Perl::Critic::Policy::TestingAndDebugging::ProhibitNoStrict]
+allow = vars subs refs
+severity   = 5
+
+[Perl::Critic::Policy::TestingAndDebugging::ProhibitNoWarnings]
+allow = uninitialized once
+severity   = 4
+
+# sure
+[Perl::Critic::Policy::TestingAndDebugging::ProhibitProlongedStrictureOverride]
+statements = 4
+severity   = 4
+
+# yeah
+[Perl::Critic::Policy::TestingAndDebugging::RequireTestLabels]
+severity   = 3
+
+# Yes
+[Perl::Critic::Policy::TestingAndDebugging::RequireUseStrict]
+severity   = 5
+
+# Ok.
+[Perl::Critic::Policy::TestingAndDebugging::RequireUseWarnings]
+severity   = 4
+
+# Right
+[Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma]
+severity   = 4
+
+# Bah, fuck off
+[-Perl::Critic::Policy::ValuesAndExpressions::ProhibitEmptyQuotes]
+severity   = 2
+
+# No
+[-Perl::Critic::Policy::ValuesAndExpressions::ProhibitEscapedCharacters]
+severity   = 2
+
+# Agree :)
+[Perl::Critic::Policy::ValuesAndExpressions::ProhibitInterpolationOfLiterals]
+severity   = 1
+
+# Sure
+[Perl::Critic::Policy::ValuesAndExpressions::ProhibitLeadingZeros]
+severity   = 5
+
+# Sure
+[Perl::Critic::Policy::ValuesAndExpressions::ProhibitMismatchedOperators]
+severity   = 2
+
+# sure
+[Perl::Critic::Policy::ValuesAndExpressions::ProhibitMixedBooleanOperators]
+severity   = 4
+
+# meh
+[-Perl::Critic::Policy::ValuesAndExpressions::ProhibitNoisyQuotes]
+severity   = 2
+
+# ok
+[Perl::Critic::Policy::ValuesAndExpressions::ProhibitVersionStrings]
+severity   = 3
+
+# No, I know what I want
+[-Perl::Critic::Policy::ValuesAndExpressions::RequireInterpolationOfMetachars]
+severity   = 1
+
+# sure
+[Perl::Critic::Policy::ValuesAndExpressions::RequireNumberSeparators]
+severity   = 2
+
+# yeah, ofc
+[Perl::Critic::Policy::ValuesAndExpressions::RequireQuotedHeredocTerminator]
+severity   = 4
+
+# sure
+[Perl::Critic::Policy::ValuesAndExpressions::RequireUpperCaseHeredocTerminator]
+severity   = 4
+
+# No...
+[-Perl::Critic::Policy::Variables::ProhibitConditionalDeclarations]
+severity   = 5
+
+# yes, ofc
+[Perl::Critic::Policy::Variables::ProhibitLocalVars]
+severity   = 2
+
+# $', $& etc
+[-Perl::Critic::Policy::Variables::ProhibitMatchVars]
+severity   = 4
+
+# fuck off
+[-Perl::Critic::Policy::Variables::ProhibitPackageVars]
+severity   = 3
+
+# no thanks
+[-Perl::Critic::Policy::Variables::ProhibitPunctuationVars]
+severity   = 2
+
+# sure
+[Perl::Critic::Policy::Variables::ProtectPrivateVars]
+severity   = 3
+
+# ok
+[Perl::Critic::Policy::Variables::RequireInitializationForLocalVars]
+severity   = 5
+
+# sure
+[Perl::Critic::Policy::Variables::RequireLexicalLoopIterators]
+severity   = 5
+
+# absolutely!
+[Perl::Critic::Policy::Variables::RequireNegativeIndices]
+severity   = 4
