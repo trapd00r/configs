@@ -66,8 +66,8 @@ filetype plugin indent on       " def filetype settings. Mail gets textwidth 72
 "runtime ftplugin/man.vim
 runtime macros/matchit.vim
 setlocal nospell spelllang=en_us
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 map @ I#
@@ -98,6 +98,18 @@ nnoremap / /\v
 vnoremap / /\v
 set gdefault
 
+function! ToggleSyntax()
+   if exists("g:syntax_on")
+      syntax off
+   else
+      syntax enable
+   endif
+endfunction
+
+nmap <silent>  ;s  :call ToggleSyntax()<CR>
+
+
+
 let mapleader = ","
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>p i#!/usr/bin/perl<CR><BS>use vars qw($APP $VERSION);<CR>$APP     = undef;<CR>$VERSION = '0.0.1';<CR>use strict;<CR>use Pod::Usage;<CR>use Getopt::Long;<CR>use Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><CR><CR><CR>=pod<CR><CR>=head1 NAME<CR><CR>=head1 USAGE<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 OPTIONS<CR><CR>=head1 AUTHOR<CR><CR><TAB>Magnus Woldrich<CR>CPAN ID: WOLDRICH<CR>magnus@trapd00r.se<CR>http://japh.se<CR><CR>=head1 REPORTING BUGS<CR><CR>Report bugs on rt.cpan.org or to magnus@trapd00r.se<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright (C) 2010 Magnus Woldrich. All right reserved.<CR>This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.<CR><CR>License GPLv2<CR><CR>=cut<CR><ESC>16gg
@@ -111,6 +123,18 @@ nnoremap ; :
 
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" Toggle number column: {{{
+  " <A-1> to toggle between nu and rnu
+"if exists('+relativenumber')
+"  nnoremap <expr> � ToggleNumberDisplay()
+"  xnoremap <expr> � ToggleNumberDisplay()
+"  onoremap <expr> � ToggleNumberDisplay()
+"
+"  function! ToggleNumberDisplay()
+"      if &l:nu | setlocal rnu | else | setlocal nu | endif | redraw
+"  endfunction
+"
+"endif
 
 
 " toggle between number and relative number on
@@ -138,6 +162,7 @@ if has("cscope")
     set csverb
 endif
 
+:nmap <Space> 10j
 
 autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
 
@@ -160,7 +185,7 @@ au BufRead,BufNewFile *.markdown set ft=md
 au BufRead,BufNewFile *.md set ft=md
 
 au FileType pl,pm,t set filetype=perl
-au! FileType perl :noremap <leader>c 
+au! FileType perl :noremap <leader>c
     \ :!time perl -Mwarnings::unused -MVi::QuickFix -c %<cr>
 
 "set errorformat+=%m\ at\ %f\ line\ %l\.

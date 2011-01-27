@@ -1,6 +1,5 @@
-##############################################################################
 # This Perl::Critic configuration file sets the Policy severity levels
-# according to Damian Conway's own personal recommendations.  Feel free to
+# according to Magnus Woldrich's own personal recommendations.  Feel free to
 # use this as your own, or make modifications.
 ##############################################################################
 
