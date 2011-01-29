@@ -43,7 +43,6 @@ __END__
 
 =head1 OPTIONS
 
-=head1 SEE ALSO
 
 =head1 REPORTING BUGS
 
@@ -69,6 +68,8 @@ Copyright 2011 B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
 
 This library is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
+
+=head1 SEE ALSO
 
 =cut
 
