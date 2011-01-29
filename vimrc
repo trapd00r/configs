@@ -3,6 +3,7 @@ let g:tex_conceal="admgs"
 set autoread                    " auto read when file is changed
 set tabpagemax=50
 set colorcolumn=81
+set number                      " line numbering
 set relativenumber
 set undofile
 set nobackup                    " I have git...
@@ -17,7 +18,9 @@ set vb                          " visual bell
 set undolevels=512              " undo
 set history=50                  " q:
 set ruler                       " cursor position
-set shortmess=aIoO              " short msg, no intro
+set display+=lastline,uhex
+set shortmess=aotTWI
+"set shortmess=aIoO              " short msg, no intro
 set showmode                    " show current mode
 set noequalalways               " no need to always keep windows same size
 set splitbelow                  " splitted window under current one
@@ -43,8 +46,12 @@ set smartindent
 set showmode
 set textwidth=80                " be nice!
 set title
+set isfname+=:
+set helpheight=150
+set ttimeoutlen=50
+set ttyfast
+
 set nowrap                      " dont wrap long lines
-set number                      " line numbering
 set scrolloff=5                 " number of lines to keep above cursor
 set shortmess=atI
 "set wildmenu                    " fancy menu
@@ -165,6 +172,10 @@ endif
 :nmap <Space> 10j
 
 autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
+autocmd FileType perl setlocal errorformat=%f:%l:%m
+nmap <silent> \sp :set syn=perl<CR>:syntax sync fromstart<CR>
+autocmd FileType perl setlocal keywordprg=perldoc\ -f
+au BufWritePost *.{sh,pl} silent exe "!chmod +x %"
 
 
 "augroup vimrc_autocmds
@@ -199,6 +210,8 @@ au FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
 "au FileType mail call TextMode()
 "au FileType vim  set iskeyword+=. iskeyword+=/ iskeyword+=~
 
+let perl_string_as_statement=1
+let perl_sync_dist=1000
 "let perl_fold=1                   " let subs fold themselves
 let perl_include_pod=1            " no idea but seems nice
 let perl_extended_vars = 1        " syntax hl for 'complicated' stuff
