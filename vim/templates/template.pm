@@ -1,7 +1,16 @@
-#!/usr/bin/perl
-use vars qw($VERSION);
-my $APP  = '';
-$VERSION = '0.001';
+package Vim::Template;
+use strict;
+
+BEGIN {
+  use Exporter;
+  use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
+  @ISA = qw(Exporter);
+
+  $VERSION = '0.001';
+
+  @EXPORT_OK = qw();
+  %EXPORT_TAGS = [ qw() ];
+};
 
 use strict;
 use Data::Dumper;
@@ -17,6 +26,13 @@ use Data::Dumper;
 
 
 
+
+1;
+
+
+__END__
+
+
 =pod
 
 =head1 NAME
@@ -29,16 +45,17 @@ use Data::Dumper;
 
 =head1 SEE ALSO
 
+=head1 REPORTING BUGS
+
+Report bugs and/or feature requests on rt.cpan.org, the repository issue tracker
+or directly to L<magnus@trapd00r.se>
+
 =head1 AUTHOR
 
   Magnus Woldrich
   CPAN ID: WOLDRICH
   magnus@trapd00r.se
   http://japh.se
-
-=head1 REPORTING BUGS
-
-Report bugs on rt.cpan.org or to magnus@trapd00r.se
 
 =head1 CONTRIBUTORS
 
@@ -54,7 +71,5 @@ This library is free software; you may redistribute it and/or modify it under
 the same terms as Perl itself.
 
 =cut
-
-1;
 
 # vim: set ts=2 et sw=2:

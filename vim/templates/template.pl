@@ -1,9 +1,9 @@
 #!/usr/bin/perl
+use strict;
 use vars qw($VERSION);
 my $APP  = '';
 $VERSION = '0.001';
 
-use strict;
 use Data::Dumper;
 
 {
@@ -17,15 +17,23 @@ use Data::Dumper;
 
 
 
+__END__
+
+
 =pod
 
 =head1 NAME
 
-=head1 SYNOPSIS
+=head1 USAGE
 
 =head1 DESCRIPTION
 
 =head1 OPTIONS
+
+=head1 REPORTING BUGS
+
+Report bugs and/or feature requests on rt.cpan.org, the repository issue tracker
+or directly to L<magnus@trapd00r.se>
 
 =head1 AUTHOR
 
@@ -34,19 +42,20 @@ use Data::Dumper;
   magnus@trapd00r.se
   http://japh.se
 
-=head1 REPORTING BUGS
+=head1 CONTRIBUTORS
 
-Report bugs on rt.cpan.org or to magnus@trapd00r.se
+None required yet.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2011 Magnus Woldrich. All right reserved.
+Copyright 2011 B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
+above.
+
+=head1 LICENSE
+
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-
-1;
-
 
 # vim: set ts=2 et sw=2:
