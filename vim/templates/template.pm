@@ -41,7 +41,11 @@ __END__
 
 =head1 DESCRIPTION
 
-=head1 OPTIONS
+=head1 EXPORTS
+
+None by default.
+
+=head1 FUNCTIONS
 
 
 =head1 REPORTING BUGS
