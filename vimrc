@@ -40,6 +40,7 @@ set shiftwidth=2
 set smarttab                    " outdent by one level using bkspc
 set showmatch                   " show matching brackets etc
 set matchpairs+==:;
+set matchpairs+=':'
 set autoindent
 set smartindent
 "set cindent

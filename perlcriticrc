@@ -229,8 +229,8 @@ severity   = 4
 [-Perl::Critic::Policy::RegularExpressions::RequireExtendedFormatting]
 severity   = 5
 
-# sure
-[Perl::Critic::Policy::RegularExpressions::RequireLineBoundaryMatching]
+# nope
+[-Perl::Critic::Policy::RegularExpressions::RequireLineBoundaryMatching]
 severity   = 5
 
 # totally
