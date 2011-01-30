@@ -3,6 +3,7 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+alias editc='vim $HOME/.zsh/colors.zsh $HOME/devel/File::LsColor/lib/File/LsColor.pm'
 alias pc='perlcritic'
 #alias perl583='/home/scp1/perl5/perlbrew/build/perl-5.8.3/perl'
 alias pkgclean="yes|rm -r $(find $HOME/devel/PKGBUILDS -name 'pkg' && find $HOME/devel/PKGBUILDS -name 'src')"
