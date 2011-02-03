@@ -22,6 +22,10 @@ endif
 let g:colors_name="neverland-ansi_bg"
 
 if &t_Co > 255
+  hi Braces ctermfg=197 cterm=bold
+
+
+
    hi Boolean         ctermfg=135 ctermbg=002 cterm=bold
    hi Character       ctermfg=143 ctermbg=002 cterm=none
    hi Number          ctermfg=033 ctermbg=002 cterm=bold
