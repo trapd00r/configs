@@ -1,4 +1,5 @@
 *~
+*.un~
 Makefile
 pm_to_lib
 .zcompdump
@@ -12,4 +13,6 @@ vim/plugin/
 .pentadactyl/info
 zsh/cache/shiva/perl_modules/
 zsh/cache/shiva/perl_modules_with_pod
-
+zsh/cache
+vim/colors/NEVERLAND_ANSI_BG_VIM
+vim/.netrwhis
