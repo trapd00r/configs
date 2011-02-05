@@ -1,0 +1,10 @@
+gtk-theme-name="termGTK"
+gtk-icon-theme-name="Echo"
+gtk-font-name="MonteCarlo Medium 9"
+gtk-cursor-theme-size=0
+gtk-toolbar-style=GTK_TOOLBAR_ICONS
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
+gtk-button-images=0
+gtk-menu-images=1
+gtk-enable-event-sounds=0
+gtk-enable-input-feedback-sounds=0

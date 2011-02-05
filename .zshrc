@@ -198,7 +198,13 @@ setopt notify globdots pushdtohome cdablevars autolist
 setopt autocd recexact longlistjobs
 setopt autoresume pushdsilent
 setopt autopushd pushdminus extendedglob rcquotes mailwarning
+
+
+setopt print_exit_value
+
 unsetopt bgnice autoparamslash
+
+autoload -U age
 autoload -U compinit
 compinit
 
@@ -206,15 +212,37 @@ compinit
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+mailpath=($HOME/Docs/Mail/inbox/new'?New mail in inbox')
 # tabcomplete to files as well
 compdef _files mkdir
 
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select=10
+zstyle ':completion:*' muttrc='$HOME/configs/.muttrc'
+zstyle ':completion:*' use-perl=1
+zstyle ':completion:*' my-accounts='foo@bar.com'
+zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
+  'scp1@192.168.1.100' 'scp1@brutus.ethup.se' 'trapd00r@90.225.22.81'
+
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+
+
+zstyle ':completion:*:(all-|)files' ignored-patterns '*.un~'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+#zstyle ':completion:*:*:kill:*' menu yes select
+#zstyle ':completion:*:kill:*'   force-list always
+
+
+
+
+#zstyle ':completion:*' menu select=10 interactive list-dirs-first 
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:processes' command 'ps -axw'
 zstyle ':completion:*:processes-names' command 'ps -awxho command'
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*' hosts $(awk '/^[^#]/ {print $2 $3" "$4" "$5}' /etc/hosts | grep -v ip6- && grep "^#%" /etc/hosts | awk -F% '{print $2}')
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:functions' ignored-patterns '_*'

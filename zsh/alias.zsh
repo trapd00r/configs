@@ -3,6 +3,9 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+alias today="echo *(e:age today now:)|perl -pe 's/ /\n/g'"
+alias hour=" echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
+
 alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
 alias gcc='gcc -ansi -pedantic -Wall'
 alias editc='vim $HOME/.zsh/colors.zsh $HOME/devel/File::LsColor/lib/File/LsColor.pm'
@@ -61,6 +64,9 @@ alias rm='rm -v'
 alias prename='prename -v'
 alias np='pimpd -i'
 
+alias ssh='ssh -p 19216'
+alias scp='scp -P 19216'
+
 alias brutus='ssh scp1@brutus.ethup.se'
 alias macosx='ssh trapd00r@90.225.22.81'
 alias macoss='ssh scp1@industrialrefuge.com'
@@ -87,7 +93,7 @@ alias pacman='packer'
 alias mv='mv -v'
 alias mp='mplayer -slave -input file=$HOME/.mplayer/fifo -msgcolor'
 alias ssa='mpc search artist'
-alias t='mkdir /tmp/scp1 ; cd /tmp/scp1'
+alias t='mkdr /tmp/scp1 ; cd /tmp/scp1'
 alias iostat='iostat -mtx'
 
 alias grepp='grep -Pi --color=auto "^|pimpd"'

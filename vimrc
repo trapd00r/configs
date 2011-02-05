@@ -103,7 +103,6 @@ inoremap <Up>   <NOP>
 let g:tex_conceal                = 1
 let mapleader                    = ','
 
-let perl_fold                    = 0
 let perl_moose_stuff             = 1
 let perl_no_scope_in_variables   = 1
 let perl_no_sync_on_sub          = 1

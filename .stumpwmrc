@@ -164,7 +164,7 @@
 ; control firefox, remotely
 (define-key *root-map* (kbd "L") "exec fxr forward")
 (define-key *root-map* (kbd "H") "exec fxr back")
-(define-key *root-map* (kbd "J") "exec fxr refresh")
+(define-key *root-map* (kbd "J") "exec $HOME/devel/utils/firefox")
 
 (define-key *top-map* (kbd "F1") "exec radioc change dingata")
 (define-key *top-map* (kbd "F2") "exec radioc change gabber")
