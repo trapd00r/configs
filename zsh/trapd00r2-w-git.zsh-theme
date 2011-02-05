@@ -1,7 +1,7 @@
-# vim: set ts=2 textwidth=0 
+# vim: set ts=2 textwidth=0
 
-autoload -U add-zsh-hook 
-autoload -Uz vcs_info 
+autoload -U add-zsh-hook
+autoload -Uz vcs_info
 local c0=$(printf "\033[0m")
 local c1=$(printf "\033[38;5;245m")
 local c2=$(printf "\033[38;5;250m")
@@ -33,7 +33,7 @@ local newtv=''
 zstyle ':vcs_info:*' actionformats \
     '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats \
-    "%{$c8%}%s%{$c7%}:%{$c7%}(%{$c9%}%b%{$c7%})%f "
+    "%{$c8%}%s%{$c7%}:%{$c7%}(%{$c9%}%{$c10%}%b%{$c7%})%f "
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 
@@ -48,7 +48,7 @@ prompt_jnrowe_precmd () {
         #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
         #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$foopath%} %{$c0%}(%{$c5%}%?%{$c0%})"
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(perl /home/scp1/bin/foopath)%} %{$c0%}(%{$c5%}%?%{$c0%})"
-        
+
         PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '
     elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
@@ -57,7 +57,7 @@ prompt_jnrowe_precmd () {
         PROMPT='${vcs_info_msg_0_}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
-    
+
     elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(perl /home/scp1/bin/foopath)%} %{$c0%}(%{$c5%}%?%{$c0%})"
         #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
@@ -71,7 +71,7 @@ prompt_jnrowe_precmd () {
         PROMPT='${vcs_info_msg_0_}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
-        
+
     fi
 }
 
