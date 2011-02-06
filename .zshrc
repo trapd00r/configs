@@ -200,7 +200,7 @@ setopt autoresume pushdsilent
 setopt autopushd pushdminus extendedglob rcquotes mailwarning
 
 
-setopt print_exit_value
+#setopt print_exit_value
 
 unsetopt bgnice autoparamslash
 

@@ -48,9 +48,9 @@ set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
 set scrolloff=5
 set shiftwidth=2
-set shortmess=aIoO
+set shortmess=aIoOT
 "set shortmess=atI
-set showcmd
+"set showcmd
 set showmatch
 set showmode
 set showmode
