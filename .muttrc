@@ -140,7 +140,7 @@ folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 # unignore X-SpamProbe:
 # unignore X-Virus-hagbard:
 
-set sidebar_visible=yes
+set sidebar_visible=no
 set sidebar_width=30
 set sidebar_delim='▕▏'
 # color of folders with new mail
