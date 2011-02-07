@@ -14,6 +14,11 @@ local c8=$(printf "\033[38;5;244m")
 local c9=$(printf "\033[38;5;162m")
 local c10=$(printf "\033[1m")
 
+local c30=$(printf "\033[31mHALLAAA")
+
+#local c20=$(printf "\e#3\n")
+#local c21=$(printf "\e#4\n")
+
 
 if [ "$TERM" = "linux" ]; then
     c1=$(printf "\033[34;1m")
@@ -32,8 +37,10 @@ local newtv=''
 
 zstyle ':vcs_info:*' actionformats \
     '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+
 zstyle ':vcs_info:*' formats \
-    "%{$c8%}%s%{$c7%}:%{$c7%}(%{$c9%}%{$c10%}%b%{$c7%})%f "
+    "%{$c8%}%s%{$c7%}:%{$c7%}(%{$c9%}%{$c10%}%b%{$c7%})%{$reset_color%}%f "
+
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 
@@ -43,26 +50,24 @@ prompt_jnrowe_precmd () {
     vcs_info
 
     if [ "${vcs_info_msg_0_}" = "" ]; then
-        #dir_status="|%F{3}%n%F{7}@%F{3}%m%F{7}:%F{9}%l%f"
-        #dir_status="$c1%n%F{7}@%F{9}%m%F{7}:%F{12}%/"
-        #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
-        #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$foopath%} %{$c0%}(%{$c5%}%?%{$c0%})"
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(perl /home/scp1/bin/foopath)%} %{$c0%}(%{$c5%}%?%{$c0%})"
 
         PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '
+
+# modified, to be commited
     elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
         #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(perl /home/scp1/bin/foopath)%} %{$c0%}(%{$c5%}%?%{$c0%})"
-        PROMPT='${vcs_info_msg_0_}
-%{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
+        PROMPT='${vcs_info_msg_0_}%{$30%} %{$bg_bold[red]%}%{$fg_bold[cyan]%}C%{$fg_bold[black]%}OMMIT%{$reset_color%}
+%{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 > '
 
     elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(perl /home/scp1/bin/foopath)%} %{$c0%}(%{$c5%}%?%{$c0%})"
         #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
 
-        PROMPT='${vcs_info_msg_0_}
+        PROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[black]%}IRTY%{$reset_color%}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 %{$c9%}·>%{$c0%} '
     else
