@@ -6,6 +6,7 @@ alias -s PKGBUILD='vim'
 alias today="echo *(e:age today now:)|perl -pe 's/ /\n/g'"
 alias hour=" echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 
+alias cpan='cpanm'
 alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
 alias gcc='gcc -ansi -pedantic -Wall'
 alias editc='vim $HOME/.zsh/colors.zsh $HOME/devel/File::LsColor/lib/File/LsColor.pm'

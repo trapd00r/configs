@@ -47,6 +47,17 @@ None by default.
 
 =head1 FUNCTIONS
 
+=head2 foo()
+
+=over 4
+
+=item    Arguments: $string
+
+=item Return value: \%hash
+
+=back
+
+Description.
 
 =head1 REPORTING BUGS
 
