@@ -3,6 +3,10 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+alias evil="grep 'sub escape' -A 2 \
+  $HOME/devel/App::Pimpd/lib/App/Pimpd/Validate.pm |
+  tail -1|perl -pe 's/^\s+\$str =~ //'"
+
 alias today="echo *(e:age today now:)|perl -pe 's/ /\n/g'"
 alias hour=" echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 
@@ -160,7 +164,7 @@ alias lsa='\ls --color=auto --time-style=full-iso'
 alias scx='TERM=xterm;screen -x'
 
 alias top='cc-grey-ansi;top;cc-x-color-scheme-trapd00r'
-alias ncmpcpp='colorcoke -r 30 -g 10 -b 5 -s 0 -e 15;ncmpcpp; cc-x-color-scheme-trapd00r'
+alias ncmpcpp='colorcoke -r 105 -g 30 -b 50 -s 0 -e 15&&ncmpcpp;cc-x-color-scheme-trapd00r'
 
 
 alias make='/home/scp1/devel/utils/make'

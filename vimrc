@@ -15,7 +15,7 @@ set display+=lastline,uhex
 set expandtab
 set gdefault
 set guioptions-=m
-set guioptions=-T
+set guioptions-=T
 set helpheight=150
 set history=50
 set hlsearch
@@ -40,19 +40,15 @@ set noswapfile
 set nowb
 set nowrap
 set number
-set number
-set relativenumber
 set relativenumber
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-set scrolloff=5
 set scrolloff=5
 set shiftwidth=2
 set shortmess=aIoOT
 "set shortmess=atI
 "set showcmd
 set showmatch
-set showmode
 set showmode
 set smartcase
 set smartindent
