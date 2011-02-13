@@ -1,0 +1,11 @@
+/* ~/.mozilla/firefox/scp1.def.hdd/chrome/userContent.css */
+
+
+@-moz-document
+  url-prefix(http://themoviedb.org),
+  url-prefix(http://api.themoviedb.org) {
+    a {
+      color: black !important;
+      text-decoration: bold !important;
+    }
+  }
