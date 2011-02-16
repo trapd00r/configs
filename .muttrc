@@ -6,13 +6,13 @@ set mbox=+mbox
 set spoolfile=+
 set postponed=+drafts
 set header_cache=/mnt/Docs/Mail/.hcache
-mailboxes +inbox
 set sendmail="/usr/bin/msmtp"
 set signature="~/.signature"
 #set from=magnus@trapd00r.se
 set from="Magnus Woldrich"
 set query_command = "abook --mutt-query '%s'"
 set sort=threads
+mailboxes +inbox
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
 macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 
@@ -22,40 +22,33 @@ mailboxes `echo /mnt/Docs/Mail/inbox/*`
 
 macro index .. "c=\n" "Go to inbox"
 
-# The chosen color selection
-# 34 - green
-# 111 - blue
-# 124 - red
-# 142 - orange
-# 193 - tan
-# 233 - black
 
 # general-doesn't-fit stuff
-color normal default default
-color error red default
-color markers blue default
-color tilde color142 default
-color status black default
-#
+color normal  default  default
+color error   red      default
+color markers blue     default
+color tilde   color142 default
+color status  black    default
+
 ## index stuff
 ##color tree magenta default
 ##color tree color172 color233
 color indicator color161     default
-color index     green        default  ~l      # Mailing list
-color index     color166       default  ~N      # New
-color index     color65       default  ~O      # Old
+color index     color100     default  ~l      # Mailing list
+color index     color202     default  ~N      # New
+color index     color240     default  ~O      # Old
 color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
-color index     color100         default  ~T      # Tagged
+color index     color100     default  ~T      # Tagged
 color index     white        green    ~F      # Flagged (important)
-color index     color244    default  ~D      # Deleted
+color index     color244     default  ~D      # Deleted
 #
 #
 ## header stuff
-color header color197 color233 "^Subject"
-color header color184 color233 "^From"
-color header color186 color233 "^To"
-color header color252 color233 "^User-Agent"
-color header color250 color233 "^X-.+"
+color header     color197 color233 "^Subject"
+color header     color184 color233 "^From"
+color header     color186 color233 "^To"
+color header     color252 color233 "^User-Agent"
+color header     color250 color233 "^X-.+"
 color hdrdefault color242 color233
 #
 ### gpg stuff
@@ -71,8 +64,8 @@ color hdrdefault color242 color233
 #
 #
 ## misc body stuff
-#color attachment color111 color233
-#color signature color142 color233
+color attachment color111 color233
+color signature color142 color233
 
 
 
