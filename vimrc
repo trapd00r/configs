@@ -110,7 +110,7 @@ let perl_nofold_packages         = 1
 let perl_sync_dist               = 1000
 let perl_want_scope_in_variables = 1
 
-map ² :s/^#//<CR><ESC>$
+map @ :s/^#//<CR><ESC>$
 map <C-h> <C-w><Left>
 map <C-j> <C-w><Down>
 map <C-J> <C-W>j<C-W>_
@@ -146,6 +146,11 @@ vnoremap / /\v
 runtime macros/matchit.vim
 
 syntax on
+
+ia dumper Dumper
+
+set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
+set formatoptions=qro
 
 function! ToggleRelativeAbsoluteNumber()
   if &number
