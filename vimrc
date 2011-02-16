@@ -1,6 +1,7 @@
 " Highly optimized .vimrc for Perl hacking
 " 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
 
+set grepprg=ack\ -a
 set autoindent
 set autoread
 set cmdheight=1
