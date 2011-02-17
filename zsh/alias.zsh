@@ -7,6 +7,9 @@ alias evil="grep 'sub escape' -A 2 \
   $HOME/devel/App::Pimpd/lib/App/Pimpd/Validate.pm |
   tail -1|perl -pe 's/^\s+\$str =~ //'"
 
+alias flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
+alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/devel/CPANTS'
+alias tests='cd $HOME/devel/CPANTS'
 alias pl='ack -f --perl'
 alias today="echo *(e:age today now:)|perl -pe 's/ /\n/g'"
 alias hour=" echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
