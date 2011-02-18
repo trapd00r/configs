@@ -33,6 +33,7 @@ set magic
 set mat=2
 set matchpairs+==:;
 set matchpairs+=':'
+set foldmethod=manual
 set maxfuncdepth=1000
 set nobackup
 set nocsverb
@@ -133,11 +134,14 @@ nnoremap <C-p> :bprevious<CR>
 nnoremap <leader>d :buffers<CR>:buffer<Space>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>g :e#<CR>
-nnoremap <Leader>1 :1b<CR>
-nnoremap <Leader>2 :2b<CR>
-nnoremap <Leader>3 :3b<CR>
-nnoremap <Leader>4 :4b<CR>
-nnoremap <Leader>5 :5b<CR>
+
+nnoremap <Leader>1 :set ft=perl<CR>
+nnoremap <Leader>2 :set ft=c<CR>
+nnoremap <Leader>3 :set ft=lua<CR>
+nnoremap <Leader>4 :set ft=sh<CR>
+nnoremap <Leader>5 :set ft=config<CR>
+
+" Buffer switch
 nnoremap <Leader>6 :6b<CR>
 nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
@@ -147,7 +151,7 @@ nnoremap <Leader>0 :10b<CR>
 nnoremap ; :
 nnoremap <leader>e iuse Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><ESC>
 nnoremap <leader>f :set paste<CR>i
-nnoremap <leader>n :call ToggleRelativeAbsoluteNumber()<CR>
+"nnoremap <leader>n :call ToggleRelativeAbsoluteNumber()<CR>
 nnoremap <leader>p i=pod<CR><CR>=head1 NAME<CR><CR>=head1 SYNOPSIS<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 EXPORTS<CR><CR>None by default.<CR><CR>=head1 FUNCTIONS<CR><CR>=head1 AUTHOR<CR><CR><TAB>Magnus Woldrich<CR>CPAN ID: WOLDRICH<CR>magnus@trapd00r.se<CR>http://japh.se<CR><CR>=head1 CONTRIBUTORS<CR><CR>None required yet.<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright 2011 B<THIS PROGRAM>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.<CR><CR>=head1 LICENSE<CR><CR>This program is free software; you may redistribute it and/or modify it under the same terms as Perl itself.<CR><CR>=cut<CR><ESC>
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>t :e /home/scp1/doc/TODO<CR>
