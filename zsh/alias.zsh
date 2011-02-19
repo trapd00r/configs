@@ -7,6 +7,9 @@ alias evil="grep 'sub escape' -A 2 \
   $HOME/devel/App::Pimpd/lib/App/Pimpd/Validate.pm |
   tail -1|perl -pe 's/^\s+\$str =~ //'"
 
+alias gource='gource -1680x1050 -s 0.2 --stop-at-end --disable-progress --camera-mode overview --output-ppm-stream  - | \
+ffmpeg -y -b 3000K -r 60  -vcodec ppm -i - drakx-net2.mp4'
+
 alias flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
 alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/devel/CPANTS'
 alias tests='cd $HOME/devel/CPANTS'

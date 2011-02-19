@@ -1,6 +1,8 @@
 # escape ^aa  # default
 # escape ^pp  # suggested binding for emacs users
 
+# move window
+# ^a:number 1
 
 term screen-256color
 

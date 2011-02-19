@@ -258,8 +258,8 @@ severity   = 4
 [-Perl::Critic::Policy::Subroutines::ProtectPrivateSubs]
 severity   = 3
 
-# absolutely
-[Perl::Critic::Policy::Subroutines::RequireFinalReturn]
+# Got tired of this. Sometimes I dont want to return
+[-Perl::Critic::Policy::Subroutines::RequireFinalReturn]
 severity   = 5
 
 # sometimes I need some black magic, i.e symboltable hackery

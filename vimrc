@@ -43,6 +43,7 @@ set noswapfile
 set nowb
 set nowrap
 set number
+set numberwidth=4
 set relativenumber
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
@@ -131,6 +132,8 @@ nmap <Space> 10j
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
+nnoremap <leader>n :bprevious<CR>
+nnoremap <leader>p :bnext<CR>
 nnoremap <leader>d :buffers<CR>:buffer<Space>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>g :e#<CR>

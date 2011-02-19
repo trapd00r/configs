@@ -236,6 +236,7 @@ URxvt.htpc.depth:                32
 !*color14:             rgb:36/7F/C5
 !*color15:             rgb:ff/ff/ff
 
+URxvt.shhiva.color196:  #888888
 
 /* black */
 URxvt.shiva.color0:      #121212
