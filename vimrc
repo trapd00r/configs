@@ -7,6 +7,7 @@ set grepprg=ack\ -a
 set autoindent
 set autoread
 set cmdheight=1
+set cinoptions=:0,l1,t0,g0,(0
 set colorcolumn=81
 set cot+=menuone
 set csprg=/usr/local/bin/cscope
