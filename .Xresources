@@ -1,11 +1,12 @@
 /* .Xresources | trapd00r.se */
 !#include "/home/scp1/configs/Xresources/rasta.Xresources"
 !#include "/home/scp1/configs/Xresources/trapd00r_default.Xresources"
+#include "/home/scp1/configs/Xresources/trapd00r_new.Xresources"
 !#include "/home/scp1/configs/Xresources/xterm_default.Xresources"
 !#include "/home/scp1/configs/Xresources/matrix.Xresources"
 !#include "/home/scp1/configs/Xresources/trasmatta.Xresources"
 !#include "/home/scp1/configs/Xresources/random_selection.Xresources"
-#include "/home/scp1/configs/Xresources/better_defaults.Xresources"
+!#include "/home/scp1/configs/Xresources/better_defaults.Xresources"
 
 ratmenu*font:                     -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
 ratmenu*fgcolor:                  #eb122e

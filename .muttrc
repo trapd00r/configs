@@ -30,17 +30,16 @@ color markers blue     default
 color tilde   color142 default
 color status  black    default
 
-## index stuff
-##color tree magenta default
-##color tree color172 color233
-color indicator color161     default
+color tree      color85     default
+mono  indicator bold
+color indicator color85     default
 color index     color100     default  ~l      # Mailing list
-color index     color202     default  ~N      # New
-color index     color240     default  ~O      # Old
+color index     color197     default  ~N      # New
+color index     color86      default  ~O      # Old
 color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
 color index     color100     default  ~T      # Tagged
-color index     white        green    ~F      # Flagged (important)
-color index     color244     default  ~D      # Deleted
+color index     white        default    ~F      # Flagged (important)
+color index     color87      default  ~D      # Deleted
 #
 #
 ## header stuff
@@ -64,22 +63,29 @@ color hdrdefault color242 color233
 #
 #
 ## misc body stuff
-color attachment color111 color233
-color signature color142 color233
+color attachment color86 color233
+color signature color196 color233
 
 
 
 # quote levels
-color quoted color243 color233
-color quoted1 color242 color233
-color quoted2 color241 color233
-color quoted3 color240 color233
-color quoted4 color239 color233
-color quoted5 color238 color233
-color quoted6 color239 color233
-color quoted7 color240 color233
-color quoted8 color241 color233
-color quoted9 color242 color233
+color quoted  color86 color233
+color quoted1 color87 color233
+color quoted2 color88 color233
+color quoted3 color88 color233
+color quoted4 color88 color233
+color quoted5 color88 color233
+color quoted6 color88 color233
+color quoted7 color88 color233
+color quoted8 color88 color233
+color quoted9 color88 color233
+#color quoted3 color240 color233
+#color quoted4 color239 color233
+#color quoted5 color238 color233
+#color quoted6 color239 color233
+#color quoted7 color240 color233
+#color quoted8 color241 color233
+#color quoted9 color242 color233
 
 color body      brightwhite     black "[;:]-[)/(|]"
 
@@ -133,17 +139,17 @@ folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 # unignore X-SpamProbe:
 # unignore X-Virus-hagbard:
 
-set sidebar_visible=no
-set sidebar_width=30
-set sidebar_delim='▕▏'
-# color of folders with new mail
-color sidebar_new brightblue default
-bind index <esc>k sidebar-prev
-bind index <esc>j sidebar-next
-bind index <esc>l sidebar-open
-
-message-hook ~A 'unset sidebar_visible; exec refresh'
-macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
+#set sidebar_visible=no
+#set sidebar_width=30
+#set sidebar_delim='▕▏'
+## color of folders with new mail
+#color sidebar_new brightblue default
+#bind index <esc>k sidebar-prev
+#bind index <esc>j sidebar-next
+#bind index <esc>l sidebar-open
+#
+#message-hook ~A 'unset sidebar_visible; exec refresh'
+#macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
 
 
 macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages" 
