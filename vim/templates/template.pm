@@ -1,5 +1,6 @@
 package Vim::Template;
 use strict;
+use warnings FATAL => 'all';
 
 BEGIN {
   use Exporter;

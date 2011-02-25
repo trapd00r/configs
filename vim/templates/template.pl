@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 use strict;
+use warnings FATAL => 'all';
 use vars qw($VERSION);
 my $APP  = '';
 $VERSION = '0.001';
