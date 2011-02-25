@@ -10,6 +10,7 @@ zsh $HOME/bin/xmodshit &
 #xrandr --output DVI-I-1 --right-of DVI-I-2
 #sh /home/devel/dzen-scripts/dzen.sh &
 #feh --bg-tile /mnt/Docs/Wallpapers/HDSKIT.jpg &
+nitrogen --restore&
 exec /usr/local/bin/stumpwm
 
 
