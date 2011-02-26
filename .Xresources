@@ -17,14 +17,17 @@ ratmenu*align:                    center
 
 Xterm.VT100.allowColorOps: 1
 
-XTerm*background:                 #000000
+XTerm*background:                 #121212
 XTerm*foreground:                 #FFFFFF
 XTerm*colorMode:                  On
 XTerm*colorBD:                    #FFFFFF
 XTerm*colorBDMode:                On
 XTerm*colorUL:                    #FFFFFF
 XTerm*colorULMode:                On
-Xterm*dynamicColors:              On
+XTerm*dynamicColors:              On
+XTerm*font:                       -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+XTerm*boldFont:                   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+XTerm.italicFont:                 -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
 
 /* terminal stuff */
 XTerm*metaSendsEscape:            True
