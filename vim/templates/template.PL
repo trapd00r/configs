@@ -5,22 +5,22 @@ use ExtUtils::MakeMaker;
 WriteMakefile1(
   META_MERGE => {
     resources => {
-      repository => q{https://github.com/trapd00r/Xorg-XLFD},
-      bugtracker => q{https://github.com/trapd00r/Xorg-XLFD/issues},
+      repository => q{https://github.com/trapd00r/Module-Foo},
+      bugtracker => q{https://github.com/trapd00r/Module-Foo/issues},
     },
   },
 
-  NAME             => q{Xorg::XLFD},
+  NAME             => q{Module::Foo},
   AUTHOR           => q{Magnus Woldrich <trapd00r@trapd00r.se>},
-  ABSTRACT         => q{X11 logical font description interface},
-  VERSION_FROM     => q{lib/Xorg/XLFD.pm},
+  ABSTRACT         => q{ },
+  VERSION_FROM     => q{lib/Module/Foo.pm},
   LICENSE          => q{perl},
   MIN_PERL_VERSION => 5.010,
   PL_FILES         => { },
   PREREQ_PM        => { },
   MAN1PODS         => { },
   dist             => { COMPRESS => q{gzip -9f},    SUFFIX => q{gz}, },
-  clean            => { FILES    => q{Xorg-XLFD-*},                  },
+  clean            => { FILES    => q{Module-Foo-*},                     },
 );
 
 sub WriteMakefile1 {
