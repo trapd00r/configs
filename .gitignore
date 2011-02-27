@@ -15,4 +15,6 @@ zsh/cache/shiva/perl_modules/
 zsh/cache/shiva/perl_modules_with_pod
 zsh/cache
 vim/colors/NEVERLAND_ANSI_BG_VIM
-vim/.netrwhis
+.mplayer/rmcd.log
+.mplayer/rpd.log
+vim/.netrwhist
