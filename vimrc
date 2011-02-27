@@ -120,6 +120,8 @@ let perl_string_as_statement     = 1
 let perl_nofold_packages         = 1
 let perl_sync_dist               = 1000
 let perl_want_scope_in_variables = 1
+let perl_pod_formatting          = 1
+let perl_pod_spellcheck_headings = 1
 
 cmap W w
 
