@@ -203,7 +203,8 @@ alias evil="grep 'sub escape' -A 2 \
   $HOME/devel/App::Pimpd/lib/App/Pimpd/Validate.pm |
   tail -1|perl -pe 's/^\s+\$str =~ //'"
 
-alias gource='gource -1280x720 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
+alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
+alias logstalgia='logstalgia japh_access.log -s 20 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
 
 alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/devel/CPANTS \
                     && cd $HOME/devel/CPANTS'
