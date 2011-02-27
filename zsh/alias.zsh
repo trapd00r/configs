@@ -48,6 +48,8 @@ alias  india='ssh scp1@192.168.1.102 -p 19216'
 alias   dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias   n900='ssh -p 19216 user@192.168.1.112'
 
+alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
+
 alias     gs='git status'
 alias     gp='git push'
 alias     gd='git diff'
