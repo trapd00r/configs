@@ -99,6 +99,7 @@ alias   tex='cd $HOME/devel/Term::ExtendedColor::Xresources'
 alias   mll='cd $HOME/devel/Module::LocalLoad'
 alias   mnp='cd $HOME/devel/Mplayer::NowPlaying-CPAN'
 alias xxlfd='cd $HOME/devel/Xorg::XLFD'
+alias   mp3='cd /mnt/Leftover/TransferMusic'
 alias     t='mkdr /tmp/scp1 ; cd /tmp/scp1'
 
 alias lsusb='lsusb | matchline -random'
@@ -204,7 +205,7 @@ alias evil="grep 'sub escape' -A 2 \
   tail -1|perl -pe 's/^\s+\$str =~ //'"
 
 alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
-alias logstalgia='logstalgia japh_access.log -s 20 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
+alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
 
 alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/devel/CPANTS \
                     && cd $HOME/devel/CPANTS'
@@ -221,6 +222,7 @@ alias    shiva='ps -eo pcpu,pid,user,args \
                   | head -10 && iostat -mtx && mpstat -P 'ALL' && sar'
 
 
+alias a='printf "  %s\n  %s\n  %s\n  %s\n" "Magnus Woldrich" "CPAN ID: WOLDRICH" "magnus@trapd00r.se" "http://japh.se"'
 alias trapd00r='printf "\t\033#3trapd00r\n\t\033#4trapd00r\n\tA simple, lightweight Perl hacker\n"'
 alias trapd00rc='printf "\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[38;5;32md\e[38;5;33m0\e[38;5;33m0\e[38;5;37mr\n\t\033#4\e[38;5;133mt\e[38;5;134mr\e[38;5;135ma\e[38;5;139mp\e[38;5;140md\e[38;5;141m00\e[38;5;145mr\n\t\e[38;5;240mA simple, lightweight Perl hacker\n"'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
