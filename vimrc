@@ -8,15 +8,21 @@ set autoindent
 set cmdheight=1
 set cinoptions=:0,l1,t0,g0,(0
 set colorcolumn=81
+set copyindent
 set cot+=menuone
 set csprg=/usr/local/bin/cscope
 set cst
 set csto=0
 set csverb
 set cursorline
+set diffopt=filler,iwhite,context:8,vertical
 set display+=lastline,uhex
 set expandtab
+set equalalways
+set eadirection=ver
+set fillchars=vert:│,fold:-
 set foldmethod=manual
+set foldenable
 set gdefault
 set grepprg=ack\ -a
 set guioptions-=m
@@ -32,10 +38,15 @@ set laststatus=2
 set list
 set listchars=tab:\-\ ,trail:-
 set magic
+set makeprg=/usr/bin/make
 set mat=2
 set matchpairs+==:;
 set matchpairs+=':'
+set matchtime=10
 set maxfuncdepth=1000
+set maxmemtot=200000
+set modeline
+set modelines=2
 set nobackup
 set nocsverb
 set noequalalways
@@ -43,8 +54,11 @@ set noerrorbells
 set noswapfile
 set nowb
 set nowrap
-set relativenumber
+set nrformats=alpha,octal,hex
 set numberwidth=2
+set pastetoggle=<F42>
+set preserveindent
+set relativenumber
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
@@ -70,11 +84,14 @@ set title
 set ttyfast
 set undofile
 set undolevels=512
+set undodir=/mnt/Docs/Backup/undo
 set vb t_vb=
 set vb
 set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*.un~,blib
+
+set nomore
 
 syntax on
 
@@ -123,6 +140,7 @@ let perl_sync_dist               = 1000
 let perl_want_scope_in_variables = 1
 let perl_pod_formatting          = 1
 let perl_pod_spellcheck_headings = 1
+let perlhelp_prog                = '/usr/bin/perldoc'
 
 cmap W w
 
@@ -144,8 +162,8 @@ inoremap <Up>   <NOP>
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
-nnoremap <leader>n :bprevious<CR>
-nnoremap <leader>p :bnext<CR>
+"nnoremap <leader>n :bprevious<CR>
+"nnoremap <leader>p :bnext<CR>
 nnoremap <leader>d :buffers<CR>:buffer<Space>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>g :e#<CR>
@@ -167,10 +185,14 @@ nnoremap <leader>a :bdelete!<CR> " force delete buffer ^
 nnoremap ; :
 nnoremap <leader>e iuse Data::Dumper;<CR>$Data::Dumper::Terse<TAB><TAB> = 1;<CR>$Data::Dumper::Indent<TAB><TAB> = 1;<CR>$Data::Dumper::Useqq<TAB><TAB> = 1;<CR>$Data::Dumper::Deparse<TAB> = 1;<CR>$Data::Dumper::Quotekeys = 0;<CR>$Data::Dumper::Sortkeys  = 1;<CR><CR><ESC>
 nnoremap <leader>f :set paste<CR>i
-nnoremap <leader>p i=pod<CR><CR>=head1 NAME<CR><CR>=head1 SYNOPSIS<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 EXPORTS<CR><CR>None by default.<CR><CR>=head1 FUNCTIONS<CR><CR>=head1 AUTHOR<CR><CR><TAB>Magnus Woldrich<CR>CPAN ID: WOLDRICH<CR>magnus@trapd00r.se<CR>http://japh.se<CR><CR>=head1 CONTRIBUTORS<CR><CR>None required yet.<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright 2011 B<THIS PROGRAM>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.<CR><CR>=head1 LICENSE<CR><CR>This program is free software; you may redistribute it and/or modify it under the same terms as Perl itself.<CR><CR>=cut<CR><ESC>
+nnoremap <leader>o i=pod<CR><CR>=head1 NAME<CR><CR>=head1 SYNOPSIS<CR><CR>=head1 DESCRIPTION<CR><CR>=head1 EXPORTS<CR><CR>None by default.<CR><CR>=head1 FUNCTIONS<CR><CR>=head1 AUTHOR<CR><CR><TAB>Magnus Woldrich<CR>CPAN ID: WOLDRICH<CR>magnus@trapd00r.se<CR>http://japh.se<CR><CR>=head1 CONTRIBUTORS<CR><CR>None required yet.<CR><CR>=head1 COPYRIGHT<CR><CR>Copyright 2011 B<THIS PROGRAM>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.<CR><CR>=head1 LICENSE<CR><CR>This program is free software; you may redistribute it and/or modify it under the same terms as Perl itself.<CR><CR>=cut<CR><ESC>
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <leader>t :e /home/scp1/doc/TODO<CR>
+nnoremap <leader>w :e /home/scp1/doc/TODO<CR>
+nnoremap <leader>r :e /home/scp1/doc/vim.txt<CR>Go<ESC>o
 nnoremap <leader>v V`]
+
+nnoremap <leader><TAB> :set spell<CR>
+nnoremap <leader>p :set paste<CR><CR>o
 
 nnoremap / /\v
 vnoremap / /\v
