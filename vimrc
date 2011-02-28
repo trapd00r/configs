@@ -8,7 +8,7 @@ set autoindent
 set cmdheight=1
 set cinoptions=:0,l1,t0,g0,(0
 set colorcolumn=81
-set copyindent
+"set copyindent
 set cot+=menuone
 set csprg=/usr/local/bin/cscope
 set cst
@@ -144,13 +144,13 @@ let perlhelp_prog                = '/usr/bin/perldoc'
 
 cmap W w
 
-map @ :s/^#//<CR><ESC>$
+"map @ :s/^#//<CR><ESC>$
 map <C-h> <C-w><Left> map <C-j> <C-w><Down> map <C-J> <C-W>j<C-W>_
 
 
 map <C-K> <C-W>k<C-W>_
 map <C-k> <C-w><Up>
-map @ I#
+"map @ I#
 
 nmap <silent>  ;s  :call ToggleSyntax()<CR>
 nmap <silent> \sp :set syn=perl<CR>:syntax sync fromstart<CR>
