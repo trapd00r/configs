@@ -1,6 +1,7 @@
 export ZSH_THEME="trapd00r2-w-git"
 export MOZ_DISABLE_PANGO=1
 export PERL_MM_USE_DEFAULT=1
+export PERL_UNICODE=1
 
 if [[ -f $HOME/.perlbrew/init ]]; then
     source $HOME/.perlbrew/init

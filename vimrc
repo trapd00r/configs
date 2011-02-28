@@ -62,9 +62,11 @@ set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%08O:%02B
 set tabpagemax=50
 set tabstop=2
 set t_Co=256
+set timeout
+set timeoutlen=3000
+set ttimeoutlen=50
 set tw=80
 set title
-set ttimeoutlen=50
 set ttyfast
 set undofile
 set undolevels=512
@@ -72,8 +74,7 @@ set vb t_vb=
 set vb
 set wildchar=<Tab>
 set wildmode=list:longest,full
-set wildmode=longest,list
-set wildignore=*.swp,*.bak,*.un~
+set wildignore=*.swp,*.bak,*.un~,blib
 
 syntax on
 
