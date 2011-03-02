@@ -62,6 +62,7 @@ set relativenumber
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
+set ssop=buffers,folds,globals,help,localoptions,options,resize,tabpages
 set shiftwidth=2
 set shortmess=aIoOT
 "set shortmess=atI
@@ -211,6 +212,12 @@ noremap <Up>    <NOP>
 runtime macros/matchit.vim
 
 ia dumper Dumper
+ia prinnt print
+ia repositry repository
+ia repo repository
+ia m@t L<magnus@trapd00r.se>
+ia MW Magnus Woldrich
+
 
 cab ! new<CR>:r ! " Dump output from external cmd to new buffer
 
