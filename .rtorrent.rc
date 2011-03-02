@@ -198,7 +198,7 @@ schedule = books2,5,5,"load_start=/mnt/Books/.torrents/E-Books/*.torrent,d.set_d
 schedule = books3,5,5,"load_start=/mnt/Books/.torrents/Magazines/*.torrent,d.set_directory=/mnt/Books/Magazines/"
 schedule = books4,5,5,"load_start=/mnt/Books/.torrents/Documentation/*.torrent,d.set_directory=/mnt/Books/Documentation/"
 #
-schedule = tvdisk121,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mnt/TV_1/.new/"
+#schedule = tvdisk121,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mnt/TV_1/.new/"
 schedule = tvdisk21,5,5,"load_start=/mnt/TV_2/.torrents/*.torrent,d.set_directory=/mnt/TV_2/.new/"
 schedule = tvdisk31,5,5,"load_start=/mnt/TV_3/.torrents/*.torrent,d.set_directory=/mnt/TV_3"
 #
