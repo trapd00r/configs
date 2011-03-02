@@ -32,9 +32,9 @@ color status  black    default
 
 color tree      color85     default
 mono  indicator bold
-color indicator color85     default
+color indicator color88     default
 color index     color100     default  ~l      # Mailing list
-color index     color197     default  ~N      # New
+color index     color85     default  ~N      # New
 color index     color86      default  ~O      # Old
 color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
 color index     color100     default  ~T      # Tagged
