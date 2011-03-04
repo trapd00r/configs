@@ -215,8 +215,7 @@ ia dumper Dumper
 ia prinnt print
 ia repositry repository
 ia repo repository
-ia m@t L<magnus@trapd00r.se>
-ia MW Magnus Woldrich
+ia MW Magnus Woldrich<CR>L<magnus@trapd00r.se>
 
 
 cab ! new<CR>:r ! " Dump output from external cmd to new buffer
