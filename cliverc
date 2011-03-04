@@ -1,0 +1,22 @@
+--format "best"
+#   %u  Video URL
+--quvi "/usr/bin/quvi %u"
+
+#   %u  Video download URL
+#   %f  Full path to video file (to write to)
+#   %n  File name (basename of the above)
+#--get-with "/usr/bin/curl -L -C - o %f %u"
+--get-with "/usr/bin/wget -nv %u -O  %n"
+
+# Play downloaded video when done.
+#--exec "/usr/bin/vlc --quiet %f"
+
+# Video filename format.
+#   %t  Video title (after applying --regexp)
+#   %i  Video ID
+#   %h  Video host ID (req. quvi 0.2.8+)
+#   %s  Video file suffix (parsed from server returned content-type)
+--filename-format "%t.%s"
+
+# Regexp to cleanup the video title before using it in a file name.
+--regexp "/(\\w)/g"
