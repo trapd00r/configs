@@ -3,6 +3,9 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+alias swe='translate -from en -to swe'
+alias  en='translate -from swe -to en'
+
 alias          np='pimpd -i'
 alias         np2='pimpd2 -i'
 alias         psh='pimpd2 -sh'
@@ -52,7 +55,8 @@ alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
 
 alias     gs='git status'
 alias     gp='git push'
-alias     gd='git diff'
+#alias     gd='PAGER="" git diff $ | skate --language diff -'
+alias    gdd='git diff'
 alias     gc='git commit'
 alias    glp='gl -p'
 
