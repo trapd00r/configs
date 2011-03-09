@@ -37,6 +37,7 @@ set mapleader=","
 
 
 nmap d <Nop>
+nmap <C-h> <Nop>
 
 "nmap -b yy y
 
