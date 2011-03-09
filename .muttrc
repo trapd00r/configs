@@ -30,7 +30,6 @@ color markers blue     default
 color tilde   color142 default
 color status  black    default
 
-color tree      color85     default
 mono  indicator bold
 color indicator color88     default
 color index     color100     default  ~l      # Mailing list
@@ -40,6 +39,7 @@ color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
 color index     color100     default  ~T      # Tagged
 color index     white        default    ~F      # Flagged (important)
 color index     color87      default  ~D      # Deleted
+color tree      color85     default
 #
 #
 ## header stuff

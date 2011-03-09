@@ -1,8 +1,9 @@
 export ZSH_THEME="trapd00r2-w-git"
 export MOZ_DISABLE_PANGO=1
-export PERL_HACK_LIB="/tmp/"
+export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
-export PERL_UNICODE=1
+#export RELEASE_TESTING=1
+#export PERL_UNICODE=1
 export CLIVE_CONFIG="/home/scp1/configs/cliverc"
 
 if [[ -f $HOME/.perlbrew/init ]]; then

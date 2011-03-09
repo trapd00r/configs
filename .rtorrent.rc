@@ -41,7 +41,7 @@ schedule = games1,5,5,"load_start=/mnt/Games_1/.torrents/*.torrent,d.set_directo
 schedule = mvids1,5,5,"load_start=/mnt/Mvids/.torrents/*.torrent,d.set_directory=/mnt/Mvids/.new/"
 schedule = mvids2,5,5,"load_start=/mnt/Mvids_2/.torrents/*.torrent,d.set_directory=/mnt/Mvids_2/"
 schedule = porn1,5,5,"load_start=/mnt/Porn/.torrents/*.torrent,d.set_directory=/mnt/Porn/.new/"
-#schedule = tv1,5,5,"load_start=/home/scp1/.torrents/*.torrent,d.set_directory=/home/scp1/Downloads/"
+schedule = tv1,5,5,"load_start=/home/scp1/.torrents/*.torrent,d.set_directory=/home/scp1/Downloads/"
 ##schedule = musicspec1,5,5,"load_start=/mnt/Music_1/.torrents/A/*.torrent,d.set_directory=/mnt/Music_1/A/"
 ##schedule = musicspec2,5,5,"load_start=/mnt/Music_1/.torrents/B/*.torrent,d.set_directory=/mnt/Music_1/B/"
 ##schedule = musicspec3,5,5,"load_start=/mnt/Music_1/.torrents/C/*.torrent,d.set_directory=/mnt/Music_1/C/"
@@ -193,13 +193,13 @@ schedule = musiclessmostyesyes2,5,5,"load_start=/mnt/Music_5/.torrents/Not_Scene
 #
 schedule = thefirstporndisk1,5,5,"load_start=/mnt/Porn/.torrents/*.torrent,d.set_directory=/mnt/Porn/.new/"
 #
-schedule = books1,5,5,"load_start=/mnt/Books/.torrents/Audiobooks/*.torrent,d.set_directory=/mnt/Books/Audiobooks/"
-schedule = books2,5,5,"load_start=/mnt/Books/.torrents/E-Books/*.torrent,d.set_directory=/mnt/Books/E-Books/"
-schedule = books3,5,5,"load_start=/mnt/Books/.torrents/Magazines/*.torrent,d.set_directory=/mnt/Books/Magazines/"
-schedule = books4,5,5,"load_start=/mnt/Books/.torrents/Documentation/*.torrent,d.set_directory=/mnt/Books/Documentation/"
+schedule = books1,5,5,"load_start=/mnt/Books/.torrents/*.torrent,d.set_directory=/mnt/Books/.new"
+#schedule = books2,5,5,"load_start=/mnt/Books/.torrents/E-Books/*.torrent,d.set_directory=/mnt/Books/E-Books/"
+#schedule = books3,5,5,"load_start=/mnt/Books/.torrents/Magazines/*.torrent,d.set_directory=/mnt/Books/Magazines/"
+#schedule = books4,5,5,"load_start=/mnt/Books/.torrents/Documentation/*.torrent,d.set_directory=/mnt/Books/Documentation/"
 #
-#schedule = tvdisk121,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mnt/TV_1/.new/"
+schedule = tvdisk121,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mnt/TV_1/.new/"
 schedule = tvdisk21,5,5,"load_start=/mnt/TV_2/.torrents/*.torrent,d.set_directory=/mnt/TV_2/.new/"
 schedule = tvdisk31,5,5,"load_start=/mnt/TV_3/.torrents/*.torrent,d.set_directory=/mnt/TV_3"
 #
-#schedule = gamedisk21,5,5,"load_start=/mnt/Games_2/.torrents/*.torrent,d.set_directory=/mnt/Games_2/.new/"
+schedule = gamedisk21,5,5,"load_start=/mnt/Games_2/.torrents/*.torrent,d.set_directory=/mnt/Games_2/.new/"

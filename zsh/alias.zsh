@@ -53,12 +53,13 @@ alias   n900='ssh -p 19216 user@192.168.1.112'
 
 alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
 
-alias     gs='git status'
+alias     gs='git status --short -b'
 alias     gp='git push'
 #alias     gd='PAGER="" git diff $ | skate --language diff -'
 alias    gdd='git diff'
 alias     gc='git commit'
 alias    glp='gl -p'
+alias    gcu='git commit -m "updates"'
 
 alias      cp='cp -v'
 alias      mv='mv -v'

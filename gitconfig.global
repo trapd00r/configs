@@ -26,3 +26,6 @@
   denyCurrentBranch = ignore
 [core]
 	excludesfile = /etc/gitignore
+[gui]
+	fontui = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0

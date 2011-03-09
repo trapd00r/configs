@@ -7,7 +7,7 @@ set autochdir
 set autoindent
 set cmdheight=1
 set cinoptions=:0,l1,t0,g0,(0
-set colorcolumn=81
+set colorcolumn=+1,+2
 "set copyindent
 set cot+=menuone
 set csprg=/usr/local/bin/cscope
@@ -94,6 +94,8 @@ set wildignore=*.swp,*.bak,*.un~,blib
 
 set nomore
 
+call pathogen#runtime_append_all_bundles() 
+
 syntax on
 
 setlocal nospell spelllang=en_us
@@ -142,6 +144,8 @@ let perl_want_scope_in_variables = 1
 let perl_pod_formatting          = 1
 let perl_pod_spellcheck_headings = 1
 let perlhelp_prog                = '/usr/bin/perldoc'
+
+let extradite_width              = 20
 
 cmap W w
 
@@ -217,8 +221,8 @@ ia repositry repository
 ia repo repository
 ia MW Magnus Woldrich<CR>L<magnus@trapd00r.se>
 
-
-cab ! new<CR>:r ! " Dump output from external cmd to new buffer
+" Dump output from external cmd to new buffer
+cab ! new<CR>:r ! 
 
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
