@@ -1,1 +1,0 @@
-/home/scp1/devel/vim-cute-perl/after/syntax/perl.vim
