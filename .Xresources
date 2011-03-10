@@ -8,14 +8,29 @@
 !#include "/home/scp1/configs/Xresources/random_selection.Xresources"
 !#include "/home/scp1/configs/Xresources/better_defaults.Xresources"
 
-ratmenu*font:                     -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
+#if WIDTH < 60
+#define FONT -windows-webbycaps-medium-r-normal--0-0-96-96-p-0-iso8859-1
+#else
+#define FONT -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+#endif
+
+#define FONT_B -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+#define FONT_I -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+
+#define PROFONT_HUGE  -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
+#define TERMINUS_HUGE -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
+
+
+
+ratmenu*font:                     PROFONT_HUGE
 ratmenu*fgcolor:                  #eb122e
 ratmenu*bgcolor:                  #080808
 ratmenu*style:                    dreary
 ratmenu*persist:                  false
 ratmenu*align:                    center
 
-Xterm.VT100.allowColorOps: 1
+/* Term::ExtendedColor::Xresources */
+Xterm.VT100.allowColorOps:        1
 
 XTerm*background:                 #121212
 XTerm*foreground:                 #FFFFFF
@@ -25,9 +40,9 @@ XTerm*colorBDMode:                On
 XTerm*colorUL:                    #FFFFFF
 XTerm*colorULMode:                On
 XTerm*dynamicColors:              On
-XTerm*font:                       -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-XTerm*boldFont:                   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-XTerm.italicFont:                 -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+XTerm*font:                       FONT
+XTerm*boldFont:                   FONT_B
+XTerm.italicFont:                 FONT_I
 
 /* terminal stuff */
 XTerm*metaSendsEscape:            True
@@ -38,6 +53,8 @@ xterm*SaveLines:                  2500
 
 /* eyecandy */
 XTerm*scrollBar:                  false
+
+URxvt.shiva.geometry:             1x1
 
 /* colors */
 URxvt.shiva.background:           #121212
@@ -78,19 +95,17 @@ URxvt.htpc.borderColor:          #0E0E0E
 URxvt.htpc.pointerColor:         #252525
 
 /* fonts */
-URxvt.shiva*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-URxvt.shiva*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-URxvt.shiva.italicFont:            -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+URxvt.shiva*font:                FONT
+URxvt.shiva*boldFont:            FONT_B
+URxvt.shiva.italicFont:          FONT_I
 
-URxvt.india*font:                  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-URxvt.india*boldFont:              -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-URxvt.india*italicFont:            -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+URxvt.india*font:                FONT
+URxvt.india*boldFont:            FONT_B
+URxvt.india*italicFont:          FONT_I
 
-URxvt.htpc*font:                  -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
+URxvt.htpc*font:                 TERMINUS_HUGE
 
 
-!URxvt.india*font:                  -*-profont-*-*-*-*-11-*-*-*-*-*-*-*
-!URxvt.india*boldFont:              -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
 /* matches */
 URxvt.shiva.underlineURLs:        false
 URxvt.shiva.urlLauncher:          /usr/bin/firefox
@@ -219,11 +234,6 @@ URxvt.htpc.depth:                32
 !URxvt.htpc.borderLess:           true
 !URxvt.lineSpace:                 3
 !URxvt.shiva.title:                laleh
-/*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
-                                  colorize, darken, diff, dissipate, hue,
-                                  lighten, overlay, saturate, screen, sub,
-                                  tint, value)
-*/
 !URxvt.shiva.blurRadius:          (0-128)
 
 /* trapd00r original colorscheme */
@@ -249,7 +259,7 @@ URxvt.htpc.depth:                32
 
 !/* black */
 !URxvt.shiva.color0:      #121212
-!URxvt.shiva.*color8:      #484848 
+!URxvt.shiva.*color8:      #484848
 !/* red */
 !URxvt.shiva.color1:      #262626
 !URxvt.shiva.color9:      #FF6767
@@ -263,7 +273,7 @@ URxvt.htpc.depth:                32
 !URxvt.shiva.color4:      #1165E9
 !URxvt.shiva.color12:     #5496FF
 !/* purple */
-!URxvt.shiva.color5:      #89005A 
+!URxvt.shiva.color5:      #89005A
 !URxvt.shiva.color13:     #B50077
 !/* cyan */
 !URxvt.shiva.color6:      #ff3500 /* cyan => red */ /* 47E0FF */
@@ -275,7 +285,7 @@ URxvt.htpc.depth:                32
 !URxvt.shiva.color16:     #FFB000
 
 URxvt.india.color0:      #030303
-URxvt.india.*color8:     #1C1C1C 
+URxvt.india.*color8:     #1C1C1C
 /* red */
 URxvt.india.color1:      #FF4747
 URxvt.india.color9:      #FF6767
@@ -301,7 +311,7 @@ URxvt.india.color15:     #DEDEDE
 URxvt.india.color16:     #FFB000
 
 URxvt.htpc.color0:      #030303
-URxvt.htpc.*color8:     #1C1C1C 
+URxvt.htpc.*color8:     #1C1C1C
 URxvt.htpc.color1:      #FF4747
 URxvt.htpc.color9:      #FF6767
 URxvt.htpc.color2:      #2b4626/* green => grey */
@@ -316,6 +326,8 @@ URxvt.htpc.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
 URxvt.htpc.color14:     #6BE603 /* cyan => green */
 URxvt.htpc.color7:      #FFFFFF
 URxvt.htpc.color15:     #DEDEDE
+
+
 mplay*background:        #ffffff
 mplay*foreground:        #cb1c13
 mplay*scrollbar:         false
@@ -328,7 +340,7 @@ XFontSel*menu*showUnselectable:       false
 XFontSel*MenuButton.shadowWidth:      0
 XFontSel*Toggle*ToggleStyle:          check
 XFontSel*MenuButton*Justify:          left
-XFontSel*MenuButton*MenuButtonStyle:  select    
+XFontSel*MenuButton*MenuButtonStyle:  select
 
 .xfontsel.pane.commandBox.quitButton.background:  #252525
 .xfontsel.pane.commandBox.quitButton.foreground:  snow
