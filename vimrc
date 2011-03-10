@@ -145,7 +145,7 @@ let perl_pod_formatting          = 1
 let perl_pod_spellcheck_headings = 1
 let perlhelp_prog                = '/usr/bin/perldoc'
 
-let extradite_width              = 20
+let extradite_width              = 40
 
 cmap W w
 
