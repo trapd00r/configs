@@ -3,6 +3,8 @@ alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
 alias -s PKGBUILD='vim'
 
+#alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
+
 alias swe='translate -from en -to swe'
 alias  en='translate -from swe -to en'
 
@@ -75,11 +77,12 @@ alias   perlf='ack -f --perl'
 alias    repl='perl $HOME/devel/App::re.pl/re.pl'
 
 
-alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
+#alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
 alias        r='perl $HOME/devel/App::Rel/rel/'
 
 alias     x='cd $XDG_CONFIG_HOME'
 alias     h='cd $HOME/devel/trapd00r.se'
+alias    vb='cd $HOME/configs/vim/bundle'
 alias tests='cd $HOME/devel/CPANTS'
 
 alias     b='cd $HOME/bin'
@@ -96,7 +99,7 @@ alias     p='cd $HOME/devel/App::Pimpd_Legacy'
 alias     q='cd $HOME/devel/App::Pickyfont'
 alias   apf='cd $HOME/devel/App::Pickyfont'
 alias    ar='cd $HOME/devel/App::Rel/'
-alias   rpd='cd $HOME/devel/App::RPD'
+alias   RPD='cd $HOME/devel/App::RPD'
 alias    at='cd $HOME/devel/App::Ttycolor'
 alias    dm='cd $HOME/devel/Daemon::Mplayer'
 alias   flc='cd $HOME/devel/File::LsColor'
