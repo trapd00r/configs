@@ -49,7 +49,7 @@ set modeline
 set modelines=2
 set nobackup
 set nocsverb
-set noequalalways
+"set noequalalways
 set noerrorbells
 set noswapfile
 set nowb
@@ -91,6 +91,7 @@ set vb
 set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*.un~,blib
+set winfixwidth
 
 set nomore
 
