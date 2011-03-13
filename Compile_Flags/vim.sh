@@ -1,9 +1,10 @@
 #!/bin/sh
 # vim
 
-sh configure --disable-selinux --disable-darwin --enable-luainterp=yes   \
-             --enable-erlinterp=yes --enable-multibyte --disable-gtktest \
-             --disable-largefile --disable-acl --disable-gpm             \
+sh configure --with-features=big --disable-gui --with-x=auto --disable-gpm \
+             --with-global-runtime=/usr/share/vim --enable-multibyte       \
+             --enable-perlinterp --disable-selinux --disable-darwin        \
+             --disable-gtktest --disable-largefile --disable-acl           \
              --disable-sysmouse --with-compiledby="Magnus Woldrich"
 
 
