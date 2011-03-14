@@ -29,3 +29,5 @@
 [gui]
 	fontui = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+[alias]
+	last = log -1 HEAD
