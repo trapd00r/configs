@@ -1,0 +1,1 @@
+1;"/usr/share/gelide/pixmaps/desmume.png";"DeSmuME";"A Nintendo DS emulator under GNU GPL";"0.9.6";"Yopyop and The DeSmuME team";"http://desmume.org/";"/usr/local/bin/desmume-cli";"--auto-pause --opengl-2d \"$gf\"";

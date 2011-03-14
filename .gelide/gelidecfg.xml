@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gelidecfg version="0.1">
+ <group name="dialogs">
+  <key name="about_dialog_x" value="645"/>
+  <key name="about_dialog_y" value="425"/>
+  <key name="changelog_dialog_x" value="515"/>
+  <key name="changelog_dialog_y" value="300"/>
+  <key name="columns_dialog_x" value="600"/>
+  <key name="columns_dialog_y" value="400"/>
+  <key name="emulatoredit_dialog_x" value="575"/>
+  <key name="emulatoredit_dialog_y" value="315"/>
+  <key name="emulatorlauncher_dialog_x" value="2257"/>
+  <key name="emulatorlauncher_dialog_y" value="353"/>
+  <key name="gamelistgenerator_dialog_x" value="600"/>
+  <key name="gamelistgenerator_dialog_y" value="425"/>
+  <key name="preferences_dialog_x" value="2345"/>
+  <key name="preferences_dialog_y" value="383"/>
+  <key name="systemedit_dialog_x" value="575"/>
+  <key name="systemedit_dialog_y" value="300"/>
+ </group>
+ <group name="preferences">
+  <key name="add_unknown_games" value="1"/>
+  <key name="copy_bios_file" value="0"/>
+  <key name="copy_dat_file" value="0"/>
+  <key name="copy_icon_file" value="1"/>
+  <key name="export_dats" value="0"/>
+  <key name="export_icons" value="1"/>
+  <key name="import_default_systems" value="1"/>
+  <key name="preserving_games_data" value="1"/>
+  <key name="show_emulator_output" value="1"/>
+ </group>
+ <group name="ui">
+  <key name="browser_left_height" value="672"/>
+  <key name="browser_left_width" value="200"/>
+  <key name="browser_mode" value="0"/>
+  <key name="browser_top_height" value="120"/>
+  <key name="browser_top_width" value="230"/>
+  <key name="browser_visible" value="1"/>
+  <key name="columns_order" value="0, 5, 2, 3, 4, 6, 1"/>
+  <key name="columns_visibility" value="1, 1, 1, 1, 1, 1, 1"/>
+  <key name="columns_widths" value="73, 250, 74, 49, 100, 225, 150"/>
+  <key name="filters_visible" value="0"/>
+  <key name="filters_width" value="316"/>
+  <key name="fullscreen_mode" value="0"/>
+  <key name="info_pannel_selected" value="0"/>
+  <key name="info_pannel_visible" value="1"/>
+  <key name="info_pannel_widht" value="1035"/>
+  <key name="selected_system" value="3"/>
+  <key name="sort_column" value="0"/>
+  <key name="sort_type" value="0"/>
+  <key name="status_bar_visible" value="1"/>
+  <key name="tool_bar_visible" value="1"/>
+  <key name="ui_height" value="1048"/>
+  <key name="ui_width" value="1678"/>
+  <key name="ui_x" value="1681"/>
+  <key name="ui_y" value="1"/>
+ </group>
+</gelidecfg>
