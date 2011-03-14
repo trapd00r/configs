@@ -7,9 +7,10 @@
 !#include "/home/scp1/configs/Xresources/trasmatta.Xresources"
 !#include "/home/scp1/configs/Xresources/random_selection.Xresources"
 !#include "/home/scp1/configs/Xresources/better_defaults.Xresources"
+!
 
 #if WIDTH < 60
-#define FONT -windows-webbycaps-medium-r-normal--0-0-96-96-p-0-iso8859-1
+#define FONT -xos4-terminus-medium-r-normal--22-220-72-72-c-110-koi8-u
 #else
 #define FONT -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 #endif

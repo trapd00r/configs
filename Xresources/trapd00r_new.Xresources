@@ -191,7 +191,8 @@ URxvt.shiva.color181: #d7afaf
 URxvt.shiva.color182: #d7afd7
 URxvt.shiva.color183: #d7afff
 URxvt.shiva.color184: #d7d700
-URxvt.shiva.color185: #  ! start mutt
+! start mutt
+URxvt.shiva.color185: #ffff00 
 URxvt.shiva.color186: #d7d787
 URxvt.shiva.color187: #d7d7af
 URxvt.shiva.color188: #d7d7d7

@@ -1,6 +1,7 @@
 #vim: tw=0 nowrap ts=2 ft=sh:
 alias -s {pl,pm,c,cpp,h,sh}='vim'
 alias -s {mkv,avi}='mplayer'
+alias -s chm='xchm'
 alias -s PKGBUILD='vim'
 
 #alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
