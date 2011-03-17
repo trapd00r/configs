@@ -9,3 +9,7 @@
       text-decoration: bold !important;
     }
   }
+
+  * {
+      font-family: 'Monte Carlo', 'Terminus', monospace !important;
+    }
