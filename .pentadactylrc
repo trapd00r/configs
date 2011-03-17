@@ -42,6 +42,8 @@ nmap <C-h> <Nop>
 "nmap -b yy y
 
 nmap dd :tabclose<CR>
+nmap a  :noscript toggletemp<CR>
+nmap a  :noscript toggleperl<CR>
 nmap <Leader>q :qa!<CR>
 
 nmap <Leader>d :tabclose<CR>
