@@ -151,6 +151,7 @@ folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 #message-hook ~A 'unset sidebar_visible; exec refresh'
 #macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
 
+set pager="/home/scp1/bin/dumppager"
 
 macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages" 
 
