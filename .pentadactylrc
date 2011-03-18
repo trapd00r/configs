@@ -12,7 +12,7 @@ set maxitems=10
 set cpt=l
 set nostrictfocus
 set wildmode=full
-set wildcase=smart
+"set wildcase=smart
 set showstatuslinks=status
 set showmode
 set shell=zsh
@@ -43,7 +43,7 @@ nmap <C-h> <Nop>
 
 nmap dd :tabclose<CR>
 nmap a  :noscript toggletemp<CR>
-nmap a  :noscript toggleperl<CR>
+nmap A  :noscript toggleperm<CR>
 nmap <Leader>q :qa!<CR>
 
 nmap <Leader>d :tabclose<CR>
