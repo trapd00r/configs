@@ -70,7 +70,7 @@ set shortmess=aIoOT
 set showmatch
 set showmode
 set smartcase
-set smartindent
+"set smartindent
 set smarttab
 set splitbelow
 set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%08O:%02B]
@@ -235,3 +235,23 @@ function! ToggleRelativeAbsoluteNumber()
     set number
   endif
 endfunction
+
+"" for dvorak on the typematrix
+"noremap d h
+"noremap h j
+"noremap t k
+"noremap n l
+"noremap k d
+"noremap l n
+"noremap j t
+"noremap ^Wd ^Wh
+"noremap ^Wh ^Wj
+"noremap ^Wt ^Wk
+"noremap ^Wn ^Wl:
+"
+"map , :noh<CR>
+"map <space> i<space><esc><right>
+"map <C-c><C-c> :w<CR>:make<CR> " add to .vimrc
+"map <C-c><C-v> :!./program<CR> " do this by hand every time
+"map q :q<CR> " quit one buffer fast
+"map Q :qa<CR> " GET ME OUT OF EVERY BUFFER NOW (unless some are unsaved)
