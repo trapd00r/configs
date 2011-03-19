@@ -156,6 +156,8 @@ export DZEN_X_POS=0
 export DZEN_Y_POS=1040
 export DZEN_ALIGNMENT='c'
 
+export X_OSD_COLOR='#a8ff00'
+
 export MPD_HOST='192.168.1.100'
 export MPD_PORT=6600
 export MPD_PASS=`smokingkills`

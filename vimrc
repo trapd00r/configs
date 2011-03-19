@@ -95,7 +95,7 @@ set winfixwidth
 
 set nomore
 
-call pathogen#runtime_append_all_bundles() 
+call pathogen#runtime_append_all_bundles()
 
 syntax on
 
@@ -147,6 +147,10 @@ let perl_pod_spellcheck_headings = 1
 let perlhelp_prog                = '/usr/bin/perldoc'
 
 let extradite_width              = 40
+
+
+
+
 
 cmap W w
 
@@ -200,8 +204,20 @@ nnoremap <leader>v V`]
 nnoremap <leader><TAB> :set spell<CR>
 nnoremap <leader>p :set paste<CR><CR>o
 
+
+" :!perl -wap -e 's/foo/bar/'
 nnoremap / /\v
 vnoremap / /\v
+cnoremap '<,'>s/ '<,'>s/\v
+cnoremap '<,'>s# '<,'>s#\v
+cnoremap '<,'>s@ '<,'>s@\v
+cnoremap %s/ %s/\v
+cnoremap %s# %s#\v
+cnoremap %s@ %s@\v
+cnoremap s/ s/\v
+cnoremap s# s#\v
+cnoremap s@ s@\v
+
 
 nnoremap <silent> <C-l> :nohl<CR>
 
@@ -223,7 +239,7 @@ ia repo repository
 ia MW Magnus Woldrich<CR>L<magnus@trapd00r.se>
 
 " Dump output from external cmd to new buffer
-cab ! new<CR>:r ! 
+cab ! new<CR>:r !
 
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
