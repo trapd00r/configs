@@ -1,13 +1,13 @@
 [user]
-	name = Magnus Woldrich
-	email = trapd00r@trapd00r.se
+  name  = Magnus Woldrich
+  email = trapd00r@trapd00r.se
 [core]
   #pager = v
 [color]
-  branch = auto
-  diff   = 0
-  grep   = auto
-  pager  = 0
+  branch     = auto
+  diff       = 0
+  grep       = auto
+  pager      = 0
   showbranch = auto
   status     = auto
   ui         = auto
@@ -25,9 +25,14 @@
 [receive]
   denyCurrentBranch = ignore
 [core]
-	excludesfile = /etc/gitignore
+  excludesfile = /etc/gitignore
 [gui]
-	fontui = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+  fontui   = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
+  fontdiff = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
 [alias]
-	last = log -1 HEAD
+  last = log -1 HEAD
+  co   = checkout
+  ci   = commit
+  st   = status
+  pu   = push
+  pl   = pull
