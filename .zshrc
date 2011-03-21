@@ -212,6 +212,20 @@ setopt notify globdots pushdtohome cdablevars autolist
 setopt autocd recexact longlistjobs
 setopt autoresume pushdsilent
 setopt autopushd pushdminus extendedglob rcquotes mailwarning
+setopt AUTO_PARAM_SLASH
+setopt AUTO_PARAM_KEYS
+setopt COMPLETE_IN_WORD
+setopt NUMERIC_GLOB_SORT
+setopt NO_CLOBBER
+setopt RC_QUOTES # allow ' inside ''
+setopt INTERACTIVE_COMMENTS
+setopt PROMPT_SUBST
+setopt OCTAL_ZEROES
+
+
+unsetopt AUTO_REMOVE_SLASH
+unsetopt COMPLETE_ALIASES
+
 
 
 #setopt print_exit_value
@@ -250,7 +264,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 
 
-#zstyle ':completion:*' menu select=10 interactive list-dirs-first 
+#zstyle ':completion:*' menu select=10 interactive list-dirs-first
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
