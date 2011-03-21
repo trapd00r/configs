@@ -7,6 +7,11 @@ export PERL_MM_USE_DEFAULT=1
 #export PERLBREW_ROOT="/mnt/Leftover/Perl5"
 #export RELEASE_TESTING=1
 #export PERL_UNICODE=1
+
+export GOROOT=$HOME/go
+export GOOS='linux'
+export GO_ARCH=386
+
 export CLIVE_CONFIG="/home/scp1/configs/cliverc"
 
 if [[ -f $HOME/.perlbrew/init ]]; then
@@ -127,7 +132,7 @@ source $HOME/.zsh/$ZSH_THEME.zsh-theme
 
 #export TERM='rxvt-256color'
 export CDPATH='.:~:/mnt'
-export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/
+export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export EDITOR=vim
 export PAGER=vimpager
