@@ -1,157 +1,118 @@
-#source /etc/Muttrc.gpg.dist
+source ~/configs/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo default ; fi`
+source ~/configs/mutt/gpg.rc
 
-set mbox_type=Maildir
+#set crypt_use_gpgme=yes
+
+set abort_nosubject=no
+set abort_unmodified=no
+set arrow_cursor
+set ascii_chars
+set attribution="On %d, %n wrote:"
+set autoedit
+set charset="UTF-8"
+set compose_format="--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%>-"
+set date_format="%Y-%m-%d %H:%M"
+set delete=yes
+set display_filter="tr '\240\204\223\226' ' \"\"-'"
+set edit_headers
+#set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
+#set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
+set fast_reply
 set folder=/mnt/Docs/Mail/inbox
-set mbox=+mbox
-set spoolfile=+
-set postponed=+drafts
-set header_cache=/mnt/Docs/Mail/.hcache
-set sendmail="/usr/bin/msmtp"
-set signature="~/.signature"
-#set from=magnus@trapd00r.se
+set forward_format="Fw: %s"     # subject in forwarded messages
 set from="Magnus Woldrich"
+set header_cache=/mnt/Docs/Mail/.hcache
+set hide_missing=yes
+set hostname="japh.se"
+set implicit_autoview=yes
+set include
+set index_format = "%Z %4D %40.40s▕▏ %n"
+set mail_check=5
+set markers=no
+set mbox=+mbox
+set mbox="=received"
+set mbox_type=Maildir
+set move=no
+set nobeep
+set noconfirmappend
+set nohelp
+set nomark_old
+set nowait_key
+set pager_context=3
+set pager_format="-%S- %-20.20f %s"
+set pager="/home/scp1/devel/utils/mutt_pager"
+set pager_index_lines=0
+set pgp_getkeys_command=""
+set pgp_replysign
+set pgp_replysignencrypted
+set pgp_show_unusable=no
+set pgp_sign_as="4239BAAA"
+set pgp_sort_keys="keyid"
+set pgp_timeout=3600
+set pgp_verify_sig=yes
+set pgp_autosign=yes
+set pgp_autoencrypt=yes
+set pgp_good_sign="^gpg: Good signature from"
+#set pgp_ignore_subkeys
+#set pgp_create_traditional=no
+#set pgp_replyencrypt=yes
+set post_indent_string='---end quoted text---'
+set postponed=+drafts
+set postponed=+postponed
+set print=ask-no
 set query_command = "abook --mutt-query '%s'"
+set quit=yes
+set quote_regexp="^ *[a-zA-Z]*[>|][>:|]*"
+set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
+set read_inc=25
+set record="/mnt/Docs/Mail/archive"
+set record="=sent-mail"
+set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
+set reply_to=yes
+set reverse_alias
+set send_charset="utf-8"
+set sendmail="/usr/bin/msmtp"
+set shell='/bin/zsh'
+set signature="~/.signature"
+set smart_wrap
+set smileys="^$"
 set sort=threads
-mailboxes +inbox
+set spoolfile=+
+set status_on_top
+set strict_threads
+set text_flowed
+set tmpdir=/tmp/scp1
+set wrapmargin=4
+
+macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
 macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
-
-hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
-set editor="vim +':set textwidth=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
-mailboxes `echo /mnt/Docs/Mail/inbox/*`
-
 macro index .. "c=\n" "Go to inbox"
 
-
-# general-doesn't-fit stuff
-color normal  default  default
-color error   red      default
-color markers blue     default
-color tilde   color142 default
-color status  black    default
-
-mono  indicator bold
-color indicator color88     default
-color index     color100     default  ~l      # Mailing list
-color index     color85     default  ~N      # New
-color index     color86      default  ~O      # Old
-color index     magenta      default  "! ~C ." # No To: or Cc: (newsdeliver)
-color index     color100     default  ~T      # Tagged
-color index     white        default    ~F      # Flagged (important)
-color index     color87      default  ~D      # Deleted
-color tree      color85     default
-#
-#
-## header stuff
-color header     color197 color233 "^Subject"
-color header     color184 color233 "^From"
-color header     color186 color233 "^To"
-color header     color252 color233 "^User-Agent"
-color header     color250 color233 "^X-.+"
-color hdrdefault color242 color233
-#
-### gpg stuff
-##color body color34 color233 "^gpg: Good signature.*"
-##color body color193 color124 "^gpg: BAD signature.*"
-##color body color142 color233 "^gpg: Can't check signature.*"
-##color body color142 color233 "^-----BEGIN PGP SIGNED MESSAGE-----"
-##color body color142 color233 "^-----BEGIN PGP SIGNATURE-----"
-##color body color142 color233 "^-----END PGP SIGNED MESSAGE-----"
-##color body color142 color233 "^-----END PGP SIGNATURE-----"
-##color body color142 color233 "^Version: GnuPG.*"
-##color body color142 color233 "^Comment: .*"
-#
-#
-## misc body stuff
-color attachment color86 color233
-color signature color196 color233
-
-
-
-# quote levels
-color quoted  color86 color233
-color quoted1 color87 color233
-color quoted2 color88 color233
-color quoted3 color88 color233
-color quoted4 color88 color233
-color quoted5 color88 color233
-color quoted6 color88 color233
-color quoted7 color88 color233
-color quoted8 color88 color233
-color quoted9 color88 color233
-#color quoted3 color240 color233
-#color quoted4 color239 color233
-#color quoted5 color238 color233
-#color quoted6 color239 color233
-#color quoted7 color240 color233
-#color quoted8 color241 color233
-#color quoted9 color242 color233
-
-color body      brightwhite     black "[;:]-[)/(|]"
-
-set move=no
 bind pager k previous-line
 bind pager < previous-line
 bind pager j next-line
 bind pager > next-line
 bind pager down next-page
 bind pager up previous-page
-# dual window view in mutt
-set pager_index_lines=5
-
-# Similar settings for the index
 bind index [ previous-line
 bind index ] next-line
 
-set index_format = "%Z %4D %40.40s▕▏ %n"
-#set index_format   = "%4C %Z %{%b %d} %-15.15F (%4l) %s"
-set forward_format="Fw: %s"     # subject in forwarded messages
-set date_format="%Y-%m-%d %H:%M"
-set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
-#set reply_regexp="^(re([\\[0-9\\]+])*|aw):[ \t]*"
-set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
-set edit_headers
-set text_flowed
-set record="=sent-mail"
-set reply_to=yes
-set mbox="=received"
-
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
+hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
+mailboxes `echo /mnt/Docs/Mail/inbox/*`
 
-# Ignore all headers
- ignore *
+ignore *
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore BCC:
+unignore X-Mailer:
+unignore User-Agent:
 
-## Then un-ignore the ones I want to see
- unignore From:
- unignore To:
- unignore Reply-To:
-# unignore Mail-Followup-To:
- unignore Subject:
- unignore Date:
-# unignore Organization:
-# unignore Newsgroups:
- unignore CC:
- unignore BCC:
-# unignore Message-ID:
- unignore X-Mailer:
- unignore User-Agent:
-# unignore X-Junked-Because:
-# unignore X-SpamProbe:
-# unignore X-Virus-hagbard:
+auto_view text/x-diff
 
-#set sidebar_visible=no
-#set sidebar_width=30
-#set sidebar_delim='▕▏'
-## color of folders with new mail
-#color sidebar_new brightblue default
-#bind index <esc>k sidebar-prev
-#bind index <esc>j sidebar-next
-#bind index <esc>l sidebar-open
-#
-#message-hook ~A 'unset sidebar_visible; exec refresh'
-#macro pager q "<exit><enter-command>set sidebar_visible<return><refresh>"
-
-set pager="/home/scp1/bin/dumppager"
-
-macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages" 
-
+my_hdr X-Operating-System:`mpc --format "%artist% - %title% on %album%"|head -1`

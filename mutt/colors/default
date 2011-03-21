@@ -1,0 +1,79 @@
+# Colours
+# foreground and background can be one of the following:
+
+# white default green magenta blue cyan yellow red default
+
+# foreground can optionally be prefixed with the keyword bright to make
+# the foreground color boldfaced (e.g., brightred).
+
+color indicator black red
+color signature brightblack default
+color hdrdefault cyan default
+color status cyan blue
+#color status brightred red
+color message white default
+color error red default
+
+color normal white default
+color quoted green default
+color quoted1 cyan default
+color quoted2 magenta default
+color quoted3 brightblue default
+color quoted4 blue default
+color quoted5 brightblack default
+
+color tree magenta default
+color tilde brightblack default 
+color markers brightblack default
+color attachment red default
+color search black yellow
+color underline brightgreen default
+
+
+## urls
+color body magenta default "(ftp|http)://[^ ]+"
+
+## emailadress
+color body magenta default [-a-z_0-9.]+@[-a-z_0-9.]+
+
+## Some colors to mark status
+color index yellow		default	~F	# Flagged
+color index green		default	~N	# New
+color index brightyellow	default	~O	# Unread
+color index magenta		default	~T	# Tagged
+color index red			default	~g	# gpg signed
+color index brightred		default	~G	# gpg encrypted
+
+## This gives color to scored messages.
+color index blue default '(~n 1-1)'
+color index cyan default '(~n 2-2)'
+color index yellow default '(~n 3-3)'
+color index red default '(~n 4-4)'
+#color index red default '(~n 5-5)'
+#color index blue default '(~n 6-6)'
+#color index brightyellow default '(~n 7-7)'
+#color index white default '(~n 8-9)'
+#color index brightred default '(~n 10-99)'
+
+#lets paint those MAILER-MESSAGES a bit.
+color index yellow default ~fMAILER-DAEMON@*
+color index yellow default ~fMailer-Daemon@*
+
+## I send myself messages with crontab as a diary. Must be important ;)
+color index yellow default ~fhan@cc15467*
+
+# a crontab-reminder will look something like this
+# 1 1 14 12 * echo ' don't forget '|mail -s subject han
+# this will send me an e-mail 1 minute past 1 am, 14 december.
+
+## You can also give color to messages with a certain subject
+
+#color index brightred default '(~s"REPLAY: Score Upload Notice : seymour scored.*")'
+#color index brightred default '(~s"REPLAY: Tournament Upload Notice : seymour scored.*")'
+#color index green default '(~b"The new recording reduces your leaderboard score.")'
+
+#color index cyan default '(~s"Re:*")'
+#color index cyan default '(~s"RE:*")'
+
+#Should be last. So it gets the highest priority.
+color index blue		default	~D	# Deleted

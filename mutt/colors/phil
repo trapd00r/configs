@@ -1,0 +1,115 @@
+# -*- muttrc -*-
+#
+# Color settings for mutt.
+#
+
+# Source: http://aperiodic.net/phil/configs/
+
+# Default color definitions
+color normal     white         default
+color hdrdefault green         default
+color quoted	 green         default
+color quoted1    yellow        default
+color quoted2    red           default
+color signature  cyan          default
+color indicator  brightyellow  red
+color error      brightred     default
+color status	 brightwhite   blue
+color tree	 brightmagenta default
+color tilde	 blue          default
+color attachment brightyellow  default
+color markers	 brightred     default
+color message    white         default
+color search     brightwhite   magenta
+color bold       brightyellow  default
+
+# Color definitions when on a mono screen
+mono bold      bold
+mono underline underline
+mono indicator reverse
+mono error     bold
+
+# Colors for items in the reader
+color header brightyellow default "^(From|Subject):"
+color header brightcyan   default ^To:
+color header brightcyan   default ^Cc:
+mono  header bold                 "^(From|Subject):"
+
+# Many of these formulas were stolen from Jeremy Blosser
+# These would be much simpler if colors were additive.
+
+# regular new messages
+color index black         white   "~N !~T !~F !~p !~P"
+# regular tagged messages
+color index black         cyan    "~T !~F !~p !~P"
+# regular flagged messages
+color index black         red     "~F !~p !~P"
+# messages to me
+color index yellow        default "~p !~N !~T !~F !~P"
+color index brightyellow  white   "~p ~N !~T !~F !~P"
+color index yellow        cyan    "~p ~T !~F !~P"
+color index yellow        red     "~p ~F !~P"
+# messages from me
+color index green         default "~P !~N !~T !~F"
+color index green         white   "~P ~N !~T !~F"
+color index green         cyan    "~P ~T !~F"
+color index green         red     "~P ~F"
+# messages which mention my name in the body
+color index yellow        default "~b \"phil(_g|\!| gregory)|pgregory\" !~N !~T !~F !~p !~P"
+color index brightyellow  white   "~b \"phil(_g|\!| gregory)|pgregory\" ~N !~T !~F !~p !~P"
+color index yellow        cyan    "~b \"phil(_g|\!| gregory)|pgregory\" ~T !~F !~p !~P"
+color index yellow        red     "~b \"phil(_g|\!| gregory)|pgregory\" ~F !~p !~P"
+# messages which are in reference to my mails
+color index magenta       default "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" !~N !~T !~F !~p !~P"
+color index magenta       white   "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~N !~T !~F !~p !~P"
+color index magenta       cyan    "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~T !~F !~p !~P"
+color index magenta       red     "~x \"(mithrandir|aragorn)\\.aperiodic\\.net|thorin\\.hillmgt\\.com\" ~F !~p !~P"
+# messages to root, etc.
+color index cyan          default "~C \"(root|postmaster|abuse|mailer-daemon)@\" !~N !~P !~p"
+color index cyan          white   "~C \"(root|postmaster|abuse|mailer-daemon)@\" ~N !~P !~p"
+# big messages
+color index brightred     default "!~N ~z 10240-"
+color index brightred     cyan    "~T !~F !~p !~P ~z 10240-"
+color index brightred     white   "~N ~z 10240-"
+
+# deleted messages
+color index red           default "!~N ~D
+color index red           white   "~N ~D"
+
+
+# Highlights inside the body of a message.
+
+# Attribution lines
+color body magenta default "\\* [^<]+ <[^>]+> \\[[^]]+\\]:"
+color body magenta default "(^|[^[:alnum:]])on [a-z0-9 ,]+( at [a-z0-9:,. +-]+)? wrote:"
+
+# URLs
+color body brightyellow default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-f][0-9a-f])*@)?((([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?|[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)(:[0-9]+)?)|([a-z0-9_.!~*'()$,;:@&=+-]|%[0-9a-f][0-9a-f])+)(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*(/([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*(;([a-z0-9_.!~*'():@&=+$,-]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?(#([a-z0-9_.!~*'();/?:@&=+$,-]|%[0-9a-f][0-9a-f])*)?|(www|ftp)\\.(([a-z0-9]([a-z0-9-]*[a-z0-9])?)\\.)*([a-z]([a-z0-9-]*[a-z0-9])?)\\.?(:[0-9]+)?(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*(/([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*(;([-a-z0-9_.!~*'():@&=+$,]|%[0-9a-f][0-9a-f])*)*)*)?(\\?([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?(#([-a-z0-9_.!~*'();/?:@&=+$,]|%[0-9a-f][0-9a-f])*)?)[^].,:;!)? \t\r\n<>\"]"
+
+# email addresses
+color body brightmagenta default "((@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]),)*@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\.[0-9]?[0-9]?[0-9]\\]):)?[0-9a-z_.+%$-]+@(([0-9a-z-]+\\.)*[0-9a-z-]+\\.?|#[0-9]+|\\[[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\.[0-2]?[0-9]?[0-9]\\])"
+
+# PGP messages
+color  body            brightyellow    default "^gpg: Good signature .*"
+color  body            white           default "^gpg: "
+color  body            brightwhite     red     "^gpg: BAD signature from.*"
+mono   body            bold                    "^gpg: Good signature"
+mono   body            bold                    "^gpg: BAD signature from.*"
+
+# Various smilies and the like
+color body brightwhite default "<[Gg]>"                            # <g>
+color body brightwhite default "<[Bb][Gg]>"                        # <bg>
+color body brightwhite default " [;:]-*[})>{(<|]"                  # :-) etc...
+# *bold*
+color body brightblue  default "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
+mono  body bold                "(^|[[:space:][:punct:]])\\*[^*]+\\*([[:space:][:punct:]]|$)"
+# _underline_
+color body brightblue  default "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
+mono  body underline           "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
+# /italic/  (Sometimes gets directory names)
+#color body brightblue  default "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
+#mono  body underline           "(^|[[:space:][:punct:]])/[^/]+/([[:space:][:punct:]]|$)"
+
+# Border lines.
+color body blue default "( *[-+=#*~_]){6,}"
+

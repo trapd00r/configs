@@ -1,0 +1,62 @@
+#
+# -*-- Mutt Theme 'Cyan' --*-
+# By Jochem Kossen·
+#          And
+#             Han Boetes
+# Absolutely NO copyright (c) 2001 (Do with it whatever you like)
+# Yes Bill... knock yourself out.
+
+#
+# Colors you can use:
+#
+# white   -   brightwhite
+# yellow  -  brightyellow
+# red     -     brightred
+# magenta - brightmagenta
+# blue    -    brightblue
+# green   -   brightgreen
+# black   -   brightblack
+color normal      white black 
+color attachment  brightblack black 
+color bold        brightwhite black 
+color underline   black brightblue 
+color error       white black 
+color indicator   cyan blue 
+color message     white black 
+color status      black blue 
+color quoted      brightcyan black 
+color quoted1     cyan black 
+color quoted2     brightblue black 
+color quoted3     blue black 
+color quoted4     brightblack black 
+color quoted5     brightblack black 
+color signature   brightblack black 
+color tilde       brightblack black 
+color tree        brightblack black 
+color hdrdefault  black brightblue 
+color header      brightcyan black  "^date: *"
+color header      cyan black  "^from: *"
+color header      brightblue black  "^subject: *"
+color header      blue black  "^to: *"
+color header      brightblack black  "^delivered-to: *"
+color header      brightblue black  "^cc: *"
+color header      brightblue black  "^bcc: *"
+color header      cyan black  "^reply-to: *" 
+color header      cyan black  "^mail-followup-to: *" 
+color header      cyan black  "^old-return-path: *" 
+color header      brightblack black  "^x-mailer: *" 
+color header      brightblack black  "^user-agent: *" 
+color header      brightblack black  "^x-operating-system: *" 
+color header      cyan black  "^x-mailing-list: *" 
+color header      brightblue black  "^in-reply-to: *" 
+color body        black brightblue  "[^ <]*:\/\/[^ >]*" #for URLs 
+color body        black brightblue  "[A-Za-z0-9_\.\-]+@[A-Za-z0-9_\.\-]*[A-Za-z0-9_\.\-]+" 
+color index       brightblue black '~O'   # Unread 
+color index       cyan black '~N'   # New 
+color index       brightblack black '~D'   # Deleted 
+color index       brightcyan black '~g'   # gpg signed 
+color index       white black '~G'   # gpg encrypted
+color index       brightwhite black '~F'   # Flagged 
+color index       brightwhite black '~T'   # Tagged 
+color index       brightwhite black '~f MAILER-DAEMON@*' 
+color index       brightwhite black '~f Mailer-Daemon@*' 

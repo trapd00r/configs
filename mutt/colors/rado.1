@@ -1,0 +1,87 @@
+###
+# Mutt: displaying with high-lighting
+# © 2006 Rado
+###
+
+### b/w
+
+mono error	bold
+mono header	bold '^(subject|to|cc|bcc):'
+mono index	bold ~F
+mono quoted	bold
+
+color normal	default black
+color indicator	black yellow
+color status	yellow blue
+color message	green black
+color error	brightyellow red
+
+color search	yellow red
+color attachment	magenta black
+color markers	red yellow
+color signature	magenta black
+color tilde	yellow black
+color tree	cyan black
+
+color quoted	cyan black
+color quoted1	white black
+color quoted2	green black
+color quoted3	brightyellow black
+color quoted4	brightcyan black
+color quoted5	brightwhite black
+color quoted6	brightgreen black
+color quoted7	brightblack black
+
+color hdrdefault	brightwhite blue
+color header	magenta black '^(status|lines|date|received|sender|references):'
+color header	magenta black '^(pr|mime|x-|user|return|content-)[^:]*:'
+color header	brightyellow black '^content-type:'
+color header	magenta black '^content-type:[[:space:]]*text/plain'
+color header	brightyellow black '^content-type:[.[:space:]]*format="?flowed'
+
+color header	brightcyan black '^(message-id|in-reply-to):'
+color header	brightgreen black '^list-[^:]*:'
+
+color header	yellow black	'^from '
+color header	brightcyan black	'^(disposition)'
+color header	green black	'^(mail-)?followup'
+color header	white black	'^reply'
+color header	brightwhite black	'^(resent)'
+color header	default black	'^from:'
+color header	cyan black	'^(to|cc|bcc):'
+color header	green black	'^(subject):.*$'
+
+### special body color: takes longest match, if == then last!
+
+mono body	reverse		'^(subject):.*'
+color body	brightwhite magenta	'^(subject):.*'
+mono body	reverse		'[[:alpha:]][[:alnum:]-]+:'
+color body	black magenta	'[[:alpha:]][[:alnum:]-]+:'
+
+# emphasis by _txt_ and *txt*
+mono body	bold		"$HI_STAR"
+color body	brightgreen blue	"$HI_STAR"
+mono body	reverse		"$HI_LINE"
+color body	blue cyan	"$HI_LINE"
+
+### dropped 2nd part of broken line, reproduce analogously
+
+# interhost path (/mandatory)
+mono body bold		"$URLMAIL:$URLPATHn"
+color body black white	"$URLMAIL:$URLPATHn"
+
+# ftp/www hostnames (path optional)
+mono body bold		"(ftp|www|irc)\\.$URLHOST$URLPATHz"
+color body white blue	"(ftp|www|irc)\\.$URLHOST$URLPATHz"
+
+# full URL (path optional)
+mono body reverse	"(ftp|http|irc)s?://$URLHOST$URLPATHz"
+color body black green	"(ftp|http|irc)s?://$URLHOST$URLPATHz"
+
+# eMail Adr
+mono body reverse	"$URLMAIL@$URLHOST"
+color body blue yellow	"$URLMAIL@$URLHOST"
+
+###
+# EOF
+###

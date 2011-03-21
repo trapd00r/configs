@@ -1,0 +1,69 @@
+#
+# -*-- Mutt Theme 'Cyan' --*-
+# By Jochem Kossen 
+#          And
+#             Han Boetes
+# Absolutely NO copyright (c) 2001 (Do with it whatever you like)
+
+#
+# Colors you can use:
+#
+# white   -   brightwhite
+# yellow  -  brightyellow
+# cyan     -     brightcyan
+# magenta - brightmagenta
+# blue    -    brightblue
+# green   -   brightgreen
+# black   -   brightblack
+
+
+color normal      white        default
+color attachment  cyan         default
+color bold        brightwhite  default
+color underline   default      cyan
+color error       brightwhite  default
+color indicator   black        cyan
+color message     brightcyan   default
+color status      brightcyan  cyan
+
+color quoted      cyan         default
+color quoted1     brightcyan   default
+color quoted2     cyan         default
+color quoted3     brightcyan   default
+color quoted4     cyan         default
+color quoted5     brightcyan   default
+
+color signature   brightblack default
+color tilde       brightcyan   default
+color tree        cyan         default
+color markers     brightblack default
+
+color body        brightcyan   default  "[^ <]*:\/\/[^ >]*" # for URLs
+color body        brightcyan   default  "[A-Za-z0-9_\.\-]+@[A-Za-z0-9_\.\-]*[A-Za-z0-9_\.\-]+" # For email adresses
+
+color hdrdefault  cyan         default
+#color header      brightcyan   default  "^date: *"
+color header      brightcyan   default  "^from: *"
+color header      brightcyan   default  "^subject: *"
+#color header      cyan         default  "^to: *"
+#color header      cyan         default  "^delivecyan-to: *"
+#color header      cyan         default  "^cc: *"
+#color header      cyan         default  "^bcc: *"
+#color header      brightcyan   default  "^reply-to: *"
+#color header      brightcyan   default  "^mail-followup-to: *"
+#color header      brightcyan   default  "^old-return-path: *"
+#color header      cyan         default  "^x-mailer: *"
+#color header      cyan         default  "^user-agent: *"
+#color header      cyan         default  "^x-operating-system: *"
+color header      brightcyan   default  "^x-mailing-list: *"
+#color header      cyan         default  "^in-reply-to: *"
+
+color index       brightcyan   default "~N"   # New
+color index       cyan         default "~O"   # Unread
+color index       blue         default "~g"   # gpg signed
+color index       brightblue   default "~G"   # gpg encrypted
+color index       brightwhite  default "~F"   # Flagged
+color index       brightwhite  default "~T"   # Tagged
+color index       brightwhite  default "~f MAILER-DAEMON@*"
+color index       brightwhite  default "~f Mailer-Daemon@*"
+color index       brightblack  default "~D"   # Deleted

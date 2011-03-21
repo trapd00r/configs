@@ -1,0 +1,68 @@
+#
+# -*-- Mutt Theme 'Cyan' --*-
+# By Jochem Kossen 
+#          And
+#             Han Boetes
+# Absolutely NO copyright (c) 2001 (Do with it whatever you like)
+
+#
+# Colors you can use:
+#
+# white   -   brightwhite
+# brightblack  -  brightbrightblack
+# red     -     brightred
+# magenta - brightmagenta
+# blue    -    brightblue
+# green   -   brightgreen
+# black   -   brightblack
+
+
+color normal      white        default
+color attachment  red          default
+color bold        brightwhite  default
+color underline   default      red
+color error       brightwhite  default
+color indicator   default        red
+color message     brightred    default
+color status      black      red
+
+color hdrdefault  red         default
+#color header      brightred   default  "^date: *"
+color header      brightred   default  "^from: *"
+color header      brightred   default  "^subject: *"
+#color header      red         default  "^to: *"
+#color header      red         default  "^delivered-to: *"
+#color header      red         default  "^cc: *"
+#color header      red         default  "^bcc: *"
+#color header      brightred   default  "^reply-to: *"
+#color header      brightred   default  "^mail-followup-to: *"
+#color header      brightred   default  "^old-return-path: *"
+#color header      red         default  "^x-mailer: *"
+#color header      red         default  "^user-agent: *"
+#color header      red         default  "^x-operating-system: *"
+color header      brightred   default  "^x-mailing-list: *"
+#color header      red         default  "^in-reply-to: *"
+
+color body        brightred   default  "[^ <]*:\/\/[^ >]*" # for URLs
+color body        brightred   default  "[A-Za-z0-9_\.\-]+@[A-Za-z0-9_\.\-]*[A-Za-z0-9_\.\-]+"
+
+color quoted      red         default
+color quoted1     brightred   default
+color quoted2     red         default
+color quoted3     brightred   default
+color quoted4     red         default
+color quoted5     brightred   default
+
+color signature   brightblack default
+color tilde       brightred   default
+color tree        red         default
+color markers     brightblack default
+color index       red         default "~O"   # Unread
+color index       brightred   default "~N"   # New
+color index       red         default "~g"   # gpg signed
+color index       brightred   default "~G"   # gpg encrypted
+color index       brightwhite  default "~F"   # Flagged
+color index       brightwhite  default "~T"   # Tagged
+color index       brightwhite  default "~f MAILER-DAEMON@*"
+color index       brightwhite  default "~f Mailer-Daemon@*"
+color index       brightblack       default "~D"   # Deleted

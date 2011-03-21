@@ -1,0 +1,72 @@
+# -*- muttrc -*-
+#
+# Colour settings for mutt.
+#
+
+# Default colour definitions
+color hdrdefault black        cyan
+color quoted     red          white
+color signature  brightblack  white
+color indicator  brightwhite  red
+color attachment black        green
+color error      red          white
+color message    blue         white
+color search     brightwhite  magenta
+color status     brightyellow blue
+color tree       red          white
+color normal     blue         white
+color tilde      green        white
+color bold       brightyellow white
+color markers    red          white
+
+# Colour definitions when on a mono screen
+mono bold      bold
+mono underline underline
+mono indicator reverse
+
+# Colours for items in the reader
+color header black cyan ".*"
+color header brightwhite cyan "^(From|Subject):"
+color header red         cyan "^X-Junked-Because: "
+color header red         cyan "^X-Virus-hagbard: .* FOUND"
+mono  header bold             "^(From|Subject|X-Junked-Because|X-Virus-hagbard):"
+
+# Colours for items in the index
+color index brightblue  white ~N
+# color index brightgreen white "~N (~x (refinery|twat\.com\.ar\) | ~h \"^In-[Rr]eply-[Tt]o: .*(refinery|twat\.com\.ar\)")"
+#
+# Works, but grabs whole message
+# color index brightcyan white '~N ( ~h "^In-[Rr]eply-[Tt]o: .*(refinery|twat\.com\.ar)" | ~x ".*(refinery|twat\.com\.ar)" )'
+# Changed to ~P
+#color index cyan white '~x ".*(refinery|twat\.com\.ar)" | ~i ".*(refinery|twat\.com\.ar)"'
+color index cyan white '~P | ~x ".*(refinery|twat\.com\.ar)"'
+color index brightcyan white '~N ( ~P | ~x ".*(refinery|twat\.com\.ar)" )'
+color index red         white ~F
+color index black       green ~T
+color index brightwhite black ~D
+mono  index bold              ~N
+mono  index bold              ~F
+mono  index bold              ~T
+mono  index bold              ~D
+
+# Highlights inside the body of a message.
+
+# URLs
+color body brightblue  white "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body brightblue  white "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body brightblue  white "news:[^ \">\t\r\n]*"
+mono  body bold              "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+mono  body bold              "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono  body bold              "news:[^ \">\t\r\n]*"
+
+# email addresses
+color body brightblue  white "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+mono  body bold              "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+color body brightgreen white "<[Gg]>"                                            # <g>
+color body brightgreen white "<[Bb][Gg]>"                                        # <bg>
+color body brightgreen white " [;:]-*[)>(<|]"                                    # :-) etc...
+color body brightblue  white "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)" # *Bold* text.
+color body brightblue  white "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)"     # _Underlined_ text.
+color body brightblue  white "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"     # /Italic/ text.

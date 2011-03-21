@@ -1,0 +1,66 @@
+#!/bin/sh
+
+# This script is total bollocks, just meant to amuse myself and Jochem.
+# But maybe someday it will deliver decent themes. Whaahaha a theming
+# engine for mutt.
+
+C0=black       		#BLACK
+C1=brightblack     	#VERYDARK
+C2=blue		   	#DARK
+C3=brightblue	       	#MEDIUM
+C4=cyan    	    	#LIGHTMEDIUM
+C5=brightcyan       	#LIGHT
+C6=white 		#BRIGHT
+C7=brightwhite	        #Brightest
+
+NAME=blah
+
+cat README > $NAME
+
+echo "color normal      $C6 $C0 " >> $NAME
+echo "color attachment  $C1 $C0 " >> $NAME
+echo "color bold        $C7 $C0 " >> $NAME
+echo "color underline   $C0 $C3 " >> $NAME
+echo "color error       $C6 $C0 " >> $NAME
+echo "color indicator   $C4 $C2 " >> $NAME
+echo "color message     $C6 $C0 " >> $NAME
+echo "color status      $C0 $C2 " >> $NAME
+
+echo "color quoted      $C5 $C0 " >> $NAME
+echo "color quoted1     $C4 $C0 " >> $NAME
+echo "color quoted2     $C3 $C0 " >> $NAME
+echo "color quoted3     $C2 $C0 " >> $NAME
+echo "color quoted4     $C1 $C0 " >> $NAME
+echo "color quoted5     $C1 $C0 " >> $NAME
+echo "color signature   $C1 $C0 " >> $NAME
+echo "color tilde       $C1 $C0 " >> $NAME
+echo "color tree        $C1 $C0 " >> $NAME
+
+echo "color hdrdefault  $C0 $C3 " >> $NAME
+echo "color header      $C5 $C0 " '"^date: *"' >> $NAME
+echo "color header      $C4 $C0 " '"^from: *"'  >> $NAME
+echo "color header      $C3 $C0 " '"^subject: *"' >> $NAME
+echo "color header      $C2 $C0 " '"^to: *"' >>$NAME
+echo "color header      $C1 $C0 " '"^delivered-to: *"' >> $NAME
+echo "color header      $C3 $C0 " '"^cc: *"' >>$NAME
+echo "color header      $C3 $C0 " '"^bcc: *"' >> $NAME
+echo "color header      $C4 $C0 " '"^reply-to: *" ' >> $NAME
+echo "color header      $C4 $C0 " '"^mail-followup-to: *" ' >> $NAME
+echo "color header      $C4 $C0 " '"^old-return-path: *" ' >> $NAME
+echo "color header      $C1 $C0 " '"^x-mailer: *" ' >> $NAME
+echo "color header      $C1 $C0 " '"^user-agent: *" ' >> $NAME
+echo "color header      $C1 $C0 " '"^x-operating-system: *" ' >> $NAME
+echo "color header      $C4 $C0 " '"^x-mailing-list: *" ' >> $NAME
+echo "color header      $C3 $C0 " '"^in-reply-to: *" ' >> $NAME
+echo "color body        $C0 $C3 " '"[^ <]*:\/\/[^ >]*" #for URLs ' >> $NAME
+echo "color body        $C0 $C3 " '"[A-Za-z0-9_\.\-]+@[A-Za-z0-9_\.\-]*[A-Za-z0-9_\.\-]+" ' >> $NAME
+
+echo "color index       $C3 $C0 '"~O"'   # Unread " >>$NAME
+echo "color index       $C4 $C0 '"~N"'   # New " >> $NAME
+echo "color index       $C5 $C0 '"~g"'   # gpg signed " >> $NAME
+echo "color index       $C6 $C0 '"~G"'   # gpg encrypted" >> $NAME
+echo "color index       $C7 $C0 '"~F"'   # Flagged " >> $NAME
+echo "color index       $C7 $C0 '"~T"'   # Tagged " >> $NAME
+echo "color index       $C7 $C0 '"~f MAILER-DAEMON@*"' " >> $NAME
+echo "color index       $C7 $C0 '"~f Mailer-Daemon@*"' " >> $NAME
+echo "color index       $C1 $C0 '"~D"'   # Deleted " >> $NAME
