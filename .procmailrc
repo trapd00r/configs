@@ -17,15 +17,15 @@ DEFAULT=$MAILDIR/inbox/
 
 :0:
 * ^TO_arch-dev-public@archlinux.org
-/mnt/Docs/Mail/inbox/arch-dev
+/mnt/Docs/Mail/inbox/arch-dev/
 
 :0:
 * ^TO_libtorrent-devel@rakshasa.no
-/mnt/Docs/Mail/inbox/rtorrent
+/mnt/Docs/Mail/inbox/rtorrent/
 
 :0:
 * ^TO_full-disclosure@lists.grok.org.uk
-/mnt/Docs/Mail/inbox/F-D
+/mnt/Docs/Mail/inbox/F-D/
 
 # base case, to inbox
 :0:
