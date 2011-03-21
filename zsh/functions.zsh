@@ -8,6 +8,10 @@ vimp() {
   /home/scp1/devel/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:pl|pm)$'|grep -v 'blib'|perl -pe 's/\n/ /')
 }
 
+vimgo() {
+  /home/scp1/devel/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:go)$'|perl -pe 's/\n/ /')
+}
+
 
 cd() {
   builtin cd $@; ls
