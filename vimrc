@@ -107,6 +107,7 @@ filetype plugin indent on
 
 au BufRead,BufNewFile *.markdown set ft=md
 au BufRead,BufNewFile *.md set ft=md
+au BufRead,BufNewFile *.go set ft=go
 
 au BufWritePost *.{sh,pl} silent exe
 autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
@@ -124,6 +125,8 @@ autocmd FileType perl setlocal keywordprg=perldoc\ -f
 "let g:indent_guides_auto = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+
+
 
 
 hi CursorLine term=none cterm=none
