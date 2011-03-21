@@ -1,3 +1,5 @@
+#export ZDOTDIR=$HOME/configs/zsh
+#export VIMINIT=/home/scp1/configs/vim
 export ZSH_THEME="trapd00r2-w-git"
 export MOZ_DISABLE_PANGO=1
 export PERL_HACK_LIB="/tmp"
@@ -7,6 +9,11 @@ export PERL_MM_USE_DEFAULT=1
 #export PERLBREW_ROOT="/mnt/Leftover/Perl5"
 #export RELEASE_TESTING=1
 #export PERL_UNICODE=1
+
+# Use Term::ReadLine::Zoid for vi-bindings
+# Not needed anymore - http://japh.se/all/perl/2011/01/21/Readline/
+# also see https://github.com/trapd00r/configs/blob/master/.inputrc
+#export PERL_RL=Zoid
 
 export GOROOT=$HOME/go
 export GOOS='linux'
@@ -113,13 +120,6 @@ perlbrew () {
 #zle -N zle-line-init
 #
 
-#export ZDOTDIR=$HOME/configs/zsh
-
-#export VIMINIT=/home/scp1/configs/vim
-#
-
-# Use Term::ReadLine::Zoid for vi-bindings
-#export PERL_RL=Zoid
 
 
 source $HOME/.zsh/colors.zsh
@@ -250,7 +250,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 
 
-
 #zstyle ':completion:*' menu select=10 interactive list-dirs-first 
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
@@ -264,6 +263,15 @@ zstyle ':completion:*:scp:*' tag-order \
 zstyle ':completion:*:scp:*' group-order \
 zstyle ':completion:*:ssh:*' tag-order \
 zstyle ':completion:*:ssh:*' group-order \
+
+go_prefixes=(5 6 8)
+for p in $prefixes; do
+  compctl -g "*.${p}" ${p}l
+  compctl -g "*.go"   ${p}g
+done
+compctl -g "*.go" gofmt
+compctl -g "*.go" gccgo
+
 
 bindkey -v
 bindkey "^?" backward-delete-char
