@@ -216,11 +216,11 @@ setopt AUTO_PARAM_SLASH
 setopt AUTO_PARAM_KEYS
 setopt COMPLETE_IN_WORD
 setopt NUMERIC_GLOB_SORT
-setopt NO_CLOBBER
 setopt RC_QUOTES # allow ' inside ''
 setopt INTERACTIVE_COMMENTS
 setopt PROMPT_SUBST
 setopt OCTAL_ZEROES
+#setopt NO_CLOBBER
 
 
 unsetopt AUTO_REMOVE_SLASH
