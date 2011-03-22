@@ -1,0 +1,35 @@
+set mainfont {MonteCarlo 9}
+set textfont {MonteCarlo 9}
+set uifont {MonteCarlo 9 bold}
+set tabstop 2
+set findmergefiles 0
+set maxgraphpct 50
+set maxwidth 16
+set cmitmode patch
+set wrapcomment none
+set autoselect 1
+set showneartags 1
+set hideremotes 0
+set showlocalchanges 1
+set datetimeformat {%Y-%m-%d %H:%M:%S}
+set limitdiffs 1
+set uicolor #121212
+set want_ttk 1
+set bgcolor #121212
+set fgcolor #eeeeee
+set colors {green red blue magenta darkgrey brown orange}
+set diffcolors {red #00a000 #009cff}
+set markbgcolor #a6782e
+set diffcontext 3
+set selectbgcolor #13608b
+set extdifftool meld
+set perfile_attrs 0
+set geometry(main) 848x777+1680+245
+set geometry(state) normal
+set geometry(topwidth) 848
+set geometry(topheight) 192
+set geometry(pwsash0) "401 1"
+set geometry(pwsash1) "421 1"
+set geometry(botwidth) 543
+set geometry(botheight) 580
+set permviews {}
