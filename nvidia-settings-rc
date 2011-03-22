@@ -1,0 +1,57 @@
+#
+# /home/scp1/.nvidia-settings-rc
+#
+# Configuration file for nvidia-settings - the NVIDIA X Server Settings utility
+# Generated on Sun Mar 20 10:39:51 2011
+#
+
+# ConfigProperties:
+
+RcFileLocale = C
+ToolTips = Yes
+DisplayStatusBar = Yes
+SliderTextEntries = Yes
+IncludeDisplayNameInConfigFile = No
+ShowQuitDialog = Yes
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Graphics_Card_(GPU_0),Yes,1000
+
+# Attributes:
+
+0/CursorShadow=0
+0/CursorShadowAlpha=64
+0/CursorShadowRed=0
+0/CursorShadowGreen=0
+0/CursorShadowBlue=0
+0/CursorShadowXOffset=4
+0/CursorShadowYOffset=2
+0/SyncToVBlank=0
+0/LogAniso=0
+0/FSAA=0
+0/TextureSharpen=0
+0/AllowFlipping=1
+0/FSAAAppControlled=1
+0/LogAnisoAppControlled=1
+0/OpenGLImageSettings=0
+0/FSAAAppEnhanced=0
+0/RedBrightness=0.000000
+0/GreenBrightness=0.000000
+0/BlueBrightness=0.000000
+0/RedContrast=0.000000
+0/GreenContrast=0.000000
+0/BlueContrast=0.000000
+0/RedGamma=1.000000
+0/GreenGamma=1.000000
+0/BlueGamma=1.000000
+0/DigitalVibrance[DFP-0]=0
+0/GPUScaling[DFP-0]=131073
+0/OverscanCompensation[DFP-0]=0
+0/ColorSpace[DFP-0]=0
+0/ColorRange[DFP-0]=0
+0/XVideoTextureBrightness=0
+0/XVideoTextureContrast=0
+0/XVideoTextureHue=0
+0/XVideoTextureSaturation=0
+0/XVideoTextureSyncToVBlank=1
+0/XVideoSyncToDisplay=2
