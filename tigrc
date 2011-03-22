@@ -1,0 +1,62 @@
+set tab-size             = 2
+set show-author          = abbreviated
+set show-date            = relative
+set show-rev-graph       = yes
+set show-refs            = yes
+set show-line-numbers    = yes
+set line-number-interval = 1
+set commit-encoding      = "UTF-8"
+set horizontal-scroll    = 33%
+
+bind main w scroll-line-up
+bind main s scroll-line-down
+bind main P !git format-patch -1 %(commit)
+
+bind diff P !git format-patch -1 %(commit)
+bind diff a previous
+bind diff d next
+bind diff b move-first-line
+
+bind generic g view-next
+
+color diff-header        color196 color233 normal
+color diff-index         color027 color233 normal
+color diff-chunk         color226 color233 bold
+color diff-add           color034 color233 normal
+color diff-del           color196 color233 normal
+color diff-oldmode       color196 color233 bold
+color diff-newmode       color034 color233 bold
+color diff-copy-from     color124 color233 bold
+color diff-copy-to       color076 color233 bold
+color diff-rename-from   color160 color233 bold
+color diff-rename-to     color070 color233 bold
+color diff-similarity    color208 color233 normal
+color diff-dissimilarity color136 color233 normal
+color diff-tree          color035 color233 normal
+
+color pp-author          color137 color233 normal
+color pp-commit          color244 color233 bold
+color pp-merge           color088 color233 normal
+color pp-date            color138 color233 normal
+color pp-adate           color138 color233 normal
+color pp-cdate           color138 color233 normal
+
+color commit             color244 color233 bold
+color parent             color044 color233 bold
+color tree               color027 color233 bold
+color author             color137 color233 normal
+color committer          color137 color233 normal
+
+color signoff            color220  color233 bold
+
+color default            color250 color233 normal
+color cursor             color106  color235 bold
+color status             color197 color233 normal
+color title-blur         color197 color233 normal
+color title-focus        color239 color234 bold
+color main-date          color138 color233 normal
+color main-author        color137 color233 normal
+color main-commit        color196 color234 bold
+color main-delim         color234 color233 bold
+color main-tag           color234 color233 bold
+color main-ref           color60  color233 normal
