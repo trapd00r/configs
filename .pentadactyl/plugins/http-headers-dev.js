@@ -2,7 +2,7 @@
 XML.prettyPrinting   = false;
 XML.ignoreWhitespace = false;
 var INFO =
-<plugin name="http-headers" version="0.3"
+<plugin name="http-headers" version="0.4"
         href="http://dactyl.sf.net/pentadactyl/plugins#http-headers-plugin"
         summary="HTTP header info"
         xmlns={NS}>
@@ -17,8 +17,6 @@ var INFO =
     <example><ex>:pageinfo hH</ex></example>
 </plugin>;
 
-var Ci = Components.interfaces;
-
 var Controller = Class("Controller", XPCOM(Ci.nsIController), {
     init: function (command, data) {
         this.command = command;
@@ -29,8 +27,13 @@ var Controller = Class("Controller", XPCOM(Ci.nsIController), {
 
 var HttpObserver = Class("HttpObserver",
     XPCOM([Ci.nsIObserver, Ci.nsISupportsWeakReference, Ci.nsIWebProgressListener]), {
-    init: function (name, store) {
+
+    init: function init() {
         util.addObserver(this);
+    },
+
+    cleanup: function cleanup() {
+        this.observe.unregister();
     },
 
     extractHeaders: function (request, type) {
@@ -62,7 +65,7 @@ var HttpObserver = Class("HttpObserver",
                 store.responseHeaders = this.extractHeaders(request, "Response");
 
                 store.requestHeaders[0][1] = request.requestMethod + " " +
-                    request.URI.spec + " " + store.requestHeaders[0][1];
+                    request.URI.path + " " + store.requestHeaders[0][1];
                 store.responseHeaders[0][1] += " " + request.responseStatus + " " +
                     request.responseStatusText;
 
@@ -88,7 +91,7 @@ var HttpObserver = Class("HttpObserver",
         }
     },
 
-    onStateChange: function(webProgress, request, stateFlags, status) {
+    onStateChange: util.wrapCallback(function(webProgress, request, stateFlags, status) {
         if ((stateFlags & this.STATE_START) && (stateFlags & this.STATE_IS_DOCUMENT))
             this.getHeaders(webProgress, request);
         else if ((stateFlags & this.STATE_STOP) && (stateFlags & this.STATE_IS_DOCUMENT)) {
@@ -97,10 +100,11 @@ var HttpObserver = Class("HttpObserver",
                 webProgress.removeProgressListener(this);
             } catch (e) {}
         }
-    }
+    })
 });
 
-let observer = storage.newObject("http-headers", HttpObserver, { store: false });
+let observer = HttpObserver();
+let onUnload = observer.closure.cleanup;
 
 function iterHeaders(type) {
     let win = buffer.focusedFrame;
