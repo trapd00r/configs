@@ -30,7 +30,7 @@ var INFO =
 
 hints.addMode('C', "Generate curl command for a form", function(elem) {
     if (elem.form)
-        var [url, data, elems] = util.parseForm(elem);
+        var [url, data, , elems] = util.parseForm(elem);
     else
         var url = elem.getAttribute("href");
     if (!url || /^javascript:/.test(url))
