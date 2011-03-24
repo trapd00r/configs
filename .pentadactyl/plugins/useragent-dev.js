@@ -123,7 +123,7 @@ options.add(["useragent", "ua"],
         }
     });
 
-commands.addUserCommand(["useragent", "ua"],
+group.commands.add(["useragent", "ua"],
     "Define a new useragent.",
     function (args) {
         if (args.length < 2)
@@ -185,7 +185,7 @@ commands.addUserCommand(["useragent", "ua"],
         ]
     }, true);
 
-commands.addUserCommand(["deluseragent", "delua"],
+group.commands.add(["deluseragent", "delua"],
     "Deletes a useragent.",
     function (args) {
         dactyl.assert(set.has(useragents, args[0]), "Invalid argument");
