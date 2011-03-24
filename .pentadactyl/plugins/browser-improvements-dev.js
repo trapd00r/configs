@@ -19,7 +19,7 @@ var INFO =
 </plugin>;
 
 function clickListener(event) {
-    let elem = event.target;
+    let elem = event.originalTarget;
     if (elem instanceof HTMLAnchorElement) {
         if (/^_(?!top$)/.test(elem.getAttribute("target")))
             elem.removeAttribute("target");
@@ -32,24 +32,26 @@ function clickListener(event) {
 }
 
 function keypressListener(event) {
-    let elem = event.target;
+    let elem = event.originalTarget;
     let key = events.toString(event);
-    function submit(form) {
-        if (isinstance(form.submit, HTMLInputElement))
-            form.submit.click();
-        else if (isinstance(form.submit, Function))
-            form.submit();
+    let submit = function submit(form) {
+        if (isinstance(form.wrappedJSObject.submit, HTMLInputElement))
+            buffer.followLink(form.wrappedJSObject.submit);
+        else {
+            let event = events.create(form.ownerDocument, "submit", { cancelable: true });
+            if (events.dispatch(form, event))
+                form.submit();
+        }
     }
     if (key == "<C-Return>" && isinstance(elem, [HTMLTextAreaElement, HTMLSelectElement]))
         submit(elem.form);
 }
 
-let appContent = document.getElementById("appcontent");
 function onUnload() {
-    appContent.removeEventListener("click", clickListener, true);
-    appContent.removeEventListener("keypress", keypressListener, true);
+    group.events.unlisten(null);
 }
-appContent.addEventListener("click", clickListener, true);
-appContent.addEventListener("keypress", keypressListener, true);
+let appContent = document.getElementById("appcontent");
+group.events.listen(appContent, "click", clickListener, true);
+group.events.listen(appContent, "keypress", keypressListener, true);
 
 /* vim:se sts=4 sw=4 et: */
