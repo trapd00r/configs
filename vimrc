@@ -15,6 +15,7 @@ set cst
 set csto=0
 set csverb
 set cursorline
+set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:8,vertical
 set display+=lastline,uhex
 set expandtab
@@ -32,6 +33,8 @@ set hidden
 set history=50
 set hlsearch
 set ignorecase
+set include=\\<\\(use\\\|require\\)\\>  
+set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')
 set incsearch
 set isfname+=:
 set laststatus=2
