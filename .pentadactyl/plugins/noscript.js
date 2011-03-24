@@ -97,38 +97,24 @@ function getObjects() {
     return specific.concat(general).filter(function (site) !set.add(seen, site));
 }
 
-let wrapped = [];
-function wrap(obj, overrides) {
-    overrides = update(Object.create(Object.create(obj)), overrides);
-    wrapped.push([obj, overrides]);
-
-    for (let [k, v] in Iterator(overrides)) {
-        overrides.__proto__[k] = obj[k];
-        obj[k] = v;
-    }
-}
-function onUnload() {
-    for (let [obj, overrides] in values(wrapped))
-        for (let [k, v] in iter(Object.getPrototypeOf(overrides)))
-            obj[k] = v;
-}
-
-wrap(gBrowser, {
+var onUnload = util.overlayObject(gBrowser, {
     // Extend NoScript's bookmarklet handling hack to the command-line
     // Modified from NoScript's own wrapper.
     loadURIWithFlags: function loadURIWithFlags(url) {
         let args = arguments;
         function load() loadURIWithFlags.superapply(gBrowser, args);
-        if (!commandline.command || Components.stack.caller.filename.indexOf("chrome://dactyl/") != 0)
+
+        let caller = Components.stack.caller.filename.replace(/.* -> /, "");
+        if (!commandline.command || !RegExp("^(chrome://dactyl/|resource://dactyl[/-]|dactyl:)").test(caller))
             return load();
 
-        for (let [cmd, args] in commands.parseCommands(commandline.command))
-            var origURL = args.literalArg;
-
-        function isJS(url) /^(?:data|javascript):/i.test(url);
-        var allowJS = prefs.get("noscript.allowURLBarJS", true);
-
         try {
+            for (let [cmd, args] in commands.parseCommands(commandline.command))
+                var origURL = args.literalArg;
+
+            let isJS = function isJS(url) /^(?:data|javascript):/i.test(url);
+            let allowJS = prefs.get("noscript.allowURLBarJS", true);
+
             if (isJS(origURL) && allowJS) {
                 if (services.noscript.executeJSURL(origURL, load))
                     return;
@@ -137,11 +123,11 @@ wrap(gBrowser, {
                 if(services.noscript.handleBookmark(url, load))
                     return;
             }
-            return load();
         }
         catch (e) {
             util.reportError(e);
         }
+        return load();
     }
 });
 
@@ -157,7 +143,7 @@ let groupProto = {};
     memoize(groupProto, group, function () services.get("noscript")[group + "Sites"].matches(this.site)));
 let groupDesc = {
     NoScriptTemp:       "Temporarily allowed",
-    NoScriptAllowed:    "Allowed permanantly",
+    NoScriptAllowed:    "Allowed permanently",
     NoScriptUntrusted:  "Untrusted",
     NoScriptBlocked:    "Blocked"
 };
@@ -300,7 +286,7 @@ options.add(["script"],
     }, {
         names: ["noscript-untrusted", "nsu"],
         description: "The list of untrusted sites",
-        action: function (add, sites) sites.length && services.noscript.setUntrusted(sites, true),
+        action: function (add, sites) sites.length && services.noscript.setUntrusted(sites, add),
         completer: function (context) completion.noscriptSites(context),
         get set() services.noscript.untrustedSites.sitesMap
     }, {
@@ -364,7 +350,7 @@ options.add(["script"],
 XML.ignoreWhitespace = false;
 XML.prettyPrinting   = false;
 var INFO =
-<plugin name="noscript" version="0.3"
+<plugin name="noscript" version="0.4"
         href="http://dactyl.sf.net/pentadactyl/plugins#noscript-plugin"
         summary="NoScript integration"
         xmlns={NS}>
