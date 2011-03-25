@@ -7,6 +7,10 @@ map <C-J> <C-W>j<C-W>_
 map <C-h> <C-w><Left>
 map <C-h> <C-w><Left>
 
+map =  <C-W>-
+map +  <C-W>+
+map \| :vsplit<CR>
+map -  :split<CR>
 
 nmap <silent> <leader>sp :set syn=perl<CR>:syntax sync fromstart<CR>
 nmap <space> 10j
