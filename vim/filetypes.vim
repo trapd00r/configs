@@ -7,6 +7,7 @@ au BufWritePost *.{sh,pl} silent exe
 au BufRead,BufNewFile *.markdown set ft=md
 au BufRead,BufNewFile *.md set ft=md
 au BufRead,BufNewFile *.go set ft=go
+au BufRead,BufNewFile *.txt set ft=_txt
 
 
 au      FileType pl,pm,t set filetype=perl
