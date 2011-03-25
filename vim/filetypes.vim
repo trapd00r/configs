@@ -14,6 +14,7 @@ au      FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword>
 au!     FileType perl :noremap <leader>c
     \ :!time perl -Mwarnings::unused -MVi::QuickFix -c %<cr>
 
+autocmd FileType perl set makeprg=perl\ -c\ %\ $*
 autocmd FileType perl setlocal errorformat=%f:%l:%m
 autocmd FileType perl setlocal keywordprg=perldoc\ -f
 autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
@@ -22,6 +23,8 @@ autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
 "au BufWritePost *.pl,*.pm !perl -c %
 
 let g:tex_conceal                = 1
+
+let g:perl_compiler_force_warnings = 0
 
 let perl_moose_stuff             = 1
 let perl_no_scope_in_variables   = 1
