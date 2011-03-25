@@ -18,6 +18,9 @@ inoremap <Up>   <NOP>
 
 nnoremap ; :
 
+nnoremap <C-h> :!perl -MVi::QuickFix="/mnt/Docs/Backup/vim_quickfix_err/%.err" -c %<CR>:cf<CR>
+nnoremap <C-j> :cn<CR>
+
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 nnoremap <leader>d :buffers<CR>:buffer<space>
@@ -51,6 +54,13 @@ nnoremap <silent> <C-l> :nohl<CR>
 nnoremap <silent> ,,    :nohl<CR>
 
 nnoremap <C-D> <C-W>
+
+nnoremap <silent> _t :%!perltidy -q<Enter>
+vnoremap <silent> _t :!perltidy -q<Enter>
+
+nnoremap <silent> _p :%!perlcritic -q<Enter>
+vnoremap <silent> _p :!perlcritic -q<Enter>
+
 
 nnoremap / /\v
 vnoremap / /\v
