@@ -12,6 +12,9 @@ map +  <C-W>+
 map \| :vsplit<CR>
 map -  :split<CR>
 
+" Make ^Z behave in insert mode as well
+map! <C-Z> <C-O><C-Z>
+
 nmap <silent> <leader>sp :set syn=perl<CR>:syntax sync fromstart<CR>
 nmap <space> 10j
 nmap Y y$
@@ -24,6 +27,8 @@ nnoremap ; :
 
 nnoremap <C-h> :!perl -MVi::QuickFix="/mnt/Docs/Backup/vim_quickfix_err/%.err" -c %<CR>:cf<CR>
 nnoremap <C-j> :cn<CR>
+nnoremap <C-m> :cwindow 5<CR>
+
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
