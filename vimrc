@@ -83,7 +83,6 @@ set smartcase
 set smarttab
 set so=5
 set splitbelow
-set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%08O:%02B]
 set tabpagemax=50
 set t_Co=256
 set timeout
