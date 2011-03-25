@@ -9,7 +9,6 @@ au BufRead,BufNewFile *.md set ft=md
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.txt set ft=_txt
 
-
 au      FileType pl,pm,t set filetype=perl
 au      FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
 au!     FileType perl :noremap <leader>c
