@@ -27,6 +27,18 @@ DEFAULT=$MAILDIR/inbox/
 * ^TO_full-disclosure@lists.grok.org.uk
 /mnt/Docs/Mail/inbox/F-D/
 
+:0:
+* ^TO_perldl2jach.hawaii.edu
+/mnt/Docs/Mail/inbox/perldl/
+
+:0:
+* ^TO_daily-build-reports@perl.org
+/mnt/Docs/Mail/inbox/daily-build-reports/
+
+:0:
+* ^TO_smokers-reports@perl.org
+/mnt/Docs/Mail/inbox/smokers-reports/
+
 # base case, to inbox
 :0:
 $DEFAULT
