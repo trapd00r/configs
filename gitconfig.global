@@ -36,3 +36,7 @@
   st   = status
   pu   = push
   pl   = pull
+  undo = checkout --
+[github]
+	user  = trapd00r
+        token =
