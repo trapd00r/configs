@@ -2,12 +2,7 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
-"jump to last cursor position when opening a file
-"dont do it when writing a commit log entry
-
-
-autocmd filetype svn,*commit* set spell
-autocmd filetype git,*commit* set spell
+autocmd filetype git,*commit* call ToggleSpell()
 
 au BufWritePost *.{sh,pl} silent exe
 
