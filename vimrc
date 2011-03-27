@@ -1,9 +1,9 @@
 " Highly optimized .vimrc for Perl, C, Lua hacking
 " 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
 
+source ~/.vim/functions.vim
 source ~/.vim/filetypes.vim
 source ~/.vim/abbrevations.vim
-source ~/.vim/functions.vim
 source ~/.vim/mappings.vim
 
 set nocp
@@ -13,6 +13,7 @@ set autochdir
 set autoindent
 set cmdheight=1
 set cinoptions=:0,l1,t0,g0,(0
+set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 set colorcolumn=+1,+2
 "set copyindent
 set cot+=menuone
@@ -30,6 +31,7 @@ set eadirection=ver
 set fillchars=vert:│,fold:-
 set foldmethod=manual
 set foldenable
+set foldlevelstart=99
 set gdefault
 set grepprg=ack\ -a
 set guioptions-=m
@@ -39,13 +41,14 @@ set hidden
 set history=50
 set hlsearch
 set ignorecase
-set include=\\<\\(use\\\|require\\)\\>  
+set include=\\<\\(use\\\|require\\)\\>
 set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')
 set incsearch
 set isfname+=:
 set laststatus=2
 set list
-set listchars=tab:\-\ ,trail:-
+set listchars=trail:⋅
+set listchars+=tab:→\ ,eol:⋅
 set magic
 set makeprg=/usr/bin/make
 set mat=2
@@ -60,6 +63,7 @@ set nobackup
 set nocsverb
 "set noequalalways
 set noerrorbells
+set nostartofline
 set noswapfile
 set nowb
 set nowrap
@@ -82,8 +86,9 @@ set smartcase
 "set smartindent
 set smarttab
 set so=5
-set splitbelow
+set splitright
 set tabpagemax=50
+set ts=2
 set t_Co=256
 set timeout
 set timeoutlen=3000
@@ -96,10 +101,12 @@ set undolevels=512
 set undodir=/mnt/Docs/Backup/undo
 set vb t_vb=
 set vb
+set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
-set wildignore=*.swp,*.bak,*.un~,blib
+set wildignore=*.swp,*.bak,*~,blib,*.o
 set winfixwidth
+set whichwrap=b,s,h,l,<,>
 
 set nomore
 
@@ -107,5 +114,10 @@ call pathogen#runtime_append_all_bundles()
 runtime macros/matchit.vim
 syntax on
 setlocal nospell spelllang=en_us
+
 colorscheme neverland-ansi_bg
 hi CursorLine term=none cterm=none
+
+syn match wsEOL display '\v[ ]+$' conceal cchar=O
+
+hi wsEOL ctermfg=196 cterm=bold

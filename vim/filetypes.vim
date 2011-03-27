@@ -2,7 +2,16 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
+"jump to last cursor position when opening a file
+"dont do it when writing a commit log entry
+
+
+autocmd filetype svn,*commit* set spell
+autocmd filetype git,*commit* set spell
+
 au BufWritePost *.{sh,pl} silent exe
+
+autocmd BufReadPost * call SetCursorPosition()
 
 au BufRead,BufNewFile *.markdown set ft=md
 au BufRead,BufNewFile *.md set ft=md
@@ -19,28 +28,31 @@ autocmd FileType perl setlocal errorformat=%f:%l:%m
 autocmd FileType perl setlocal keywordprg=perldoc\ -f
 autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
 
+autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 "autocmd BufNewFile,BufRead *.p? compiler perl
 "au BufWritePost *.pl,*.pm !perl -c %
 
-let g:tex_conceal                = 1
+let g:tex_conceal                  = 1
+
+let vim_indent_cont                = 2
 
 let g:perl_compiler_force_warnings = 0
 
-let perl_moose_stuff             = 1
-let perl_no_scope_in_variables   = 1
-let perl_no_sync_on_sub          = 1
-let perl_no_sync_on_global_var   = 1
-let perl_extended_vars           = 1
-let perl_include_pod             = 1
-let perl_string_as_statement     = 1
-let perl_nofold_packages         = 1
-let perl_sync_dist               = 1000
-let perl_want_scope_in_variables = 1
-let perl_pod_formatting          = 1
-let perl_pod_spellcheck_headings = 1
-let perlhelp_prog                = '/usr/bin/perldoc'
+let perl_moose_stuff               = 1
+let perl_no_scope_in_variables     = 1
+let perl_no_sync_on_sub            = 1
+let perl_no_sync_on_global_var     = 1
+let perl_extended_vars             = 1
+let perl_include_pod               = 1
+let perl_string_as_statement       = 1
+let perl_nofold_packages           = 1
+let perl_sync_dist                 = 1000
+let perl_want_scope_in_variables   = 1
+let perl_pod_formatting            = 1
+let perl_pod_spellcheck_headings   = 1
+let perlhelp_prog                  = '/usr/bin/perldoc'
 
-let extradite_width              = 40
+let extradite_width                = 40
 
 
 
