@@ -1,4 +1,4 @@
-source /home/scp1/configs/.pentadactyl/color/sanecrap.penta
+source /home/scp1/configs/.pentadactyl/color/sanecrap2.penta
 set guioptions-=rlb
 set hintkeys=asdfg;lkjh
 set titlestring=Fx

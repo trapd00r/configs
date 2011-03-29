@@ -2,7 +2,7 @@
 " ==Pentadactyl Colorscheme
 " name: sanecrap
 
-hi Bell                 border: 0 none; background-color: black;
+hi Bell                 border: 0 none; background-color: #121212;
 hi Boolean              color: #CC9393;
 hi CmdLine              font-family: Monte Carlo; padding: 1px; font-size: 9pt; font-family: Monte Carlo; font-weight: normal; padding: 0px 3px;
 
@@ -49,11 +49,11 @@ hi Object               color: maroon;
 hi Preview              color: gray;
 hi Question             color: #9ECE9E; background: #121212; font-weight: bold;
 hi Search               font-size: inherit; padding: 0; color: #385F38; background-color: #F8F893; padding: 0;
-hi StatusLine           color: #000000; background: #121212;  font-size: 9pt; font-family: Monte Carlo; font-weight: bold; padding: 0px 3px;
+hi StatusLine           color: #98ff00; background: #121212;  font-size: 9pt; font-family: Monte Carlo; font-weight: bold; padding: 0px 3px;
 hi StatusLineBroken     color: #af8787; background: #121212; 
 hi StatusLineSecure     color: #87af87; background: #121212; 
 hi String               color: #9ECE9E;
-hi TabIconNumber        font-weight: normal; color: #DCDCCD; text-align: center; text-shadow: black -1px 0 1px, black 0 1px 1px, black 1px 0 1px, black 0 -1px 1px;
+hi TabIconNumber        font-weight: normal; color: #DCDCCD; text-align: center; text-shadow: #121212 -1px 0 1px, #121212 0 1px 1px, #121212 1px 0 1px, #121212 0 -1px 1px;
 hi TabNumber            font-weight: bold; margin: 0; padding-right: .3ex;
 hi Tag                  color: #94BFF3;
 hi Title                color: #87af87; background: #121212; font-weight: bold;

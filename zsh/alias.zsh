@@ -64,6 +64,7 @@ alias    gdd='git diff'
 alias     gc='git commit'
 alias    glp='gl -p'
 alias    gcu='git commit -m "updates"'
+alias github='PAGER=cat perl /home/scp1/bin/github'
 
 alias      cp='cp -v'
 alias      mv='mv -v'
@@ -76,7 +77,6 @@ alias prename='prename -v'
 alias      pc='perlcritic'
 alias     pdb='perl -d -e 1'
 alias   perlf='ack -f --perl'
-alias    repl='perl $HOME/devel/App::re.pl/re.pl'
 
 
 #alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
