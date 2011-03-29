@@ -13,6 +13,11 @@ au BufRead,BufNewFile *.md set ft=md
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.txt set ft=_txt
 
+au BufRead,BufNewFile *.xml  set sw=1
+au BufRead,BufNewFile *.html set sw=1
+au BufRead,BufNewFile *.htm  set sw=1
+au BufRead,BufNewFile *.css  set sw=1
+
 au      FileType pl,pm,t set filetype=perl
 au      FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
 au!     FileType perl :noremap <leader>c
