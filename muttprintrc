@@ -1,0 +1,174 @@
+# MUTTPRINT configuration file
+#
+# ~/.muttprintrc or /etc/Muttprintrc
+# ~/.muttprintrc
+
+#
+# Here you can configure your printer
+# To print in a file, use the following entry:
+#PRINTER="TO_FILE:/home/raghavendra/printout.ps"
+PRINTER="Canon_MP150"
+
+#
+# Here you can set the print command
+# $PRINTER is substituted by the PRINTER
+# variable
+#PRINT_COMMAND="lp -P$PRINTER"
+PRINT_COMMAND="lp -d $PRINTER"
+#PRINT_COMMAND="CUPS"
+#PRINT_COMMAND="gv -"
+#PRINT_COMMAND="kghostview -"
+
+#
+# Here you can set the path to the penguin image
+#PENGUIN="/usr/share/ospics/Debian_color.eps"
+#PENGUIN="off"
+
+#
+# Turn printing of X-Face picture on/off (on needs the packages compface
+# and imagemagick)
+XFACE="off"
+
+#
+# Here you can turn the duplex print on or off. (needs psutils)
+# Possible values are "off" or "on"
+#
+# For Postscript duplex printer set it to "printer"
+DUPLEX="off"
+
+#
+# Here you can turn on or off the paper save mode
+# (printing 2 pages on 1 page) - needs psutils
+# Set it to 'optional' if you only want papersave mode
+# if more than one page is printed.
+PAPERSAVE="off"
+
+#
+# Here you can set the printing speed in seconds
+# per page
+SPEED="80"
+
+#
+# Choose a font:
+# - Latex (EC-Fonts)
+# - Latex-bright (CM-bright)
+# - Times
+# - Utopia
+# - Palatino
+# - Charter
+# - Bookman
+FONT="Monte Carlo"
+
+#
+# Choose a style for the first page
+# - plain       no rules
+# - border      rule after the headers
+# - fbox        simple box around the mailheaders
+# - shadowbox   shadowbox around the header
+# - ovalbox     box with rounded corners around the header (thin lines)
+# - Ovalbox     same as "ovalbox" but thicker lines
+# - doublebox   box with double lines around the header
+# - grey        grey background behind the headers
+# - greybox     same as "grey" but with a additional black box
+FRONTSTYLE="fbox"
+
+#
+# Should there be a rule after the header (not first page)
+HEADRULE="on"
+
+#
+# Should there be a rule over the footer
+FOOTRULE="on"
+
+#
+# Choose a paper format, if not specified look in /etc/papersize
+# - A4
+# - letter
+PAPER="A4"
+
+#
+# prints signatures, and strange: Letting it as follows keeps the sig:
+REM_SIG="on"
+# how does a signature look like?
+SIG_REGEXP="^-- $"
+
+#
+# prints no quoting
+REM_QUOTE="off"
+
+#
+# Choose of the printed headers, separation with "_"
+# /Header/ : italic printing
+# *Header* : bold printing
+# If the header does not exist, it is not printed.
+#PRINTED_HEADERS="Date_To_From_CC_Newsgroups_*Subject*"
+#PRINTED_HEADERS=
+PRINTED_HEADERS="Date_From_To_Cc_Subject_In-Reply-To_MIME-Version_Content-Type_Content-Transfer-Encoding_Content-Disposition_References_Resent-Message-ID_Resent-From_X-Mailing-List_X-Loop_List-Id_Precedence_Resent-Sender_Resent-Date_Status_Content-Length_Lines_Return-Path_Delivered-To_Received_Old-Return-Path_X-Original-To"
+
+#
+# Writes error messages of LaTeX and dvips to /tmp/muttprint.log
+DEBUG="1"
+
+#
+# Font size: 10pt, 11pt or 12pt
+FONTSIZE="10pt"
+
+#
+# Longest line
+WRAPMARGIN="90"
+
+# margins
+TOPMARGIN="19"
+BOTTOMMARGIN="22"
+LEFTMARGIN="20"
+RIGHTMARGIN="20"
+
+#
+# Date (format of printed date)
+# original, local (needs Date::Parse from libtimedate-perl)
+DATE="original"
+
+#
+# Date format string (only if DATE=local)
+# See strftime(3) for details
+#DATE_FORMAT="%c"
+
+# pass special options to the verbatim environment, see texdoc fancyvrvb
+VERBATIMNORMAL=""
+VERBATIMSIG="fontshape=it"
+
+# how should the address be printed out?
+ADDRESSFORMAT="%r <%a>,\n"
+
+# own LaTeX code to be inserted
+#
+# playing with these fonts:
+# 'LATEXCODE=' seems to have an impact to the mail headers
+# 'LATEXCODE1=' seems being good for the mail body
+# .. now the
+#
+# LATEXCODE1="\renewcommand{\ttdefault}{pcr}"
+#
+# seems to change the body font to 'courier'
+# while
+#
+# LATEXCODE1="\renewcommand{\ttdefault}{phv}"
+#
+# seems to result in 'helvetica' for the mail body ..
+#
+# Alternatively you can try to replace 'phv' (in the 'LATEXCODE1' line)
+# with 'ptm', 'pop', 'pag' (bigger ..), 'pgm', 'pbk' ... no guarantees
+# it will work ...
+# See e.g.
+# /usr/share/texmf-texlive/tex/latex/sugconf/sugconf.cls
+# or simply grep the 'tex' files area above
+# for 'renewcommand', if you're curious ... :)
+
+LATEXCODE="\renewcommand{\familydefault}{\sfdefault}"
+#LATEXCODE1="\renewcommand{\ttdefault}{phv}"
+LATEXCODE2=""
+LATEXCODE3=""
+LATEXCODE4=""
+LATEXCODE5=""
+
+
