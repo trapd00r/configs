@@ -26,9 +26,11 @@ nnoremap <C-h> :!perl -MVi::QuickFix='/mnt/Docs/Backup/vim_quickfix_err/%.err' -
 nnoremap <C-j> :cn<CR>
 nnoremap <C-m> :cwindow 5<CR>
 
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>
 
-
-
+inoremap <C-n> <ESC>:bnext<CR>
+inoremap <C-p> <ESC>:bprev<CR>
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>

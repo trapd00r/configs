@@ -71,6 +71,16 @@ set nrformats=alpha,octal,hex
 set numberwidth=2
 set pastetoggle=<F42>
 set preserveindent
+set printoptions=paper:A4,syntax:n,wrap:y,header:0,number:y,duplex:off
+set printoptions+=left:4,right:4,top:2,bottom:2
+set printexpr=PrintFile(v:fname_in)
+
+function PrintFile(fname)
+  call system("a2ps " . a:fname)
+  call delete(a:fname)
+  return v:shell_error
+endfunc
+
 set relativenumber
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
