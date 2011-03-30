@@ -1,0 +1,20 @@
+source palettes.rc
+source "filters.rc"
+
+setv $read-hook HighlightFilter
+define-mode perl
+~with define-submode perl
+	suf '\.pm$'
+~endwith
+
+set nopopup-msgs
+set visual-matches bold
+set autoindent
+set cmode
+set c-tabstop 4
+set c-shiftwidth 4
+set check-modtime
+set showmatch
+set undolimit 0
+set nomultibeep
+

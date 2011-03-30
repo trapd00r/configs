@@ -1,0 +1,13 @@
+: $Id: vile.key,v 1.9 2009/05/26 20:11:24 tom Exp $
+: customize this file with the global default values for highlighting attributes
+.class Action:BC1
+.class Comment:C1
+.class Error:RC1
+:.class Ident:R
+.class Ident2:C3
+.class Keyword:BC3
+.class Keyword2:BC1
+.class Literal:UC5
+.class Number:C6
+.class Preproc:C2
+.class Type:BC2
