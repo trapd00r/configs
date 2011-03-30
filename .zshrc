@@ -11,6 +11,7 @@ export PERL_MM_USE_DEFAULT=1
 #export PERL_UNICODE=1
 export GIST_DIR=$HOME/devel/_gists/
 export VI_QUICKFIX_SOURCEFILE='stdin'
+#export MYVIMRC="/home/scp1/.vim/vim.rc"
 
 # Use Term::ReadLine::Zoid for vi-bindings
 # Not needed anymore - http://japh.se/all/perl/2011/01/21/Readline/

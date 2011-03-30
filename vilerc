@@ -1,6 +1,8 @@
 source palettes.rc
 source "filters.rc"
 
+" http://invisible-island.net/vile/vile-hlp.html#color-recipes2
+
 setv $read-hook HighlightFilter
 define-mode perl
 ~with define-submode perl

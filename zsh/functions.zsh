@@ -1,3 +1,11 @@
+doc() {
+  builtin cd $HOME/doc
+  if [[ $(pwd) == "$HOME/doc" ]]; then
+    find . -maxdepth 1 -regextype posix-extended  -regex '^[.]/[^\.].+' \
+           -type f -printf "%f\n"| sort | ls_color
+  fi
+}
+
 du1() {
   du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f;
 }

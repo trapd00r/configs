@@ -1,7 +1,5 @@
 source ~/configs/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo default ; fi`
-source ~/configs/mutt/gpg.rc
 
-#set crypt_use_gpgme=yes
 
 set abort_nosubject=no
 set abort_unmodified=no
@@ -41,22 +39,9 @@ set nomark_old
 set nowait_key
 set pager_context=3
 set pager_format="-%S- %-20.20f %s"
-set pager="/home/scp1/devel/utils/mutt_pager"
+#set pager="/home/scp1/devel/utils/mutt_pager"
 set pager_index_lines=0
-set pgp_getkeys_command=""
-set pgp_replysign
-set pgp_replysignencrypted
-set pgp_show_unusable=no
-set pgp_sign_as="4239BAAA"
-set pgp_sort_keys="keyid"
-set pgp_timeout=3600
-set pgp_verify_sig=yes
-set pgp_autosign=yes
-set pgp_autoencrypt=yes
-set pgp_good_sign="^gpg: Good signature from"
-#set pgp_ignore_subkeys
-#set pgp_create_traditional=no
-#set pgp_replyencrypt=yes
+
 set post_indent_string='---end quoted text---'
 set postponed=+drafts
 set postponed=+postponed
@@ -115,5 +100,6 @@ unignore X-Mailer:
 unignore User-Agent:
 
 auto_view text/x-diff
+auto_view text/html
 
 my_hdr X-Operating-System:`mpc --format "%artist% - %title% on %album%"|head -1`

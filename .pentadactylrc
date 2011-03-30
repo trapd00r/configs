@@ -29,6 +29,7 @@ set pageinfo=gfm
 "set wildignore=\.o$,^\..*\.s[a-z]{2}$
 "set wordseparators="[.,!?:;\\/\"^$%&?()[\]{}<>#*+|=~ _-])"
 
+javascript readabilityFootnotes = "true"
 
 
 "set noscript-forbid=bookmarklet,fonts,java,media,placeholder,plugins,silverlight,xslt
