@@ -1,3 +1,8 @@
+vimconfig() {
+  $HOME/devel/time-spent-in-vim/vim $HOME/.vim{rc,/*.vim}
+}
+
+
 doc() {
   builtin cd $HOME/doc
   if [[ $(pwd) == "$HOME/doc" ]]; then
