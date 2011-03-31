@@ -85,7 +85,8 @@ cnoremap s/ s/\v
 cnoremap s# s#\v
 cnoremap s@ s@\v
 
-map [29~ :help keycodes<CR>
+"map [29~ :let &number = &number ? 0 : 1<CR>
+map [29~ z=
 
 
 
