@@ -13,4 +13,7 @@
 --yaml
 --smart-case
 --sort-files
-
+--nobreak
+--heading
+--follow
+--flush
