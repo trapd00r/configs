@@ -11,7 +11,7 @@ set nocp
 set autoread
 set autochdir
 set autoindent
-set cmdheight=1
+set cmdheight=2
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 set colorcolumn=+1,+2
