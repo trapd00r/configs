@@ -17,6 +17,7 @@ map ö <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 map Ö <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 
 nmap Y y$
+nmap <leader>w :w!<CR>
 
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
