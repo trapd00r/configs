@@ -11,7 +11,8 @@ zsh $HOME/bin/xmodshit &
 #sh /home/devel/dzen-scripts/dzen.sh &
 #feh --bg-tile /mnt/Docs/Wallpapers/HDSKIT.jpg &
 nitrogen --restore&
-exec /usr/local/bin/stumpwm
+exec windowlab
+#exec /usr/local/bin/stumpwm
 
 
 
