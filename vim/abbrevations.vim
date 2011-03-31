@@ -10,3 +10,5 @@ ia json_encode  encode_json
 
 " Dump output from external cmd to new buffer
 cab ! new<CR>:r !
+
+iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
