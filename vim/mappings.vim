@@ -13,7 +13,9 @@ map \| :vsplit<CR>
 map -  :split<CR>
 
 nmap <silent> <leader>sp :set syn=perl<CR>:syntax sync fromstart<CR>
-"nmap <space> 10j
+map ö <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+map Ö <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+
 nmap Y y$
 
 inoremap <Down> <NOP>
