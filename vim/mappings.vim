@@ -101,6 +101,8 @@ cnoremap $h e ~/
 cnoremap $d e ~/devel
 cnoremap $. e .
 
+cnoremap <C-a> <HOME>
+
 "map [29~ :let &number = &number ? 0 : 1<CR>
 map [29~ z=
 
