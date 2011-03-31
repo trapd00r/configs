@@ -2,11 +2,12 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
-autocmd filetype git,*commit* call ToggleSpell()
+au filetype git,*commit* call ToggleSpell()
+au BufWrite * :call DeleteTrailingWS()
 
 au BufWritePost *.{sh,pl} silent exe
 
-autocmd BufReadPost * call SetCursorPosition()
+au BufReadPost * call SetCursorPosition()
 
 au BufRead,BufNewFile *.markdown set ft=md
 au BufRead,BufNewFile *.md set ft=md
@@ -18,18 +19,18 @@ au BufRead,BufNewFile *.html set sw=1
 au BufRead,BufNewFile *.htm  set sw=1
 au BufRead,BufNewFile *.css  set sw=1
 
-au      FileType pl,pm,t set filetype=perl
-au      FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
-au!     FileType perl :noremap <leader>c
+au  FileType pl,pm,t set filetype=perl
+au  FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
+au! FileType perl :noremap <leader>c
     \ :!time perl -Mwarnings::unused -MVi::QuickFix -c %<cr>
 
-autocmd FileType perl set makeprg=perl\ -c\ %\ $*
-autocmd FileType perl setlocal errorformat=%f:%l:%m
-autocmd FileType perl setlocal keywordprg=perldoc\ -f
-autocmd! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
+au FileType perl set makeprg=perl\ -c\ %\ $*
+au FileType perl setlocal errorformat=%f:%l:%m
+au FileType perl setlocal keywordprg=perldoc\ -f
+au! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e
 
-autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
-"autocmd BufNewFile,BufRead *.p? compiler perl
+au cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
+"au BufNewFile,BufRead *.p? compiler perl
 "au BufWritePost *.pl,*.pm !perl -c %
 
 let g:tex_conceal                  = 1
@@ -58,5 +59,5 @@ let extradite_width                = 40
 
 
 "let g:indent_guides_auto = 0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+"au VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+"au VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
