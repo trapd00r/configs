@@ -59,13 +59,14 @@ alias   n900='ssh -p 19216 user@192.168.1.112'
 alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
 
 alias     gs='git status --short -b'
+alias     gt='git tag|sort --reverse'
 alias     gp='git push'
-#alias     gd='PAGER="" git diff $ | skate --language diff -'
 alias    gdd='git diff'
 alias     gc='git commit'
 alias    glp='gl -p'
 alias    gcu='git commit -m "updates"'
 alias github='PAGER=cat perl /home/scp1/bin/github'
+#alias     gd='PAGER="" git diff $ | skate --language diff -'
 
 alias      cp='cp -v'
 alias      mv='mv -v'
@@ -76,6 +77,7 @@ alias    rmvi='rm *.sw*'
 alias prename='prename -v'
 
 alias      pc='perlcritic'
+alias     pod='grep \=pod -C 999999 "$@"'
 alias     pdb='perl -d -e 1'
 alias   perlf='ack -f --perl'
 
