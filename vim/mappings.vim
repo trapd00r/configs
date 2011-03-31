@@ -23,6 +23,13 @@ nmap <leader>w :w!<CR>
 nmap <silent> <leader>d "_d
 vmap <silent> <leader>d "_d
 
+nmap <leader>al :left<CR>
+nmap <leader>ar :right<CR>
+nmap <leader>ac :center<CR>
+
+nnoremap <TAB> %
+vnoremap <TAB> %
+
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Up>   <NOP>
@@ -46,6 +53,9 @@ inoremap £3 {<ESC>o}<ESC>O
 inoremap £4 {}<ESC>i
 inoremap £q ''<ESC>i
 inoremap £Q ""<ESC>i
+
+inoremap jj <ESC>
+inoremap jk <ESC>
 
 
 nnoremap <C-n> :bnext<CR>
