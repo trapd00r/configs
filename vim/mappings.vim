@@ -35,6 +35,15 @@ nnoremap <C-p> :bprev<CR>
 inoremap <C-n> <ESC>:bnext<CR>
 inoremap <C-p> <ESC>:bprev<CR>
 
+inoremap £1 ()<ESC>i
+inoremap £2 []<ESC>i
+inoremap £3 {<ESC>o}<ESC>O
+
+inoremap £4 {}<ESC>i
+inoremap £q ''<ESC>i
+inoremap £Q ""<ESC>i
+
+
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 nnoremap <leader>d :buffers<CR>:buffer<space>
@@ -88,8 +97,15 @@ cnoremap s/ s/\v
 cnoremap s# s#\v
 cnoremap s@ s@\v
 
+cnoremap $h e ~/
+cnoremap $d e ~/devel
+cnoremap $. e .
+
 "map [29~ :let &number = &number ? 0 : 1<CR>
 map [29~ z=
+
+" cd to the directory of the open buffer, if possible
+map <leader>cd :cd %:p:h<CR>
 
 
 
