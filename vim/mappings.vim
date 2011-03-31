@@ -13,11 +13,15 @@ map \| :vsplit<CR>
 map -  :split<CR>
 
 nmap <silent> <leader>sp :set syn=perl<CR>:syntax sync fromstart<CR>
+
 map ö <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 map Ö <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 
 nmap Y y$
 nmap <leader>w :w!<CR>
+
+nmap <silent> <leader>d "_d
+vmap <silent> <leader>d "_d
 
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
@@ -46,7 +50,7 @@ inoremap £Q ""<ESC>i
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
-nnoremap <leader>d :buffers<CR>:buffer<space>
+nnoremap <leader>r :buffers<CR>:buffer<space>
 nnoremap <leader>l :ls<CR>
 nnoremap <leader>g :e#<CR>
 
