@@ -1,6 +1,11 @@
-func! DeleteTrailingWS()
-  :%s/\v\s+$//g
-endfunc
+" I save all the time ...
+"   Error detected while processing function DeleteTrailingWS:
+"   line    1:
+"   Pattern not found:
+
+"func! DeleteTrailingWS()
+"  :%s/\v\s+$//g
+"endfunc
 
 
 func! CurDir()

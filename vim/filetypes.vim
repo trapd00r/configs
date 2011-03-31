@@ -3,7 +3,7 @@ set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
 au filetype git,*commit* call ToggleSpell()
-au BufWrite * :call DeleteTrailingWS()
+"au BufWrite * :call DeleteTrailingWS()
 
 au BufWritePost *.{sh,pl} silent exe
 
