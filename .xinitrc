@@ -2,6 +2,7 @@ urxvtd -q -f &
 unclutter -idle 4&
 xset m 1 1 &
 xsetroot -bg "#121212" -mod 3 3 &
+setxkbmap -option terminate:ctrl_alt_bksp&
 setxkbmap se -variant nodeadkeys &
 xrdb $HOME/configs/.Xresources &
 zsh $HOME/bin/xmodshit &
