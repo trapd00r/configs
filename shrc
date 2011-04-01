@@ -1,0 +1,8 @@
+PS1="router> "
+
+alias ls='ls -Al'
+alias vim='vi'
+alias grep='grep -i -E'
+alias .='pwd'
+alias ..='cd ..'
+alias ...='cd ../../'
