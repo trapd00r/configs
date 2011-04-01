@@ -1,10 +1,10 @@
 " Highly optimized .vimrc for Perl, C, Lua hacking
 " 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
 
-source ~/.vim/functions.vim
-source ~/.vim/filetypes.vim
-source ~/.vim/abbrevations.vim
-source ~/.vim/mappings.vim
+source /home/scp1/.vim/functions.vim
+source /home/scp1/.vim/filetypes.vim
+source /home/scp1/.vim/abbrevations.vim
+source /home/scp1/.vim/mappings.vim
 
 set nocp
 
