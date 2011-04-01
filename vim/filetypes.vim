@@ -2,7 +2,12 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
+" nr2char()
+" if search('\s\+$', 'nw') != 0
+" let b:statusline_trailing_space_warning = '[\s]'
+
 au filetype git,*commit* call ToggleSpell()
+au filetype help set colorcolumn=0
 "au BufWrite * :call DeleteTrailingWS()
 
 au BufWritePost *.{sh,pl} silent exe
@@ -54,9 +59,6 @@ let perl_pod_spellcheck_headings   = 1
 let perlhelp_prog                  = '/usr/bin/perldoc'
 
 let extradite_width                = 40
-
-
-
 
 "let g:indent_guides_auto = 0
 "au VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
