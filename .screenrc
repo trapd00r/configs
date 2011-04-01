@@ -3,6 +3,8 @@
 
 # move window
 # ^a:number 1
+#
+defflow off # Turn off ^s
 
 term screen-256color
 
