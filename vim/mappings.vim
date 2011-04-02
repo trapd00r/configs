@@ -30,6 +30,18 @@ nmap <leader>ac :center<CR>
 nnoremap <TAB> %
 vnoremap <TAB> %
 
+nnoremap ci( f(ci(
+nnoremap ci{ f{ci{
+nnoremap ci[ f[ci[
+
+vnoremap ci( f(ci(
+vnoremap ci{ f{ci{
+vnoremap ci[ f[ci[
+
+nnoremap dad /\v^\=head/<CR> W d$xa
+nnoremap d= f=d$a=
+nnoremap d> f>d$a>
+
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
 inoremap <Up>   <NOP>
@@ -119,6 +131,8 @@ cnoremap <C-a> <HOME>
 
 "map [29~ :let &number = &number ? 0 : 1<CR>
 map [29~ z=
+
+map [3~ xx
 
 " cd to the directory of the open buffer, if possible
 map <leader>cd :cd %:p:h<CR>
