@@ -18,7 +18,9 @@ set edit_headers
 set fast_reply
 set folder=/mnt/Docs/Mail/inbox
 set forward_format="Fw: %s"     # subject in forwarded messages
-set from="magnus@trapd00r.se"
+#set from="magnus@trapd00r.se"
+#set from="magnus@japh.se"
+set from="m@japh.se"
 set realname="Magnus Woldrich"
 set header_cache=/mnt/Docs/Mail/.hcache
 set hide_missing=yes
