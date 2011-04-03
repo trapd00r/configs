@@ -7,7 +7,8 @@ set formatoptions=qro
 " let b:statusline_trailing_space_warning = '[\s]'
 
 au filetype git,*commit* call ToggleSpell()
-au filetype help set colorcolumn=0
+au filetype help call Filetype_help()
+
 "au BufWrite * :call DeleteTrailingWS()
 
 au BufWritePost *.{sh,pl} silent exe

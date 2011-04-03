@@ -1,4 +1,4 @@
-" Highly optimized .vimrc for Perl, C, Lua hacking
+" Highly optimized .vimrc for Perl, C, Lua, Viml hacking
 " 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
 
 source /home/scp1/.vim/functions.vim

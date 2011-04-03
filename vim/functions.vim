@@ -1,3 +1,10 @@
+
+func! Filetype_help()
+  set colorcolumn=0
+  set listchars=tab:\ \ 
+endfunc
+
+
 " I save all the time ...
 "   Error detected while processing function DeleteTrailingWS:
 "   line    1:
