@@ -1,3 +1,9 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = git@github.com:trapd00r/vim-fugitive.git
+[submodule "vim/bundle/vim-color-check"]
+	path = vim/bundle/vim-color-check
+	url = git://github.com/KevinGoodsell/vim-color-check.git
+[submodule "vim/bundle/vim-detectindent"]
+	path = vim/bundle/vim-detectindent
+	url = git://github.com/ciaranm/detectindent.git
