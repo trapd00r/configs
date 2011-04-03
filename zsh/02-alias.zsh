@@ -116,6 +116,7 @@ alias   mnp='cd $HOME/devel/Mplayer::NowPlaying-CPAN'
 alias xxlfd='cd $HOME/devel/Xorg::XLFD'
 alias   mp3='cd /mnt/Leftover/TransferMusic'
 alias     t='mkdr /tmp/scp1 ; cd /tmp/scp1'
+alias    tt='cd $HOME/bin/upstream'
 
 alias lsusb='lsusb | matchline -random'
 alias lspci='lspci | matchline -lspci'
