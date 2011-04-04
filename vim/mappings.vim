@@ -70,6 +70,13 @@ inoremap jj <ESC>
 inoremap jk <ESC>
 
 
+" jumping to sub definition
+nnoremap <buffer> ]]    :<C-u>call search('^\s*sub .* {$', 'sW')<CR>
+nnoremap <buffer> [[    :<C-u>call search('^\s*sub .* {$', 'bsW')<CR>
+nnoremap <buffer> ][    :<C-u>call search('^}$', 'sW')<CR>
+nnoremap <buffer> []    :<C-u>call search('^}$', 'bsW')<CR>
+
+
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 nnoremap <leader>r :buffers<CR>:buffer<space>
