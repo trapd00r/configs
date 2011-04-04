@@ -42,8 +42,8 @@ else
   exit
 fi
 
-sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_right.sh &
-sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_left.sh  &
+#sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_right.sh &
+#sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_left.sh  &
 
 setxkbmap se -variant nodeadkeys
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
