@@ -12,6 +12,7 @@ set autoread
 set autochdir
 set autoindent
 set cmdheight=2
+set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 set colorcolumn=+1,+2
@@ -79,6 +80,7 @@ set printmbfont=r:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microso
 set printmbfont+=b:-windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
 set printmbfont+=i:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 
+set pumheight=10
 set relativenumber
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
