@@ -45,7 +45,7 @@ set history-preserve-point off
 set horizontal-scroll-mode off
 set input-meta on
 set mark-directories on
-set mark-modified-lines on
+set mark-modified-lines off
 set mark-symlinked-directories on
 set match-hidden-files off
 set meta-flag on

@@ -7,3 +7,6 @@
 [submodule "vim/bundle/vim-detectindent"]
 	path = vim/bundle/vim-detectindent
 	url = git://github.com/ciaranm/detectindent.git
+[submodule "vim/bundle/vim-cmdwincomplete"]
+	path = vim/bundle/vim-cmdwincomplete
+	url = git://github.com/tyru/cmdwincomplete.vim.git
