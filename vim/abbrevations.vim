@@ -1,3 +1,14 @@
+
+if $HOSTNAME == 'shiva'
+  ia mypc shiva
+elseif $HOSTNAME == 'india'
+  ia mypc india
+elseif $HOSTNAME == 'dvdc'
+  ia mypc dvdc
+else
+  ia <expr> mypc $HOSTNAME
+endif
+
 ia dumper Dumper
 ia prinnt print
 ia repositry repository
@@ -719,7 +730,7 @@ iab thigsn things
 iab thisyear this year
 iab thme them
 iab thna than
-iab thna than 
+iab thna than
 iab thne then
 iab thnigs things
 iab thnig thing
@@ -776,7 +787,7 @@ iab wherre where
 iab whic which
 iab whihc which
 iab whta what
-iab whta what 
+iab whta what
 iab wief wife
 iab wierd weird
 iab wihch which
