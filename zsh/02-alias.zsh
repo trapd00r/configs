@@ -66,6 +66,7 @@ alias     gc='git commit'
 alias    glp='gl -p'
 alias    gcu='git commit -m "updates"'
 alias github='PAGER=cat perl /home/scp1/bin/github'
+alias   what="--stat -p --reverse HEAD@{1}.. | perl -pe 's/^(\++.+).*/\e[38;5;34m\e[1m$1\e[m/; s/^(\-+.*)/\e[38;5;196m\e[1m$1\e[m/'"
 #alias     gd='PAGER="" git diff $ | skate --language diff -'
 
 alias      cp='cp -v'
