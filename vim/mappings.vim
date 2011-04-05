@@ -1,5 +1,6 @@
 let mapleader = ','
 
+
 cmap W w
 map <C-h> <C-w><Left>
 map <C-j> <C-w><Down>
@@ -27,6 +28,8 @@ nmap <leader>al :left<CR>
 nmap <leader>ar :right<CR>
 nmap <leader>ac :center<CR>
 
+nnoremap <leader>t :call TitleCaseCenter()<CR>
+
 nnoremap <TAB> %
 vnoremap <TAB> %
 
@@ -50,7 +53,7 @@ nnoremap ; :
 
 nnoremap <C-h> :!perl -MVi::QuickFix='/mnt/Docs/Backup/vim_quickfix_err/%.err' -c %<CR>:cf<CR>
 nnoremap <C-j> :cn<CR>
-nnoremap <C-m> :cwindow 5<CR>
+"nnoremap <C-m> :cwindow 5<CR>
 
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>

@@ -1,3 +1,9 @@
+func! TitleCaseCenter()
+  let word = expand('<cword>')
+  s/\w\+/\u&/g
+  center
+  echo "Word under cursor was " . word
+endfunc
 
 func! Filetype_help()
   set colorcolumn=0
