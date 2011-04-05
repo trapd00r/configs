@@ -4,12 +4,13 @@
 
 export HOSTNAME="shiva"
 export ZSH_THEME="trapd00r"
+export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export EDITOR=vim
 export PAGER=vimpager
 
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
-export PERL5OPT='-Mstrict'
+#export PERL5OPT='-Mstrict'
 
 export GIST_DIR=$HOME/devel/_gists/
 
