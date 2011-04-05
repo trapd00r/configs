@@ -69,6 +69,8 @@ inoremap £Q ""<ESC>i
 inoremap jj <ESC>
 inoremap jk <ESC>
 
+nnoremap [7~ :source %<CR>
+
 
 " jumping to sub definition
 nnoremap <buffer> ]]    :<C-u>call search('^\s*sub .* {$', 'sW')<CR>
