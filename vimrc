@@ -33,7 +33,8 @@ set fillchars=vert:│,fold:-
 set foldmethod=manual
 set foldenable
 set foldlevelstart=99
-set gdefault
+" THIS IS HORRIBLE EVILNESS
+"set gdefault 
 set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
