@@ -30,7 +30,7 @@ set include
 set index_format = "%Z %4D %40.40s▕▏ %n"
 set mail_check=5
 set markers=no
-set mbox=+mbox
+#set mbox=+mbox
 set mbox="=received"
 set mbox_type=Maildir
 set move=no
@@ -54,8 +54,7 @@ set quit=yes
 set quote_regexp="^ *[a-zA-Z]*[>|][>:|]*"
 set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 set read_inc=25
-set record="/mnt/Docs/Mail/archive"
-set record="=sent-mail"
+set record=/mnt/Docs/Mail/sent-`date +"%y%m"`
 set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
 set reply_to=yes
 set reverse_alias
@@ -89,7 +88,7 @@ bind index ] next-line
 
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
-mailboxes `echo /mnt/Docs/Mail/inbox/*`
+mailboxes `find /mnt/Docs/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 
 ignore *
 unignore From:
