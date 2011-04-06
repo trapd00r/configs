@@ -25,7 +25,7 @@ DEFAULT=$MAILDIR/inbox/
 
 :0:
 * ^TO_full-disclosure@lists.grok.org.uk
-/mnt/Docs/Mail/inbox/F-D/
+/mnt/Docs/Mail/inbox/full-disclosure/
 
 :0:
 * ^TO_perldl2jach.hawaii.edu
