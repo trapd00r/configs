@@ -1,5 +1,7 @@
 let mapleader = ','
 
+nmap <leader>o :.w >> ~/vim_output<CR>
+nmap <leader>O :%w >> ~/vim_output<CR>
 
 cmap W w
 map <C-h> <C-w><Left>
@@ -14,6 +16,10 @@ map \| :vsplit<CR>
 map -  :split<CR>
 
 nmap <silent> <leader>sp :set syn=perl<CR>:syntax sync fromstart<CR>
+
+nmap <C-9> <C-]>
+
+nmap q q:
 
 map ö <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 map Ö <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
@@ -73,6 +79,7 @@ inoremap jj <ESC>
 inoremap jk <ESC>
 
 nnoremap [7~ :source %<CR>
+nnoremap [2~ :source %<CR>
 
 
 " jumping to sub definition
@@ -139,7 +146,16 @@ cnoremap $h e ~/
 cnoremap $d e ~/devel
 cnoremap $. e .
 
-cnoremap <C-a> <HOME>
+cnoremap  <c-a>   <home>
+cnoremap  <c-e>   <end>
+cnoremap  <c-b>   <left>
+cnoremap  <c-d>   <del>
+cnoremap  <c-f>   <right>
+cnoremap  <C-_>   <c-f>
+
+cnoremap  <c-n>   <down>
+cnoremap  <c-p>   <up>
+cnoremap  <C-*>   <c-a>
 
 "map [29~ :let &number = &number ? 0 : 1<CR>
 map [29~ z=
