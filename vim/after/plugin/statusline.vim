@@ -29,7 +29,7 @@ if exists('g:loaded_fugitive')
    set statusline+=%{fugitive#statusline()}
 
    hi StatusLine   ctermfg=239 ctermbg=234 cterm=bold
-   hi StatusLineNC ctermbg=234 cterm=italic
+   hi StatusLineNC ctermfg=239 ctermbg=234
 else
   set statusline=%<[%02n]\ %F%(\ %m%h%w%y%r%)\ %a%=\ %8l,%c%V/%L\ (%P)\ [%08O:%02B]
 endif
