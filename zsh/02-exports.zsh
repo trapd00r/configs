@@ -6,6 +6,7 @@ export HOSTNAME="shiva"
 export ZSH_THEME="trapd00r"
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export EDITOR=vim
+export MYVIMRC="/home/scp1/.vimrc"
 export PAGER=vimpager
 
 export PERL_HACK_LIB="/tmp"
@@ -71,7 +72,6 @@ export MPD_USER='scp1'
 
 #export ZDOTDIR=$HOME/configs/zsh
 #export VIMINIT=/home/scp1/configs/vim
-#export MYVIMRC="/home/scp1/.vim/vim.rc"
 
 #export CDPATH='.:~:/mnt'
 

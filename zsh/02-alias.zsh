@@ -55,6 +55,7 @@ alias macoss='ssh scp1@industrialrefuge.com'
 alias  india='ssh scp1@192.168.1.102 -p 19216'
 alias   dvdc='ssh scp1@192.168.1.100 -p 19216'
 alias   n900='ssh -p 19216 user@192.168.1.112'
+alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.100:http/japh.se/doc'
 
 alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
 
@@ -129,7 +130,7 @@ alias lsl='\ls --color=auto   --group-directories-first -Ah'
 alias lss='\ls --color=auto -1 | grep "(^\w*[^_-])"'
 alias ls1='\ls -1'
 alias lsa='\ls --color=auto --time-style=full-iso'
-alias lsd='find . -maxdepth 2 -type d | sort|ls_color'
+alias lsd='/bin/ls -FAv | grep /$ | column'
 
 
 alias       ps='$HOME/bin/cope/ps'
@@ -195,6 +196,7 @@ alias     wget='wget --no-check-certificate -U=Mozilla'
 alias     ptop='watch -n1 ps aux --sort=+%cpu'
 alias     tree='tree -dA'
 alias      mem='su -c mem'
+alias    links='/bin/cat /home/scp1/doc/links'
 alias  ncmpcpp='colorcoke -r 105 -g 30 -b 50 -s 0 -e 15&&ncmpcpp; \
                   cc-x-color-scheme-trapd00r'
 alias    devel='echo http://devel.japh.se/ \
@@ -239,7 +241,8 @@ alias    shiva='ps -eo pcpu,pid,user,args \
                   | head -10 && iostat -mtx && mpstat -P 'ALL' && sar'
 
 
-alias a='printf "  %s\n  %s\n  %s\n  %s\n" "Magnus Woldrich" "CPAN ID: WOLDRICH" "magnus@trapd00r.se" "http://japh.se"'
+alias a='printf "  %s\n  %s\n  %s\n  %s\n" "Magnus Woldrich" "CPAN ID: WOLDRICH" "m@japh.se" "http://japh.se"'
 alias trapd00r='printf "\t\033#3trapd00r\n\t\033#4trapd00r\n\tA simple, lightweight Perl hacker\n"'
 alias trapd00rc='printf "\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[38;5;32md\e[38;5;33m0\e[38;5;33m0\e[38;5;37mr\n\t\033#4\e[38;5;133mt\e[38;5;134mr\e[38;5;135ma\e[38;5;139mp\e[38;5;140md\e[38;5;141m00\e[38;5;145mr\n\t\e[38;5;240mA simple, lightweight Perl hacker\n"'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
+alias dev_null='rm /dev/null; mknod /dev/null c 1 3'

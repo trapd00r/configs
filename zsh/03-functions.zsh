@@ -2,6 +2,10 @@ vimconfig() {
   $HOME/devel/time-spent-in-vim/vim $HOME/.vim{rc,/*.vim}
 }
 
+zshconfig() {
+  $HOME/devel/time-spent-in-vim/vim $HOME/.zsh{rc,/*.{theme,zsh}}
+}
+
 
 doc() {
   builtin cd $HOME/doc

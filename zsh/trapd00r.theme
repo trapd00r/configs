@@ -13,8 +13,9 @@ local c7=$(printf "\033[38;5;242m")
 local c8=$(printf "\033[38;5;244m")
 local c9=$(printf "\033[38;5;162m")
 local c10=$(printf "\033[1m")
-
-local c30=$(printf "\033[31mHALLAAA")
+local c11=$(printf "\e[38;5;208m\e[1m")
+local c12=$(printf "\e[38;5;142m\e[1m")
+local c13=$(printf "\e[38;5;196m\e[1m")
 
 #local c20=$(printf "\e#3\n")
 #local c21=$(printf "\e#4\n")
@@ -33,13 +34,12 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 #local newtv=$(perl $HOME/devel/newtv.pl)
-local newtv=''
 
 zstyle ':vcs_info:*' actionformats \
     '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 
 zstyle ':vcs_info:*' formats \
-    "%{$c8%}%s%{$c7%}:%{$c7%}(%{$c9%}%{$c10%}%b%{$c7%})%{$reset_color%}%f "
+    "%{$c8%}%s%%{$c7%}❨ %{$c9%}%{$c11%}%b%{$c7%} ❩%{$reset_color%}%f "
 
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
@@ -69,7 +69,7 @@ prompt_jnrowe_precmd () {
 
         PROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[black]%}IRTY%{$reset_color%}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
-%{$c9%}·>%{$c0%} '
+%{$c13%}>%{$c0%} '
     else
         dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(perl /home/scp1/bin/foopath)%} %{$c0%}(%{$c5%}%?%{$c0%})"
         #dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$c4%}%/ %{$c0%}(%{$c5%}%?%{$c0%})"
