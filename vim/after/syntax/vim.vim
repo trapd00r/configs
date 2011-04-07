@@ -1,0 +1,1 @@
+/home/scp1/devel/vim-vim-after/after/syntax/vim.vim
