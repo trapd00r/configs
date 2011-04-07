@@ -10,3 +10,9 @@
 [submodule "vim/bundle/vim-cmdwincomplete"]
 	path = vim/bundle/vim-cmdwincomplete
 	url = git://github.com/tyru/cmdwincomplete.vim.git
+[submodule "vim/bundle/vim-cascading"]
+	path = vim/bundle/vim-cascading
+	url = git://github.com/c9s/cascading.vim.git
+[submodule "vim/bundle/vim-vimtemplate"]
+	path = vim/bundle/vim-vimtemplate
+	url = git://github.com/tyru/vimtemplate.vim.git

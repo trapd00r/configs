@@ -1,0 +1,9 @@
+
+<%eval: 20 + 22 %>
+
+Some information for this file:
+  <%filename%>
+  <%filename_noext%> ( <%filename_ext%> )
+  <%path%>
+
+You can contact me ( <%author%> ) by mail: <%email%>.

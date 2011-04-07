@@ -1,7 +1,10 @@
 " Highly optimized .vimrc for Perl, C, Lua, Viml hacking
 " 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
 
-source /home/scp1/.vim/functions.vim
+if !exists('g:vim_functions_loaded')
+  source /home/scp1/.vim/functions.vim
+endif
+"source /home/scp1/.vim/functions.vim
 source /home/scp1/.vim/filetypes.vim
 source /home/scp1/.vim/abbrevations.vim
 source /home/scp1/.vim/mappings.vim
@@ -33,6 +36,7 @@ set fillchars=vert:│,fold:-
 set foldmethod=manual
 set foldenable
 set foldlevelstart=99
+
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
 set grepprg=ack\ -a
@@ -49,8 +53,10 @@ set incsearch
 set isfname+=:
 set laststatus=2
 set list
-set listchars=trail:⋅
-set listchars+=tab:→\ ,eol:⋅
+"set listchars=trail:⋅
+"set listchars+=tab:→\ ,eol:⋅
+"let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
+set listchars=tab:»­,trail:·,eol:¶,nbsp:⎵,precedes:←,extends:→ sbr=↪
 set magic
 set makeprg=/usr/bin/make
 set mat=2
