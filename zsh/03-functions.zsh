@@ -6,6 +6,47 @@ zshconfig() {
   $HOME/devel/time-spent-in-vim/vim $HOME/.zsh{rc,/*.{theme,zsh}}
 }
 
+commands() {
+  echo -n $PATH | xargs -d : -I {} find {} -maxdepth 1 \
+       -executable -type f -printf '%P\n' | sort -u
+}
+
+daemon() {
+  echo '
+sub daemonize {
+  my $daemon_log = shift // q{/dev/null};
+  use POSIX q{setsid};
+  my $PID = fork();
+  exit(0) if($PID); #parent
+  exit(1) if(!defined($PID)); # out of resources
+
+  setsid();
+  $PID = fork();
+  exit(1) if(!defined($PID));
+
+  if($PID) { # parent
+    waitpid($PID, 0);
+    unlink($pidfile_daemon); # remove the lock when child have died
+    exit(0);
+  }
+  elsif($PID == 0) { # child
+    open(my $fh, q{>}, $pidfile_daemon)
+      or die(qq{Cant open $pidfile_daemon: $!});
+    print $fh $$;
+    close($fh);
+    open(STDOUT, q{>}, $daemon_log);
+    open(STDERR, q{>}, q{/dev/null});
+    open(STDIN,  q{<}, q{/dev/null});
+  }
+}
+sub killkid {
+  open(my $fh, q{<}, $pidfile_pimpd) or return 1; # for now
+  my $pimpd_player = <$fh>;
+  close($fh);
+  return 0;
+}'
+}
+
 
 doc() {
   builtin cd $HOME/doc
