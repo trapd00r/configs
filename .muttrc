@@ -15,6 +15,7 @@ set display_filter="tr '\240\204\223\226' ' \"\"-'"
 set edit_headers
 #set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
 #set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
+set editor="vim -c \"set spell spelllang=en\""
 set fast_reply
 set folder=/mnt/Docs/Mail/inbox
 set forward_format="Fw: %s"     # subject in forwarded messages
