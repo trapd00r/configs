@@ -23,6 +23,7 @@ zstyle ':completion:*:scp:*'              tag-order \
 zstyle ':completion:*:scp:*'              group-order \
 zstyle ':completion:*:ssh:*'              tag-order \
 zstyle ':completion:*:ssh:*'              group-order \
+zstyle ':completion:*:*:mplayer:*'        tag-order files directories
 
 zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
   'scp1@192.168.1.100' 'scp1@brutus.ethup.se' 'trapd00r@90.225.22.81'
