@@ -221,6 +221,8 @@ nmap <leader>ac :center<CR>
 
 nnoremap <leader>t :call TitleCaseCenter()<CR>
 
+vnoremap S :sort<CR>
+
 nnoremap <TAB> %
 vnoremap <TAB> %
 
