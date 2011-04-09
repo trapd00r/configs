@@ -15,8 +15,9 @@
 #define FONT -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 #endif
 
-#define FONT_B -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-#define FONT_I -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+#define FONT_B   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+#define FONT_I   -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+#define FONT_I_B -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
 
 #define PROFONT_HUGE  -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
 #define TERMINUS_HUGE -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
@@ -59,7 +60,7 @@ URxvt.shiva.geometry:             1x1
 
 /* colors */
 URxvt.shiva.background:           #121212
-URxvt.shiva.foreground:           #FFFFFF
+URxvt.shiva.foreground:           #cacaca
 URxvt.shiva.cursorColor:          #EB122E
 URxvt.shiva.cursorColor2:         #252525
 URxvt.shiva.colorIT:              #FFFFFF
@@ -99,10 +100,12 @@ URxvt.htpc.pointerColor:         #252525
 URxvt.shiva*font:                FONT
 URxvt.shiva*boldFont:            FONT_B
 URxvt.shiva.italicFont:          FONT_I
+URxvt.shiva*boldItalicFont       FONT_I_B
 
 URxvt.india*font:                FONT
 URxvt.india*boldFont:            FONT_B
 URxvt.india*italicFont:          FONT_I
+URxvt.india*boldItalicFont       FONT_I_B
 
 URxvt.htpc*font:                 TERMINUS_HUGE
 
