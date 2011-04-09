@@ -66,3 +66,8 @@ set editing-mode vi
 set history-size 1000
 set keymap vi-insert
 
+"\C-u": "makepkg\n"
+"\C-p": "pimpd2 --play\n"
+"\C-o": "pimpd2 --stop\n"
+
+
