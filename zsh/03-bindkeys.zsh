@@ -18,3 +18,5 @@ bindkey "^d" delete-word
 bindkey "^k" kill-line
 bindkey ' ' magic-space
 bindkey '^I' complete-word
+
+bindkey -M isearch ' ' self-insert
