@@ -23,7 +23,13 @@ zstyle ':completion:*:scp:*'                 tag-order \
 zstyle ':completion:*:scp:*'                 group-order \
 zstyle ':completion:*:ssh:*'                 tag-order \
 zstyle ':completion:*:ssh:*'                 group-order \
-zstyle ':completion:*:*:mplayer:*'           tag-order files directories
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:mplayer:*'           tag-order files
+zstyle ':completion:*:*:mplayer:*'           file-patterns   \
+       '*.(rmvb|mkv|mpg|wmv|mpeg|avi|mp3|mp4|flac|ogg):video' \
+       '*:all-files' '*(-/):directories'
+
 zstyle ':completion:*:*:(gvim|vim):*:*files' ignored-patterns '*~' file-sort modification
 zstyle ':completion:*:*:(gvim|vim):*'        file-sort modification
 zstyle ':completion:*:descriptions'          format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
