@@ -1,10 +1,14 @@
 " Highly optimized .vimrc for Perl, C, Lua, Viml hacking
 " 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
 
+if !isdirectory('/tmp/scp1')
+  call mkdir("/tmp/scp1", "", 0700)
+endif
+
+
 if !exists('g:vim_functions_loaded')
   source /home/scp1/.vim/functions.vim
 endif
-"source /home/scp1/.vim/functions.vim
 source /home/scp1/.vim/filetypes.vim
 source /home/scp1/.vim/abbrevations.vim
 source /home/scp1/.vim/mappings.vim
