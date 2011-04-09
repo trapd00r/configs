@@ -65,7 +65,7 @@ set magic
 set makeprg=/usr/bin/make
 set mat=2
 set matchpairs+==:;
-set matchpairs+=':'
+set matchpairs+=<:>
 set matchtime=10
 set maxfuncdepth=1000
 set maxmemtot=200000
