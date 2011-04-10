@@ -10,10 +10,14 @@ func! Filetype_help()
   set listchars=tab:\ \ 
 endfunc
 
-
-"func! DeleteTrailingWS()
-"  :%s/\v\s+$//g
-"endfunc
+func! RemoveTrailingCrap()
+  if search('\s\+$', 'n')
+    :%s/\s\+$//
+  endif
+  if search( nr2char(182) . '$' )
+    :execute ":%s/" . nr2char(182) . "//"
+  endif
+endfunc
 
 
 func! CurDir()

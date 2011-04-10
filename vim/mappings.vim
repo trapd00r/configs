@@ -299,7 +299,8 @@ nnoremap <leader>a :bdelete!<CR>
 
 nnoremap <leader>f :set paste<CR>
 
-nnoremap <leader>s :%s/\s\+$//<CR>:let @/=''<CR>
+nnoremap <leader>s :call RemoveTrailingCrap()
+"nnoremap <leader>s :%s/\s\+$//<CR>:let @/=''<CR>:%s/¶$//g<CR>
 
 nnoremap <leader>v V`]
 
