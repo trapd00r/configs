@@ -1,15 +1,59 @@
+set bell-style audible
 set bind-tty-special-chars on
 set blink-matching-paren on
 set byte-oriented off
-#set completion-ignore-case on
+set comment-begin #
+set completion-prefix-display-length 111
+set completion-query-items 200
 set convert-meta off
 set disable-completion off
 set echo-control-characters on
+set editing-mode vi
 set enable-keypad off
 set enable-meta-key on
 set history-preserve-point off
+set history-size 1000
+set horizontal-scroll-mode off
+set input-meta on
+set keymap vi-insert
+set mark-directories on
+set mark-modified-lines off
+set mark-symlinked-directories on
+set match-hidden-files off
+set meta-flag on
+set output-meta on
+set page-completions on
+set prefer-visible-bell on
+set revert-all-at-newline off
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set skip-completed-text on
+set visible-stats on
+#set completion-ignore-case on
+#set print-completions-horizontally on
 
-# 11:20:06 ▏  woldrich I return two strings; return ('Use of Device Identity in HTTP-Enabled Location Delivery', 'Design Guidelines. A. 
+$if pimpd2
+  "\C-h": "help\n"
+  "\C-l": "loved?\n"
+  "\C-n": "np\n"
+  "\C-o": "stop\n"
+  "\C-k": "stop\n"
+  "\C-y": "copy\n"
+  "\C-ya": "copya\n"
+$endif
+
+$if re.pl
+  "\C-e": "perldoc perlre\n"
+  "\C-g": "perldoc perlguts\n"
+  "\C-i": "perldoc perlipc\n"
+  "\C-o": "perldoc perlop\n"
+  "\C-u": "perldoc perlunicode\n"
+  "\C-v": "perldoc perlvar\n"
+$endif
+
+### Notes for horizontal-scroll-mode:
+
+# 11:20:06 ▏  woldrich I return two strings; return ('Use of Device Identity in HTTP-Enabled Location Delivery', 'Design Guidelines. A.
 #                      DeKok, Ed., G. Weber. ');      and when I tabcomplete, I get this output:
 # 11:20:13 ▏ shadowpas Someone at 83.177.28.44 pasted "Design Guidelines. A. DeKok, E" (1 line) at http://scsys.co.uk:8002/93910
 # 11:20:39 ▏     mauke can you post a testcase?
@@ -41,33 +85,3 @@ set history-preserve-point off
 # 11:30:47 ▏  j_wright heh
 # 11:31:21 ▏  j_wright because i don't use bash, my .inputrc has 'set editing-mode vi'
 # 11:31:22 ▏  woldrich see,  set print-completions-horizontally on
-
-set horizontal-scroll-mode off
-set input-meta on
-set mark-directories on
-set mark-modified-lines off
-set mark-symlinked-directories on
-set match-hidden-files off
-set meta-flag on
-set output-meta on
-set page-completions on
-set prefer-visible-bell on
-#set print-completions-horizontally on
-set revert-all-at-newline off
-set show-all-if-ambiguous on
-set show-all-if-unmodified on
-set skip-completed-text on
-set visible-stats on
-set bell-style audible
-set comment-begin #
-set completion-prefix-display-length 111
-set completion-query-items 200
-set editing-mode vi
-set history-size 1000
-set keymap vi-insert
-
-"\C-u": "makepkg\n"
-"\C-p": "pimpd2 --play\n"
-"\C-o": "pimpd2 --stop\n"
-
-
