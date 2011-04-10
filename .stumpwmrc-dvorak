@@ -1,0 +1,71 @@
+;; vim: set ts=2 filetype=lisp:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                  ;;
+;; $HOME/.stumpwmrc                                 ;;
+;; Sane windows management (vim-bindings)           ;;
+;; m@japh.se                                        ;;
+;;                                                  ;;
+;; Updated with dvorak bindings 2011-04-10          ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;-*-lisp-*-
+
+(in-package :stumpwm)
+
+(setf *default-package* :stumpwm)
+
+(set-prefix-key (kbd "C-e"))
+
+(setf *shell-program* (stumpwm::getenv "SHELL")) ;getenv is not exported
+
+(stumpwm:run-shell-command "xsetroot -cursor_name left_ptr -fg white -bg black")
+(set-contrib-dir "/usr/share/stumpwm")
+
+(set-font "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
+
+(setf *mode-line-background-color* "black"
+      *mode-line-foreground-color* "White"
+      *mode-line-border-color* "darkgrey"
+      *mode-line-timeout* 1
+      *mode-line-screen-position* :bottom
+      *window-format* "^B^8*%n%s%m%30t :: ^7*"
+      *group-format* "%t")
+
+(set-fg-color "sienna1")
+(set-bg-color "grey10")
+(set-border-color "sienna4")
+(set-msg-border-width 1)
+
+(setf *maxsize-border-width* 1
+ *normal-border-width* 0
+ *window-border-style* :thin
+ *transient-border-width* 4) ; popups \o/
+
+(setf *message-window-gravity* :bottom-right
+      *timeout-wait*           10
+      *input-window-gravity*   :top-left)
+
+(setf *startup-message* nil)
+
+(set-focus-color   "grey20")
+(set-unfocus-color "grey10")
+(set-normal-gravity :center)
+(setf *normal-border-width* 1)
+
+
+(define-key *root-map* (kbd "b") "exec perl /home/scp1/bin/dmenurl")
+(define-key *root-map* (kbd "ö") "exec sh /home/scp1/bin/dmenu.sh")
+
+(define-key *root-map* (kbd "j") "exec urxvtc -name URxvt.shiva")
+(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - %title% (%album%)'|head -1`")
+
+;; sane bindings for window management
+(define-key *root-map* (kbd "h") "move-focus left")
+(define-key *root-map* (kbd "j") "move-focus down")
+(define-key *root-map* (kbd "k") "move-focus up")
+(define-key *root-map* (kbd "l") "move-focus right")
+
+(define-key *root-map* (kbd "C-h") "move-window left")
+(define-key *root-map* (kbd "C-j") "move-window down")
+(define-key *root-map* (kbd "C-k") "move-window up")
+(define-key *root-map* (kbd "C-l") "move-window right")
