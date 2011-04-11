@@ -162,6 +162,19 @@ URxvt.shiva.pointerBlankDelay:    2
 !URxvt.shiva.hold:                 0
 URxvt.shiva.chdir:                /home/scp1/devel
 
+/* Super + ASCII printable chars <Esc-Space-char> */
+URxvt.shiva.keysym.Mod4-0x20: list033\040!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+/* Super + Arrow keys <Esc-Space-BEL-char> */
+URxvt.shiva.keysym.Mod4-Left: list:\033\040\007:dacb:
+URxvt.shiva.keysym.Mod4-Shift-Left: list:\033\040\007:DACB:
+
+/* Supeshiva.r + Return <Esc-Space-CR> */
+URxvt.shiva.keysym.Mod4-Return: \033\040\015
+
+/* Supeshiva.r + Delete <Esc-Space-BS> */
+URxvt.shiva.keysym.Mod4-Backspace: \033\040\177
+
+
 URxvt.india.scrollKey:            true
 URxvt.india.scrollWithBuffer:     true
 URxvt.india.scrollBack:           true
