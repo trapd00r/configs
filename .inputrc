@@ -51,6 +51,13 @@ $if re.pl
   "\C-v": "perldoc perlvar\n"
 $endif
 
+$if Bash
+  "\C-x0": " &>/dev/null "
+  "\C-x1": " >/dev/null "
+  "\C-x2": " 2>/dev/null "
+  "\C-x3": " 2>&1 "
+$endif
+
 ### Notes for horizontal-scroll-mode:
 
 # 11:20:06 ▏  woldrich I return two strings; return ('Use of Device Identity in HTTP-Enabled Location Delivery', 'Design Guidelines. A.
