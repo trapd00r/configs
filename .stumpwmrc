@@ -1,15 +1,16 @@
 ;; vim: set ts=2 filetype=lisp:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;																									;;																
-;; .stumpwmrc																				;;
-;; Sane windows management (vim-bindings)						;;
-;; Basic mode-line, quick hack for dual head setups	;;
-;; trapd00r@trapd00r.se															;;
-;; Feel free to send me the diff										;;
-;; Updated: 2009.08.26															;;
+;;                                                  ;;
+;; $HOME/.stumpwmrc                                 ;;
+;; Sane windows management (vim-bindings)           ;;
+;; Basic mode-line, quick hack for dual head setups ;;
+;; m@japh.se                                        ;;
+;; Feel free to send me the diff                    ;;
+;;                                                  ;;
+;; Updated: 2009.08.26                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; COLORS(SteelBlue, ForestGreen, SlateGrey
+; COLORS(SteelBlue, ForestGreen, SlateGrey)
 
 ; dump-group-to-file
 ; restore-from-file
@@ -24,7 +25,14 @@
 ;(load-module "mpd")
 ;(load-module "disk")
 ;(load "/home/scp1/bin/mpd.lisp")
+
+;(if(ext:getenv "HOSTNAME") "shiva")
+
+; QWERTY
 (set-prefix-key (kbd "C-f"))
+
+; SVORAK A5
+;(set-prefix-key (kbd "C-e"))
 
 ;; Variables
 
@@ -69,7 +77,7 @@
 ;      "%D")
 
 ; FIXME dont wanna have to use mode-line just so I can use dzen2
-;(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head 
+;(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head
 ;                t *screen-mode-line-format*
 ;                ))
 
@@ -94,7 +102,7 @@
 (set-msg-border-width 1)
 
 (setf *maxsize-border-width* 1
- *normal-border-width* 0 
+ *normal-border-width* 0
  *window-border-style* :thin
  *transient-border-width* 4) ; popups \o/
 
@@ -108,7 +116,7 @@
 
 ;;;; Windows
 
-(set-focus-color   "grey20") 
+(set-focus-color   "grey20")
 (set-unfocus-color "grey10")
 (set-normal-gravity :center)
 (setf *normal-border-width* 1)
