@@ -107,6 +107,7 @@ set showmode
 set smartcase
 "set smartindent
 set smarttab
+set synmaxcol=160
 set so=5
 set splitright
 set tabpagemax=50
