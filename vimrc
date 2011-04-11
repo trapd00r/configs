@@ -40,6 +40,7 @@ set fillchars=vert:│,fold:-
 set foldmethod=manual
 set foldenable
 set foldlevelstart=99
+set formatoptions=tcrqln1
 
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
