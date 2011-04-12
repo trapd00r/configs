@@ -41,7 +41,7 @@ alias    hour="echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
-alias   editc='vim $HOME/.zsh/colors.zsh $HOME/devel/File::LsColor/lib/File/LsColor.pm'
+alias   editc='vim $HOME/.zsh/01-colors.zsh $HOME/devel/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
 alias   share='perl $HOME/devel/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
