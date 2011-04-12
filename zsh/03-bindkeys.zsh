@@ -20,3 +20,13 @@ bindkey ' ' magic-space
 bindkey '^I' complete-word
 
 bindkey -M isearch ' ' self-insert
+
+bindkey -s '^x0' ' &> /dev/null '
+bindkey -s '^x1' '  > /dev/null '
+bindkey -s '^x2' ' 2> /dev/null '
+bindkey -s '^x3' ' 2>&1 '
+
+bindkey -s '^p' 'mpc playlist --format "%file%" | separate | ls_color\n'
+bindkey -s '^t' '\\top\n'
+bindkey -s '^n' '\\ncmpcpp\n'
+bindkey -s '^v' 'vim\n'
