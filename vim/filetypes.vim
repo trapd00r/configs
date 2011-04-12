@@ -33,7 +33,7 @@ au BufRead,BufNewFile *.html set sw=1
 au BufRead,BufNewFile *.htm  set sw=1
 au BufRead,BufNewFile *.css  set sw=2
 
-au BufRead,BufNewFile LS_COLORS syntax off
+au BufRead,BufNewFile ~/configs/zsh/01-colors.zsh set syntax=
 
 au  FileType pl,pm,t set filetype=perl
 au  FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
