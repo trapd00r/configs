@@ -1,6 +1,6 @@
 [user]
   name  = Magnus Woldrich
-  email = trapd00r@trapd00r.se
+  email = m@japh.se
 [core]
   #pager = v
 [color]
@@ -37,6 +37,7 @@
   pu   = push
   pl   = pull
   undo = checkout --
+  log1 = log --
 [github]
 	user  = trapd00r
-        token =
+  token = 306647d26f05795f937592feaa470cbb
