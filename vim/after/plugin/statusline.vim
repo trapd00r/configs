@@ -19,7 +19,7 @@ if exists('g:loaded_fugitive')
    set statusline+=\ %9*%03.3b%*
    set statusline+=\ %7*\-\ %*
    set statusline+=0x%8*%02.2B%*
-   "set statusline+=\ %3*│%*
+   set statusline+=\ %3*│%*
    set statusline+=%r\ %=
    set statusline+=%3*
    set statusline+=%{FileSize()}
