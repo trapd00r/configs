@@ -1,3 +1,9 @@
+
+
+re() {
+  [[ $1 =~ $REPLY ]]
+}
+
 vimconfig() {
   $HOME/devel/time-spent-in-vim/vim $HOME/.vim{rc,/*.vim}
 }
