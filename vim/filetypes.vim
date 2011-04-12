@@ -20,7 +20,7 @@ let g:vimrc = "/home/scp1/configs/vimrc"
 "let g:vimrc_statusline = "/home/scp1/configs/vim/after/plugin/statusline.vim"
 let g:vimrc_statusline = "/tmp/statusline.vim"
 let g:vimrc_functions = "/home/scp1/configs/vim/functions.vim"
-au BufWritePost vimrc source '/tmp/statusline.vim'
+"au BufWritePost vimrc source '/tmp/statusline.vim'
 "au BufWritePost vim_functions echo 44
 
 au BufRead,BufNewFile *.markdown set ft=md
@@ -32,6 +32,8 @@ au BufRead,BufNewFile *.xml  set sw=1
 au BufRead,BufNewFile *.html set sw=1
 au BufRead,BufNewFile *.htm  set sw=1
 au BufRead,BufNewFile *.css  set sw=2
+
+au BufRead,BufNewFile LS_COLORS syntax off
 
 au  FileType pl,pm,t set filetype=perl
 au  FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
