@@ -188,7 +188,10 @@ map  <Esc>= <A-=>
 map! <Esc>= <A-=>
 
 
+nnoremap `` ''
+nnoremap '' ``
 cmap W w
+cmap qq qa!
 map <C-h> <C-w><Left>
 map <C-j> <C-w><Down>
 map <C-J> <C-W>j<C-W>_
