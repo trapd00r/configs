@@ -27,7 +27,11 @@ compinit
 
 
 autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
+function _url-quote-magic() { url-quote-magic; _zsh_highlight-zle-buffer }
+zle -N self-insert _url-quote-magic
+
+#autoload -U url-quote-magic
+#zle -N self-insert url-quote-magic
 
 unsetopt AUTO_REMOVE_SLASH
 unsetopt COMPLETE_ALIASES
