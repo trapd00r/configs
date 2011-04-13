@@ -35,6 +35,9 @@ zstyle ':completion:*:*:(gvim|vim):*'        file-sort modification
 zstyle ':completion:*:descriptions'          format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
 zstyle ':completion:*:warnings'              format $'%{\e[38;5;196;1m%}Nah: %d%{\e[m%}'
 
+zstyle ':completion:*:*:apvlv:*'             tag-order files
+zstyle ':completion:*:*:apvlv:*'             file-patterns '*.pdf'
+
 zstyle ':completion:*:*:*:users' ignored-patterns \
         adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
         dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
