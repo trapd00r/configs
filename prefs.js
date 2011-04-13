@@ -337,7 +337,7 @@ user_pref("noscript.notify.hideDelay", 2);
 user_pref("noscript.options.tabSelectedIndexes", "2,5,0");
 user_pref("noscript.policynames", "");
 user_pref("noscript.showGlobal", false);
-user_pref("noscript.subscription.lastCheck", 1298470853);
+user_pref("noscript.subscription.lastCheck", 1299910861);
 user_pref("noscript.temp", "medleyads.com might.net scribd.com http://medleyads.com http://might.net http://scribd.com https://medleyads.com https://might.net https://scribd.com");
 user_pref("noscript.untrusted", "doubleclick.net ubuntu-se.org yieldmanager.com zangocash.com http://doubleclick.net http://ubuntu-se.org http://yieldmanager.com http://zangocash.com https://doubleclick.net https://ubuntu-se.org https://yieldmanager.com https://zangocash.com");
 user_pref("noscript.version", "2.1.0.1");
