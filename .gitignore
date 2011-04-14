@@ -18,4 +18,4 @@ vim/colors/NEVERLAND_ANSI_BG_VIM
 .mplayer/rmcd.log
 .mplayer/rpd.log
 vim/.netrwhist
-.zshrc.zwc
+*.zwc
