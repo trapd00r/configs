@@ -32,6 +32,9 @@ zstyle ':completion:*:*:mplayer:*'           file-patterns   \
 
 zstyle ':completion:*:*:(gvim|vim):*:*files' ignored-patterns '*~' file-sort modification
 zstyle ':completion:*:*:(gvim|vim):*'        file-sort modification
+
+zstyle ':completion:*:*:(cd):*:*files'       ignored-patterns '*~' file-sort modification
+zstyle ':completion:*:*:(cd):*'              file-sort modification
 zstyle ':completion:*:descriptions'          format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
 zstyle ':completion:*:warnings'              format $'%{\e[38;5;196;1m%}Nah: %d%{\e[m%}'
 
