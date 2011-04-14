@@ -1,3 +1,10 @@
+zc() {
+  for z in $HOME/configs/zsh/*.zsh $HOME/.zshrc; do
+    zcompile $z
+    echo "Compiled $z"
+  done
+}
+
 tig() {
   TERM=xterm-256color /usr/bin/tig
 }
