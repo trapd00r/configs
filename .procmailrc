@@ -39,6 +39,10 @@ DEFAULT=$MAILDIR/inbox/
 * ^TO_smokers-reports@perl.org
 /mnt/Docs/Mail/inbox/smokers-reports/
 
+:0:
+* ^From:.*bardiazakeri@gmail.com
+/dev/null
+
 # base case, to inbox
 :0:
 $DEFAULT
