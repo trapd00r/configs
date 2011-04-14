@@ -1,4 +1,10 @@
+tig() {
+  TERM=xterm-256color /usr/bin/tig
+}
 
+mutt() {
+  TERM=xterm-256color /usr/bin/mutt
+}
 
 re() {
   [[ $1 =~ $REPLY ]]
@@ -111,3 +117,5 @@ tf() {
 goto() { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 cpf() { cp "$@" && goto "$_"; }
 mvf() { mv "$@" && goto "$_"; }
+
+# vim: ft=sh:
