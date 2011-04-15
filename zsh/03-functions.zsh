@@ -1,5 +1,5 @@
 zc() {
-  for z in $HOME/configs/zsh/*.zsh $HOME/.zshrc; do
+  for z in $HOME/etc/zsh/*.zsh $HOME/.zshrc; do
     zcompile $z
     echo "Compiled $z"
   done
@@ -10,7 +10,7 @@ tig() {
 }
 
 mutt() {
-  TERM=xterm-256color /usr/bin/mutt
+  TERM=xterm-256color /usr/bin/mutt -F /home/scp1/etc/muttrc
 }
 
 re() {

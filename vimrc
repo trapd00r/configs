@@ -7,11 +7,13 @@ endif
 
 
 if !exists('g:vim_functions_loaded')
-  source /home/scp1/.vim/functions.vim
+  source /home/scp1/etc/vim/functions.vim
 endif
-source /home/scp1/.vim/filetypes.vim
-source /home/scp1/.vim/abbrevations.vim
-source /home/scp1/.vim/mappings.vim
+
+source /home/scp1/etc/vim/filetypes.vim
+source /home/scp1/etc/vim/abbrevations.vim
+source /home/scp1/etc/vim/mappings.vim
+
 
 set nocp
 

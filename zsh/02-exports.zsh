@@ -6,8 +6,10 @@ export HOSTNAME="shiva"
 export ZSH_THEME="trapd00r"
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export EDITOR=vim
-export MYVIMRC="/home/scp1/.vimrc"
 export PAGER=vimpager
+export ACKRC="/home/scp1/etc/ackrc"
+export XDG_CONFIG_HOME="$HOME/etc"
+export XDG_DATA_HOME="$HOME/var"
 
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
@@ -30,7 +32,7 @@ export SAVEHIST=1000000
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
 
 export MOZ_DISABLE_PANGO=1
-export CLIVE_CONFIG="/home/scp1/configs/cliverc"
+export CLIVE_CONFIG="/home/scp1/etc/cliverc"
 
 export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
@@ -69,9 +71,6 @@ export MPD_PORT=6600
 export MPD_PASS=`smokingkills`
 export MPD_USER='scp1'
 
-
-#export ZDOTDIR=$HOME/configs/zsh
-#export VIMINIT=/home/scp1/configs/vim
 
 #export CDPATH='.:~:/mnt'
 

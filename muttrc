@@ -1,4 +1,4 @@
-source ~/configs/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo default ; fi`
+source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo default ; fi`
 
 
 set abort_nosubject=no

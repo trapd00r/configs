@@ -13,7 +13,7 @@ au filetype help call Filetype_help()
 
 au BufWritePost *.{sh,pl} silent exe
 
-au BufReadPost * call SetCursorPosition()
+au BufRead * call SetCursorPosition()
 
 " Vim doesn't want to perform events on symlinks
 let g:vimrc = "/home/scp1/configs/vimrc"
@@ -23,8 +23,7 @@ let g:vimrc_functions = "/home/scp1/configs/vim/functions.vim"
 "au BufWritePost vimrc source '/tmp/statusline.vim'
 "au BufWritePost vim_functions echo 44
 
-au BufRead,BufNewFile *.markdown set ft=md
-au BufRead,BufNewFile *.md set ft=md
+au BufRead,BufNewFile *.md,*.mkd,*.markdown  set ft=md | normal gg
 au BufRead,BufNewFile *.go set ft=go
 au BufRead,BufNewFile *.txt set ft=_txt
 
@@ -37,14 +36,12 @@ au BufRead,BufNewFile ~/configs/zsh/01-colors.zsh set syntax=
 
 au  FileType pl,pm,t set filetype=perl
 au  FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
-au! FileType perl :noremap <leader>c
-    \ :!time perl -Mwarnings::unused -MVi::QuickFix -c %<cr>
 
 au FileType perl set makeprg=perl\ -c\ %\ $*
 au FileType perl setlocal errorformat=%f:%l:%m
 au FileType perl setlocal keywordprg=perldoc\ -f
 
-au! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e | :17
+au! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e 
 
 au cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 "au BufNewFile,BufRead *.p? compiler perl

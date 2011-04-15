@@ -1,14 +1,17 @@
 #!/bin/zsh
+export ZDOTDIR=/home/scp1/etc/zsh
+#export VIMRUNTIME="$HOME/etc/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/etc/vim/after,$HOME/etc/vim/colors" 
+#export VIMINIT="so /home/scp1/etc/vimrc"
 
-for r in $HOME/.zsh/*.zsh; do
+for r in $ZDOTDIR/*.zsh; do
   if [[ $DEBUG > 0 ]]; then
     echo "zsh: sourcing $r"
   fi
   source $r
 done
 
-source $HOME/.zsh/$ZSH_THEME.theme
-source $HOME/.zsh/02-abbrevations.zsh
+source $HOME/etc/zsh/$ZSH_THEME.theme
+source $HOME/etc/zsh/02-abbrevations.zsh
 
 eval `keychain -q --eval id_dsa`
 export TZ='Europe/Stockholm'

@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 hash -d b=~/bin
-hash -d c=~/configs
+hash -d c=~/etc
 hash -d d=~/devel
 hash -d h=~/devel/trapd00r.se
 hash -d rc=~/etc/rc.d/

@@ -1,13 +1,13 @@
 /* .Xresources | trapd00r.se */
-!#include "/home/scp1/configs/Xresources/rasta.Xresources"
-!#include "/home/scp1/configs/Xresources/trapd00r_default.Xresources"
-#include "/home/scp1/configs/Xresources/trapd00r_new.Xresources"
-!#include "/home/scp1/configs/Xresources/xterm_default.Xresources"
-!#include "/home/scp1/configs/Xresources/matrix.Xresources"
-!#include "/home/scp1/configs/Xresources/trasmatta.Xresources"
-!#include "/home/scp1/configs/Xresources/random_selection.Xresources"
-!#include "/home/scp1/configs/Xresources/better_defaults.Xresources"
-!
+!#include "/home/scp1/etc/Xcolors/rasta.Xresources"
+!#include "/home/scp1/etc/Xcolors/trapd00r_default.Xresources"
+#include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
+!#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
+!#include "/home/scp1/etc/Xcolors/matrix.Xresources"
+!#include "/home/scp1/etc/Xcolors/trasmatta.Xresources"
+!#include "/home/scp1/etc/Xcolors/random_selection.Xresources"
+!#include "/home/scp1/etc/Xcolors/better_defaults.Xresources"
+
 
 #if WIDTH < 60
 #define FONT -xos4-terminus-medium-r-normal--22-220-72-72-c-110-koi8-u

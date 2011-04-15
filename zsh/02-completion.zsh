@@ -3,7 +3,6 @@
 zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=10
-zstyle ':completion:*'                       muttrc='$HOME/configs/.muttrc'
 zstyle ':completion:*'                       use-perl=1
 zstyle ':completion:*'                       my-accounts='m@japh.se'
 

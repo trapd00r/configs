@@ -9,8 +9,7 @@ vim/autoload/
 vim/doc/
 vim/plugin/
 .mplayer/radiod.log
-.pentadactyl/info
-.pentadactyl/info
+pentadactyl/info
 zsh/cache/shiva/perl_modules/
 zsh/cache/shiva/perl_modules_with_pod
 zsh/cache
@@ -19,3 +18,5 @@ vim/colors/NEVERLAND_ANSI_BG_VIM
 .mplayer/rpd.log
 vim/.netrwhist
 *.zwc
+*.swp
+*.swo
