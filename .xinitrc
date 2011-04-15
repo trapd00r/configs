@@ -29,7 +29,7 @@ if [ "$HOSTNAME" == 'shiva' ]; then
   xsetroot  -cursor_name left_ptr
   setxkbmap -option terminate:ctrl_alt_bksp
 
-  setxkbmap se svorak -variant nodeadkeys
+  setxkbmap se svorak-m5 -variant nodeadkeys
 
   urxvtd -q -f -o                     &
   (sleep 1; urxvtc -name URxvt.shiva) &
