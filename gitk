@@ -14,22 +14,22 @@ set showlocalchanges 1
 set datetimeformat {%Y-%m-%d %H:%M:%S}
 set limitdiffs 1
 set uicolor #121212
-set want_ttk 1
+set want_ttk 0
 set bgcolor #121212
 set fgcolor #eeeeee
 set colors {green red blue magenta darkgrey brown orange}
-set diffcolors {red #00a000 #009cff}
+set diffcolors {red #00a000 #009c31}
 set markbgcolor #a6782e
-set diffcontext 3
+set diffcontext 10
 set selectbgcolor #13608b
-set extdifftool meld
+set extdifftool /usr/bin/vimdiff
 set perfile_attrs 0
-set geometry(main) 848x777+1680+245
+set geometry(main) 838x857+1680+165
 set geometry(state) normal
-set geometry(topwidth) 848
+set geometry(topwidth) 836
 set geometry(topheight) 192
 set geometry(pwsash0) "401 1"
-set geometry(pwsash1) "421 1"
+set geometry(pwsash1) "568 1"
 set geometry(botwidth) 543
-set geometry(botheight) 580
+set geometry(botheight) 653
 set permviews {}
