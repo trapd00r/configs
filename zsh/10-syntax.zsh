@@ -118,7 +118,7 @@ _zsh_highlight_add-highlighter() {
 
 ZSH_HIGHLIGHT_STYLES+=(
   default                       'fg=248'
-  unknown-token                 'fg=196,bold,bg=236'
+  unknown-token                 'fg=196,bold,bg=234'
   reserved-word                 'fg=220'
   alias                         'fg=197,bold'
   builtin                       'fg=107,bold'

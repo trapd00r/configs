@@ -1,3 +1,11 @@
+neverball() {
+  /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/
+}
+mplayer() {
+  /usr/bin/mplayer \
+    -msgmodule 1 -msgcolor -include $XDG_CONFIG_HOME/mplayer/config "$@"
+}
+
 zc() {
   for z in $HOME/etc/zsh/*.zsh $HOME/.zshrc; do
     zcompile $z

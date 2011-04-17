@@ -1,6 +1,8 @@
 #!/usr/bin/zsh
 
-zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*'                       accept-exact '*(N)'
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=10
 zstyle ':completion:*'                       use-perl=1
@@ -10,7 +12,8 @@ zstyle ':completion:*'                       squeeze-slashes true
 zstyle ':completion:*:cd:*'                  ignore-parents parent pwd
 
 zstyle ':completion:*:(all-|)files'          ignored-patterns '*.un~'
-zstyle ':completion:*:*:kill:*:processes'    list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:*:kill:*:processes' \
+  list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 zstyle ':completion::complete:*'             use-cache on
 zstyle ':completion::complete:*'             cache-path ~/.zsh/cache/$HOST
@@ -26,19 +29,27 @@ zstyle ':completion:*:ssh:*'                 group-order \
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:*:mplayer:*'           tag-order files
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
-       '*.(rmvb|mkv|mpg|wmv|mpeg|avi|mp3|mp4|flac|ogg):video' \
+       '*.(rmvb|mkv|mpg|wmv|mpeg|avi|flv|mp3|mp4|flac|ogg):video' \
        '*:all-files' '*(-/):directories'
 
-zstyle ':completion:*:*:(gvim|vim):*:*files' ignored-patterns '*~' file-sort modification
-zstyle ':completion:*:*:(gvim|vim):*'        file-sort modification
+zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
+  ignored-patterns '*~|*.(old|bak)|pm_to_blib|cover_db|blib' \
+  file-sort modification
+zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
+  file-sort modification
 
-zstyle ':completion:*:*:(cd):*:*files'       ignored-patterns '*~' file-sort modification
+zstyle ':completion:*:*:(cd):*:*files' \
+  ignored-patterns '*~' \
+  file-sort modification
 zstyle ':completion:*:*:(cd):*'              file-sort modification
-zstyle ':completion:*:descriptions'          format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
-zstyle ':completion:*:warnings'              format $'%{\e[38;5;196;1m%}Nah: %d%{\e[m%}'
+zstyle ':completion:*:descriptions' \
+  format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
+zstyle ':completion:*:warnings' \
+  format $'%{\e[38;5;160;1m%}%d%{\e[m%}'
 
 zstyle ':completion:*:*:apvlv:*'             tag-order files
 zstyle ':completion:*:*:apvlv:*'             file-patterns '*.pdf'
+
 
 zstyle ':completion:*:*:*:users' ignored-patterns \
         adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
