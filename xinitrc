@@ -22,7 +22,7 @@ host_resolution[india]="1366x768"
 
 
 if [ "$HOSTNAME" == 'shiva' ]; then
-  xrdb $HOME/configs/.Xresources
+  xrdb $HOME/etc/Xresources
   unclutter -idle 4 &
   xset m 1 1        &
 

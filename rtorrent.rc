@@ -229,5 +229,6 @@ schedule = books1,5,5,"load_start=/mnt/Books/.torrents/*.torrent,d.set_directory
 schedule = tvdisk121,5,5,"load_start=/mnt/TV_1/.torrents/*.torrent,d.set_directory=/mnt/TV_1/.new/"
 schedule = tvdisk21,5,5,"load_start=/mnt/TV_2/.torrents/*.torrent,d.set_directory=/mnt/TV_2/.new/"
 schedule = tvdisk31,5,5,"load_start=/mnt/TV_3/.torrents/*.torrent,d.set_directory=/mnt/TV_3"
+schedule = tvdisk41,5,5,"load_start=/mnt/TV_4/.torrents/*.torrent,d.set_directory=/mnt/TV_4"
 #
 schedule = gamedisk21,5,5,"load_start=/mnt/Games_2/.torrents/*.torrent,d.set_directory=/mnt/Games_2/.new/"

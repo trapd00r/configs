@@ -1,4 +1,4 @@
-source /home/scp1/configs/.pentadactyl/color/neverland.penta
+source /home/scp1/etc/pentadactyl/color/neverland.penta
 set guioptions-=rlb
 set hintkeys=asdfg;lkjh
 set titlestring=Fx
@@ -36,13 +36,16 @@ javascript readabilityFootnotes = "true"
 "set noscriptlist=base
 set mapleader=","
 
-
 nmap d <Nop>
+nmap dd <Nop>
+
 nmap <C-h> <Nop>
+
+cmap C :tabclose<CR>
 
 "nmap -b yy y
 
-nmap dd :tabclose<CR>
+"nmap dd :tabclose<CR>
 nmap a  :noscript toggletemp<CR>
 nmap A  :noscript toggleperm<CR>
 nmap <Leader>q :qa!<CR>
