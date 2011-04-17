@@ -251,7 +251,7 @@ nnoremap <C-h> :!perl -MVi::QuickFix='/mnt/Docs/Backup/vim_quickfix_err/%.err' -
 "nnoremap <C-j> :cn<CR>
 "nnoremap <C-m> :cwindow 5<CR>
 
-nnoremap <C-m> :bnext<CR>
+"nnoremap <C-m> :bnext<CR>
 "nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 
@@ -298,7 +298,7 @@ nnoremap <leader>8 :8b<CR>
 nnoremap <leader>9 :9b<CR>
 nnoremap <leader>0 :10b<CR>
 
-nnoremap <leader>a :bdelete!<CR>
+"nnoremap <leader>a :bdelete!<CR>
 
 nnoremap <leader>f :set paste<CR>
 
