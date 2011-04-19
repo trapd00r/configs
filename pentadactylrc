@@ -41,7 +41,7 @@ nmap dd <Nop>
 
 nmap <C-h> <Nop>
 
-cmap C :tabclose<CR>
+nmap C :tabclose<CR>
 
 "nmap -b yy y
 
