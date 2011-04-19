@@ -87,8 +87,8 @@ set numberwidth=2
 set pastetoggle=<F42>
 set preserveindent
 
-set printoptions=paper:A4,syntax:n,wrap:y,header:0,number:y,duplex:off
-set printoptions+=left:4,right:4,top:2,bottom:2
+set printoptions=paper:A4,syntax:n,wrap:y,header:0,number:n,duplex:off
+set printoptions+=left:2,right:2,top:2,bottom:2
 set printfont=-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 set printmbfont=r:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 set printmbfont+=b:-windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
