@@ -16,10 +16,9 @@ au BufWritePost *.{sh,pl} silent exe
 au BufRead * call SetCursorPosition()
 
 " Vim doesn't want to perform events on symlinks
-let g:vimrc = "/home/scp1/configs/vimrc"
-"let g:vimrc_statusline = "/home/scp1/configs/vim/after/plugin/statusline.vim"
-let g:vimrc_statusline = "/tmp/statusline.vim"
-let g:vimrc_functions = "/home/scp1/configs/vim/functions.vim"
+let g:vimrc = "/home/scp1/etc/vimrc"
+let g:vimrc_statusline = "/home/scp1/etc/vim/after/plugin/statusline.vim"
+let g:vimrc_functions = "/home/scp1/etc/vim/functions.vim"
 "au BufWritePost vimrc source '/tmp/statusline.vim'
 "au BufWritePost vim_functions echo 44
 
@@ -41,7 +40,7 @@ au FileType perl set makeprg=perl\ -c\ %\ $*
 au FileType perl setlocal errorformat=%f:%l:%m
 au FileType perl setlocal keywordprg=perldoc\ -f
 
-au! BufNewFile * silent! 0r ~/configs/vim/templates/template.%:e 
+au! BufNewFile * silent! 0r ~/etc/vim/templates/template.%:e 
 
 au cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 "au BufNewFile,BufRead *.p? compiler perl
@@ -71,6 +70,8 @@ let perl_pod_spellcheck_headings   = 1
 let perlhelp_prog                  = '/usr/bin/perldoc'
 
 let extradite_width                = 40
+
+let space_no_jump                  = 1
 
 "let g:indent_guides_auto = 0
 "au VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
