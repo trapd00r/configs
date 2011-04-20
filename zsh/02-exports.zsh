@@ -8,7 +8,9 @@ export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export EDITOR=vim
 export PAGER=vimpager
 export ACKRC="/home/scp1/etc/ackrc"
+
 export XDG_CONFIG_HOME="$HOME/etc"
+export XDG_CACHE_HOME="$HOME/etc/cache"
 export XDG_DATA_HOME="$HOME/var"
 
 export PERL_HACK_LIB="/tmp"
