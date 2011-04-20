@@ -1,0 +1,13 @@
+diff --git a/src/settings.h b/src/settings.h
+index 698efa0..7f3123d 100644
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -31,7 +31,7 @@
+ #ifdef WIN32
+ # define HOME_FOLDER "\\ncmpcpp\\"
+ #else
+-# define HOME_FOLDER "/.ncmpcpp/"
++# define HOME_FOLDER "/etc/ncmpcpp/"
+ #endif // WIN32
+ 
+ const std::string config_dir = home_path + HOME_FOLDER;
