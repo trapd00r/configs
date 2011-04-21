@@ -4,7 +4,7 @@
 
 zstyle ':completion:*'                       accept-exact '*(N)'
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*'                       menu select=10
+zstyle ':completion:*'                       menu select=200
 zstyle ':completion:*'                       use-perl=1
 zstyle ':completion:*'                       my-accounts='m@japh.se'
 
@@ -21,12 +21,12 @@ zstyle ':completion:*:processes'             command 'ps -axw'
 zstyle ':completion:*:processes-names'       command 'ps -awxho command'
 zstyle ':completion:*'                       matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:functions'             ignored-patterns '_*'
-zstyle ':completion:*:scp:*'                 tag-order \
-zstyle ':completion:*:scp:*'                 group-order \
-zstyle ':completion:*:ssh:*'                 tag-order \
-zstyle ':completion:*:ssh:*'                 group-order \
+zstyle ':completion:*:scp:*'                 tag-order
+zstyle ':completion:*:scp:*'                 group-order
+zstyle ':completion:*:ssh:*'                 tag-order
+zstyle ':completion:*:ssh:*'                 group-order
 
-zstyle ':completion:*' group-name ''
+zstyle ':completion:*' group-name            ''
 zstyle ':completion:*:*:mplayer:*'           tag-order files
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
        '*.(rmvb|mkv|mpg|wmv|mpeg|avi|flv|mp3|mp4|flac|ogg):video' \
@@ -38,10 +38,12 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   file-sort modification
 
-zstyle ':completion:*:*:(cd):*:*files' \
-  ignored-patterns '*~' \
-  file-sort modification
-zstyle ':completion:*:*:(cd):*'              file-sort modification
+zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
+zstyle ':completion:*:*:(cd):*'        file-sort access
+zstyle ':completion:*:*:(cd):*'        menu select
+zstyle ':completion:*:*:(cd):*'        completer _history
+
+
 zstyle ':completion:*:descriptions' \
   format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
 zstyle ':completion:*:warnings' \
@@ -61,7 +63,7 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
 zstyle '*' single-ignored show
 
-zstyle ':completion:*:options'               menu search 
+#zstyle ':completion:*:options'               menu search
 
 
 zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
