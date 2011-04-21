@@ -73,6 +73,8 @@ export MPD_PORT=6600
 export MPD_PASS=`smokingkills`
 export MPD_USER='scp1'
 
+export LISTMAX=300
+
 
 #export CDPATH='.:~:/mnt'
 
