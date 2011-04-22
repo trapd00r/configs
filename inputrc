@@ -45,7 +45,7 @@ $endif
 $if re.pl
   "\C-e": "perldoc perlre\n"
   "\C-g": "perldoc perlguts\n"
-  "\C-i": "perldoc perlipc\n"
+  "\C-p": "perldoc perlipc\n"
   "\C-o": "perldoc perlop\n"
   "\C-u": "perldoc perlunicode\n"
   "\C-v": "perldoc perlvar\n"
