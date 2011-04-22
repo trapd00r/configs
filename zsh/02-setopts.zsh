@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+#No flow control please.
+stty -ixon
 
 setopt ALL_EXPORT
 #setopt print_exit_value
