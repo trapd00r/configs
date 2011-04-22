@@ -1,1 +1,1 @@
-/home/scp1/devel/neverland-vim-theme/colors/neverland-ansi.vim
+/home/scp1/dev/neverland-vim-theme/colors/neverland-ansi.vim
