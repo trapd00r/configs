@@ -12,12 +12,15 @@ export ACKRC="/home/scp1/etc/ackrc"
 export XDG_CONFIG_HOME="$HOME/etc"
 export XDG_CACHE_HOME="$HOME/etc/cache"
 export XDG_DATA_HOME="$HOME/var"
+export DEVEL_HOME="$HOME/dev"
+export BIN_HOME="$HOME/bin"
+export DEVEL_HOME="$HOME/dev"
 
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
 #export PERL5OPT='-Mstrict'
 
-export GIST_DIR=$HOME/devel/_gists/
+export GIST_DIR=$HOME/dev/_gists/
 
 export GOROOT=$HOME/go
 export GOOS='linux'
@@ -36,7 +39,7 @@ export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
 export MOZ_DISABLE_PANGO=1
 export CLIVE_CONFIG="/home/scp1/etc/cliverc"
 
-export PATH=$HOME/devel/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
+export PATH=$HOME/dev/utils:~/bin:/bin:/usr/bin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/core_perl:/usr/bin/vendor_perl:/usr/lib/perl5/site_perl/bin:/usr/lib/perl5/vendor_perl/bin:/usr/lib/perl5/core_perl/bin:/sbin:/usr/sbin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/home/scp1/perl5/perlbrew/perls/perl-5.8.3/:$HOME/go/bin
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 
 export FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'

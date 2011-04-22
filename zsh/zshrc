@@ -13,7 +13,11 @@ done
 source $HOME/etc/zsh/$ZSH_THEME.theme
 source $HOME/etc/zsh/02-abbrevations.zsh
 
-eval `keychain -q --eval id_dsa`
+eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
 export TZ='Europe/Stockholm'
+
+# XXX
+fpath=(~/etc/zsh/compdef $fpath)
+compinit -i
 
 compdef _files mkdir

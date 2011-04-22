@@ -16,7 +16,7 @@ zstyle ':completion:*:*:kill:*:processes' \
   list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 zstyle ':completion::complete:*'             use-cache on
-zstyle ':completion::complete:*'             cache-path ~/.zsh/cache/$HOST
+zstyle ':completion::complete:*'             cache-path ~/etc/cache/$HOST
 zstyle ':completion:*:processes'             command 'ps -axw'
 zstyle ':completion:*:processes-names'       command 'ps -awxho command'
 zstyle ':completion:*'                       matcher-list 'm:{a-z}={A-Z}'

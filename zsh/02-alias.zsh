@@ -37,8 +37,8 @@ alias    hour="echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
-alias   editc='vim $HOME/.zsh/01-colors.zsh $HOME/devel/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
-alias   share='perl $HOME/devel/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
+alias   editc='vim $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
+alias   share='perl $HOME/dev/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
 
@@ -81,37 +81,37 @@ alias   perlf='ack -f --perl'
 
 
 #alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
-alias        r='perl $HOME/devel/App::Rel/rel/'
+alias        r='perl $HOME/dev/App::Rel/rel/'
 
 alias     x='cd $XDG_CONFIG_HOME'
-alias     h='cd $HOME/devel/trapd00r.se'
+alias     h='cd $HOME/dev/trapd00r.se'
 alias    vb='cd $HOME/etc/vim/bundle'
-alias tests='cd $HOME/devel/CPANTS'
+alias tests='cd $HOME/dev/CPANTS'
 
 alias     b='cd $HOME/bin'
 alias     c='cd $HOME/etc'
-alias     d='cd $HOME/devel'
-alias     u='cd $HOME/devel/utils'
+alias     d='cd $HOME/dev'
+alias     u='cd $HOME/dev/utils'
 alias     g='cd $HOME/bin/upstream'
 alias     z='cd $HOME/.zsh'
-alias    aa='cd $HOME/devel/App::Autotest'
-alias    ap='cd $HOME/devel/App::Pimpd'
-alias    pp='cd $HOME/devel/App::Pimpd'
-alias   apl='cd $HOME/devel/App::Pimpd_Legacy'
-alias     p='cd $HOME/devel/App::Pimpd_Legacy'
-alias     q='cd $HOME/devel/App::Pickyfont'
-alias   apf='cd $HOME/devel/App::Pickyfont'
-alias    ar='cd $HOME/devel/App::Rel/'
-alias   RPD='cd $HOME/devel/App::RPD'
-alias    at='cd $HOME/devel/App::Ttycolor'
-alias    dm='cd $HOME/devel/Daemon::Mplayer'
-alias   flc='cd $HOME/devel/File::LsColor'
-alias   tec='cd $HOME/devel/Term::ExtendedColor'
-alias   tet='cd $HOME/devel/Term::ExtendedColor::TTY'
-alias   tex='cd $HOME/devel/Term::ExtendedColor::Xresources'
-alias   mll='cd $HOME/devel/Module::LocalLoad'
-alias   mnp='cd $HOME/devel/Mplayer::NowPlaying-CPAN'
-alias xxlfd='cd $HOME/devel/Xorg::XLFD'
+alias    aa='cd $HOME/dev/App::Autotest'
+alias    ap='cd $HOME/dev/App::Pimpd'
+alias    pp='cd $HOME/dev/App::Pimpd'
+alias   apl='cd $HOME/dev/App::Pimpd_Legacy'
+alias     p='cd $HOME/dev/App::Pimpd_Legacy'
+alias     q='cd $HOME/dev/App::Pickyfont'
+alias   apf='cd $HOME/dev/App::Pickyfont'
+alias    ar='cd $HOME/dev/App::Rel/'
+alias   RPD='cd $HOME/dev/App::RPD'
+alias    at='cd $HOME/dev/App::Ttycolor'
+alias    dm='cd $HOME/dev/Daemon::Mplayer'
+alias   flc='cd $HOME/dev/File::LsColor'
+alias   tec='cd $HOME/dev/Term::ExtendedColor'
+alias   tet='cd $HOME/dev/Term::ExtendedColor::TTY'
+alias   tex='cd $HOME/dev/Term::ExtendedColor::Xresources'
+alias   mll='cd $HOME/dev/Module::LocalLoad'
+alias   mnp='cd $HOME/dev/Mplayer::NowPlaying-CPAN'
+alias xxlfd='cd $HOME/dev/Xorg::XLFD'
 alias   mp3='cd /mnt/Leftover/TransferMusic'
 alias     t='mkdr /tmp/scp1 ; cd /tmp/scp1'
 alias    tt='cd $HOME/bin/upstream'
@@ -169,11 +169,11 @@ alias        i='echo http://i.japh.se && echo http://i.japh.se|xclip'
 alias        l='echo http://l.japh.se && echo http://l.japh.se|xclip'
 alias     japh='echo http://japh.se && echo http://japh.se|xclip'
 alias      pst='echo http://p.japh.se && echo http://p.japh.se|xclip'
-alias     todo='$HOME/devel/time-spent-in-vim/vim $HOME/doc/TODO'
+alias     todo='$HOME/dev/time-spent-in-vim/vim $HOME/doc/TODO'
 
-alias    dmesg='$HOME/devel/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
-#alias      vim='/home/scp1/devel/time-spent-in-vim/vim'
-alias  vimtime='/home/scp1/devel/time-spent-in-vim/vim --total'
+alias    dmesg='$HOME/dev/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
+#alias      vim='/home/scp1/dev/time-spent-in-vim/vim'
+alias  vimtime='/home/scp1/dev/time-spent-in-vim/vim --total'
 alias    vimsh='vim *.sh'
 alias    vimpm='vim *.pm'
 alias    vimpl='vim *.pl'
@@ -182,7 +182,7 @@ alias    flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
 alias      cat='v'
 alias      scx='TERM=xterm;screen -x'
 alias      top='cc-grey-ansi;top;cc-x-color-scheme-trapd00r'
-alias     make='/home/scp1/devel/utils/mymake'
+alias     make='/home/scp1/dev/utils/mymake'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
 alias      die='kill -9 $$'
@@ -195,8 +195,8 @@ alias      mem='su -c mem'
 alias    links='/bin/cat /home/scp1/doc/links'
 alias  ncmpcpp='colorcoke -r 105 -g 30 -b 50 -s 0 -e 15&&ncmpcpp; \
                   cc-x-color-scheme-trapd00r'
-alias    devel='echo http://devel.japh.se/ \
-                  && echo http://devel.japh.se/|xclip'
+alias    dev='echo http://devel.japh.se/ \
+                  && echo http://dev.japh.se/|xclip'
 
 
 alias   1='printf "\e]710;%s\007" "9x15bold,xft:Kochi Gothic"'
@@ -216,18 +216,18 @@ alias   f='pickyfont monte1 normal \
 
 
 alias evil="grep 'sub escape' -A 2 \
-  $HOME/devel/App::Pimpd/lib/App/Pimpd/Validate.pm |
+  $HOME/dev/App::Pimpd/lib/App/Pimpd/Validate.pm |
   tail -1|perl -pe 's/^\s+\$str =~ //'"
 
 alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
 alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
 
-alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/devel/CPANTS \
-                    && cd $HOME/devel/CPANTS'
+alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/dev/CPANTS \
+                    && cd $HOME/dev/CPANTS'
 
 alias pkgclean="yes |
-                  rm -r $(find $HOME/devel/PKGBUILDS -name 'pkg' \
-                    && find $HOME/devel/PKGBUILDS -name 'src')"
+                  rm -r $(find $HOME/dev/PKGBUILDS -name 'pkg' \
+                    && find $HOME/dev/PKGBUILDS -name 'src')"
 
 alias   iostat='iostat -mtx'
 alias     cpuu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
