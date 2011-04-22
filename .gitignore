@@ -22,3 +22,5 @@ vim/.netrwhist
 *.swo
 ncmpcpp/artists/
 ncmpcpp/error.log
+getmail/
+keychain/
