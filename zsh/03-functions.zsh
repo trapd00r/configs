@@ -1,3 +1,7 @@
+cpan_up() {
+  cpan_upload "$@" && mv -v "$@" /mnt/Docs/Backup/
+}
+
 neverball() {
   /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/
 }
@@ -26,11 +30,11 @@ re() {
 }
 
 vimconfig() {
-  $HOME/devel/time-spent-in-vim/vim $HOME/.vim{rc,/*.vim}
+  $HOME/dev/time-spent-in-vim/vim $HOME/.vim{rc,/*.vim}
 }
 
 zshconfig() {
-  $HOME/devel/time-spent-in-vim/vim $HOME/.zsh{rc,/*.{theme,zsh}}
+  $HOME/dev/time-spent-in-vim/vim $HOME/.zsh{rc,/*.{theme,zsh}}
 }
 
 commands() {
@@ -90,11 +94,11 @@ du1() {
 horny() { feh -FZrD3 /mnt/Porn/00-Pics/** && printf "Done!\n" }
 
 vimp() {
-  /home/scp1/devel/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:pl|pm)$'|grep -v 'blib'|perl -pe 's/\n/ /')
+  /home/scp1/dev/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:pl|pm)$'|grep -v 'blib'|perl -pe 's/\n/ /')
 }
 
 vimgo() {
-  /home/scp1/devel/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:go)$'|perl -pe 's/\n/ /')
+  /home/scp1/dev/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:go)$'|perl -pe 's/\n/ /')
 }
 
 
