@@ -1,0 +1,1500 @@
+[1;34m(D)[0m Initializing audio.
+[1;34m(D)[0m Audio configuration: (44100, -16, 2)
+[1;34m(D)[0m Initializing video.
+[1;34m(D)[0m Enabling high priority timer.
+[1;33m(W)[0m Config key opengl.svgquality not defined while reading.
+[1;34m(D)[0m 2 joysticks found.
+[1;32m(N)[0m Loading Data.star1 synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/star1.png' instead of '../data/star1.svg'.
+[1;32m(N)[0m Loaded Data.star1 in 0.005 seconds
+[1;32m(N)[0m Loading Data.star2 synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/star2.png' instead of '../data/star2.svg'.
+[1;32m(N)[0m Loaded Data.star2 in 0.003 seconds
+[1;32m(N)[0m Loading Data.left synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/left.png' instead of '../data/left.svg'.
+[1;32m(N)[0m Loaded Data.left in 0.001 seconds
+[1;32m(N)[0m Loading Data.right synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/right.png' instead of '../data/right.svg'.
+[1;32m(N)[0m Loaded Data.right in 0.001 seconds
+[1;32m(N)[0m Loading Data.ball1 synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/ball1.png' instead of '../data/ball1.svg'.
+[1;32m(N)[0m Loaded Data.ball1 in 0.003 seconds
+[1;32m(N)[0m Loading Data.ball2 synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/ball2.png' instead of '../data/ball2.svg'.
+[1;32m(N)[0m Loaded Data.ball2 in 0.003 seconds
+[1;32m(N)[0m Loading Data.loadingImage synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/loading.png' instead of '../data/loading.svg'.
+[1;32m(N)[0m Loaded Data.loadingImage in 0.012 seconds
+[1;32m(N)[0m Loading Data.font asynchronously
+[1;32m(N)[0m Loading Data.bigFont asynchronously
+[1;32m(N)[0m Loading Data.screwUpSounds asynchronously
+[1;32m(N)[0m Loading Data.acceptSound asynchronously
+[1;32m(N)[0m Loading Data.cancelSound asynchronously
+[1;32m(N)[0m Loading Data.selectSound1 asynchronously
+[1;32m(N)[0m Loading Data.selectSound2 asynchronously
+[1;32m(N)[0m Loading Data.selectSound3 asynchronously
+[1;32m(N)[0m Loading Data.startSound asynchronously
+[1;34m(D)[0m Ready.
+[1;32m(N)[0m Loading MainMenu.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded MainMenu.background in 0.045 seconds
+[1;32m(N)[0m Loading MainMenu.guy synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/pose.png' instead of '../data/pose.svg'.
+[1;32m(N)[0m Loaded MainMenu.guy in 0.027 seconds
+[1;32m(N)[0m Loading MainMenu.logo synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/logo.png' instead of '../data/logo.svg'.
+[1;32m(N)[0m Loaded MainMenu.logo in 0.021 seconds
+[1;33m(W)[0m Unable to enable psyco.
+[1;32m(N)[0m Loaded Data.font in 0.000 seconds
+[1;32m(N)[0m Loaded Data.bigFont in 0.000 seconds
+[1;32m(N)[0m Loaded Data.screwUpSounds in 0.065 seconds
+[1;32m(N)[0m Loaded Data.acceptSound in 0.009 seconds
+[1;32m(N)[0m Loaded Data.cancelSound in 0.006 seconds
+[1;32m(N)[0m Loaded Data.selectSound1 in 0.006 seconds
+[1;32m(N)[0m Loaded Data.selectSound2 in 0.005 seconds
+[1;32m(N)[0m Loaded Data.selectSound3 in 0.006 seconds
+[1;32m(N)[0m Loaded Data.startSound in 0.010 seconds
+[1;34m(D)[0m View: Push: MainMenu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m Starting server.
+[1;32m(N)[0m Loading MainMenu.session synchronously
+[1;34m(D)[0m Connecting to host 127.0.0.1.
+[1;34m(D)[0m Session #1 connected.
+[1;32m(N)[0m Loaded MainMenu.session in 0.001 seconds
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m Connected as session #1.
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: Lobby
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m Learned about World.CreatePlayer, 1 phrases now known.
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m Learned about World.StartGame, 2 phrases now known.
+[1;34m(D)[0m Learned about World.PlayerJoined, 1 phrases now known.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.GameStarted, 2 phrases now known.
+[1;34m(D)[0m View: Pop: Lobby
+[1;34m(D)[0m Learned about World.SceneCreated, 3 phrases now known.
+[1;34m(D)[0m Learned about World.EnterScene, 4 phrases now known.
+[1;34m(D)[0m Learned about World.SceneEntered, 5 phrases now known.
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.354 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.739 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.273 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.026 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.059 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.012 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.013 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.003 seconds
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlEvent, 3 phrases now known.
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlData, 6 phrases now known.
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.113 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.DeleteScene, 4 phrases now known.
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m 8 phrases taught.
+[1;34m(D)[0m Learned about World.CreateScene, 5 phrases now known.
+[1;34m(D)[0m Learned about World.SceneDeleted, 7 phrases now known.
+[1;34m(D)[0m Learned about World.SceneLeft, 8 phrases now known.
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.119 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.052 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.146 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.012 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.019 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.013 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.004 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.016 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.021 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.005 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.133 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.052 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 0.318 seconds
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about World.EnterScene, 6 phrases now known.
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Push: GameSettingsMenu
+[1;34m(D)[0m View: Pop: GameSettingsMenu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m Learned about World.PlayerLeft, 7 phrases now known.
+[1;34m(D)[0m 9 phrases taught.
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m Learned about World.GameFinished, 9 phrases now known.
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Pop: Menu
+[1;32m(N)[0m Loading MainMenu.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded MainMenu.background in 0.044 seconds
+[1;32m(N)[0m Loading MainMenu.guy synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/pose.png' instead of '../data/pose.svg'.
+[1;32m(N)[0m Loaded MainMenu.guy in 0.021 seconds
+[1;32m(N)[0m Loading MainMenu.logo synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/logo.png' instead of '../data/logo.svg'.
+[1;32m(N)[0m Loaded MainMenu.logo in 0.015 seconds
+[1;34m(D)[0m View: Push: MainMenu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m Stopping server.
+[1;34m(D)[0m Disconnecting.
+[1;34m(D)[0m View: Push: SettingsMenu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Push: GetKey
+[1;34m(D)[0m View: Pop: GetKey
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: SettingsMenu
+[1;34m(D)[0m Starting server.
+[1;32m(N)[0m Loading MainMenu.session synchronously
+[1;34m(D)[0m Connecting to host 127.0.0.1.
+[1;34m(D)[0m Session #1 connected.
+[1;32m(N)[0m Loaded MainMenu.session in 0.001 seconds
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m Connected as session #1.
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: Lobby
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m Learned about World.CreatePlayer, 1 phrases now known.
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m Learned about World.StartGame, 2 phrases now known.
+[1;34m(D)[0m Learned about World.PlayerJoined, 1 phrases now known.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.GameStarted, 2 phrases now known.
+[1;34m(D)[0m View: Pop: Lobby
+[1;34m(D)[0m Learned about World.SceneCreated, 3 phrases now known.
+[1;34m(D)[0m Learned about World.EnterScene, 4 phrases now known.
+[1;34m(D)[0m Learned about World.SceneEntered, 5 phrases now known.
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.091 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.799 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.299 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.066 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.002 seconds
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlEvent, 3 phrases now known.
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlData, 6 phrases now known.
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.129 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.087 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.083 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.193 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.295 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.189 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.112 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.DeleteScene, 4 phrases now known.
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m 8 phrases taught.
+[1;34m(D)[0m Learned about World.CreateScene, 5 phrases now known.
+[1;34m(D)[0m Learned about World.SceneDeleted, 7 phrases now known.
+[1;34m(D)[0m Learned about World.SceneLeft, 8 phrases now known.
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.039 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.070 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.003 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.145 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.015 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.021 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.012 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.004 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.018 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.021 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.011 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.004 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.097 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.053 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 4.677 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about World.EnterScene, 6 phrases now known.
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m Learned about World.PlayerLeft, 7 phrases now known.
+[1;34m(D)[0m 9 phrases taught.
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m Learned about World.GameFinished, 9 phrases now known.
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Pop: Menu
+[1;32m(N)[0m Loading MainMenu.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded MainMenu.background in 0.051 seconds
+[1;32m(N)[0m Loading MainMenu.guy synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/pose.png' instead of '../data/pose.svg'.
+[1;32m(N)[0m Loaded MainMenu.guy in 0.024 seconds
+[1;32m(N)[0m Loading MainMenu.logo synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/logo.png' instead of '../data/logo.svg'.
+[1;32m(N)[0m Loaded MainMenu.logo in 0.019 seconds
+[1;34m(D)[0m View: Push: MainMenu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m Stopping server.
+[1;34m(D)[0m Disconnecting.
+[1;34m(D)[0m Starting server.
+[1;32m(N)[0m Loading MainMenu.session synchronously
+[1;34m(D)[0m Connecting to host 127.0.0.1.
+[1;34m(D)[0m Session #1 connected.
+[1;32m(N)[0m Loaded MainMenu.session in 0.001 seconds
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m Connected as session #1.
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: Lobby
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m Learned about World.CreatePlayer, 1 phrases now known.
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m Learned about World.StartGame, 2 phrases now known.
+[1;34m(D)[0m Learned about World.PlayerJoined, 1 phrases now known.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.GameStarted, 2 phrases now known.
+[1;34m(D)[0m View: Pop: Lobby
+[1;34m(D)[0m Learned about World.SceneCreated, 3 phrases now known.
+[1;34m(D)[0m Learned about World.EnterScene, 4 phrases now known.
+[1;34m(D)[0m Learned about World.SceneEntered, 5 phrases now known.
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.083 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.808 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.235 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.026 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.101 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.012 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.013 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.002 seconds
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlEvent, 3 phrases now known.
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlData, 6 phrases now known.
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.456 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.157 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.317 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.239 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.105 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.DeleteScene, 4 phrases now known.
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m 8 phrases taught.
+[1;34m(D)[0m Learned about World.CreateScene, 5 phrases now known.
+[1;34m(D)[0m Learned about World.SceneDeleted, 7 phrases now known.
+[1;34m(D)[0m Learned about World.SceneLeft, 8 phrases now known.
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.023 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.044 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.010 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.020 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.194 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.120 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.118 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.051 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.011 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.015 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.018 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.008 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.005 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.006 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.117 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.062 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 4.651 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about World.EnterScene, 6 phrases now known.
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.091 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;32m(N)[0m Loaded SongChooser.songs in 0.524 seconds
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.264 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.068 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.094 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.101 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.114 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.011 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.203 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.069 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.077 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.070 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.075 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.028 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.004 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.011 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.031 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.013 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.004 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.085 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.051 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 0.616 seconds
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;32m(N)[0m Loading GameResultsSceneClient.song asynchronously
+[1;32m(N)[0m Loading GameResultsSceneClient.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded GameResultsSceneClient.background in 0.134 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GameResultsSceneClient.song in 0.845 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Push: GameResultsSceneClient
+[1;34m(D)[0m View: Push: GetText
+[1;34m(D)[0m View: Pop: GetText
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GameResultsSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.185 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.526 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.233 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.026 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.058 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.013 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.013 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.058 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.195 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.103 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.027 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;32m(N)[0m Loaded SongChooser.songs in 0.263 seconds
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.262 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.067 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.796 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.110 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.003 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.013 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.018 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.111 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.131 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.102 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.114 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.004 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.005 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.014 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.008 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.017 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.008 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.005 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.005 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.142 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.057 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 1.342 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.098 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;32m(N)[0m Loaded SongChooser.songs in 0.323 seconds
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.261 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.066 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.103 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.177 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.062 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.109 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.004 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.016 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.068 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.050 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.117 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.046 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.025 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.030 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.010 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.005 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.012 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.008 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.022 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.118 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.003 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.007 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.106 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.051 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 4.076 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.078 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;32m(N)[0m Loaded SongChooser.songs in 0.320 seconds
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.262 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.069 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.002 seconds
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.116 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.052 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.016 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.126 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.010 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.010 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.018 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.003 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.016 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.020 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.008 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.003 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.007 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.175 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.197 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 3.876 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;32m(N)[0m Loading GameResultsSceneClient.song asynchronously
+[1;32m(N)[0m Loading GameResultsSceneClient.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded GameResultsSceneClient.background in 0.085 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GameResultsSceneClient.song in 4.183 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Push: GameResultsSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GameResultsSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.403 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.545 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.300 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.065 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.132 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.027 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.028 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.003 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.172 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.120 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.004 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.012 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.003 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.109 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.013 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.005 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.012 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.015 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.004 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.228 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.140 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 0.597 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.116 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.559 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.262 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.066 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.015 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.003 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.114 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.004 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.011 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.110 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.015 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.004 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.011 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.015 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.004 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.084 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.057 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 3.308 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.105 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.788 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.262 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.067 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.055 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.256 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.125 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.101 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.076 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.047 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.217 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.008 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.011 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.018 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.007 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.019 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.022 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.010 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.007 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.087 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.052 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 0.984 seconds
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.117 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;32m(N)[0m Loaded SongChooser.songs in 0.428 seconds
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.263 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.029 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.068 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.015 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.003 seconds
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 1.122 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m Learned about World.PlayerLeft, 7 phrases now known.
+[1;34m(D)[0m 9 phrases taught.
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;34m(D)[0m Learned about World.GameFinished, 9 phrases now known.
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading MainMenu.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded MainMenu.background in 0.043 seconds
+[1;32m(N)[0m Loading MainMenu.guy synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/pose.png' instead of '../data/pose.svg'.
+[1;32m(N)[0m Loaded MainMenu.guy in 0.021 seconds
+[1;32m(N)[0m Loading MainMenu.logo synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/logo.png' instead of '../data/logo.svg'.
+[1;32m(N)[0m Loaded MainMenu.logo in 0.015 seconds
+[1;34m(D)[0m View: Push: MainMenu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m Stopping server.
+[1;34m(D)[0m Disconnecting.
+[1;34m(D)[0m Starting server.
+[1;32m(N)[0m Loading MainMenu.session synchronously
+[1;34m(D)[0m Connecting to host 127.0.0.1.
+[1;34m(D)[0m Session #1 connected.
+[1;32m(N)[0m Loaded MainMenu.session in 0.001 seconds
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m Connected as session #1.
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: Lobby
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m Learned about World.CreatePlayer, 1 phrases now known.
+[1;34m(D)[0m 1 phrases taught.
+[1;34m(D)[0m Learned about World.StartGame, 2 phrases now known.
+[1;34m(D)[0m Learned about World.PlayerJoined, 1 phrases now known.
+[1;34m(D)[0m 2 phrases taught.
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.GameStarted, 2 phrases now known.
+[1;34m(D)[0m View: Pop: Lobby
+[1;34m(D)[0m Learned about World.SceneCreated, 3 phrases now known.
+[1;34m(D)[0m Learned about World.EnterScene, 4 phrases now known.
+[1;34m(D)[0m Learned about World.SceneEntered, 5 phrases now known.
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.077 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.757 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.238 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.026 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.061 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.105 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.013 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.002 seconds
+[1;34m(D)[0m 3 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlEvent, 3 phrases now known.
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about Scene.ControlData, 6 phrases now known.
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.113 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m 4 phrases taught.
+[1;34m(D)[0m 5 phrases taught.
+[1;34m(D)[0m Learned about World.DeleteScene, 4 phrases now known.
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m 8 phrases taught.
+[1;34m(D)[0m Learned about World.CreateScene, 5 phrases now known.
+[1;34m(D)[0m Learned about World.SceneDeleted, 7 phrases now known.
+[1;34m(D)[0m Learned about World.SceneLeft, 8 phrases now known.
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.008 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.123 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.288 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.077 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.080 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.125 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.051 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.043 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.012 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.010 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.006 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.013 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.004 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.003 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.089 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.052 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 0.726 seconds
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 6 phrases taught.
+[1;34m(D)[0m Learned about World.EnterScene, 6 phrases now known.
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.088 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded SongChooser.songs in 0.864 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.263 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.033 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.065 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.014 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.014 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.003 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.115 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.067 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.077 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.028 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.002 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.002 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.168 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.011 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.016 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.002 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.010 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.005 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.013 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.009 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.017 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.006 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.006 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.004 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.096 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.085 seconds
+[1;34m(D)[0m View: Push: LoadingScreen
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 1.296 seconds
+[1;34m(D)[0m View: Pop: LoadingScreen
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Push: SongChoosingSceneClient
+[1;32m(N)[0m Loading SongChooser.libraries asynchronously
+[1;32m(N)[0m Loaded SongChooser.libraries in 0.115 seconds
+[1;32m(N)[0m Loading SongChooser.songs asynchronously
+[1;32m(N)[0m Loaded SongChooser.songs in 0.371 seconds
+[1;32m(N)[0m Loading SongChooser.cassette synchronously
+[1;32m(N)[0m Loaded SongChooser.cassette in 0.238 seconds
+[1;32m(N)[0m Loading SongChooser.label synchronously
+[1;32m(N)[0m Loaded SongChooser.label in 0.026 seconds
+[1;32m(N)[0m Loading SongChooser.libraryMesh synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryMesh in 0.060 seconds
+[1;32m(N)[0m Loading SongChooser.libraryLabel synchronously
+[1;32m(N)[0m Loaded SongChooser.libraryLabel in 0.012 seconds
+[1;32m(N)[0m Loading SongChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/cassette.png' instead of '../data/cassette.svg'.
+[1;32m(N)[0m Loaded SongChooser.background in 0.013 seconds
+[1;34m(D)[0m View: Push: SongChooser
+[1;32m(N)[0m Loading SongChooser.None asynchronously
+[1;32m(N)[0m Loaded SongChooser.None in 0.002 seconds
+[1;34m(D)[0m View: Pop: SongChooser
+[1;32m(N)[0m Loading ItemChooser.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/editor.png' instead of '../data/editor.svg'.
+[1;32m(N)[0m Loaded ItemChooser.background in 0.111 seconds
+[1;34m(D)[0m View: Push: ItemChooser
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: ItemChooser
+[1;34m(D)[0m View: Pop: SongChoosingSceneClient
+[1;32m(N)[0m Loading Guitar.noteMesh asynchronously
+[1;32m(N)[0m Loading Guitar.keyMesh asynchronously
+[1;32m(N)[0m Loading Guitar.glowDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.glowDrawing in 0.113 seconds
+[1;32m(N)[0m Loading Guitar.neckDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.neckDrawing in 0.013 seconds
+[1;32m(N)[0m Loading Guitar.stringDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.stringDrawing in 0.011 seconds
+[1;32m(N)[0m Loading Guitar.barDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.barDrawing in 0.026 seconds
+[1;32m(N)[0m Loading Guitar.noteDrawing synchronously
+[1;32m(N)[0m Loaded Guitar.noteDrawing in 0.007 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.song asynchronously
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.120 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.075 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.047 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.074 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.036 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.032 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.028 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.068 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.025 seconds
+[1;32m(N)[0m Loading Stage.None synchronously
+[1;32m(N)[0m Loaded Stage.None in 0.033 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx2x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/2x.png' instead of '../data/2x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx2x in 0.103 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx3x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/3x.png' instead of '../data/3x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx3x in 0.079 seconds
+[1;32m(N)[0m Loading GuitarSceneClient.fx4x synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/4x.png' instead of '../data/4x.svg'.
+[1;32m(N)[0m Loaded GuitarSceneClient.fx4x in 0.033 seconds
+[1;32m(N)[0m Loaded Guitar.noteMesh in 0.146 seconds
+[1;32m(N)[0m Loaded Guitar.keyMesh in 0.090 seconds
+[1;32m(N)[0m Loaded GuitarSceneClient.song in 0.816 seconds
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Push: GuitarSceneClient
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m 7 phrases taught.
+[1;34m(D)[0m Learned about World.PlayerLeft, 7 phrases now known.
+[1;34m(D)[0m 9 phrases taught.
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m Learned about World.GameFinished, 9 phrases now known.
+[1;34m(D)[0m View: Pop all
+[1;34m(D)[0m View: Pop: GuitarSceneClient
+[1;34m(D)[0m View: Pop: Menu
+[1;32m(N)[0m Loading MainMenu.background synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/keyboard.png' instead of '../data/keyboard.svg'.
+[1;32m(N)[0m Loaded MainMenu.background in 0.049 seconds
+[1;32m(N)[0m Loading MainMenu.guy synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/pose.png' instead of '../data/pose.svg'.
+[1;32m(N)[0m Loaded MainMenu.guy in 0.025 seconds
+[1;32m(N)[0m Loading MainMenu.logo synchronously
+[1;34m(D)[0m Loading cached bitmap '../data/logo.png' instead of '../data/logo.svg'.
+[1;32m(N)[0m Loaded MainMenu.logo in 0.017 seconds
+[1;34m(D)[0m View: Push: MainMenu
+[1;34m(D)[0m View: Push: Menu
+[1;34m(D)[0m Stopping server.
+[1;34m(D)[0m Disconnecting.
+[1;34m(D)[0m View: Pop: Menu
+[1;34m(D)[0m View: Pop: MainMenu
+[1;34m(D)[0m View: Pop: Menu
