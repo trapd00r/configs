@@ -3,6 +3,8 @@
 #zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*'                       accept-exact '*(N)'
+zstyle ':completion:*'                       separate-sections 'yes'
+zstyle ':completion:*'                       list-dirs-first true 
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=200
 zstyle ':completion:*'                       use-perl=1
@@ -33,10 +35,14 @@ zstyle ':completion:*:*:mplayer:*'           file-patterns   \
        '*:all-files' '*(-/):directories'
 
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
-  ignored-patterns '*~|*.(old|bak)|pm_to_blib|cover_db|blib' \
+  ignored-patterns '*~|*.(old|bak|zwc)|pm_to_blib|cover_db|blib' \
   file-sort modification
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   file-sort modification
+zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
+  tag-order files
+zstyle ':completion:*:vim:*:directories' ignored-patterns \*
+
 
 zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
 zstyle ':completion:*:*:(cd):*'        file-sort access
