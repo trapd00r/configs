@@ -2,36 +2,28 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
-" nr2char()
-" if search('\s\+$', 'nw') != 0
-" let b:statusline_trailing_space_warning = '[\s]'
-
 au filetype git,*commit* call ToggleSpell()
 au filetype help call Filetype_help()
-
-"au BufWrite * :call DeleteTrailingWS()
 
 au BufWritePost *.{sh,pl} silent exe
 
 au BufRead * call SetCursorPosition()
 
 " Vim doesn't want to perform events on symlinks
-let g:vimrc = "/home/scp1/etc/vimrc"
+let g:vimrc            = "/home/scp1/etc/vimrc"
 let g:vimrc_statusline = "/home/scp1/etc/vim/after/plugin/statusline.vim"
-let g:vimrc_functions = "/home/scp1/etc/vim/functions.vim"
-"au BufWritePost vimrc source '/tmp/statusline.vim'
-"au BufWritePost vim_functions echo 44
+let g:vimrc_functions  = "/home/scp1/etc/vim/functions.vim"
 
 au BufRead,BufNewFile *.md,*.mkd,*.markdown  set ft=md | normal gg
-au BufRead,BufNewFile *.go set ft=go
-au BufRead,BufNewFile *.txt set ft=_txt
+au BufRead,BufNewFile *.go   set ft=go
+au BufRead,BufNewFile *.txt  set ft=_txt
 
 au BufRead,BufNewFile *.xml  set sw=1
 au BufRead,BufNewFile *.html set sw=1
 au BufRead,BufNewFile *.htm  set sw=1
 au BufRead,BufNewFile *.css  set sw=2
 
-au BufRead,BufNewFile ~/configs/zsh/01-colors.zsh set syntax=
+au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh set syntax=
 
 au  FileType pl,pm,t set filetype=perl
 au  FileType perl :noremap K :!perldoc <cword> <bar><bar> perldoc -f <cword><cr>
@@ -43,8 +35,6 @@ au FileType perl setlocal keywordprg=perldoc\ -f
 au! BufNewFile * silent! 0r ~/etc/vim/templates/template.%:e 
 
 au cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
-"au BufNewFile,BufRead *.p? compiler perl
-"au BufWritePost *.pl,*.pm !perl -c %
 
 let g:tex_conceal                  = 1
 
