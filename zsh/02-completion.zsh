@@ -4,7 +4,7 @@
 
 zstyle ':completion:*'                       accept-exact '*(N)'
 zstyle ':completion:*'                       separate-sections 'yes'
-zstyle ':completion:*'                       list-dirs-first true 
+zstyle ':completion:*'                       list-dirs-first true
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=200
 zstyle ':completion:*'                       use-perl=1
@@ -12,6 +12,7 @@ zstyle ':completion:*'                       my-accounts='m@japh.se'
 
 zstyle ':completion:*'                       squeeze-slashes true
 zstyle ':completion:*:cd:*'                  ignore-parents parent pwd
+#zstyle ':completion:*:cd:*'                  tag-order 'named-directories'
 
 zstyle ':completion:*:(all-|)files'          ignored-patterns '*.un~'
 zstyle ':completion:*:*:kill:*:processes' \
@@ -35,13 +36,13 @@ zstyle ':completion:*:*:mplayer:*'           file-patterns   \
        '*:all-files' '*(-/):directories'
 
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
-  ignored-patterns '*~|*.(old|bak|zwc)|pm_to_blib|cover_db|blib' \
+  ignored-patterns '*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
   file-sort modification
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   file-sort modification
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   tag-order files
-zstyle ':completion:*:vim:*:directories' ignored-patterns \*
+#zstyle ':completion:*:vim:*:directories' ignored-patterns \*
 
 
 zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
@@ -49,11 +50,13 @@ zstyle ':completion:*:*:(cd):*'        file-sort access
 zstyle ':completion:*:*:(cd):*'        menu select
 zstyle ':completion:*:*:(cd):*'        completer _history
 
+zstyle ':completion:*:*:perl:*'        file-patterns '*'
+
 
 zstyle ':completion:*:descriptions' \
-  format $'%{\e[38;5;070;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
+  format $'%{- \e[38;5;137;1m\e[48;5;234m%}%B%d%b%{\e[m%}'
 zstyle ':completion:*:warnings' \
-  format $'%{\e[38;5;160;1m%}%d%{\e[m%}'
+  format $'%{No match for \e[38;5;240;1m%}%d%{\e[m%}'
 
 zstyle ':completion:*:*:apvlv:*'             tag-order files
 zstyle ':completion:*:*:apvlv:*'             file-patterns '*.pdf'
