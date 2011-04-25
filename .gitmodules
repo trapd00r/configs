@@ -22,3 +22,6 @@
 [submodule "doc"]
 	path = doc
 	url = /mnt/Leftover/doc/
+[submodule "vim/bundle/vim-gitv"]
+	path = vim/bundle/vim-gitv
+	url = git://github.com/gregsexton/gitv.git
