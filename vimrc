@@ -140,8 +140,17 @@ runtime macros/matchit.vim
 syntax on
 setlocal nospell spelllang=en_us
 
-colorscheme neverland-ansi
-hi CursorLine term=none cterm=none
+if $TERM == 'linux'
+  let &t_Co = 8
+  color peachpuff
+  set nolist
+  set colorcolumn+=81
+  hi ColorColumn term=none cterm=none ctermbg=3
+  hi CursorLine  term=none  cterm=none ctermbg=none
+else
+  color neverland-ansi
+endif
+
 
 syn match wsEOL display '\v[ ]+$' conceal cchar=O
 
