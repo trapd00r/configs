@@ -31,6 +31,8 @@ compinit
 autoload -U url-quote-magic
 function _url-quote-magic() { url-quote-magic; _zsh_highlight-zle-buffer }
 zle -N self-insert _url-quote-magic
+zle -C most-accessed-file menu-complete _generic
+
 
 #autoload -U url-quote-magic
 #zle -N self-insert url-quote-magic

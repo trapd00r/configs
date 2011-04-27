@@ -30,3 +30,11 @@ bindkey -s '^p' 'mpc playlist --format "%file%" | separate | ls_color\n'
 bindkey -s '^t' '\\top\n'
 bindkey -s '^n' '\\ncmpcpp\n'
 bindkey -s '^v' 'vim\n'
+
+
+# Bind custom defined completers
+bindkey "^N"      most-accessed-file
+bindkey "^X^A"    all-matches
+bindkey "^_^A"    all-matches
+bindkey "^X^P"    pids
+bindkey "^_^P"    pids

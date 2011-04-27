@@ -61,6 +61,13 @@ zstyle ':completion:*:warnings' \
 zstyle ':completion:*:*:apvlv:*'             tag-order files
 zstyle ':completion:*:*:apvlv:*'             file-patterns '*.pdf'
 
+zstyle ':completion:most-accessed-file:*' match-original both
+zstyle ':completion:most-accessed-file:*' file-sort access
+zstyle ':completion:most-accessed-file:*' file-patterns '*:all\ files'
+zstyle ':completion:most-accessed-file:*' hidden all
+zstyle ':completion:most-accessed-file:*' completer _files
+
+
 
 zstyle ':completion:*:*:*:users' ignored-patterns \
         adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
