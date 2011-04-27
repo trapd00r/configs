@@ -10,7 +10,7 @@ if !exists('g:vim_functions_loaded')
   source /home/scp1/etc/vim/functions.vim
 endif
 
-source /home/scp1/etc/vim/filetypes.vim
+source /home/scp1/etc/vim/ftdetect.vim
 source /home/scp1/etc/vim/abbrevations.vim
 source /home/scp1/etc/vim/mappings.vim
 
@@ -96,6 +96,7 @@ set printmbfont+=i:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-micros
 
 set pumheight=10
 set relativenumber
+set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
