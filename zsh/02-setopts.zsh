@@ -20,6 +20,7 @@ setopt RC_QUOTES # allow ' inside ''
 setopt INTERACTIVE_COMMENTS
 setopt PROMPT_SUBST
 setopt OCTAL_ZEROES
+setopt COMPLETE_IN_WORD
 #setopt NO_CLOBBER
 
 autoload -U age
