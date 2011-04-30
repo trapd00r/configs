@@ -11,7 +11,7 @@ upload_rate = 0
 # Default directory to save the downloaded torrents.
 #directory = /mnt/Music/.new
 
-session = /home/scp1/.local/share/rtorrent/session/
+session = /home/scp1/var/rtorrent/session/
 
 port_range = 50000-50000
 
