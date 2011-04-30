@@ -134,7 +134,7 @@
 (define-key *root-map* (kbd "DEL") "exec pimpd --rand 20")
 ;(define-key *root-map* (kbd "b") "exec sh /home/scp1/bin/dmenumpd.sh")
 (define-key *root-map* (kbd "d") "exec perl /home/scp1/devel/clipbored/scripts/fmenuclip")
-(define-key *root-map* (kbd "m") "exec perl /home/scp1/bin/dmenurl")
+(define-key *root-map* (kbd "m") "exec perl /home/scp1/dev/App::Clipbored/scripts/dmenurl")
 (define-key *root-map* (kbd "e") "exec sh /home/scp1/bin/dmenu.sh")
 ;(define-key *root-map* (kbd "x") "exec urxvt")
 ;(define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
