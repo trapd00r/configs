@@ -5,7 +5,7 @@ set titlestring=Fx
 set showtabline=never
 set complete="b"
 set autocomplete=/ex/(bmarks),^(/|/ex/?)$
-set editor="urxvt -name URxvt.shiva -e vim -f -c ':set ft=perl'"
+set editor="urxvtc -name URxvt.shiva -e vim -f -c ':set ft=perl'"
 set followhints=0
 set defsearch=d
 set maxitems=10
