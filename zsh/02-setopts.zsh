@@ -40,6 +40,7 @@ zle -C most-accessed-file menu-complete _generic
 
 unsetopt AUTO_REMOVE_SLASH
 unsetopt COMPLETE_ALIASES
+unsetopt LIST_TYPES
 
 
 # vim: set ts=2 expandtab sw=2:
