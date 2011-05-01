@@ -1,3 +1,4 @@
+#compdef pimpd2
 # Zsh completion script for pimpd2. Copy this file to your zsh function path
 # ( /usr/share/zsh/site_functions for example).
 #
@@ -11,7 +12,6 @@
 # compinit
 
 
-#compdef pimpd2
 
 local arguments curcontext="$curcontext" state line
 typeset -A opt_args

@@ -1,0 +1,2 @@
+#compdef mpdcheat
+compdef _gnu_generic mpdcheat

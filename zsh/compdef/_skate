@@ -1,0 +1,2 @@
+#compdef skate
+compdef _gnu_generic skate

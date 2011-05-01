@@ -1,0 +1,2 @@
+#compdef id3shit
+compdef _gnu_generic id3shit

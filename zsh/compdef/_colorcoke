@@ -1,0 +1,2 @@
+#compdef colorcoke
+compdef _gnu_generic colorcoke
