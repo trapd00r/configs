@@ -25,3 +25,9 @@
 [submodule "vim/bundle/vim-gitv"]
 	path = vim/bundle/vim-gitv
 	url = git://github.com/gregsexton/gitv.git
+[submodule "vim/bundle/vim-regbuf"]
+	path = vim/bundle/vim-regbuf
+	url = git://github.com/tyru/regbuf.vim.git
+[submodule "vim/bundle/vim-hammer"]
+	path = vim/bundle/vim-hammer
+	url = git://github.com/robgleeson/hammer.vim.git
