@@ -20,6 +20,7 @@ set nocp
 set autoread
 set autochdir
 set autoindent
+set backspace=start,indent,eol
 set cmdheight=2
 set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
