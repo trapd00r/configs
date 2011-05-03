@@ -3,6 +3,7 @@
 !#include "/home/scp1/etc/Xcolors/trapd00r_default.Xresources"
 #include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_correct_ansi.Xresources"
+!#include "/home/scp1/etc/Xcolors/tango.Xresources"
 !#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
 !#include "/home/scp1/etc/Xcolors/matrix.Xresources"
 !#include "/home/scp1/etc/Xcolors/trasmatta.Xresources"
