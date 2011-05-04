@@ -1,3 +1,21 @@
+func! InsertDataDumper()
+  if (&ft != 'perl') || (&ft != 'pod')
+    let ok = confirm("Not a Perl file, proceed anyway?", "&Yes\n&No\n", 2)
+    if (ok == 0) || (ok == 2)
+      return ''
+    endif
+  endif
+
+  let l:dd_include   = "use Data::Dumper;\n\n{\n"
+  let l:dd_package   = "package Data::Dumper;\n"
+  let l:dd_no_strict = "no strict 'vars';\n"
+  let l:dd_options_1 = "$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;\n"
+  let l:dd_options_2 = "$Quotekeys = 0;\n}\n\n"
+
+  return dd_include . dd_package . dd_no_strict . dd_options_1 . dd_options_2
+
+endfunc
+
 " Show syntax highlighting groups for word under cursor
 nmap <C-e> :call SynStack()<CR>
 func! SynStack()

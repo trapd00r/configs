@@ -9,10 +9,14 @@ else
   ia <expr> mypc $HOSTNAME
 endif
 
-ia WM WWW::Mechanize
+ia WM  WWW::Mechanize
 ia WMN WWW::Mechanize->new(<CR><CR>);
+
 ia dD Data::Dumper
-ia DD Data::Dumper<CR><CR>{<CR>package Data::Dumper;<CR>no strict 'vars';<CR>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<CR>$Quotekeys = 0;<CR>}
+
+ia <expr> DD   InsertDataDumper()
+
+
 ia dumper Dumper
 ia prinnt print
 ia repositry repository
