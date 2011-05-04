@@ -123,7 +123,7 @@ nnoremap <buffer> []    :<C-u>call search('^}$', 'bsW')<CR>
 " buffer shortcuts
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
-nnoremap <leader>r :buffers<CR>:buffer<space>
+nnoremap <leader>b :buffers<CR>:buffer<space>
 nnoremap <leader>l :ls<CR>
 nnoremap <leader>g :e#<CR>
 
