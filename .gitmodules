@@ -31,3 +31,6 @@
 [submodule "vim/bundle/vim-hammer"]
 	path = vim/bundle/vim-hammer
 	url = git://github.com/robgleeson/hammer.vim.git
+[submodule "vim/bundle/vim-vimregex"]
+	path = vim/bundle/vim-vimregex
+	url = git://github.com/Raimondi/VimRegEx.vim.git
