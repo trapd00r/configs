@@ -10,6 +10,149 @@
     }
   }
 
-  * {
-      font-family: 'Monte Carlo', 'Terminus', monospace !important;
-    }
+* {
+    font-family: 'Monte Carlo', 'Terminus', monospace !important;
+}
+
+
+blink { text-decoration: none ! important; }
+
+/* Set font size and family of text fields */
+input {
+  /* Strangely, font-family is ignored here, but at least the size works */
+  font-family: Terminus !important;
+  font-size: 13px !important;
+}
+
+/* use select for comboboxes */
+
+/*
+ * bug 56314 made selection color unreadable most of the time.
+ */
+::-moz-selection {
+  background-color: magenta;
+  color: white;
+}
+
+/* Wrap preformatted text :
+ http://users.tkk.fi/~tkarvine/pre-wrap-css3-mozilla-opera-ie.html
+*/
+pre {
+ white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+}
+
+/*
+ * Show links that would open a new window differently from other links:
+ * From manko@zhurnal.ru in bug 78037:
+ */
+a[target="_blank"] {
+  -moz-outline: 1px dashed invert !important;
+  /* links to open in new window */
+}
+
+a:hover[target="_blank"] {
+  cursor: crosshair; text-decoration: blink;
+  color: red; background-color: yellow
+  !important
+}
+
+/* Show an icon for something that would open a mailer */
+a[href*="mailto"]:hover { cursor:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAhCAMAAAAIybBlAAADAFBMVEUAAACAAAAAgACAgAAAAICAAIAAgICAgIDAwMD%2FAAAA%2FwD%2F%2FwAAAP%2F%2FAP8A%2F%2F%2F%2F%2F%2F8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMAAGYAAJkAAMwAAP8AMwAAMzMAM2YAM5kAM8wAM%2F8AZgAAZjMAZmYAZpkAZswAZv8AmQAAmTMAmWYAmZkAmcwAmf8AzAAAzDMAzGYAzJkAzMwAzP8A%2FwAA%2FzMA%2F2YA%2F5kA%2F8wA%2F%2F8zAAAzADMzAGYzAJkzAMwzAP8zMwAzMzMzM2YzM5kzM8wzM%2F8zZgAzZjMzZmYzZpkzZswzZv8zmQAzmTMzmWYzmZkzmcwzmf8zzAAzzDMzzGYzzJkzzMwzzP8z%2FwAz%2FzMz%2F2Yz%2F5kz%2F8wz%2F%2F9mAABmADNmAGZmAJlmAMxmAP9mMwBmMzNmM2ZmM5lmM8xmM%2F9mZgBmZjNmZmZmZplmZsxmZv9mmQBmmTNmmWZmmZlmmcxmmf9mzABmzDNmzGZmzJlmzMxmzP9m%2FwBm%2FzNm%2F2Zm%2F5lm%2F8xm%2F%2F%2BZAACZADOZAGaZAJmZAMyZAP%2BZMwCZMzOZM2aZM5mZM8yZM%2F%2BZZgCZZjOZZmaZZpmZZsyZZv%2BZmQCZmTOZmWaZmZmZmcyZmf%2BZzACZzDOZzGaZzJmZzMyZzP%2BZ%2FwCZ%2FzOZ%2F2aZ%2F5mZ%2F8yZ%2F%2F%2FMAADMADPMAGbMAJnMAMzMAP%2FMMwDMMzPMM2bMM5nMM8zMM%2F%2FMZgDMZjPMZmbMZpnMZszMZv%2FMmQDMmTPMmWbMmZnMmczMmf%2FMzADMzDPMzGbMzJnMzMzMzP%2FM%2FwDM%2FzPM%2F2bM%2F5nM%2F8zM%2F%2F%2F%2FAAD%2FADP%2FAGb%2FAJn%2FAMz%2FAP%2F%2FMwD%2FMzP%2FM2b%2FM5n%2FM8z%2FM%2F%2F%2FZgD%2FZjP%2FZmb%2FZpn%2FZsz%2FZv%2F%2FmQD%2FmTP%2FmWb%2FmZn%2Fmcz%2Fmf%2F%2FzAD%2FzDP%2FzGb%2FzJn%2FzMz%2FzP%2F%2F%2FwD%2F%2FzP%2F%2F2b%2F%2F5n%2F%2F8z%2F%2F%2F9EYrBQAAABAHRSTlP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8A%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FYkk34QAAAIZJREFUKJGl0DESwyAMBMB7Afz%2FT%2BrEX3DFREhwMo4nTa7x3BprhFEYIB4JteJ%2FAQ6JmrIrBfUhWacAe0LEC1hrvPoSlEPqi6xlDvB9fgh3fkoS%2F%2BqLMEv0FheVwYi4DJJ0aS6b5KIEGaTMWaI9RbvNHF0pBhb7RpfM0yvqUuSWFrdombnzB3vzncAaRlEnAAAAAElFTkSuQmCC"), pointer; }
+
+/* Make marquee less painful */
+marquee {
+  -moz-binding: none;
+  overflow: auto;
+  display: block;
+}
+
+@media print {
+  marquee {
+    -moz-binding: none;
+    overflow: auto;
+    display: block;
+  }
+}
+
+/* Highlight PDF and video links */
+/* This needs tweaking, doesn't work yet. */
+a:link[href*=".pdf"][href*=".PDF"][[href*=".wmv"][[href*=".WMV"][[href*=".mpg"][[href*=".MPG"]
+{ color: yellow; background-color: blue; !important }
+
+/* Ad blocking stuff is derived from that on floppymoose.com */
+
+/*
+ * hides many ads by preventing display of images that are inside
+ * links when the link HREF contans certain substrings.
+ */
+
+A:link[HREF*="ad."] IMG { display: none ! important }
+A:link[HREF*="ads."] IMG { display: none ! important }
+A:link[HREF*="/ad."] IMG { display: none ! important }
+A:link[HREF*="/A="] IMG { display: none ! important }
+A:link[HREF*="/click"] IMG { display: none ! important }
+A:link[HREF*="?click"] IMG { display: none ! important }
+A:link[HREF*="?banner"] IMG { display: none ! important }
+A:link[HREF*="=click"] IMG { display: none ! important }
+A:link[HREF*="/ar.atwo"] IMG { display: none ! important }
+A:link[HREF*="spinbox."] IMG { display: none ! important }
+A:link[HREF*="transfer.go"] IMG { display: none ! important }
+A:link[HREF*="adfarm"] IMG { display: none ! important }
+A:link[HREF*="bluestreak"] IMG { display: none ! important }
+A:link[HREF*="doubleclick"] IMG { display: none ! important }
+A:link[HREF*="http://network.realmedia.com/RealMedia/ads"] {
+  display: none ! important
+}
+
+/* Next two are redundant for spaceweather.com,
+ * but maybe it will help on other sites to have both:
+embed[src*="banners/"]  { display: none ! important }
+object[codebase*="http://download.macromedia.com"] {
+  display: none ! important
+}
+ */
+
+/* Flash from http://www.unitedmedia.com/comics/roseisrose/: */
+embed[src*="http://cserver.mii.instacontent.net/adserver/"] {
+  display: none ! important
+}
+
+/* disable ad iframes */
+IFRAME[SRC*="ad."]  { display: none ! important }
+IFRAME[SRC*="ads."]  { display: none ! important }
+IFRAME[SRC*="/ad"]  { display: none ! important }
+IFRAME[SRC*="/A="]  { display: none ! important }
+IFRAME[SRC*="/click"]  { display: none ! important }
+IFRAME[SRC*="?click"]  { display: none ! important }
+IFRAME[SRC*="?banner"]  { display: none ! important }
+IFRAME[SRC*="=click"]  { display: none ! important }
+IFRAME[SRC*="/ar.atwo"]  { display: none ! important }
+IFRAME[SRC*="spinbox."]  { display: none ! important }
+IFRAME[SRC*="transfer.go"]  { display: none ! important }
+IFRAME[SRC*="adfarm"]  { display: none ! important }
+IFRAME[SRC*="bluestreak"]  { display: none ! important }
+IFRAME[SRC*="doubleclick"]  { display: none ! important }
+
+/* IMG[usemap] { display: none ! important } */
+
+/* turning some false positives back off */
+
+A:link[HREF*="download."] IMG { display: inline ! important }
+A:link[HREF*="click.mp3"] IMG { display: inline ! important }
+A:link[HREF*="netflix.com"] IMG { display: inline ! important }
+
+/*
+ * For more examples see http://www.mozilla.org/unix/customizing.html
+ */
+
+/* Jesse Ruderman's amazing CSS to block flash, with a placeholder to
+ * play on request: see http://www.squarefree.com/userstyles/xbl.html
+ * or bug 94035 or bug 169330
+ * Doesn't work for <embed> tags, which are less common than <object>
+ * tags - bug 190970.
+object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],
+object[codebase*="swflash.cab"]
+{ -moz-binding: url("http://www.shallowsky.com/jesseflash.xml#obj"); }
+*/
+
+
