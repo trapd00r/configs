@@ -2,7 +2,7 @@
 # Updated: Özgür Kesim <kesim@math.fu-berlin.de> 02 Nov 1997
 # Updated: Marc Lehmann <pcg@goof.com>, 17 Feb 2005
 # Updated: Marc Lehmann <schmorp@schmorp.de>, 04 Nov 2008: change init/reset sequences
-# Updated: Magnus Woldricj <m@japh.se>, 09 May 2011: remove is2, rs2, smcup, rmcup
+# Updated: Magnus Woldrich <m@japh.se>, 09 May 2011: remove is2, rs2, smcup, rmcup
 rxvt-unicode|rxvt-unicode terminal (X Window System),
 	am,
 	bce,
