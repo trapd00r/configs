@@ -1,0 +1,64 @@
+/* This is the CSS file I use for most of the documentation at
+ * http://devel.japh.se . It mimics the styling on http://japh.se .
+ *
+ * I generate it from POD using the excellent hammer.vim [0] Vim plugin.
+ *
+ * [0]:://github.com/robgleeson/hammer.vim 
+ *
+*/
+
+body {
+  background-color: #121212;
+}
+
+body div#content 
+{
+  margin            : 0 auto;
+  max-width         : 920px;
+  background-color  : #121212;
+  padding           : .7em;
+  font-size         : 13.34px;
+  font-family       : 'Monte Carlo', 'Profont', 'Terminus', monospace;
+  color             : #efefef;
+  border            : 1px #404040 solid;
+}
+
+body div#content h2, body div#content h3, body div#content h4 
+{
+  padding-top  : 10px;
+  border-top   : 4px solid #404040;
+  color        : #efefef;
+}
+
+body div#content pre 
+{
+  padding          : 5px;
+  border-style     : solid;
+  border-width     : 1px;
+  border-color     : #404040;
+  background-color : #141414;
+  color            : #fba919;
+}
+
+body div#content pre code 
+{
+  padding          : 5px;
+  background-color : #141414;
+  border           : none;
+  color            : #efefef;
+}
+
+body div#content code 
+{
+  font-family      : 'Monte Carlo', 'Profont', 'Terminus', monospace;
+  display          : inline-block;
+  padding          : 0px 2px 0px 2px;
+  background-color : #141414;
+  border           : 1px #404040 solid;
+  color            : #efefef;
+}
+
+a {
+  color: #0383c9;
+}
+
