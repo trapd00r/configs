@@ -30,7 +30,7 @@
 	url = git://github.com/tyru/regbuf.vim.git
 [submodule "vim/bundle/vim-hammer"]
 	path = vim/bundle/vim-hammer
-	url = git://github.com/robgleeson/hammer.vim.git
+	url = git://github.com/trapd00r/hammer.vim.git
 [submodule "vim/bundle/vim-vimregex"]
 	path = vim/bundle/vim-vimregex
 	url = git://github.com/Raimondi/VimRegEx.vim.git
