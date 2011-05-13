@@ -41,7 +41,7 @@ vimconfig() {
 }
 
 zshconfig() {
-  $HOME/dev/time-spent-in-vim/vim $HOME/.zsh{rc,/*.{theme,zsh}}
+  $HOME/dev/time-spent-in-vim/vim $XDG_CONFIG_HOME/zsh/*.{zsh,theme}
 }
 
 commands() {
