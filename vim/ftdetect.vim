@@ -34,7 +34,6 @@ au FileType perl setlocal keywordprg=perldoc\ -f
 
 au! BufNewFile * silent! 0r ~/etc/vim/templates/template.%:e 
 
-au cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 
 let g:tex_conceal                  = 1
 
