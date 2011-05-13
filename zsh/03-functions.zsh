@@ -1,3 +1,7 @@
+apvlv() {
+  /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@"
+}
+
 cpan_up() {
   cpan_upload "$@" && mv -v "$@" /mnt/Docs/Backup/
 }
