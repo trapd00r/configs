@@ -2,6 +2,8 @@
 
 #alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
 
+alias 80='perl -e "print q[x] x 80, qq[\n]"'
+
 alias swe='translate -from en -to swe'
 alias  en='translate -from swe -to en'
 
@@ -75,7 +77,7 @@ alias    rmvi='rm *.sw*'
 alias prename='prename -v'
 
 alias      pc='perlcritic'
-alias     pod='grep \=pod -C 999999 "$@"'
+alias     pod='grep \=pod -A 9999 "$@"'
 alias     pdb='perl -d -e 1'
 alias   perlf='ack -f --perl'
 
