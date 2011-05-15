@@ -125,7 +125,7 @@ ZSH_HIGHLIGHT_STYLES+=(
   function                      'fg=85,bold'
   command                       'fg=148,bold'
   hashed-command                'fg=70'
-  path                          'fg=243,bg=234,bold'
+  path                          'fg=51,bg=234,bold'
   globbing                      'fg=170,bold'
   history-expansion             'fg=blue'
   single-hyphen-option          '244'
