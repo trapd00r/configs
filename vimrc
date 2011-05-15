@@ -128,6 +128,7 @@ set undolevels=512
 set undodir=/mnt/Docs/Backup/undo
 set vb t_vb=
 set vb
+set viminfo='10,\"100,:20,%,n~/var/vim/viminfo
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
