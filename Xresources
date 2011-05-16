@@ -25,41 +25,42 @@
 #define TERMINUS_HUGE -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
 
 
-vim*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
-vim*boldFont:                     FONT_B
-vim*italicFont:                   FONT_I
+URxvt.letterSpace: 0
+
 
 vim*background:                   #121212
+vim*boldFont:                     FONT_B
+vim*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
 vim*foreground:                   #d6d6d6
+vim*italicFont:                   FONT_I
 vim*scrollBar:                    false
 
-ratmenu*font:                     PROFONT_HUGE
-ratmenu*fgcolor:                  #eb122e
-ratmenu*bgcolor:                  #080808
-ratmenu*style:                    dreary
-ratmenu*persist:                  false
 ratmenu*align:                    center
+ratmenu*bgcolor:                  #080808
+ratmenu*fgcolor:                  #eb122e
+ratmenu*font:                     PROFONT_HUGE
+ratmenu*persist:                  false
+ratmenu*style:                    dreary
 
 /* Term::ExtendedColor::Xresources */
 Xterm.VT100.allowColorOps:        1
 
 XTerm*background:                 #121212
-XTerm*foreground:                 #FFFFFF
-XTerm*colorMode:                  On
+XTerm*boldFont:                   FONT_B
 XTerm*colorBD:                    #FFFFFF
 XTerm*colorBDMode:                On
+XTerm*colorMode:                  On
 XTerm*colorUL:                    #FFFFFF
 XTerm*colorULMode:                On
 XTerm*dynamicColors:              On
 XTerm*font:                       FONT
-XTerm*boldFont:                   FONT_B
+XTerm*foreground:                 #FFFFFF
 XTerm.italicFont:                 FONT_I
 
-/* terminal stuff */
-XTerm*metaSendsEscape:            True
-XTerm*vt100.scrollBar:            False
-XTerm*multiScroll:                on
 XTerm*jumpScroll:                 on
+XTerm*metaSendsEscape:            True
+XTerm*multiScroll:                on
+XTerm*vt100.scrollBar:            False
 xterm*SaveLines:                  2500
 
 /* http://shallowsky.com/linux/noaltscreen.html */
@@ -68,295 +69,130 @@ XTerm*titeInhibit:                true
 /* eyecandy */
 XTerm*scrollBar:                  false
 
-URxvt.shiva.geometry:             1x1
-
 /* colors */
-URxvt.shiva.background:           #121212
-URxvt.shiva.foreground:           #cacaca
-URxvt.shiva.cursorColor:          #EB122E
-URxvt.shiva.cursorColor2:         #252525
-URxvt.shiva.colorIT:              #FFFFFF
-URxvt.shiva.colorBD:              #FFFFFF
-URxvt.shiva.colorUL:              #FF8F00
-URxvt.shiva.colorRV:              #333333
-URxvt.shiva.underlineColor:       #0E0E0E
-URxvt.shiva.borderColor:          #0E0E0E
-URxvt.shiva.pointerColor:         #252525
-URxvt.shiva.pointerColor2:        #0092FF
+shiva.background:           #121212
+shiva.borderColor:          #0E0E0E
+shiva.colorBD:              #FFFFFF
+shiva.colorIT:              #FFFFFF
+shiva.colorRV:              #333333
+shiva.colorUL:              #FF8F00
+shiva.cursorColor2:         #252525
+shiva.cursorColor:          #EB122E
+shiva.foreground:           #cacaca
+shiva.pointerColor2:        #0092FF
+shiva.pointerColor:         #252525
+shiva.underlineColor:       #0E0E0E
 
-URxvt.india.background:           #030303
-URxvt.india.foreground:           #FFFFFF
-URxvt.india.cursorColor:          #EB122E
-URxvt.india.cursorColor2:         #252525
-!URxvt.india.colorIT:              #FFFFFF
-!URxvt.india.colorBD:              #FFFFFF
-URxvt.india.colorUL:              #FF8F00
-URxvt.india.colorRV:              #333333
-URxvt.india.underlineColor:       #cb1c13
-URxvt.india.pointerColor:         #cb1c13
-URxvt.india.borderColor:          #0E0E0E
+india.background:           #030303
+india.borderColor:          #0E0E0E
+india.colorRV:              #333333
+india.colorUL:              #FF8F00
+india.cursorColor2:         #252525
+india.cursorColor:          #eb122e
+india.foreground:           #ffffff
+india.pointerColor:         #cb1c13
+india.underlineColor:       #cb1c13
 
-URxvt.htpc.background:           [45]#000000
-URxvt.htpc.foreground:           #FFFFFF
-URxvt.htpc.cursorColor:          #EB122E
-URxvt.htpc.cursorColor2:         #252525
-URxvt.htpc.colorIT:              #FFFFFF
-URxvt.htpc.colorBD:              #FFFFFF
-URxvt.htpc.colorUL:              #FF8F00
-URxvt.htpc.colorRV:              #333333
-URxvt.htpc.underlineColor:       #0E0E0E
-URxvt.htpc.borderColor:          #0E0E0E
-URxvt.htpc.pointerColor:         #252525
+shiva*font:                FONT
+shiva*boldFont:            FONT_B
+shiva.italicFont:          FONT_I
+shiva*boldItalicFont:      FONT_I_B
 
-/* fonts */
-URxvt.shiva*font:                FONT
-URxvt.shiva*boldFont:            FONT_B
-URxvt.shiva.italicFont:          FONT_I
-URxvt.shiva*boldItalicFont       FONT_I_B
+india*font:                FONT
+india*boldFont:            FONT_B
+india*italicFont:          FONT_I
+india*boldItalicFont:      FONT_I_B
 
-URxvt.india*font:                FONT
-URxvt.india*boldFont:            FONT_B
-URxvt.india*italicFont:          FONT_I
-URxvt.india*boldItalicFont       FONT_I_B
-
-URxvt.htpc*font:                 TERMINUS_HUGE
+htpc*font:                 TERMINUS_HUGE
 
 
-/* matches */
-URxvt.shiva.underlineURLs:        false
-URxvt.shiva.urlLauncher:          /usr/bin/firefox
-URxvt.shiva.matcher.button:       1
-URxvt.shiva.cutchars:             "()*,<>[]{}|'"
-URxvt.shiva.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-URxvt.shiva.matcher.launcher.1:   /usr/bin/firefox
-URxvt.shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
-URxvt.shiva.matcher.launcher.2:   gvim +$2 $1
+shiva.cutchars:             "()*,<>[]{}|'"
+shiva.matcher.button:       1
+shiva.matcher.launcher.1:   /usr/bin/firefox
+shiva.matcher.launcher.2:   gvim +$2 $1
+shiva.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
+shiva.underlineURLs:        false
+shiva.urlLauncher:          /usr/bin/firefox
 
-URxvt.india.underlineURLs:        false
-URxvt.india.urlLauncher:          /usr/bin/firefox
-URxvt.india.matcher.button:       1
-URxvt.india.cutchars:             "()*,<>[]{}|'"
-URxvt.india.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-URxvt.india.matcher.launcher.1:   /usr/bin/firefox
-URxvt.india.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
-/* libs */
-URxvt.shiva.perl-lib:             /usr/lib/urxvt/perl
-URxvt.shiva.perl-ext-common:      default,matcher
-URxvt.shiva.perl-eval:            $^O
+india.cutchars:             "()*,<>[]{}|'"
+india.matcher.button:       1
+india.matcher.launcher.1:   /usr/bin/firefox
+india.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+india.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
+india.underlineURLs:        false
+india.urlLauncher:          /usr/bin/firefox
 
-URxvt.india.perl-lib:             /usr/lib/urxvt/perl
-URxvt.india.perl-ext-common:      default,matcher
-URxvt.india.perl-eval:            $^O
+shiva.perl-lib:             /usr/lib/urxvt/perl
+shiva.perl-ext-common:      default,matcher
+shiva.perl-eval:            $^O
+
+india.perl-lib:             /usr/lib/urxvt/perl
+india.perl-ext-common:      default,matcher
+india.perl-eval:            $^O
+
 /* perl magic */
 URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
 URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
 
 /* terminal stuff */
-URxvt.shiva.scrollKey:            true
-URxvt.shiva.scrollWithBuffer:     true
-URxvt.shiva.scrollBack:           true
-URxvt.shiva.scrollTtyOutput:      false
-URxvt.shiva.scrollTtyKeypress:    true
-URxvt.shiva.jumpScroll:           true
-URxvt.shiva.skipScroll:           true
-URxvt.shiva.loginShell:           true
-URxvt.shiva.urgentOnBell:         true
-URxvt.shiva.saveLines:            1048586
-!URxvt.shiva.termName:            rxvt-unicode
-URxvt.shiva.trippleclickwords:    true
-!URxvt.shiva.modifier:            (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
+shiva.jumpScroll:           true
+shiva.loginShell:           true
+shiva.saveLines:            1048586
+shiva.scrollBack:           true
+shiva.scrollKey:            true
+shiva.scrollTtyKeypress:    true
+shiva.scrollTtyOutput:      false
+shiva.scrollWithBuffer:     true
+shiva.skipScroll:           true
+shiva.trippleclickwords:    true
+shiva.urgentOnBell:         true
 
+shiva.chdir:                /home/scp1/dev
+shiva.pasteableTabs:        true
+shiva.pointerBlank:         true
+shiva.pointerBlankDelay:    2
+shiva.scrollstyle:          next
+
+!shiva.hold:                 0
+!
 /* http://shallowsky.com/linux/noaltscreen.html */
-!URxvt.shiva.secondaryScroll:     true
-!URxvt.shiva.secondaryScreen:      false
-URxvt.shiva.scrollstyle:          next
-URxvt.shiva.pasteableTabs:        true
-URxvt.shiva.pointerBlank:         true
-URxvt.shiva.pointerBlankDelay:    2
-!URxvt.shiva.hold:                 0
-URxvt.shiva.chdir:                /home/scp1/devel
+!shiva.secondaryScroll:      true
+!shiva.secondaryScreen:      false
 
-/* Super + ASCII printable chars <Esc-Space-char> */
-URxvt.shiva.keysym.Mod4-0x20: list033\040!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~
-/* Super + Arrow keys <Esc-Space-BEL-char> */
-URxvt.shiva.keysym.Mod4-Left: list:\033\040\007:dacb:
-URxvt.shiva.keysym.Mod4-Shift-Left: list:\033\040\007:DACB:
+india.jumpScroll:           true
+india.loginShell:           true
+india.pasteableTabs:        true
+india.pointerBlank:         true
+india.pointerBlankDelay:    2
+india.saveLines:            1024
+india.scrollBack:           true
+india.scrollKey:            true
+india.scrollTtyKeypress:    true
+india.scrollTtyOutput:      false
+india.scrollWithBuffer:     true
+india.scrollstyle:          next
+india.skipScroll:           true
+india.trippleclickwords:    true
+india.urgentOnBell:         true
 
-/* Supeshiva.r + Return <Esc-Space-CR> */
-URxvt.shiva.keysym.Mod4-Return: \033\040\015
-
-/* Supeshiva.r + Delete <Esc-Space-BS> */
-URxvt.shiva.keysym.Mod4-Backspace: \033\040\177
-
-
-URxvt.india.scrollKey:            true
-URxvt.india.scrollWithBuffer:     true
-URxvt.india.scrollBack:           true
-URxvt.india.scrollTtyOutput:      false
-URxvt.india.scrollTtyKeypress:    true
-URxvt.india.jumpScroll:           true
-URxvt.india.skipScroll:           true
-URxvt.india.loginShell:           true
-URxvt.india.urgentOnBell:         true
-URxvt.india.saveLines:            1024
-!URxvt.india.termName:            rxvt-unicode
-URxvt.india.trippleclickwords:    true
-!URxvt.india.modifier:            (alt,meta,hyper,super,mod1,mod2,mod3,mod4,mod5)
-!URxvt.india.secondaryScreen:     true
-!URxvt.india.secondaryScroll:     true
-URxvt.india.scrollstyle:          next
-URxvt.india.pasteableTabs:        true
-URxvt.india.pointerBlank:         true
-URxvt.india.pointerBlankDelay:    2
-!URxvt.india.hold:                 0
+!india.hold:                 0
+!india.secondaryScreen:     true
+!india.secondaryScroll:     true
 
 /* eyecandy */
-!URxvt.shiva.transparent:          true
-!URxvt.shiva.shading:              90
-!URxvt.shiva.fading:              30%
-!URxvt.shiva.fadeColor:           #000000
-!URxvt.shiva.inheritPixmap:       true
-URxvt.shiva.scrollBar:            false
-!URxvt.shiva.cursorBlink:         false
-!URxvt.shiva.reverseVideo:        true
-URxvt.shiva.depth:                32
-!URxvt.internalBorder:            0
-!URxvt.externalBorder:            0
-!URxvt.shiva.borderLess:           true
-!URxvt.lineSpace:                 3
-!URxvt.shiva.title:                laleh
-/*URxvt.shiva.blendType:           (add,alphablend,allanon), (averaging,
-                                  colorize, darken, diff, dissipate, hue,
-                                  lighten, overlay, saturate, screen, sub,
-                                  tint, value)
-*/
-!URxvt.shiva.blurRadius:          (0-128)
-!URxvt.shiva.iconFile:            (file)
+shiva.scrollBar:            false
+shiva.depth:                32
+!URxvt.lineSpace:            3
 
-!URxvt.india.transparent:          true
-!URxvt.india.shading:              9
-!URxvt.india.fading:              30%
-!URxvt.india.fadeColor:           #000000
-!URxvt.india.inheritPixmap:       true
-URxvt.india.scrollBar:            false
-!URxvt.india.cursorUnderline:      true
-!URxvt.india.cursorBlink:         false
-!URxvt.india.reverseVideo:        true
-URxvt.india.depth:                32
-!URxvt.india.title:                laleh
-/*URxvt.india.blendType:           (add,alphablend,allanon), (averaging,
-                                  colorize, darken, diff, dissipate, hue,
-                                  lighten, overlay, saturate, screen, sub,
-                                  tint, value)
-*/
-!URxvt.india.blurRadius:          (0-128)
+india.scrollBar:            false
+india.depth:                32
 
-URxvt.htpc.transparent:          true
-URxvt.htpc.shading:              19
-!URxvt.shiva.fading:              30%
-!URxvt.shiva.fadeColor:           #000000
-!URxvt.shiva.inheritPixmap:       true
-URxvt.htpc.scrollBar:            false
-!URxvt.shiva.cursorBlink:         false
-!URxvt.shiva.reverseVideo:        true
-URxvt.htpc.depth:                32
-!URxvt.internalBorder:            0
-!URxvt.externalBorder:            0
-!URxvt.htpc.borderLess:           true
-!URxvt.lineSpace:                 3
-!URxvt.shiva.title:                laleh
-!URxvt.shiva.blurRadius:          (0-128)
+htpc.transparent:          true
+htpc.shading:              19
 
-/* trapd00r original colorscheme */
-
-!*color0:              rgb:00/00/00
-!*color1:              rgb:4C/8C/38
-!*color2:              rgb:5F/A1/23
-!*color2:              rgb:27/CA/25
-!*color3:              rgb:A4/00/8A
-!*color4:              rgb:5f/7b/8a
-!*color5:              rgb:1D/90/B6
-!*color6:              rgb:68/68/68
-!*color7:              rgb:ff/ff/ff
-!*color8:              rgb:3C/3C/3C
-!*color9:              rgb:D6/93/00
-!*color10:             rgb:95/c7/49
-!*color11:             rgb:BB/00/5e
-!*color12              rgb:6b/7b/8a
-!*color13:             rgb:BB/7D/00
-!*color14:             rgb:36/7F/C5
-!*color15:             rgb:ff/ff/ff
-
-
-!/* black */
-!URxvt.shiva.color0:      #121212
-!URxvt.shiva.*color8:      #484848
-!/* red */
-!URxvt.shiva.color1:      #262626
-!URxvt.shiva.color9:      #FF6767
-!/* green */
-!URxvt.shiva.color2:      #4D4C4C /* green => grey */
-!URxvt.shiva.color10:     #B03B31 /* green => faluröd */
-!/* yellow */
-!URxvt.shiva.color3:      #FF8F00
-!URxvt.shiva.color11:     #BDF13D
-!/* blue */
-!URxvt.shiva.color4:      #1165E9
-!URxvt.shiva.color12:     #5496FF
-!/* purple */
-!URxvt.shiva.color5:      #89005A
-!URxvt.shiva.color13:     #B50077
-!/* cyan */
-!URxvt.shiva.color6:      #ff3500 /* cyan => red */ /* 47E0FF */
-!URxvt.shiva.color14:     #6BE603 /* cyan => green */
-!/* white */
-!URxvt.shiva.color7:      #FFFFFF
-!URxvt.shiva.color15:     #DEDEDE
-!/* orange */
-!URxvt.shiva.color16:     #FFB000
-
-URxvt.india.color0:      #030303
-URxvt.india.*color8:     #1C1C1C
-/* red */
-URxvt.india.color1:      #FF4747
-URxvt.india.color9:      #FF6767
-/* green */
-URxvt.india.color2:      #2b4626/* green => grey */
-URxvt.india.color10:     #B03B31 /* green => faluröd */
-/* yellow */
-URxvt.india.color3:      #FF8F00
-URxvt.india.color11:     #BDF13D
-/* blue */
-URxvt.india.color4:      #1165E9
-URxvt.india.color12:     #5496FF
-/* purple */
-URxvt.india.color5:      #aef7a4
-URxvt.india.color13:     #B50077
-/* cyan */
-URxvt.india.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
-URxvt.india.color14:     #6BE603 /* cyan => green */
-/* white */
-URxvt.india.color7:      #FFFFFF
-URxvt.india.color15:     #DEDEDE
-/* orange */
-URxvt.india.color16:     #FFB000
-
-URxvt.htpc.color0:      #030303
-URxvt.htpc.*color8:     #1C1C1C
-URxvt.htpc.color1:      #FF4747
-URxvt.htpc.color9:      #FF6767
-URxvt.htpc.color2:      #2b4626/* green => grey */
-URxvt.htpc.color10:     #B03B31 /* green => faluröd */
-URxvt.htpc.color3:      #FF8F00
-URxvt.htpc.color11:     #BDF13D
-URxvt.htpc.color4:      #1165E9
-URxvt.htpc.color12:     #5496FF
-URxvt.htpc.color5:      #aef7a4
-URxvt.htpc.color13:     #B50077
-URxvt.htpc.color6:      #CB1C13 /* cyan => red */ /* 47E0FF */
-URxvt.htpc.color14:     #6BE603 /* cyan => green */
-URxvt.htpc.color7:      #FFFFFF
-URxvt.htpc.color15:     #DEDEDE
+htpc.scrollBar:            false
+htpc.depth:                32
 
 
 mplay*background:        #ffffff
@@ -364,7 +200,6 @@ mplay*foreground:        #cb1c13
 mplay*scrollbar:         false
 mplay*color0:            #000000
 mplay*color1:            #93a0b2
-
 
 XFontSel*sampleText.background:       TEXTBG
 XFontSel*menu*showUnselectable:       false
