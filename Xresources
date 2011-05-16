@@ -25,6 +25,13 @@
 #define TERMINUS_HUGE -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
 
 
+vim*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
+vim*boldFont:                     FONT_B
+vim*italicFont:                   FONT_I
+
+vim*background:                   #121212
+vim*foreground:                   #d6d6d6
+vim*scrollBar:                    false
 
 ratmenu*font:                     PROFONT_HUGE
 ratmenu*fgcolor:                  #eb122e
