@@ -34,6 +34,8 @@ au FileType perl setlocal keywordprg=perldoc\ -f
 
 au! BufNewFile * silent! 0r ~/etc/vim/templates/template.%:e 
 
+let g:netrw_http_cmd               = 'w3m'
+let g:netrw_http_xcmd             = '-dump >'
 
 let g:tex_conceal                  = 1
 
