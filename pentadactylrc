@@ -45,6 +45,9 @@ nmap C :tabclose<CR>
 
 "nmap -b yy y
 
+nnoremap j 10j
+nnoremap k 10k
+
 "nmap dd :tabclose<CR>
 nmap a  :noscript toggletemp<CR>
 nmap A  :noscript toggleperm<CR>
