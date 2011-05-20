@@ -1,0 +1,135 @@
+=pod
+
+=head1 NAME
+
+$HOME/etc/vim
+
+=head1 DESCRIPTION
+
+This is my Vim configuration. It's highly optimized for Perl, Viml, C and Lua
+hacking.
+
+=head1 after/
+
+=head2 after/plugin/statusline.vim
+
+This is my Vim statusline configuration.
+
+It's a bit special, because it's actually four different statuslines.
+Which one to use is based on some conditionals:
+
+        [NO]<--[ Is file in a git repository? ]-->[YES]
+         |                                          |
+         |-------------------------------           |
+                                        |           |
+                                        V           V
+                        [NO]<--[ Is the window the active one? ]-->[YES]
+                         |                                           |
+                         |                                           |
+                         |                                           |
+                         V                                           V
+       [ Use the NCstatusline ]              [ Use the default statusline ]
+
+
+
+The result can look like this:
+
+[[http://i.japh.se/vim_statusline_nc.png|frame|alt=Statusline in active and non-active window]]
+
+Note how the non-active statusline is toned down.
+
+=head2 after/syntax/perl.vim
+
+This is the additional Perl syntax highlighting as can be found at L<https://github.com/trapd00r/vim-after-syntax-perl>.
+
+=head2 after/syntax/vim.vim
+
+This is the additional Vim syntax highlighting as can be found at L<https://github.com/trapd00r/vim-after-syntax-vim>.
+
+=head1 templates/
+
+Whenever a new file with the appropriate extension is created, a skeleton file
+(or template) is used.
+
+This is accomplished by the following line:
+
+    :au! BufNewFile * silent! 0r ~/etc/vim/templates/.%:e
+
+=head1 mappings.vim
+
+I use a lot of mappings.
+
+Some of the most noteworthy are those that allows the use of sane regular
+expressions (see B<:h magic>:
+
+  nnoremap / /\v
+  vnoremap / /\v
+  cnoremap '<,'>s/ '<,'>s/\v
+  cnoremap '<,'>s# '<,'>s#\v
+  cnoremap '<,'>s@ '<,'>s@\v
+  cnoremap %s/ %s/\v
+  cnoremap %s# %s#\v
+  cnoremap %s@ %s@\v
+  cnoremap s/ s/\v
+  cnoremap s# s#\v
+  cnoremap s@ s@\v
+
+Along with the command-line mappings that enables bash/readline/emacs-style
+movement keys:
+
+  cnoremap  <c-a>   <home>
+  cnoremap  <c-e>   <end>
+  cnoremap  <c-b>   <left>
+  cnoremap  <c-d>   <del>
+  cnoremap  <c-f>   <right>
+  cnoremap  <C-_>   <c-f>
+
+  cnoremap  <c-n>   <down>
+  cnoremap  <c-p>   <up>
+  cnoremap  <C-*>   <c-a>
+
+=head1 functions.vim
+
+=head2 SynStack()
+
+Returns the syntax highlighting group for the word under the cursor.
+
+Mapped to B<C-e>.
+
+=head2 InsertDataDumper()
+
+Inserts Data::Dumper stuff into the current buffer if it looks like Perl.
+
+This is called when the B<DD> I<abbrevation> is detected.
+
+=head2 TitleCaseCenter()
+
+TitleCase and center the current line.
+
+Mapped to B<leader+t>.
+
+=head2 Filetype_help()
+
+This is called whenever B<&filetype> is set to I<help>.
+
+Do not want colorcolumn or listchars active when reading the :help.
+
+=head2 SetCursorPosition()
+
+This function will make sure that I'm taken back to where I left off in a file.
+
+=head2 FileSize()
+
+Returns the file size of the current buffer.
+
+Used in the statusline.
+
+=head2 ToggleRelativeNumber()
+
+Toggle relative / normal numbering.
+
+=head2 ToggleSpell()
+
+Toggles spellcheck. There's also B<:set invspell>.
+
+=cut
