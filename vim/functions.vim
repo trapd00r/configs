@@ -1,3 +1,10 @@
+func! Filetype_txt()
+  if (&modifiable == 1)
+    normal ggVGgqgg0
+    set ft=_txt
+  endif
+endfunc
+
 func! InsertDataDumper()
   if (&ft != 'perl') || (&ft != 'pod')
     let ok = confirm("Not a Perl file, proceed anyway?", "&Yes\n&No\n", 2)

@@ -16,7 +16,9 @@ let g:vimrc_functions  = "/home/scp1/etc/vim/functions.vim"
 
 au BufRead,BufNewFile *.md,*.mkd,*.markdown  set ft=md | normal gg
 au BufRead,BufNewFile *.go   set ft=go
-au BufRead,BufNewFile *.txt  set ft=_txt
+au BufRead            *.txt  :call Filetype_txt()
+au BufNewFile         *.txt  set ft=_txt
+
 
 au BufRead,BufNewFile *.xml  set sw=1
 au BufRead,BufNewFile *.html set sw=1
