@@ -33,7 +33,7 @@ tig() {
 }
 
 mutt() {
-  TERM=xterm-256color /usr/bin/mutt -F /home/scp1/etc/muttrc
+  TERM=xterm-256color /usr/bin/mutt -F /home/scp1/etc/muttrc "$@"
 }
 
 re() {
