@@ -21,6 +21,7 @@ setopt INTERACTIVE_COMMENTS
 setopt PROMPT_SUBST
 setopt OCTAL_ZEROES
 setopt COMPLETE_IN_WORD
+setopt COMPLETE_ALIASES
 #setopt NO_CLOBBER
 
 autoload -U age
@@ -39,7 +40,6 @@ zle -C most-accessed-file menu-complete _generic
 #zle -N self-insert url-quote-magic
 
 unsetopt AUTO_REMOVE_SLASH
-unsetopt COMPLETE_ALIASES
 unsetopt LIST_TYPES
 
 
