@@ -1,8 +1,15 @@
-# DO NOT EDIT!  This file will be overwritten by LXAppearance.
-# Any customization should be done in ~/.gtkrc-2.0.mine
+# DO NOT EDIT! This file will be overwritten by LXAppearance.
+# Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-gtk-theme-name="MurrinaTango"
-gtk-icon-theme-name="Bluecurve"
-gtk-font-name="ClearlyU PUA 9"
-gtk-toolbar-style=1
+gtk-theme-name="termGTK"
+gtk-icon-theme-name="Echo"
+gtk-font-name="ProFont 9"
+gtk-cursor-theme-size=0
+gtk-key-theme-name = "Emacs"
+gtk-toolbar-style=GTK_TOOLBAR_TEXT
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-button-images=0
+gtk-menu-images=0
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=1
 include "/home/scp1/.gtkrc-2.0.mine"
