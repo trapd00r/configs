@@ -27,6 +27,12 @@
 
 URxvt.letterSpace: 0
 
+vte*background:                   #121212
+vte*boldFont:                     FONT_B
+vte*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
+vte*foreground:                   #d6d6d6
+vte*italicFont:                   FONT_I
+vte*scrollBar:                    false
 
 vim*background:                   #121212
 vim*boldFont:                     FONT_B
@@ -44,6 +50,7 @@ ratmenu*style:                    dreary
 
 /* Term::ExtendedColor::Xresources */
 Xterm.VT100.allowColorOps:        1
+XTerm*allowWindowOps:             true
 
 XTerm*background:                 #121212
 XTerm*boldFont:                   FONT_B
@@ -93,7 +100,8 @@ india.foreground:           #ffffff
 india.pointerColor:         #cb1c13
 india.underlineColor:       #cb1c13
 
-shiva*font:                FONT
+
+shiva*font:                -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252,-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1,xft:Terminus Normal:pixelsize=12
 shiva*boldFont:            FONT_B
 shiva.italicFont:          FONT_I
 shiva*boldItalicFont:      FONT_I_B
