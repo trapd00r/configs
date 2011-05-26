@@ -11,6 +11,12 @@ endif
 
 ia WM  WWW::Mechanize
 ia WMN WWW::Mechanize->new(<CR><CR>);
+ia TEC use Term::ExtendedColor qw(:attributes);
+ia TET use Term::ExtendedColor::TTY qw(set_tty_color);
+ia TEX use Term::ExtendedColor::Xresources qw(get_xterm_color set_xterm_color);
+
+ia gxc get_xterm_color(<CR>{<CR>index => [0 .. 255],<CR>type => 'hex',<CR>},<CR>);<CR>
+ia sxc set_xterm_color(<CR>{<CR>000 => 'ff0000',<CR>},<CR>);<CR>
 
 ia dD Data::Dumper
 
