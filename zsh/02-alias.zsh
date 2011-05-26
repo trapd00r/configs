@@ -195,8 +195,8 @@ alias     ptop='watch -n1 ps aux --sort=+%cpu'
 alias     tree='tree -dA'
 alias      mem='su -c mem'
 alias    links='/bin/cat /home/scp1/doc/links'
-alias  ncmpcpp='colorcoke -r 105 -g 30 -b 50 -s 0 -e 15&&ncmpcpp; \
-                  cc-x-color-scheme-trapd00r'
+#alias  ncmpcpp='colorcoke -r 105 -g 30 -b 50 -s 0 -e 15&&ncmpcpp; \
+#                  cc-x-color-scheme-trapd00r'
 alias    dev='echo http://devel.japh.se/ \
                   && echo http://dev.japh.se/|xclip'
 
