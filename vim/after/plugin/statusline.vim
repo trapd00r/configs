@@ -34,20 +34,7 @@ if exists('g:loaded_fugitive')
 
   let g:NCstatusline='%9*%t%*
     \%7*[%3*%n%7*]%*
-    \ %3*│%*
-    \ %7*%c%3*c%*
-    \ %*%7*%l%3*/%7*%L%3*
-    \ %3*│%*
-    \ %7*%03.3b%*
-    \ %7*-%*
-    \ 0x%7*%02.2B%*
-    \ %3*│%*
-    \ %r %=
-    \ %3*
-    \ %{FileSize()}
-    \ %7*
-    \ %m
-    \ %{fugitive#statusline()}'
+    \%7* [Not Active]'
 else
   " XXX
   let &statusline='%<[%02n] %F%( %m%h%w%y%r%) %a%= %8l,%c%V/%L (%P) [%08O:%02B]'
