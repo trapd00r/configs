@@ -18,7 +18,7 @@ port_range = 50000-50001
 check_hash = no
 encryption = allow_incoming,try_outgoing,enable_retry
 
-max_memory_usage = 512000
+max_memory_usage = 9999999999999999
 
 # VIEW: Default view for filtering results
 #view_add = rtcontrol
