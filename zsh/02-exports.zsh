@@ -20,6 +20,9 @@ export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
 #export PERL5OPT='-Mstrict'
 
+export HARNESS_SUMMARY_COL_FAIL="bold red"
+export HARNESS_SUMMARY_COL_SUC="bold cyan"
+
 export GIST_DIR=$HOME/dev/_gists/
 
 export GOROOT=$HOME/go
