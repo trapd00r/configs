@@ -3,6 +3,7 @@
 #alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
 
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
+alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
 
 alias swe='translate -from en -to swe'
 alias  en='translate -from swe -to en'
