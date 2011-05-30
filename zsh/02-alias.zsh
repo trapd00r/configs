@@ -45,9 +45,6 @@ alias   share='perl $HOME/dev/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -ro
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
 
-alias   ssh='ssh -p 19216'
-alias   scp='scp -P 19216'
-
 alias brutus='ssh scp1@brutus.ethup.se'
 alias macosx='ssh trapd00r@90.225.22.81'
 alias macoss='ssh scp1@industrialrefuge.com'
