@@ -24,10 +24,6 @@ zstyle ':completion:*:processes'             command 'ps -axw'
 zstyle ':completion:*:processes-names'       command 'ps -awxho command'
 zstyle ':completion:*'                       matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:functions'             ignored-patterns '_*'
-zstyle ':completion:*:scp:*'                 tag-order
-zstyle ':completion:*:scp:*'                 group-order
-zstyle ':completion:*:ssh:*'                 tag-order
-zstyle ':completion:*:ssh:*'                 group-order
 
 zstyle ':completion:*' group-name            ''
 zstyle ':completion:*:*:mplayer:*'           tag-order files
@@ -44,6 +40,8 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' \
   tag-order files
 #zstyle ':completion:*:vim:*:directories' ignored-patterns \*
 
+zstyle ':completion:*:*:(scp):*' \
+  file-sort modification
 
 zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
 zstyle ':completion:*:*:(cd):*'        file-sort access
@@ -68,6 +66,30 @@ zstyle ':completion:most-accessed-file:*' hidden all
 zstyle ':completion:most-accessed-file:*' completer _files
 
 
+zstyle ':completion:*:scp:*' group-order \
+      users files all-files hosts-domain hosts-host hosts-ipaddr
+
+zstyle ':completion:*:ssh:*' tag-order \
+      users 'hosts:-host hosts:-domain:domain hosts:-ipaddr:IP\ address *'
+
+zstyle ':completion:*:ssh:*' group-order \
+      hosts-domain hosts-host users hosts-ipaddr
+
+zstyle ':completion:*:(ssh|scp):*:hosts-host' ignored-patterns \
+      '*.*' loopback localhost
+
+zstyle ':completion:*:(ssh|scp):*:hosts-domain' ignored-patterns \
+      '<->.<->.<->.<->' '^*.*' '*@*'
+
+zstyle ':completion:*:(ssh|scp):*:hosts-ipaddr' ignored-patterns \
+      '^<->.<->.<->.<->' '127.0.0.<->'
+
+zstyle ':completion:*:(ssh|scp):*:users' ignored-patterns \
+      adm bin daemon halt lp named shutdown sync
+
+zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
+  'scp1@192.168.1.100' 'scp1@brutus.ethup.se' 'trapd00r@90.225.22.81'
+
 
 zstyle ':completion:*:*:*:users' ignored-patterns \
         adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
@@ -82,8 +104,6 @@ zstyle '*' single-ignored show
 #zstyle ':completion:*:options'               menu search
 
 
-zstyle ':completion:*:(ssh|scp):*:my-accounts' users-hosts \
-  'scp1@192.168.1.100' 'scp1@brutus.ethup.se' 'trapd00r@90.225.22.81'
 
 go_prefixes=(5 6 8)
 for p in $prefixes; do
