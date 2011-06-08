@@ -247,7 +247,7 @@ song_columns_list_format = "(5f)[green]{l}(25)[blue]{a} (40)[]{t|f} (25)[red]{b}
 #
 #playlist_shorten_total_times = "no"
 #
-playlist_separate_albums = "yes"
+#playlist_separate_albums = "yes"
 #
 playlist_display_mode = "columns" (classic/columns)
 #
