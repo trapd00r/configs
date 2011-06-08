@@ -34,3 +34,9 @@
 [submodule "vim/bundle/vim-vimregex"]
 	path = vim/bundle/vim-vimregex
 	url = git://github.com/Raimondi/VimRegEx.vim.git
+[submodule "bundle/nicer-vim-regex"]
+	path = bundle/nicer-vim-regex
+	url = git://github.com/int3/nicer-vim-regexps.git
+[submodule "vim/bundle/nicer-vim-regex"]
+	path = vim/bundle/nicer-vim-regex
+	url = git://github.com/int3/nicer-vim-regexps.git

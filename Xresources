@@ -2,6 +2,7 @@
 !#include "/home/scp1/etc/Xcolors/rasta.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_default.Xresources"
 #include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
+!#include "/home/scp1/etc/Xcolors/rasi.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_correct_ansi.Xresources"
 !#include "/home/scp1/etc/Xcolors/tango.Xresources"
 !#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
@@ -76,6 +77,9 @@ XTerm*titeInhibit:                true
 /* eyecandy */
 XTerm*scrollBar:                  false
 
+
+shiva.iso14755:             0
+shiva.iso14755_52:          0
 /* colors */
 shiva.background:           #121212
 shiva.borderColor:          #0E0E0E
@@ -146,7 +150,7 @@ URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:
 /* terminal stuff */
 shiva.jumpScroll:           true
 shiva.loginShell:           true
-shiva.saveLines:            1048586
+shiva.saveLines:            10485
 shiva.scrollBack:           true
 shiva.scrollKey:            true
 shiva.scrollTtyKeypress:    true
