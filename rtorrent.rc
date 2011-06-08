@@ -11,7 +11,7 @@ download_rate = 5000
 upload_rate   = 0
 
 # Default directory to save the downloaded torrents.
-directory  = /mnt/TV_1/.torrents/
+directory  = /home/scp1/
 session    = /home/scp1/var/rtorrent/session/
 port_range = 50000-50001
 
@@ -54,10 +54,10 @@ schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,          
 schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
 schedule = games1   ,5, 5, "load_start=/mnt/Games_1/.torrents/*.torrent,           d.set_directory=/mnt/Games_1/.new/"
 schedule = games2   ,5, 5, "load_start=/mnt/Games_2/.torrents/*.torrent,           d.set_directory=/mnt/Games_2/.new/"
-schedule = movies1  ,5, 5, "load_start=/mnt/Movies_1/.torrents/*.torrent,          d.set_directory=/mnt/Movies_1/.new/"
-schedule = movies2  ,5, 5, "load_start=/mnt/Movies_2/.torrents/*.torrent,          d.set_directory=/mnt/Movies_2/.new/"
-schedule = movies3  ,5, 5, "load_start=/mnt/Movies_3/.torrents/*.torrent,          d.set_directory=/mnt/Movies_3/.new/"
-schedule = movies4  ,5, 5, "load_start=/mnt/Movies_4/.torrents/*.torrent,          d.set_directory=/mnt/Movies_4/.new/"
+#schedule = movies1  ,5, 5, "load_start=/mnt/Movies_1/.torrents/*.torrent,          d.set_directory=/mnt/Movies_1/.new/"
+#schedule = movies2  ,5, 5, "load_start=/mnt/Movies_2/.torrents/*.torrent,          d.set_directory=/mnt/Movies_2/.new/"
+#schedule = movies3  ,5, 5, "load_start=/mnt/Movies_3/.torrents/*.torrent,          d.set_directory=/mnt/Movies_3/.new/"
+#schedule = movies4  ,5, 5, "load_start=/mnt/Movies_4/.torrents/*.torrent,          d.set_directory=/mnt/Movies_4/.new/"
 schedule = music1fc ,5, 5, "load_start=/mnt/Music_1/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_1/FLAC/"
 schedule = music1nc ,5, 5, "load_start=/mnt/Music_1/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_1/Not_Scene/"
 schedule = music2fc ,5, 5, "load_start=/mnt/Music_2/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_2/FLAC/"
@@ -74,7 +74,7 @@ schedule = music7fc ,5, 5, "load_start=/mnt/Music_7/.torrents/FLAC/*.torrent,   
 schedule = music7nc ,5, 5, "load_start=/mnt/Music_7/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_7/Not_Scene/"
 schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,             d.set_directory=/mnt/Mvids/.new/"
 schedule = mvids2   ,5, 5, "load_start=/mnt/Mvids_2/.torrents/*.torrent,           d.set_directory=/mnt/Mvids_2/.new/"
-schedule = tv1      ,5, 5, "load_start=/mnt/TV_1/.torrents/*.torrent,              d.set_directory=/mnt/TV_1/.new/"
-schedule = tv2      ,5, 5, "load_start=/mnt/TV_2/.torrents/*.torrent,              d.set_directory=/mnt/TV_2/.new/"
-schedule = tv3      ,5, 5, "load_start=/mnt/TV_3/.torrents/*.torrent,              d.set_directory=/mnt/TV_3/.new/"
-schedule = tv4      ,5, 5, "load_start=/mnt/TV_4/.torrents/*.torrent,              d.set_directory=/mnt/TV_4/.new/"
+#schedule = tv1      ,5, 5, "load_start=/mnt/TV_1/.torrents/*.torrent,              d.set_directory=/mnt/TV_1/.new/"
+#schedule = tv2      ,5, 5, "load_start=/mnt/TV_2/.torrents/*.torrent,              d.set_directory=/mnt/TV_2/.new/"
+#schedule = tv3      ,5, 5, "load_start=/mnt/TV_3/.torrents/*.torrent,              d.set_directory=/mnt/TV_3/.new/"
+#schedule = tv4      ,5, 5, "load_start=/mnt/TV_4/.torrents/*.torrent,              d.set_directory=/mnt/TV_4/.new/"
