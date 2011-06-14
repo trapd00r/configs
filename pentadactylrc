@@ -36,6 +36,7 @@ javascript readabilityFootnotes = "true"
 "set noscriptlist=base
 set mapleader=","
 
+nmap <leader>z :js window.content.document.toggleImageSize();<CR>
 nmap d <Nop>
 nmap dd <Nop>
 
