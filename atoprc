@@ -1,0 +1,15 @@
+# vim: set ft=config:
+
+interval      2
+linelen      80
+maxlinecpu    2
+maxlineintf   2
+maxlinedisk  40
+
+cpucritperc  85
+dskcritperc  85
+memcritperc  85
+netcritperc  85
+swoutcritsec 10
+swpcritperc  50
+almostcrit   50
