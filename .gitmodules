@@ -40,3 +40,6 @@
 [submodule "vim/bundle/nicer-vim-regex"]
 	path = vim/bundle/nicer-vim-regex
 	url = git://github.com/int3/nicer-vim-regexps.git
+[submodule "vim/bundle/vim-arpeggio"]
+	path = vim/bundle/vim-arpeggio
+	url = git://github.com/kana/vim-arpeggio.git
