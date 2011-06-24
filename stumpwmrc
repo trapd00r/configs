@@ -128,36 +128,6 @@
 
 
 
-;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
-;(define-key *root-map* (kbd "aring") "exec sh /home/scp1/bin/mpdfav")
-(define-key *root-map* (kbd ",") "exec xdotool click 1")
-(define-key *root-map* (kbd "DEL") "exec pimpd --rand 20")
-;(define-key *root-map* (kbd "b") "exec sh /home/scp1/bin/dmenumpd.sh")
-(define-key *root-map* (kbd "d") "exec perl /home/scp1/devel/clipbored/scripts/fmenuclip")
-(define-key *root-map* (kbd "m") "exec perl /home/scp1/dev/App::Clipbored/scripts/dmenurl")
-(define-key *root-map* (kbd "e") "exec sh /home/scp1/bin/dmenu.sh")
-;(define-key *root-map* (kbd "x") "exec urxvt")
-;(define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
-(define-key *root-map* (kbd "c") "exec urxvtc -name shiva")
-;; deprecated - using self made daemon instead
-;(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
-(define-key *root-map* (kbd "p") "exec mpc -h 192.168.1.100 next")
-(define-key *root-map* (kbd "o") "exec mpc toggle")
-(define-key *root-map* (kbd "n") "exec /home/scp1/bin/np")
-(define-key *root-map* (kbd "g") "exec perl /home/scp1/bin/google_dmenu.pl")
-(define-key *root-map* (kbd "u") "exec sh $HOME/.config/uzbl/urlload")
-(define-key *root-map* (kbd "SunPrint_Screen") "exec sh $HOME/bin/shot")
-(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - %title% (%album%)'|head -1`")
-;(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - (%album%) -  %title% [ %file% ]'|head -1`")
-;(define-key *root-map* (kbd "SPC") "exec stumpish echo `pimpd -i`")
-(define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
-(define-key *root-map* (kbd "RET") "exec sh $HOME/bin/firefox-eval")
-(define-key *root-map* (kbd "KP_Add") "exec ossmix vmix.0.pcm8 -- +2")
-(define-key *root-map* (kbd "KP_Subtract") "exec ossmix vmix.0.pcm8 -- -2")
-(define-key *root-map* (kbd "KP_Subtract") "exec ossmix mplayer -- -2")
-(define-key *root-map* (kbd "Pause") "exec killall X")
-
-;; sane bindings for window management
 (define-key *root-map* (kbd "h") "move-focus left")
 (define-key *root-map* (kbd "j") "move-focus down")
 (define-key *root-map* (kbd "k") "move-focus up")
@@ -167,31 +137,44 @@
 (define-key *root-map* (kbd "C-j") "move-window down")
 (define-key *root-map* (kbd "C-k") "move-window up")
 (define-key *root-map* (kbd "C-l") "move-window right")
-(define-key *root-map* (kbd "y") "exec radioc pause")
-;(define-key *root-map* (kbd "u") "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
-; control firefox, remotely
-(define-key *root-map* (kbd "L") "exec fxr forward")
-(define-key *root-map* (kbd "H") "exec fxr back")
-(define-key *root-map* (kbd "J") "exec $HOME/devel/utils/firefox")
 
-(define-key *top-map* (kbd "F1") "exec radioc change dingata")
-(define-key *top-map* (kbd "F2") "exec radioc change gabber")
-(define-key *top-map* (kbd "F3") "exec radioc change hardstyle")
-(define-key *top-map* (kbd "F5") "exec radioc change hardcore")
-(define-key *top-map* (kbd "F6") "exec radioc change psy2")
-(define-key *top-map* (kbd "F7") "exec radioc change psy6")
-(define-key *top-map* (kbd "F8") "exec radioc change psy4")
-(define-key *top-map* (kbd "F9") "exec radioc change p1")
-(define-key *top-map* (kbd "F10") "exec radioc change p2")
-(define-key *top-map* (kbd "F11") "exec radioc change p3")
-(define-key *top-map* (kbd "F12") "exec radioc change p4")
+
+(define-key *root-map* (kbd "DEL") "exec pimpd2 --randomalbums 20")
+(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
+(define-key *root-map* (kbd "o") "exec mpc toggle")
+
+(define-key *root-map* (kbd "d") "exec dmenuclip")
+(define-key *root-map* (kbd "m") "exec dmenurl")
+(define-key *root-map* (kbd "e") "exec sh /home/scp1/bin/dmenu.sh")
+(define-key *root-map* (kbd "g") "exec google_dmenu")
+
+(define-key *root-map* (kbd "c") "exec urxvtc -name shiva")
+(define-key *root-map* (kbd ",") "exec xdotool click 1")
+
+(define-key *root-map* (kbd "SunPrint_Screen") "exec shot")
+(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - %title% (%album%)'|head -1`")
+(define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
+(define-key *root-map* (kbd "KP_Add") "exec ossmix vmix.0.pcm8 -- +2")
+(define-key *root-map* (kbd "KP_Subtract") "exec ossmix vmix.0.pcm8 -- -2")
+
+
+(define-key *top-map* (kbd "F1") "exec rpc change dingata")
+(define-key *top-map* (kbd "F2") "exec rpc change gabber")
+(define-key *top-map* (kbd "F3") "exec rpc change hardstyle")
+(define-key *top-map* (kbd "F5") "exec rpc change hardcore")
+(define-key *top-map* (kbd "F6") "exec rpc change psy2")
+(define-key *top-map* (kbd "F7") "exec rpc change psy6")
+(define-key *top-map* (kbd "F8") "exec rpc change psy4")
+(define-key *top-map* (kbd "F9") "exec rpc change p1")
+(define-key *top-map* (kbd "F10") "exec rpc change p2")
+(define-key *top-map* (kbd "F11") "exec rpc change p3")
+(define-key *top-map* (kbd "F12") "exec rpc change p4")
 
 (define-key *top-map* (kbd "KP_Begin") "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
 (define-key *top-map* (kbd "KP_Right") "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
 (define-key *top-map* (kbd "KP_Insert") "exec echo pause > $HOME/.mplayer/fifo")
 (define-key *top-map* (kbd "KP_Up") "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 
-;;; The End
-
-
-
+;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
+;(define-key *root-map* (kbd "aring") "exec sh /home/scp1/bin/mpdfav")
+;(define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
