@@ -1,1 +1,1 @@
-../../../devel/vim-syntax-ratpoison/syntax/ratpoison.vim
+/home/scp1/dev/vim-syntax-ratpoison/syntax/ratpoison.vim
