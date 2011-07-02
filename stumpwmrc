@@ -1,180 +1,103 @@
-;; vim: set ts=2 filetype=lisp:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; vim: set et sw=2 ft=lisp tw=140 colorcolumn=+1,+2:;
 ;;                                                  ;;
+;;    File: $HOME/.stumpwmrc                        ;;
+;;  Author: Magnus Woldrich <m@japh.se>             ;;
+;; Created: 2009-04-24                              ;;
+;; Updated: Sat Jul  2 17:29:19 CEST 2011           ;;
 ;; $HOME/.stumpwmrc                                 ;;
-;; Sane windows management (vim-bindings)           ;;
-;; Basic mode-line, quick hack for dual head setups ;;
-;; m@japh.se                                        ;;
-;; Feel free to send me the diff                    ;;
 ;;                                                  ;;
-;; Updated: 2009.08.26                              ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; COLORS(SteelBlue, ForestGreen, SlateGrey)
-
-; dump-group-to-file
-; restore-from-file
-
-;-*-lisp-*-
 
 (in-package :stumpwm)
 
 (setf *default-package* :stumpwm)
 
-
-;(load-module "mpd")
-;(load-module "disk")
-;(load "/home/scp1/bin/mpd.lisp")
-
+;(defparameter mpd_host ext:getenv("MPD_HOST"))
 ;(if(ext:getenv "HOSTNAME") "shiva")
 
-; QWERTY
-(set-prefix-key (kbd "C-f"))
-
-; SVORAK A5
-;(set-prefix-key (kbd "C-e"))
-
-;; Variables
-
-;;(defparameter terminal "exec urxvtc -e screen -dr -X screen zsh && screen -x")
-;;(defparameter terminal "$HOME/bin/fuckingscreenbugshit")
-
-(setf *shell-program* (stumpwm::getenv "SHELL")) ;getenv is not exported
-
-;;(setf *debug-level*   10
-
-;;      *mouse-focus-policy* :click)
-
-; ditch the x
-(stumpwm:run-shell-command "xsetroot -cursor_name left_ptr -fg white -bg black")
+(set-prefix-key       (kbd "C-f"))
+(set-fg-color         "sienna1")
+(set-bg-color         "grey10")
+(set-border-color     "sienna4")
+(set-focus-color      "grey20")
+(set-unfocus-color    "grey10")
+(set-msg-border-width 1)
+(set-font             "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
+(set-normal-gravity   :center)
+(set-contrib-dir      "/usr/share/stumpwm")
 
 
-(set-contrib-dir "/usr/share/stumpwm")
-
-;(head-resize 1 0 0 1680 1040)
-;(head-resize 2 0 0 1680 1040)
-;(head-resize nr x y width height)
-
-(set-font "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
-;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-1")
-;(set-font "-xos4-terminus-medium-r-normal--0-0-72-72-c-0-iso8859-7")
-;(set-font "-*-dina-medium-r-normal-*-*-*-*-*-*-*-*-*")
-;(set-font "-lispm-fixed-medium-r-normal-*-13-*-*-*-*-*-*-*")
-
-
-
-
+(setf *startup-message*             nil)
+(setf *normal-border-width*         1)
+(setf *shell-program*               (stumpwm::getenv "SHELL"))
 (setf *mode-line-background-color* "black"
       *mode-line-foreground-color* "White"
-      *mode-line-border-color* "darkgrey"
-      *mode-line-timeout* 1
-      *mode-line-screen-position* :bottom
-      *window-format* "^B^8*%n%s%m%30t :: ^7*"
-      *group-format* "%t")
-
-;(setf *disk-usage-paths* '("/mnt/Books" "/mnt/Docs" "/mnt/Games" "/mnt/Movies_1" "/mnt/Movies_2" "/mnt/Movies_3" "/mnt/Music_1" "/mnt/Music_2/" "/mnt/Music_3" "/mnt/Music_4" "/mnt/Music_5" "/mnt/Mvids" "/mnt/Porn" "/mnt/TV" "/mnt/TV_2""))
-;(setf stumpwm:*screen-mode-line-format*
-;      "%D")
-
-; FIXME dont wanna have to use mode-line just so I can use dzen2
-;(dolist (head (screen-heads (current-screen))) (enable-mode-line (current-screen) head
-;                t *screen-mode-line-format*
-;                ))
-
-;; Mode line setup - separate setup per head
-;(setf stumpwm:*mode-line-timeout* 1)
-
-;(defun set-mode-line-formats ()
-;  (let ((heads (screen-heads (current-screen))))
-;    (defun set-ml (h-idx format)
-;      (enable-mode-line (current-screen) (nth h-idx heads) t format))
-
-;    (set-ml 0 "%D ")
-;    (set-ml 1 "%m ")
-;    ))
-;(set-mode-line-formats)
+      *mode-line-border-color*     "darkgrey"
+      *mode-line-timeout*          1
+      *mode-line-screen-position*  :bottom
+      *window-format*              "^B^8*%n%s%m%30t :: ^7*"
+      *group-format*               "%t")
+(setf
+  *maxsize-border-width*           1
+  *normal-border-width*            0
+  *window-border-style*            :thin
+  *transient-border-width*         4
+)
+(setf
+  *message-window-gravity*         :bottom-right
+  *timeout-wait*                   10
+  *input-window-gravity*           :top-left
+)
 
 
-;;;; The Message Window
-(set-fg-color "sienna1")
-(set-bg-color "grey10")
-(set-border-color "sienna4")
-(set-msg-border-width 1)
+(define-key *root-map* (kbd "h")            "move-focus left")
+(define-key *root-map* (kbd "j")            "move-focus down")
+(define-key *root-map* (kbd "k")            "move-focus up")
+(define-key *root-map* (kbd "l")            "move-focus right")
 
-(setf *maxsize-border-width* 1
- *normal-border-width* 0
- *window-border-style* :thin
- *transient-border-width* 4) ; popups \o/
-
-(setf *message-window-gravity* :bottom-right
-      *timeout-wait*           10
-      *input-window-gravity*   :top-left)
+(define-key *root-map* (kbd "C-h")          "move-window left")
+(define-key *root-map* (kbd "C-j")          "move-window down")
+(define-key *root-map* (kbd "C-k")          "move-window up")
+(define-key *root-map* (kbd "C-l")          "move-window right")
 
 
-;; Turn of welcome message
-(setf *startup-message* nil)
+(define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
+(define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
+(define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
 
-;;;; Windows
+(define-key *root-map* (kbd "d")            "exec dmenuclip")
+(define-key *root-map* (kbd "m")            "exec dmenurl")
+(define-key *root-map* (kbd "e")            "exec sh /home/scp1/bin/dmenu.sh")
+(define-key *root-map* (kbd "g")            "exec google_dmenu")
 
-(set-focus-color   "grey20")
-(set-unfocus-color "grey10")
-(set-normal-gravity :center)
-(setf *normal-border-width* 1)
+(define-key *root-map* (kbd "c")            "exec urxvtc -name shiva")
+(define-key *root-map* (kbd "x")            "exec xterm")
+(define-key *root-map* (kbd ",")            "exec xdotool click 1")
+(define-key *root-map* (kbd ".")            "exec xdotool click 3")
 
-;;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-;;(defvar *maximized-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-;;(defvar *current-frame-size* (make-frame :number -1 :x 1680 :y 1020 :width 1680 :height 1020))
-;;(defvar *current-maximized-frame* nil)
+(define-key *root-map* (kbd         "SPC")  "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
+(define-key *root-map* (kbd  "dead_acute")  "exec stumpish echo `weather norrköping --irc`")
+(define-key *root-map* (kbd ".")            "exec vol_up")
+(define-key *root-map* (kbd ",")            "exec vol_down")
 
+(define-key *top-map*  (kbd "F1")           "exec rpc change dingata")
+(define-key *top-map*  (kbd "F2")           "exec rpc change gabber")
+(define-key *top-map*  (kbd "F3")           "exec rpc change hardstyle")
+(define-key *top-map*  (kbd "F5")           "exec rpc change hardcore")
+(define-key *top-map*  (kbd "F6")           "exec rpc change psy2")
+(define-key *top-map*  (kbd "F7")           "exec rpc change psy6")
+(define-key *top-map*  (kbd "F8")           "exec rpc change psy4")
+(define-key *top-map*  (kbd "F9")           "exec rpc change p1")
+(define-key *top-map*  (kbd "F10")          "exec rpc change p2")
+(define-key *top-map*  (kbd "F11")          "exec rpc change p3")
+(define-key *top-map*  (kbd "F12")          "exec rpc change p4")
 
-
-(define-key *root-map* (kbd "h") "move-focus left")
-(define-key *root-map* (kbd "j") "move-focus down")
-(define-key *root-map* (kbd "k") "move-focus up")
-(define-key *root-map* (kbd "l") "move-focus right")
-
-(define-key *root-map* (kbd "C-h") "move-window left")
-(define-key *root-map* (kbd "C-j") "move-window down")
-(define-key *root-map* (kbd "C-k") "move-window up")
-(define-key *root-map* (kbd "C-l") "move-window right")
-
-
-(define-key *root-map* (kbd "DEL") "exec pimpd2 --randomalbums 20")
-(define-key *root-map* (kbd "p") "exec mpc next; stumpish echo `mpc --format '%artist% - %album% - %title%             |   [%file%] '|head -1`")
-(define-key *root-map* (kbd "o") "exec mpc toggle")
-
-(define-key *root-map* (kbd "d") "exec dmenuclip")
-(define-key *root-map* (kbd "m") "exec dmenurl")
-(define-key *root-map* (kbd "e") "exec sh /home/scp1/bin/dmenu.sh")
-(define-key *root-map* (kbd "g") "exec google_dmenu")
-
-(define-key *root-map* (kbd "c") "exec urxvtc -name shiva")
-(define-key *root-map* (kbd ",") "exec xdotool click 1")
-
-(define-key *root-map* (kbd "SunPrint_Screen") "exec shot")
-(define-key *root-map* (kbd "SPC") "exec stumpish echo `mpc --format '%artist% - %title% (%album%)'|head -1`")
-(define-key *root-map* (kbd "dead_acute") "exec stumpish echo `weather norrköping --irc`")
-(define-key *root-map* (kbd "KP_Add") "exec ossmix vmix.0.pcm8 -- +2")
-(define-key *root-map* (kbd "KP_Subtract") "exec ossmix vmix.0.pcm8 -- -2")
-
-
-(define-key *top-map* (kbd "F1") "exec rpc change dingata")
-(define-key *top-map* (kbd "F2") "exec rpc change gabber")
-(define-key *top-map* (kbd "F3") "exec rpc change hardstyle")
-(define-key *top-map* (kbd "F5") "exec rpc change hardcore")
-(define-key *top-map* (kbd "F6") "exec rpc change psy2")
-(define-key *top-map* (kbd "F7") "exec rpc change psy6")
-(define-key *top-map* (kbd "F8") "exec rpc change psy4")
-(define-key *top-map* (kbd "F9") "exec rpc change p1")
-(define-key *top-map* (kbd "F10") "exec rpc change p2")
-(define-key *top-map* (kbd "F11") "exec rpc change p3")
-(define-key *top-map* (kbd "F12") "exec rpc change p4")
-
-(define-key *top-map* (kbd "KP_Begin") "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
-(define-key *top-map* (kbd "KP_Right") "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
-(define-key *top-map* (kbd "KP_Insert") "exec echo pause > $HOME/.mplayer/fifo")
-(define-key *top-map* (kbd "KP_Up") "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
+(define-key *top-map*  (kbd "KP_Begin")     "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
+(define-key *top-map*  (kbd "KP_Right")     "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
+(define-key *top-map*  (kbd "KP_Insert")    "exec echo pause > $HOME/.mplayer/fifo")
+(define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 
 ;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
-;(define-key *root-map* (kbd "aring") "exec sh /home/scp1/bin/mpdfav")
-;(define-key *root-map* (kbd "v") "exec urxvtc -e screen -x; screen -X screen zsh")
+;(define-key *root-map* (kbd "aring")      "exec sh /home/scp1/bin/mpdfav")
+;(define-key *root-map* (kbd "v")          "exec urxvtc -e screen -x; screen -X screen zsh")
