@@ -43,3 +43,6 @@
 [submodule "vim/bundle/vim-arpeggio"]
 	path = vim/bundle/vim-arpeggio
 	url = git://github.com/kana/vim-arpeggio.git
+[submodule "vim/bundle/vim-x11colors"]
+	path = vim/bundle/vim-x11colors
+	url = git://github.com/trapd00r/x11colors.vim.git
