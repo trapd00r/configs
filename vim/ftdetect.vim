@@ -16,7 +16,6 @@ let g:vimrc_functions  = "/home/scp1/etc/vim/functions.vim"
 
 au BufRead,BufNewFile *.md,*.mkd,*.markdown  set ft=md | normal gg
 au BufRead,BufNewFile *.go   set ft=go
-au BufRead            *.txt  :call Filetype_txt()
 au BufNewFile         *.txt  set ft=_txt
 
 
@@ -36,8 +35,9 @@ au FileType perl setlocal keywordprg=perldoc\ -f
 
 au! BufNewFile * silent! 0r ~/etc/vim/templates/template.%:e 
 
+let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:netrw_http_cmd               = 'w3m'
-let g:netrw_http_xcmd             = '-dump >'
+let g:netrw_http_xcmd              = '-dump >'
 
 let g:tex_conceal                  = 1
 
