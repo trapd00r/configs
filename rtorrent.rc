@@ -20,61 +20,10 @@ encryption = allow_incoming,try_outgoing,enable_retry
 
 max_memory_usage = 9999999999999999
 
-# VIEW: Default view for filtering results
-#view_add = rtcontrol
-
-# VIEW: Show active torrents (in view #9) and update every 20 seconds
-#schedule = filter_active,20,20,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
-
-# EVENTS: Timestamps
-#   tm_loaded = time loaded into client
-#   tm_started = time of *first* start
-#   tm_completed = time of completion
-#system.method.insert = pyro.tm_started.now,simple|private,"d.set_custom=tm_started,$cat=$system.time= ;d.save_session="
-#system.method.set_key = event.download.resumed,time_stamp,"branch=d.get_custom=tm_started,false=,pyro.tm_started.now="
-#system.method.set_key = event.download.inserted_new,time_stamp,"d.set_custom=tm_loaded,$cat=$system.time= ;d.save_session="
-#system.method.set_key = event.download.finished,time_stamp,"d.set_custom=tm_completed,$cat=$system.time= ;d.save_session="
-#
-## EVENTS: Activation intervals
-#system.method.insert = pyro.activations.append,simple|private,"d.set_custom=activations,\"$cat=$d.get_custom=activations,$argument.0=,$system.time=\" ;d.save_session="
-#system.method.set_key = event.download.paused,activations,"pyro.activations.append=P"
-#system.method.set_key = event.download.resumed,activations,"pyro.activations.append=R"
-#
-#system.method.insert = s,simple,"execute_nothrow=rt-search,\"$cat=*,$argument.0=,*\""
-#system.method.insert = t,simple,"execute_nothrow=rt-search,\"$cat=\\\"alias=\\\",$argument.0=\""
-#system.method.insert = f,simple,"execute_nothrow=rt-search,$argument.0="
-#
-##on_erase = rm_complete,"execute=rm,-r,--,$d.get_base_path=" 
-#
-## Show recently completed top-most in "main"
-#view_sort_current = main,greater=d.get_custom=tm_completed
-#view_filter_on = main,event.download.finished
-
+schedule = home1    ,5, 5, "load_start=/home/scp1/*.torrent,                       d.set_directory=/home/scp1/"
 schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,             d.set_directory=/mnt/Books/.new"
+schedule = porn1    ,5, 5, "load_start=/mnt/Porn/.torrents/*.torrent,              d.set_directory=/mnt/Porn/.new"
 schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
-schedule = games1   ,5, 5, "load_start=/mnt/Games_1/.torrents/*.torrent,           d.set_directory=/mnt/Games_1/.new/"
-schedule = games2   ,5, 5, "load_start=/mnt/Games_2/.torrents/*.torrent,           d.set_directory=/mnt/Games_2/.new/"
-#schedule = movies1  ,5, 5, "load_start=/mnt/Movies_1/.torrents/*.torrent,          d.set_directory=/mnt/Movies_1/.new/"
-#schedule = movies2  ,5, 5, "load_start=/mnt/Movies_2/.torrents/*.torrent,          d.set_directory=/mnt/Movies_2/.new/"
-#schedule = movies3  ,5, 5, "load_start=/mnt/Movies_3/.torrents/*.torrent,          d.set_directory=/mnt/Movies_3/.new/"
-#schedule = movies4  ,5, 5, "load_start=/mnt/Movies_4/.torrents/*.torrent,          d.set_directory=/mnt/Movies_4/.new/"
-schedule = music1fc ,5, 5, "load_start=/mnt/Music_1/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_1/FLAC/"
-schedule = music1nc ,5, 5, "load_start=/mnt/Music_1/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_1/Not_Scene/"
-schedule = music2fc ,5, 5, "load_start=/mnt/Music_2/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_2/FLAC/"
-schedule = music2nc ,5, 5, "load_start=/mnt/Music_2/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_2/Not_Scene/"
-schedule = music3fc ,5, 5, "load_start=/mnt/Music_3/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_3/FLAC/"
-schedule = music3nc ,5, 5, "load_start=/mnt/Music_3/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_3/Not_Scene/"
-schedule = music4fc ,5, 5, "load_start=/mnt/Music_4/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_4/FLAC/"
-schedule = music4nc ,5, 5, "load_start=/mnt/Music_4/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_4/Not_Scene/"
-schedule = music5fc ,5, 5, "load_start=/mnt/Music_5/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_5/FLAC/"
-schedule = music5nc ,5, 5, "load_start=/mnt/Music_5/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_5/Not_Scene/"
-schedule = music6fc ,5, 5, "load_start=/mnt/Music_6/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_6/FLAC/"
-schedule = music6nc ,5, 5, "load_start=/mnt/Music_6/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_6/Not_Scene/"
-schedule = music7fc ,5, 5, "load_start=/mnt/Music_7/.torrents/FLAC/*.torrent,      d.set_directory=/mnt/Music_7/FLAC/"
-schedule = music7nc ,5, 5, "load_start=/mnt/Music_7/.torrents/Not_Scene/*.torrent, d.set_directory=/mnt/Music_7/Not_Scene/"
 schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,             d.set_directory=/mnt/Mvids/.new/"
 schedule = mvids2   ,5, 5, "load_start=/mnt/Mvids_2/.torrents/*.torrent,           d.set_directory=/mnt/Mvids_2/.new/"
-#schedule = tv1      ,5, 5, "load_start=/mnt/TV_1/.torrents/*.torrent,              d.set_directory=/mnt/TV_1/.new/"
-#schedule = tv2      ,5, 5, "load_start=/mnt/TV_2/.torrents/*.torrent,              d.set_directory=/mnt/TV_2/.new/"
-#schedule = tv3      ,5, 5, "load_start=/mnt/TV_3/.torrents/*.torrent,              d.set_directory=/mnt/TV_3/.new/"
-#schedule = tv4      ,5, 5, "load_start=/mnt/TV_4/.torrents/*.torrent,              d.set_directory=/mnt/TV_4/.new/"
+schedule = mvids3   ,5, 5, "load_start=/mnt/Music_Videos/.torrents/*.torrent,      d.set_directory=/mnt/Music_Videos/.new"
