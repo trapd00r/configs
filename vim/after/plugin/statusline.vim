@@ -1,5 +1,6 @@
-" Vim statusline file - after/plugin/statusline.vim
-" Author: Magnus Woldrich <magnus@trapd00r.se>
+"    File: $HOME/etc/vim/after/plugin/statusline.vim
+"  Author: Magnus Woldrich <m@japh.se>
+" Updated: 2011-07-02 17:48:48
 
 
 hi User1 ctermfg=064 ctermbg=234 cterm=bold
