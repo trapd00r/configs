@@ -1,3 +1,6 @@
+"    File: $HOME/etc/abbrevations.zsh 
+"  Author: Magnus Woldrich <m@japh.se>
+" Updated: 2011-07-02 17:48:48
 
 if $HOSTNAME == 'shiva'
   ia mypc shiva

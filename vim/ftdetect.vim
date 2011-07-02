@@ -1,3 +1,7 @@
+"    File: $HOME/etc/ftdetect.vim
+"  Author: Magnus Woldrich <m@japh.se>
+" Updated: 2011-07-02 17:48:48
+
 filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro

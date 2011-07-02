@@ -1,3 +1,7 @@
+"    File: $HOME/etc/mappings.vim
+"  Author: Magnus Woldrich <m@japh.se>
+" Updated: 2011-07-02 17:48:48
+
 let mapleader = ','
 
 nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>

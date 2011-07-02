@@ -1,3 +1,7 @@
+"    File: $HOME/etc/functions.vim
+"  Author: Magnus Woldrich <m@japh.se>
+" Updated: 2011-07-02 17:48:48
+
 func! Filetype_txt()
   if (&modifiable == 1)
     normal ggVGgqgg0
