@@ -28,8 +28,10 @@ if [ "$HOSTNAME" == 'shiva' ]; then
 
   xsetroot  -cursor_name left_ptr
   setxkbmap -option terminate:ctrl_alt_bksp
-
-  setxkbmap se svorak-m5 -variant nodeadkeys
+  setxkbmap se perl-dvorak ||
+    setxkbmap perl-dvorak  ||
+    setxkbmap svorak-m5    ||
+    setxkbmap se -variant nodeadkeys
 
   urxvtd -q -f -o                     &
   (sleep 1; urxvtc -name URxvt.shiva) &
@@ -47,7 +49,7 @@ fi
 #sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_right.sh &
 #sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_left.sh  &
 
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 
 exec ${host_wm[$HOSTNAME]}
 
