@@ -1,10 +1,12 @@
-" Highly optimized .vimrc for Perl, C, Lua, Viml hacking
-" 2009 - 2011 Magnus Woldrich < http://github.com/trapd00r/ >
+"    File: $HOME/etc/vimrc
+"  Author: Magnus Woldrich <m@japh.se>
+" Created: 2009-04-24
+" Updated: 2011-07-02 17:48:48
+"    What: Highly optimized for Perl, C, Viml and Lua hacking.
 
 if !isdirectory('/tmp/scp1')
   call mkdir("/tmp/scp1", "", 0700)
 endif
-
 
 if !exists('g:vim_functions_loaded')
   source /home/scp1/etc/vim/functions.vim
@@ -40,9 +42,9 @@ set expandtab
 set equalalways
 set eadirection=ver
 set fillchars=vert:│,fold:-
-set foldmethod=manual
+"set foldmethod=manual
 set foldenable
-set foldlevelstart=99
+"set foldlevelstart=99
 set formatoptions=tcrqln1
 
 " THIS IS HORRIBLE EVILNESS
@@ -113,7 +115,7 @@ set smartcase
 set smarttab
 set synmaxcol=160
 set so=5
-set splitright
+"set splitright
 set tabpagemax=50
 set ts=2
 set t_Co=256
@@ -133,7 +135,7 @@ set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*~,blib,*.o
-set winfixwidth
+"set winfixwidth
 set whichwrap=b,s,h,l,<,>
 
 set nomore
