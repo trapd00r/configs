@@ -1,4 +1,4 @@
-#vim: tw=0 nowrap ts=2 ft=sh:
+#vim: tw=0 nowrap ts=2 ft=sh foldmethod=marker:
 
 #alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
 
@@ -40,7 +40,7 @@ alias    hour="echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
-alias   editc='vim $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
+alias   editc='vim -X $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
 alias   share='perl $HOME/dev/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
@@ -56,6 +56,7 @@ alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.100:http/japh.s
 alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
 
 alias     gs='git status --short -b'
+alias     gc='git commit'
 alias     gt='git tag|sort --reverse'
 alias     gp='git push'
 alias    gdd='git diff'
@@ -174,10 +175,11 @@ alias     todo='$HOME/dev/time-spent-in-vim/vim $HOME/doc/TODO'
 alias    dmesg='$HOME/dev/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
 #alias      vim='/home/scp1/dev/time-spent-in-vim/vim'
 alias  vimtime='/home/scp1/dev/time-spent-in-vim/vim --total'
-alias    vimsh='vim *.sh'
-alias    vimpm='vim *.pm'
-alias    vimpl='vim *.pl'
-alias     vimc='vim *.{c,h}'
+alias    vimsh='vim -X *.sh'
+alias    vimpm='vim -X *.pm'
+alias    vimpl='vim -X *.pl'
+alias     vimc='vim -X *.{c,h}'
+alias      vim='vim -X'
 alias     cpan='cpanm'
 alias    flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
 alias      cat='v'
