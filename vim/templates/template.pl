@@ -61,4 +61,4 @@ it under the same terms as Perl itself.
 
 =cut
 
-# vim: set ts=2 et sw=2:
+# vim: set ts=2 et sw=2 fdm=marker:
