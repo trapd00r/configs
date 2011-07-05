@@ -9,12 +9,12 @@ if !isdirectory('/tmp/scp1')
 endif
 
 if !exists('g:vim_functions_loaded')
-  source /home/scp1/etc/vim/functions.vim
+  source /home/scp1/etc/vim/_functions.vim
 endif
 
-source /home/scp1/etc/vim/ftdetect.vim
-source /home/scp1/etc/vim/abbrevations.vim
-source /home/scp1/etc/vim/mappings.vim
+source /home/scp1/etc/vim/_ftdetect.vim
+source /home/scp1/etc/vim/_abbrevations.vim
+source /home/scp1/etc/vim/_mappings.vim
 
 
 set nocp
@@ -41,10 +41,10 @@ set display+=lastline,uhex
 set expandtab
 set equalalways
 set eadirection=ver
-set fillchars=vert:│,fold:-
-"set foldmethod=manual
+set fillchars=vert:│
+set foldmethod=marker
 set foldenable
-"set foldlevelstart=99
+"set foldlevelstart=2
 set formatoptions=tcrqln1
 
 " THIS IS HORRIBLE EVILNESS
