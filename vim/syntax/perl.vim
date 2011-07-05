@@ -1,15 +1,14 @@
 " Vim syntax file
-" Language:      Perl 5
-" Maintainer:    Andy Lester <andy@petdance.com>
-" Homepage:      http://github.com/petdance/vim-perl/tree/master
-" Bugs/requests: http://github.com/petdance/vim-perl/issues
-" Last Change:   2010-08-10
-" Contributors:  Andy Lester <andy@petdance.com>
-"                Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
-"                Lukas Mai <l.mai.web.de>
-"                Nick Hibma <nick@van-laarhoven.org>
-"                Sonia Heimann <niania@netsurf.org>
-"                and many others.
+" Language:     Perl 5
+" Maintainer:   Andy Lester <andy@petdance.com>
+" URL:          http://github.com/petdance/vim-perl/tree/master
+" Last Change:  2010-08-10
+" Contributors: Andy Lester <andy@petdance.com>
+"               Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
+"               Lukas Mai <l.mai.web.de>
+"               Nick Hibma <nick@van-laarhoven.org>
+"               Sonia Heimann <niania@netsurf.org>
+"               and many others.
 "
 " Please download most recent version first before mailing
 " any comments.
@@ -187,7 +186,8 @@ syn match  perlSpecialMatch	"(\*\%(\%(PRUNE\|SKIP\|THEN\)\%(:[^)]*\)\=\|\%(MARK\
 "
 " Highlight lines with only whitespace (only in blank delimited here documents) as errors
 syn match  perlNotEmptyLine	"^\s\+$" contained
-" Highlight "} else if (...) {", it should be "} else { if (...) { " or "} elsif (...) {"
+" Highlight '} else if (...) {', it should be '} else { if (...) { ' or
+" '} elsif (...) {'.
 syn match perlElseIfError	"\s\+if" contained
 syn keyword perlElseIfError	elseif
 

@@ -1,50 +1,9 @@
 " Vim syntax file
-" Language:     rc
-" Maintainer:   Andy Spencer <andy753421@gmail.com>, 
-" Weakish Jiang <weakish@gmail.com>
-" Last Change:  2009-12-26 
+" Language:	M$ Resource files (*.rc)
+" Maintainer:	Heiko Erhardt <Heiko.Erhardt@munich.netsurf.de>
+" Last Change:	2001 May 09
 
-"Credits
-"""""""""""""
-" Most of the work is done by Andy.  I have only made some minor changes:
-" * make this syntax highlight works with Byron Rakitzis' reimplementation.
-" * edit rcHereDoc match pattern to get <<EOF >output highlighted correctly.
-" -- weakish
-"
-"Info
-""""""""""
-"
-" This syntax file works with both Byron Rakitzis' reimplementation and
-" plan9port's implementation.  
-" (There is a tradeoff: less powerful `(ba)sh like substitution` syntax
-" error detection. For a pure syntax file" for p9p, see:
-" http://lug.rose-hulman.edu/svn/misc/trunk/config/spenceal/vim/ )
-"
-"Usage
-"""""""""""
-" Copy rc.vim to ~/.vim/syntax/rc.vim
-" or c:\program files\vim\vimfiles\syntax\rc.vim (if you are on Windows)
-" (Optional) Add this line in your .vimrc:
-" au BufRead,BufNewFile *.rc set filetype=rc
-"
-"Other Tips
-""""""""""""""
-" If you want to use rc shell as the embedded shell in vim,
-" you may add these lines to your .vimrc:
-" set shell=/usr/bin/rc\ -l
-" " or /bin/rc or /usr/local/bin/rc or /opt/local/bin/rc, etc
-" set shellcmdflag=-c
-" set shellpipe=>[2=1]\|\ tee
-" set shellredir=>%s\ >[2=1]
-" (This syntax is for Byron R's rc, p9p rc may differ.)
-"
-"Bug Report
-""""""""""""""
-" http://bitbucket.org/weakish/weakishscripts/issues/
-"Hack
-""""""""""""""
-" A test file is available at
-" http://bitbucket.org/weakish/weakishscripts/src/tip/test.rc
+" This file is based on the c.vim
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -54,182 +13,188 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-" I'm lazy, if someone knows how to do proper syncing, they can fix this
-" Rc script should be small anyway..
-syn sync fromstart
+" Common RC keywords
+syn keyword rcLanguage LANGUAGE
 
+syn keyword rcMainObject TEXTINCLUDE VERSIONINFO BITMAP ICON CURSOR CURSOR
+syn keyword rcMainObject MENU ACCELERATORS TOOLBAR DIALOG
+syn keyword rcMainObject STRINGTABLE MESSAGETABLE RCDATA DLGINIT DESIGNINFO
 
-" Based on the sections of rc(1)
+syn keyword rcSubObject POPUP MENUITEM SEPARATOR
+syn keyword rcSubObject CONTROL LTEXT CTEXT EDITTEXT
+syn keyword rcSubObject BUTTON PUSHBUTTON DEFPUSHBUTTON GROUPBOX LISTBOX COMBOBOX
+syn keyword rcSubObject FILEVERSION PRODUCTVERSION FILEFLAGSMASK FILEFLAGS FILEOS
+syn keyword rcSubObject FILETYPE FILESUBTYPE
 
-"Top levels
-"""""""""""
-" Ignore valid start/ends for now
-" List = top level
-syn cluster rcList contains=@rcSimple,@rcArgument,@rcRedirect,@rcCompound
+syn keyword rcCaptionParam CAPTION
+syn keyword rcParam CHARACTERISTICS CLASS STYLE EXSTYLE VERSION FONT
 
-"Command Lines
-""""""""""""""
-syn cluster rcSimple   contains=rcTermin,rcContinue,rcComment
+syn keyword rcStatement BEGIN END BLOCK VALUE
 
-syn match   rcTermin    "[;&]"
-syn match   rcContinue "\\$"
-syn match   rcComment  "#.*"
+syn keyword rcCommonAttribute PRELOAD LOADONCALL FIXED MOVEABLE DISCARDABLE PURE IMPURE
 
+syn keyword rcAttribute WS_OVERLAPPED WS_POPUP WS_CHILD WS_MINIMIZE WS_VISIBLE WS_DISABLED WS_CLIPSIBLINGS
+syn keyword rcAttribute WS_CLIPCHILDREN WS_MAXIMIZE WS_CAPTION WS_BORDER WS_DLGFRAME WS_VSCROLL WS_HSCROLL
+syn keyword rcAttribute WS_SYSMENU WS_THICKFRAME WS_GROUP WS_TABSTOP WS_MINIMIZEBOX WS_MAXIMIZEBOX WS_TILED
+syn keyword rcAttribute WS_ICONIC WS_SIZEBOX WS_TILEDWINDOW WS_OVERLAPPEDWINDOW WS_POPUPWINDOW WS_CHILDWINDOW
+syn keyword rcAttribute WS_EX_DLGMODALFRAME WS_EX_NOPARENTNOTIFY WS_EX_TOPMOST WS_EX_ACCEPTFILES
+syn keyword rcAttribute WS_EX_TRANSPARENT WS_EX_MDICHILD WS_EX_TOOLWINDOW WS_EX_WINDOWEDGE WS_EX_CLIENTEDGE
+syn keyword rcAttribute WS_EX_CONTEXTHELP WS_EX_RIGHT WS_EX_LEFT WS_EX_RTLREADING WS_EX_LTRREADING
+syn keyword rcAttribute WS_EX_LEFTSCROLLBAR WS_EX_RIGHTSCROLLBAR WS_EX_CONTROLPARENT WS_EX_STATICEDGE
+syn keyword rcAttribute WS_EX_APPWINDOW WS_EX_OVERLAPPEDWINDOW WS_EX_PALETTEWINDOW
+syn keyword rcAttribute ES_LEFT ES_CENTER ES_RIGHT ES_MULTILINE ES_UPPERCASE ES_LOWERCASE ES_PASSWORD
+syn keyword rcAttribute ES_AUTOVSCROLL ES_AUTOHSCROLL ES_NOHIDESEL ES_OEMCONVERT ES_READONLY ES_WANTRETURN
+syn keyword rcAttribute ES_NUMBER
+syn keyword rcAttribute BS_PUSHBUTTON BS_DEFPUSHBUTTON BS_CHECKBOX BS_AUTOCHECKBOX BS_RADIOBUTTON BS_3STATE
+syn keyword rcAttribute BS_AUTO3STATE BS_GROUPBOX BS_USERBUTTON BS_AUTORADIOBUTTON BS_OWNERDRAW BS_LEFTTEXT
+syn keyword rcAttribute BS_TEXT BS_ICON BS_BITMAP BS_LEFT BS_RIGHT BS_CENTER BS_TOP BS_BOTTOM BS_VCENTER
+syn keyword rcAttribute BS_PUSHLIKE BS_MULTILINE BS_NOTIFY BS_FLAT BS_RIGHTBUTTON
+syn keyword rcAttribute SS_LEFT SS_CENTER SS_RIGHT SS_ICON SS_BLACKRECT SS_GRAYRECT SS_WHITERECT
+syn keyword rcAttribute SS_BLACKFRAME SS_GRAYFRAME SS_WHITEFRAME SS_USERITEM SS_SIMPLE SS_LEFTNOWORDWRAP
+syn keyword rcAttribute SS_OWNERDRAW SS_BITMAP SS_ENHMETAFILE SS_ETCHEDHORZ SS_ETCHEDVERT SS_ETCHEDFRAME
+syn keyword rcAttribute SS_TYPEMASK SS_NOPREFIX SS_NOTIFY SS_CENTERIMAGE SS_RIGHTJUST SS_REALSIZEIMAGE
+syn keyword rcAttribute SS_SUNKEN SS_ENDELLIPSIS SS_PATHELLIPSIS SS_WORDELLIPSIS SS_ELLIPSISMASK
+syn keyword rcAttribute DS_ABSALIGN DS_SYSMODAL DS_LOCALEDIT DS_SETFONT DS_MODALFRAME DS_NOIDLEMSG
+syn keyword rcAttribute DS_SETFOREGROUND DS_3DLOOK DS_FIXEDSYS DS_NOFAILCREATE DS_CONTROL DS_CENTER
+syn keyword rcAttribute DS_CENTERMOUSE DS_CONTEXTHELP
+syn keyword rcAttribute LBS_NOTIFY LBS_SORT LBS_NOREDRAW LBS_MULTIPLESEL LBS_OWNERDRAWFIXED
+syn keyword rcAttribute LBS_OWNERDRAWVARIABLE LBS_HASSTRINGS LBS_USETABSTOPS LBS_NOINTEGRALHEIGHT
+syn keyword rcAttribute LBS_MULTICOLUMN LBS_WANTKEYBOARDINPUT LBS_EXTENDEDSEL LBS_DISABLENOSCROLL
+syn keyword rcAttribute LBS_NODATA LBS_NOSEL LBS_STANDARD
+syn keyword rcAttribute CBS_SIMPLE CBS_DROPDOWN CBS_DROPDOWNLIST CBS_OWNERDRAWFIXED CBS_OWNERDRAWVARIABLE
+syn keyword rcAttribute CBS_AUTOHSCROLL CBS_OEMCONVERT CBS_SORT CBS_HASSTRINGS CBS_NOINTEGRALHEIGHT
+syn keyword rcAttribute CBS_DISABLENOSCROLL CBS_UPPERCASE CBS_LOWERCASE
+syn keyword rcAttribute SBS_HORZ SBS_VERT SBS_TOPALIGN SBS_LEFTALIGN SBS_BOTTOMALIGN SBS_RIGHTALIGN
+syn keyword rcAttribute SBS_SIZEBOXTOPLEFTALIGN SBS_SIZEBOXBOTTOMRIGHTALIGN SBS_SIZEBOX SBS_SIZEGRIP
+syn keyword rcAttribute CCS_TOP CCS_NOMOVEY CCS_BOTTOM CCS_NORESIZE CCS_NOPARENTALIGN CCS_ADJUSTABLE
+syn keyword rcAttribute CCS_NODIVIDER
+syn keyword rcAttribute LVS_ICON LVS_REPORT LVS_SMALLICON LVS_LIST LVS_TYPEMASK LVS_SINGLESEL LVS_SHOWSELALWAYS
+syn keyword rcAttribute LVS_SORTASCENDING LVS_SORTDESCENDING LVS_SHAREIMAGELISTS LVS_NOLABELWRAP
+syn keyword rcAttribute LVS_EDITLABELS LVS_OWNERDATA LVS_NOSCROLL LVS_TYPESTYLEMASK  LVS_ALIGNTOP LVS_ALIGNLEFT
+syn keyword rcAttribute LVS_ALIGNMASK LVS_OWNERDRAWFIXED LVS_NOCOLUMNHEADER LVS_NOSORTHEADER LVS_AUTOARRANGE
+syn keyword rcAttribute TVS_HASBUTTONS TVS_HASLINES TVS_LINESATROOT TVS_EDITLABELS TVS_DISABLEDRAGDROP
+syn keyword rcAttribute TVS_SHOWSELALWAYS
+syn keyword rcAttribute TCS_FORCEICONLEFT TCS_FORCELABELLEFT TCS_TABS TCS_BUTTONS TCS_SINGLELINE TCS_MULTILINE
+syn keyword rcAttribute TCS_RIGHTJUSTIFY TCS_FIXEDWIDTH TCS_RAGGEDRIGHT TCS_FOCUSONBUTTONDOWN
+syn keyword rcAttribute TCS_OWNERDRAWFIXED TCS_TOOLTIPS TCS_FOCUSNEVER
+syn keyword rcAttribute ACS_CENTER ACS_TRANSPARENT ACS_AUTOPLAY
+syn keyword rcStdId IDI_APPLICATION IDI_HAND IDI_QUESTION IDI_EXCLAMATION IDI_ASTERISK IDI_WINLOGO IDI_WINLOGO
+syn keyword rcStdId IDI_WARNING IDI_ERROR IDI_INFORMATION
+syn keyword rcStdId IDCANCEL IDABORT IDRETRY IDIGNORE IDYES IDNO IDCLOSE IDHELP IDC_STATIC
 
-"Arguments and Variables
-""""""""""""""""""""""""
-" Arguments should be proceeded by additional arguments, not commands, etc
-syn cluster rcArgument   contains=@rcBuiltins,@rcArgument2
-syn cluster rcArgument2  contains=rcWord,@rcSimple,rcNumber,rcPattern,rcQuoted,rcSubQuote,rcParens,rcVar,rcSubst,rcSub,rcJoin
+" Common RC keywords
 
-syn match   rcWord       "[^#;&|^$=`'{}()<>\[\] \t\r]"               skipwhite nextgroup=@rcArgument2
+" Common RC keywords
+syn keyword rcTodo contained	TODO FIXME XXX
 
+" String and Character constants
+" Highlight special characters (those which have a backslash) differently
+syn match rcSpecial contained	"\\[0-7][0-7][0-7]\=\|\\."
+syn region rcString		start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=rcSpecial
+syn match rcCharacter		"'[^\\]'"
+syn match rcSpecialCharacter	"'\\.'"
+syn match rcSpecialCharacter	"'\\[0-7][0-7]'"
+syn match rcSpecialCharacter	"'\\[0-7][0-7][0-7]'"
 
-syn match   rcNumber     "\<\d\+\>"                         skipwhite nextgroup=@rcArgument2
+"catch errors caused by wrong parenthesis
+syn region rcParen		transparent start='(' end=')' contains=ALLBUT,rcParenError,rcIncluded,rcSpecial,rcTodo
+syn match rcParenError		")"
+syn match rcInParen contained	"[{}]"
 
-syn match   rcPattern    "[*?]"                             skipwhite nextgroup=@rcArgument2
-syn region  rcPattern    matchgroup=rcOperator   start="\[" skip="\\\]" end="\]" skipwhite nextgroup=@rcArgument2 keepend contains=rcPatternBdy,
-syn match   rcPatternBdy ".*"                               contained contains=rcPatternKey
-syn match   rcPatternKey "\[\@<=\~\|[^\[]\zs-\ze[^\]]"      contained " ? and - in [?..] [a-c]
+"integer number, or floating point number without a dot and with "f".
+syn case ignore
+syn match rcNumber		"\<\d\+\(u\=l\=\|lu\|f\)\>"
+"floating point number, with dot, optional exponent
+syn match rcFloat		"\<\d\+\.\d*\(e[-+]\=\d\+\)\=[fl]\=\>"
+"floating point number, starting with a dot, optional exponent
+syn match rcFloat		"\.\d\+\(e[-+]\=\d\+\)\=[fl]\=\>"
+"floating point number, without dot, with exponent
+syn match rcFloat		"\<\d\+e[-+]\=\d\+[fl]\=\>"
+"hex number
+syn match rcNumber		"\<0x[0-9a-f]\+\(u\=l\=\|lu\)\>"
+"syn match rcIdentifier	"\<[a-z_][a-z0-9_]*\>"
+syn case match
+" flag an octal number with wrong digits
+syn match rcOctalError		"\<0[0-7]*[89]"
 
-syn region  rcQuoted     matchgroup=rcQuoted     start="'"  skip="''" end="'"       skipwhite nextgroup=@rcArgument2 contains=rcQuote
-syn match   rcQuote      "''"                               contained
+if exists("rc_comment_strings")
+  " A comment can contain rcString, rcCharacter and rcNumber.
+  " But a "*/" inside a rcString in a rcComment DOES end the comment!  So we
+  " need to use a special type of rcString: rcCommentString, which also ends on
+  " "*/", and sees a "*" at the start of the line as comment again.
+  " Unfortunately this doesn't very well work for // type of comments :-(
+  syntax match rcCommentSkip	contained "^\s*\*\($\|\s\+\)"
+  syntax region rcCommentString	contained start=+"+ skip=+\\\\\|\\"+ end=+"+ end=+\*/+me=s-1 contains=rcSpecial,rcCommentSkip
+  syntax region rcComment2String	contained start=+"+ skip=+\\\\\|\\"+ end=+"+ end="$" contains=rcSpecial
+  syntax region rcComment	start="/\*" end="\*/" contains=rcTodo,rcCommentString,rcCharacter,rcNumber,rcFloat
+  syntax match  rcComment	"//.*" contains=rcTodo,rcComment2String,rcCharacter,rcNumber
+else
+  syn region rcComment		start="/\*" end="\*/" contains=rcTodo
+  syn match rcComment		"//.*" contains=rcTodo
+endif
+syntax match rcCommentError	"\*/"
 
-syn region  rcParens     matchgroup=rcOperator   start="(" end=")" skipwhite nextgroup=@rcArgument2 contains=@rcArgument
+syn region rcPreCondit	start="^\s*#\s*\(if\>\|ifdef\>\|ifndef\>\|elif\>\|else\>\|endif\>\)" skip="\\$" end="$" contains=rcComment,rcString,rcCharacter,rcNumber,rcCommentError
+syn region rcIncluded contained start=+"+ skip=+\\\\\|\\"+ end=+"+
+syn match rcIncluded contained "<[^>]*>"
+syn match rcInclude		"^\s*#\s*include\>\s*["<]" contains=rcIncluded
+"syn match rcLineSkip	"\\$"
+syn region rcDefine		start="^\s*#\s*\(define\>\|undef\>\)" skip="\\$" end="$" contains=ALLBUT,rcPreCondit,rcIncluded,rcInclude,rcDefine,rcInParen
+syn region rcPreProc		start="^\s*#\s*\(pragma\>\|line\>\|warning\>\|warn\>\|error\>\)" skip="\\$" end="$" contains=ALLBUT,rcPreCondit,rcIncluded,rcInclude,rcDefine,rcInParen
 
-syn match   rcVar        "\$[^ \t(]\w*"                      skipwhite nextgroup=rcVarList,@rcArgument2 contains=rcVarSpecial
-syn match   rcVar        "\$[#"^]\S\w*\ze[^(]"               skipwhite nextgroup=@rcArgument2 contains=rcVarOper,rcVarSPecial
-syn region  rcVarList    matchgroup=rcIdentifier start="(" end=")" skipwhite nextgroup=@rcArgument2 contains=@rcArgument contained
-syn match   rcVarOper    +[#"^]+                             contained
-syn match   rcVarSpecial "\v\$?<(home|ifs|path|pid|prompt|status|contained)>" contained
-" Todo: Make error for $"foo(
+syn sync ccomment rcComment minlines=10
 
-syn region  rcSubst      matchgroup=rcInclude    start="[`<>]{" end="}" skipwhite nextgroup=@rcArgument2 contains=@rcList
-syn region  rcSubst      matchgroup=rcInclude    start="`(" end=")" skipwhite nextgroup=@rcArgument2 contains=@rcArgument
-syn match   rcSub        "`\<\S\+\>"     
-syn match   rcJoin       "\^"                               skipwhite nextgroup=@rcArgument2 contains=rcError
-syn match   rcError      "\v(^|\^)\s*\^|\^\ze\s*($|#|;|\^)" skipwhite nextgroup=@rcArgument2
-" Todo: Error on ^$
+" Define the default highlighting.
+" For version 5.7 and earlier: only when not done already
+" For version 5.8 and later: only when an item doesn't have highlighting yet
+if version >= 508 || !exists("did_rc_syntax_inits")
+  if version < 508
+    let did_rc_syntax_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
 
+  HiLink rcCharacter	Character
+  HiLink rcSpecialCharacter rcSpecial
+  HiLink rcNumber	Number
+  HiLink rcFloat	Float
+  HiLink rcOctalError	rcError
+  HiLink rcParenError	rcError
+  HiLink rcInParen	rcError
+  HiLink rcCommentError	rcError
+  HiLink rcInclude	Include
+  HiLink rcPreProc	PreProc
+  HiLink rcDefine	Macro
+  HiLink rcIncluded	rcString
+  HiLink rcError	Error
+  HiLink rcPreCondit	PreCondit
+  HiLink rcCommentString rcString
+  HiLink rcComment2String rcString
+  HiLink rcCommentSkip	rcComment
+  HiLink rcString	String
+  HiLink rcComment	Comment
+  HiLink rcSpecial	SpecialChar
+  HiLink rcTodo	Todo
 
-"I/O Redirection
-""""""""""""""""
-syn cluster rcRedirect  contains=rcRedir,rcHereDoc
+  HiLink rcAttribute	rcCommonAttribute
+  HiLink rcStdId	rcStatement
+  HiLink rcStatement	Statement
 
-syn match   rcRedir     "[<>]\v(\[\d+\=?\d*])?\ze([^{]|$)"  skipwhite nextgroup=@rcArgument contains=rcNumber
-syn match   rcRedir     ">>"                                skipwhite nextgroup=@rcArgument
+  " Default color overrides
+  hi def rcLanguage	term=reverse ctermbg=Red ctermfg=Yellow guibg=Red guifg=Yellow
+  hi def rcMainObject	term=underline ctermfg=Blue guifg=Blue
+  hi def rcSubObject	ctermfg=Green guifg=Green
+  hi def rcCaptionParam	term=underline ctermfg=DarkGreen guifg=Green
+  hi def rcParam	ctermfg=DarkGreen guifg=DarkGreen
+  hi def rcStatement	ctermfg=DarkGreen guifg=DarkGreen
+  hi def rcCommonAttribute	ctermfg=Brown guifg=Brown
 
-syn region  rcHereDoc   matchgroup=rcOperator    start="<<\z([^<> ]\+\)"   end="^\z1$" contains=rcVar
-syn region  rcHereDoc   matchgroup=rcOperator    start="<<'\z(.*\)'" end="^\z1$"
-" Todo: what's with ^'s in here docs?
-" Todo: <<'>' >output or <<' 'EOF >output still doesn't get highlighted
-" correct, but I guess peopel are unlikely to write such scripts. 
+  "HiLink rcIdentifier	Identifier
 
-"Compound Commands
-""""""""""""""""""
-" Todo: What to do when only one command is accepted, e.g. while() <command>
-syn cluster rcCompound   contains=rcPipe,rcLogical,rcInverted,rcSubShell,rcIf,rcIfNot,rcElse,rcFor,rcWhile,rcSwitch,rcBrace,rcFunction,rcAssign
-
-syn match   rcPipe       "|\v(\[\d+(\=\d+)?])?"                                contains=rcNumber
-syn match   rcLogical    "\(&&\|||\)"
-
-syn region  rcIf         matchgroup=rcConditional start="if\s*("   end=")"     contains=@rcList
-syn match   rcIfNot      "\<if\s\+not\>"
-" Todo: error on if(..) <command> <command> if not
-"       use: matchgroup=rcIfNot end="if not"?
-syn match   rcElse       "\<else\>" 
-
-syn region  rcFor        matchgroup=rcRepeat      start="for\s*("   end=")"    contains=rcForIn,@rcArgument
-
-syn keyword rcForIn      in                                                    contained
-" Todo: for(in)
-
-syn region  rcWhile      matchgroup=rcRepeat      start="while\s*(" end=")"    contains=@rcList
-
-syn region  rcSwitch     matchgroup=rcConditional start="switch\s*(" end=")"   skipwhite nextgroup=rcSwitchBody contains=@rcArgument
-syn region  rcSwitchBody matchgroup=rcConditional start="{"         end="}"    contains=@rcList,rcSwitchCase
-syn keyword rcSwitchCase case                                                  contained
-
-syn region  rcBrace      matchgroup=rcOperator    start="{"         end="}"    contains=@rcList
-
-syn match   rcFunction   "\v<fn\s+\w+>"                                        contains=rcNote skipwhite nextgroup=rcFnBody
-syn region  rcFnBody     matchgroup=rcFunction    start="{"         end="}"    contained contains=rcNote,@rcList
-syn keyword rcNote       sighup sigint sigalrm sigexit return                         contained
-
-syn match   rcAssign     "\w\+\ze\s*="                                         skipwhite nextgroup=@rcArgument contains=rcVarSpecial
-
-"Built-in Commands
-""""""""""""""""""
-" Todo: only at the beginning of the command
-syn cluster rcBuiltins contains=rcPrefixes,rcBuiltinMatch,rcBuiltinKeyword,coreutils,p9putils
-syn match   rcPrefixes       "[!@]"
-syn match   rcBuiltinMatch   skipwhite nextgroup=@rcArgument2 "[.~]"
-syn keyword rcBuiltinKeyword skipwhite nextgroup=@rcArgument2 break builtin cd echo eval exec exit flag limit newpgrp rfork shift umask wait whatis 
-syn keyword coreutils        skipwhite nextgroup=@rcArgument2 dd cp df du ln ls mv rm tr wc cat dir cut env pwd seq tty yes date echo expr head tail sort stty sync true vdir dirname chgrp chmod chown false mkdir mknod rmdir sleep touch uname chroot mkfifo mktemp readlink basename DIR_COLORS du id nl od pr tr wc dir cut env fmt ptx seq tac tee sum tty who yes arch comm expr fold head join link nice shuf tail sort test stat uniq vdir unexpand dirname chcon cksum nohup paste pinky shred sleep split touch tsort uname users sha1sum truncate logname base64 timeout chroot csplit factor expand hostid md5sum sha224sum sha256sum mkfifo mktemp sha384sum sha512sum printf runcon stdbuf unlink whoami printenv pathchk dircolors readlink install basename
-syn keyword p9putils         skipwhite nextgroup=@rcArgument2 9 B E g p u 9a 9c 9l 9p bc cb db dc dd ed du lc mc ls mk pr ps rc rm tr wc xd 9ar 9fs awd awk cal cat bmp cmp dns eqn fmt gif hoc ico img jpg lex man pbd pic png ppm psu psv rio sam sed seq sig tar tbl tcs tee src srv sum vac web win zip yuv troff2png dnsquery Mail acid acme date comm core crop dial dict diff echo file freq grap hget grep hist gzip ipso join kill mapd look news nobs page plot read scat slay tail sort test time stop tpic tref vcat uniq vnfs yacc cmapcube secstored troff2html sftpcache delatex cleanname devdraw Getdir 9term 9660srv factotum disknfs adict ascii astro bzip2 fsize graph gview iconv idiff resample label mkdir mount mtime nroff plumb proof ramfs sleep spell split sprog stack start stats togif toico topng toppm touch troff vacfs tweak units unvac unutf unzip usage wmail netfileget netfileput doctype acidtypes htmlroff samsave samterm dsa2pub dsa2ssh secuser ndbmkhash sha1sum rsa2csr rsa2pub rsa2ssh rsafill listen1 ndbipquery ndbquery auxstats snarfer lookman tcolors Netfiles calendar aescbc codereview strings bundle colors deroff dnstcp dsagen factor fontsrv ndbmkdb fortune tr2post getflags gunzip import secstore pemdecode md5sum mk9660 pemencode netkey passwd vbackup primes psdownload unicode unmount rsagen vmount vwhois xshove acmeevent yesterday vmount0 ndbmkhosts asn12dsa asn12rsa statusbar htmlfmt netfilestat auxclog wintext rsa2x509 9pfuse readcons plumber basename 9pserve dump9660 namespace bunzip2 psfonts dnsdebug
-
-" Misc
-""""""
-syn region rcSubQuote matchgroup=rcQuoted start="rc\s\+-c\s*'"hs=e-1 skip="''" end="'" skipwhite nextgroup=@rcArgument2 contains=rcQuote,@rcList
-
-"Errors
-"""""""
-syn match rcError "[\]})]"
-syn match rcError "\$(.\{-})\|\${.\{-}}\|\d\+>\(&\d\+\)\?\|`[^{]\{-}`\s\|{.*,.*}"
-
-" Ignore bash
-" Bad ${}, 2>&1, `foo`,
-" TODO: {foo,bar}.txt (use: (foo bar)^.txt
-"       {foo; bar} is ok
-"       $() is for variables
-
-" Highlighting
-hi def link rcTermin         Operator
-hi def link rcContinue       Operator
-hi def link rcComment        Comment
-"Arguments and Variables     
-hi def link rcNumber         Number
-hi def link rcPattern        PreProc
-hi def link rcQuoted         String
-hi def link rcQuote          Delimiter
-hi def link rcVar            Identifier
-hi def link rcVarOper        SpecialChar
-hi def link rcVarSpecial     Keyword
-hi def link rcJoin           Special
-"I/O Redirection             
-hi def link rcRedir          Operator
-hi def link rcHereDoc        String
-"Compound Commands           
-hi def link rcPipe           Operator
-hi def link rcLogical        Operator
-hi def link rcIfNot          Conditional
-hi def link rcElse           Conditional
-hi def link rcNote           Keyword
-hi def link rcAssign         Identifier
-hi def link rcPrefixes       Macro     
-"Built-in Commands           
-hi def link rcBuiltinKeyword Keyword
-hi def link rcBuiltinMatch   Keyword
-hi def link coreutils        Keyword
-hi def link p9putils         Keyword
-
-" Ends of regions
-hi def link rcIdentifier     Identifier
-hi def link rcPreProc        PreProc
-hi def link rcInclude        Include
-hi def link rcSub            Include
-hi def link rcKeyword        Keyword
-hi def link rcOperator       Operator
-hi def link rcRepeat         Repeat
-hi def link rcConditional    Conditional
-hi def link rcFunction       Function
-
-" Specials inside regions
-hi def link rcForIn          Keyword
-hi def link rcSwitchCase     Label
-hi def link rcPatternKey     SpecialChar
-
-" Errors
-hi def link rcError          Error
+  delcommand HiLink
+endif
 
 let b:current_syntax = "rc"
+
+" vim: ts=8

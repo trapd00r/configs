@@ -26,6 +26,9 @@ nmap <silent> <leader>sz  :set syn=zsh    <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>sc  :set syn=config <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>sf  :set syn=conf   <CR> :syntax sync fromstart <CR>
 
+" folds
+nnoremap <CR> zA  " toggle fold mode recursively
+
 " Make writing and quitting faster
 cmap W w
 cmap qq qa!
@@ -202,6 +205,7 @@ map [3~ xx
 map <leader>cd :cd %:p:h<CR>
 
 
+" fix xterm keys {{{
 map  <Esc>[1;2A <S-Up>
 map! <Esc>[1;2A <S-Up>
 map  <Esc>[1;2B <S-Down>
@@ -380,7 +384,10 @@ map  <Esc>- <A-->
 map! <Esc>- <A-->
 map  <Esc>= <A-=>
 map! <Esc>= <A-=>
+" }}}
 
+
+" dvorak experiment {{{
 " > 0x00 = <C-@> maps to 0x40 = @
 " > 0x01 = <C-A> maps to 0x41 = A
 " > 0x02 = <C-B> maps to 0x42 = B
@@ -432,3 +439,4 @@ map! <Esc>= <A-=>
 "no H 8<Down>
 "no T 8<Up>
 "no D <C-w><C-r>
+" }}}

@@ -9,9 +9,9 @@ $HOME/etc/vim
 This is my Vim configuration. It's highly optimized for Perl, Viml, C and Lua
 hacking.
 
-=head1 after/
+=head2 after/
 
-=head2 after/plugin/statusline.vim
+=head3 after/plugin/statusline.vim
 
 This is my Vim statusline configuration.
 
@@ -38,15 +38,15 @@ The result can look like this:
 
 Note how the non-active statusline is toned down.
 
-=head2 after/syntax/perl.vim
+=head3 after/syntax/perl.vim
 
 This is the additional Perl syntax highlighting as can be found at L<https://github.com/trapd00r/vim-after-syntax-perl>.
 
-=head2 after/syntax/vim.vim
+=head3 after/syntax/vim.vim
 
 This is the additional Vim syntax highlighting as can be found at L<https://github.com/trapd00r/vim-after-syntax-vim>.
 
-=head1 templates/
+=head2 templates/
 
 Whenever a new file with the appropriate extension is created, a skeleton file
 (or template) is used.
@@ -55,7 +55,7 @@ This is accomplished by the following line:
 
     :au! BufNewFile * silent! 0r ~/etc/vim/templates/.%:e
 
-=head1 mappings.vim
+=head2 mappings.vim
 
 I use a lot of mappings.
 
@@ -88,48 +88,52 @@ movement keys:
   cnoremap  <c-p>   <up>
   cnoremap  <C-*>   <c-a>
 
-=head1 functions.vim
+=head2 functions.vim
 
-=head2 SynStack()
+=head3 SynStack()
 
 Returns the syntax highlighting group for the word under the cursor.
 
 Mapped to B<C-e>.
 
-=head2 InsertDataDumper()
+=head3 InsertDataDumper()
 
 Inserts Data::Dumper stuff into the current buffer if it looks like Perl.
 
 This is called when the B<DD> I<abbrevation> is detected.
 
-=head2 TitleCaseCenter()
+=head3 TitleCaseCenter()
 
 TitleCase and center the current line.
 
 Mapped to B<leader+t>.
 
-=head2 Filetype_help()
+=head3 Filetype_help()
 
 This is called whenever B<&filetype> is set to I<help>.
 
 Do not want colorcolumn or listchars active when reading the :help.
 
-=head2 SetCursorPosition()
+=head3 SetCursorPosition()
 
 This function will make sure that I'm taken back to where I left off in a file.
 
-=head2 FileSize()
+=head3 FileSize()
 
 Returns the file size of the current buffer.
 
 Used in the statusline.
 
-=head2 ToggleRelativeNumber()
+=head3 ToggleRelativeNumber()
 
 Toggle relative / normal numbering.
 
-=head2 ToggleSpell()
+=head3 ToggleSpell()
 
 Toggles spellcheck. There's also B<:set invspell>.
+
+=head1 SEE ALSO
+
+L<https://github.com/trapd00r/configs/tree/master/vim>
 
 =cut

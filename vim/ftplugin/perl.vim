@@ -1,9 +1,8 @@
 " Vim filetype plugin file
-" Language:      Perl
-" Maintainer:    Andy Lester <andy@petdance.com>
-" Homepage:      http://github.com/petdance/vim-perl
-" Bugs/requests: http://github.com/petdance/vim-perl/issues
-" Last Change:   2009-08-14
+" Language:     Perl
+" Maintainer:   Andy Lester <andy@petdance.com>
+" URL:          http://github.com/petdance/vim-perl
+" Last Change:  2009-08-14
 
 if exists("b:did_ftplugin") | finish | endif
 let b:did_ftplugin = 1
@@ -39,6 +38,7 @@ setlocal define=[^A-Za-z_]
 " problem for you, add an after/ftplugin/perl.vim file that contains
 "       set isfname-=:
 set isfname+=:
+"setlocal iskeyword=48-57,_,A-Z,a-z,:
 
 " Set this once, globally.
 if !exists("perlpath")
