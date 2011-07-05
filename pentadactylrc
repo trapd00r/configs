@@ -1,63 +1,49 @@
 source /home/scp1/etc/pentadactyl/color/neverland.penta
-set guioptions-=rlb
-set hintkeys=asdfg;lkjh
-set titlestring=Fx
-set showtabline=never
-set complete="b"
-set autocomplete=/ex/(bmarks),^(/|/ex/?)$
-set editor="urxvtc -name shiva -e vim -f -c ':set ft=perl'"
-set followhints=0
-set defsearch=d
-set maxitems=10
-set cpt=l
-set nostrictfocus
-set wildmode=full
-"set wildcase=smart
-set showstatuslinks=status
-set showmode
-set shell=zsh
-set shellcmdflag="-c"
-set popups=tab
-set pageinfo=gfm
-"set newtab=adehjp
-"set more=off
-"set hinttimeout=5
-"set hintmatching="wordstartswith"
-"set hintinputs="label, value"
-"set insertmode=0
-"set laststatus=0
-"set wildignore=\.o$,^\..*\.s[a-z]{2}$
-"set wordseparators="[.,!?:;\\/\"^$%&?()[\]{}<>#*+|=~ _-])"
-
 javascript readabilityFootnotes = "true"
 
-
-"set noscript-forbid=bookmarklet,fonts,java,media,placeholder,plugins,silverlight,xslt
-"set noscriptlist=base
+" options {{{:
+set autocomplete=/ex/(bmarks),^(/|/ex/?)$
+set complete="b"
+set cpt=l
+set defsearch=d
+set editor="urxvtc -name shiva -e vim -f -c ':set ft=perl'"
+set followhints=0
+set guioptions-=rlb
+set hintkeys=asdfg;lkjh
 set mapleader=","
+set maxitems=10
+set pageinfo=gfm
+set popups=tab
+set shell=zsh
+set shellcmdflag="-c"
+set showmode
+set showstatuslinks=status
+set showtabline=never
+set titlestring=Fx
+set wildmode=full
+" }}}
 
-nmap <leader>z :js window.content.document.toggleImageSize();<CR>
-nmap d <Nop>
-nmap dd <Nop>
+" commands {{{
+command mem  :tabopen about:mem?verbose
+command conf :tabopen about:config
+" }}}
 
-nmap <C-h> <Nop>
+" mappings {{{
+nnoremap <leader>O O<CR>
+nnoremap <leader>d :tabclose<CR>
+nnoremap <leader>j :jumps<CR>
+nnoremap <leader>m :um!<CR>
+nnoremap <leader>p :pa<CR>
+nnoremap <leader>q :qa!<CR>
+nnoremap <leader>z :js window.content.document.toggleImageSize();<CR>
 
-nmap C :tabclose<CR>
-
-"nmap -b yy y
-
-nnoremap j 10j
-nnoremap k 10k
-
-"nmap dd :tabclose<CR>
-nmap a  :noscript toggletemp<CR>
-nmap A  :noscript toggleperm<CR>
-nmap <Leader>q :qa!<CR>
-
-nmap <Leader>d :tabclose<CR>
-nmap <Leader>p :pa<CR>
-nmap <Leader>j :jumps<CR>
-nmap <Leader>O O<CR>
-nmap <Leader>m :um!<CR>
+nnoremap <C-h> <NOP>
+nnoremap A     :noscript toggleperm<CR>
+nnoremap C     :tabclose<CR>
+nnoremap a     :noscript toggletemp<CR>
+nnoremap d     <NOP>
+nnoremap dd    <NOP>
+nnoremap j     10j
+nnoremap k     10k
 
 " vim: set ft=vim:
