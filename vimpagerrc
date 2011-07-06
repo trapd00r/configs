@@ -1,0 +1,19 @@
+" vim: set ft=vim:
+
+let no_plugin_maps = 1
+
+set scrolloff=999
+set foldlevel=999
+set colorcolumn=0
+set tw=80
+set cursorline
+set cmdheight=1
+
+if(exists('&cc')) 
+  set cc=0
+endif
+if(exists('&rnu'))
+  set norelativenumber
+endif
+
+runtime! macros/less.vim
