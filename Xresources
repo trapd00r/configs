@@ -78,8 +78,8 @@ XTerm*titeInhibit:                true
 XTerm*scrollBar:                  false
 
 
-shiva.iso14755:             0
-shiva.iso14755_52:          0
+shiva.iso14755:             1
+shiva.iso14755_52:          1
 /* colors */
 shiva.background:           #121212
 shiva.borderColor:          #0E0E0E

@@ -46,3 +46,6 @@
 [submodule "vim/bundle/vim-x11colors"]
 	path = vim/bundle/vim-x11colors
 	url = git://github.com/trapd00r/x11colors.vim.git
+[submodule "vim/bundle/httplog.git"]
+	path = vim/bundle/httplog.git
+	url = git://github.com/vim-scripts/httplog.git
