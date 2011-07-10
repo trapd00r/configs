@@ -36,7 +36,7 @@ set csto=0
 set csverb
 set cursorline
 set define=[^A-Za-z_]
-set diffopt=filler,iwhite,context:8,vertical
+set diffopt=filler,iwhite,context:4,vertical
 set display+=lastline,uhex
 set expandtab
 set equalalways
