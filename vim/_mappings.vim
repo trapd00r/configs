@@ -1,14 +1,34 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-02 17:48:48
+" Updated: 2011-07-10 13:12:25
 
 let mapleader = ','
 
 nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
-
 "nmap <leader>O :%w >> ~/vim_output<CR>
 "nmap <leader>o :exec ':.w >> ' . eval(string( xclipboard_pipe_path ))<CR>
 
+
+" user interface                                                             {{{
+nnoremap <CR>   zA       " toggle folds recursively
+nnoremap '      `        " switch ' and ` ...
+nnoremap `      '        " ... and do the right thing
+cmap     W      w        " this is not good.
+cmap     qq     qa!<CR>  " quit really, really fast
+nnoremap ``     ''       " switch those two as well
+nnoremap ''     ``       " '' now goes back to where cursor were before mark
+nmap     <C-9>  <C-]>    " my ALT key is all jelly
+nmap     q      q:       " history buffer
+nmap     Y      y$       " do what Y is supposed to do; d$ <=> D etc
+
+noremap $h      e ~/     " quick edit ~/
+cnoremap $d     e ~/dev  " quick edit ~/dev
+cnoremap $.     e .      " quick edit ./
+
+map      ö      <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+map      Ö      <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+" }}}
+" syntax                                                                     {{{
 if &filetype == 'perl'
   nnoremap <C-h> :!perl -MVi::QuickFix='/mnt/Docs/Backup/vim_quickfix_err/%.err' -c %<CR>:cf<CR>
   nnoremap <silent> _t :%!perltidy -q<Enter>
@@ -18,82 +38,31 @@ if &filetype == 'perl'
   vnoremap <silent> _p :!perlcritic -q<Enter>
 endif
 
-" Switch language
 nmap <silent> <leader>sp  :set syn=perl   <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>ss  :set syn=sh     <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>sv  :set syn=vim    <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>sz  :set syn=zsh    <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>sc  :set syn=config <CR> :syntax sync fromstart <CR>
 nmap <silent> <leader>sf  :set syn=conf   <CR> :syntax sync fromstart <CR>
-
-" folds
-nnoremap <CR> zA  " toggle fold mode recursively
-
-" Make writing and quitting faster
-cmap W w
-cmap qq qa!
-nmap <leader>w :w!<CR>
-
-" I prefer to jump to the exact same spot as where the cursor was when I created
-" the mark
-
-nnoremap ' `
-nnoremap ` '
-
-" jump to the position before the latest jump, or where the
-" last "m'" or "m`" command was given.  Not set when the
-" |:keepjumps| command modifier was used.
-
-nnoremap `` ''
-nnoremap '' ``
-
-" Easier window management
-map <C-h> <C-w><Left>
-map <C-j> <C-w><Down>
+" }}}
+" window management                                                          {{{
 map <C-J> <C-W>j<C-W>_
 map <C-h> <C-w><Left>
 map <C-h> <C-w><Left>
+map <C-h> <C-w><Left>
+map <C-j> <C-w><Down>
 
-map =  <C-W>-
 map +  <C-W>+
-map \| :vsplit<CR>
 map -  :split<CR>
-
-
-" For following links in the Vim help
-nmap <C-9> <C-]>
-
-" quick access to the history buffer
-nmap q q:
-
-" silly experiment :-)
-map ö <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
-map Ö <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-
-" Y should do what it's expected to do (d$, D, c$, C)
-nmap Y y$
-
-
-nmap <silent> <leader>d "_d
-vmap <silent> <leader>d "_d
-
-" align text
-nmap <leader>cl :left<CR>
-nmap <leader>cr :right<CR>
-nmap <leader>cc :center<CR>
-
-" Titlecase And Center
-nnoremap <leader>t :call TitleCaseCenter()<CR>
-
-" XXX this is so simple and so useful
-vnoremap S :sort<CR>
-
-" Titlecase The Current Line, thank you
-nnoremap U :s/\v[a-zåäö]+/\u&/g<CR>
-
-" allow the use of TAB for jumping between matching pairs
-" note https://github.com/trapd00r/configs/commit/d7dc036e#L0R74
-nnoremap <TAB> %
+map =  <C-W>-
+map \| :vsplit<CR>
+" }}}
+" text transformation                                                        {{{
+nmap     <leader>cl :left<CR>
+nmap     <leader>cr :right<CR>
+nmap     <leader>cc :center<CR>
+nnoremap <leader>t  :call TitleCaseCenter()<CR>
+vnoremap S :        sort<CR>
 
 " make those behave like ci' , ci"
 nnoremap ci( f(ci(
@@ -104,21 +73,26 @@ vnoremap ci( f(ci(
 vnoremap ci{ f{ci{
 vnoremap ci[ f[ci[
 
-" pod stuff
-nnoremap dad /\v^\=head/<CR> W d$xa
-nnoremap d= f=d$a=
-nnoremap d> f>d$a>
+" Titlecase The Current Line, thank you
+nnoremap U          :s/\v[a-zåäö]+/\u&/g<CR>
 
+" allow the use of TAB for jumping between matching pairs
+" note https://github.com/trapd00r/configs/commit/d7dc036e#L0R74
+nnoremap <TAB> %
+
+"}}}
+" movement                                                                   {{{
+inoremap jj <ESC>
+inoremap jk <ESC>
 inoremap £1 ()<ESC>i
 inoremap £2 []<ESC>i
 inoremap £3 {<ESC>o}<ESC>O
-
 inoremap £4 {}<ESC>i
-inoremap £q ''<ESC>i
 inoremap £Q ""<ESC>i
-
-inoremap jj <ESC>
-inoremap jk <ESC>
+inoremap £q ''<ESC>i
+nnoremap d= f=d$a=
+nnoremap d> f>d$a>
+nnoremap dad /\v^\=head/<CR> W d$xa
 
 nnoremap [7~ :source %<CR>
 nnoremap [2~ :source %<CR>
@@ -128,13 +102,21 @@ nnoremap <buffer> ]]    :<C-u>call search('^\s*sub .* {$', 'sW')<CR>
 nnoremap <buffer> [[    :<C-u>call search('^\s*sub .* {$', 'bsW')<CR>
 nnoremap <buffer> ][    :<C-u>call search('^}$', 'sW')<CR>
 nnoremap <buffer> []    :<C-u>call search('^}$', 'bsW')<CR>
+" }}}
+" spelling                                                                   {{{
+map [29~ z=
+nnoremap     za zg
+nnoremap     <leader><TAB> :call ToggleSpell()<CR>
+" }}}
+" buffers                                                                    {{{
+" cd to the directory of the open buffer, if possible
+map <leader>cd :cd %:p:h<CR>
 
-" buffer shortcuts
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprev<CR>
+nnoremap <C-n>     :bnext<CR>
+nnoremap <C-p>     :bprev<CR>
 nnoremap <leader>b :buffers<CR>:buffer<space>
-nnoremap <leader>l :ls<CR>
 nnoremap <leader>g :e#<CR>
+nnoremap <leader>l :ls<CR>
 
 nnoremap <leader>1 :set ft=perl<CR>
 nnoremap <leader>2 :set ft=c<CR>
@@ -151,43 +133,23 @@ nnoremap <leader>0 :10b<CR>
 "nnoremap <leader>a :bdelete!<CR>
 
 nnoremap <leader>f :set paste<CR>
-
 nnoremap <leader>s :call RemoveTrailingCrap()
-
 nnoremap <leader>v V`]
-
-" spell
-map [29~ z=
-nnoremap za zg
-nnoremap <leader><TAB> :call ToggleSpell()<CR>
-
-nnoremap <leader>p :set paste<CR>
-
-nnoremap <silent> <C-l> :nohl<CR>
-nnoremap <silent> ,,    :nohl<CR>
-
-nnoremap <C-D> <C-W>
-
-" sane regex
-
-nnoremap / /\v
-vnoremap / /\v
-cnoremap '<,'>s/ '<,'>s/\v
-cnoremap '<,'>s# '<,'>s#\v
-cnoremap '<,'>s@ '<,'>s@\v
-cnoremap %s/ %s/\v
-cnoremap %s# %s#\v
-cnoremap %s@ %s@\v
-cnoremap s/ s/\v
-cnoremap s# s#\v
-cnoremap s@ s@\v
-
-" directory shortcuts
-cnoremap $h e ~/
-cnoremap $d e ~/devel
-cnoremap $. e .
-
-" emacs keymap in the commandline
+" }}}
+" sane regex                                                                {{{
+cnoremap %s#      %s#\v
+cnoremap %s/      %s/\v
+cnoremap %s@      %s@\v
+cnoremap '<,'>s#  '<,'>s#\v
+cnoremap '<,'>s/  '<,'>s/\v
+cnoremap '<,'>s@  '<,'>s@\v
+cnoremap s#       s#\v
+cnoremap s/       s/\v
+cnoremap s@       s@\v
+nnoremap /        /\v
+vnoremap /        /\v
+" }}}
+" emacs keymap in the commandline                                          {{{
 cnoremap  <c-a>   <home>
 cnoremap  <c-e>   <end>
 cnoremap  <c-b>   <left>
@@ -198,13 +160,7 @@ cnoremap  <C-_>   <c-f>
 cnoremap  <c-n>   <down>
 cnoremap  <c-p>   <up>
 cnoremap  <C-*>   <c-a>
-
-map [3~ xx
-
-" cd to the directory of the open buffer, if possible
-map <leader>cd :cd %:p:h<CR>
-
-
+" }}}
 " fix xterm keys {{{
 map  <Esc>[1;2A <S-Up>
 map! <Esc>[1;2A <S-Up>
@@ -385,8 +341,6 @@ map! <Esc>- <A-->
 map  <Esc>= <A-=>
 map! <Esc>= <A-=>
 " }}}
-
-
 " dvorak experiment {{{
 " > 0x00 = <C-@> maps to 0x40 = @
 " > 0x01 = <C-A> maps to 0x41 = A
@@ -440,3 +394,4 @@ map! <Esc>= <A-=>
 "no T 8<Up>
 "no D <C-w><C-r>
 " }}}
+
