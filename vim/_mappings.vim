@@ -21,7 +21,7 @@ nmap     <C-9>  <C-]>    " my ALT key is all jelly
 nmap     q      q:       " history buffer
 nmap     Y      y$       " do what Y is supposed to do; d$ <=> D etc
 
-noremap $h      e ~/     " quick edit ~/
+cnoremap $h     e ~/     " quick edit ~/
 cnoremap $d     e ~/dev  " quick edit ~/dev
 cnoremap $.     e .      " quick edit ./
 
@@ -394,4 +394,3 @@ map! <Esc>= <A-=>
 "no T 8<Up>
 "no D <C-w><C-r>
 " }}}
-
