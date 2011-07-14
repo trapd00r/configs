@@ -119,5 +119,4 @@ compctl -g "*.go" gccgo
 #zstyle ':completion:*' menu select=10 interactive list-dirs-first
 
 
-# vim: set ts=2 expandtab sw=2:
-
+# vim: set ts=2 et sw=2 fdm=marker:
