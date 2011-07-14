@@ -1,6 +1,14 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-02 17:48:48
+" Updated: 2011-07-14 11:05:47
+
+func! OddEvenHL() 
+  syn match oddEven /^.*$\n/ nextgroup=oddOdd
+  syn match oddOdd  /^.*$\n/ nextgroup=oddEven
+
+  hi oddEven ctermbg=233
+  hi oddOdd  ctermbg=234
+endfunc
 
 func! Filetype_txt()
   if (&modifiable == 1)
