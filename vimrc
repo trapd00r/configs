@@ -1,24 +1,20 @@
 "    File: $HOME/etc/vimrc
 "  Author: Magnus Woldrich <m@japh.se>
 " Created: 2009-04-24
-" Updated: 2011-07-02 17:48:48
+" Updated: 2011-07-16 19:53:59
 "    What: Highly optimized for Perl, C, Viml and Lua hacking.
 
 if !isdirectory('/tmp/scp1')
   call mkdir("/tmp/scp1", "", 0700)
 endif
 
-if !exists('g:vim_functions_loaded')
-  source /home/scp1/etc/vim/_functions.vim
-endif
+for f in split(globpath(&runtimepath, '_*.vim'), "\n")
+  execute 'source ' . f
+endfor
 
-source /home/scp1/etc/vim/_ftdetect.vim
-source /home/scp1/etc/vim/_abbrevations.vim
-source /home/scp1/etc/vim/_mappings.vim
 
 
 set nocp
-
 set autoread
 set autochdir
 set autoindent
@@ -39,8 +35,8 @@ set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:4,vertical
 set display+=lastline,uhex
 set expandtab
-set equalalways
-set eadirection=ver
+"set equalalways
+"set eadirection=ver
 set fillchars=vert:│
 set foldmethod=marker
 set foldenable
@@ -52,7 +48,7 @@ set formatoptions=tcrqln1
 set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
-set helpheight=150
+set helpheight=60
 set hidden
 set history=50
 set hlsearch
