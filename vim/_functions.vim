@@ -1,6 +1,12 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-14 11:05:47
+" Updated: 2011-07-17 12:49:55
+
+func! SortLen()
+  %s/\v^/\=len(getline('.')) . '  '/
+  sort n
+  %s/\v^\d+\s{2}//
+endfunc
 
 func! OddEvenHL() 
   syn match oddEven /^.*$\n/ nextgroup=oddOdd
