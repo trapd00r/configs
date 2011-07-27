@@ -49,3 +49,6 @@
 [submodule "vim/bundle/httplog.git"]
 	path = vim/bundle/httplog.git
 	url = git://github.com/vim-scripts/httplog.git
+[submodule "vim/bundle/vim-ansicolors"]
+	path = vim/bundle/vim-ansicolors
+	url = git://github.com/trapd00r/vim-ansicolors.git

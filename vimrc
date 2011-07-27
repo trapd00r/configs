@@ -1,7 +1,7 @@
 "    File: $HOME/etc/vimrc
 "  Author: Magnus Woldrich <m@japh.se>
 " Created: 2009-04-24
-" Updated: 2011-07-16 19:53:59
+" Updated: 2011-07-27 12:34:02
 "    What: Highly optimized for Perl, C, Viml and Lua hacking.
 
 if !isdirectory('/tmp/scp1')
@@ -9,7 +9,9 @@ if !isdirectory('/tmp/scp1')
 endif
 
 for f in split(globpath(&runtimepath, '_*.vim'), "\n")
-  execute 'source ' . f
+  if(f !~ '_highlights.vim')
+    exe 'source ' . f
+  endif
 endfor
 
 
@@ -136,7 +138,6 @@ set whichwrap=b,s,h,l,<,>
 
 set nomore
 
-call pathogen#runtime_append_all_bundles()
 runtime macros/matchit.vim
 syntax on
 setlocal nospell spelllang=en_us
@@ -146,13 +147,12 @@ if $TERM == 'linux'
   color peachpuff
   set nolist
   set colorcolumn+=81
-  hi ColorColumn term=none cterm=none ctermbg=3
+  hi ColorColumn term=none  cterm=none ctermbg=3
   hi CursorLine  term=none  cterm=none ctermbg=none
 else
   color neverland-ansi
 endif
 
+exe 'source ' . split($VIMRUNTIME, ':')[0] . '/_highlights.vim'
 
-syn match wsEOL display '\v[ ]+$' conceal cchar=O
-
-hi wsEOL ctermfg=196 cterm=bold
+call pathogen#runtime_append_all_bundles()
