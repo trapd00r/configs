@@ -1,6 +1,28 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-17 12:49:55
+" Updated: 2011-07-29 09:12:13
+
+
+func! AddFoldMarkers()
+  setlocal virtualedit=all
+
+  let comment_char = '#'
+  if(&ft == 'vim')
+    let comment_char = '"'
+  endif
+
+  let fold_marker_start = '{{{'
+  let fold_marker_end   = '}}}'
+
+  setlocal formatoptions=
+  normal ^77li{{{
+  normal o
+  normal o
+  normal o
+
+  put = comment_char . fold_marker_end
+  normal kkk
+endfunc
 
 func! SortLen()
   %s/\v^/\=len(getline('.')) . '  '/
@@ -8,7 +30,7 @@ func! SortLen()
   %s/\v^\d+\s{2}//
 endfunc
 
-func! OddEvenHL() 
+func! OddEvenHL()
   syn match oddEven /^.*$\n/ nextgroup=oddOdd
   syn match oddOdd  /^.*$\n/ nextgroup=oddEven
 
@@ -59,7 +81,7 @@ endfunc
 
 func! Filetype_help()
   set colorcolumn=0
-  set listchars=tab:\ \ 
+  set listchars=tab:\ \
 endfunc
 
 func! RemoveTrailingCrap()

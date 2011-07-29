@@ -1,6 +1,6 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-10 13:12:25
+" Updated: 2011-07-29 09:12:34
 
 let mapleader = ','
 
@@ -8,12 +8,10 @@ nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nmap <leader>O :%w >> ~/vim_output<CR>
 "nmap <leader>o :exec ':.w >> ' . eval(string( xclipboard_pipe_path ))<CR>
 
-
 " user interface                                                             {{{
 nnoremap <CR>   zA       " toggle folds recursively
 nnoremap '      `        " switch ' and ` ...
 nnoremap `      '        " ... and do the right thing
-cmap     W      w        " this is not good.
 cmap     qq     qa!<CR>  " quit really, really fast
 nnoremap ``     ''       " switch those two as well
 nnoremap ''     ``       " '' now goes back to where cursor were before mark
@@ -55,7 +53,7 @@ map <C-j> <C-w><Down>
 map +  <C-W>+
 map -  :split<CR>
 map =  <C-W>-
-map \| :vsplit<CR>
+"map \| :vsplit<CR>
 " }}}
 " text transformation                                                        {{{
 nmap     <leader>cl :left<CR>
@@ -97,6 +95,8 @@ nnoremap dad /\v^\=head/<CR> W d$xa
 nnoremap [7~ :source %<CR>
 nnoremap [2~ :source %<CR>
 
+nnoremap [29~ :call AddFoldMarkers()<CR>
+
 " jumping to sub definition
 nnoremap <buffer> ]]    :<C-u>call search('^\s*sub .* {$', 'sW')<CR>
 nnoremap <buffer> [[    :<C-u>call search('^\s*sub .* {$', 'bsW')<CR>
@@ -104,7 +104,7 @@ nnoremap <buffer> ][    :<C-u>call search('^}$', 'sW')<CR>
 nnoremap <buffer> []    :<C-u>call search('^}$', 'bsW')<CR>
 " }}}
 " spelling                                                                   {{{
-map [29~ z=
+"map [29~ z=
 nnoremap     za zg
 nnoremap     <leader><TAB> :call ToggleSpell()<CR>
 " }}}
