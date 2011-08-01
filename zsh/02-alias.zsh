@@ -2,6 +2,14 @@
 
 #alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
 
+if [ -f "$HOME/.ssh/config" ]; then
+  for host in $(
+    grep -P '^Host (.+)' $HOME/.ssh/config | perl -pe 's/^Host\s+(\w+).*/$1/'
+  ); do
+    alias $host="ssh $host"
+  done
+fi
+
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
 
@@ -45,15 +53,8 @@ alias   share='perl $HOME/dev/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -ro
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
 
-alias brutus='ssh scp1@brutus.ethup.se'
-alias macosx='ssh trapd00r@90.225.22.81'
-alias macoss='ssh scp1@industrialrefuge.com'
-alias  india='ssh scp1@192.168.1.102 -p 19216'
-alias   dvdc='ssh scp1@192.168.1.100 -p 19216'
-alias   n900='ssh -p 19216 user@192.168.1.112'
-alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.100:http/japh.se/doc'
-
-alias   sshl='sshfs -p 19216 scp1@192.168.1.100:/var/log/lighttpd /mnt/lighttpd'
+alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.128:http/japh.se/doc'
+alias   sshl='sshfs -p 19216 scp1@192.168.1.128:/var/log/lighttpd /mnt/lighttpd'
 
 alias     gs='git status --short -b'
 alias     gc='git commit'
