@@ -2,7 +2,7 @@
 
 declare -A host_wm
 host_wm[shiva]="$(which stumpwm     2> /dev/null)"
- host_wm[dvdc]="$(which ratpoison   2> /dev/null)"
+host_wm[dvdc]="$( which ratpoison   2> /dev/null)"
 
 declare -A wm_cmd
 wm_cmd[dwm]=$(      which dwm       2> /dev/null)
@@ -50,11 +50,19 @@ fi
 #sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_left.sh  &
 
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
+xset fp $(echo "/home/scp1/.fonts,
+  /usr/share/fonts/TTF,
+  /usr/share/fonts/artwiz-fonts,
+  /usr/share/fonts/local,
+  /usr/share/fonts/misc,
+  /usr/share/fonts/scp1" | perl -pe 's/[\n\s]+//g')
+
 
 exec ${host_wm[$HOSTNAME]}
+#exec openbox-session
 
 ##xrandr --addmode DVI-I-1 1680x1050
 ##xrandr --output DVI-I-1 --auto --mode 1680x1050
 ##xrandr --output DVI-I-1 --right-of DVI-I-2
 
-# vim: set ft=sh:
+# vim: set ft=bash:
