@@ -15,7 +15,6 @@ for f in split(globpath(&runtimepath, '_*.vim'), "\n")
 endfor
 
 
-
 set nocp
 set autoread
 set autochdir
@@ -27,7 +26,8 @@ set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 set colorcolumn=+1,+2
 "set copyindent
-set cot+=menuone
+
+set completeopt+=menuone
 set csprg=/usr/local/bin/cscope
 set cst
 set csto=0
@@ -64,7 +64,7 @@ set list
 "set listchars=trail:⋅
 "set listchars+=tab:→\ ,eol:⋅
 "let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
-set listchars=tab:»­,trail:·,eol:¶,nbsp:⎵,precedes:←,extends:→ sbr=↪
+set listchars=tab:»\ ,trail:·,eol:¶,nbsp:⎵,precedes:←,extends:→ sbr=↪
 set magic
 set makeprg=/usr/bin/make
 set mat=2
