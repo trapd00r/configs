@@ -1,4 +1,5 @@
 #!/bin/zsh
+export VIMRUNTIME="$HOME/etc/vim"
 ##export ZDOTDIR=/home/scp1
 #export VIMRUNTIME="$HOME/etc/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/etc/vim/after,$HOME/etc/vim/colors" 
 #export VIMINIT="so /home/scp1/etc/vimrc"
