@@ -16,6 +16,7 @@ func! AddFoldMarkers()
 
   setlocal formatoptions=
   normal ^77li{{{
+  " to close the unexpected fold :) }}}
   normal o
   normal o
   normal o
