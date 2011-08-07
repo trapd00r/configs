@@ -51,6 +51,7 @@
 )
 
 
+
 (define-key *root-map* (kbd "h")            "move-focus left")
 (define-key *root-map* (kbd "j")            "move-focus down")
 (define-key *root-map* (kbd "k")            "move-focus up")
@@ -101,3 +102,5 @@
 ;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
 ;(define-key *root-map* (kbd "aring")      "exec sh /home/scp1/bin/mpdfav")
 ;(define-key *root-map* (kbd "v")          "exec urxvtc -e screen -x; screen -X screen zsh")
+;
+(restore-from-file #p"/home/scp1/etc/stumpwm_dev.desktop")
