@@ -1,4 +1,4 @@
-/* .Xresources | trapd00r.se */
+/* .Xresources | japh.se */
 !#include "/home/scp1/etc/Xcolors/rasta.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_default.Xresources"
 #include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
@@ -27,30 +27,31 @@
 
 
 URxvt.letterSpace: 0
+URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
+URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
 
+! vte                                                                        {{{
 vte*background:                   #121212
 vte*boldFont:                     FONT_B
 vte*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
 vte*foreground:                   #d6d6d6
 vte*italicFont:                   FONT_I
 vte*scrollBar:                    false
+!}}}
 
+! vim                                                                        {{{
 vim*background:                   #121212
 vim*boldFont:                     FONT_B
 vim*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
 vim*foreground:                   #d6d6d6
 vim*italicFont:                   FONT_I
 vim*scrollBar:                    false
+!}}}
 
-ratmenu*align:                    center
-ratmenu*bgcolor:                  #080808
-ratmenu*fgcolor:                  #eb122e
-ratmenu*font:                     PROFONT_HUGE
-ratmenu*persist:                  false
-ratmenu*style:                    dreary
-
+! XTerm                                                                      {{{
 /* Term::ExtendedColor::Xresources */
-Xterm.VT100.allowColorOps:        1
+XTerm.VT100.allowColorOps:        1
+XTerm*dynamicColors:              On
 XTerm*allowWindowOps:             true
 
 XTerm*background:                 #121212
@@ -60,7 +61,6 @@ XTerm*colorBDMode:                On
 XTerm*colorMode:                  On
 XTerm*colorUL:                    #FFFFFF
 XTerm*colorULMode:                On
-XTerm*dynamicColors:              On
 XTerm*font:                       FONT
 XTerm*foreground:                 #FFFFFF
 XTerm.italicFont:                 FONT_I
@@ -78,9 +78,13 @@ XTerm*titeInhibit:                true
 XTerm*scrollBar:                  false
 
 
+
+!}}}
+
+! host: shiva                                                                {{{
 shiva.iso14755:             1
 shiva.iso14755_52:          1
-/* colors */
+
 shiva.background:           #121212
 shiva.borderColor:          #0E0E0E
 shiva.colorBD:              #FFFFFF
@@ -94,29 +98,10 @@ shiva.pointerColor2:        #0092FF
 shiva.pointerColor:         #252525
 shiva.underlineColor:       #0E0E0E
 
-india.background:           #030303
-india.borderColor:          #0E0E0E
-india.colorRV:              #333333
-india.colorUL:              #FF8F00
-india.cursorColor2:         #252525
-india.cursorColor:          #eb122e
-india.foreground:           #ffffff
-india.pointerColor:         #cb1c13
-india.underlineColor:       #cb1c13
-
-
-shiva*font:                -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252,-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1,xft:Terminus Normal:pixelsize=12
-shiva*boldFont:            FONT_B
-shiva.italicFont:          FONT_I
-shiva*boldItalicFont:      FONT_I_B
-
-india*font:                FONT
-india*boldFont:            FONT_B
-india*italicFont:          FONT_I
-india*boldItalicFont:      FONT_I_B
-
-htpc*font:                 TERMINUS_HUGE
-
+shiva*font:                 -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252,-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1,xft:Terminus Normal:pixelsize=12
+shiva*boldFont:             FONT_B
+shiva.italicFont:           FONT_I
+shiva*boldItalicFont:       FONT_I_B
 
 shiva.cutchars:             "()*,<>[]{}|'"
 shiva.matcher.button:       1
@@ -127,27 +112,10 @@ shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
 shiva.underlineURLs:        false
 shiva.urlLauncher:          /usr/bin/firefox
 
-india.cutchars:             "()*,<>[]{}|'"
-india.matcher.button:       1
-india.matcher.launcher.1:   /usr/bin/firefox
-india.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-india.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
-india.underlineURLs:        false
-india.urlLauncher:          /usr/bin/firefox
-
 shiva.perl-lib:             /usr/lib/urxvt/perl
 shiva.perl-ext-common:      default,matcher
 shiva.perl-eval:            $^O
 
-india.perl-lib:             /usr/lib/urxvt/perl
-india.perl-ext-common:      default,matcher
-india.perl-eval:            $^O
-
-/* perl magic */
-URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
-URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
-
-/* terminal stuff */
 shiva.jumpScroll:           true
 shiva.loginShell:           true
 shiva.saveLines:            10485
@@ -165,12 +133,43 @@ shiva.pasteableTabs:        true
 shiva.pointerBlank:         true
 shiva.pointerBlankDelay:    2
 shiva.scrollstyle:          next
+shiva.scrollBar:            false
+shiva.depth:                32
 
 !shiva.hold:                 0
-!
 /* http://shallowsky.com/linux/noaltscreen.html */
 !shiva.secondaryScroll:      true
 !shiva.secondaryScreen:      false
+
+!}}}
+
+# host: india                                                                {{{
+india.background:           #030303
+india.borderColor:          #0E0E0E
+india.colorRV:              #333333
+india.colorUL:              #FF8F00
+india.cursorColor2:         #252525
+india.cursorColor:          #eb122e
+india.foreground:           #ffffff
+india.pointerColor:         #cb1c13
+india.underlineColor:       #cb1c13
+
+india*font:                FONT
+india*boldFont:            FONT_B
+india*italicFont:          FONT_I
+india*boldItalicFont:      FONT_I_B
+
+india.cutchars:             "()*,<>[]{}|'"
+india.matcher.button:       1
+india.matcher.launcher.1:   /usr/bin/firefox
+india.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+india.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
+india.underlineURLs:        false
+india.urlLauncher:          /usr/bin/firefox
+
+india.perl-lib:             /usr/lib/urxvt/perl
+india.perl-ext-common:      default,matcher
+india.perl-eval:            $^O
 
 india.jumpScroll:           true
 india.loginShell:           true
@@ -188,31 +187,54 @@ india.skipScroll:           true
 india.trippleclickwords:    true
 india.urgentOnBell:         true
 
-!india.hold:                 0
-!india.secondaryScreen:     true
-!india.secondaryScroll:     true
-
-/* eyecandy */
-shiva.scrollBar:            false
-shiva.depth:                32
-!URxvt.lineSpace:            3
-
 india.scrollBar:            false
 india.depth:                32
 
-htpc.transparent:          true
-htpc.shading:              19
+!india.hold:                 0
+!india.secondaryScreen:     true
+!india.secondaryScroll:     true
+!}}}
 
-htpc.scrollBar:            false
-htpc.depth:                32
+! host: rambo                                                                {{{
+rambo*font:                TERMINUS_HUGE
+rambo*boldFont:            TERMINUS_HUGE
+rambo*italicFont:          TERMINUS_HUGE
+rambo*boldItalicFont:      TERMINUS_HUGE
 
+rambo.background:          #121212
+rambo.borderColor:         #0E0E0E
+rambo.colorBD:             #FFFFFF
+rambo.colorIT:             #FFFFFF
+rambo.colorRV:             #333333
+rambo.colorUL:             #FF8F00
+rambo.cursorColor2:        #252525
+rambo.cursorColor:         #EB122E
+rambo.foreground:          #cacaca
+rambo.pointerColor2:       #0092FF
+rambo.pointerColor:        #252525
+rambo.underlineColor:      #0E0E0E
+rambo.scrollBar:            false
+rambo.depth:                32
+#}}}
 
+! ratmenu                                                                    {{{
+ratmenu*align:                    center
+ratmenu*bgcolor:                  #080808
+ratmenu*fgcolor:                  #eb122e
+ratmenu*font:                     PROFONT_HUGE
+ratmenu*persist:                  false
+ratmenu*style:                    dreary
+!}}}
+
+! mplay                                                                      {{{
 mplay*background:        #ffffff
 mplay*foreground:        #cb1c13
 mplay*scrollbar:         false
 mplay*color0:            #000000
 mplay*color1:            #93a0b2
+!}}}
 
+! xfontsel                                                                   {{{
 XFontSel*sampleText.background:       TEXTBG
 XFontSel*menu*showUnselectable:       false
 XFontSel*MenuButton.shadowWidth:      0
@@ -260,3 +282,4 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.MenuButton.internalHeight:1
 .xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
 .xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
+!}}}
