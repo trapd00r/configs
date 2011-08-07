@@ -9,6 +9,8 @@ func! AddFoldMarkers()
   let comment_char = '#'
   if(&ft == 'vim')
     let comment_char = '"'
+  elseif(&ft == 'xdefaults')
+    let comment_char = '!'
   endif
 
   let fold_marker_start = '{{{'
