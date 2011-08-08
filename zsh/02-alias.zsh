@@ -10,6 +10,13 @@ if [ -f "$HOME/.ssh/config" ]; then
   done
 fi
 
+if [ -d "$HOME/dev/PKGBUILDS" ]; then
+  alias pkgclean="\
+    yes | rm -r $(find $HOME/dev/PKGBUILDS -name 'pkg' \
+        && find $HOME/dev/PKGBUILDS -name 'src')       \
+  "
+fi
+
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
 
@@ -227,10 +234,6 @@ alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ff
 
 alias testfetch='sync_cpantesters -a WOLDRICH -d $HOME/dev/CPANTS \
                     && cd $HOME/dev/CPANTS'
-
-alias pkgclean="yes |
-                  rm -r $(find $HOME/dev/PKGBUILDS -name 'pkg' \
-                    && find $HOME/dev/PKGBUILDS -name 'src')"
 
 alias   iostat='iostat -mtx'
 alias     cpuu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
