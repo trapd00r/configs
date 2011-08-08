@@ -54,42 +54,55 @@ if [ "$TERM" = "linux" ]; then
     c13=$(printf "\e[31;1m")
 fi
 
-zstyle ':vcs_info:*' actionformats \
-    '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+# Prompt for shiva                                                           {{{
+if [ "$HOST" = "shiva" ]; then
+  zstyle ':vcs_info:*' actionformats \
+      '%{$c8%}(%f%s)%{$c7%}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 
-zstyle ':vcs_info:*' formats \
-    "%{$c8%}%s%%{$c7%}❨ %{$c9%}%{$c11%}%b%{$c7%} ❩%{$reset_color%}%f "
+  zstyle ':vcs_info:*' formats \
+      "%{$c8%}%s%%{$c7%}❨ %{$c9%}%{$c11%}%b%{$c7%} ❩%{$reset_color%}%f "
 
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
-zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+  zstyle ':vcs_info:*' enable git
 
-add-zsh-hook precmd prompt_jnrowe_precmd
+  add-zsh-hook precmd prompt_jnrowe_precmd
 
-prompt_jnrowe_precmd () {
-  vcs_info
-  if [ "${vcs_info_msg_0_}" = "" ]; then
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
-    PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
+  prompt_jnrowe_precmd () {
+    vcs_info
+    if [ "${vcs_info_msg_0_}" = "" ]; then
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '
 
-# modified, to be commited
-  elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
-    PROMPT='${vcs_info_msg_0_}%{$30%} %{$bg_bold[red]%}%{$fg_bold[cyan]%}C%{$fg_bold[black]%}OMMIT%{$reset_color%}
-%{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
+  # modified, to be commited
+    elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      PROMPT='${vcs_info_msg_0_}%{$30%} %{$bg_bold[red]%}%{$fg_bold[cyan]%}C%{$fg_bold[black]%}OMMIT%{$reset_color%}
+  %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 > '
 
-  elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
-    PROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[black]%}IRTY%{$reset_color%}
+    elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      PROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[black]%}IRTY%{$reset_color%}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 %{$c13%}>%{$c0%} '
-  else
-    dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
-    PROMPT='${vcs_info_msg_0_}
-%{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
+    else
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      PROMPT='${vcs_info_msg_0_}
+  %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
+  fi
+  }
+#}}}
+elif [ "$HOST" = "laleh" ]; then
+  export PS1="%~
+%{$fg[cyan]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$fg_bold[yellow]%}>%{$reset_color%} %{$reset_color%}"
+
+elif [ "$HOST" = "rambo" ]; then
+  export PS1="%~
+%{$fg[blue]%}%n%{$reset_color%}@%{$fg_bold[yellow]%}%m%{$fg_bold[yellow]%}>%{$reset_color%} %{$reset_color%}"
+
 fi
-}
+
 
 #  vim: set ft=zsh sw=2 et tw=0:
