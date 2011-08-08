@@ -1,6 +1,6 @@
 "    File: $HOME/etc/abbrevations.zsh 
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-02 17:48:48
+" Updated: 2011-08-08 14:25:19
 
 if $HOSTNAME == 'shiva'
   ia mypc shiva
@@ -12,6 +12,11 @@ else
   ia <expr> mypc $HOSTNAME
 endif
 
+" Dump output from external cmd to new buffer
+cab ! new<CR>:r !
+iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
+" perl                                                                       {{{
 ia WM  WWW::Mechanize
 ia WMN WWW::Mechanize->new(<CR><CR>);
 ia TEC use Term::ExtendedColor qw(:attributes);
@@ -25,7 +30,6 @@ ia dD Data::Dumper
 
 ia <expr> DD   InsertDataDumper()
 
-
 ia dumper Dumper
 ia prinnt print
 ia repositry repository
@@ -35,12 +39,13 @@ ia json_deparse decode_json
 ia json_decode  decode_json
 ia deparse_json decode_json
 ia json_encode  encode_json
-
-" Dump output from external cmd to new buffer
-cab ! new<CR>:r !
-
-iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-
+"}}}
+" web                                                                        {{{
+iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
+iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi
+iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi. Integer hendrerit lacus sagittis erat fermentum tincidunt. Cras vel dui neque. In sagittis commodo luctus. Mauris non metus dolor, ut suscipit dui. Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum. Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
+"}}}
+" common typos                                                               {{{
 iab abbout about
 iab abotu about
 iab abouta about a
@@ -841,7 +846,4 @@ iab youve you've
 iab ytou you
 iab yuor your
 iab yuo you
-
-iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
-iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi
-iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi. Integer hendrerit lacus sagittis erat fermentum tincidunt. Cras vel dui neque. In sagittis commodo luctus. Mauris non metus dolor, ut suscipit dui. Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum. Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
+"}}}
