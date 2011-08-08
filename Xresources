@@ -1,17 +1,43 @@
-/* .Xresources | japh.se */
+/*
+     File: Xresources
+   Author: Magnus Woldrich <m@japh.se>
+  Created: 2008-04-24
+  Updated: 2011-08-08 14:41:07
+
+Grouped by subject.
+A lot of different hosts use this file. You will not find any color
+definitions here; see the "additional rc's" block below.
+
+I've patched[0] urxvt to allow for redefinition of the full 256 color
+table. This is a feature that XTerm supports just fine (see resource
+dynamicColors and VT100.allowColorOps). See Colorcoke[1] for how a user
+may change them; see Term::ExtendedColor::Xresources[2] for how you'd do
+it programmatically.
+
+I use three different fonts in all standard terminals; one per fontface.
+I change fonts on the fly in urxvt and xterm; see pickyfont[3]
+
+[0]: https://github.com/trapd00r/rxvt-unicode
+[1]: https://github.com/trapd00r/colorcoke
+[2]: https://github.com/trapd00r/Term-ExtendedColor-Xresources
+[3]: https://github.com/trapd00r/pickyfont
+
+*/
+
+# additional rc's                                                            {{{
+!#include "/home/scp1/etc/Xcolors/better_defaults.Xresources"
+!#include "/home/scp1/etc/Xcolors/matrix.Xresources"
+!#include "/home/scp1/etc/Xcolors/random_selection.Xresources"
+!#include "/home/scp1/etc/Xcolors/rasi.Xresources"
 !#include "/home/scp1/etc/Xcolors/rasta.Xresources"
+!#include "/home/scp1/etc/Xcolors/tango.Xresources"
+!#include "/home/scp1/etc/Xcolors/trapd00r_correct_ansi.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_default.Xresources"
 #include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
-!#include "/home/scp1/etc/Xcolors/rasi.Xresources"
-!#include "/home/scp1/etc/Xcolors/trapd00r_correct_ansi.Xresources"
-!#include "/home/scp1/etc/Xcolors/tango.Xresources"
-!#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
-!#include "/home/scp1/etc/Xcolors/matrix.Xresources"
 !#include "/home/scp1/etc/Xcolors/trasmatta.Xresources"
-!#include "/home/scp1/etc/Xcolors/random_selection.Xresources"
-!#include "/home/scp1/etc/Xcolors/better_defaults.Xresources"
-
-
+!#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
+!}}}
+# defines                                                                    {{{
 #if WIDTH < 60
 #define FONT -xos4-terminus-medium-r-normal--22-220-72-72-c-110-koi8-u
 #else
@@ -24,12 +50,7 @@
 
 #define PROFONT_HUGE  -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
 #define TERMINUS_HUGE -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
-
-
-URxvt.letterSpace: 0
-URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
-URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
-
+!}}}
 ! vte                                                                        {{{
 vte*background:                   #121212
 vte*boldFont:                     FONT_B
@@ -38,7 +59,6 @@ vte*foreground:                   #d6d6d6
 vte*italicFont:                   FONT_I
 vte*scrollBar:                    false
 !}}}
-
 ! vim                                                                        {{{
 vim*background:                   #121212
 vim*boldFont:                     FONT_B
@@ -47,7 +67,6 @@ vim*foreground:                   #d6d6d6
 vim*italicFont:                   FONT_I
 vim*scrollBar:                    false
 !}}}
-
 ! XTerm                                                                      {{{
 /* Term::ExtendedColor::Xresources */
 XTerm.VT100.allowColorOps:        1
@@ -80,7 +99,11 @@ XTerm*scrollBar:                  false
 
 
 !}}}
-
+# urxvt                                                                      {{{
+URxvt.letterSpace: 0
+URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
+URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
+!}}}
 ! host: shiva                                                                {{{
 shiva.iso14755:             1
 shiva.iso14755_52:          1
@@ -142,7 +165,6 @@ shiva.depth:                32
 !shiva.secondaryScreen:      false
 
 !}}}
-
 # host: india                                                                {{{
 india.background:           #030303
 india.borderColor:          #0E0E0E
@@ -194,7 +216,6 @@ india.depth:                32
 !india.secondaryScreen:     true
 !india.secondaryScroll:     true
 !}}}
-
 ! host: rambo                                                                {{{
 rambo*font:                TERMINUS_HUGE
 rambo*boldFont:            TERMINUS_HUGE
@@ -216,7 +237,6 @@ rambo.underlineColor:      #0E0E0E
 rambo.scrollBar:            false
 rambo.depth:                32
 #}}}
-
 ! ratmenu                                                                    {{{
 ratmenu*align:                    center
 ratmenu*bgcolor:                  #080808
@@ -225,7 +245,6 @@ ratmenu*font:                     PROFONT_HUGE
 ratmenu*persist:                  false
 ratmenu*style:                    dreary
 !}}}
-
 ! mplay                                                                      {{{
 mplay*background:        #ffffff
 mplay*foreground:        #cb1c13
@@ -233,7 +252,6 @@ mplay*scrollbar:         false
 mplay*color0:            #000000
 mplay*color1:            #93a0b2
 !}}}
-
 ! xfontsel                                                                   {{{
 XFontSel*sampleText.background:       TEXTBG
 XFontSel*menu*showUnselectable:       false
@@ -283,3 +301,4 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
 .xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
 !}}}
+# vim: set fdm=marker:
