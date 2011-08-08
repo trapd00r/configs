@@ -2,7 +2,8 @@ shiva.color0: #121212
 shiva.color1: #404040
 shiva.color2: #4d4c4c
 shiva.color3: #ff8f00
-shiva.color4: #1165e9
+shiva.color4: #008787
+/*shiva.color4: #1165e9*/
 shiva.color5: #f73574
 shiva.color6: #ff3500
 shiva.color7: #ffffff
