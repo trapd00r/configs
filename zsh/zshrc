@@ -1,8 +1,5 @@
 #!/bin/zsh
 export VIMRUNTIME="$HOME/etc/vim"
-##export ZDOTDIR=/home/scp1
-#export VIMRUNTIME="$HOME/etc/vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/etc/vim/after,$HOME/etc/vim/colors" 
-#export VIMINIT="so /home/scp1/etc/vimrc"
 
 for r in $HOME/etc/zsh/*.zsh; do
   if [[ $DEBUG > 0 ]]; then
@@ -14,7 +11,9 @@ done
 source $HOME/etc/zsh/$ZSH_THEME.theme
 source $HOME/etc/zsh/02-abbrevations.zsh
 
-eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
+if [ -f /usr/bin/keychain ]; then
+  eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
+fi
 export TZ='Europe/Stockholm'
 
 # XXX
