@@ -3,45 +3,58 @@
 #No flow control please.
 stty -ixon
 
-setopt ALL_EXPORT
-#setopt print_exit_value
-unsetopt bgnice autoparamslash
+unsetopt bgnice
+unsetopt autoparamslash
+unsetopt auto_remove_slash
+unsetopt list_types
 
-setopt kshglob nobareglobqual
+setopt all_export
+setopt auto_param_keys
+setopt auto_param_slash
+setopt autocd
+setopt autolist
+setopt autopushd
+setopt autoresume
+setopt cdablevars
+setopt complete_aliases
+setopt complete_in_word
+setopt complete_in_word
 setopt extended_history
+setopt extendedglob
+setopt globdots
+setopt interactive_comments
+setopt kshglob
+setopt longlistjobs
+setopt mailwarning
+setopt nobareglobqual
+setopt notify
+setopt numeric_glob_sort
+setopt octal_zeroes
+setopt print_exit_value
+setopt prompt_subst
+setopt pushdminus
+setopt pushdsilent
+setopt pushdtohome
+setopt rc_quotes
+setopt rcquotes
+setopt recexact
 setopt share_history
-setopt notify globdots pushdtohome cdablevars autolist
-setopt autocd recexact longlistjobs
-setopt autoresume pushdsilent
-setopt autopushd pushdminus extendedglob rcquotes mailwarning
-setopt AUTO_PARAM_SLASH
-setopt AUTO_PARAM_KEYS
-setopt COMPLETE_IN_WORD
-setopt NUMERIC_GLOB_SORT
-setopt RC_QUOTES # allow ' inside ''
-setopt INTERACTIVE_COMMENTS
-setopt PROMPT_SUBST
-setopt OCTAL_ZEROES
-setopt COMPLETE_IN_WORD
-setopt COMPLETE_ALIASES
-#setopt NO_CLOBBER
 
 autoload -U age
-
 autoload -U compinit
 compinit
 
+# url-quote-magic                                                            {{{
+autoload -U url-quote-magic
 
-#autoload -U url-quote-magic
-#function _url-quote-magic() { url-quote-magic; _zsh_highlight-zle-buffer }
-#zle -N self-insert _url-quote-magic
+function _url-quote-magic() {
+  url-quote-magic;
+  _zsh_highlight-zle-buffer
+}
+zle -N self-insert _url-quote-magic
 zle -C most-accessed-file menu-complete _generic
 
-#autoload -U url-quote-magic
-#zle -N self-insert url-quote-magic
-
-unsetopt AUTO_REMOVE_SLASH
-unsetopt LIST_TYPES
-
-
-# vim: set ts=2 expandtab sw=2:
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+#}}}
+# vim: set set sw=2 :
