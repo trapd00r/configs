@@ -1,3 +1,12 @@
+
+256co() {
+  for line in {0..15}; do for col in {0..15}; do
+    local code=$(( $col * 16 + ${line} ))
+    printf $'\e[38;05;%dm %03d' ${code} ${code}
+  done
+  print; done
+}
+
 apvlv() {
   /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@"
 }
@@ -102,7 +111,7 @@ du1() {
   du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f;
 }
 
-horny() { feh -FZrD3 /mnt/Porn/00-Pics/** && printf "Done!\n" }
+horny() { feh -FZrD3 /mnt/Porn/00-pics/ && printf "Done!\n" }
 
 vimp() {
   /home/scp1/dev/time-spent-in-vim/vim $(find . |grep -Pi '.+(?:pl|pm)$'|grep -v 'blib'|perl -pe 's/\n/ /')
