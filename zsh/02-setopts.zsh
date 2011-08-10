@@ -6,6 +6,8 @@ stty -ixon
 setopt ALL_EXPORT
 #setopt print_exit_value
 unsetopt bgnice autoparamslash
+
+setopt kshglob nobareglobqual
 setopt extended_history
 setopt share_history
 setopt notify globdots pushdtohome cdablevars autolist
@@ -30,11 +32,10 @@ autoload -U compinit
 compinit
 
 
-autoload -U url-quote-magic
-function _url-quote-magic() { url-quote-magic; _zsh_highlight-zle-buffer }
-zle -N self-insert _url-quote-magic
+#autoload -U url-quote-magic
+#function _url-quote-magic() { url-quote-magic; _zsh_highlight-zle-buffer }
+#zle -N self-insert _url-quote-magic
 zle -C most-accessed-file menu-complete _generic
-
 
 #autoload -U url-quote-magic
 #zle -N self-insert url-quote-magic
@@ -44,4 +45,3 @@ unsetopt LIST_TYPES
 
 
 # vim: set ts=2 expandtab sw=2:
-
