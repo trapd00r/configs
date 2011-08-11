@@ -1,7 +1,5 @@
 #!/usr/bin/zsh
 
-#zstyle ':completion:*'                       list-colors ${(s.:.)LS_COLORS}
-
 zstyle ':completion:*'                       accept-exact '*(N)'
 zstyle ':completion:*'                       separate-sections 'yes'
 zstyle ':completion:*'                       list-dirs-first true
