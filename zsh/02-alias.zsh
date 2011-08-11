@@ -1,7 +1,3 @@
-#vim: tw=0 nowrap ts=2 ft=sh foldmethod=marker:
-
-#alias perlbrew='PERLBREW_ROOT="/mnt/Leftover/Perl5" perlbrew'
-
 if [ -f "$HOME/.ssh/config" ]; then
   for host in $(
     grep -P '^Host (.+)' $HOME/.ssh/config | perl -pe 's/^Host\s+(\w+).*/$1/'
@@ -248,3 +244,7 @@ alias trapd00r='printf "\t\033#3trapd00r\n\t\033#4trapd00r\n\tA simple, lightwei
 alias trapd00rc='printf "\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[38;5;32md\e[38;5;33m0\e[38;5;33m0\e[38;5;37mr\n\t\033#4\e[38;5;133mt\e[38;5;134mr\e[38;5;135ma\e[38;5;139mp\e[38;5;140md\e[38;5;141m00\e[38;5;145mr\n\t\e[38;5;240mA simple, lightweight Perl hacker\n"'
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
 alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
+
+
+#vim: tw=0 nw ft=sh fdm=marker:
+
