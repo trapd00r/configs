@@ -25,7 +25,7 @@ au FileType           perl         setlocal errorformat=%f:%l:%m
 au FileType           perl         setlocal keywordprg=perldoc\ -f
 au FileType           pl,pm,t      set ft=perl
 au filetype           git,*commit* call ToggleSpell()
-au filetype           help         call Filetype_help()
+au filetype           help         call Filetype_Help()
 
 au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh set syntax=
 

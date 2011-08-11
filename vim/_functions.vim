@@ -82,7 +82,7 @@ func! TitleCaseCenter()
   echo "Word under cursor was " . word
 endfunc
 
-func! Filetype_help()
+func! Filetype_Help()
   set colorcolumn=0
   set listchars=tab:\ \
 endfunc
