@@ -57,4 +57,4 @@ zle -C most-accessed-file menu-complete _generic
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 #}}}
-# vim: set set sw=2 :
+# vim: set et sw=2:
