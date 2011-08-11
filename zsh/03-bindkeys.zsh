@@ -210,8 +210,9 @@ bindkey -M viins "^Q"    vi-quoted-insert
 #}}}
 # command {{{
 bindkey -M command "^G" send-break
-bindkey -M command "^J" accept-line
-bindkey -M command "^M" accept-line
+bindkey -M command "^C" send-break
+bindkey -M command "^J" send-break
+bindkey -M command "^M" send-break
 #}}}
 # isearch                                                                    {{{
 bindkey -M isearch " " self-insert
