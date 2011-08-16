@@ -7,15 +7,15 @@
 #
 # By default it spans over two lines like so:
 #
-# scp1@shiva:pts/9-> /home » scp1 (0)
+# scp1@shiva:pts/9-> /home » scp1 (next_job_to_be_foregrounded)
 # >
 #
-# that's  user@host:pts/-> splitted path (return status)
+# that's  user@host:pts/-> splitted path (sleep 3600)
 #
 # If the current directory is a git repository, we span 3 lines;
 #
 # git❨ master ❩ DIRTY
-# scp1@shiva:pts/4-> /home » scp1 » dev » utils (0)
+# scp1@shiva:pts/4-> /home » scp1 » dev » utils (sleep 3600)
 # >
 
 autoload -U add-zsh-hook
@@ -36,6 +36,7 @@ local c11="$c10%F{208}"
 local c12="$c10%F{142}"
 local c13="$c10%F{196}"
 
+local c_i="$(printf "\e[3m")"
 
 # We dont want to use the extended colorset in the TTY / VC.
 if [ "$TERM" = "linux" ]; then
@@ -70,24 +71,24 @@ if [ "$HOST" = "shiva" ]; then
   prompt_jnrowe_precmd () {
     vcs_info
     if [ "${vcs_info_msg_0_}" = "" ]; then
-      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c3%}%{$c_i%}(%{$c1%}%{$c_i%}$jobtexts[%+]%{$c3%})"
       PROMPT='%{$fg_bold[green]%}%p%{$reset_color%}${vcs_info_msg_0_}${dir_status} ${ret_status}%{$reset_color%}
 > '
 
   # modified, to be commited
     elif [[ $(git diff --cached --name-status 2>/dev/null ) != "" ]]; then
-      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c3%}%{$c_i%}(%{$c1%}%{$c_i%}$jobtexts[%+]%{$c3%})"
       PROMPT='${vcs_info_msg_0_}%{$30%} %{$bg_bold[red]%}%{$fg_bold[cyan]%}C%{$fg_bold[black]%}OMMIT%{$reset_color%}
   %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 > '
 
     elif [[ $(git diff --name-status 2>/dev/null ) != "" ]]; then
-      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c3%}%{$c_i%}(%{$c1%}%{$c_i%}$jobtexts[%+]%{$c3%})"
       PROMPT='${vcs_info_msg_0_}%{$bg_bold[red]%}%{$fg_bold[blue]%}D%{$fg_bold[black]%}IRTY%{$reset_color%}
 %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 %{$c13%}>%{$c0%} '
     else
-      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c0%}(%{$c5%}%?%{$c0%})"
+      dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c3%}%{$c_i%}(%{$c1%}%{$c_i%}$jobtexts%[%+]{$c3%})"
       PROMPT='${vcs_info_msg_0_}
   %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
 > '
