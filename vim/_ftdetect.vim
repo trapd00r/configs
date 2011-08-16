@@ -1,6 +1,6 @@
 "    File: $HOME/etc/ftdetect.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-06 11:15:18
+" Updated: 2011-08-16 07:53:04
 
 filetype plugin indent on
 
@@ -27,7 +27,8 @@ au FileType           pl,pm,t      set ft=perl
 au filetype           git,*commit* call ToggleSpell()
 au filetype           help         call Filetype_Help()
 
-au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh set syntax=
+au BufRead,BufNewFile README.{md,markdown,pod} let $BROWSER='firefox'
+au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh  set syntax=
 
 let g:extradite_width              = 40
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
