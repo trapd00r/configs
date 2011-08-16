@@ -1,6 +1,6 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-29 09:12:34
+" Updated: 2011-08-13 12:23:57
 
 let mapleader = ','
 
