@@ -30,7 +30,6 @@ setopt nobareglobqual
 setopt notify
 setopt numeric_glob_sort
 setopt octal_zeroes
-setopt print_exit_value
 setopt prompt_subst
 setopt pushdminus
 setopt pushdsilent
