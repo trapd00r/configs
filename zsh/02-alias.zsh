@@ -19,8 +19,7 @@ alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,
 alias swe='translate -from en -to swe'
 alias  en='translate -from swe -to en'
 
-alias          np='pimpd -i'
-alias         np2='pimpd2 -i'
+alias          np='pimpd2 -i'
 alias         psh='pimpd2 -sh'
 alias         sdb='pimpd2 --search-db'
 alias         spl='pimpd2 --search-playlist'
@@ -51,7 +50,7 @@ alias    hour="echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
-alias   editc='vim -X $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/devel/LS_COLORS/LS_COLORS'
+alias   editc='vim -X $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/dev/LS_COLORS/LS_COLORS'
 alias   share='perl $HOME/dev/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
@@ -124,7 +123,12 @@ alias    tt='cd $HOME/bin/upstream'
 alias lsusb='lsusb | matchline -random'
 alias lspci='lspci | matchline -lspci'
 
-alias  ls=' ls++'
+if [ "$TERM" = 'xterm' ]; then
+  alias  ls=' ls++ -ansi'
+else
+  alias ls='ls++'
+fi
+
 alias lso='\ls | pv -qL 10'
 alias lsq='\ls --color=always --time-style=full-iso -AlQ'
 alias lsl='\ls --color=auto   --group-directories-first -Ah'
@@ -134,25 +138,31 @@ alias lsa='\ls --color=auto --time-style=full-iso'
 alias lsd='/bin/ls -FAv | grep /$ | column'
 
 
-alias       ps='$HOME/bin/cope/ps'
-alias     nmap='$HOME/bin/cope/nmap'
-alias  netstat='$HOME/bin/cope/netstat'
-alias ifconfig='$HOME/bin/cope/ifconfig'
-alias     free='$HOME/bin/cope/free'
-alias    fdisk='$HOME/bin/cope/fdisk'
-alias       df='$HOME/bin/cope/df'
+if [ -d $HOME/bin/cope ]; then
+  alias       ps='$HOME/bin/cope/ps'
+  alias     nmap='$HOME/bin/cope/nmap'
+  alias  netstat='$HOME/bin/cope/netstat'
+  alias ifconfig='$HOME/bin/cope/ifconfig'
+  alias     free='$HOME/bin/cope/free'
+  alias    fdisk='$HOME/bin/cope/fdisk'
+  alias       df='$HOME/bin/cope/df'
+fi
 
 alias sortbycolumn='sort -n -k3'
 alias            R='rehash'
 alias           qi='qemu -cdrom iso -boot d hd'
-alias           ss='source $HOME/etc/zsh/zshrc'
+alias           ss='source $XDG_CONFIG_HOME/zsh/zshrc'
 alias          npd='srinfo -np'
 alias         scat='source-highlight -o STDOUT -f esc -i'
 
-alias       v+='ossmix vmix0.pcm8 -- +2'
-alias       v-='ossmix vmix0.pcm8 -- -2'
-alias      v++='ossmix vmix0.pcm9 -- +2'
-alias      v--='ossmix vmix0.pcm9 -- -2'
+if [ -f '/etc/rc.d/oss' ]; then
+  alias        v+='ossmix vmix0.pcm8  -- +2'
+  alias        v-='ossmix vmix0.pcm8  -- -2'
+  alias       v++='ossmix vmix0.pcm9  -- +2'
+  alias       v--='ossmix vmix0.pcm9  -- -2'
+  alias      v+++='ossmix vmix0.pcm10 -- +2'
+  alias      v+++='ossmix vmix0.pcm10 -- +2'
+fi
 
 alias      wmp='wminput -c mplayer&'
 alias      win='wminput -c ir_ptr -w -c neverball&'
@@ -162,22 +172,43 @@ alias      wig='wminput -c gamepad&'
 alias      wit='wminput -c buttons-term&'
 
 alias       fevil='find . -regextype posix-extended -regex'
-alias         rec='ffmpeg -f x11grab -s 3360x1050 -r 150 -i :0.0 -sameq /tmp/foo.mpg'
+
+case $HOST in
+  'shiva'*)
+    host_res='3360x1050'
+    ;;
+  'rambo'*)
+    host_res='1920x1080'
+    ;;
+  'india'*)
+    host_res='1360x1024'
+    ;;
+  'n900'*)
+    host_res='800x480'
+    ;;
+  'laleh'*)
+    host_res='800x600'
+    ;;
+  *)
+    host_res='undef'
+    exit 1
+esac
+
+if [ $host_res != 'undef' ]; then
+  alias rec="ffmpeg -f x11grab -s $host_res -r 150 -i $DISPLAY -sameq foo.mpg"
+fi
+
 alias         feh='feh -Fzrd'
 alias     rampeak='dd if=/dev/mem|\cat|strings'
 alias  seen_movie='chmod +t,o+w "$@"'
 alias mountfixbug='echo 64 > /sys/block/sdn/device/max_sectors && mount -a'
-alias     getmail='getmail --rcfile /home/scp1/.getmail/magnus_at_trapd00r.se \
-              && getmail --rcfile /home/scp1/.getmail/trapd00r_at_trapd00r.se'
 
 alias        i='echo http://i.japh.se && echo http://i.japh.se|xclip'
-alias        l='echo http://l.japh.se && echo http://l.japh.se|xclip'
 alias     japh='echo http://japh.se && echo http://japh.se|xclip'
 alias      pst='echo http://p.japh.se && echo http://p.japh.se|xclip'
 alias     todo='$HOME/dev/time-spent-in-vim/vim $HOME/doc/TODO'
 
 alias    dmesg='$HOME/dev/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
-#alias      vim='/home/scp1/dev/time-spent-in-vim/vim'
 alias  vimtime='/home/scp1/dev/time-spent-in-vim/vim --total'
 alias    vimsh='vim -X *.sh'
 alias    vimpm='vim -X *.pm'
@@ -192,18 +223,12 @@ alias     make='/home/scp1/dev/utils/mymake'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
 alias      die='kill -9 $$'
-alias    urxvt='urxvt -name URxvt.shiva'
+alias    urxvt="urxvt -name $HOST"
 alias     less='vimpager'
 alias     wget='wget --no-check-certificate -U=Mozilla'
 alias     ptop='watch -n1 ps aux --sort=+%cpu'
 alias     tree='tree -dA'
 alias      mem='su -c mem'
-alias    links='/bin/cat /home/scp1/doc/links'
-#alias  ncmpcpp='colorcoke -r 105 -g 30 -b 50 -s 0 -e 15&&ncmpcpp; \
-#                  cc-x-color-scheme-trapd00r'
-alias    dev='echo http://devel.japh.se/ \
-                  && echo http://dev.japh.se/|xclip'
-
 
 alias   1='printf "\e]710;%s\007" "9x15bold,xft:Kochi Gothic"'
 alias   2='pickyfont -f speedy2'
@@ -219,7 +244,6 @@ alias  kk='pickyfont -f clea3'
 alias   f='pickyfont monte1 normal \
             && pickyfont monte2 bold \
             && pickyfont pro1 italic'
-
 
 alias evil="grep 'sub escape' -A 2 \
   $HOME/dev/App::Pimpd/lib/App/Pimpd/Validate.pm |
