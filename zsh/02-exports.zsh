@@ -39,7 +39,7 @@ export PATH="$( echo \
   /usr/bin/perlbin/core:\
   /home/scp1/perl5/perlbrew/perls/perl-5.8.3/:\
   $HOME/go/bin:\
-  |perl -pe 's/\s+//g'
+  | perl -pe 's/\s+//g'
 )"
 export MANPATH=$MANPATH:/usr/local/man:/opt/local/share/man
 export AWKPATH=$HOME/dev/lib/awk/
@@ -123,5 +123,4 @@ export GO_ARCH=386
 export LP_DEST="Canon_MP150"
 export PRINTER="Canon_MP150"
 #}}}
-
 # vim: set et sw=2 ft=sh fdm=marker:
