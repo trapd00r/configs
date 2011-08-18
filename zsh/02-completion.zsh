@@ -26,7 +26,7 @@ zstyle ':completion:*:functions'             ignored-patterns '_*'
 zstyle ':completion:*' group-name            ''
 zstyle ':completion:*:*:mplayer:*'           tag-order files
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
-       '*.(rmvb|mkv|mpg|wmv|mpeg|avi|flv|mp3|mp4|flac|ogg):video' \
+       '*.(rmvb|mkv|mpg|wmv|mpeg|avi|flv|mp3|mp4|flac|ogg|webm):video' \
        '*:all-files' '*(-/):directories'
 
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
