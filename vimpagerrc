@@ -1,4 +1,6 @@
-" vim: set ft=vim:
+" ~/.vimpagerrc or $XDG_CONFIG_HOME/vimpagerrc
+
+runtime! macros/less.vim
 
 let no_plugin_maps = 1
 
@@ -9,11 +11,11 @@ set tw=80
 set cursorline
 set cmdheight=1
 
-if(exists('&cc')) 
-  set cc=0
+if(exists('+cc'))
+  set colorcolumn=0
 endif
-if(exists('&rnu'))
+if(exists('+rnu'))
   set norelativenumber
 endif
 
-runtime! macros/less.vim
+" vim: set ft=vim:
