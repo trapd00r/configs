@@ -1,12 +1,11 @@
 "    File: $HOME/etc/ftdetect.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-08-20 13:53:28
+" Updated: 2011-08-22 08:26:07
 
 filetype plugin indent on
 
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
-
 
 au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e
 au BufRead            *            call SetCursorPosition()
@@ -30,26 +29,36 @@ au filetype           help         call Filetype_Help()
 au BufRead,BufNewFile README.{md,markdown,pod} let $BROWSER='firefox'
 au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh  set syntax=
 
-" options for plugins                                                        {{{
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:extradite_width              = 40
 let g:indent_guides_auto           = 0
 let g:space_no_jump                = 1
-"}}}
+let g:xf86conf_xfree86_versio      = 2
+
+" C                                                                          {{{
 let c_comment_strings              = 1
 let c_gnu                          = 1
 let c_space_errors                 = 1
 let c_syntax_for_h                 = 1
-
+"}}}
+" dircolors                                                                  {{{
 let dircolors_is_slackware         = 1
-
+"}}}
+" sed                                                                        {{{
 let g:highlight_sedtabs            = 1
-
-let g:is_posix                     = 1
-
+"}}}
+" (ba)?sh                                                                    {{{
+let g:readline_has_bash            = 1
+let g:sh_fold_enabled              = 4
+let g:sh_is_posix                  = 1
+let g:sh_maxlines                  = 200
+let g:sh_minlines                  = 100
+"}}}
+" netrw                                                                      {{{
 let g:netrw_http_cmd               = 'w3m'
 let g:netrw_http_xcmd              = '-dump >'
-
+"}}}
+" perl                                                                       {{{
 let g:perl_compiler_force_warnings = 0
 let g:perl_extended_vars           = 1
 let g:perl_include_pod             = 1
@@ -64,23 +73,19 @@ let g:perl_string_as_statement     = 1
 let g:perl_sync_dist               = 1000
 let g:perl_want_scope_in_variables = 1
 let g:perlhelp_prog                = '/usr/bin/perldoc'
-
-let g:readline_has_bash            = 1
-
-let g:sh_fold_enabled              = 4
-let g:sh_maxlines                  = 200
-let g:sh_minlines                  = 100
-
+"}}}
+" (la)?tex                                                                   {{{
 let g:tex_conceal                  = 1
-
+"}}}
+" viml                                                                       {{{
 let g:vim_indent_cont              = 2
 let g:vimsyn_embed                 = 'p'
 let g:vimsyn_folding               = 'afp'
-
-let g:xf86conf_xfree86_versio      = 2
-
+"}}}
+" lua                                                                        {{{
 let lua_version                    = 5
 let lua_subversion                 = 0
+"}}}
 
 let g:vt_author                    = 'Magnus Woldrich'
 let g:vt_email                     = 'm@japh.se'
