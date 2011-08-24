@@ -1,8 +1,6 @@
 =pod
 
-=head1 NAME
-
-$HOME/etc/vim
+=head1 $HOME/etc/vim
 
 =head1 DESCRIPTION
 
