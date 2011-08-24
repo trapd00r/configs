@@ -90,7 +90,7 @@ if [ "$HOST" = "shiva" ]; then
     else
       dir_status="%{$c1%}%n%{$c4%}@%{$c2%}%m%{$c0%}:%{$c3%}%l%{$c6%}->%{$(zsh_path)%} %{$c3%}%{$c_i%}(%{$c1%}%{$c_i%}$jobtexts%[%+]{$c3%})"
       PROMPT='${vcs_info_msg_0_}
-  %{$fg_bold[green]%}%p%{$reset_color%}${dir_status} ${vcs_info_msg_0_}%{$reset_color%}
+  %{$fg_bold[green]%}%p%{$reset_color%}${dir_status}%{$reset_color%}
 > '
   fi
   }
