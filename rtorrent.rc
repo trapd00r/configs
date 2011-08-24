@@ -7,7 +7,7 @@
 #set_active_bg_color = -1
 
 
-download_rate = 5000
+download_rate = 0
 upload_rate   = 0
 
 # Default directory to save the downloaded torrents.
@@ -24,6 +24,9 @@ schedule = home1    ,5, 5, "load_start=/home/scp1/*.torrent,                    
 schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,             d.set_directory=/mnt/Books/.new"
 schedule = porn1    ,5, 5, "load_start=/mnt/Porn/.torrents/*.torrent,              d.set_directory=/mnt/Porn/.new"
 schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
-schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,             d.set_directory=/mnt/Mvids/.new/"
-schedule = mvids2   ,5, 5, "load_start=/mnt/Mvids_2/.torrents/*.torrent,           d.set_directory=/mnt/Mvids_2/.new/"
-schedule = mvids3   ,5, 5, "load_start=/mnt/Music_Videos/.torrents/*.torrent,      d.set_directory=/mnt/Music_Videos/.new"
+#schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,             d.set_directory=/mnt/Mvids/.new/"
+#schedule = mvids2   ,5, 5, "load_start=/mnt/Mvids_2/.torrents/*.torrent,           d.set_directory=/mnt/Mvids_2/.new/"
+#schedule = mvids3   ,5, 5, "load_start=/mnt/Music_Videos/.torrents/*.torrent,      d.set_directory=/mnt/Music_Videos/.new"
+
+#schedule = tv4      ,5, 5, "load_start=/mnt/TV_4/.torrents/*.torrent,              d.set_directory=/mnt/TV_4/.new"
+#schedule = movie3   ,5, 5, "load_start=/mnt/Movies_3/.torrents/*.torrent,          d.set_directory=/mnt/Movies_3/.new"
