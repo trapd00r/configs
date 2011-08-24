@@ -132,7 +132,7 @@ set viminfo='10,\"100,:20,%,n~/var/vim/viminfo
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
-set wildignore=*.swp,*.bak,*~,blib,*.o
+set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g
 "set winfixwidth
 set whichwrap=b,s,h,l,<,>
 
