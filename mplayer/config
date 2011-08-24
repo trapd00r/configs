@@ -1,4 +1,5 @@
 #ao=oss
+nodefault-bindings:conf=/home/scp1/.mplayer/input.conf
 double=yes
 prefer-ipv4=yes
 
