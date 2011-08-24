@@ -4,6 +4,7 @@ typeset -Ag abbreviations
 abbreviations=(
   "pinc"  "/usr/{lib,share}/perl5/{core,site,vendor}_perl/"
   "jj"    "!$"
+  "jk"    "!-2$"
   "Im"    "| more"
   "Ia"    "| awk"
   "Ig"    "| grep"
