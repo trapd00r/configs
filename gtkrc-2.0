@@ -1,11 +1,34 @@
-# DO NOT EDIT! This file will be overwritten by LXAppearance.
-# Any customization should be done in ~/.gtkrc-2.0.mine instead.
+#binding "gtk-vi-text-view"
+#{
+#  bind "<ctrl>d" { "move-cursor" (display-lines, 5, 0) }
+#  bind "<ctrl>f" { "move-cursor" (display-lines, 5, 0) }
+#  bind "<ctrl>u" { "move-cursor" (display-lines, -5, 0) }
+#  bind "<ctrl>b" { "move-cursor" (display-lines, -5, 0) }
+#  bind "<ctrl>e" { "move-cursor" (display-lines, -1, 0) }
+#  bind "<ctrl>y" { "move-cursor" (display-lines, 1, 0) }
+#  bind "j" { "move-cursor" (display-lines, 1, 0) }
+#  bind "k" { "move-cursor" (display-lines, -1, 0) }
+#  bind "l" { "move-cursor" (logical-positions, 1, 0) }
+#  bind "h" { "move-cursor" (logical-positions, -1, 0) }
+#}
+#
+#binding "gtk-vi-tree-view"
+#{
+#  bind "j" { "move-cursor" (display-lines, 1) }
+#  bind "k" { "move-cursor" (display-lines, -1) }
+#  bind "l" { "move-cursor" (logical-positions, 1) }
+#  bind "h" { "move-cursor" (logical-positions, -1) }
+#}
+#
+#class "GtkTextView" binding "gtk-vi-text-view"
+#class "GtkTreeView" binding "gtk-vi-tree-view"
 
 gtk-theme-name="termGTK"
 gtk-icon-theme-name="Echo"
 gtk-font-name="ProFont 9"
 gtk-cursor-theme-size=0
 gtk-key-theme-name = "Emacs"
+#gtk-key-theme-name = "Vim"
 gtk-toolbar-style=GTK_TOOLBAR_TEXT
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=0
