@@ -9,57 +9,57 @@
                                         :X 1680
                                         :Y 0
                                         :WIDTH 840
-                                        :HEIGHT 80
-                                        :WINDOWS (10486126)
-                                        :CURRENT 10486126)
+                                        :HEIGHT 195
+                                        :WINDOWS (10486845)
+                                        :CURRENT 10486845)
                                      #S(FDUMP
-                                        :NUMBER 3
+                                        :NUMBER 6
                                         :X 2520
                                         :Y 0
                                         :WIDTH 840
-                                        :HEIGHT 80
-                                        :WINDOWS (10486233)
-                                        :CURRENT 10486233))
+                                        :HEIGHT 195
+                                        :WINDOWS (10487846)
+                                        :CURRENT 10487846))
                                     (#S(FDUMP
-                                        :NUMBER 5
+                                        :NUMBER 3
                                         :X 1680
-                                        :Y 80
-                                        :WIDTH 510
-                                        :HEIGHT 970
-                                        :WINDOWS (10486147)
-                                        :CURRENT 10486147)
+                                        :Y 195
+                                        :WIDTH 1000
+                                        :HEIGHT 855
+                                        :WINDOWS (10487823)
+                                        :CURRENT 10487823)
                                      #S(FDUMP
-                                        :NUMBER 4
-                                        :X 2190
-                                        :Y 80
-                                        :WIDTH 1170
-                                        :HEIGHT 970
-                                        :WINDOWS (10486117)
-                                        :CURRENT 10486117)))
+                                        :NUMBER 2
+                                        :X 2680
+                                        :Y 195
+                                        :WIDTH 680
+                                        :HEIGHT 855
+                                        :WINDOWS (10487836)
+                                        :CURRENT 10487836)))
                                    (#S(FDUMP
                                        :NUMBER 1
                                        :X 0
                                        :Y 0
                                        :WIDTH 840
                                        :HEIGHT 1050
-                                       :WINDOWS (10486191)
-                                       :CURRENT 10486191)
+                                       :WINDOWS (10487856 12582985)
+                                       :CURRENT 10487856)
                                     (#S(FDUMP
-                                        :NUMBER 2
+                                        :NUMBER 4
                                         :X 840
                                         :Y 0
                                         :WIDTH 840
                                         :HEIGHT 525
-                                        :WINDOWS (10485793)
-                                        :CURRENT 10485793)
+                                        :WINDOWS (10487781)
+                                        :CURRENT 10487781)
                                      #S(FDUMP
-                                        :NUMBER 6
+                                        :NUMBER 5
                                         :X 840
                                         :Y 525
                                         :WIDTH 840
                                         :HEIGHT 525
-                                        :WINDOWS (12582985 10486242)
-                                        :CURRENT 12582985))))
-                            :CURRENT 6))
+                                        :WINDOWS (10487043)
+                                        :CURRENT 10487043))))
+                            :CURRENT 4))
                 :CURRENT 1))
    :CURRENT 0)
