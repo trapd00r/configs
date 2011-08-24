@@ -123,7 +123,7 @@ vimgo() {
 
 
 cd() {
-  builtin cd $@; ls
+  builtin cd "$@"; ls
 }
 regcheck() {
   emulate -L zsh
