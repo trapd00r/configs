@@ -34,7 +34,6 @@ bindkey "^[,"   _history-complete-newer
 bindkey "^[/"   _history-complete-older
 bindkey "^R"    history-incremental-search-backward
 bindkey "^K"    kill-line
-bindkey "^G"    list-expand
 bindkey "^Xd"   _list_expansions
 bindkey " "     magic-abbrev-expand
 bindkey "^Xm"   _most_recent_file
@@ -147,6 +146,7 @@ bindkey -s -M viins "^X0" " &> /dev/null "
 bindkey -s -M viins "^X1" "  > /dev/null "
 bindkey -s -M viins "^X2" " 2> /dev/null "
 bindkey -s -M viins "^X3" " 2>&1 "
+bindkey -s -M viins "^G"  'setty reverse\n'
 
 bindkey -R -M viins "^Y"-"^Z" self-insert
 bindkey -R -M viins "\M-^@"-"\M-^?" self-insert
@@ -189,7 +189,6 @@ bindkey -M viins "^[,"   _history-complete-newer
 bindkey -M viins "^[/"   _history-complete-older
 bindkey -M viins "^R"    history-incremental-search-backward
 bindkey -M viins "^K"    kill-line
-bindkey -M viins "^G"    list-expand
 bindkey -M viins "^Xd"   _list_expansions
 bindkey -M viins " "     magic-abbrev-expand
 bindkey -M viins "^Xm"   _most_recent_file
