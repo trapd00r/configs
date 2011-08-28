@@ -146,7 +146,7 @@ bindkey -s -M viins "^X0" " &> /dev/null "
 bindkey -s -M viins "^X1" "  > /dev/null "
 bindkey -s -M viins "^X2" " 2> /dev/null "
 bindkey -s -M viins "^X3" " 2>&1 "
-bindkey -s -M viins "^G"  'setty reverse\n'
+bindkey -s -M viins "^G"  'setty background 161917\n'
 
 bindkey -R -M viins "^Y"-"^Z" self-insert
 bindkey -R -M viins "\M-^@"-"\M-^?" self-insert
