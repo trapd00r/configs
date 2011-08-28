@@ -13,6 +13,8 @@ if [ -d "$HOME/dev/PKGBUILDS" ]; then
   "
 fi
 
+alias ctags='ctags --format=1'
+
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
 
