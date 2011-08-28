@@ -22,11 +22,11 @@ spualign=-1
 
 # Anti-alias subs. (4: best and slowest)
 spuaa=4
-fs=yes
 font="Anonymous Pro"
 monitoraspect=16:9
 mixer=/dev/mixer
 #cache=47683
 slang=en
 alang=en
+fs=1
 
