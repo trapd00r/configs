@@ -1,1 +1,0 @@
-/home/scp1/dev/vim-after-syntax-perl/after/syntax/perl.vim
