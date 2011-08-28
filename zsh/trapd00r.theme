@@ -21,22 +21,22 @@
 autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
-local  c0="%f%b%s%u"
-local  c1="%F{245}"
-local  c2="%F{250}"
-local  c3="%F{242}"
-local  c4="%F{197}"
-local  c5="%F{225}"
-local  c6="%F{240}"
-local  c7="%F{242}"
-local  c8="%F{244}"
-local  c9="%F{162}"
-local c10="%B"
-local c11="$c10%F{208}"
-local c12="$c10%F{142}"
-local c13="$c10%F{196}"
+ c0="%f%b%s%u"
+ c1="%F{245}"
+ c2="%F{250}"
+ c3="%F{242}"
+ c4="%F{197}"
+ c5="%F{225}"
+ c6="%F{240}"
+ c7="%F{242}"
+ c8="%F{244}"
+ c9="%F{162}"
+c10="%B"
+c11="$c10%F{208}"
+c12="$c10%F{142}"
+c13="$c10%F{196}"
 
-local c_i="$(printf "\e[3m")"
+c_i="$(printf "\e[3m")"
 
 # We dont want to use the extended colorset in the TTY / VC.
 if [ "$TERM" = "linux" ]; then
