@@ -28,6 +28,7 @@ setopt longlistjobs
 setopt mailwarning
 setopt nobareglobqual
 setopt notify
+setopt nullglob
 setopt numeric_glob_sort
 setopt octal_zeroes
 setopt prompt_subst
