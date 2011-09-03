@@ -36,6 +36,8 @@ c11="$c10%F{208}"
 c12="$c10%F{142}"
 c13="$c10%F{196}"
 
+randcol=%F\{$(( RANDOM % (79-17) + 17 ))\}
+
 c_i="$(printf "\e[3m")"
 
 # We dont want to use the extended colorset in the TTY / VC.
