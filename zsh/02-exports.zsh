@@ -11,6 +11,7 @@ export EDITOR=vim
 export GIST_DIR=$HOME/dev/_gists/
 export HOSTNAME="shiva"
 export LISTMAX=300
+export MAILDIR="/mnt/Docs/Mail/inbox/new"
 export MOZ_DISABLE_PANGO=1
 export PAGER="vimpager"
 export VI_QUICKFIX_SOURCEFILE='stdin'
