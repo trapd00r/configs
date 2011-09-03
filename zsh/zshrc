@@ -30,7 +30,6 @@ export TZ='Europe/Stockholm'
 # the insecure files without asking, while -u will use them without asking.
 compinit -u
 fpath=($XDG_CONFIG_HOME/zsh/compdef $fpath)
-compinit -i
 
 compdef _files mkdir
 compdef _gnu_generic ln
