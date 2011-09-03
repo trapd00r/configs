@@ -1,9 +1,12 @@
-if [ -f "$HOME/.ssh/config" ]; then
-  for host in $(
-    grep -P '^Host (.+)' $HOME/.ssh/config | perl -pe 's/^Host\s+(\w+).*/$1/'
-  ); do
-    alias $host="ssh $host"
-  done
+if [[ -z $SSH_CONFIGURED ]]; then
+  if [ -f "$HOME/.ssh/config" ]; then
+    for host in $(
+      grep -P '^Host (.+)' $HOME/.ssh/config | perl -pe 's/^Host\s+(\w+).*/$1/'
+    ); do
+      alias $host="ssh $host"
+    done
+  fi
+  SSH_CONFIGURED=1
 fi
 
 if [ -d "$HOME/dev/PKGBUILDS" ]; then
@@ -12,6 +15,11 @@ if [ -d "$HOME/dev/PKGBUILDS" ]; then
         && find $HOME/dev/PKGBUILDS -name 'src')       \
   "
 fi
+
+# lisp                                                                     {{{
+alias bigloo='rlwrap bigloo'
+alias clisp=' rlwrap clisp'
+#}}}
 
 alias ctags='ctags --format=1'
 

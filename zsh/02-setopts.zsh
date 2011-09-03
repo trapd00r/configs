@@ -18,7 +18,6 @@ setopt autoresume
 setopt cdablevars
 setopt complete_aliases
 setopt complete_in_word
-setopt complete_in_word
 setopt extended_history
 setopt extendedglob
 setopt globdots
