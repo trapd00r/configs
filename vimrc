@@ -14,6 +14,7 @@ for f in split(globpath(&runtimepath, '_*.vim'), "\n")
   endif
 endfor
 
+:nohl
 
 set nocp
 set autoread
