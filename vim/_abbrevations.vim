@@ -40,6 +40,13 @@ ia json_decode  decode_json
 ia deparse_json decode_json
 ia json_encode  encode_json
 "}}}
+"
+if &ft == 'mail'
+  ia leifa leif.pennryd@ntmdistribution.se
+  ia olof  olof@ethup.se
+endif
+
+
 " web                                                                        {{{
 iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
 iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi
