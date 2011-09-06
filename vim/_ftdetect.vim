@@ -1,6 +1,6 @@
 "    File: $HOME/etc/ftdetect.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-08-22 08:26:07
+" Updated: 2011-09-06 15:10:04
 
 filetype plugin indent on
 
@@ -18,6 +18,7 @@ au BufRead,BufNewFile *.markdown   set ft=md | normal gg
 au BufRead,BufNewFile *.md         set ft=md | normal gg
 au BufRead,BufNewFile *.mkd        set ft=md | normal gg
 au BufRead,BufNewFile *.xml        set sw=1
+au BufRead,BufNewFile *.overtime   set ft=overtime
 au BufWritePost       *.{sh,pl}    silent exe
 au FileType           perl         set makeprg=perl\ -c\ %\ $*
 au FileType           perl         setlocal errorformat=%f:%l:%m
