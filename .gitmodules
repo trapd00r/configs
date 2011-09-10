@@ -52,3 +52,6 @@
 [submodule "vim/bundle/vim-ansicolors"]
 	path = vim/bundle/vim-ansicolors
 	url = git://github.com/trapd00r/vim-ansicolors.git
+[submodule "vim/bundle/vim-colorv"]
+	path = vim/bundle/vim-colorv
+	url = git://github.com/Rykka/ColorV.git

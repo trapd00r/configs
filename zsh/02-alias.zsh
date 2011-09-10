@@ -1,12 +1,9 @@
-if [[ -z $SSH_CONFIGURED ]]; then
-  if [ -f "$HOME/.ssh/config" ]; then
-    for host in $(
-      grep -P '^Host (.+)' $HOME/.ssh/config | perl -pe 's/^Host\s+(\w+).*/$1/'
-    ); do
-      alias $host="ssh $host"
-    done
-  fi
-  SSH_CONFIGURED=1
+if [ -f "$HOME/.ssh/config" ]; then
+  for host in $(
+    perl -ne 'print "$1\n" if /^Host\s+(.+)$/' $HOME/.ssh/config
+  ); do
+    alias $host="ssh $host '$@'"
+  done
 fi
 
 if [ -d "$HOME/dev/PKGBUILDS" ]; then
@@ -133,7 +130,7 @@ alias    tt='cd $HOME/bin/upstream'
 alias lsusb='lsusb | matchline -random'
 alias lspci='lspci | matchline -lspci'
 
-if [ "$TERM" = 'xterm' ]; then
+if [ "$TERM" = 'linux' ]; then
   alias  ls=' ls++ -ansi'
 else
   alias ls='ls++'
