@@ -90,6 +90,7 @@ export HARNESS_SUMMARY_COL_FAIL="bold red"
 export HARNESS_SUMMARY_COL_SUC=" bold cyan"
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
+export PERLDOC="-t"
 #export RELEASE_TESTING=1
 #export PERL5OPT='-Mstrict'
 #}}}
