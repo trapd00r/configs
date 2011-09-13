@@ -1,32 +1,49 @@
-#ao=oss
-nodefault-bindings:conf=/home/scp1/.mplayer/input.conf
-double=yes
-prefer-ipv4=yes
+[shiva]
 
-sub-bg-alpha="0" #background color ala closed captions
-sub-bg-color="0" #black to white
-subfont-text-scale="1"	#truetype font scaling
-ffactor="10" #black outline
-sid="0"	#subtitle set
-subfont-encoding=unicode
-unicode=yes
-utf8=yes
-# Set font size. (2: proportional to movie width)
-subfont-autoscale=2
-subfont-osd-scale=2
-# Set autoscale coefficient. (default: 5)
-subfont-text-scale=2
+alang              = en
+af                 = stats
+ao                 = oss
+double             = 1
+ffactor            = 10
+font               = 'Anonymous Pro'
+fs                 = 1
+mixer              = /dev/mixer
+monitoraspect      = 16:9
+msgcolor           = 1
+msgmodule          = 1
+prefer-ipv4        = 1
+sid                = 0
+slang              = en
+spuaa              = 4
+spualign           = -1
+sub-bg-alpha       = 0
+sub-bg-color       = 0
+subfont-autoscale  = 2
+subfont-encoding   = unicode
+subfont-osd-scale  = 2
+subfont-text-scale = 1
+unicode            = 1
+volume             = 80
+utf8               = 1
 
-# Align subs. (-1: as they want to align themselves)
-spualign=-1
+[rambo]
 
-# Anti-alias subs. (4: best and slowest)
-spuaa=4
-font="Anonymous Pro"
-monitoraspect=16:9
-mixer=/dev/mixer
-#cache=47683
-slang=en
-alang=en
-fs=1
+alang              = sv
+ao                 = oss,alsa,
+#device            = spdif
+font               = Arial
+fs                 = 1
+monitoraspect      = 16:9
+msgcolor           = 1
+msgmodule          = 1
+prefer-ipv4        = 1
+slang              = sv
+spuaa              = 4
+spualign           = -1
+subfont-osd-scale  = 3
+subfont-text-scale = 3
+vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,
+vo                 = vdpau
+volume             = 90
 
+# vim: set ft=dosini:

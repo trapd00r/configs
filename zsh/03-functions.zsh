@@ -20,8 +20,7 @@ neverball() {
 }
 
 mplayer() {
-  /usr/bin/mplayer \
-    -msgmodule 1 -msgcolor -include $XDG_CONFIG_HOME/mplayer/config "$@"
+  /usr/bin/mplayer -include $XDG_CONFIG_HOME/mplayer/config -profile $HOST "$@"
 }
 
 mplayer_headphones() {
