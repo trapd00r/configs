@@ -28,9 +28,10 @@ func! AddFoldMarkers()
 endfunc
 
 func! SortLen()
-  %s/\v^/\=len(getline('.')) . '  '/
+  %s/\v^/\=len(getline('.')) . '↑'/
   sort n
-  %s/\v^\d+\s{2}//
+  %s/\v^\d+↑//
+  normal G
 endfunc
 
 func! OddEvenHL()
