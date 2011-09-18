@@ -52,3 +52,7 @@ ncmpcpp
 diff
 filetype
 vague
+realtime
+cabbr
+eval
+dircolors
