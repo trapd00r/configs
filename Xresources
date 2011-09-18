@@ -121,10 +121,15 @@ shiva.pointerColor2:        #0092FF
 shiva.pointerColor:         #252525
 shiva.underlineColor:       #0E0E0E
 
-shiva*font:                 -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252,-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1,xft:Terminus Normal:pixelsize=12
-shiva*boldFont:             FONT_B
-shiva.italicFont:           FONT_I
-shiva*boldItalicFont:       FONT_I_B
+shiva*font:                 -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv
+shiva*boldFont:             -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
+
+shiva*italicFont:           -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+
+!shiva*font:                 -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252,-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1,xft:Terminus Normal:pixelsize=12
+!shiva*boldFont:             FONT_B
+!shiva.italicFont:           FONT_I
+!shiva*boldItalicFont:       FONT_I_B
 
 shiva.cutchars:             "()*,<>[]{}|'"
 shiva.matcher.button:       1
