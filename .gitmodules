@@ -55,3 +55,6 @@
 [submodule "vim/bundle/vim-colorv"]
 	path = vim/bundle/vim-colorv
 	url = git://github.com/Rykka/ColorV.git
+[submodule "vim/bundle/vim-script-runner"]
+	path = vim/bundle/vim-script-runner
+	url = git://github.com/trapd00r/vim-script-runner.git
