@@ -61,6 +61,7 @@ export XDG_VIDEOS_DIR="/mnt/Movies_1/"
 # zsh                                                                        {{{
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export ZSH_THEME="trapd00r"
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 #}}}
 # history                                                                    {{{
 export HISTFILE=$XDG_DATA_HOME/zsh/history
@@ -91,8 +92,8 @@ export HARNESS_SUMMARY_COL_SUC=" bold cyan"
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
 export PERLDOC="-t"
+export PERL5OPT='-Ilib -I$HOME/dev/utils/lib'
 #export RELEASE_TESTING=1
-#export PERL5OPT='-Mstrict'
 #}}}
 # dmenu                                                                      {{{
 export DMENU_FONT=${FONT}
