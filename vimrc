@@ -16,6 +16,7 @@ endfor
 
 :nohl
 
+
 set nocp
 set autoread
 set autochdir
@@ -78,7 +79,7 @@ set modeline
 set modelines=2
 set nobackup
 set nocsverb
-"set noequalalways
+set noequalalways
 set noerrorbells
 set nostartofline
 set noswapfile
@@ -134,7 +135,10 @@ set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g
-"set winfixwidth
+set winfixwidth
+set winfixheight
+set winwidth=80
+set winminwidth=80
 set whichwrap=b,s,h,l,<,>
 
 set nomore
