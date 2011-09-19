@@ -24,8 +24,8 @@ au FileType           perl         set makeprg=perl\ -c\ %\ $*
 au FileType           perl         setlocal errorformat=%f:%l:%m
 au FileType           perl         setlocal keywordprg=perldoc\ -f
 au FileType           pl,pm,t      set ft=perl
-au filetype           git,*commit* call ToggleSpell()
-au filetype           help         call Filetype_Help()
+au Filetype           git,*commit* call ToggleSpell()
+au Filetype           help         call Filetype_Help()
 
 au BufRead,BufNewFile README.{md,markdown,pod} let $BROWSER='firefox'
 au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh  set syntax=
