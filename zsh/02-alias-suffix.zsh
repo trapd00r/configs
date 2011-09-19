@@ -133,6 +133,8 @@ XCHM=(
 
 APVLV=(
   pdf
+  djvu
+  umd
 )
 
 local MPLAYER_CONFIG=$XDG_CONFIG_HOME/mplayer/config
