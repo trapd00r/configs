@@ -21,6 +21,7 @@ setopt complete_in_word
 setopt extended_history
 setopt extendedglob
 setopt globdots
+setopt histignorealldups
 setopt interactive_comments
 setopt kshglob
 setopt longlistjobs
