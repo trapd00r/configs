@@ -1,12 +1,13 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-08-13 12:23:57
+" Updated: 2011-09-19 09:04:19
 
 let mapleader = ','
 
 nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nmap <leader>O :%w >> ~/vim_output<CR>
 "nmap <leader>o :exec ':.w >> ' . eval(string( xclipboard_pipe_path ))<CR>
+
 
 " user interface                                                             {{{
 nnoremap <CR>   zA       " toggle folds recursively
@@ -16,7 +17,6 @@ cmap     qq     qa!<CR>  " quit really, really fast
 nnoremap ``     ''       " switch those two as well
 nnoremap ''     ``       " '' now goes back to where cursor were before mark
 nmap     <C-9>  <C-]>    " my ALT key is all jelly
-nmap     q      q:       " history buffer
 nmap     Y      y$       " do what Y is supposed to do; d$ <=> D etc
 
 cnoremap $h     e ~/     " quick edit ~/
