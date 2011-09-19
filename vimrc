@@ -14,10 +14,10 @@ for f in split(globpath(&runtimepath, '_*.vim'), "\n")
   endif
 endfor
 
-:nohl
+" THIS IS HORRIBLE EVILNESS
+"set gdefault 
 
-
-set nocp
+set nocompatible
 set autoread
 set autochdir
 set autoindent
@@ -27,28 +27,21 @@ set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 set colorcolumn=+1,+2
-"set copyindent
-
 set completeopt+=menuone
-set csprg=/usr/local/bin/cscope
-set cst
-set csto=0
-set csverb
+set cscopeprg=/usr/local/bin/cscope
+set cscopetag
+set cscopetagorder=0
+set cscopeverbose
 set cursorline
 set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:4,vertical
 set display+=lastline,uhex
 set expandtab
-"set equalalways
-"set eadirection=ver
 set fillchars=vert:│
 set foldmethod=marker
 set foldenable
-"set foldlevelstart=2
+set foldlevelstart=2
 set formatoptions=tcrqln1
-
-" THIS IS HORRIBLE EVILNESS
-"set gdefault 
 set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
@@ -63,13 +56,12 @@ set incsearch
 set isfname+=:
 set laststatus=2
 set list
-"set listchars=trail:⋅
-"set listchars+=tab:→\ ,eol:⋅
 "let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
 set listchars=tab:»\ ,trail:·,eol:¶,nbsp:⎵,precedes:←,extends:→ sbr=↪
 set magic
 set makeprg=/usr/bin/make
-set mat=2
+set matchtime=2
+set maxmapdepth=500
 set matchpairs+==:;
 set matchpairs+=<:>
 set matchtime=10
@@ -78,12 +70,12 @@ set maxmemtot=200000
 set modeline
 set modelines=2
 set nobackup
-set nocsverb
+set nocscopeverbose
 set noequalalways
 set noerrorbells
 set nostartofline
 set noswapfile
-set nowb
+set nowritebackup
 set nowrap
 set nrformats=alpha,octal,hex
 set numberwidth=2
@@ -106,31 +98,26 @@ set scrolloff=5
 set ssop=buffers,folds,globals,help,localoptions,options,resize,tabpages
 set shiftwidth=2
 set shortmess=aIoOT
-"set shortmess=atI
-"set showcmd
 set showmatch
 set showmode
 set smartcase
-"set smartindent
 set smarttab
 set synmaxcol=160
-set so=5
-"set splitright
+set scrolloff=5
 set tabpagemax=50
-set ts=2
+set tabstop=2
 set t_Co=256
 set timeout
 set timeoutlen=3000
 set ttimeoutlen=50
-set tw=80
+set textwidth=80
 set title
 set ttyfast
 set undofile
 set undolevels=512
 set undodir=/mnt/Docs/Backup/undo
-set vb t_vb=
-set vb
-set viminfo='10,\"100,:20,%,n~/var/vim/viminfo
+set visualbell t_vb=
+set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
