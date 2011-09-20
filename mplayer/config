@@ -32,6 +32,7 @@ alang              = sv
 ao                 = oss,alsa,
 #device            = spdif
 font               = Arial
+input              = conf='/home/scp1/etc/mplayer/input.conf'
 fs                 = 1
 monitoraspect      = 16:9
 msgcolor           = 1
