@@ -5,22 +5,22 @@ use ExtUtils::MakeMaker;
 WriteMakefile1(
   META_MERGE => {
     resources => {
-      repository => q{https://github.com/trapd00r/Module-Foo},
-      bugtracker => q{https://github.com/trapd00r/Module-Foo/issues},
+      repository => q{https://github.com/trapd00r/__PACKAGE__},
+      bugtracker => q{https://github.com/trapd00r/__PACKAGE__/issues},
     },
   },
 
-  NAME             => q{Module::Foo},
-  AUTHOR           => q{Magnus Woldrich <trapd00r@trapd00r.se>},
+  NAME             => q{ },
+  AUTHOR           => q{Magnus Woldrich <m@japh.se>},
   ABSTRACT         => q{ },
-  VERSION_FROM     => q{lib/Module/Foo.pm},
+  VERSION_FROM     => q{ },
   LICENSE          => q{perl},
   MIN_PERL_VERSION => 5.010,
   PL_FILES         => { },
   PREREQ_PM        => { },
   MAN1PODS         => { },
   dist             => { COMPRESS => q{gzip -9f},    SUFFIX => q{gz}, },
-  clean            => { FILES    => q{Module-Foo-*},                     },
+  clean            => { FILES    => q{ },
 );
 
 sub WriteMakefile1 {

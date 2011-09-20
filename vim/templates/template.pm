@@ -1,6 +1,5 @@
 package Vim::Template;
 use strict;
-use warnings FATAL => 'all';
 
 BEGIN {
   use Exporter;
@@ -11,9 +10,9 @@ BEGIN {
 
   @EXPORT_OK = qw();
   %EXPORT_TAGS = [ qw() ];
-};
+}
 
-use strict;
+use Carp ();
 use Data::Dumper;
 
 {
@@ -28,11 +27,7 @@ use Data::Dumper;
 
 
 
-1;
-
-
 __END__
-
 
 =pod
 
@@ -63,13 +58,13 @@ Description.
 =head1 REPORTING BUGS
 
 Report bugs and/or feature requests on rt.cpan.org, the repository issue tracker
-or directly to L<magnus@trapd00r.se>
+or directly to L<m@japh.se>
 
 =head1 AUTHOR
 
   Magnus Woldrich
   CPAN ID: WOLDRICH
-  magnus@trapd00r.se
+  m@japh.se
   http://japh.se
 
 =head1 CONTRIBUTORS
@@ -87,6 +82,6 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-=cut
+L<stuff|http://japh.se>
 
-# vim: set ts=2 et sw=2 fdm=marker:
+=cut

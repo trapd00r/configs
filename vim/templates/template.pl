@@ -2,9 +2,11 @@
 use strict;
 use warnings FATAL => 'all';
 use vars qw($VERSION);
+
 my $APP  = '';
 $VERSION = '0.001';
 
+use Devel::Comments;
 use Data::Dumper;
 
 {
@@ -34,13 +36,13 @@ __END__
 =head1 REPORTING BUGS
 
 Report bugs and/or feature requests on rt.cpan.org, the repository issue tracker
-or directly to L<magnus@trapd00r.se>
+or directly to L<m@japh.se>
 
 =head1 AUTHOR
 
   Magnus Woldrich
   CPAN ID: WOLDRICH
-  magnus@trapd00r.se
+  m@japh.se
   http://japh.se
 
 =head1 CONTRIBUTORS
@@ -59,6 +61,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-=cut
+L<stuff|http://japh.se>
 
-# vim: set ts=2 et sw=2 fdm=marker:
+=cut
