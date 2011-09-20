@@ -36,6 +36,12 @@ let g:indent_guides_auto           = 0
 let g:space_no_jump                = 1
 let g:xf86conf_xfree86_versio      = 2
 
+" mpd                                                                        {{{
+let g:mpd_host                     = '192.168.1.128'
+let g:mpd_port                     = 6600
+let g:mpc_lyrics_use_cache         = 1
+"}}}
+
 " C                                                                          {{{
 let c_comment_strings              = 1
 let c_gnu                          = 1
