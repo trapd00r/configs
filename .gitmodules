@@ -58,3 +58,18 @@
 [submodule "vim/bundle/vim-script-runner"]
 	path = vim/bundle/vim-script-runner
 	url = git://github.com/trapd00r/vim-script-runner.git
+[submodule "vim/bundle/vim-minesweeper"]
+	path = vim/bundle/vim-minesweeper
+	url = git://github.com/mfumi/viminesweeper.git
+[submodule "vim/bundle/vim-snake"]
+	path = vim/bundle/vim-snake
+	url = git://github.com/mfumi/snake.vim.git
+[submodule "vim/bundle/vim-lightsout"]
+	path = vim/bundle/vim-lightsout
+	url = git://github.com/mfumi/lightsout.vim.git
+[submodule "vim/bundle/vim-mpc"]
+	path = vim/bundle/vim-mpc
+	url = git://github.com/mfumi/mpc.vim.git
+[submodule "vim/bundle/vim-invader"]
+	path = vim/bundle/vim-invader
+	url = git://github.com/mattn/invader-vim.git

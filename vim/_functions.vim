@@ -1,7 +1,6 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-29 09:12:13
-
+" Updated: 2011-09-15 07:38:11
 
 func! AddFoldMarkers()
   setlocal virtualedit=all
@@ -11,6 +10,8 @@ func! AddFoldMarkers()
     let comment_char = '"'
   elseif(&ft == 'xdefaults')
     let comment_char = '!'
+  elseif(&ft == 'lisp')
+    let comment_char = ';;'
   endif
 
   let fold_marker_start = '{{{'
