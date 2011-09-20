@@ -7,7 +7,28 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
-au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e
+"au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e | :19
+
+au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl |
+  \ call search('APP')  | normal di':startinsert
+
+au BufNewFile *.PL silent! 0r ~/etc/vim/templates/template.PL |
+  \ call search('__PACKAGE__') | exe 'normal dt} ' | startinsert
+
+au BufNewFile *.pm silent! 0r ~/etc/vim/templates/template.pm |
+  \ call cursor(0, 9) | exe 'normal d$A ' | startinsert
+
+au BufNewFile *.t  silent! 0r ~/etc/vim/templates/template.t  |
+  \ :6 | exe 'normal o' | startinsert
+
+au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c |
+  \ :5 | exe 'normal o ' | startinsert 
+
+au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown |
+  \ :0 | exe 'normal d$A' | startinsert
+
+au BufNewFile *.bash silent! 0r ~/etc/vim/templates/template.bash
+
 au BufRead            *            call SetCursorPosition()
 au BufNewFile         *.txt        set ft=_txt
 au BufRead,BufNewFile *.css        set sw=2
