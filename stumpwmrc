@@ -1,9 +1,9 @@
-;; vim: set et sw=2 ft=lisp tw=140 colorcolumn=+1,+2:;
+;;vim: set et sw=2 ft=lisp tw=140 colorcolumn=+1,+2:;;
 ;;                                                  ;;
 ;;    File: $HOME/.stumpwmrc                        ;;
 ;;  Author: Magnus Woldrich <m@japh.se>             ;;
 ;; Created: 2009-04-24                              ;;
-;; Updated: Sat Jul  2 17:29:19 CEST 2011           ;;
+;; Updated: 2011-09-20 11:57:28                     ;;
 ;; $HOME/.stumpwmrc                                 ;;
 ;;                                                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -12,9 +12,6 @@
 (in-package :stumpwm)
 
 (setf *default-package* :stumpwm)
-
-;(defparameter mpd_host ext:getenv("MPD_HOST"))
-;(if(ext:getenv "HOSTNAME") "shiva")
 
 (set-prefix-key       (kbd "C-f"))
 (set-fg-color         "sienna1")
@@ -52,6 +49,7 @@
 
 
 
+;; window management                                                         {{{
 (define-key *root-map* (kbd "h")            "move-focus left")
 (define-key *root-map* (kbd "j")            "move-focus down")
 (define-key *root-map* (kbd "k")            "move-focus up")
@@ -62,23 +60,16 @@
 (define-key *root-map* (kbd "C-k")          "move-window up")
 (define-key *root-map* (kbd "C-l")          "move-window right")
 
-
+(define-key *root-map* (kbd "H")            "gprev")
+(define-key *root-map* (kbd "L")            "gnext")
+(define-key *root-map* (kbd "K")            "gnext-with-window")
+(define-key *root-map* (kbd "J")            "gprev-with-window")
+;; }}}
+;; music                                                                     {{{
 (define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
 (define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
 (define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
-
-(define-key *root-map* (kbd "d")            "exec dmenuclip")
-(define-key *root-map* (kbd "m")            "exec dmenurl")
-(define-key *root-map* (kbd "e")            "exec sh /home/scp1/bin/dmenu.sh")
-(define-key *root-map* (kbd "g")            "exec google_dmenu")
-
-(define-key *root-map* (kbd "c")            "exec urxvtc -name shiva")
-(define-key *root-map* (kbd "x")            "exec xterm")
-(define-key *root-map* (kbd ",")            "exec xdotool click 1")
-(define-key *root-map* (kbd ".")            "exec xdotool click 3")
-
-(define-key *root-map* (kbd         "SPC")  "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
-(define-key *root-map* (kbd  "dead_acute")  "exec stumpish echo `weather norrköping --irc`")
+(define-key *root-map* (kbd "SPC")          "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
 (define-key *root-map* (kbd ".")            "exec vol_up")
 (define-key *root-map* (kbd ",")            "exec vol_down")
 
@@ -98,9 +89,15 @@
 (define-key *top-map*  (kbd "KP_Right")     "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
 (define-key *top-map*  (kbd "KP_Insert")    "exec echo pause > $HOME/.mplayer/fifo")
 (define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
+;;}}}
 
-;(define-key *root-map* (kbd "odiaeresis") "exec mppc -s")
-;(define-key *root-map* (kbd "aring")      "exec sh /home/scp1/bin/mpdfav")
-;(define-key *root-map* (kbd "v")          "exec urxvtc -e screen -x; screen -X screen zsh")
-;
+(define-key *root-map* (kbd ",")            "exec xdotool click 1")
+(define-key *root-map* (kbd ".")            "exec xdotool click 3")
+(define-key *root-map* (kbd "c")            "exec urxvtc -name shiva")
+(define-key *root-map* (kbd "d")            "exec dmenuclip")
+(define-key *root-map* (kbd "e")            "exec sh /home/scp1/bin/dmenu.sh")
+(define-key *root-map* (kbd "g")            "exec google_dmenu")
+(define-key *root-map* (kbd "m")            "exec dmenurl")
+(define-key *root-map* (kbd "x")            "exec xterm")
+
 (restore-from-file #p"/home/scp1/etc/stumpwm_dev.desktop")
