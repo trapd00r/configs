@@ -1,4 +1,4 @@
-;;vim: set et sw=2 ft=lisp tw=140 colorcolumn=+1,+2:;;
+;; vim: set et sw=2 ft=lisp tw=140 colorcolumn=+1,+2:;
 ;;                                                  ;;
 ;;    File: $HOME/.stumpwmrc                        ;;
 ;;  Author: Magnus Woldrich <m@japh.se>             ;;
@@ -91,8 +91,6 @@
 (define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 ;;}}}
 
-(define-key *root-map* (kbd ",")            "exec xdotool click 1")
-(define-key *root-map* (kbd ".")            "exec xdotool click 3")
 (define-key *root-map* (kbd "c")            "exec urxvtc -name shiva")
 (define-key *root-map* (kbd "d")            "exec dmenuclip")
 (define-key *root-map* (kbd "e")            "exec sh /home/scp1/bin/dmenu.sh")
