@@ -1,3 +1,12 @@
+vimhelp() {
+  /usr/bin/vim -X -c \
+    " for k in range(0, 127) | \
+        if (k != 104 && k < 106 && k != 58) || k > 109 | \
+          silent! exe 'nnoremap ' . nr2char(k) . ' :qa!<CR>' | \
+        endif | \
+      endfor  | :h $@ | :only \
+    "
+}
 
 256co() {
   for line in {0..15}; do for col in {0..15}; do
