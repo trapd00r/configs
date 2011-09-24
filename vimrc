@@ -40,7 +40,6 @@ set expandtab
 set fillchars=vert:│
 set foldmethod=marker
 set foldenable
-set foldlevelstart=2
 set formatoptions=tcrqln1
 set grepprg=ack\ -a
 set guioptions-=m
