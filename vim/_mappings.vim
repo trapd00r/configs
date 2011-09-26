@@ -52,7 +52,7 @@ map <C-j> <C-w><Down>
 
 map +  <C-W>+
 map -  :split<CR>
-map =  <C-W>-
+"map =  <C-W>-
 "map \| :vsplit<CR>
 " }}}
 " text transformation                                                        {{{
