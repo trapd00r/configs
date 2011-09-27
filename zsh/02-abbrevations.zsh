@@ -2,6 +2,10 @@
 
 typeset -Ag abbreviations
 abbreviations=(
+  "findf" 'find . -maxdepth 1 -type f -printf "%P\n" | \
+    perl -e "@_=<>; print sort grep {! /^[.]/ } @_; print sort grep { /^[.]/ } @_" | \
+    ls_color'
+
   "pinc"         "/usr/{lib,share}/perl5/{core,site,vendor}_perl/"
   "Paralel"      "Parallel"
   "Paralell"     "Parallel"
