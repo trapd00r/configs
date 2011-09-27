@@ -141,7 +141,10 @@ bindkey -a "Y"     vi-yank-whole-line
 #}}}
 # viins                                                                      {{{
 bindkey -s -M viins "^T"  "\\\top\n"
-bindkey -s -M viins "^V"  "vim\n"
+
+autoload edit-command-line
+bindkey --s -M viins '^V0' edit-command-line
+
 bindkey -s -M viins "^X0" " &> /dev/null "
 bindkey -s -M viins "^X1" "  > /dev/null "
 bindkey -s -M viins "^X2" " 2> /dev/null "
@@ -348,7 +351,8 @@ bindkey -R "\M-^@"-"\M-^?" self-insert
 #}}}
 # applications                                                               {{{
 bindkey -s "^T" "top\n"
-bindkey -s "^V" "vim\n"
+bindkey -s "^V" "^Rvim\n"
+bindkey -s "^Z" "urxvt -name shiva\n"
 
 if [[ "$TERM" =~ 'screen' ]]; then
   bindkey -s '^n' 'tmux next-window\n'
