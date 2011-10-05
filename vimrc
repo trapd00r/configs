@@ -14,7 +14,7 @@ for f in split(globpath(&runtimepath, '*.vim'), "\n")
   endif
 endfor
 
-let &runtimepath = &runtimepath . printf('%s/after', $VIMRUNTIME)
+let &runtimepath = &runtimepath . printf('%s/after,%s/after', $VIM, $VIMRUNTIME)
 
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
@@ -96,7 +96,6 @@ set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
-set scrollopt=ver,hor
 set ssop=buffers,folds,globals,help,localoptions,options,resize,tabpages
 set shiftwidth=2
 set shortmess=aIoOT
