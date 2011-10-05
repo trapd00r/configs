@@ -9,19 +9,21 @@ set formatoptions=qro
 
 "au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e | :19
 
-au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl |
+au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl   |
   \ call search('APP')  | normal di':startinsert
 
-au BufNewFile *.PL silent! 0r ~/etc/vim/templates/template.PL |
+au BufNewFile *.PL silent! 0r ~/etc/vim/templates/template.PL   |
   \ call search('__PACKAGE__') | exe 'normal dt} ' | startinsert
 
-au BufNewFile *.pm silent! 0r ~/etc/vim/templates/template.pm |
+au BufNewFile *.pm silent! 0r ~/etc/vim/templates/template.pm   |
   \ call cursor(0, 9) | exe 'normal d$A ' | startinsert
 
-au BufNewFile *.t  silent! 0r ~/etc/vim/templates/template.t  |
+au BufNewFile *.t  silent! 0r ~/etc/vim/templates/template.t    |
   \ :6 | exe 'normal o' | startinsert
 
-au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c |
+au BufNewFile *.vim silent! 0r ~/etc/vim/templates/template.vim |
+
+au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c    |
   \ :5 | exe 'normal o ' | startinsert 
 
 au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown |

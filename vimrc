@@ -8,11 +8,13 @@ if !isdirectory('/tmp/scp1')
   call mkdir("/tmp/scp1", "", 0700)
 endif
 
-for f in split(globpath(&runtimepath, '_*.vim'), "\n")
-  if(f !~ '_highlights.vim')
+for f in split(globpath(&runtimepath, '*.vim'), "\n")
+  if(f =~ '\v0[0-8].+[.]vim') 
     exe 'source ' . f
   endif
 endfor
+
+let &runtimepath = &runtimepath . printf('%s/after', $VIMRUNTIME)
 
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
@@ -94,6 +96,7 @@ set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
+set scrollopt=ver,hor
 set ssop=buffers,folds,globals,help,localoptions,options,resize,tabpages
 set shiftwidth=2
 set shortmess=aIoOT
@@ -102,7 +105,6 @@ set showmode
 set smartcase
 set smarttab
 set synmaxcol=160
-set scrolloff=5
 set tabpagemax=50
 set tabstop=2
 set t_Co=256
@@ -133,6 +135,7 @@ runtime macros/matchit.vim
 syntax on
 setlocal nospell spelllang=en_us
 
+" are we in a VC?                                                            {{{
 if $TERM == 'linux'
   let &t_Co = 8
   color peachpuff
@@ -143,7 +146,9 @@ if $TERM == 'linux'
 else
   color neverland-ansi
 endif
+"}}}
 
-exe 'source ' . split($VIMRUNTIME, ':')[0] . '/_highlights.vim'
+
+exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-highlights.vim'
 
 call pathogen#runtime_append_all_bundles()

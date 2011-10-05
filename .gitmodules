@@ -73,3 +73,6 @@
 [submodule "vim/bundle/vim-invader"]
 	path = vim/bundle/vim-invader
 	url = git://github.com/mattn/invader-vim.git
+[submodule "vim/bundle/vim-after-syntax-perl"]
+	path = vim/bundle/vim-after-syntax-perl
+	url = git://github.com/trapd00r/vim-after-syntax-perl.git
