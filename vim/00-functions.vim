@@ -1,6 +1,18 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-09-15 07:38:11
+" Updated: 2011-10-05 08:15:07
+
+" :cabbrev that apply only at start of line                                  {{{
+" makes Cabbrev('W', 'w') only abbrevate if W is the first char on the line
+func! Single_quote(str)
+  return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
+endfunc
+
+func! Cabbrev(key, value)
+  exe printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
+    \ a:key, 1+len(a:key), Single_quote(a:value), Single_quote(a:key))
+endfunc
+"}}}
 
 func! AddFoldMarkers()
   setlocal virtualedit=all

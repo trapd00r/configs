@@ -12,6 +12,8 @@ else
   ia <expr> mypc $HOSTNAME
 endif
 
+:call Cabbrev('W', 'w')
+
 " Dump output from external cmd to new buffer
 cab ! new<CR>:r !
 iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
