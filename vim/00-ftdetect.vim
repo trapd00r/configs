@@ -62,6 +62,9 @@ let g:mpd_host                     = '192.168.1.128'
 let g:mpd_port                     = 6600
 let g:mpc_lyrics_use_cache         = 1
 "}}}
+" xclipboard.vim                                                             {{{
+let g:xclipboard_pipe_path         = '/home/scp1/etc/vim/xclipboard.fifo'
+"}}}
 
 " C                                                                          {{{
 let c_comment_strings              = 1
