@@ -114,7 +114,7 @@ map <leader>cd :cd %:p:h<CR>
 
 nnoremap <C-n>     :bnext<CR>
 nnoremap <C-p>     :bprev<CR>
-nnoremap <leader>b :buffers<CR>:buffer<space>
+nnoremap <leader>b :ls<CR>:buffer<space>
 nnoremap <leader>g :e#<CR>
 nnoremap <leader>l :ls<CR>
 
