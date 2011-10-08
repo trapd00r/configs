@@ -15,7 +15,7 @@ set display_filter="tr '\240\204\223\226' ' \"\"-'"
 set edit_headers
 #set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
 #set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
-set editor="vim -c \"set spell spelllang=en | so ~/etc/vim/_abbrevations.vim\""
+set editor="vim -c \"set spell spelllang=en | so ~/etc/vim/01-abbrevations.vim\""
 set fast_reply
 set folder=/mnt/Docs/Mail/inbox
 set forward_format="Fw: %s"     # subject in forwarded messages
@@ -42,7 +42,7 @@ set nomark_old
 set nowait_key
 set pager_context=3
 set pager_format="-%S- %-20.20f %s"
-#set pager="/home/scp1/devel/utils/mutt_pager"
+#set pager="/home/scp1/dev/utils/mutt_pager"
 set pager_index_lines=0
 
 set post_indent_string='---end quoted text---'
@@ -106,4 +106,4 @@ auto_view text/x-diff
 auto_view text/x-patch
 auto_view text/html
 
-my_hdr X-Operating-System:`mpc --format "%artist% - %title% on %album%"|head -1`
+my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
