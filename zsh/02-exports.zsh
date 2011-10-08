@@ -92,7 +92,15 @@ export HARNESS_SUMMARY_COL_SUC=" bold cyan"
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
 export PERLDOC="-t"
-export PERL5OPT='-Ilib -I$HOME/dev/utils/lib'
+
+export PERL5OPT="$(echo '
+  -Ilib
+  -I$HOME/dev/utils/lib
+  -MFile::Basename=basename
+  -MCarp=carp,croak,confess,cluck
+  -Mopen=:std,:utf8
+  -Mutf8
+  ' | perl -pe 's/\n//g')"
 #export RELEASE_TESTING=1
 #}}}
 # dmenu                                                                      {{{
