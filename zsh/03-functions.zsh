@@ -1,3 +1,12 @@
+pacman() {
+  sexpac "$@"
+}
+
+ossxmix() {
+  /usr/bin/ossxmix &
+  (sleep 7; killall ossxmix)
+}
+
 vimhelp() {
   /usr/bin/vim -X -c \
     " for k in range(0, 127) | \
