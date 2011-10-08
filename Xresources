@@ -140,7 +140,7 @@ shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
 shiva.underlineURLs:        false
 shiva.urlLauncher:          /usr/bin/firefox
 
-shiva.perl-lib:             /usr/lib/urxvt/perl
+shiva.perl-lib:             /home/scp1/dev/urxvt-extensions
 shiva.perl-ext-common:      default,matcher
 shiva.perl-eval:            $^O
 
