@@ -13,6 +13,8 @@ if [ -d "$HOME/dev/PKGBUILDS" ]; then
   "
 fi
 
+alias foo='rm -r /foo'
+
 # lisp                                                                     {{{
 alias bigloo='rlwrap bigloo'
 alias clisp=' rlwrap clisp'
@@ -230,7 +232,7 @@ alias     make='/home/scp1/dev/utils/mymake'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
 alias      die='kill -9 $$'
-alias    urxvt="urxvt -name $HOST"
+alias    urxvt="urxvt -name $HOST $@"
 alias     less='vimpager'
 alias     wget='wget --no-check-certificate -U=Mozilla'
 alias     ptop='watch -n1 ps aux --sort=+%cpu'
