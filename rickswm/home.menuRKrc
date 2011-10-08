@@ -1,0 +1,16 @@
+menu for menuRK program
+center
+
+utilRK newws #New Workspace
+utilRK listmoves | menuRK -t 'Grab Other Workspace Window' -c 50 #Pull Window to this Workspace...
+#
+sleep 2 ; xset s activate #Blank Screen
+xterm +sb -fn 10x20 -e vim $HOME/.grabRKrc ; kill -WINCH $WMPID #Edit Grab Keys...
+xterm +sb -fn 10x20 -e vim $HOME/.menuRKrc & #Edit This Menu...
+sleep 1; kill -HUP $WMPID #Restart RicksWM
+
+left
+#========================================
+#===================== Workspace: Window
+#========================================
+

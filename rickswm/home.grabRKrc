@@ -1,0 +1,12 @@
+# keys with actions
+
+F1     alt      xterm +sb -fn vga
+F2     alt      utilRK listwithws | grep 'Listings - Yahoo! TV' | sh
+
+Right  control  utilRK forward
+Left   control  utilRK backward
+
++116   none     xterm +sb -fn 10x20
++117   none     utilRK listnosticky | menuRK -t 'Select Command / Window to Raise' -3d -c 40 -ws sticky -f $HOME/.menuRKrc -f - &
+
+# end of file
