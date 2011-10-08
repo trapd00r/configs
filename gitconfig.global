@@ -39,6 +39,3 @@
   undo = checkout --
   log1 = log --
   whatthefuckdidido = diff HEAD
-[github]
-	user  = trapd00r
-  token = 306647d26f05795f937592feaa470cbb
