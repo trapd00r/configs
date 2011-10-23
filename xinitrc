@@ -23,7 +23,7 @@ host_resolution[india]="1366x768"
 host_resolution[rambo]="1920x1080"
 
 
-if [ "$HOST" = 'shiva' ]; then
+if [ "$HOSTNAME" = 'shiva' ]; then
   xrdb $HOME/etc/Xresources
   unclutter -idle 4 &
   xset m 1 1        &
@@ -38,12 +38,12 @@ if [ "$HOST" = 'shiva' ]; then
   urxvtd -q -f -o                     &
   (sleep 1; urxvtc -name URxvt.shiva) &
 
-elif [ "$HOST" = 'india' ]; then
+elif [ "$HOSTNAME" = 'india' ]; then
   xrdb $HOME/.Xresources
   xsetroot -bg \#121212 -mod 3 3 &
   setxkbmap se -variant nodeadkeys
 
-elif [ "$HOST" = 'rambo' ]; then
+elif [ "$HOSTNAME" = 'rambo' ]; then
   xrdb $HOME/etc/Xresources
   xset m 1 1        &
   unclutter -idle 4 &
@@ -51,7 +51,7 @@ elif [ "$HOST" = 'rambo' ]; then
   (sleep 1; urxvtc -name URxvt.rambo) &
   feh --bg-scale $HOME/wallpapers/pink_floyd_was_here.jpg &
 else
-  printf "\n-\n> Can not find a suitable WM for %s\n" $HOST
+  printf "\n-\n> Can not find a suitable WM for %s\n" $HOSTNAME
   exit
 fi
 
