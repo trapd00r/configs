@@ -8,6 +8,7 @@ export ACKRC="$HOME/etc/ackrc"
 export BROWSER="/usr/bin/w3m"
 export CLIVE_CONFIG="$HOME/etc/cliverc"
 export EDITOR=vim
+export VIDIR_EDITOR_ARGS='-c :retab | :set nolist | :set colorcolumn=0'
 export GIST_DIR=$HOME/dev/_gists/
 export HOSTNAME="shiva"
 export LISTMAX=300
