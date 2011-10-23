@@ -150,4 +150,4 @@ endif
 
 exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-highlights.vim'
 
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
