@@ -7,6 +7,11 @@
 #
 #zmodload zsh/zprof
 
+# set up some traps (watch out)
+
+TRAPUSR1() { source ~/.zshrc }
+TRAPUSR2() { feh -FZrD3 /mnt/Porn/00-pics/ &; exit };
+
 export VIMRUNTIME="$HOME/etc/vim"
 
 for r in $HOME/etc/zsh/*.zsh; do
