@@ -1,48 +1,59 @@
 SHELL=/bin/sh
 VERBOSE=on
-MAILDIR=/mnt/Docs/Mail
-LOGFILE=/mnt/Docs/Mail/.procmail.log
+MAILDIR=/mnt/Mail
+LOGFILE=/mnt/Mail/.procmail.log
 DEFAULT=$MAILDIR/inbox/
 
-################################################################################
-## recipes!                                                                   ##
-################################################################################
-# denyhost mails
-
-# mails addressed directly to me
-
+# lists                                                                      {{{
 :0:
 * ^TO_arch-general@archlinux.org
-/mnt/Docs/Mail/inbox/arch-general/
+/mnt/Mail/inbox/arch-general/
 
 :0:
 * ^TO_arch-dev-public@archlinux.org
-/mnt/Docs/Mail/inbox/arch-dev/
+/mnt/Mail/inbox/arch-dev/
 
 :0:
 * ^TO_libtorrent-devel@rakshasa.no
-/mnt/Docs/Mail/inbox/rtorrent/
+/mnt/Mail/inbox/rtorrent/
 
 :0:
 * ^TO_full-disclosure@lists.grok.org.uk
-/mnt/Docs/Mail/inbox/full-disclosure/
+/mnt/Mail/inbox/full-disclosure/
 
 :0:
 * ^TO_perldl2jach.hawaii.edu
-/mnt/Docs/Mail/inbox/perldl/
+/mnt/Mail/inbox/perldl/
 
 :0:
 * ^TO_daily-build-reports@perl.org
-/mnt/Docs/Mail/inbox/daily-build-reports/
+/mnt/Mail/inbox/daily-build-reports/
 
 :0:
 * ^TO_smokers-reports@perl.org
-/mnt/Docs/Mail/inbox/smokers-reports/
-
+/mnt/Mail/inbox/smokers-reports/
+#}}}
+# retards                                                                    {{{
 :0:
 * ^From:.*bardiazakeri@gmail.com
 /dev/null
 
-# base case, to inbox
+:0:
+* ^TO_ubuntu-se@lists.ubuntu.com
+/dev/null
+
+:0:
+* ^FROM_feedblitz@mail.feedblitz.com
+/dev/null
+
+:0
+* ^Subject:.*machinima
+/dev/null
+
+:0
+* ^Subject:.*OreillyMedia\sjust\suploaded\sa\video
+/dev/null
+#}}}
+
 :0:
 $DEFAULT
