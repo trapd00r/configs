@@ -1,4 +1,4 @@
-source /home/scp1/etc/pentadactyl/color/neverland.penta
+source /home/scp1/etc/pentadactyl/color/sanecrap.penta
 javascript readabilityFootnotes = "true"
 
 " options {{{
@@ -45,6 +45,7 @@ nnoremap d     :tabclose<CR>
 nnoremap j     10j
 nnoremap k     10k
 
-cnoremap q     :tabclose
+command Q  :tabclose
+command QQ :qa!
 
 " vim: set ft=vim:
