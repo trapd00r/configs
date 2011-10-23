@@ -1,0 +1,54 @@
+#
+# color terminals:
+# (default, white, black, green, magenta, blue, cyan, yellow, red)
+# (bright...)
+# (color1,color2,...,colorN-1)
+#
+#     object     foreground     background
+#
+color normal     default        default # normal text
+color indicator  brightyellow   red     # actual message
+color tree       brightmagenta  default # thread arrows
+color status     brightgreen    blue    # status line
+color error      brightred      default # errors
+color message    red            default # info messages
+color signature  red            default # signature
+color attachment brightyellow   red     # MIME attachments
+color search     brightyellow   red     # search matches
+color tilde      brightmagenta  default # ~ at bottom of msg
+color markers    red            default # + at beginning of wrapped lines
+color hdrdefault blue           default # default header lines
+color bold       red            default # hiliting bold patterns in body
+color underline  green          default # hiliting underlined patterns in body
+color quoted     blue           default # quoted text
+color quoted1    magenta        default
+color quoted2    red            default
+color quoted3    green          default
+color quoted4    cyan           default
+color quoted5    blue           default
+color quoted6    magenta        default
+color quoted7    red            default
+color quoted8    green          default
+color quoted9    cyan           default
+#
+#     object     foreground backg.   RegExp
+#
+color header     red        default  "^(from|subject):"
+#color body      cyan       default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+color body       cyan       default  "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body       cyan       default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+#color body      red        default  "(^| )\\*[-a-z0-9äöüß*]+\\*[,.?]?[ \n]"
+#color body      green      default  "(^| )_[-a-z0-9äöüß_]+_[,.?]?[ \n]"
+color body       red        default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+color body       green      default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+
+# Colorize (German) GnuPG messages:
+color body       red        default  "Korrekte Unterschrift"
+color body       brightyellow black  "(Öffentlicher Schlüssel nicht gefunden|keine vertrauenswürdige Signatur|Dieser Schlüssel ist verfallen|FALSCHE Unterschrift)"
+
+uncolor index *                                 # unset all color index entries
+color index      blue       default  ~F         # Flagged
+color index      red        default  ~N         # New
+color index      magenta    default  ~T         # Tagged
+color index      yellow     default  ~D         # Deleted
+

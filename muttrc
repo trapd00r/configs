@@ -1,4 +1,4 @@
-source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo default ; fi`
+source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trans-green; fi`
 
 
 set abort_nosubject=no
@@ -17,13 +17,13 @@ set edit_headers
 #set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
 set editor="vim -c \"set spell spelllang=en | so ~/etc/vim/01-abbrevations.vim\""
 set fast_reply
-set folder=/mnt/Docs/Mail/inbox
+set folder=/mnt/Mail/inbox
 set forward_format="Fw: %s"     # subject in forwarded messages
 #set from="magnus@trapd00r.se"
 #set from="magnus@japh.se"
 set from="m@japh.se"
 set realname="Magnus Woldrich"
-set header_cache=/mnt/Docs/Mail/.hcache
+set header_cache=/mnt/Mail/.hcache
 set hide_missing=yes
 set hostname="japh.se"
 set implicit_autoview=yes
@@ -55,7 +55,7 @@ set quit=yes
 set quote_regexp="^ *[a-zA-Z]*[>|][>:|]*"
 set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 set read_inc=25
-set record=/mnt/Docs/Mail/sent-`date +"%y%m"`
+set record=/mnt/Mail/sent-`date +"%y%m"`
 set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
 set reply_to=yes
 set reverse_alias
@@ -89,7 +89,7 @@ bind index ] next-line
 
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
-mailboxes `find /mnt/Docs/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
+mailboxes `find /mnt/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 
 ignore *
 unignore From:

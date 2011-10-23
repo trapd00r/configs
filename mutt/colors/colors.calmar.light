@@ -1,0 +1,94 @@
+#light colorscheme
+
+color normal       color22      color230
+color indicator    color22     color185
+color tree         color136      color230 
+color status       color233     color214
+color error        color231      color160 
+color message      color231      color166 
+color signature    color240      color230 
+color attachment   color37      color230 
+color search       color21     color215 
+color tilde        color130     color230 
+color markers      color138     color230 
+
+#mono bold          reverse
+#color bold         color173 color191
+#mono underline     reverse
+#color underline    color48  color191
+
+color quoted        color19     color230             # quoted text
+color quoted1       color88      color230
+color quoted2       color55      color230
+color quoted3       color16      color230
+color quoted4       color52      color230
+color quoted5       color24      color230
+color quoted6       color96     color230
+color quoted7       color235     color230
+color quoted8       color130      color230
+color quoted9       color26     color230
+# color body          cyan  color230  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+# color body          cyan  color230  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+# color body          red   color230  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+# color body          green color230  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
+# color body          red   color230  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+# color body          green color230  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+
+color index         color160     color230  ~F         # Flagged
+color index         color20     color228  ~N          # New
+color index         color20     color231  ~O         
+color index         color22     color221  ~T         # Tagged
+color index         color240     color230  ~D         # Deleted
+
+######################
+
+#mono body	reverse		'^(subject):.*'
+#color body	brightwhite magenta	'^(subject):.*'
+#mono body	reverse		'[[:alpha:]][[:alnum:]-]+:'
+#color body	black cyan	'[[:alpha:]][[:alnum:]-]+:'
+
+######################
+# header
+
+color hdrdefault color23    color229 
+color header	color30    color229    '^date:'
+color header	color22    color229    '^(to|cc|bcc):'
+color header	color20    color229    '^from:'
+color header	color124    color229    '^subject:'
+color header    color31     color229    '^user-agent:'
+color header	color29     color229    '^reply-to:'
+
+#color header	magenta default '^(status|lines|date|received|sender|references):'
+#color header	magenta default '^(pr|mime|x-|user|return|content-)[^:]*:'
+#color header	brightyellow default '^content-type:'
+#color header	magenta default '^content-type: *text/plain'
+# color header	brightgreen default '^list-[^:]*:'
+#mono  header    bold	            '^(subject):.*$'
+#color header	brightcyan default	'^(disposition)'
+#color header	green default	'^(mail-)?followup'
+#color header	white default	'^reply'
+#color header	brightwhite default	'^(resent)'
+# color header	brightwhite default	'^from:'
+
+######################
+# spam
+
+### html
+#color index blue default '~b "<(img|a |html|body)"'
+
+### china spam
+#color index brightred black '~h "^(content-type:| +).*charset=\"?(big5|gb2312|SHIFT.JIS|euc.kr|windows.125[^2]|iso.[0-9]+.jp|koi[^       ;"])"'
+
+### sex
+#color index brightyellow black "~b '(p$E+n$I+$S|sex|er$E+ct$I+$O+n|p$O+rn$O+|v$I+$A+gr|c$I+$A+$L+$I+$S)'"
+
+### misc
+#color index cyan black '~b "(w$A+tch|r$E+p$L+$I+c$A|d$I+p$L+$O+m|d$E+gr$E+e|pr$I+ce|s$A+les|\\\$[0-9]+)"'
+
+### drug
+#color index white black "~b '(ph$A+rm$A+cy|m$E+d$I+c$A+t$I+$O+n|pr$E+scr$I+pt$I+$O+n|d$I+$S+c$O+$U+nt|p$I+$L+$S|v$A+$L+$I+$U+m|v$I+c$O+d$I+n)'"
+
+
+#mono index	bold '~h "^content-type: *(multipart/(mixed|signed|encrypted)|application/)"'
+#color index	green black '~h "^content-type: *multipart/(signed|encrypted)"'
+

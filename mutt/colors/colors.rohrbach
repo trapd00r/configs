@@ -1,0 +1,29 @@
+color	hdrdefault	green black
+color	quoted		yellow black
+color	signature	red black
+color	indicator	white blue
+color	attachment	magenta black
+color	error		red black
+color	status		white blue
+color	tree		yellow black
+color	normal		white black
+color	body		cyan black	(http|ftp)://[_a-zA-Z0-9\./~\-]+
+	# gnupg coloring (source: kris kennaway <kris@obsecurity.org>)
+color	body	green black		"^gpg: Good signature from"
+color	body	brightred black		"^gpg: Bad signature from"
+color	body	brightred black		"^gpg: BAD signature from"
+color	body	brightred black		"^gpg: Note: This key has expired!"
+color	body	brightyellow black	"^gpg: WARNING: This key is not certified with a trusted signature!"
+color	body	brightyellow black	"^gpg:          There is no indication that the signature belongs to the owner."
+color	body	brightyellow black	"^gpg: can't handle these multiple signatures"
+color	body	brightyellow black	"^gpg: signature verification suppressed"
+color	body	brightyellow black	"^gpg: invalid node with packet of type"
+	# index coloring based on score
+#color	index	white black
+color	index	cyan black		'~n -0'
+color	index	green black		'~n 1-9'
+color	index	white black		'~n 10-19'
+color	index	brightyellow black	'~n 20-'
+#color	index	brightyellow black	'~p'
+
+color	header	cyan black		'X-Mailer:.*Outlook'

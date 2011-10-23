@@ -1,0 +1,40 @@
+# Source: http://blog.kevinmeltzer.com/archives/000636.html
+color attachment brightmagenta black  
+color error brightwhite red   # errors yell at you in red
+color hdrdefault red black   # headers
+color indicator brightyellow magenta # currently selected message
+color markers brightcyan black  # the + for wrapped pager lines
+color message brightcyan black  # informational messages, not mail
+color normal white black    # plain text
+color quoted green black  # quoted text
+color search brightgreen black # hilite search patterns in the pager
+color signature red black    # signature (after "-- ") is red 
+color status brightyellow blue # status bar is yellow *on blue*   
+color tilde blue black  # ~'s after message body
+color tree red black    # thread tree in index menu is magenta
+color signature brightred black
+color underline yellow black
+color header cyan black ^(From|Subject): # Important headers
+color body magenta black "(ftp|http)://[^ ]+"  # picks up URLs
+color body magenta black [-a-z_0-9.]+@[-a-z_0-9.]+ 
+
+#  Coloring quoted text - coloring the first 7 levels:
+color quoted    cyan black
+color quoted1   yellow black
+color quoted2   red black
+color quoted3   green black
+color quoted4   cyan black
+color quoted5   yellow black
+color quoted6   red black
+color quoted7   green black
+
+#  Colorize smileys:  :-)  ;-)  :-/  :-(
+color body  yellow black "[;:]-[)/(|]"
+color body  yellow black "[;:][)/(|]"
+color body  green black "[[:alpha:]]\+://[^ ]*"
+
+color index brightyellow black ~N      # New
+color index yellow black ~O              # Old
+color index magenta black ~F
+color index blue black ~T
+color index red black ~D

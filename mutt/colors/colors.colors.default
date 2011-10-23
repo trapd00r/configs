@@ -1,0 +1,42 @@
+color body    brightwhite default "[;:]-[)/(|]"
+
+color normal  default  color233
+color error   red      color233
+color markers blue     color233
+color tilde   color142 color233
+color status  black    color233
+
+mono  indicator bold
+color indicator color88      color233
+color index     color100     color233 ~l
+color index     color85      color233 ~N
+color index     color86      color233 ~O
+color index     magenta      color233 "! ~C ." # No To: or Cc: (newsdeliver)
+color index     color100     color233 ~T
+color index     white        color233 ~F
+color index     color87      color233 ~D
+color tree      color85      color233
+
+
+color header     color197 color233 "^Subject"
+color header     color184 color233 "^From"
+color header     color186 color233 "^To"
+color header     color252 color233 "^User-Agent"
+color header     color250 color233 "^X-.+"
+color hdrdefault color242 color233
+
+color attachment color86 color233
+color signature color196 color233
+
+color quoted  color86 color233
+color quoted1 color87 color233
+color quoted2 color88 color233
+color quoted3 color88 color233
+color quoted4 color88 color233
+color quoted5 color88 color233
+color quoted6 color88 color233
+color quoted7 color88 color233
+color quoted8 color88 color233
+color quoted9 color88 color233
+
+# vim: set ft=muttrc:

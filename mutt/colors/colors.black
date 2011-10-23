@@ -1,0 +1,57 @@
+# -*- muttrc -*-
+#
+# Color settings for mutt.
+#
+
+color attachment	yellow		default
+color hdrdefault	brightblack	default
+
+color header	brightgreen	default "^subject: *"
+color header	brightcyan	default	"^to: *"
+color header	cyan		default	"^delivered-to: *"
+color header	cyan		default	"^message-id: *"
+color header	red		default	"^content-type: *"
+color header	brightblue	default	"^List-Id: *"
+color header	red	default	"^X-Bogosity: *"
+color header	green   default "^x-mailer: *"
+color header	green   default "^user-agent: *"
+color header	green   default "^x-operating-system: *"
+color header	brightblue   default "^organization: *"
+color header      brightblue   default "^delivery-date: *"
+color header      magenta      default "^date: *"
+color header      brightyellow       default "^from: *"
+color header      cyan         default "^cc: *"
+color header      cyan         default "^bcc: *"
+color header      yellow       default "^reply-to: *"
+color header      yellow       default "^mail-followup-to: *"
+color header      yellow       default "^old-return-path: *"
+color header      red          default "^x-mailing-list: *"
+color header      red          default "^in-reply-to: *"
+
+color body        magenta      default "((ftp|http|https)://|(file|news):|\
+                                        www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \
+                                        \t\n\r\"<>()]*[^][{} \t\n\r\"\
+                                        <>().,:!])?/?"
+color body        brightyellow default "[_a-z\.\$A-Z0-9-]+@[a-zA-Z0-9\./\-]+"
+color body        brightgreen  default "<[Gg]>"
+color body        brightgreen  default "<[Bb][Gg]>"
+color body        brightgreen  default ">?[;:][-^]?[][)(><}{|/DP][)}]*"
+
+color bold        blue         default
+color error       red          default
+color index       yellow       default "~f Krennwallner"
+color index       brightblack  default "~d >30d"
+color indicator   default      red
+color markers     red          default
+color message     white        blue
+color normal      default      default
+color quoted      green        default
+color quoted1     yellow       default
+color quoted2     green        default
+color quoted3     yellow       default
+color search      default      green
+color signature   red          default
+color status      yellow       blue
+color tilde       blue         default
+color tree        red          default
+color underline   yellow       white

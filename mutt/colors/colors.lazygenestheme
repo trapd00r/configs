@@ -1,0 +1,37 @@
+# $Id: lazygenestheme,v 1.1.1.1 2002/04/10 00:31:50 han Exp $
+#
+# Colours I like
+color normal white black
+color quoted green black
+color quoted1 cyan black
+color quoted2 green black
+color quoted3 cyan black
+color indicator white red
+color signature blue black
+color hdrdefault yellow black
+color status white blue
+color message white black
+color error red black
+color body magenta black "(ftp|http)://[^ ]+"
+color body magenta black [-a-z_0-9.]+@[-a-z_0-9.]+
+
+# Colours I haven't changed yet
+color tree magenta black
+color tilde magenta black 
+color markers brightcyan black
+color attachment brightmagenta black
+color search black green
+color underline brightgreen black
+
+color index magenta black '(~n 1-1)'
+color index green black '(~n 2-2)'
+color index brightblue black '(~n 3-3)
+color index white black '(~n 4-9)'
+color index brightred black '(~n 10-99)'
+
+color index brightred black '(~s"REPLAY: Score Upload Notice : seymour scored.*")'
+color index brightred black '(~s"REPLAY: Tournament Upload Notice : seymour scored.*")'
+color index green black '(~b"The new recording reduces your leaderboard score.")'
+
+# Colour mutt-dev CVS commit emails brightblue on black
+color index brightblue black '(~s"\[\d4-\d2-\d2\] CVS commit messages")'

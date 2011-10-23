@@ -1,0 +1,17 @@
+color normal white default
+color attachment brightyellow default
+color hdrdefault cyan default
+color indicator black cyan
+color markers brightred default
+color quoted green default
+color signature cyan default
+color status brightgreen blue
+color tilde blue default
+color tree red default
+color header brightgreen default ^From:
+#color header brightcyan black ^To:
+#color header brightcyan black ^Reply-To:
+#color header brightcyan black ^Cc:
+#color header brightblue black ^Subject:
+color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+#color body brightblue black (https?|ftp)://[\-\.\,/%~_:?\#a-zA-Z0-9]+

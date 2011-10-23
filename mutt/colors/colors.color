@@ -1,0 +1,51 @@
+#
+# This theme is from H. D. Lee
+#
+# This colors file was originally taken from Rosenfeld's
+# Modified slightly.
+# Running aterm with:
+#  aterm +sb -geometry 80x60 -bg papayawhip -fg darkgreen -e mutt
+#
+# color terminals:
+# (default, white, black, green, magenta, blue, cyan, yellow, red)
+# (bright...)
+# (color1,color2,...,colorN-1)
+#
+#     object     foreground     background
+#
+color normal     default        default # normal text
+color indicator  brightyellow   red     # actual message
+color tree       brightmagenta  default # thread arrows
+color status     brightgreen    blue    # status line
+color error      brightred      default # errors
+color message    red            default # info messages
+color signature  red            default # signature
+color attachment green          default # MIME attachments
+color search     brightyellow   red     # search matches
+color tilde      brightmagenta  default # ~ at bottom of msg
+color markers    red            default # + at beginning of wrapped lines
+color hdrdefault blue           default # default header lines
+color bold       red            default # hiliting bold patterns in body
+color underline  green          default # hiliting underlined patterns in body
+color quoted     cyan           default # quoted text
+color quoted1    green          default
+color quoted2    red            default
+color quoted3    magenta        default
+color quoted4    blue           default
+color quoted5    blue           default
+#
+#     object     foreground backg.   RegExp
+#
+color header     red        default  "^(from|subject):"
+color body       yellow       default  "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body       cyan       default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+color body       red        default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+color body       green      default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+
+uncolor index *                                 # unset all color index entries
+color index      brightblack default "~h ^X.Mailer..Microsoft.Outlook"
+color index      green      default  ~F         # Flagged
+color index      red        default  ~N         # New
+color index      magenta    default  ~T         # Tagged
+color index      yellow     default  ~D         # Deleted
+color index	 blue 	    default  '\[(CHRPM|Contrib-Rpm)\]'

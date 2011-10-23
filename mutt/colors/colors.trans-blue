@@ -1,0 +1,68 @@
+#
+# -*-- Mutt Theme 'Cyan' --*-
+# By Jochem Kossen 
+#          And
+#             Han Boetes
+# Absolutely NO copyright (c) 2001 (Do with it whatever you like)
+
+#
+# Colors you can use:
+#
+# white   -   brightwhite
+# yellow  -  brightyellow
+# blue     -     brightblue
+# magenta - brightmagenta
+# blue    -    brightblue
+# green   -   brightgreen
+# black   -   brightblack
+
+
+color normal      white        default
+color attachment  blue         default
+color bold        brightwhite  default
+color underline   default      blue
+color error       brightwhite  default
+color indicator   black        blue
+color message     brightblue   default
+color status      default		blue
+
+color hdrdefault  blue         default
+#color header      brightblue   default  "^date: *"
+color header      brightblue   default  "^from: *"
+color header      brightblue   default  "^subject: *"
+#color header      blue         default  "^to: *"
+#color header      blue         default  "^deliveblue-to: *"
+#color header      blue         default  "^cc: *"
+#color header      blue         default  "^bcc: *"
+#color header      brightblue   default  "^reply-to: *"
+#color header      brightblue   default  "^mail-followup-to: *"
+#color header      brightblue   default  "^old-return-path: *"
+#color header      blue         default  "^x-mailer: *"
+#color header      blue         default  "^user-agent: *"
+#color header      blue         default  "^x-operating-system: *"
+color header      brightblue   default  "^x-mailing-list: *"
+#color header      blue         default  "^in-reply-to: *"
+
+color body        brightblue   default  "[^ <]*:\/\/[^ >]*" # for URLs
+color body        brightblue   default  "[A-Za-z0-9_\.\-]+@[A-Za-z0-9_\.\-]*[A-Za-z0-9_\.\-]+"
+
+color quoted      blue         default
+color quoted1     brightblue   default
+color quoted2     blue         default
+color quoted3     brightblue   default
+color quoted4     blue         default
+color quoted5     brightblue   default
+
+color signature   brightblack default
+color tilde       brightblue   default
+color tree        blue         default
+color markers     brightblack default
+color index       blue         default "~O"   # Unread
+color index       brightblue   default "~N"   # New
+# color index       blue         default "~g"   # gpg signed
+# color index       brightblue   default "~G"   # gpg encrypted
+color index       brightwhite  default "~F"   # Flagged
+color index       brightwhite  default "~T"   # Tagged
+color index       brightwhite  default "~f MAILER-DAEMON@*"
+color index       brightwhite  default "~f Mailer-Daemon@*"
+color index       brightblack       default "~D"   # Deleted

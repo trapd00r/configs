@@ -1,0 +1,74 @@
+#
+# -*-- Mutt Theme 'OpenBSD' --*-
+# By  Han Boetes
+# Absolutely NO copyright (c) 2001 (Do with it whatever you like)
+# I was inprired by this poster when creating this theme:
+# http://www.openbsd.org/art/BSDPoster2.jpg
+# I bought that poster at hal2001
+#
+
+# Colors you can use:
+#
+# white   -   brightwhite
+# yellow  -   brightyellow
+# cyan    -   brightcyan
+# blue    -   brightblue
+# green   -   brightgreen
+# black   -   brightblack
+
+
+color normal      cyan         default
+color attachment  cyan         default
+color bold        white        default
+color underline   default      cyan
+color error       yellow       default
+color indicator   blue         yellow
+color message     cyan         default
+color status      blue         yellow
+
+color quoted      green        default
+color quoted1     yellow       default
+color quoted2     blue         default
+color quoted3     brightblack  default
+color quoted4     brightblack  default
+color quoted5     brightblack  default
+
+color signature   brightblack  default
+#color tilde       brightcyan   default
+color tree        green        default
+color markers     brightblack  default
+
+color body        brightyellow default  "[^ <]*:\/\/[^ >]*" # for URLs
+color body        yellow default  "[A-Za-z0-9_\.\-]+@[A-Za-z0-9_\.\-]*[A-Za-z0-9_\.\-]+" # For email adresses
+
+color hdrdefault  brightblack         default
+#color header      brightcyan   default  "^date: *"
+#color header      brightcyan   default  "^from: *"
+#color header      brightcyan   default  "^subject: *"
+#color header      cyan         default  "^to: *"
+#color header      cyan         default  "^delivecyan-to: *"
+#color header      cyan         default  "^cc: *"
+#color header      cyan         default  "^bcc: *"
+#color header      brightcyan   default  "^reply-to: *"
+#color header      brightcyan   default  "^mail-followup-to: *"
+#color header      brightcyan   default  "^old-return-path: *"
+#color header      cyan         default  "^x-mailer: *"
+#color header      cyan         default  "^user-agent: *"
+#color header      cyan         default  "^x-operating-system: *"
+#color header      brightcyan   default  "^x-mailing-list: *"
+#color header      cyan         default  "^in-reply-to: *"
+
+color header white default "^Content-Type:"
+
+
+color index       white	       default "~N"   # New
+color index       cyan         default "~O"   # Unread
+color index       yellow default "~g"   # gpg signed
+color index       brightblue   default "~G"   # gpg encrypted
+color index       brightwhite  default "~F"   # Flagged
+color index       brightcyan   default "~T"   # Tagged
+color index       brightwhite  default "~f MAILER-DAEMON@*"
+color index       brightwhite  default "~f Mailer-Daemon@*"
+color index       brightcyan   default "~t han@cc15467*"
+color index	  green	       default "~h ^X.Mailer..Microsoft.Outlook"
+color index       brightblack  default "~D"   # Deleted

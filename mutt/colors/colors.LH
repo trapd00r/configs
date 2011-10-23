@@ -1,0 +1,95 @@
+#
+#   Color
+#   Tuned for white background
+#
+
+color normal            black           white
+
+color hdrdefault        red             white
+color signature         blue            white
+color indicator         black           brightyellow
+color error             brightred       white
+color status            white           blue
+color tree              red             white # the thread tree in the index menu
+color tilde             magenta         white
+color message           blue            white
+color markers           cyan            white
+color attachment        brightmagenta   white
+color search            black           green   # how to hilite searches in the pager
+color quoted            blue            white # quoted text
+color quoted1           magenta         white
+color quoted2           red             white
+color quoted3           green           white
+color quoted4           cyan            white
+color quoted5           blue            white
+color quoted6           magenta         white
+color quoted7           red             white
+color quoted8           green           white
+color quoted9           cyan            white
+color underline         brightgreen     white
+color index             green           white ~F
+
+color header            red             white ^(From|Subject):
+# point out url's
+color body              black           white "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body              cyan            white [-a-z_0-9.]+@[-a-z_0-9.]+    # e-mail addresses
+
+# smilies and the like
+color body brightgreen white "<[Gg]>"
+color body brightgreen white "<[Bb][Gg]>"
+# see also the variables smileys
+color body black yellow ">?[;:][-^]?[][)(><}{|/DP][)}]*"
+
+#
+#  Mono
+#
+
+mono normal             none            # normal text
+mono indicator          reverse         # actual message
+mono tree               none            # thread arrows
+mono status             reverse         # status line
+#mono error              bold
+mono error              standout
+mono message            none            # info messages
+mono quoted             bold
+mono signature          none
+mono attachment         underline       # MIME attachments
+mono search             reverse         # search matches
+mono tilde              none            # ~ at bottom of msg
+mono markers            bold            # + at beginning of wrapped lines
+mono hdrdefault         none            # default header lines
+mono bold               bold            # hilite bold patterns in body
+mono underline          underline       # hilite underlined patterns in body
+mono header                     bold           "^(from|subject):"
+mono body                       underline      "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+mono body                       underline      "[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body                       bold           "(^| )\\*[-a-z0-9äöüß*]+\\*[,.?]?[ \n]"
+mono body                       underline      "(^| )_[-a-z0-9äöüß_]+_[,.?]?[ \n]"
+
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Color definitions (black background)
+#
+
+#color hdrdefault red default
+#color quoted brightblue default
+#color signature red default
+#color indicator brightyellow red
+#color error brightred default
+#color status yellow blue
+#color tree magenta default     # the thread tree in the index menu
+#color tilde magenta default
+#color message brightcyan default
+#color markers brightcyan default
+#color attachment brightmagenta default
+#color search default green     # how to hilite search patterns in the pager
+
+#color header brightred default ^(From|Subject):
+#color body magenta default "(ftp|http)://[^ ]+"        # point out URLs
+#color body magenta default [-a-z_0-9.]+@[-a-z_0-9.]+   # e-mail addresses
+#color underline brightgreen default
+
+# attributes when using a mono terminal
+#mono quoted bold
