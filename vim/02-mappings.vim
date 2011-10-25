@@ -1,8 +1,8 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-09-19 09:04:19
+" Updated: 2011-10-25 07:05:41
 
-let mapleader = ','
+let mapleader = ';'
 
 nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nmap <leader>O :%w >> ~/vim_output<CR>
