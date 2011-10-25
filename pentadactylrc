@@ -11,7 +11,7 @@ set editor="urxvtc -name shiva -e vim -f -c ':set ft=perl'"
 set findcase='smart'
 set followhints=0
 set guioptions-=rlb
-"set hintkeys=asdfg;lkjh
+set hintkeys=asdfg;lkjh
 set mapleader=","
 set maxitems=10
 set pageinfo=gfm
