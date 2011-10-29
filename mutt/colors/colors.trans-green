@@ -36,7 +36,7 @@ color quoted5     brightgreen   default
 
 color index       blue         default "~g"   # gpg signed
 color index       brightgreen   default "~N"   # New
-color index       color233  color233 "~D"   # Deleted
+color index       color235  color233 "~D"   # Deleted
 color index       brightblue   default "~G"   # gpg encrypted
 color index       brightwhite  default "~F"   # Flagged
 color index       brightwhite  default "~T"   # Tagged
