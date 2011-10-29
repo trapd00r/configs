@@ -231,6 +231,7 @@ alias      scx='screen -x'
 alias     make='/home/scp1/dev/utils/mymake'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
+alias       :q!='kill -9 $$'
 alias      die='kill -9 $$'
 alias    urxvt="urxvt -name $HOST $@"
 alias     less='vimpager'
