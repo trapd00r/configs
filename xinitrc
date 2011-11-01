@@ -30,9 +30,10 @@ if [ "$HOSTNAME" = 'shiva' ]; then
 
   xsetroot  -cursor_name left_ptr
   setxkbmap -option terminate:ctrl_alt_bksp
-  setxkbmap se perl-dvorak ||
-    setxkbmap perl-dvorak  ||
-    setxkbmap svorak-m5    ||
+  setxkbmap se -variant progqwerty ||
+    setxkbmap se perl-dvorak ||
+    setxkbmap perl-dvorak    ||
+    setxkbmap svorak-m5      ||
     setxkbmap se -variant nodeadkeys
 
   urxvtd -q -f -o                     &
