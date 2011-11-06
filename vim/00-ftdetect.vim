@@ -1,6 +1,6 @@
 "    File: $HOME/etc/ftdetect.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-09-06 15:10:04
+" Updated: 2011-11-06 02:33:56
 
 filetype plugin indent on
 
@@ -8,6 +8,12 @@ set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
 "au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e | :19
+
+if &term != 'linux'
+  au InsertEnter * :silent !printf '\e]12;\#ffff00\a'
+  au InsertLeave * :silent !printf '\e]12;\#ff0000\a'
+  au VimLeave    * :silent !printf '\e]12;\#69ff00\a'
+endif
 
 au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl   |
   \ call search('APP')  | normal di':startinsert
