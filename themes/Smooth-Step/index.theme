@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Smooth-Step
+Type=X-GNOME-Metatheme
+Comment=The Next look of gtk
+Name[en_US]=Smooth-Step
+
+[X-GNOME-Metatheme]
+GtkTheme=Smooth-Step
+MetacityTheme=Mist
+IconTheme=gnome

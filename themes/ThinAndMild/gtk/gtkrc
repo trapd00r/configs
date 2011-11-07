@@ -1,0 +1,109 @@
+# ThinAndMild
+# By Chris Ausbrooks <weed@thebucket.org>
+# May 28, 2002
+# Based on:
+#  Darkness GTK+ Color theme
+#  By MSG <yinyang@eburg.com>
+#  Oct 31, 1999
+#
+
+style "nothing" 
+{
+        bg[NORMAL] = { 0.55, 0.55, 0.55 }
+}
+
+style "default"
+{
+  font = "-*-helvetica-medium-r-normal--12-*-*-*-*-*-*-*"
+  fg[NORMAL]      = { 0.75, 0.78, 0.85 }
+  fg[PRELIGHT]    = { 0.90, 0.94, 0.99 }
+  fg[ACTIVE]      = { 0.75, 0.78, 0.85 }
+  fg[SELECTED]    = { 0.90, 0.94, 0.99 }
+  fg[INSENSITIVE] = { 0.50, 0.54, 0.58 }
+  bg[NORMAL]      = { 0.35, 0.35, 0.35 }  
+  bg[PRELIGHT]    = { 0.48, 0.48, 0.48 }  
+  bg[ACTIVE]      = { 0.28, 0.28, 0.28 }  
+  bg[SELECTED]    = { 0.30, 0.40, 0.50 }  
+  bg[INSENSITIVE] = { 0.25, 0.28, 0.30 }  
+  base[NORMAL]      = { 0.30, 0.32, 0.35 }
+  base[PRELIGHT]    = { 0.05, 0.08, 0.12 }
+  base[ACTIVE]      = { 0.30, 0.40, 0.50 }
+  base[SELECTED]    = { 0.30, 0.40, 0.50 }
+  base[INSENSITIVE] = { 0.05, 0.08, 0.12 }
+  text[NORMAL]      = { 0.90, 0.94, 0.99 }
+  text[PRELIGHT]    = { 0.90, 0.94, 0.99 }
+  text[ACTIVE]      = { 0.90, 0.94, 0.99 }
+  text[SELECTED]    = { 0.90, 0.94, 0.99 }
+  text[INSENSITIVE] = { 0.90, 0.94, 0.99 }
+  engine "thinice"
+  {
+    # You want the // on the handleboxes?
+    handlebox_marks = TRUE
+    # Do you want the // marks on the scrollbar handle?
+    scrollbar_marks = TRUE
+    # A single / on the scrollbar buttons, perhaps?
+    scroll_button_marks = TRUE
+    # Do you want the scrollbar handles rectangular or a bit shaped?
+    rect_scrollbar = FALSE
+  }
+}
+
+style "entries" = "default"
+{
+  bg[SELECTED] = { 0.36, 0.40, 0.50 }
+  base[NORMAL] = { 0.25, 0.25, 0.30 }
+}
+
+style "bar" = "default"
+{
+  bg[PRELIGHT] = { 0.2, 0.38, 0.51 }
+  bg[SELECTED] = { 0.38, 0.38, 0.38 }
+  fg[PRELIGHT] = { 1.0, 1.0, 1.0 }
+  bg[ACTIVE] =   { 0, 0, 0 }
+}
+
+style "scroll" = "default"
+{
+  bg[NORMAL]   = { 0.44, 0.44, 0.44 }
+  bg[PRELIGHT] = { 0.50, 0.50, 0.50 }
+}
+
+style "button" = "default"
+{
+  bg[NORMAL]   = { 0.44, 0.44, 0.44 }
+  bg[PRELIGHT] = { 0.50, 0.50, 0.50 }
+  bg[ACTIVE]   = { 0.28, 0.28, 0.28 }
+  fg[PRELIGHT] = { 1.0, 1.0, 1.0 }   
+}
+
+style "menu" = "default"
+{
+  bg[NORMAL]   = { 0.40, 0.40, 0.40 }
+  bg[ACTIVE]   = { 0.28, 0.28, 0.28 }
+  bg[PRELIGHT] = { 0.36, 0.40, 0.50 }
+  fg[PRELIGHT] = { 1.0, 1.0, 1.0 }
+}
+
+style "toggle_button" = "default"
+{
+  bg[ACTIVE]   = { 0.10, 0.17, 0.27 }
+  bg[PRELIGHT] = { 0.40, 0.40, 0.40 }
+}
+
+style "tip" = "default"
+{
+  fg[NORMAL]	= { 0.90, 0.94, 0.99 }
+  bg[NORMAL]	= { 0.36, 0.40, 0.50 }
+}
+
+widget_class "*" style "default"
+widget_class "*Bar*" style "bar"
+widget_class "*Scroll*" style "scroll"
+widget_class "*Menu*" style "menu"
+widget_class "*Entry*" style "entries"
+widget_class "*Loose*" style "nothing"
+widget_class "*Button" style "button"
+widget_class "*GtkCheckButton*" style "toggle_button"
+widget_class "*GtkRadioButton*" style "toggle_button"
+widget_class "*GtkSpinButton*" style "entries"
+widget "gtk-tooltips" style "tip"

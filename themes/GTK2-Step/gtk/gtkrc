@@ -1,0 +1,121 @@
+style "nextstep"
+{
+   bg[ACTIVE] 	   = "#909090"
+   fg[ACTIVE] 	   = "#000000"
+   bg[NORMAL] 	   = "#a8a8a8"
+   fg[NORMAL] 	   = "#000000"
+   bg[INSENSITIVE] = "#888888"
+   fg[INSENSITIVE] = "#000000"
+   bg[PRELIGHT]    = "#a8a8a8"
+#   bg[PRELIGHT]    = "#b8b8b8"
+   fg[PRELIGHT]    = "#000000"
+   bg[SELECTED]    = "#ffffff"
+   fg[SELECTED]    = "#000000"
+   base[NORMAL]    = "#a8a8a8"
+   engine "step" 
+   {
+   }
+}
+
+style "nextmenu"
+{
+   bg[NORMAL] 	   = "#a8a8a8"
+   fg[NORMAL] 	   = "#000000"
+   bg[INSENSITIVE] = "#888888"
+   fg[INSENSITIVE] = "#000000"
+   bg[PRELIGHT]    = "#f0f0f0"
+   fg[PRELIGHT]    = "#000000"
+}
+
+style "nextprogressbar"
+{
+   bg[NORMAL]      = "#a8a8a8"
+   bg[INSENSITIVE] = "#787878"
+   fg[NORMAL] 	   = "#ffffff"
+}
+
+style "nextbutton"
+{ 
+   bg[NORMAL]  	   = "#a8a8a8"
+   bg[PRELIGHT]    = "#a8a8a8"
+#   bg[PRELIGHT]    = "#b8b8b8"
+   bg[INSENSITIVE] = "#a8a8a8"
+   bg[ACTIVE] 	   = "#ffffff"
+   bg[SELECTED]    = "#ffffff"
+  
+   base[INSENSITIVE] = "#ffffff"
+   base[NORMAL]      = "#ffffff"
+   base[ACTIVE]      = "#ffffff"
+   base[PRELIGHT]    = "#ffffff"
+}
+
+style "nextlistbutton"
+{ 
+   bg[NORMAL]  	   = "#505450"
+   bg[PRELIGHT]    = "#505450"
+   bg[PRELIGHT]    = "#505450"
+   bg[INSENSITIVE] = "#505450"
+   bg[ACTIVE] 	   = "#505450"
+   bg[SELECTED]    = "#505450"
+  
+   fg[INSENSITIVE] = "#000000"
+   fg[NORMAL] 	   = "#f8fcf8"
+   fg[ACTIVE] 	   = "#f8fcf8"
+   fg[PRELIGHT]    = "#f8fcf8"
+   fg[SELECTED]    = "#f8fcf8"
+}
+
+style "nextclist"
+{
+   base[ACTIVE] = "#a8a8a8"
+   bg[SELECTED] = "#ffffff"
+   base[NORMAL] = "#a8a8a8"
+#   base[ACTIVE] = "#f8fcf8"
+#   bg[SELECTED] = "#c8ccc8"
+#   base[NORMAL] = "#e8ece8"
+}
+
+style "nextlist"
+{
+   base[ACTIVE]   = "#a8a8a8"
+   bg[SELECTED]   = "#ffffff"
+   base[NORMAL]   = "#a8a8a8"
+   base[SELECTED] = "#ffffff"
+#   base[ACTIVE]   = "#f8fcf8"
+#   bg[SELECTED]   = "#c8ccc8"
+#   base[NORMAL]   = "#f8fcf8"
+#   base[SELECTED] = "#f8fcf8"
+}
+
+style "nextentry"
+{
+   bg[SELECTED] = "#c8c8c8"
+   base[NORMAL] = "#f8fcf8"
+}
+
+style "tooltips"
+{
+   bg[NORMAL] = "#f8f8f8"
+   fg[NORMAL] = "#000000"
+}
+
+# Common default
+class "GtkWidget"		style "nextstep"
+class "GtkWindow"		style "nextstep"
+class "GtkDialog"		style "nextstep"
+class "GtkFileSelection"	style "nextstep"
+class "GtkFontSelection"	style "nextstep"
+class "GtkCList"		style "nextclist"
+class "GtkCTree"		style "nextclist"
+class "*GtkList*"		style "nextlist"
+class "GtkTree"			style "nextlist"
+class "GtkButton"		style "nextbutton"
+class "GtkEntry"		style "nextentry"
+class "GtkText"			style "nextentry"
+class "*MenuItem*"		style "nextmenu"
+class "GtkProgressBar"		style "nextprogressbar"
+
+widget_class "*GtkCList.GtkButton*" style "nextlistbutton"
+widget_class "*GtkCTree.GtkButton*" style "nextlistbutton"
+
+widget "gtk-tooltips*"		style "tooltips"

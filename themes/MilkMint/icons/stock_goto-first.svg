@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generator: Adobe Illustrator 9.0, SVG Export Plug-In  -->
+<svg
+   width="48.000000pt"
+   height="48.000000pt"
+   viewBox="0 0 24 24"
+   xml:space="preserve"
+   id="svg1"
+   sodipodi:version="0.32"
+   inkscape:version="0.38.1"
+   sodipodi:docname="stock_goto-first.svg"
+   sodipodi:docbase="/usr/share/icons/Suede/scalable/stock"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:xlink="http://www.w3.org/1999/xlink"><defs
+   id="defs38">
+  <radialGradient
+   id="aigrd1"
+   cx="8.7339"
+   cy="7.9097"
+   r="13.5742"
+   fx="8.7339"
+   fy="7.9097"
+   gradientUnits="userSpaceOnUse">
+			<stop
+   offset="0.0000000"
+   style="stop-color:#abc2d9;stop-opacity:0.44705883;"
+   id="stop9" />
+
+
+
+
+			
+			<stop
+   offset="1.0000000"
+   style="stop-color:#3f6687;stop-opacity:1.0000000;"
+   id="stop13" />
+
+
+
+
+		</radialGradient>
+
+
+
+  <radialGradient
+   id="aigrd2"
+   cx="7.3892"
+   cy="8.1001"
+   r="12.1101"
+   fx="7.3892"
+   fy="8.1001"
+   gradientUnits="userSpaceOnUse">
+			<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop24" />
+
+
+
+
+			<stop
+   offset="1"
+   style="stop-color:#F0E1BD"
+   id="stop26" />
+
+
+
+
+		</radialGradient>
+
+
+
+  <linearGradient
+   xlink:href="#aigrd1"
+   id="linearGradient890" />
+
+
+
+</defs>
+
+
+
+
+
+
+
+	
+		
+		
+		
+		
+		
+		
+		
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+		
+		
+		
+		
+		
+		
+	
+	<g
+   id="g859"
+   style="stroke:#000000;"
+   transform="matrix(-0.814225,0.000000,0.000000,0.814225,24.70024,2.299991)">
+		<path
+   style="fill:none;stroke:none;"
+   d="M24,24H0V0h24v24z"
+   id="path861" />
+
+
+
+
+	</g>
+
+
+
+
+<path
+   style="fill:#d6d6d2;fill-rule:evenodd;stroke:#d6d6d6;stroke-width:1.0850000;stroke-opacity:0.85384613;fill-opacity:0.83846152;stroke-dasharray:none;"
+   d="M 23.335981,8.4445997 L 15.565930,8.3699737 L 15.565930,3.6823137 L 6.6479047,12.051490 L 15.565930,20.481172 L 15.565930,16.048999 L 23.335981,16.018576 L 23.335981,8.4445997 z "
+   id="path864"
+   sodipodi:nodetypes="cccccccc" />
+
+
+
+
+
+
+<rect
+   style="fill:#ced2d2;fill-opacity:0.85384613;fill-rule:evenodd;stroke:#d2d4d6;stroke-width:0.95000000;stroke-dasharray:none;stroke-opacity:0.85384613;"
+   id="rect868"
+   width="3.4554183"
+   height="19.617859"
+   x="-5.0823862"
+   y="2.0005945"
+   transform="scale(-1.000000,1.000000)" />
+
+
+
+
+<sodipodi:namedview
+   id="base"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageopacity="0.0"
+   inkscape:pageshadow="2"
+   inkscape:zoom="4.7578125"
+   inkscape:cx="64.000000"
+   inkscape:cy="30.371100"
+   inkscape:window-width="1142"
+   inkscape:window-height="752"
+   showguides="true"
+   snaptoguides="true"
+   inkscape:window-x="0"
+   inkscape:window-y="29" />
+<g
+   id="Layer_x0020_3"
+   style="stroke:#000000;"
+   transform="matrix(-0.814225,0.000000,0.000000,0.814225,24.32854,1.894907)">
+		<path
+   style="fill:none;stroke:none;"
+   d="M24,24H0V0h24v24z"
+   id="path34" />
+
+
+
+
+	</g>
+<path
+   style="fill:#3f6687;fill-rule:evenodd;stroke:#000000;stroke-width:1.0341641;"
+   d="M 22.964270,8.0395184 L 15.194219,7.9648927 L 15.194219,3.2772319 L 6.2761944,11.646408 L 15.194219,20.076090 L 15.194219,15.643917 L 22.964270,15.613494 L 22.964270,8.0395184 z "
+   id="path887"
+   sodipodi:nodetypes="cccccccc" />
+<path
+   style="fill:#abc2d9;fill-rule:evenodd;stroke:#000000;stroke-width:0.0000000;"
+   d="M 7.0826289,11.572574 L 21.768878,11.569199 L 21.768878,8.5629767 L 14.596524,8.4988013 L 14.660699,4.6290026 L 7.0826289,11.572574 z "
+   id="path892"
+   sodipodi:nodetypes="cccccc" />
+<rect
+   style="fill:#3f6687;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.95000000;stroke-dasharray:none;"
+   id="rect865"
+   width="3.4554183"
+   height="19.617859"
+   x="-4.7106736"
+   y="1.5955132"
+   transform="scale(-1.000000,1.000000)" />
+<rect
+   style="fill:#abc2d9;fill-rule:evenodd;stroke:#000000;stroke-width:0.0000000;"
+   id="rect877"
+   width="2.3407674"
+   height="9.4745340"
+   x="-4.1533463"
+   y="2.0971062"
+   transform="scale(-1.000000,1.000000)" />
+</svg>

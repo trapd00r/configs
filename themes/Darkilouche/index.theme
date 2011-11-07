@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Darkilouche
+Type=X-GNOME-Metatheme
+Comment=Dark 'pro' look for your apps.\n\nNow with customizable colors.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Darkilouche
+GtkColorScheme=
+MetacityTheme=Gilouche
+IconTheme=gnome

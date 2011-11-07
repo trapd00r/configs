@@ -1,0 +1,189 @@
+style "icon-style"   {
+	# Epiphany
+	stock ["epiphany-download"] = {{ "stock_download.svg" }}
+	stock ["epiphany-history"] = {{ "stock_history.svg" }}
+
+	# Gnome Stock Icons
+	stock["gnome-stock-about"] = {{ "stock_about.svg" }}
+	stock["gnome-stock-attach"] = {{ "stock_attach.svg" }}
+	stock["gnome-stock-balance"] = {{ "stock_balance.svg" }}
+	stock["gnome-stock-line-in"] = {{ "stock_line-in.svg" }}
+	stock["gnome-stock-mic"] = {{ "stock_mic.svg" }}
+	stock["gnome-stock-volume"] = {{ "stock_volume.svg" }}
+
+    # GThumb Stock Icons
+	stock ["gthumb-add-comment"] = {{ "stock_edit.svg" }} 
+	stock ["gthumb-camera"] = {{ "stock_screenshot.svg" }}
+	stock ["gthumb-fullscreen"] = {{ "stock_fullscreen.svg" }}
+	stock ["gthumb-properties"] = {{ "stock_properties.svg" }}
+	stock ["gthumb-reset"] = {{ "stock_reset.svg" }}
+	stock ["gthumb-show-folders"] = {{ "stock_open.svg" }}
+
+	# Gtk Stock Icons   stock["gtk-add"] = {{ "stock_add.svg" }}
+	stock["gtk-apply"] = {{ "stock_apply.svg" }}
+	stock["gtk-bold"] = {{ "stock_bold.svg" }} 
+
+	stock["gtk-cancel"] = {{ "stock_cancel.svg" }}
+	stock["gtk-cdrom"] = {{ "stock_cdrom.svg" }}
+	stock["gtk-clear"] = {{ "stock_clear.svg" }}
+	stock["gtk-close"] = {{ "stock_close.svg" }}
+	stock["gtk-convert"] = {{ "stock_convert.svg" }}
+	stock["gtk-color-picker"] = {{ "stock_select-color.svg" }}
+	stock["gtk-copy"] = {{ "stock_copy.svg" }}
+	stock["gtk-cut"] = {{ "stock_cut.svg" }} 
+
+	stock["gtk-delete"] = {{ "stock_delete.svg" }}
+	stock["gtk-dnd"] = {{ "stock_dnd.svg" }}
+	stock["gtk-dnd-multiple"] = {{ "stock_dnd_multiple.svg" }}
+
+	stock["gtk-execute"] = {{ "stock_execute.svg" }}
+	
+	stock["gtk-find"] = {{ "stock_find.svg" }}
+	stock["gtk-find-and-replace"] = {{ "stock_find-and-replace.svg" }}
+	stock["gtk-floppy"] = {{ "stock_floppy.svg" }} 
+
+	stock["gtk-go-back"] = {{ "stock_go-back.svg" }}
+	stock["gtk-go-down"] = {{ "stock_go-down.svg" }}
+	stock["gtk-go-forward"] = {{ "stock_go-forward.svg" }}
+	stock["gtk-go-up"] = {{ "stock_go-up.svg" }}
+	stock["gtk-harddisk"] = {{"stock_harddisk.svg" }}
+
+	stock["gtk-goto-bottom"] = {{ "stock_goto-bottom.svg" }}
+	stock["gtk-goto-first"] = {{ "stock_goto-first.svg" }}
+	stock["gtk-goto-last"] = {{ "stock_goto-last.svg" }}
+	stock["gtk-goto-top"] = {{ "stock_goto-top.svg" }} 
+
+	stock["gtk-help"] = {{ "stock_help.svg" }}
+	stock["gtk-home"] = {{ "stock_home.png" }}
+	       
+	stock["gtk-indent"] = {{ "stock_indent.svg" }}
+	stock["gtk-index"] = {{ "stock_index.svg" }}
+	stock["gtk-italic"] = {{ "stock_italic.svg" }}
+
+	stock["gtk-jump-to"] = {{ "stock_jump-to.svg" }}
+	stock["gtk-justify-center"] = {{ "stock_justify-center.svg" }}
+	stock["gtk-justify-left"] = {{ "stock_justify-left.svg" }}
+	stock["gtk-justify-right"] = {{ "stock_justify-right.svg" }}
+
+	stock["gtk-missing-image"] = {{ "stock_brokenimage.svg" }} 
+	
+	stock["gtk-network"] = {{ "stock_network.svg" }}
+	stock["gtk-new"] = {{ "stock_new.svg" }}
+	stock["gtk-no"] = {{ "stock_no.svg" }} 
+
+	stock["gtk-ok"] = {{ "stock_ok.svg" }}
+	stock["gtk-open"] = {{ "stock_open.svg" }} 
+
+	stock["gtk-paste"] = {{ "stock_paste.svg" }}
+	stock["gtk-print"] = {{ "stock_print.svg" }}
+	stock["gtk-print-preview"] = {{ "stock_print-preview.svg" }}
+	stock["gtk-preferences"] = {{ "stock_preferences.svg" }}
+	stock["gtk-properties"] = {{ "stock_properties.svg" }}
+
+	stock["gtk-quit"] = {{ "stock_quit.svg" }} 
+
+	stock["gtk-redo"] = {{ "stock_redo.svg" }}
+	stock["gtk-refresh"] = {{ "stock_refresh.png" }}
+	stock["gtk-remove"] = {{ "stock_delete.svg" }}
+	stock["gtk-revert-to-saved"] ={{ "stock_revert-to-saved.svg" }} 
+
+	stock["gtk-save"] = {{ "stock_floppy.svg" }}
+	stock["gtk-save-as"] = {{ "stock_save-as.svg" }}
+	stock["gtk-select-color"] = {{ "stock_select-color.svg" }}
+	stock["gtk-select-font"] = {{ "stock_select-font.svg" }}
+	stock["gtk-sort-ascending"] = {{ "stock_sort-ascending.svg"}}
+	stock["gtk-sort-descending"] ={{"stock_sort-descending.svg" }}
+	stock["gtk-spell-check"] = {{"stock_spell-check.svg" }}
+	stock["gtk-stop"] = {{ "stock_stop.png" }}
+	stock["gtk-strikethrough"] = {{"stock_strikethrough.svg" }}
+	stock["gtk-stock-connect"] = {{"stock_connect.svg" }} 
+
+
+	stock["gtk-stock-disconnect"] = {{ "stock_disconnect.svg" }}
+	stock["gtk-stock-import"] = {{ "stock_import.svg" }}   
+	stock["gtk-stock-insert-image"] = {{ "stock_insert-image.svg" }}
+	stock["gtk-stock-insert-object"] = {{ "stock_insert-object.svg" }}
+	stock["gtk-stock-insert-table"] = {{ "stock_insert-table.svg" }}
+	stock["gtk-stock-export"] = {{ "stock_export.svg" }}	
+	stock["gtk-stock-reset"] = {{ "stock_reset.svg" }} 
+
+	stock["gtk-undelete"] = {{ "stock_undelete.svg" }}
+	stock["gtk-underline"] = {{ "stock_underline.svg" }}
+	stock["gtk-unindent"] = {{ "stock_unindent.svg" }}
+	stock["gtk-undo"] = {{ "stock_undo.svg" }}
+	               
+	stock["gtk-yes"] = {{ "stock_yes.svg" }}
+	                   
+	stock["gtk-zoom-100"] = {{ "stock_zoom-100.svg" }}
+	stock["gtk-zoom-fit"] = {{ "stock_zoom-fit.svg" }}
+	stock["gtk-zoom-in"] = {{ "stock_zoom-in.svg" }}
+	stock["gtk-zoom-out"] = {{"stock_zoom-out.svg" }} 
+	
+	# Gtk Dialogs
+	stock["gtk-dialog-authentication"] = {{"stock_dialog_authentication.svg" }}
+	stock["gtk-dialog-error"] = {{ "stock_dialog_error.svg" }}
+	stock["gtk-dialog-info"] = {{ "stock_dialog_info.png" }}
+	stock["gtk-dialog-question"] = {{"stock_dialog_question.svg" }}
+	stock["gtk-dialog-warning"] = {{"stock_dialog_warning.svg" }} 
+
+	#Gnome Media System - Mainly for CD Player.
+	stock ["media-eject"] = {{"media-eject.svg" }}
+	stock ["media-ffwd"]= {{"media-forward.svg" }}
+	stock ["media-next"] = {{"media-next.svg" }}
+	stock ["media-pause"] = {{"media-pause.svg" }}
+	stock ["media-play"] = {{"media-play.svg" }}
+	stock ["media-prev"] = {{"media-prev.svg" }}
+	stock ["media-record"]= {{"media-record.svg" }}
+	stock ["media-rewind"]= {{"media-backward.svg" }}
+	stock ["media-stop"] = {{"media-stop.svg"}}
+
+	#Muine
+	stock["muine-forward"] = {{ "media-forward.svg" }}   
+	stock["muine-next"] = {{ "media-next.svg" }}
+	stock["muine-pause"] = {{ "media-pause.svg" }}   
+	stock["muine-play"] = {{ "media-play.svg" }}
+	stock["muine-previous"] = {{ "media-previous.svg" }}
+	stock["muine-rewind"] = {{ "media-prev.svg" }}
+	stock["muine-stop"] = {{ "media-stop.svg" }}
+	
+	# Totem-does not like to play nice and needs symlinks
+
+	# Volume
+	stock ["volume-max"] = {{"volume-max.svg" }}
+	stock ["volume-med"] = {{"volume-medium.svg" }}
+	stock ["volume-min"] = {{"volume-min.svg" }}
+	stock ["volume-mute"] = {{"volume-mute.svg" }}
+	stock ["volume-zero"] = {{"volume-zero.svg" }}
+
+	
+	# Gnome Panel
+	stock ["panel-accessories"] = {{"stock_accessories.svg" }}
+	stock ["panel-amusements"] = {{"stock_amusements.svg" }} 
+	
+	stock ["panel-internet"] = {{"stock_internet.svg" }} 
+
+	stock ["panel-logout"] = {{"stock_quit.svg" }} 
+	stock ["panel-multimedia"] = {{"stock_multimedia.svg" }}      
+	stock ["panel-run"] = {{"stock_execute.svg" }}
+	stock ["panel-searchtool"] = {{"stock_search.svg" }}
+	stock ["panel-screenshot"] = {{"stock_screenshot.svg" }}
+	
+	stock["stock_fullscreen"] = {{ "stock_fullscreen.svg" }}
+	stock["stock_new-tab"] = {{ "stock_new-tab.svg" }} 
+
+	#Rhythmbox Media System which uses its own
+	stock["rhythmbox-next"] = {{ "media-next.svg" }}   
+	stock["rhythmbox-pause"] = {{ "media-pause.svg" }}   
+	stock["rhythmbox-play"] = {{ "media-play.svg" }}
+	stock["rhythmbox-previous"] = {{ "media-previous.svg" }}
+	stock["rhythmbox-volume-max"] = {{ "volume-max.svg" }}
+	stock["rhythmbox-volume-medium"] = {{ "volume-medium.svg" }}
+	stock["rhythmbox-volume-min"] = {{ "volume-min.svg" }}
+	stock["rhythmbox-volume-mute"] = {{ "volume-mute.svg" }}
+	stock["rhythmbox-volume-zero"] = {{"volume-zero.svg" }}
+	stock["rhythmbox-playlist"]={{"stock_playlist.svg" }}
+	stock["rhythmbox-playlist-menu"] = {{ "stock_playlist.svg" }} 
+}
+
+
+class "GtkWidget" style "icon-style" 

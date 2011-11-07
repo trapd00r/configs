@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MilkMint
+Type=X-GNOME-Metatheme
+Comment=Link Milk, but with Mint
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=MilkMint
+MetacityTheme=MilkMint
+IconTheme=Suede

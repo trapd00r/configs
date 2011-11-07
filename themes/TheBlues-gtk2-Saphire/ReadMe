@@ -1,0 +1,16 @@
+TheBlues by Kevin Kane (werewolves@werewolves.us)
+
+Based on H20-gtk2 by Eric Reitz.
+
+Altered color balance in the GIMP:
+
+Dark Blue:
+Red -100
+Green -50
+Blue -100
+
+Light Blue:
+Red -75
+Green -30
+Blue +60
+Brightness +30

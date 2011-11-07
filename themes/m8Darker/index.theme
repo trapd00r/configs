@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=m8Darker
+Type=X-GNOME-Metatheme
+Comment=a theme to be less color agressive than all this "aquaish" blue theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=m8Darker
+MetacityTheme=m8Darker
+IconTheme=Noia

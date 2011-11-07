@@ -1,0 +1,453 @@
+2002-09-05  Havoc Pennington  <hp@redhat.com>
+
+	* 0.47
+
+	* art/pixmaps/Makefile.am: remove logo-containing splash screens
+
+2002-08-27  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.39
+
+	* art/nautilus/Bluecurve/Makefile.am (theme_DATA): add floppy,
+	cdrom, other devices to nautilus theme
+
+2002-08-23  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Bluecurve/bluecurve_style.c (bluecurve_draw_arrow):
+	Try to "fix" menu arrow sizes again.
+
+2002-08-19  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.38, new icons
+
+Fri Aug 16 18:45:51 2002  Owen Taylor  <otaylor@redhat.com>
+
+	* 0.37
+
+	* art/gdm/Bluecurve/Bluecurve.xml.in 
+  	  art/gdm/Bluecurve/Bluecurve.xml: Add a .in
+	file, and put in instructions for merging in
+	the translations to get BlueCurve.xml.
+
+2002-08-16  Havoc Pennington  <hp@redhat.com>
+
+	* 0.36 with redhat-programming.png
+
+2002-08-16  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.35 with more icons
+
+2002-08-16  Havoc Pennington  <hp@redhat.com>
+
+	* redhat-artwork.spec (Version): 0.34
+
+	* art/pixmaps/Makefile.am (pixmap_DATA): update Makefile with new
+	icons
+
+2002-08-14  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.33
+
+2002-08-14  Alexander Larsson  <alexl@redhat.com>
+
+	* redhat-artwork.spec: 
+	* configure.in:
+	Update to 0.31
+
+2002-08-14  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Bluecurve1/bluecurve1_theme_draw.c:
+	Fix arrows.
+	
+2002-08-14  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Bluecurve/bluecurve_style.c:
+	Fixed size of menu arrows
+	Fixed scrollbars when steppers have been moved.
+
+2002-08-14  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gdm/Bluecurve/Bluecurve.xml:
+	Update drop shadow.
+
+2002-08-13  Alexander Larsson  <alexl@redhat.com>
+
+	* acinclude.m4:
+	Nasty hack to KDE_CREATE_LIBS_ALIASES to make it run.
+
+2002-08-13  Alexander Larsson  <alexl@redhat.com>
+	
+	* redhat-artwork.spec:
+	* configure.in:
+	Bump to 0.30.
+
+2002-08-13  Alexander Larsson  <alexl@redhat.com>
+	
+	* art/gtk/Bluecurve/bluecurve_style.c (bluecurve_style_unrealize): 
+	* art/gtk/Bluecurve1/bluecurve1_theme_main.c (theme_unrealize_style):
+	Ooops! fixed bad pixmap leak.
+
+2002-08-09  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.27, fixes more wonderland/bluecurve mess
+
+2002-08-09  Havoc Pennington  <hp@redhat.com>
+
+	* 0.26: s/Wonderland/Bluecurve/g
+
+2002-08-08  Havoc Pennington  <hp@redhat.com>
+
+	* art/gdm/Wonderland/wonderland.xml: add mnemonics to the buttons
+
+2002-08-07  Havoc Pennington  <hp@redhat.com>
+
+	* 0.25
+
+	* art/nautilus/Wonderland/Makefile.am (theme_DATA): add extra
+	names for Home icon to handle old Nautilus homedirs. put trash 
+	icon in Makefile.
+
+2002-08-06  Havoc Pennington  <hp@redhat.com>
+
+	* art/pixmaps/Makefile.am (pixmap_DATA): add placeholder icons for
+	the main panel/desktop icons
+
+	* configure.in: add Nautilus theme
+
+2002-08-06  Havoc Pennington  <hp@redhat.com>
+
+	* art/metacity/Makefile.am: move themes to the new metacity
+	location
+
+2002-07-31  Havoc Pennington  <hp@redhat.com>
+
+	* am_edit: do not dist random crap found in current working
+	directory
+
+	* art/pixmaps/Makefile.am: install some random images,
+	specifically the gnome/kde splash screens.
+
+2002-07-23  Alexander Larsson  <alexl@redhat.com>
+
+	* redhat-artwork.spec:
+	Had to bump release.
+
+2002-07-23  Alexander Larsson  <alexl@redhat.com>
+	
+	* configure.in:
+	Bump version to 0.18
+
+	* art/gtk/Wonderland/gtk-2.0/gtkrc:
+	* art/gtk/Wonderland1/gtk/gtkrc:
+	gtkrc updates from garrett
+	
+
+	* art/qt/Wonderland/wonderland.cpp:
+	* art/qt/Wonderland/wonderland.h:
+	Qt updates from than
+
+2002-07-19  Alexander Larsson  <alexl@redhat.com>
+
+	* configure.in:
+	Bump version to 0.17.
+
+	* gtkrc1-skel:
+	* gtkrc2-default:
+	* Makefile.am:
+	Add new default gtkrc files
+
+	* redhat-artwork.spec:
+	Bump version.
+	Conflict with gtk-engines < 0.11-13
+	Install default gtkrc files for gtk1 and gtk2.
+
+	* art/gtk/Wonderland1/wonderland1_theme_draw.c:
+	No flicker for scrollbar trough.
+
+2002-07-19  Alexander Larsson  <alexl@redhat.com>
+
+	* art/kde/Makefile.am (dist-hook):
+	Add missing semicolon
+
+2002-07-19  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c (draw_handle): 
+	Don't draw the box on the panel grippies
+	
+2002-07-19  Alexander Larsson  <alexl@redhat.com>
+
+	* redhat-artwork.spec:
+	* configure.in:
+	Bump version to 0.16.
+
+2002-07-18  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c: (draw_shadow):
+	Set the clip rect on the right gcs.
+	
+	* art/gtk/Wonderland1/gtk/gtkrc:
+	* art/gtk/Wonderland1/wonderland1_theme_draw.c:
+	* art/gtk/Wonderland1/wonderland1_theme_main.c:
+	Further theme updates.
+
+Wed Jul 17 17:35:24 2002  Owen Taylor  <otaylor@redhat.com>
+
+	* art/kde/Makefile.am (dist-hook): Fix dist-hook
+	to distribute the colorscheme file.
+
+Wed Jul 17 16:58:51 2002  Owen Taylor  <otaylor@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_rc_style.c: Fix
+	reference to unknown variable.
+
+2002-07-17  Alexander Larsson  <alexl@redhat.com>
+
+	* configure.in:
+	Look for gtk1, rename gtk 2 flags. Generate new Makefiles.
+
+	* art/gtk/Makefile.am:
+	New subdir Wonderland1
+
+	* art/gtk/Wonderland/Makefile.am:
+	gtk2 flags renamed
+
+	* art/gtk/Wonderland/wonderland_rc_style.c:
+	* art/gtk/Wonderland/wonderland_style.c:
+	Warning fixes.
+
+	* art/gtk/Wonderland1/.cvsignore
+	* art/gtk/Wonderland1/Makefile.am
+	* art/gtk/Wonderland1/raleigh_dot.c
+	* art/gtk/Wonderland1/wonderland1.h
+	* art/gtk/Wonderland1/wonderland1_theme_draw.c
+	* art/gtk/Wonderland1/wonderland1_theme_main.c
+	* art/gtk/Wonderland1/gtk/.cvsignore
+	* art/gtk/Wonderland1/gtk/Makefile.am
+	* art/gtk/Wonderland1/gtk/gtkrc
+	New files with initial version of Gtk1 wonderland theme.
+
+2002-07-16  Havoc Pennington  <hp@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c (wonderland_style_realize): 
+	Remove C++ comment
+	
+	* configure.in: kwin stuff
+
+	* art/kde/kwin/Wonderland/Makefile.am: redo to bring kwin theme
+	into main auto* setup so distcheck will work
+
+	* art/kde/kwin/Wonderland/redhat.desktop: rename from redhat to
+	Wonderland
+
+2002-07-16  Havoc Pennington  <hp@redhat.com>
+
+	* ChangeLog, Makefile.am, redhat-artwork.spec:
+	dist the spec file, update the spec file
+
+	* art/icon/Wonderland/README: update README for icon theme
+
+2002-07-16  Alex Larsson - contractor  <alexl@redhat.com>
+
+	* ChangeLog, configure.in, redhat-artwork.spec:
+	2002-07-16  Alexander Larsson  <alexl@redhat.com>
+
+		* configure.in:
+		* redhat-artwork.spec:
+		Bump version to 0.14
+
+	* ChangeLog, art/gtk/Wonderland/bits.c, art/gtk/Wonderland/extract-alpha.c, art/gtk/Wonderland/wonderland_style.c:
+	2002-07-16  Alexander Larsson  <alla@lysator.liu.se>
+
+		* art/gtk/Wonderland/bits.c:
+		* art/gtk/Wonderland/wonderland_style.c:
+		Fixed radio button.
+
+	* ChangeLog, art/gtk/Wonderland/wonderland_style.c, wonderland-widgets.txt:
+	2002-07-16  Alexander Larsson  <alexl@redhat.com>
+
+		* wonderland-widgets.txt:
+		Fix checkbox shadow.
+
+		* art/gtk/Wonderland/wonderland_style.c:
+		Add todo
+
+2002-07-16  Garrett LeSage  <glesage@redhat.com>
+
+	* art/metacity/Wonderland/metacity-theme-1.xml:
+	appearance tweaks -- button aspect altered, utility windows modified, titlebar slightly altered, etc.
+
+2002-07-16  Preston Brown  <pbrown@redhat.com>
+
+	* art/qt/Wonderland/wonderland.cpp: fix header section appearance.
+
+	* art/qt/Wonderland/.cvsignore: ignore generated files.
+
+	* art/qt/Wonderland/wonderland.cpp, art/qt/Wonderland/wonderland.h:
+	fix focus rectangle.
+
+2002-07-16  Alex Larsson - contractor  <alexl@redhat.com>
+
+	* ChangeLog, art/gtk/Wonderland/bits.c, art/gtk/Wonderland/gtk-2.0/gtkrc, art/gtk/Wonderland/wonderland_style.c, art/gtk/Wonderland/wonderland_style.h, wonderland-widgets.txt:
+	2002-07-16  Alexander Larsson  <alla@lysator.liu.se>
+
+		* art/gtk/Wonderland/wonderland_style.[ch]:
+		* art/gtk/Wonderland/gtk-2.0/gtkrc:
+		* art/gtk/Wonderland/bits.c:
+		Updates according to garretts new shots.
+
+		* wonderland-widgets.txt:
+		Updated.
+
+2002-07-16  Than Ngo  <than@redhat.com>
+
+	* redhat-artwork.spec: * add specfile in CVS
+
+	* art/qt/qtrc: * qt resource
+
+2002-07-16  Havoc Pennington  <hp@redhat.com>
+
+>>>>>>> 1.22
+	* Makefile.am (EXTRA_DIST): put spec file in EXTRA_DIST
+
+2002-07-16  Alexander Larsson  <alexl@redhat.com>
+
+	* configure.in:
+	* redhat-artwork.spec:
+	Bump version to 0.14
+
+2002-07-16  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/bits.c: 
+	* art/gtk/Wonderland/wonderland_style.c:
+	Fixed radio button.
+
+2002-07-16  Alexander Larsson  <alexl@redhat.com>
+
+	* wonderland-widgets.txt:
+	Fix checkbox shadow.
+
+	* art/gtk/Wonderland/wonderland_style.c:
+	Add todo
+
+2002-07-16  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.[ch]:
+	* art/gtk/Wonderland/gtk-2.0/gtkrc:
+	* art/gtk/Wonderland/bits.c:
+	Updates according to garretts new shots.
+	
+	* wonderland-widgets.txt:
+	Updated.
+
+2002-07-15  Alexander Larsson  <alexl@redhat.com>
+
+	* wonderland-widgets.txt:
+	Added file describing the colors of wonderland widgets.
+
+2002-06-28  Alexander Larsson  <alexl@redhat.com>
+
+	* configure.in:
+	Bump version to 0.10.
+
+2002-06-26  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c:
+	Fix handles for bonoboui and tasklist
+	that uses the wrong orientation.
+	
+2002-06-26  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/gtk-2.0/gtkrc:
+	* art/gtk/Wonderland/wonderland_style.c:
+	Fix foobar, pane grippies and handleboxes
+
+2002-06-26  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c:
+	Fix statusbar grippie
+	
+2002-06-26  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c:
+	Fix spinbutton and scrollbar details.
+	(draw_resize_grip): 
+
+2002-06-26  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c (draw_box):
+	Fix problem when progress bar is to small.
+	Tweak progress bar gradient colors.
+
+Tue Jun 25 22:14:08 2002  Owen Taylor  <otaylor@redhat.com>
+
+	* Version 0.9
+
+	* art/Makefile.am: Fix SUBDIRS.
+
+Tue Jun 25 21:38:17 2002  Owen Taylor  <otaylor@redhat.com>
+
+	* art/gdm/: Add a placeholder GDM theme.
+
+	* art/qt/Wonderland/Makefile.am: Workaround for
+	automake-1.4.
+
+2002-06-20  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c:
+	New progress bar, initial cut.
+	
+2002-06-20  Alexander Larsson  <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c: 
+	* art/gtk/Wonderland/gtk-2.0/gtkrc: 
+	Use the gtk_style_shade shading algorighm
+	Add bevels on frames
+	Fix stupid dots on spinbuttons
+	Initial handles code
+	Some toolbar work
+	
+2002-06-12  Havoc Pennington  <hp@redhat.com>
+
+	* art/qt/Makefile.am (EXTRA_DIST): put settings_DATA in extra
+	dist, honor prefix by default for QTDIR
+
+2002-06-11  Alex Larsson <alexl@redhat.com>
+
+	* art/gtk/Wonderland/wonderland_style.c:
+	Fix spinbuttons
+	Make parent_class static.
+
+2002-05-28  Alex Larsson <alexl@redhat.com>
+
+	* art/gtk/Wonderland/gtk-2.0/bc-dark.png:
+	* art/gtk/Wonderland/gtk-2.0/bc-light.png:
+	* art/gtk/Wonderland/gtk-2.0/bc.png:
+	* art/gtk/Wonderland/gtk-2.0/bubble-blue.png:
+	Removed old theme
+	
+	* art/gtk/Makefile.am:
+	* art/gtk/Wonderland/bits.c:
+	* art/gtk/Wonderland/bits/check.png:
+	* art/gtk/Wonderland/bits/check_base.png:
+	* art/gtk/Wonderland/bits/check_inconsistent.png:
+	* art/gtk/Wonderland/bits/check_outline.png:
+	* art/gtk/Wonderland/bits/circle.png:
+	* art/gtk/Wonderland/bits/dot.png:
+	* art/gtk/Wonderland/bits/inconsistent.png:
+	* art/gtk/Wonderland/bits/outline.png:
+	* art/gtk/Wonderland/extract-alpha.c: (main):
+	* art/gtk/Wonderland/gtk-2.0/Makefile.am:
+	* art/gtk/Wonderland/gtk-2.0/gtkrc:
+	* art/gtk/Wonderland/wonderland_rc_style.c:
+	* art/gtk/Wonderland/wonderland_rc_style.h:
+	* art/gtk/Wonderland/wonderland_style.c: 
+	* art/gtk/Wonderland/wonderland_style.h:
+	* art/gtk/Wonderland/wonderland_theme_main.c:
+	* configure.in:
+	Import wonderland gtk+ theme
+
+2002-05-10  Havoc Pennington  <hp@redhat.com>
+
+	* art/gtk/Makefile.am (install-data-local): fix install location
+	of GTK theme
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Office
+Type=X-GNOME-Metatheme
+Comment=UserLinux Desktop Theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Office
+MetacityTheme=Office
+IconTheme=Office-Yellow

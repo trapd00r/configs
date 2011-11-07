@@ -1,0 +1,62 @@
+this is pretty much the Aqua LightBlue theme, for gtk1 but with new artwork - and some small mods to the config file.
+thanks to all who have worked on the themes it is based on.
+
+-paul hendrick
+
+----------------------
+
+20 Feb 2001
+
+  This theme is simply a color modification of the very nice
+  AquaGrape theme. Thanks to Tony.
+  I don't know if this LightBlue is a real Apple color. But it
+  looks more eye-friendly to me than the original Grape.
+
+  -- Thomas <ritschel@bigfoot.de>
+
+
+4 Feb 2001
+
+  This theme is based on an older version of Eric's Aqua clone.  
+All I did was change the pixmaps to purple.
+
+  Oh yeah, Apple, I don't think you can sue me.  Can you say "fair use"?
+I knew that you could :)
+
+  The original README is below, right after the extra thanks.
+
+	--Tony <aremmers@yahoo.com>
+
+
+11 Feb 2001
+
+  James <james@bloodflowers.org> hooked me up with some bugs and fixes,
+thanks alot!
+
+
+<< Eric's Orignal README >>
+
+Hi all,
+
+This is my first gtk theme.  It's a poor way to emulate Mac OSX UI.
+This theme probably can be improved with rounded buttons, if someone
+makes a better pixmap engine with anti-aliases, alpha binding, and static
+positioning of smaller pixmap.  If no one write it, you can hope I
+will find the time to do it.   I hope someone would do it before I
+figure out gtk.
+
+Since some of the pictures are captured from Apple Mac OSX screenshot,
+I am not qualify to say that all data goes under GPL License.  Ask
+lawyers near you.
+
+Special thanks to frantzdb, who created original gtk-x theme.  He did a
+good job copy Mac OSX's scroller, and I copied his scroller.
+
+Apple, please don't sue me.
+
+regards,
+AADA (eric@simweb.com)
+
+<< end Eric's Original README >>
+
+

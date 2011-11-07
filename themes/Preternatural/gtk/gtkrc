@@ -1,0 +1,75 @@
+# "Preternatural" GTK theme by Matthew Graybosch (public at starbreaker.net)
+# Based on "Preternatural" theme for Openbox 3
+# uses "Industrial" engine developed by Ximian
+# theme created on 15 December 2003
+# available under terms of BSD license. share and enjoy.
+
+style "default"
+{
+	font = "-bitsteam-bitstream vera sans-medium-r-normal-*-12-*-*-*-p-*-iso8859-1"
+
+	#almost white text for most widgets
+	fg[NORMAL] = "#c7c1cc"
+	fg[ACTIVE] = "#c7c1cc"
+	#near black for prelight widgets
+	fg[PRELIGHT] = "#f9f3ff"
+
+	#almost black text for most selected widgets
+	fg[SELECTED] = "#141414"
+
+	#a not quite white text for most insensitive/disabled widgets
+	fg[INSENSITIVE] = "#676166"
+
+	#almost black background for most widgets
+	bg[NORMAL] = "#141414"
+
+	#light silver/gray background for most active widgets
+	bg[ACTIVE] = "#878188"
+
+	#semi-bright silver/gray background for most prelight widgets
+	bg[PRELIGHT] = "#676166"
+
+	#semi-dark gray/blue background for most selected widgets
+	bg[SELECTED] = "#676166"
+
+	#silver/gray background for most insensitive/disabled widgets
+	bg[INSENSITIVE] = "#000000"
+
+	#solid black text for entry & tree widgets
+	text[NORMAL] = "#c7c1cc"
+	text[ACTIVE] = "#c7c1cc"
+	text[PRELIGHT] = "#f9f3ff"
+
+	#solid white text for selected entry & tree widgets
+	text[SELECTED] = "#f9f3ff"
+
+	#a dark-gray text for insensitive/disabled entry & tree widgets
+	fg[INSENSITIVE] = "#676166"
+
+	#solid white background for entry & tree widgets
+	base[NORMAL] = "#343434"
+	base[ACTIVE] = "#343434"
+
+	#light gray/silver background for prelighted entry & tree widgets
+	base[PRELIGHT] = "#575155"
+
+	#semi-dark gray/blue background for selected entry & tree widgets
+	base[SELECTED] = "#575155"
+
+	#solid white background for insensitive/disabled entry & tree widgets
+	base[INSENSITIVE] = "#141414"
+	
+	# use Industrial engine
+	engine "industrial" 
+	{
+	}
+
+}
+
+class "GtkWidget" style "default"
+class "GtkRange" style "default"
+
+widget_class "*.GtkMenuItem.*" style "default"
+widget_class "*.GtkCheckButton.*" style "default"
+widget_class "*.GtkRadioButton.*" style "default"
+widget_class "*.GtkButton.*" style "default"

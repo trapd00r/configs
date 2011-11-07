@@ -1,0 +1,924 @@
+2003-04-01  xfce
+
+	* Theme_etria/gtk-2.0/gtkrc: Adjust Etria colors
+
+2003-04-01  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	Theme_etria/ICON.png, Theme_etria/Makefile.am,
+	Theme_etria/Makefile.in, Theme_etria/README.html,
+	Theme_etria/gtk-2.0/Makefile.am, Theme_etria/gtk-2.0/Makefile.in,
+	Theme_etria/gtk-2.0/gtkrc: Initialize early i18n in mcs plugins Add
+	Etria theme
+
+2003-03-27  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-03-26  xfce
+
+	* Theme/gtk-2.0/gtkrc, Theme_curve/gtk-2.0/gtkrc: Small adjusments
+	in color scheme
+
+2003-03-25  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: Change default xfwm4 theme (yeah,
+	again...but that's the default theme, ya know) Change Xfce-curve
+	theme
+
+2003-03-23  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-03-19  huysmans
+
+	* autogen.sh: Only add extra autogen parameters when none are given
+
+2003-03-18  xfce
+
+	* ChangeLog: Update ChangeLog Update build scripts (ie rerun
+	autogen.sh) Update xfwm4's microdeck theme Remove 1 pix border
+	arround xffm menu bar
+
+2003-03-16  xfce
+
+	* Theme/gtk-2.0/gtkrc, Theme_saltlake/gtk-2.0/gtkrc: Adjust colors
+
+2003-03-13  xfce
+
+	* ChangeLog: Update Changelogs
+
+2003-03-11  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2003-03-11  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2003-03-11  xfce
+
+	* Theme/gtk-2.0/gtkrc: Slightly adjust colors
+
+2003-03-09  huysmans
+
+	* autogen.sh: Fix autogen.sh to run libtoolize
+
+2003-03-06  xfce
+
+	* Theme/gtk-2.0/gtkrc, Theme_b5/gtk-2.0/gtkrc,
+	Theme_basic/gtk-2.0/gtkrc, Theme_funklor/gtk-2.0/gtkrc,
+	Theme_light/gtk-2.0/gtkrc, Theme_redmondxp/gtk-2.0/gtkrc,
+	Theme_saltlake/gtk-2.0/gtkrc, Theme_smooth/gtk-2.0/gtkrc,
+	Theme_stellar/gtk-2.0/gtkrc: Rework the gtk theme files
+
+2003-03-05  xfce
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, configure.in,
+	Theme/Makefile.in, Theme/gtk-2.0/Makefile.in, Theme/gtk-2.0/gtkrc,
+	Theme_b5/Makefile.in, Theme_b5/gtk-2.0/Makefile.in,
+	Theme_basic/Makefile.in, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_curve/Makefile.in, Theme_curve/gtk-2.0/Makefile.in,
+	Theme_funklor/Makefile.in, Theme_funklor/gtk-2.0/Makefile.in,
+	Theme_light/Makefile.in, Theme_light/gtk-2.0/Makefile.in,
+	Theme_redmondxp/Makefile.in, Theme_redmondxp/gtk-2.0/Makefile.in,
+	Theme_saltlake/Makefile.in, Theme_saltlake/gtk-2.0/Makefile.in,
+	Theme_smooth/Makefile.in, Theme_smooth/gtk-2.0/Makefile.in,
+	Theme_stellar/Makefile.in, Theme_stellar/gtk-2.0/Makefile.in:
+	Rework configure script, update xfce theme.
+
+2003-03-04  xfce
+
+	* Theme_funklor/gtk-2.0/gtkrc: [no log message]
+
+2003-03-04  xfce
+
+	* Theme/gtk-2.0/gtkrc, Theme_stellar/gtk-2.0/gtkrc: Adjust theme
+	colors
+
+2003-03-04  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	Theme_stellar/ICON.png, Theme_stellar/Makefile.am,
+	Theme_stellar/Makefile.in, Theme_stellar/README.html,
+	Theme_stellar/gtk-2.0/Makefile.am,
+	Theme_stellar/gtk-2.0/Makefile.in, Theme_stellar/gtk-2.0/gtkrc: For
+	Joe :)
+
+2003-03-01  xfce
+
+	* Theme_b5/Makefile.in, Theme_b5/gtk-2.0/Makefile.in,
+	Theme_basic/Makefile.in, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_curve/Makefile.in, Theme_curve/gtk-2.0/Makefile.in,
+	Theme_funklor/Makefile.in, Theme_funklor/gtk-2.0/Makefile.in,
+	Theme_light/Makefile.in, Theme_light/gtk-2.0/Makefile.in,
+	Theme_redmondxp/Makefile.in, Theme_redmondxp/gtk-2.0/Makefile.in,
+	Theme_saltlake/Makefile.in, Theme_saltlake/gtk-2.0/Makefile.in,
+	Theme_smooth/Makefile.in, Theme_smooth/gtk-2.0/Makefile.in: [no log
+	message]
+
+2003-03-01  xfce
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltcf-c.sh,
+	ltconfig, ltmain.sh, Theme/Makefile.in, Theme/gtk-2.0/Makefile.in:
+	[no log message]
+
+2003-02-27  xfce
+
+	* libtool: ops, remove libtool
+
+2003-02-27  xfce
+
+	* libtool: Add libtool script
+
+2003-02-21  xfce
+
+	* Theme_basic/gtk-2.0/gtkrc, Theme_curve/gtk-2.0/gtkrc,
+	Theme_funklor/gtk-2.0/gtkrc, Theme_light/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc, Theme_smooth/gtk-2.0/gtkrc:
+	Rearrange gtkrc
+
+2003-02-20  xfce
+
+	* xfce_theme_draw.c, Theme/gtk-2.0/gtkrc,
+	Theme_curve/gtk-2.0/gtkrc, Theme_funklor/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc: Rework of frame draw
+
+2003-02-19  xfce
+
+	* xfce_theme_draw.c, Theme_curve/gtk-2.0/gtkrc: Change curve
+	colors, avoid drawing frame arround toolbars
+
+2003-01-23  xfce
+
+	* COPYING, INSTALL, autogen.sh, config.guess, config.sub, depcomp,
+	install-sh, missing, mkinstalldirs: Update auto* stuff
+
+2003-01-23  xfce
+
+	* Makefile.in, aclocal.m4, autogen.sh, config.guess, config.sub,
+	configure, ltmain.sh, Theme/Makefile.in, Theme/gtk-2.0/Makefile.in,
+	Theme_b5/Makefile.in, Theme_b5/gtk-2.0/Makefile.in,
+	Theme_basic/Makefile.in, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_curve/Makefile.in, Theme_curve/gtk-2.0/Makefile.in,
+	Theme_funklor/Makefile.in, Theme_funklor/gtk-2.0/Makefile.in,
+	Theme_light/Makefile.in, Theme_light/gtk-2.0/Makefile.in,
+	Theme_redmondxp/Makefile.in, Theme_redmondxp/gtk-2.0/Makefile.in,
+	Theme_saltlake/Makefile.in, Theme_saltlake/gtk-2.0/Makefile.in,
+	Theme_smooth/Makefile.in, Theme_smooth/gtk-2.0/Makefile.in: Update
+	autogen.sh and Makefiles
+
+2003-01-17  xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure: [no log message]
+
+2002-12-21  xfce
+
+	* Theme_light/gtk-2.0/gtkrc: [no log message]
+
+2002-12-13  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-12-13  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-12-12  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc, Theme_curve/gtk-2.0/gtkrc,
+	Theme_funklor/gtk-2.0/gtkrc, Theme_light/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc, Theme_saltlake/gtk-2.0/gtkrc,
+	Theme_smooth/gtk-2.0/gtkrc: add GTK-2.2 menuitem shadow style and
+	change some other minor changes.
+
+2002-12-11  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-12-10  xfce
+
+	* xfce_theme_draw.c: Change various frame draw styles in smooth
+	mode.
+
+2002-12-01  xfce
+
+	* Theme_light/gtk-2.0/: gtkrc, gtkrc: [no log message]
+
+2002-12-01  xfce
+
+	* Theme_light/gtk-2.0/gtkrc: [no log message]
+
+2002-11-28  madkiss
+
+	* debian/: changelog, control, rules: 
+	Update to debian/-subdir included in xfce4_20021127-1.
+
+2002-11-28  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-11-20  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-11-20  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-11-10  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-11-10  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-11-10  xfce
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, configure.in,
+	gtk-xfce-engine-2.spec.in, xfce_theme_draw.c, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.in, Theme_b5/Makefile.in,
+	Theme_b5/gtk-2.0/Makefile.in, Theme_basic/Makefile.in,
+	Theme_basic/gtk-2.0/Makefile.in, Theme_curve/Makefile.in,
+	Theme_curve/gtk-2.0/Makefile.in, Theme_funklor/Makefile.in,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_light/Makefile.in,
+	Theme_light/gtk-2.0/Makefile.in, Theme_redmondxp/Makefile.in,
+	Theme_redmondxp/gtk-2.0/Makefile.in, Theme_saltlake/Makefile.in,
+	Theme_saltlake/gtk-2.0/Makefile.in, Theme_smooth/Makefile.in,
+	Theme_smooth/gtk-2.0/Makefile.in: Change version number, change
+	frame corners in "smooth" mode.
+
+2002-11-10  madkiss
+
+	* debian/: changelog, control, copyright, rules: Initial revision
+
+2002-11-10  madkiss
+
+	* debian/: changelog, control, copyright, rules: 
+	Added first version of debian/ subdirectory
+
+2002-11-05  xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.in,
+	Theme/Makefile.in, Theme/gtk-2.0/Makefile.in, Theme_b5/Makefile.in,
+	Theme_b5/gtk-2.0/Makefile.in, Theme_basic/Makefile.in,
+	Theme_basic/gtk-2.0/Makefile.in, Theme_curve/ICON.png,
+	Theme_curve/Makefile.am, Theme_curve/Makefile.in,
+	Theme_curve/README.html, Theme_curve/gtk-2.0/Makefile.am,
+	Theme_curve/gtk-2.0/Makefile.in, Theme_curve/gtk-2.0/gtkrc,
+	Theme_funklor/Makefile.in, Theme_funklor/gtk-2.0/Makefile.in,
+	Theme_light/Makefile.in, Theme_light/gtk-2.0/Makefile.in,
+	Theme_redmondxp/Makefile.in, Theme_redmondxp/gtk-2.0/Makefile.in,
+	Theme_saltlake/Makefile.in, Theme_saltlake/gtk-2.0/Makefile.in,
+	Theme_smooth/Makefile.in, Theme_smooth/gtk-2.0/Makefile.in:
+	Xfce-curve theme is back.
+
+2002-10-22  xfce
+
+	* Theme_redmondxp/gtk-2.0/gtkrc: Change colors.
+
+2002-10-22  xfce
+
+	* Theme_redmondxp/gtk-2.0/gtkrc: [no log message]
+
+2002-10-22  xfce
+
+	* Theme_light/gtk-2.0/gtkrc: Change to lighter color for tabs and
+	buttons
+
+2002-10-17  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: Change active title color for xfwm4.
+
+2002-10-12  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-10-11  xfce
+
+	* Theme_light/gtk-2.0/gtkrc: [no log message]
+
+2002-10-09  xfce
+
+	* ChangeLog, Makefile.am, Makefile.in, config.h.in, configure,
+	configure.in, xfce_theme_draw.c: Change frame for "trough", update
+	ChangLog, set version to 2.0.10
+
+2002-10-05  xfce
+
+	* xfce_theme_draw.c: Remove shadow in trough
+
+2002-10-05  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-10-05  xfce
+
+	* Theme_redmondxp/gtk-2.0/gtkrc: Change scrollbar color for
+	redmondxp gtkrc
+
+2002-10-05  xfce
+
+	* xfce_theme_draw.c: trough shadow.
+
+2002-10-05  xfce
+
+	* xfce_theme_draw.c, Theme/gtk-2.0/gtkrc,
+	Theme_basic/gtk-2.0/gtkrc, Theme_light/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc, Theme_saltlake/gtk-2.0/gtkrc,
+	Theme_smooth/gtk-2.0/gtkrc: Change drawing of vscale and hscale,
+	change interior focus border in various "smooth" themes.
+
+2002-10-04  xfce
+
+	* xfce_theme_draw.c: Optmizations, revert to dark frame instead of
+	black for widgets in smooth mode
+
+2002-10-04  xfce
+
+	* xfce_theme_draw.c, Theme_light/gtk-2.0/gtkrc: Change scrollbar
+	and various object drawing in smooth mode.
+
+2002-10-04  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-10-04  xfce
+
+	* Theme_basic/gtk-2.0/gtkrc: Switch to smooth mode for "basic"
+	theme.
+
+2002-10-01  xfce
+
+	* xfce_rc_style.c, xfce_rc_style.h, xfce_style.h,
+	xfce_theme_draw.c, xfce_theme_main.c: Do some oddities with smooth
+	mode :)
+
+2002-10-01  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-10-01  xfce
+
+	* Theme_basic/gtk-2.0/gtkrc, Theme_light/gtk-2.0/gtkrc,
+	Theme_saltlake/gtk-2.0/gtkrc, Theme_smooth/gtk-2.0/gtkrc: [no log
+	message]
+
+2002-10-01  xfce
+
+	* Makefile.am, Makefile.in: [no log message]
+
+2002-09-30  xfce
+
+	* config.h.in, xfce_theme_draw.c: Change drawing routine in smooth
+	mode to enhance contrast on widgets.
+
+2002-09-18  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc: Even lighter, I'm really hot right now, I
+	need a refreshing theme :)
+
+2002-09-18  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc: Make b5 theme lighter.
+
+2002-09-17  xfce
+
+	* ChangeLog: Update ChangeLog.
+
+2002-09-17  xfce
+
+	* configure, configure.in: Update configure.in
+
+2002-09-17  xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.in,
+	Theme/Makefile.in, Theme/gtk-2.0/Makefile.in, Theme_b5/Makefile.in,
+	Theme_b5/gtk-2.0/Makefile.in, Theme_b5/gtk-2.0/gtkrc,
+	Theme_basic/Makefile.in, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_curve/ICON.png, Theme_curve/Makefile.am,
+	Theme_curve/Makefile.in, Theme_curve/README.html,
+	Theme_curve/gtk-2.0/Makefile.am, Theme_curve/gtk-2.0/Makefile.in,
+	Theme_curve/gtk-2.0/gtkrc, Theme_funklor/Makefile.in,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_light/Makefile.in,
+	Theme_light/gtk-2.0/Makefile.in, Theme_redmondxp/Makefile.in,
+	Theme_redmondxp/gtk-2.0/Makefile.in, Theme_saltlake/Makefile.in,
+	Theme_saltlake/gtk-2.0/Makefile.in, Theme_smooth/Makefile.in,
+	Theme_smooth/gtk-2.0/Makefile.in: Remove Xfce_curve
+
+2002-09-14  xfce
+
+	* Theme/Makefile.in, Theme/gtk-2.0/Makefile.in,
+	Theme_b5/Makefile.in, Theme_b5/gtk-2.0/Makefile.in,
+	Theme_basic/Makefile.in, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_curve/Makefile.in, Theme_curve/gtk-2.0/Makefile.in,
+	Theme_funklor/Makefile.in, Theme_funklor/gtk-2.0/Makefile.in,
+	Theme_light/Makefile.in, Theme_light/gtk-2.0/Makefile.in,
+	Theme_redmondxp/Makefile.in, Theme_redmondxp/gtk-2.0/Makefile.in,
+	Theme_smooth/Makefile.in, Theme_smooth/gtk-2.0/Makefile.in:
+	Regenerate all Makefile.in in case.
+
+2002-09-12  xfce
+
+	* ChangeLog: Update ChangeLog.
+
+2002-09-12  xfce
+
+	* Makefile.in, aclocal.m4, Theme_saltlake/Makefile.in,
+	Theme_saltlake/gtk-2.0/Makefile.in: [no log message]
+
+2002-09-12  xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure, configure.in,
+	Theme/Makefile.in, Theme/gtk-2.0/Makefile.in, Theme_b5/Makefile.in,
+	Theme_b5/gtk-2.0/Makefile.in, Theme_basic/Makefile.in,
+	Theme_basic/gtk-2.0/Makefile.in, Theme_curve/Makefile.in,
+	Theme_curve/gtk-2.0/Makefile.in, Theme_funklor/Makefile.in,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_light/Makefile.in,
+	Theme_light/gtk-2.0/Makefile.in, Theme_redmondxp/Makefile.in,
+	Theme_redmondxp/gtk-2.0/Makefile.in, Theme_saltlake/ICON.png,
+	Theme_saltlake/Makefile.am, Theme_saltlake/Makefile.in,
+	Theme_saltlake/README.html, Theme_saltlake/gtk-2.0/Makefile.am,
+	Theme_saltlake/gtk-2.0/Makefile.in, Theme_saltlake/gtk-2.0/gtkrc,
+	Theme_smooth/Makefile.in, Theme_smooth/gtk-2.0/Makefile.in: Add
+	theme saltlake
+
+2002-09-12  xfce
+
+	* Theme/gtk-2.0/gtkrc, Theme_b5/gtk-2.0/gtkrc,
+	Theme_basic/gtk-2.0/gtkrc, Theme_curve/gtk-2.0/gtkrc,
+	Theme_funklor/gtk-2.0/gtkrc, Theme_light/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc, Theme_smooth/gtk-2.0/gtkrc: [no log
+	message]
+
+2002-09-12  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-12  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-12  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-11  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-11  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-09  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-09-09  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc, Theme_curve/gtk-2.0/gtkrc,
+	Theme_funklor/gtk-2.0/gtkrc, Theme_redmondxp/gtk-2.0/gtkrc,
+	Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-09-08  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-08  xfce
+
+	* xfce_theme_draw.c, Theme_b5/gtk-2.0/gtkrc,
+	Theme_curve/gtk-2.0/gtkrc, Theme_funklor/gtk-2.0/gtkrc,
+	Theme_light/gtk-2.0/gtkrc, Theme_redmondxp/gtk-2.0/gtkrc,
+	Theme_smooth/gtk-2.0/gtkrc: Use default gtk theme for drawing
+	arrows instead of our, use flat pressed buttons.
+
+2002-09-06  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-09-06  xfce
+
+	* Theme_smooth/: README.html, gtk-2.0/gtkrc: [no log message]
+
+2002-09-05  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc: [no log message]
+
+2002-09-03  xfce
+
+	* Theme_curve/gtk-2.0/gtkrc: [no log message]
+
+2002-09-03  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in: [no log
+	message]
+
+2002-09-03  xfce
+
+	* configure, configure.in, Theme_curve/ICON.png,
+	Theme_curve/Makefile.am, Theme_curve/Makefile.in,
+	Theme_curve/README.html, Theme_curve/gtk-2.0/Makefile.am,
+	Theme_curve/gtk-2.0/Makefile.in, Theme_curve/gtk-2.0/gtkrc: Add
+	theme "curve"
+
+2002-09-02  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc: [no log message]
+
+2002-09-02  xfce
+
+	* Makefile.am, Makefile.in: Replace "rpm -ta" with "rpmbuild -ta"
+
+2002-09-01  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-08-29  xfce
+
+	* xfce_theme_draw.c, Theme_basic/gtk-2.0/gtkrc: [no log message]
+
+2002-08-29  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-08-29  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-08-29  xfce
+
+	* Theme_smooth/gtk-2.0/gtkrc: [no log message]
+
+2002-08-28  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	Theme_basic/gtk-2.0/gtkrc, Theme_smooth/ICON.png,
+	Theme_smooth/Makefile.am, Theme_smooth/Makefile.in,
+	Theme_smooth/README.html, Theme_smooth/gtk-2.0/Makefile.am,
+	Theme_smooth/gtk-2.0/Makefile.in, Theme_smooth/gtk-2.0/gtkrc: [no
+	log message]
+
+2002-08-28  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-08-28  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-08-27  xfce
+
+	* gtk-xfce-engine-2.spec.in: [no log message]
+
+2002-08-27  xfce
+
+	* Theme_basic/gtk-2.0/gtkrc: [no log message]
+
+2002-08-26  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-08-26  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-08-26  xfce
+
+	* Theme/gtk-2.0/gtkrc, Theme_b5/gtk-2.0/gtkrc,
+	Theme_basic/gtk-2.0/gtkrc, Theme_funklor/gtk-2.0/gtkrc: [no log
+	message]
+
+2002-08-26  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-08-26  xfce
+
+	* Theme_redmondxp/gtk-2.0/gtkrc: [no log message]
+
+2002-08-25  xfce
+
+	* config.h.in, configure, configure.in, xfce_rc_style.c,
+	xfce_rc_style.h, xfce_style.h, xfce_theme_draw.c,
+	xfce_theme_main.c: Make round corners enabled by default, allow
+	disable round corners from configure script.
+
+2002-08-24  xfce
+
+	* xfce_theme_draw.c: Improve "smooth_edge" mode.  The shadow
+	drawing should be faster too.
+
+2002-08-24  xfce
+
+	* configure, configure.in, gtk-xfce-engine-2.spec.in,
+	xfce_theme_draw.c: Remove round corners. W/out use of shape, it
+
+2002-08-24  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-08-24  xfce
+
+	* xfce_theme_draw.c: Change theme when "smooth_edge" is set,
+	implement round corner to reflect Eugenia's suggestion.
+
+2002-08-23  xfce
+
+	* xfce_theme_draw.c: REvert latest changes, going nowhere.
+
+2002-08-23  xfce
+
+	* xfce_theme_draw.c: Round corners (more)
+
+2002-08-23  xfce
+
+	* xfce_theme_draw.c: An attempt to implement slight round corners
+	as suggested by Eugenia ;-)
+
+2002-07-24  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-24  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in: Add GTK_LIBS
+	dependency so that PyGTK apps work with the theme (as suggested by
+	Michele Campeotto <micampe@micampe.it>)
+
+2002-07-18  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-18  xfce
+
+	* Theme_light/gtk-2.0/gtkrc: Change prelight color.
+
+2002-07-18  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-17  xfce
+
+	* Makefile.am, Makefile.in, config.h.in, configure, configure.in,
+	Theme_b5/Makefile.am, Theme_b5/Makefile.in, Theme_light/ICON.png,
+	Theme_light/Makefile.am, Theme_light/Makefile.in,
+	Theme_light/README.html, Theme_light/gtk-2.0/Makefile.am,
+	Theme_light/gtk-2.0/Makefile.in, Theme_light/gtk-2.0/gtkrc: Add new
+	scheme "Xfce_light"
+
+2002-07-16  huysmans
+
+	* config.h.in, configure, xfce_theme_draw.c: small fix for compile
+	error
+
+2002-07-15  xfce
+
+	* Theme_b5/gtk-2.0/gtkrc, Theme_redmondxp/gtk-2.0/gtkrc: Change
+	scrollbar size to 13 instead of 15 for XFce-Redmondxp and Xfce-b5
+
+2002-07-15  xfce
+
+	* configure, configure.in, xfce_rc_style.c, xfce_rc_style.h,
+	xfce_theme_draw.c, Theme/gtk-2.0/gtkrc, Theme_b5/gtk-2.0/gtkrc,
+	Theme_basic/gtk-2.0/gtkrc, Theme_funklor/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc: Major improvement, add an option to
+	the theme "smooth_edge", boolean, so one can set it to get slicker
+	look.  Modified all themes, moved some default out of the code and
+	put it the gtkrc files to give more control to the theme creator.
+
+2002-07-15  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-07-15  xfce
+
+	* xfce_theme_draw.c: Change shadows
+
+2002-07-15  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-07-14  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-07-14  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	xfce_theme_draw.c, Theme_b5/ICON.png, Theme_b5/Makefile.am,
+	Theme_b5/Makefile.in, Theme_b5/README.html,
+	Theme_b5/gtk-2.0/Makefile.am, Theme_b5/gtk-2.0/Makefile.in,
+	Theme_b5/gtk-2.0/gtkrc: [no log message]
+
+2002-07-14  xfce
+
+	* xfce_theme_draw.c: Revert latest changes
+
+2002-07-14  xfce
+
+	* xfce_theme_draw.c: Revert the change on arrows.
+
+2002-07-14  xfce
+
+	* xfce_theme_draw.c: Change the shadow of widget to be less sharp,
+	ie by using dark_gc instead of black_gc to render the shadow
+	(People may not like this)
+
+2002-07-04  xfce
+
+	* ChangeLog: Update ChangeLog, release 2.0.6
+
+2002-07-04  xfce
+
+	* Makefile.am, Makefile.in, acconfig.h, aclocal.m4, config.h.in,
+	configure, configure.in, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.in, Theme_basic/Makefile.in,
+	Theme_basic/gtk-2.0/Makefile.in, Theme_funklor/Makefile.in,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_redmondxp/ICON.png,
+	Theme_redmondxp/Makefile.am, Theme_redmondxp/Makefile.in,
+	Theme_redmondxp/README.html, Theme_redmondxp/gtk-2.0/Makefile.am,
+	Theme_redmondxp/gtk-2.0/Makefile.in, Theme_redmondxp/gtk-2.0/gtkrc:
+	Add Xfce-Redmondxp theme
+
+2002-07-01  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-01  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-30  xfce
+
+	* config.h.in, configure, Theme/gtk-2.0/gtkrc,
+	Theme_funklor/gtk-2.0/gtkrc: Improve default gtkrc
+
+2002-06-28  xfce
+
+	* Makefile.am, Makefile.in, config.h.in, configure, configure.in,
+	Theme/gtk-2.0/gtkrc, Theme_funklor/ICON.png,
+	Theme_funklor/Makefile.am, Theme_funklor/Makefile.in,
+	Theme_funklor/README.html, Theme_funklor/gtk-2.0/Makefile.am,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_funklor/gtk-2.0/gtkrc: Add
+	theme Xfce_funklor based on a theme by Michael Pearce
+	(chuzwuzza@optushome.com.au), Improve Xfce theme.
+
+2002-06-27  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-24  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-24  xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	Theme/gtk-2.0/gtkrc, Theme_basic/ICON.png, Theme_basic/Makefile.am,
+	Theme_basic/Makefile.in, Theme_basic/README.html,
+	Theme_basic/gtk-2.0/Makefile.am, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_basic/gtk-2.0/gtkrc: Add a new "basic" sample theme using
+	xfce engine.
+
+2002-06-22  xfce
+
+	* configure, configure.in, Theme/gtk-2.0/gtkrc: Bump 2.0.6, change
+	provided gtkrc
+
+2002-06-14  xfce
+
+	* xfce_theme_draw.c: Fix some remaining deprecated calls
+
+2002-06-13  xfce
+
+	* depcomp: [no log message]
+
+2002-06-13  xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, compile, config.h.in,
+	configure, configure.in, missing, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.in: Various cleanups
+
+2002-06-06  xfce
+
+	* Theme/gtk-2.0/gtkrc: Whoops, forgot to update CVS !
+
+2002-06-05  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-05  xfce
+
+	* Theme/gtk-2.0/: gtkrc, gtkrc: [no log message]
+
+2002-06-05  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-05  xfce
+
+	* Theme/gtk-2.0/gtkrc: Add default selected base color that was
+	missing
+
+2002-06-05  xfce
+
+	* configure, configure.in, Theme/gtk-2.0/gtkrc: Improve contrast in
+	provided gtkrc and update version nbr to 2.0.4
+
+2002-06-01  xfce
+
+	* configure, configure.in: [no log message]
+
+2002-05-31  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-30  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-30  xfce
+
+	* xfce_rc_style.c, Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-30  xfce
+
+	* configure, configure.in, xfce_rc_style.c, Theme/gtk-2.0/gtkrc:
+	[no log message]
+
+2002-05-30  xfce
+
+	* xfce_theme_draw.c, Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29  xfce
+
+	* configure, configure.in, xfce_theme_draw.c: [no log message]
+
+2002-05-29  xfce
+
+	* xfce_theme_draw.c, Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29  xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29  xfce
+
+	* Makefile.am, Makefile.in, Theme/Makefile.am, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.am, Theme/gtk-2.0/Makefile.in,
+	gtk-xfce-engine-2.spec.in: [no log message]
+
+2002-05-29  xfce
+
+	* Makefile.in, aclocal.m4, configure, configure.in,
+	gtk-xfce-engine-2.spec.in, Theme/ICON.png, Theme/Makefile.am,
+	Theme/Makefile.in, Theme/README.html, Theme/gtk-2.0/Makefile.am,
+	Theme/gtk-2.0/Makefile.in, Theme/gtk-2.0/gtkrc: Add default gtkrc
+	for GNOME
+
+2002-05-28  xfce
+
+	* Makefile.am, Makefile.in: Add -DG_DISABLE_DEPRECATED
+
+2002-05-28  xfce
+
+	* COPYING, Makefile.am, Makefile.in, configure, configure.in,
+	gtk-xfce-engine-2.spec.in, xfce_theme_draw.c, AUTHORS, ChangeLog,
+	NEWS, README: [no log message]
+
+2002-05-28  xfce
+
+	* Makefile.in, aclocal.m4, configure, xfce_rc_style.c,
+	xfce_theme_draw.c: [no log message]
+
+2002-05-28  xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-05-28  xfce
+
+	* xfce_theme_main.c: [no log message]
+
+2002-05-28  xfce
+
+	* Makefile.am, Makefile.in, xfce_rc_style.c, xfce_rc_style.h,
+	xfce_style.h: [no log message]
+
+2002-05-28  xfce
+
+	* stamp-h.in, xfce_theme_main.c: [no log message]
+
+2002-05-28  xfce
+
+	* COPYING, INSTALL, Makefile.am, Makefile.in, acconfig.h,
+	aclocal.m4, autogen.sh, config.guess, config.h.in, config.sub,
+	configure, configure.in, install-sh, ltmain.sh, missing,
+	mkinstalldirs, stamp-h.in, xfce_theme_draw.c, xfce_theme_main.c:
+	Initial import
+

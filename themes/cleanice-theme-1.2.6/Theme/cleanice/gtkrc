@@ -1,0 +1,37 @@
+# Edit these colors and fonts however you like, after cp'ing the file to
+# another theme directory.
+# CleanIce GTK+ Theme 2001,2002 Rodney Dawes <dobey@free.fr>
+# Based on ThinIce GTK+ Engine by Tomas Ogren
+# and Clean GTK+ Engine by dengen40@yahoo.com
+# Nifty wintery-cool ice-like colors for your viewing pleasure.
+
+style "cleanice-winter" {
+  bg[SELECTED] = "#4272A1"
+  
+  fg[SELECTED] = "#efefef"
+  text[INSENSITIVE] = "#efefef"
+  text[ACTIVE] = "#efefef"
+    
+  bg[ACTIVE] = "#cccccc"
+  fg[ACTIVE] = "#000000"
+
+  bg[PRELIGHT] = "#4272A1"
+  fg[PRELIGHT] = "#efefef"
+
+  bg[INSENSITIVE] = "#dddddd"
+
+  fg[NORMAL] = "#000000"
+  bg[NORMAL] = "#efefef"
+
+  base[NORMAL] = "#ffffff"
+  text[NORMAL] = "#000000"
+
+  base[SELECTED] = "#4272A1"
+  text[SELECTED] = "#efefef"
+	base[PRELIGHT] = "#4272A1"
+	text[PRELIGHT] = "#efefef"
+
+  engine "cleanice" {}
+}
+widget_class "*" style "cleanice-winter"
+

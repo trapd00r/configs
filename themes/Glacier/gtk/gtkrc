@@ -1,0 +1,49 @@
+# Glacier GTK+ 1.2 theme (Requires ThinIce & Pixmap engines)
+# by R.V.Vindenes <s864@ii.uib.no>
+#
+
+style "glacier-default" {
+        
+      fg[NORMAL]        = "#000000"
+      fg[ACTIVE]        = "#000000"
+      fg[INSENSITIVE]   = "#777777"
+      fg[PRELIGHT]      = "#000000"
+      fg[SELECTED]      = "#f2f2f2"
+        
+      bg[ACTIVE]        = "#BBBBB6"
+      bg[NORMAL]        = "#E2E2E2"
+      bg[INSENSITIVE]   = "#f2f2f2"
+      bg[PRELIGHT]      = "#EDEDED"
+      bg[SELECTED]      = "#484848"
+
+      base[NORMAL]      = "#f2f2f2"
+      base[ACTIVE]      = "#BBBBB6"
+      base[INSENSITIVE] = "#BBBBB6"
+      base[PRELIGHT]    = "#000000"
+      base[SELECTED]    = "#000000"
+        
+      text[NORMAL]      = "#000000"
+      text[ACTIVE]      = "#000000"
+      text[PRELIGHT]    = "#000000"
+      text[SELECTED]    = "#f2f2f2"
+      text[INSENSITIVE] = "#777777"
+
+      bg_pixmap[NORMAL]   = "bgpixmap_normal.png"
+      bg_pixmap[PRELIGHT] = "bgpixmap_prelight.png"
+      bg_pixmap[ACTIVE]   = "bgpixmap_prelight.png"
+
+      engine "thinice" {
+             rect_scrollbar = TRUE
+             scroll_button_marks = FALSE
+      }        
+}
+
+style "glacier-plain" {
+      bg[NORMAL]          = "#FFFFFF"
+      bg_pixmap[NORMAL]   = "<none>"
+      bg_pixmap[PRELIGHT] = "<none>"
+}
+
+class "GtkWidget" style "glacier-default"
+widget "gtk-tooltips" style "glacier-plain"
+

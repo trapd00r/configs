@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=T-ish-Ubuntulooks-Aquastyle
+Type=X-GNOME-Metatheme
+Comment=Theme based on T-ish-Aquastyle
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=T-ish-Ubuntulooks-Aquastyle
+MetacityTheme=T-ish-Ubuntulooks
+IconTheme=OSX

@@ -1,0 +1,96 @@
+# LighthouseBlue Theme
+
+style "default"
+{
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#747474"
+
+  bg[NORMAL]       = "#eeeee0"
+  bg[ACTIVE]       = "#CCCCC0" #button pressed and taskbar active
+  bg[PRELIGHT]     = "#ddddd0"
+  bg[SELECTED]     = "#5f7ca8" #"#bbbbb0"
+  bg[INSENSITIVE]  = "#D6D6D6"
+
+  base[NORMAL]     = "#FFFFFF"
+  base[ACTIVE]     = "#bbbbb0"
+  base[PRELIGHT]   = "#bbbbb0"
+  base[SELECTED]   = "#5f7ca8"
+  base[INSENSITIVE]= "#E9E9E9"
+
+  text[NORMAL]     = "#000000"
+  text[ACTIVE]     = "#ffffff"
+  text[PRELIGHT]   = "#ffffff"
+  text[SELECTED]   = "#ffffff"
+  text[INSENSITIVE]= "#747474"
+  
+  engine "lighthouseblue" 
+  {}
+}
+
+style "notebook" = "default"
+{
+  bg[NORMAL]       = "#ddddd0"
+  bg[ACTIVE]       = "#E6E6E0"
+
+  engine "lighthouseblue" 
+    {
+      wide = TRUE
+    }
+}
+
+style "frame" = "default"
+{
+  bg[NORMAL]       = "#ddddd0"
+}
+
+style "button" = "default"
+{
+  bg[NORMAL]       = "#ddddd0"
+  bg[PRELIGHT]     = "#fffff0"
+
+  engine "lighthouseblue" 
+    {
+      wide = TRUE
+    }
+}
+
+style "menu" = "default"
+{
+  engine "lighthouseblue" 
+    {
+      wide = TRUE
+    }
+}
+
+style "menuitem" = "default"
+{
+  bg[PRELIGHT]     = "#5f7ca8"
+  fg[PRELIGHT]     = "#ffffff"
+
+  engine "lighthouseblue" 
+    {
+      wide = TRUE
+    }
+}
+
+style "menubar" = "menu"
+{
+  engine "lighthouseblue" 
+    {
+      wide = TRUE
+    }
+}
+
+class "GtkWidget" style "default"
+class "GtkButton" style "button"
+class "GtkNotebook" style "notebook"
+class "GtkMenu" style "menu"
+class "GtkFrame" style "frame"
+class "GtkMenuItem" style "menuitem"
+class "GtkMenuBar" style "menubar"
+
+widget_class "*.*MenuItem.*" style "menuitem"
+

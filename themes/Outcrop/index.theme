@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Outcrop
+Name[pl]=Odkrywka
+Type=X-GNOME-Metatheme
+Comment=_  __ _   -__ __ _  _
+
+[X-GNOME-Metatheme]
+GtkTheme=Outcrop
+IconTheme=gnome
+MetacityTheme=Outcrop

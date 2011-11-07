@@ -1,0 +1,25 @@
+#########################################################
+Aluminum Alloy
+#########################################################
+
+A Port of a Mac OS X theme originally made by Max Rudberg - http://www.maxthemes.com
+Thank you the permission and original pixmaps!
+
+#########################################################
+
+
+ * If you wish to redistribute this theme, you must recieve permission from me, via email.
+
+ * You must include a file inside your redistribution that gives me and Max Rudberg (the original designer) 
+credit. 
+
+ * If you wish to create a derivative work from these resources, you must recieve permission from me via email.
+ 
+ * Any derivative works must also include credit to me and Max Rudberg. 
+ 
+ * Any redistribution or derivative work of this theme must be free of charge. 
+ 
+ 
+If you see anyone violating these provisions, please contact me.
+
+You can contact me at: roberto@monornet.hu

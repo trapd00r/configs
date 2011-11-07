@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CleanIce
+_Comment=A Clean Minimalistic Appearance
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=CleanIce
+MetacityTheme=CleanIce
+IconTheme=gnome
+

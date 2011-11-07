@@ -1,0 +1,28 @@
+gnububble v0.4  by Kyle Davis (kyled@blueriver.net)
+===================================================
+
+My first GTK+-2.0 theme.
+It is based off of bluebubble and
+ideas from AquaGraphite (GTK+-1.2 theme)
+
+This theme is meant to give an Aqua
+feel to things without being another clone.
+
+
+ChangeLog
+=========
+v0.4:
+ fixed an annoying bug that would make setting the gnome-panel to a solid color background really ugly
+ also fixed some more issues with the tabs (GTK no longer complains)
+
+v0.3:
+ fixed tab issue a little better
+ fixed some selection color issues
+ other misc. random fixes
+
+v0.2:
+ fixed some tab issues
+ released to the world
+
+v0.1:
+ newly created

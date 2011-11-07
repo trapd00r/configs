@@ -1,0 +1,56 @@
+# Edit these colors and fonts however you like.
+style "default" 
+{
+	fg[NORMAL]		= "#000000"
+	fg[ACTIVE]		= "#000000"
+	fg[PRELIGHT]		= "#FFFFFF"
+	fg[SELECTED]		= "#FFFFFF"
+	fg[INSENSITIVE]		= "#747474"
+	bg[NORMAL]		= "#EBEBEB"
+	bg[ACTIVE]		= "#C9C9C9"
+	bg[PRELIGHT]		= "#7C878F"
+	bg[SELECTED]		= "#7C878F"
+	bg[INSENSITIVE]		= "#C9C9C9"
+	base[NORMAL]		= "#FFFFFF"
+	base[ACTIVE]		= "#C9C9C9"
+	base[PRELIGHT]		= "#7C878F"
+	base[SELECTED]		= "#7C878F"
+	base[INSENSITIVE]	= "#C9C9C9"
+	text[NORMAL]		= "#000000"
+	text[ACTIVE]		= "#000000"
+	text[PRELIGHT]		= "#FFFFFF"
+	text[SELECTED]		= "#FFFFFF"
+	text[INSENSITIVE]	= "#747474"
+
+	engine "thinice"
+	{
+		# You want the // on the handleboxes?
+		handlebox_marks = TRUE
+		# Do you want the // marks on the scrollbar handle?
+		scrollbar_marks = TRUE
+		# A single / on the scrollbar buttons, perhaps?
+		scroll_button_marks = TRUE
+		# Do you want the scrollbar handles rectangular or a bit shaped?
+		rect_scrollbar = FALSE
+	}
+}
+
+style "togglebutton" = "default"
+{
+	# Very funny!  I couldn't get the Mist engine to work here.
+	# Change this to "mist" and see what it does for you.
+	engine "redmond95"
+	{
+	}
+}
+
+style "scrollbar" = "default"
+{
+	bg[ACTIVE] = "#D5D5D5"
+}
+
+class "GtkWidget" style "default"
+class "GtkCheckButton" style "togglebutton"
+class "GtkRadioButton" style "togglebutton"
+class "GtkMenuItem" style "togglebutton"
+class "GtkRange" style "scrollbar"

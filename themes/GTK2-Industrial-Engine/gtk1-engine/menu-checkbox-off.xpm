@@ -1,0 +1,12 @@
+/* XPM */
+static char * menu_checkbox_off_xpm[] = {
+"8 8 1 1",
+" 	c None",
+"        ",
+"        ",
+"        ",
+"        ",
+"        ",
+"        ",
+"        ",
+"        "};

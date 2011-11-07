@@ -1,0 +1,413 @@
+# Theme Name  : SmoothGNOME-Red
+# Author(s)   : Link Dupont <link@subpop.net>
+# Description : A very basic, conservative theme, using the Smooth engine and
+#               HIG colors.
+#               This is the red variant.
+
+style "default"
+{
+	fg[ACTIVE] = "#000000" # Black
+	fg[SELECTED] = "#FFFFFF" # White
+	fg[NORMAL] = "#000000" # Black
+	fg[PRELIGHT] = "#000000" # Black
+	fg[INSENSITIVE] = "#565248" # 3D Shadow
+
+	bg[ACTIVE] = "#BAB5AB" # Basic 3D Medium
+	bg[SELECTED] = "#884631" # Red Dark
+	bg[NORMAL] = "#EAE8E3" # Basic 3D Hilight
+	bg[PRELIGHT] = "#F2F0EB" # Variant of Basic 3D Hilight
+	bg[INSENSITIVE] = "#EAE8E3" # Basic 3D Hilight
+
+	base[ACTIVE] = "#BAB5AB" # Basic 3D Medium
+	base[SELECTED] = "#884631" # Red Dark
+	base[NORMAL] = "#FFFFFF" # White
+	base[PRELIGHT] = "#FFFFFF" # White
+	base[INSENSITIVE] = "#DEDCD7" # Variant of Basic 3D Highlight
+
+	text[ACTIVE] = "#000000" # Black
+	text[SELECTED] = "#FFFFFF" # White
+	text[NORMAL] = "#000000" # Black
+	text[PRELIGHT] = "#000000" # Black
+	text[INSENSITIVE] = "#565248" # 3D Shadow
+
+	engine "smooth"
+	{
+        	GtkWidget::interior_focus = 0
+        	GtkWidget::focus_padding = 0
+
+        	GtkButton::default_spacing = 8
+
+        	GtkCheckButton::indicator_size = 14
+        	GtkRadioButton::indicator_size = 12
+
+        	GtkPaned::handle_size = 6
+
+        	GtkRange::trough_border = 2
+        	GtkRange::slider_width = 15
+        	GtkRange::stepper_size = 15
+        	GtkRange::stepper_spacing = 0
+	
+		tab_style = square
+
+		fill
+		{
+			style = shaded
+			hdirection = vertical
+			vdirection = horizontal
+			shade1 = 1.05
+			shade2 = 0.95
+		}
+
+		edge
+		{
+			line
+			{
+				style = smooth
+				thickness = 1
+			}
+		}
+
+		trough
+		{
+			fill
+			{
+				style = solid
+			}
+			line
+			{
+				style = flat
+			}
+		}
+
+		focus
+		{
+			foreground[ACTIVE] = "#884631"
+			foreground[SELECTED] = "#884631"
+			foreground[NORMAL] = "#884631"
+			foreground[PRELIGHT] = "#884631"
+		}
+
+		grip
+		{
+			style = dots_in
+			count = 3
+			spacing = 2
+		}
+
+		check
+		{
+			style = clean
+			motif = FALSE
+			fill
+			{
+				style = solid
+			}
+		}
+
+		option
+		{
+			style = circle
+			motif = FALSE
+		}
+
+		#button
+		#{
+		#	embeddable = TRUE
+		#}
+
+		arrow
+		{
+			style = cleanice
+			solid = TRUE
+			xpadding = 0
+			ypadding = 0
+
+			INSENSITIVE
+			{
+				etched = TRUE
+			}
+		}
+	}
+}
+widget_class "*" style "default"
+
+style "menuitem"
+{
+	bg[PRELIGHT] = "#884631"
+	fg[PRELIGHT] = "#FFFFFF"
+	base[PRELIGHT] = "#884631"
+	text[PRELIGHT] = "#FFFFFF"
+
+	engine "smooth"
+	{
+		fill
+		{
+			style = solid
+		}
+
+		edge
+		{
+			line
+			{
+				style = flat
+				thickness = 1
+			}
+		}
+
+		line
+		{
+			style = smooth
+			thickness = 1
+		}
+		
+		check
+		{
+			style = cleanice
+			motif = FALSE
+			edge
+			{
+				line
+				{
+					style = smooth
+				}
+			}
+			xpadding = 1
+			ypadding = 1
+		}
+		
+		option
+		{
+			style = circle
+			motif = FALSE
+		}
+
+		arrow
+		{
+			style = cleanice
+			solid = TRUE
+			xpadding = 0
+			ypadding = 0
+
+			INSENSITIVE
+			{
+				etched = TRUE
+			}
+		}
+	}
+}
+class "*MenuItem*" style "menuitem"
+widget_class "*MenuItem*" style "menuitem"
+
+style "toolbar"
+{
+	bg[PRELIGHT] = "#884631"
+	base[PRELIGHT] = "#884631"
+
+	engine "smooth"
+	{
+		fill
+		{
+			style = solid
+	 	}
+		edge
+		{
+			line
+			{
+				style = smooth
+				thickness = 1
+			}
+		}
+		grip
+		{
+			fill
+			{
+				style = shaded
+				hdirection = vertical
+				vdirection = horizontal
+				shade1 = 1.05
+				shade2 = 0.95
+			}
+			style = dots_in
+			count = 3
+			spacing = 2
+		}
+	}
+}
+widget_class "*BonoboDockItem" style "toolbar"
+class "*BonoboDockItem" style "toolbar"
+
+widget_class "*HandleBox" style "toolbar"
+class "*HandleBox" style "toolbar"
+
+widget_class "*Toolbar" style "toolbar"
+class "*Toolbar" style "toolbar"
+
+widget_class "*MenuBar" style "toolbar"
+class "*MenuBar" style "toolbar"
+
+style "hscrollbar" 
+{
+	engine "smooth"
+	{
+		GtkRange::trough_border = 2
+        	GtkRange::slider_width = 15
+	        GtkRange::stepper_size = 15
+	        GtkRange::stepper_spacing = 0
+        
+		fill
+		{
+			style = shaded
+			hdirection = vertical
+			vdirection = horizontal
+			shade1 = 1.05
+			shade2 = 0.95
+		}
+	
+		line
+		{
+			style = smooth
+			thickness = 1
+		}
+	
+		trough
+		{
+			fill
+			{
+				style = solid
+			}
+		}
+	
+		grip
+		{
+			style = dots_in
+			count = 3
+			spacing = 2
+		}
+
+		focus
+		{
+			foreground[ACTIVE] = "#884631"
+			foreground[SELECTED] = "#884631"
+			foreground[NORMAL] = "#884631"
+			foreground[PRELIGHT] = "#884631"
+		}
+	
+		arrow
+		{
+			style = cleanice
+			solid = TRUE
+			xpadding = 1
+			ypadding = 1
+
+			INSENSITIVE
+			{
+				etched = TRUE
+			}
+		}
+	}
+}
+widget_class "*HScrollbar*"         style "hscrollbar"
+class "*HScrollbar*"                style "hscrollbar"
+widget_class "*HScale*"         style "hscrollbar"
+class "*HScale*"                style "hscrollbar"
+
+style "progressbar"
+{
+	bg[PRELIGHT] = "#884631"
+    fg[PRELIGHT] = "#FFFFFF" # White
+}
+widget_class "*ProgressBar*" style "progressbar"
+
+style "vscrollbar" 
+{
+	engine "smooth"
+	{
+		GtkRange::trough_border = 2
+	        GtkRange::slider_width = 15
+	        GtkRange::stepper_size = 15
+	        GtkRange::stepper_spacing = 0
+        
+		fill
+		{
+			style = shaded
+			hdirection = vertical
+			vdirection = horizontal
+			shade1 = 1.05
+			shade2 = 0.95
+		}
+	
+		line
+		{
+			style = smooth
+			thickness = 1
+		}
+	
+		trough
+		{
+			fill
+			{
+				style = solid
+			}
+		}
+	
+		grip
+		{
+			style = dots_in
+			count = 3
+			spacing = 2
+		}
+	
+		focus
+		{
+			foreground[ACTIVE] = "#884631"
+			foreground[SELECTED] = "#884631"
+			foreground[NORMAL] = "#884631"
+			foreground[PRELIGHT] = "#884631"
+		}
+
+		arrow {
+			style = cleanice
+			solid = TRUE
+			xpadding = 1
+			ypadding = 1
+
+			INSENSITIVE
+			{
+				etched = TRUE
+			}
+		}
+	}
+}
+widget_class "*VScrollbar*"         style "vscrollbar"
+class "*VScrollbar*"                style "vscrollbar"
+widget_class "*VScale*"         style "vscrollbar"
+class "*VScale*"                style "vscrollbar"
+
+style "tooltip"
+{
+    bg[NORMAL] = "#FFF1BE" # Variant of Accent Yellow
+	fg[NORMAL] = "#000000"
+
+	engine "smooth"
+	{
+		fill
+		{
+			style 	= solid
+		}
+		edge 
+		{
+			line
+			{
+				style = flat
+			}
+		}
+	}
+}
+widget "gtk-tooltips" style "tooltip"
+
+style "textentry"
+{
+    bg[INSENSITIVE] = "#DEDCD7" # Varient of Basic 3D Highlight
+    base[INSENSITIVE] = "#DEDCD7" # Varient of Basic 3D Highlight
+}
+widget_class "*GtkEntry" style "textentry"

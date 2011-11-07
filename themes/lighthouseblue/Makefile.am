@@ -1,0 +1,3 @@
+SUBDIRS=themes
+EXTRA_DIST=
+

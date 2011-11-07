@@ -1,0 +1,79 @@
+# LighthouseBlue Theme
+
+style "default"
+{
+  fg[NORMAL]       = "#353535"
+  fg[ACTIVE]       = "#353535"
+#  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#ffffff"
+  fg[INSENSITIVE]  = "#747474"
+
+  bg[NORMAL]       = "#e3e0d9"
+  bg[ACTIVE]       = "#e9e5e8"
+  bg[PRELIGHT]     = "#FFFFFF"
+  bg[SELECTED]     = "#90927c"
+  bg[INSENSITIVE]  = "#ffffff"
+
+  base[NORMAL]     = "#FFFFFF"
+  base[ACTIVE]     = "#90927c"
+  base[PRELIGHT]   = "#FFFFFF"
+  base[INSENSITIVE]= "#e3e0d9"
+  base[SELECTED]   = "#90927c"
+
+  text[INSENSITIVE]= "#747474"
+  text[SELECTED]   = "#ffffff"
+  text[ACTIVE]     = "#ffffff"
+  text[PRELIGHT]   = "#353535"
+  
+  engine "lighthouseblue" 
+  {}
+}
+
+style "notebook" = "default"
+{
+  bg[NORMAL]       = "#ddddd0"
+  bg[ACTIVE]       = "#E6E6E0"
+
+  engine "lighthouseblue" 
+    {
+      wide = TRUE
+    }
+}
+
+style "frame" = "default"
+{
+  bg[NORMAL]       = "#ddddd0"
+}
+
+style "button" = "default"
+{
+  bg[NORMAL]       = "#ddddd0"
+  bg[PRELIGHT]     = "#fffff0"
+  bg[ACTIVE]       = "#ccccc0"
+}
+
+style "togglebutton" = "default"
+{
+  fg[SELECTED] = "#5F7CA8"
+  
+  bg[NORMAL] = "#ddddd0"
+  bg[PRELIGHT] = "#fffff0"
+  bg[ACTIVE] = "#ccccc0"
+}
+
+style "menuitem" = "default"
+{
+  bg[PRELIGHT]     = "#5f7ca8"
+  fg[PRELIGHT]     = "#f5f5f5"
+}
+
+class "GtkWidget" style "default"
+class "GtkButton" style "button"
+class "GtkNotebook" style "notebook"
+class "GtkFrame" style "frame"
+class "GtkMenuItem" style "menuitem"
+class "GtkToggleButton" style "togglebutton"
+
+widget_class "*.GtkButton.*" style "button"
+widget_class "*.*MenuItem.*" style "menuitem"
+

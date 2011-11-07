@@ -1,0 +1,4 @@
+* Wed Feb 28 2003 Jean Schurger <yshark@schurger.org>
+- Use Paul M Edwards buttons for close max and min (better placement)
+- a little more (but very very little) yellow (for the title bar)
+- Change backgrounds files name (more explicit)

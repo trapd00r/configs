@@ -1,0 +1,18 @@
+# Toxig GNOME theme 
+# by: Abel Boldú <vdo.pure@gmail.com>
+# 
+#
+#This theme is based on Beastie Gnome theme.
+
+
+
+
+## $MCom: projects/beastie/README,v 1.2 2005/10/26 04:23:15 ahze Exp $
+##
+##
+## Beastie GNOME theme with FreeBSD Colors.
+##Beastie depends on clearlooks gtk theme engine and defaults to using
+##clearlooks-metacity theme and default GNOME icons.
+##WebPage: http://people.FreeBSD.org/~ahze/Beastie
+##Authors: Jeremy Messenger <mezz@FreeBSD.org> 
+##Michael Johnson <ahze@FreeBSD.org>

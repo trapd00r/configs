@@ -1,0 +1,56 @@
+AC_INIT(themes)
+
+AM_CONFIG_HEADER(config.h)
+
+AM_INIT_AUTOMAKE(lighthouseblue, 0.4)
+
+# Honor aclocal flags
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AM_MAINTAINER_MODE
+
+AM_DISABLE_STATIC
+	
+AC_PROG_CC
+AC_PROG_CXX
+AC_HEADER_STDC
+#AC_ISC_POSIX
+#AC_ARG_PROGRAM
+AM_PROG_LIBTOOL
+	
+changequote(,)dnl
+if test "x$GCC" = "xyes"; then
+  case " $CFLAGS " in
+  *[\ \	]-Wall[\ \	]*) ;;
+  *) CFLAGS="$CFLAGS -Wall" ;;
+  esac
+fi
+changequote([,])dnl
+
+#PKG_CHECK_MODULES(DESKTOP_FILE_UTILS, glib-2.0 >= 2.0.0)
+#AC_SUBST(DESKTOP_FILE_UTILS_CFLAGS)
+#AC_SUBST(DESKTOP_FILE_UTILS_LIBS)
+
+AM_PATH_GTK(1.2.9, , 
+	AC_MSG_ERROR([*** GTK+-1.2.9 not installed - please install first ***]))
+AC_CHECK_LIB(gtk, gtk_style_set_prop_experimental, :,
+	     AC_MSG_ERROR([*** gtk_style_set_prop_experimental() not found; perhaps you have an old CVS version of GTK+ ***]),
+             $GTK_LIBS)
+#AM_PATH_GDK_PIXBUF
+	
+PKG_CHECK_MODULES(GTK2, gtk+-2.0 >= 2.0.0,,
+	          AC_MSG_ERROR([GTK+-2.0 is required to compile lighthouseblue]))
+
+GTK2_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK2_CFLAGS)
+AC_SUBST(GTK2_LIBS)
+AC_SUBST(GTK2_VERSION)
+
+AC_OUTPUT([
+Makefile
+themes/Makefile
+themes/gtk2/Makefile
+themes/gtk2/gtk-2.0/Makefile
+themes/gtk1/Makefile
+themes/gtk1/gtk/Makefile
+])

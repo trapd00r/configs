@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Tactile
+Type=X-GNOME-Metatheme
+Comment=
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Tactile
+MetacityTheme=Tactile
+IconTheme=G-Flat-SVG

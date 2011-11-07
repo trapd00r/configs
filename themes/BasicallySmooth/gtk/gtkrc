@@ -1,0 +1,278 @@
+# Theme Name  : BasicallySmooth
+# Author(s)   : ajgenius ala Andrew Johnson (ajgenius_AT_ajgenius.us) 
+# Description :
+#
+# A Smooth-ified version of the very nice XFCE theme XFCE-Basic, 
+# which simply uses the basic GTK2 default colour scheme.
+
+style "default" {
+	###### GTK Style Colours ######
+	fg[ACTIVE]		= "#000000"
+	fg[SELECTED]		= "#FFFFFF"
+	fg[NORMAL]		= "#000000"
+	fg[PRELIGHT]		= "#000000"
+	fg[INSENSITIVE]		= "#757575"
+
+	bg[ACTIVE]		= "#BAB5AB"
+	bg[SELECTED]		= "#4B6983"
+	bg[NORMAL]		= "#DCDAD5"
+	bg[PRELIGHT]		= "#EEEBE7"
+	bg[INSENSITIVE]		= "#DCDAD5"
+
+	base[ACTIVE]		= "#807D74"
+	base[SELECTED]		= "#4B6983"
+	base[NORMAL]		= "#FFFFFF"
+	base[PRELIGHT]		= "#FFFFFF"
+	base[INSENSITIVE]	= "#FFFFFF"
+
+	text[ACTIVE]		= "#000000"
+	text[SELECTED]		= "#FFFFFF"
+	text[NORMAL]		= "#000000"
+	text[PRELIGHT]		= "#000000"
+	text[INSENSITIVE]	= "#757575"
+ 
+	###### Theme Engine Style ######
+	engine "smooth" {
+		######  Smooth Faked GTK Style Flags  ###### 
+		GtkWidget::interior_focus		= 1
+		GtkButton::default_spacing		= 8
+		
+		GtkCheckButton::indicator_size		= 13
+		GtkRadioButton::indicator_size		= 12
+	
+		GtkPaned::handle_size			= 7
+	
+		GtkRange::trough_border			= 2
+		GtkRange::slider_width			= 17
+		GtkRange::stepper_size			= 17
+		GtkRange::stepper_spacing		= 0
+
+
+		tab_style	= square
+		
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			shade1		= 1.1
+			shade2		= 0.95
+		}
+
+		line {
+			style		= smooth
+			thickness	= 2
+		}
+
+		trough {
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+
+				shade1		= 0.95
+				shade2		= 1.1
+			}
+		}
+
+		grip {
+			style		= midlines
+			count		= 5
+			spacing		= 0
+		}
+
+		check {
+			style	= fast
+			motif	= FALSE
+		}
+
+		option {
+			style	= clean
+			motif	= FALSE
+		}
+
+		arrow {
+			style	= cleanice
+			solid	= TRUE
+		}
+	}
+} widget_class "*" style "default"
+
+style "menuitem" {
+	###### GTK Style Colours ######
+	bg[PRELIGHT]		= "#4B6983"
+	fg[PRELIGHT]		= "#FFFFFF"
+	base[PRELIGHT]		= "#4B6983"
+	text[PRELIGHT]		= "#FFFFFF"
+
+	###### Theme Engine Style ######
+	engine "smooth" {
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			shade1		= 1.1
+			shade2		= 0.95
+		}
+
+		edge {
+			line {
+				style		= none
+				thickness	= 0
+			}
+		}
+		
+		line {
+			style		= smooth
+			thickness	= 2
+		}
+
+		check {
+			style	= fast
+			motif	= FALSE
+		}
+
+		option {
+			style	= circle
+			motif	= true
+			fill {
+				style = solid
+			}
+		}
+
+		arrow {
+			style	= cleanice
+			solid	= TRUE
+		}
+	}
+}
+class "*MenuItem*" style "menuitem"
+widget_class "*MenuItem*" style "menuitem"
+
+style "hscrollbar" 
+{
+	###### Theme Engine Style ######
+	engine "smooth" {
+		######  Smooth Faked GTK Style Flags  ###### 
+		GtkWidget::interior_focus		= 1
+	
+		GtkRange::trough_border			= 2
+		GtkRange::slider_width			= 17
+		GtkRange::stepper_size			= 17
+		GtkRange::stepper_spacing		= 0
+
+
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+				
+			shade1		= 1.1
+			shade2		= 0.95
+			
+		}
+	
+		line {
+			style		= smooth
+			thickness	= 0
+		}
+	
+		trough {
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+				
+				shade1		= 0.95
+				shade2		= 1.1
+			}
+		}
+	
+		grip {
+			style		= midlines
+			count		= 5
+			spacing		= 0
+
+			xpadding	= 2
+			ypadding	= 0
+		}
+	
+		arrow {
+			style	= cleanice
+			solid	= TRUE
+			
+			xpadding	= 1
+			ypadding	= 1
+		}
+	}
+}
+widget_class "*HScrollbar*"         style "hscrollbar"
+class "*HScrollbar*"                style "hscrollbar"
+widget_class "*HScale*"         style "hscrollbar"
+class "*HScale*"                style "hscrollbar"
+
+style "vscrollbar" 
+{
+	###### Theme Engine Style ######
+	engine "smooth" {
+		######  Smooth Faked GTK Style Flags  ###### 
+		GtkWidget::interior_focus		= 1
+	
+		GtkRange::trough_border			= 2
+		GtkRange::slider_width			= 17
+		GtkRange::stepper_size			= 17
+		GtkRange::stepper_spacing		= 0
+
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+				
+			shade1		= 1.1
+			shade2		= 0.95
+			
+		}
+	
+		line {
+			style		= smooth
+			thickness	= 0
+		}
+	
+		trough {
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+				
+				shade1		= 0.95
+				shade2		= 1.1
+			}
+		}
+	
+		grip {
+			style		= midlines
+			count		= 5
+			spacing		= 0
+
+			xpadding	= 0
+			ypadding	= 2
+		}
+	
+		arrow {
+			style	= cleanice
+			solid	= TRUE
+			
+			xpadding	= 1
+			ypadding	= 1
+		}
+	}
+}
+widget_class "*VScrollbar*"         style "vscrollbar"
+class "*VScrollbar*"                style "vscrollbar"
+widget_class "*VScale*"         style "vscrollbar"
+class "*VScale*"                style "vscrollbar"
+
+style "progressbar" {
+	###### GTK Style Colours ######
+	bg[PRELIGHT]		= "#4B6983"
+	fg[PRELIGHT]		= "#FFFFFF"
+} widget_class "*ProgressBar*" style "progressbar"

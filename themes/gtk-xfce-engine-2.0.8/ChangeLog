@@ -1,0 +1,281 @@
+2002-07-24 xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in: Add GTK_LIBS
+	dependency so that PyGTK apps work with the theme (as suggested by
+	Michele Campeotto <micampe@micampe.it>)
+
+2002-07-18 xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-18 xfce
+
+	* Theme_light/gtk-2.0/gtkrc: Change prelight color.
+
+2002-07-18 xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-17 xfce
+
+	* Makefile.am, Makefile.in, config.h.in, configure, configure.in,
+	Theme_b5/Makefile.am, Theme_b5/Makefile.in, Theme_light/ICON.png,
+	Theme_light/Makefile.am, Theme_light/Makefile.in,
+	Theme_light/README.html, Theme_light/gtk-2.0/Makefile.am,
+	Theme_light/gtk-2.0/Makefile.in, Theme_light/gtk-2.0/gtkrc: Add new
+	scheme "Xfce_light"
+
+2002-07-16 huysmans
+
+	* config.h.in, configure, xfce_theme_draw.c: small fix for compile
+	error
+
+2002-07-15 xfce
+
+	* Theme_b5/gtk-2.0/gtkrc, Theme_redmondxp/gtk-2.0/gtkrc: Change
+	scrollbar size to 13 instead of 15 for XFce-Redmondxp and Xfce-b5
+
+2002-07-15 xfce
+
+	* configure, configure.in, xfce_rc_style.c, xfce_rc_style.h,
+	xfce_theme_draw.c, Theme/gtk-2.0/gtkrc, Theme_b5/gtk-2.0/gtkrc,
+	Theme_basic/gtk-2.0/gtkrc, Theme_funklor/gtk-2.0/gtkrc,
+	Theme_redmondxp/gtk-2.0/gtkrc: Major improvement, add an option to
+	the theme "smooth_edge", boolean, so one can set it to get slicker
+	look.  Modified all themes, moved some default out of the code and
+	put it the gtkrc files to give more control to the theme creator.
+
+2002-07-15 xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-07-15 xfce
+
+	* xfce_theme_draw.c: Change shadows
+
+2002-07-15 xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-07-14 xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-07-14 xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	xfce_theme_draw.c, Theme_b5/ICON.png, Theme_b5/Makefile.am,
+	Theme_b5/Makefile.in, Theme_b5/README.html,
+	Theme_b5/gtk-2.0/Makefile.am, Theme_b5/gtk-2.0/Makefile.in,
+	Theme_b5/gtk-2.0/gtkrc: [no log message]
+
+2002-07-14 xfce
+
+	* xfce_theme_draw.c: Revert latest changes
+
+2002-07-14 xfce
+
+	* xfce_theme_draw.c: Revert the change on arrows.
+
+2002-07-14 xfce
+
+	* xfce_theme_draw.c: Change the shadow of widget to be less sharp,
+	ie by using dark_gc instead of black_gc to render the shadow
+	(People may not like this)
+
+2002-07-04 xfce
+
+	* ChangeLog: Update ChangeLog, release 2.0.6
+
+2002-07-04 xfce
+
+	* Makefile.am, Makefile.in, acconfig.h, aclocal.m4, config.h.in,
+	configure, configure.in, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.in, Theme_basic/Makefile.in,
+	Theme_basic/gtk-2.0/Makefile.in, Theme_funklor/Makefile.in,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_redmondxp/ICON.png,
+	Theme_redmondxp/Makefile.am, Theme_redmondxp/Makefile.in,
+	Theme_redmondxp/README.html, Theme_redmondxp/gtk-2.0/Makefile.am,
+	Theme_redmondxp/gtk-2.0/Makefile.in, Theme_redmondxp/gtk-2.0/gtkrc:
+	Add Xfce-Redmondxp theme
+
+2002-07-01 xfce
+
+	* ChangeLog: Update ChangeLog
+
+2002-07-01 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-30 xfce
+
+	* config.h.in, configure, Theme/gtk-2.0/gtkrc,
+	Theme_funklor/gtk-2.0/gtkrc: Improve default gtkrc
+
+2002-06-28 xfce
+
+	* Makefile.am, Makefile.in, config.h.in, configure, configure.in,
+	Theme/gtk-2.0/gtkrc, Theme_funklor/ICON.png,
+	Theme_funklor/Makefile.am, Theme_funklor/Makefile.in,
+	Theme_funklor/README.html, Theme_funklor/gtk-2.0/Makefile.am,
+	Theme_funklor/gtk-2.0/Makefile.in, Theme_funklor/gtk-2.0/gtkrc: Add
+	theme Xfce_funklor based on a theme by Michael Pearce
+	(chuzwuzza@optushome.com.au), Improve Xfce theme.
+
+2002-06-27 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-24 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-24 xfce
+
+	* Makefile.am, Makefile.in, configure, configure.in,
+	Theme/gtk-2.0/gtkrc, Theme_basic/ICON.png, Theme_basic/Makefile.am,
+	Theme_basic/Makefile.in, Theme_basic/README.html,
+	Theme_basic/gtk-2.0/Makefile.am, Theme_basic/gtk-2.0/Makefile.in,
+	Theme_basic/gtk-2.0/gtkrc: Add a new "basic" sample theme using
+	xfce engine.
+
+2002-06-22 xfce
+
+	* configure, configure.in, Theme/gtk-2.0/gtkrc: Bump 2.0.6, change
+	provided gtkrc
+
+2002-06-14 xfce
+
+	* xfce_theme_draw.c: Fix some remaining deprecated calls
+
+2002-06-13 xfce
+
+	* depcomp: [no log message]
+
+2002-06-13 xfce
+
+	* Makefile.am, Makefile.in, aclocal.m4, compile, config.h.in,
+	configure, configure.in, missing, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.in: Various cleanups
+
+2002-06-06 xfce
+
+	* Theme/gtk-2.0/gtkrc: Whoops, forgot to update CVS !
+
+2002-06-05 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-05 xfce
+
+	* Theme/gtk-2.0/: gtkrc, gtkrc: [no log message]
+
+2002-06-05 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-06-05 xfce
+
+	* Theme/gtk-2.0/gtkrc: Add default selected base color that was
+	missing
+
+2002-06-05 xfce
+
+	* configure, configure.in, Theme/gtk-2.0/gtkrc: Improve contrast in
+	provided gtkrc and update version nbr to 2.0.4
+
+2002-06-01 xfce
+
+	* configure, configure.in: [no log message]
+
+2002-05-31 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-30 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-30 xfce
+
+	* xfce_rc_style.c, Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-30 xfce
+
+	* configure, configure.in, xfce_rc_style.c, Theme/gtk-2.0/gtkrc:
+	[no log message]
+
+2002-05-30 xfce
+
+	* xfce_theme_draw.c, Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29 xfce
+
+	* configure, configure.in, xfce_theme_draw.c: [no log message]
+
+2002-05-29 xfce
+
+	* xfce_theme_draw.c, Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29 xfce
+
+	* Theme/gtk-2.0/gtkrc: [no log message]
+
+2002-05-29 xfce
+
+	* Makefile.am, Makefile.in, Theme/Makefile.am, Theme/Makefile.in,
+	Theme/gtk-2.0/Makefile.am, Theme/gtk-2.0/Makefile.in,
+	gtk-xfce-engine-2.spec.in: [no log message]
+
+2002-05-29 xfce
+
+	* Makefile.in, aclocal.m4, configure, configure.in,
+	gtk-xfce-engine-2.spec.in, Theme/ICON.png, Theme/Makefile.am,
+	Theme/Makefile.in, Theme/README.html, Theme/gtk-2.0/Makefile.am,
+	Theme/gtk-2.0/Makefile.in, Theme/gtk-2.0/gtkrc: Add default gtkrc
+	for GNOME
+
+2002-05-28 xfce
+
+	* Makefile.am, Makefile.in: Add -DG_DISABLE_DEPRECATED
+
+2002-05-28 xfce
+
+	* COPYING, Makefile.am, Makefile.in, configure, configure.in,
+	gtk-xfce-engine-2.spec.in, xfce_theme_draw.c, AUTHORS, ChangeLog,
+	NEWS, README: [no log message]
+
+2002-05-28 xfce
+
+	* Makefile.in, aclocal.m4, configure, xfce_rc_style.c,
+	xfce_theme_draw.c: [no log message]
+
+2002-05-28 xfce
+
+	* xfce_theme_draw.c: [no log message]
+
+2002-05-28 xfce
+
+	* xfce_theme_main.c: [no log message]
+
+2002-05-28 xfce
+
+	* Makefile.am, Makefile.in, xfce_rc_style.c, xfce_rc_style.h,
+	xfce_style.h: [no log message]
+
+2002-05-28 xfce
+
+	* stamp-h.in, xfce_theme_main.c: [no log message]
+
+2002-05-28 xfce
+
+	* COPYING, INSTALL, Makefile.am, Makefile.in, acconfig.h,
+	aclocal.m4, autogen.sh, config.guess, config.h.in, config.sub,
+	configure, configure.in, install-sh, ltmain.sh, missing,
+	mkinstalldirs, stamp-h.in, xfce_theme_draw.c, xfce_theme_main.c:
+	Initial import
+

@@ -1,0 +1,57 @@
+# iFog-Sunset for GTK1
+
+style "default"
+{
+  engine "industrial" {}
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#747474"
+  bg[NORMAL]       = "#EDE8DB"
+  bg[ACTIVE]       = "#D3D3D3"
+  bg[PRELIGHT]     = "#F5D078"
+  bg[SELECTED]     = "#b1b1b1"
+  bg[INSENSITIVE]  = "#f5f5f5"
+  base[NORMAL]     = "#FFFFFF"
+  base[ACTIVE]     = "#a3a3a3"
+  base[PRELIGHT]   = "#FFFFFF"
+  base[INSENSITIVE]= "#f5f5f5"
+  base[SELECTED]   = "#b1b1b1"
+  text[INSENSITIVE]= "#747474"
+  text[SELECTED]   = "#ffffff"
+  text[ACTIVE]     = "#000000"
+  text[PRELIGHT]   = "#ffffff"
+}
+
+style "menuitem"
+{
+        text[PRELIGHT]          = "#ffffff"
+        fg[PRELIGHT]          = "#000000"
+}
+
+style "menu" 
+{
+	#ythickness = 2
+	#xthickness = 2
+	bg[SELECTED]= "#F0C459"
+	engine "mist"{}
+} 
+
+style "myscrollbar"
+{
+	bg[NORMAL]= "#F0C459"	
+	bg[PRELIGHT]= "#F5D078"
+	engine "mist" {}	
+}
+
+style "button"
+{
+	bg[NORMAL]= "#F2DCAA"
+	bg[PRELIGHT]= "#F5D078"
+}
+
+class "GtkWidget" style "default"
+class "GtkMenu*" style "menu"
+class "GtkScrollbar" style "myscrollbar"
+class "*Button*" style "button"

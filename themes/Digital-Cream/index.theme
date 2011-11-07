@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Digital-Cream
+Type=X-GNOME-Metatheme
+Comment=Digital-Cream
+Name[hu_HU]=Digital-Cream
+Name[en_US]=Digital-Cream
+
+[X-GNOME-Metatheme]
+GtkTheme=Digital-Cream
+MetacityTheme=Digital-Cream
+IconTheme=gnome

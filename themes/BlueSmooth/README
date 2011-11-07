@@ -1,0 +1,54 @@
+BlueSmooth - Smooth-engine based GTK theme
+Sean Middleditch <elanthis@awesomeplay.com>
+-------------------------------------------
+
+CREDITS
+=======
+
+  This theme is derived from the Smooth-Winter theme, and utilized the Smooth
+  theme engine.  Smooth-Winter is by Link Dupont (link@subpop.net)
+  and presumably his copyright.
+
+  The colours of this theme are taken from Bluecurve theme from RedHat.
+
+ABOUT
+=====
+
+  The smooth theme is incredibly good looking and very professional feeling.
+  The themes available for the Smooth engine so far, however, are a little
+  less than professional; this is mostly, I believe, due to the colours used
+  by them.  Bluesmooth uses a more common and professional feeling set of
+  colours.
+
+  Additionally, these colours are more neutral.  The slightly blue tinted
+  Smooth-Winter, or other common Smooth themes, do not blend in well with
+  various backgrounds, web pages, and so on.  Bluesmooth uses the neutral
+  grey colour common to desktop toolkits, and doesn't clash with "mismatching"
+  colours nearly so much.
+
+  Bluesmooth does use blue (as per the name) for highlights; while another
+  shade of grey was better for neutrality, it made the theme feel dead and
+  drab, which _partly_ defeats the purpose of using a slick theme engine.
+
+GOAL
+====
+
+  I'd like to see this theme, or a similar one, utilized as the default for
+  GNOME, or perhaps even GTK itself; the current defaults are very very dated
+  feeling.  This theme adds new life to otherwise boring GTK themes.
+
+  This is all thanks to the most excellent work on the Smooth engine by its
+  authors.
+
+  Thank you!
+
+MISCELLANY
+==========
+
+  * Yes, this theme was more or less 0-effort; copy the Smooth-Winter gtkrc
+    files, copy in the Bluecurve colours, call it a day.
+  * This README took more effort by many times than it did to make this theme,
+    not including the hours poured into it by the Smooth author(s).
+  * Contrary to popular belief, I am not a hampster.
+  * What's on the outside _does_ matter.  Let's have GNOME have a "pimpin'"
+    default theme, eh people?  ;-)

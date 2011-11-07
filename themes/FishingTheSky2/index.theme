@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Fishing The Sky - 2
+Type=X-GNOME-Metatheme
+Comment=A soft blue/grey emo theme, dedicated to appleseed cast!
+Name[en_GB]=Fishing The Sky - 2
+
+[X-GNOME-Metatheme]
+GtkTheme=Fishing the sky - 2
+MetacityTheme=Simple
+IconTheme=Gnome
+Inherits=Gnome
+

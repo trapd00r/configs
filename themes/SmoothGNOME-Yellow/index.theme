@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SmoothGNOME-Yellow
+Type=X-GNOME-Metatheme
+Comment=A very basic, conservative HIG-colored theme, with yellow highlights.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SmoothGNOME-Yellow
+MetacityTheme=SmoothGNOME
+IconTheme=SmoothGNOME

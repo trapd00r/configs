@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=T-ish-Brushed-Shaded-Bright-Blue
+Type=X-GNOME-Metatheme
+Comment=A tweaked version of T-ish-Brushed-Shaded-Bright, with blue elements
+encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=T-ish-Brushed-shaded-bright-blue
+MetacityTheme=T-ish-Brushed-shaded-bright-blue
+IconTheme=Flat-Blue

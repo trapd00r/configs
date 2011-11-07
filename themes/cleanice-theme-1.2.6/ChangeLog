@@ -1,0 +1,307 @@
+2003-05-29  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: 1.2.6 Finally! Yay!
+	
+2003-05-29  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/metaticy-theme-1.xml: Change unfocused colors
+	
+2003-05-29  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/gtkrc: Removed a couple of unneeded settings
+	
+2003-05-28  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.5.99, rename to "cleanice-theme"
+	* Theme/cleanice/metacity-theme-1.xml: Fix to work even better with
+	  both light and dark themes
+	
+2003-05-27  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/metacity-theme-1.xml: Fix padding in titlebar
+	  Remove unfocused draw_ops for titlebar buttons
+	  Fix up to work much better with dark gtk+ themes
+	
+2003-05-06  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Fix the prelight drawing of paned handles
+	
+2003-05-04  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-style.c: Don't default to mac-style expanders
+	
+2003-04-26  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/metacity-theme-1.xml: Horizontal not Diagonal gradient
+	
+2003-04-25  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/metacity-theme-1.xml: Fix padding in titlebar
+	* src/cleanice-draw.c: Add dot back to slider, fix alignment in handles
+	
+2003-04-08  Rodney Dawes  <dobey@free.fr>
+
+	* autogen.sh: Check for ^A[CM]_PROG_LIBTOOL instead of ^AM_PROG_LIBTOOL
+	
+2003-04-08  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.5.1
+	* Theme/cleanice/metacity-theme-1.xml: Fix shaded inheritence
+	* src/cleanice-draw.c: Fix combobox shadow type
+	  Fix check/radio colors
+	  Fix spinbutton shadow types
+	  Fix paned handle dots centering
+	  Fix option menu separator line size
+	* src/cleanice-style.c: Fix paned handle size
+	
+2003-04-07  Rodney Dawes  <dobey@free.fr>
+
+	* Makefile.am: Move intltool-foo from EXTRA_DIST to CLEANFILES
+	* configure.ac: Up version to 1.2.5
+	* Theme/cleanice/metacity-theme-1.xml: Fix title spacing and buttons
+	* src/cleanice-draw.c: Fix the inverted etched shadow type drawing
+	
+2003-04-07  Rodney Dawes  <dobey@free.fr>
+
+	* Makefile.am: Add intltool-*.in to EXTRA_DIST
+	* TODO: Remove the things that we don't need TODO anymore
+	* configure.ac: Up version to 1.2.4.1, Don't be clever
+	* Theme/cleanice/Makefile.am: Don't be clever
+	* Theme/cleanice-dark/Makefile.am: Don't be clever
+	* src/Makefile.am: merge LDFLAGS and LIBADD together, fix INCLUDES
+	* src/cleanice-draw.c: Fix warnings and deprecated api usage
+	* src/cleanice-style.c: Fix warnings
+	* src/cleanice.h: Fix warnings
+	
+2003-04-06  Rodney Dawes  <dobey@free.fr>
+
+	* Makefile.am: Add intltool stuff to EXTRA_DIST
+	* configure.ac: Up version to 1.2.4
+	  Add win32 dll support
+	  Add intltool/gettext support for metatheme translations
+	* Theme/cleanice/gtkrc: Clean up a bit
+	* Theme/cleanice/index.theme.in: CleanIce metatheme
+	* Theme/cleanice/metacity-theme-1.xml: Add a metacity theme
+	* po/ChangeLog: Add translations ChangeLog file
+	* po/POTFILES.in: Add index.theme.in for CleanIce metatheme
+	* src/cleanice-draw.c: Code cleanup
+	  create real_draw_line abstraction
+	  fix real_draw_box to do something other than just paint_background
+	  Use internal box drawing for progress bars
+	  Don't draw the dot in scrollbars
+	  fix clipping for sliders
+	  Draw dots for the paned separators instead of ---------[]--
+	* src/cleanice-style.c: Code cleanup
+	
+2003-03-24  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Check widget->parent in draw_layout
+	
+2003-03-04  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Don't need to use GTK_IS_PROGRESS ()
+	
+2003-03-04  Rodney Dawes  <dobey@free.fr>
+
+	* src/Makefile.am: -Werror -DGTK_DISABLE_DEPRECATED -DG_DISABLE...
+	
+2003-02-26  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Use SHADOW_IN for combobox in STATE_ACTIVE
+	
+2003-02-26  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Draw TL of shadow first, cleanups, fix gaps
+	
+2003-02-24  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Make comboboxes inset, Fix shadow drawing mostly
+	
+2003-02-19  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Make spinbuttons/comboboxes prettier
+	
+2003-02-17  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c:
+	  Draw the light lines for shadows first
+	  Fix handlebox drawing
+
+2003-02-15  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Don't do flat buttons on toolbars for prelight
+	
+2003-02-01  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.3
+	* src/cleanice-draw.c: Fix arrows in scroll steppers, Fix radio buttons
+	
+2003-01-30  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.2
+	* src/cleanice-draw.c: Fix arrow drawing in spin/scroll steppers
+	* src/cleanice-style.c: Set default scroll stepper size to 13
+	
+2003-01-29  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.1.6
+	* Theme/cleanice-dark/gtkrc: Don't need to set sizes here now
+	* Theme/cleanice/gtkrc: Don't need to set sizes here anymore
+	* src/cleanice-draw.c: Fix clipping in draw_flat_box
+	* src/cleanice-style.c: Load default styles in class_int
+	
+2003-01-25  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Fixed custom Check/Radio button prelights
+	
+2003-01-25  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice-dark/gtkrc:
+	  Fixed up to have proper style settings for cleanice
+	  Fixed the prelight colors to be better
+	* src/cleanice-draw.c:
+	  Add draw_flat_box/real_draw_box: Thanks to Andrew Johnson (ajgenius)
+	  Only use the menuitem prelight on menuitems and toolbar buttons
+	  Fix clipping bug in menuitem prelight code (draw_shadow_with_gap)
+	  Check GTK_IS_PROGRESS () instead of DETAIL () (draw_box)
+	  Fix radio button drawing to be better in PRELIGHT (draw_option)
+	  Fix radio button to draw oddly sized checks better (draw_option)
+	  Make draw_handle smaller
+
+2003-01-23  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/gtkrc:
+	  Remove check/radiobutton hacks
+	* src/cleanice-draw.c:
+	  Add layout drawing to handle check/radio text
+	  Handle PRELIGHT of check/radio buttons differently than other states
+	
+2003-01-23  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c:
+	  Get rid of unneeded include for math.h
+	  Get rid of unneeded/unused macros
+	  Rename draw_shadow_gap to draw_gap
+	  Get rid of unneeded cleanice_tab
+	  Add better shadow drawing routines from Andrew Johnson (ajgenius)
+	    - Clean up a bit and merge some shadow drawing stuff together
+	  Draw prelight for more widgets, the same as for menuitems
+	  Remove check for GTK_IS_PROGRESS and just call parent for "bar"
+	  Various code cleanups
+	  Draw check-in-a-box with fg_gc instead of text_gc
+	  Merge draw_box_gap and draw_shadow_gap (draw_gap)
+	  Have draw_extension call draw_shadow_with_gap
+	  Fix clipping in draw_slider (ajgenius)
+	  Get rid of get_tab_status (ajgenius)
+	
+2003-01-22  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac:
+	  Up version to 1.2.1.4
+	  Add GTK_(LIBDIR|PREFIX) variables to make installation be smart
+	  Don't ship cleanice-latest anymore
+	* Theme/Makefile.am:
+	  Remove dummy= line
+	  Remove cleanice-latest from SUBDIRS
+	  Remove the README.html install stuff
+	* Theme/README.html:
+	  Remove file
+	* Theme/cleanice/Makefile.am:
+	  Install to $(GTK_PREFIX)/share/themes
+	* Theme/cleanice/gtkrc:
+	  More minimalization
+	* Theme/cleanice/gtkrc-defaults:
+	  Get rid of this evil hack that I seem to not be using anymore (?)
+	* Theme/cleanice-dark/Makefile.am:
+	  Remove dummy= line
+	  INstall to $(GTK_PREFIX)/share/themes
+	* Theme/cleanice-latest/*:
+	  Remove cleanice-latest
+	* src/Makefile.am:
+	  Install to $(GTK_LIBDIR) instead of $(libdir)
+	* src/cleanice-draw.c:
+	  Remove draw_polygon
+	  Remove draw_diamond
+	  Fix the line drawing for menuitem separators in draw_hline
+	  Draw a 1-pixel dark_gc border around selected menuitems
+	  Always make GtkFrame have a border
+	  Code spacing cleanup in draw_arrow
+	  Remove DEBUG #ifdef in draw_box
+	  Remove slider detail in draw_box (draw_slider)
+	  Remove handlebox_bin detail in draw_box (draw_handle)
+	  Remove menubar detail in draw_box
+	  Always draw paned handle lines as GTK_STATE_NORMAL
+	
+2003-01-18  Rodney Dawes  <dobey@free.fr>
+
+	* Themes/cleanice/gtkrc: Work on minimalizing the gtkrc
+	
+2003-01-14  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac:
+	  Up version to 1.2.1.2
+	  Add a dependency for gobject-2.0
+	* Themes/cleanice/gtkrc-defaults:
+	  Change the scrollbar size to 13
+	* src/cleanice-draw.c:
+	  Add code to fix drawing of first/last tabs in some cases
+	  Add a handler to disable resize grips by default
+	  Fix dot drawing in handleboxes
+	  Minor code cleanups
+	* src/cleanice-style.c:
+	  Remove custom parser to fix crash
+	
+2003-01-08  Rodney Dawes  <dobey@free.fr>
+
+	* Theme/cleanice/gtkrc-defaults: 12 pixel wide scrollbars
+	* src/cleanice-draw.c: Back to actual checks for the check items
+	
+2003-01-08  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: UP version to 1.2.1.1
+	* Theme/cleanice/gtkrc: Move some options to gtkrc-defaults
+	* Theme/cleanice/gtkrc-defaults: Move some options to here
+	* src/cleanice-draw.c: Get rid of the raleigh pixmap check, use "x"
+	
+2003-01-05  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.1
+	* Theme/cleanice/Makefile.am: Added gtkrc-defaults
+	* Theme/cleanice/gtkrc: Remove some style properties
+	* Theme/cleanice/gtkrc-defaults: Set some default styles here
+	* src/Makefile.am: Define THEMEDIR
+	* src/cleanice-draw.c: Use a dot in the slider, no lines
+	* src/cleanice-style.c: Parse the gtkrc-defaults always
+	
+2003-01-05  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Fix up the GtkScale widgets a bit, needs more
+	
+2003-01-04  Rodney Dawes  <dobey@free.fr>
+
+	* src/cleanice-draw.c: Use more 3d-ish progress bar
+	
+2003-01-04  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Up version to 1.2.0.1
+	* src/cleanice-draw.c: Make the Paned separator be nicer
+	* src/cleanice.h: Remove unused defines
+	* Theme/cleanice/gtkrc: Set the paned handle-size to 12
+	
+2003-01-04  Rodney Dawes  <dobey@free.fr>
+
+	* configure.ac: Switch to the new style, up version, release
+	* configure.in: Removed file
+	* cleanice_*.[ch]: Removed files
+	* src/*: Added subdir for source, cleaned up code a bit
+	
+2002-06-28  Rodney Dawes  <dobey@free.fr>
+
+	* cleanice_theme_draw.c: Use the arrows from thinice2, and clean
+	  them up a bit, add the dots to the handlebars, make the menubar
+	  not be completely flat
+	
+2002-06-28  Rodney Dawes  <dobey@free.fr>
+
+	* cleanice_theme_draw.c: Cleaned up some arrow drawing
+	* Makefile.am: Added $(CLEANICE_CFLAGS) to LIBADD

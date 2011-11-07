@@ -1,0 +1,12 @@
+# $MCom: projects/beastie/index.theme,v 1.2 2005/07/10 05:44:01 ahze Exp $
+
+[Desktop Entry]
+Name=Beastie
+Type=X-GNOME-Metatheme
+Comment=FreeBSD Beastie Theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Beastie
+MetacityTheme=Clearlooks
+IconTheme=gnome

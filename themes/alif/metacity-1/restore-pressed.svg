@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   version="1.0"
+   x="0.0000000"
+   y="0.0000000"
+   width="32.000000pt"
+   height="32.000000pt"
+   id="svg1"
+   sodipodi:version="0.32"
+   inkscape:version="0.38.1"
+   sodipodi:docname="restore-pressed.svg"
+   sodipodi:docbase="/home/daniel/.themes/Pilgrim-SVG/metacity-1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="9.8238824"
+     inkscape:cx="12.641592"
+     inkscape:cy="16.824476"
+     inkscape:window-width="878"
+     inkscape:window-height="672"
+     showgrid="false"
+     snaptogrid="false"
+     inkscape:window-x="81"
+     inkscape:window-y="35" />
+  <defs
+     id="defs3">
+    <linearGradient
+       id="linearGradient933">
+      <stop
+         style="stop-color:#df421e;stop-opacity:1.0000000;"
+         offset="0.0000000"
+         id="stop934" />
+      <stop
+         style="stop-color:#990000;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop935" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient930">
+      <stop
+         style="stop-color:#46a046;stop-opacity:1.0000000;"
+         offset="0.0000000"
+         id="stop931" />
+      <stop
+         style="stop-color:#267726;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop932" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient926">
+      <stop
+         style="stop-color:#eed680;stop-opacity:1.0000000;"
+         offset="0.0000000"
+         id="stop927" />
+      <stop
+         style="stop-color:#d1940c;stop-opacity:1.0000000;"
+         offset="1.0000000"
+         id="stop928" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient929"
+       xlink:href="#linearGradient930" />
+    <linearGradient
+       x1="0.038461540"
+       y1="0.039062500"
+       x2="0.95384616"
+       y2="0.95312500"
+       id="linearGradient838"
+       xlink:href="#linearGradient930" />
+    <linearGradient
+       xlink:href="#linearGradient930"
+       id="linearGradient840"
+       x1="-8.0502011e-18"
+       y1="0.50000000"
+       x2="1.0000000"
+       y2="0.50000000" />
+  </defs>
+  <g
+     id="g840"
+     transform="matrix(0.158343,0.000000,0.000000,0.158160,4.342853e-3,0.189728)">
+    <rect
+       style="fill:#46a046;fill-opacity:0.73387098;fill-rule:evenodd;stroke:#000000;stroke-width:3.4375675pt;"
+       id="rect841"
+       width="243.60591"
+       height="243.60836"
+       ry="60.653006"
+       x="3.7396801"
+       y="3.6711095" />
+    <path
+       d="M 193.40375,125.98411 C 193.40375,87.662368 161.93347,56.596439 123.11293,56.596439 C 84.292406,56.596439 52.822144,87.662368 52.822144,125.98411 C 52.822144,164.30589 84.292406,195.37179 123.11293,195.37179 C 161.93347,195.37179 193.40375,164.30589 193.40375,125.98411 z "
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:2.3651730pt;"
+       id="path836" />
+    <path
+       d="M 150.57598,126.60905 C 150.57598,112.66980 139.27599,101.36984 125.33675,101.36984 C 111.39751,101.36984 100.09753,112.66980 100.09753,126.60905 C 100.09753,140.54828 111.39751,151.84828 125.33675,151.84828 C 139.27599,151.84828 150.57598,140.54828 150.57598,126.60905 z "
+       style="fill:#46a046;fill-opacity:0.73333335;fill-rule:evenodd;stroke:#000000;stroke-width:2.1369213pt;"
+       id="path837" />
+  </g>
+</svg>

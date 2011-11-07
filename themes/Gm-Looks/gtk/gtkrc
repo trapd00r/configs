@@ -1,0 +1,419 @@
+# Theme Name  : Orange Smoothie
+# Author(s)   : Dave Kaufman <dave@davekaufman.net>
+#
+# Description : A dark theme utilizing the Smooth Engine.
+# Based off of my Smooth Criminal theme, which was in turn taken from the Smooth-Line theme that is included with the smooth-themes package, by Andrew Johnson aka ajgenius (ajgenius@ajgenius.us)
+# The smooth gtk engine can be found at http://sourceforge.net/projects/smooth-engine/
+
+######  Default Widget Style  ###### 
+style "default" {
+
+	###### GTK Style Colours ######
+        fg[NORMAL]        = "#000000"#"#CACAC6"
+        fg[ACTIVE]        = "#CACAC6"
+        fg[INSENSITIVE]   = "#000000"
+        fg[PRELIGHT]      = "#E2E2E2"
+        fg[SELECTED]      = "#E2E2E2"
+
+        bg[ACTIVE]        = "#484949"
+        bg[NORMAL]        = "#5A5C5F"
+        bg[INSENSITIVE]   = "#505050"
+        bg[PRELIGHT]      = "#6A6C6F"
+        bg[SELECTED]      = "#424446"
+
+        base[NORMAL]      = "#919499"
+        base[ACTIVE]      = "#5A5C5F"
+        base[INSENSITIVE] = "#5A5C5F"
+        base[PRELIGHT]    = "#646668"
+        base[SELECTED]    = "#5A5C5F"
+
+        text[NORMAL]      = "#000000"
+        text[ACTIVE]      = "#000000"
+        text[PRELIGHT]    = "#000000"
+        text[SELECTED]    = "#E0D6AD"
+        text[INSENSITIVE] = "#777777"
+
+	###### Theme Engine Style ######
+	engine "smooth" {   
+        ######  GTK Style Flags  ###### 
+	    GtkWidget::interior_focus		= 0	
+    	GtkWidget::focus-line-pattern 		= ""
+    	GtkWidget::focus_padding		= 0
+	
+    	GtkButton::default_spacing		= 6
+    	GtkButton::default_border		= {0, 0, 0, 0}
+    	GtkButton::default_outside_border	= {1, 1, 1, 1}
+
+    	GtkCheckButton::indicator_size		= 13
+    	GtkRadioButton::indicator_size		= 12
+
+    	GtkPaned::handle_size			= 6
+
+    	GtkRange::trough_border			= 2
+    	GtkRange::slider_width			= 15
+    	GtkRange::stepper_size			= 15
+    	GtkRange::stepper_spacing		= 0
+
+        GtkScrollbar::min_slider_length 	= 15
+
+	###  Nautilus Specific Style Flags  ###
+	NautilusIconContainer::selection_box_alpha	= 64
+	NautilusIconContainer::highlight_alpha		= 255
+	NautilusIconContainer::light_info_color		= "#eeeeee"
+	NautilusIconContainer::dark_info_color		= "#111111"
+	NautilusIconContainer::frame_text 		    = 1
+ 
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			quadratic	= FALSE
+			
+			shade1		= 1.6
+			shade2		= 0.9
+		}
+
+		line {
+			style		= soft
+			thickness	= 2
+		}
+
+		edge {    
+			line {
+				style		= cold
+				thickness	= 2
+			}
+		}
+
+		focus {
+		foreground[ACTIVE]	  = "#4f4f4f"
+			foreground[SELECTED]  = "#4f4f4f"
+			foreground[NORMAL]	  = "#4f4f4f"
+			foreground[PRELIGHT]  = "#4f4f4f"
+		}
+		
+		grip {
+			style		= ns_buds_in
+			line {
+				style		= cold
+				thickness	= 2
+			}
+		}
+
+		check {
+			style	= clean
+			motif	= FALSE
+		}
+
+		option {
+			style	= round
+			motif	= FALSE
+		}
+
+		arrow {
+			style	= wonderland
+			solid	= TRUE
+		}
+
+		tabs {
+           style	= round
+        }
+		
+	}
+} 
+widget_class "*" style "default"
+
+######  Toolbar/Menubar etc. Style  ###### 
+style "toolbar" {
+	######  GTK Style Flags  ###### 
+
+	###### GTK Style Colours ######
+	bg[PRELIGHT]		= "#ff8d02"
+    fg[NORMAL]          = "#bb6d00"
+	base[PRELIGHT]		= "#4f4f4f"
+    fg[PRELIGHT]        = "#000000"
+
+	###### Theme Engine Style ######
+	engine "smooth" {
+	GtkWidget::interior_focus		= 1
+	GtkWidget::focus_padding		= 1
+		fill {
+			style	= solid
+		}
+	
+		line {
+			style		= cold
+			thickness	= 2
+		}
+	
+		grip {
+			style		= ns_buds_in
+
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+
+				shade1		= 1.6
+				shade2		= 0.9
+			}
+		}
+	}
+}
+widget_class "*BonoboDockItem" style "toolbar"
+class "*BonoboDockItem" style "toolbar"
+
+widget_class "*HandleBox" style "toolbar"
+class "*HandleBox" style "toolbar"
+
+widget_class "*Toolbar" style "toolbar"
+class "*Toolbar" style "toolbar"
+
+widget_class "*MenuBar" style "toolbar"
+class "*MenuBar" style "toolbar"	
+
+
+
+
+######  Check and Radio Button Style  ###### 
+style "radio_check" {
+	###### GTK Style Colours ######
+    #bg[PRELIGHT]    = "#bb6d00"
+    #fg[ACTIVE]      = "#ff8d02"
+}
+widget_class "*RadioButton*" style "radio_check"
+widget_class "*CheckButton*" style "radio_check"
+
+######  Button Style  ######
+style "button" {
+    bg[NORMAL]    = "#5A5C5F"
+    bg[PRELIGHT]  = "#6A6C6F"
+    fg[NORMAL]    = "#CACAC6"
+    fg[PRELIGHT]  = "#E2E2E2"
+    }
+widget_class "*Button*" style "button"
+widget_class "*button*" style "button"
+
+######  Scrollbar Style  ###### 
+style "scrollbar" {
+	###### GTK Style Colours ######
+    bg[ACTIVE]		= "#484949"
+    bg[NORMAL]      = "#5A5C5F"
+	bg[SELECTED]	= "#424446"
+    bg[PRELIGHT]    = "#6A6C6F"
+
+	###### Theme Engine Style ######
+	engine "smooth" {
+        GtkScrollbar::min_slider_length 	= 30
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			shade1		= 1.6
+			shade2		= 0.9
+		}
+
+		line {
+			style		= cold
+			thickness	= 2
+		}
+
+		focus {
+			foreground[ACTIVE]	  = "#CACAC6"
+			foreground[SELECTED]  = "#E2E2E2"
+			foreground[NORMAL]	  = "#CACAC6"
+			foreground[PRELIGHT]  = "#E2E2E2"
+		}
+
+		trough {	
+			fill {
+				style	= solid
+			}
+
+			line {
+				style		= cold
+				thickness	= 2
+			}
+		}
+	
+		grip {
+			style	= dots_in
+			count	= 3
+			spacing	= 2
+		}
+
+		arrow {
+			style	= Wonderland
+			solid	= True
+			etched	= False
+		}
+	}
+}
+widget_class "*Scrollbar*" style "scrollbar"
+class "*Scrollbar*" style "scrollbar"
+
+
+######  Horizontal Scales Style  ###### 
+style "hscales"  {
+	######  GTK Style Flags  ###### 
+	
+	###### GTK Style Colours ######
+	bg[SELECTED]		= "#bb6d00"
+    bg[PRELIGHT]        = "#bb6d00"
+    
+	###### Theme Engine Style ######
+	engine "smooth" {	
+	GtkRange::trough_border			= 0
+	GtkRange::slider-width			= 22
+	GtkScale::slider-length			= 10
+    GtkScrollbar::min_slider_length 	= 10
+		real_sliders	= FALSE
+
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			shade1		= 1.6
+			shade2		= 0.9
+		}
+
+		line {
+			style		= smooth
+			thickness	= 2
+		}
+	
+		focus {
+			foreground[ACTIVE]	  = "#4f4f4f"
+			foreground[SELECTED]  = "#4f4f4f"
+			foreground[NORMAL]	  = "#4f4f4f"
+			foreground[PRELIGHT]  = "#4f4f4f"
+		}
+
+		trough {
+			show_value	= TRUE
+
+			xpadding	= 7
+			ypadding	= 1
+
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+				
+				shade1		= 0.9
+				shade2		= 1.6
+			}
+		}
+	
+		grip {
+			style	= ns_buds_in
+		}
+	}
+}
+widget_class "*HScale*" style "hscales"
+class "*HScale*" style "hscales"
+
+
+######  Vertical Scales Style  ###### 
+style "vscales"  {
+	###### GTK Style Colours ######
+	bg[SELECTED]		= "#4f4f4f"
+    
+	###### Theme Engine Style ######
+	engine "smooth" {	
+	    GtkRange::trough_border			= 0
+	    GtkRange::slider-width			= 22
+	    GtkScale::slider-length			= 10
+        GtkScrollbar::min_slider_length 	= 10
+		real_sliders	= FALSE
+
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			shade1		= 1.6
+			shade2		= 0.9
+		}
+
+		line {
+			style		= smooth
+			thickness	= 2
+		}
+	
+		focus {
+			foreground[ACTIVE]	  = "#4f4f4f"
+			foreground[SELECTED]  = "#4f4f4f"
+			foreground[NORMAL]	  = "#4f4f4f"
+			foreground[PRELIGHT]  = "#4f4f4f"
+		}
+
+		trough {
+			show_value	= TRUE
+
+			xpadding	= 1
+			ypadding	= 7
+
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+				
+				shade1		= 0.9
+				shade2		= 1.6
+			}
+		}
+	
+		grip {
+			style	= ns_buds_in
+		}
+	}
+}
+widget_class "*VScale*" style "vscales"
+class "*VScale*" style "vscales"
+
+
+######  Progress Bar Style  ###### 
+style "progressbar" {
+	######  GTK Style Flags  ###### 
+    
+	###### GTK Style Colours ######
+	bg[PRELIGHT]		= "#000000"
+
+	###### Theme Engine Style ######
+	engine "smooth" {
+	xthickness		= 2
+	ythickness		= 2
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			shade1		= 1.6
+			shade2		= 0.9
+		}
+
+		line {
+			style		= smooth
+			thickness	= 2
+		}
+	
+		focus {
+			foreground[ACTIVE]	  = "#000000"
+			foreground[SELECTED]  = "##000000"
+			foreground[NORMAL]	  = "#000000"
+			foreground[PRELIGHT]  = "#000000"
+
+		}
+
+		trough {
+			fill {
+				style		= solid
+			}
+		}
+	}
+}
+class "*Progress*" style "progressbar"
+widget_class "*Progress*" style "progressbar"

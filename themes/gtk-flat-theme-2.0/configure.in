@@ -1,0 +1,47 @@
+AC_INIT(README)
+# Save this value here, since automake will set cflags later
+cflags_set=${CFLAGS+set}
+
+AM_INIT_AUTOMAKE(gtk-flat-theme, 2.0)
+
+dnl Initialize maintainer mode
+AM_MAINTAINER_MODE
+
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_CANONICAL_HOST
+
+AC_PROG_CC
+AM_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+dnl Initialize libtool
+AM_DISABLE_STATIC
+AM_PROG_LIBTOOL
+
+# Checks for programs.
+AM_PATH_GTK_2_0(2.0.0, , 
+	AC_MSG_ERROR([*** GTK 2.0 not installed - please install first ***]))
+
+GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK_VERSION)
+
+# Checks for header files.
+AC_HEADER_STDC
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+# Checks for endianness (needed by GdkRgb).
+AC_C_BIGENDIAN
+
+# Checks for library functions.
+AC_TYPE_SIGNAL
+AC_FUNC_MMAP
+
+AC_OUTPUT([
+Makefile
+Theme/Makefile
+Theme/gtk-2.0/Makefile
+])

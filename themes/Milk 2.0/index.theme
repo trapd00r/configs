@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=GMilk
+Type=X-GNOME-Metatheme
+Comment=Milk 2.0 - A Port of a Mac OS X theme originally made by Max Rudberg.
+Name[hu_HU]=Milk 2.0
+
+[X-GNOME-Metatheme]
+GtkTheme=Milk 2.0
+MetacityTheme=Milk 2.0
+IconTheme=gnome

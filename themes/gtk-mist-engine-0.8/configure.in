@@ -1,0 +1,56 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT(src/mist-style.c)
+THEME="mist"
+
+# For automake.
+VERSION=0.8
+PACKAGE=gtk-${THEME}-engine
+
+# Save this value here, since automake will set cflags later
+cflags_set=${CFLAGS+set}
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+
+dnl Initialize maintainer mode
+AM_MAINTAINER_MODE
+
+AC_CANONICAL_HOST
+
+AC_PROG_CC
+AM_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+# No static please
+AM_DISABLE_STATIC
+
+dnl Initialize libtool
+AM_PROG_LIBTOOL
+
+PKG_CHECK_MODULES(MIST, gtk+-2.0 >= 2.0.0,,
+			AC_MSG_ERROR([GTK+-2.0 is required to compile mist]))
+AC_SUBST(MIST_CFLAGS)
+AC_SUBST(MIST_LIBS)
+
+PKG_CHECK_MODULES(GTK1, gtk+ >= 1.2.10,,
+			AC_MSG_ERROR([GTK+-1.2.10 is required to compile mist]))
+AC_SUBST(GTK1_CFLAGS)
+AC_SUBST(GTK1_LIBS)
+
+GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK_VERSION)
+
+# Checks for header files.
+AC_HEADER_STDC
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+AC_OUTPUT([
+Makefile
+gtk1/Makefile
+src/Makefile
+Theme/Makefile
+Theme/metacity-1/Makefile
+Theme/gtk/Makefile
+Theme/gtk-2.0/Makefile
+])

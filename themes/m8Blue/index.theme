@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=m8Blue
+Type=X-GNOME-Metatheme
+Comment=meta theme to use with mcblue\n
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=m8Blue
+MetacityTheme=mcblue
+IconTheme=Noia

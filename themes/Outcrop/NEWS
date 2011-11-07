@@ -1,0 +1,42 @@
+1.0 (16-Sep-2005)
+------
+  + total retouch
+
+0.5 (14-Feb-2005)
+------
+  + metacity buttons have been retouched
+  + bug in style "progressbar" has been fixed (thx 2 bvc)
+  + progress trough color has been changed
+  + slider image has been retouched
+  + base colors have been changed a bit
+
+0.4 (02-Feb-2005)
+------
+  + scrollbar images have been retouched
+  + progressbar image has been exchanged
+  + thickness in GtkToggleButton and GtkButton has changed to three
+  + shadow uder the title bar when maximized has been added (Metacity)
+  + bug in the tree view has been fixed
+
+0.3 (24-Jan-2005)
+------
+  + widgets have been galvanized
+  + menu button in the Metacity theme has been changed
+  + buttons' background in the Metacity theme has been changed
+  + class GtkScale has been added
+  + scrollbar, option and check buttons have been redrawn
+  + "dog-eared" in scrollbar slider has been removed (thx 2 mschwartz)
+
+
+0.2 (18-Jan-2005)
+------
+  + tabs, scrollbar and handle have been redrawn
+  + buttons have been retouched
+  + shadow in the Metacity theme has been pointed out
+  + bug with shadow-gap has been fixed (thx 2 Lupine925)
+  + the theme has been lighten a bit
+
+
+0.1 (14-Jan-2005)
+------
+  + initial release

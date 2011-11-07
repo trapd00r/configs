@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=2.0
+Encoding=UTF-8
+Name=eXperience 3.0
+Name[zh_TW]=特殊經驗
+Type=X-GNOME-Metatheme
+Comment=It's somewhat XP like - but way better
+Comment[zh_TW]=有點兒像 XP - 但是更好
+
+[X-GNOME-Metatheme]
+GtkTheme=eXperience 3.0
+MetacityTheme=eXperience 3.0
+IconTheme=eXperienceCrystal

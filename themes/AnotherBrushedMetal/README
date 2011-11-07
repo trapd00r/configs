@@ -1,0 +1,11 @@
+AnotherMetalClean Theme for gtk and gtk-2
+
+Fits to the sawfish theme of the same name as well as to the sawfish theme "Brushed Metal"
+
+Based on BrushedMetalClean
+
+I basicly only added the symlink...
+
+Joachim Breitner (mail@joachim-breitner.de)
+
+Just extract to ~/.themes or use the gnome-theme-selector to install the file

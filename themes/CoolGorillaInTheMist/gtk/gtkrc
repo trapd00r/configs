@@ -1,0 +1,58 @@
+style "default"
+{
+        
+  bg[NORMAL]      = "#d1d2d3"
+  bg[PRELIGHT]	   = "#62affc"
+  fg[PRELIGHT]    = "#ffffff"
+  bg[ACTIVE]	   = "#afb0b5"
+  bg[INSENSITIVE] = "#889396"
+  bg[SELECTED]    = "#a4a4a5"
+  base[SELECTED]  = "#a0a1a5"
+  text[SELECTED]  = "#ffffff"
+  bg[PRELIGHT]    = "#62affc"
+  bg[SELECTED]    = "#a4a4a5"
+  fg[PRELIGHT]  = "#ffffff"
+  fg[SELECTED]  = "#ffffff"
+
+	GtkRange::slider_width = 15
+	GtkRange::stepper_size = 15
+	GtkScrollbar::min_slider_length = 15
+	GtkCheckButton::indicator_size=12
+	GtkRadioButton::indicator_size=12
+	GtkStatusbar::shadow_type = none
+	
+	GtkNotebook::tab_vborder = 1
+	GtkNotebook::tab_hborder = 1
+	xthickness = 1
+	ythickness = 1
+
+	engine "mist"
+ 	{
+	}
+}
+
+style "menuitem"
+{
+        text[PRELIGHT]          = "#ffffff"
+        fg[PRELIGHT]          = "#ffffff"
+}
+
+style "menu" 
+{
+	ythickness = 2
+	xthickness = 2
+} 
+
+class "GtkWidget" style "default"
+class "GtkMenu" style "menu"
+
+widget_class "*.GtkMenuItem.*" style "menuitem"
+widget_class "*.GtkImageMenuItem.*" style "menuitem"
+widget_class "*.GtkAccelMenuItem.*" style "menuitem"
+widget_class "*.GtkRadioMenuItem.*" style "menuitem"
+widget_class "*.GtkCheckMenuItem.*" style "menuitem"
+widget_class "*.GtkMenu.*" style "menuitem"
+
+
+
+

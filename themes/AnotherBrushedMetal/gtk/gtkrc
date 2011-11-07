@@ -1,0 +1,32 @@
+style "default"
+{
+  font = "-*-lucida-medium-r-normal-*-*-100-*-*-p-*-iso8859-15"
+  #fg[NORMAL]      = { 0.00, 0.00, 0.00 }
+  #fg[PRELIGHT]    = { 0.25, 0.25, 0.25 }
+  #fg[ACTIVE]      = { 0.00, 0.00, 0.00 }
+  #fg[SELECTED]    = { 0.00, 0.00, 0.00 }
+  #fg[INSENSITIVE] = { 0.25, 0.25, 0.25 }
+  #bg[NORMAL]      = { 0.85, 0.85, 0.85 }
+  #bg[PRELIGHT]    = { 0.95, 0.95, 0.95 }
+  #bg[ACTIVE]      = { 0.40, 0.40, 0.40 }
+  #bg[SELECTED]    = { 0.70, 0.68, 0.66 }
+  #bg[INSENSITIVE] = { 0.80, 0.80, 0.80 }
+  #base[NORMAL]      = { 0.80, 0.80, 0.80 }
+  #base[PRELIGHT]    = { 0.90, 0.90, 0.90 }
+  #base[ACTIVE]      = { 0.80, 0.80, 0.80 }
+  #base[SELECTED]    = { 0.40, 0.60, 0.80 }
+  #base[INSENSITIVE] = { 0.60, 0.55, 0.50 }
+  bg_pixmap[NORMAL]      = "bc.xpm"
+  bg_pixmap[PRELIGHT]    = "bc-light.xpm"
+  bg_pixmap[ACTIVE]      = "bc-dark.xpm"
+  #bg_pixmap[SELECTED]    = "bc-dark.xpm"
+  bg_pixmap[INSENSITIVE] = "bc.xpm"
+}
+
+class "GtkWidget" style "default"
+
+
+
+
+
+

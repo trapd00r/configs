@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=3.02
+Encoding=UTF-8
+Name=eXperience 3.02 - ICE
+Name[zh_TW]=特殊經驗
+Type=X-GNOME-Metatheme
+Comment=It's somewhat XP like - but way better
+Comment[zh_TW]=有點兒像 XP - 但是更好
+
+[X-GNOME-Metatheme]
+GtkTheme=eXperience - ice-my
+MetacityTheme=eXperience
+IconTheme=eXperience

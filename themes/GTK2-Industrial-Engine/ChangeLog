@@ -1,0 +1,1088 @@
+=== ximian-artwork-0.2.26 ===
+
+2003-05-22  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.26.
+
+	* gtk/gtk2-engine/checkbox-mixed.xpm: Reverted to 0.2.24.
+	* gtk/gtk1-engine/checkbox-mixed.xpm: "
+	* gtk/gtk2-engine/menu-checkbox-mixed.xpm: "
+	* gtk/gtk1-engine/menu-checkbox-mixed.xpm: "
+	* gtk/gtk2-engine/table-checkbox-mixed.xpm: "
+	* gtk/gtk1-engine/table-checkbox-mixed.xpm: "
+
+=== ximian-artwork-0.2.25 ===
+
+2003-05-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.25.
+
+2003-05-21  Cheridy Jollie  <cheridy@ximian.com>
+
+	* gtk/gtk2-engine/checkbox-mixed.xpm: Darkened
+	* gtk/gtk1-engine/checkbox-mixed.xpm: "
+	* gtk/gtk2-engine/menu-checkbox-mixed.xpm: "
+	* gtk/gtk1-engine/menu-checkbox-mixed.xpm: "
+	* gtk/gtk2-engine/table-checkbox-mixed.xpm: "
+	* gtk/gtk1-engine/table-checkbox-mixed.xpm: "
+
+=== ximian-artwork-0.2.24 ===
+
+2003-05-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.24.
+
+2003-05-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/checkbox-mixed.xpm,
+	gtk/gtk1-engine/menu-checkbox-mixed.xpm,
+	gtk/gtk1-engine/table-checkbox-mixed.xpm,
+	gtk/gtk2-engine/checkbox-mixed.xpm,
+	gtk/gtk2-engine/menu-checkbox-mixed.xpm,
+	gtk/gtk2-engine/table-checkbox-mixed.xpm: New mixed pixmaps from
+	Cheridy.
+
+2003-05-20  Cheridy Jollie  <cheridy@ximian.com>
+
+	* gtk/gtk2-engine/checkbox-on.xpm: Reverted to 1.1 version
+        * gtk/gtk1-engine/checkbox-on.xpm: Reverted to 1.1 version
+	* gtk/gtk2-engine/table-checkbox-on: New image based on 1.1
+	version of checkbox-on.xpm
+	* gtk/gtk1-engine/table-checkbox-on: New image based on 1.1
+	version of checkbox-on.xpm
+	* gtk/gtk2-engine/table-checkbox-off: Cleaned up
+	* gtk/gtk1-engine/table-checkbox-off: Cleaned up
+
+=== ximian-artwork-0.2.23 ===
+
+2003-05-19  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.23.
+
+	* gtk/gtk1-engine/Makefile.am, gtk/gtk2-engine/Makefile.am: Added
+	table checkbox images.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (PIXMAP_MEDIUM_CHECK_ACTIVE):
+	Use the medium size checkboxes.
+
+2003-05-17  Tuomas Kuosmanen  <tigert@ximian.com>
+
+	* wallpapers/*: updated a few with better (=absent) logo position. 
+
+2003-05-15  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/emblems/emblem-desktop.png: desktop
+	  emblem
+	
+2003-05-15  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/emblems/emblem-plan.png:
+	* icons/Industrial/48x48/emblems/Makefile.am: oops, forgot this
+	  one
+
+2003-05-15  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/emblems/Makefile.am:
+	* icons/Industrial/48x48/emblems/emblem-handshake.png:
+	* icons/Industrial/48x48/emblems/emblem-marketing.png:
+	* icons/Industrial/48x48/emblems/emblem-money.png:
+	* icons/Industrial/48x48/emblems/emblem-people.png:
+	* icons/Industrial/48x48/emblems/emblem-presentation.png:
+	* icons/Industrial/48x48/emblems/emblem-sales.png:
+	* icons/Industrial/48x48/emblems/emblem-ximian.png: Add new
+	  emblems (fixes #43037)
+
+=== ximian-artwork-0.2.22 ===
+
+2003-05-14  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.22.
+
+=== ximian-artwork-0.2.21 ===
+
+2003-05-14  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.21.
+
+2003-05-13  Jakub Steiner <jimmac@ximian.com>
+
+	* wallpapers/BlueWaves.jpeg: put watermark back
+	* wallpapers/RedLeaves.jpeg:
+	* wallpapers/Roses.jpeg:
+	* wallpapers/Flowerpower.jpeg: move a bit to the corner
+	* wallpapers/PixelBack.jpeg: revert to desaturated:
+      [01:17PM] <Nat> i prefer it less saturated
+      [01:17PM] <Nat> by far
+      [01:17PM] <Nat> it's kinda distracting with the saturation up this high
+      [01:18PM] <Nat> when you have lots of icons on your desktop, it looks scary
+      [01:18PM] <Nat> seriously, i liked it before
+      [01:18PM] <Nat> i think you should revert that
+
+2003-05-13  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/apps/postscript-viewer.png:
+	* icons/Industrial/32x32/apps/postscript-viewer.png:
+	* icons/Industrial/48x48/apps/Makefile.am:
+	* icons/Industrial/32x32/apps/Makefile.am: PostScript viewer
+
+2003-05-07  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/cursors/X_cursor
+	* icons/Industrial/cursors/based_arrow_down
+	* icons/Industrial/cursors/based_arrow_up
+	* icons/Industrial/cursors/bottom_left_corner
+	* icons/Industrial/cursors/bottom_right_corner
+	* icons/Industrial/cursors/bottom_side
+	* icons/Industrial/cursors/double_arrow
+	* icons/Industrial/cursors/fleur
+	* icons/Industrial/cursors/hand1
+	* icons/Industrial/cursors/hand2
+	* icons/Industrial/cursors/left_ptr
+	* icons/Industrial/cursors/left_ptr_watch
+	* icons/Industrial/cursors/left_side
+	* icons/Industrial/cursors/ll_angle
+	* icons/Industrial/cursors/question_arrow
+	* icons/Industrial/cursors/right_ptr
+	* icons/Industrial/cursors/right_side
+	* icons/Industrial/cursors/sb_h_double_arrow
+	* icons/Industrial/cursors/sb_right_arrow
+	* icons/Industrial/cursors/sb_up_arrow
+	* icons/Industrial/cursors/sb_v_double_arrow
+	* icons/Industrial/cursors/top_left_corner
+	* icons/Industrial/cursors/top_right_corner
+	* icons/Industrial/cursors/top_side
+	* icons/Industrial/cursors/ul_angle
+	* icons/Industrial/cursors/ur_angle
+	* icons/Industrial/cursors/watch
+	* icons/Industrial/cursors/xterm: almost complete cursor theme
+	* icons/Industrial/cursors/Makefile.am: add cursors and symlinks
+
+2003-05-05  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.20.
+
+2003-05-05  Jakub Steiner <jimmac@ximian.com>
+
+	* configure.ac:
+	* icons/Industrial/Makefile.am:
+	* icons/Industrial/cursors/Makefile.am:
+	* icons/Industrial/cursors/left_ptr:
+	* icons/Industrial/cursors/left_ptr_watch:
+	* icons/Industrial/cursors/watch:
+	* icons/Industrial/cursors/xterm: add some animated cursors.
+	  gotta figure out how to have them used. It looks as if on RH9
+	  and YDL a default theme is being used that inherits
+	  Wonderland/Bluecurve. We could make it use Industrial instead
+
+
+
+2003-05-02  Jakub Steiner <jimmac@ximian.com>
+
+	* gnome-session/ximian-desktop-2.0-splash.png: no copyright info
+	  and it's 'Ximian Desktop 2' now
+	
+2003-05-02  Tuomas Kuosmanen  <tigert@ximian.com>
+
+	* wallpapers/PixelBack.jpeg: New default background, note the new 
+	StudlyCapsificated filename that looks nicer on the dialog. Also 
+	a bit more saturated to give more depth to the desktop feel.
+	* wallpapers/Makefile.am: added for installation, removed old filename.
+
+2003-04-24  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/16x16/apps/panel-notification-area.png
+	* icons/Industrial/24x24/apps/panel-notification-area.png
+	* icons/Industrial/32x32/apps/panel-notification-area.png
+	* icons/Industrial/48x48/apps/panel-notification-area.png
+	* icons/Industrial/16x16/apps/Makefile.am
+	* icons/Industrial/24x24/apps/Makefile.am
+	* icons/Industrial/32x32/apps/Makefile.am
+	* icons/Industrial/48x48/apps/Makefile.am: applet icon
+
+2003-04-24  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/index.theme.in
+	* icons/Industrial/16x16/apps/gnome-globe.png
+	* icons/Industrial/16x16/Makefile.am
+	* icons/Industrial/16x16/apps/Makefile.am: add 16x16 version of
+	  gnome-globe.png
+
+2003-04-22  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/apps/gnome-terminal.png:
+	* icons/Industrial/48x48/apps/Makefile.am: added this, otherwise
+	  the small version is used instead, not the 48x48 from
+ 	  gnome-icons-theme.
+
+2003-04-21  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/24x24/apps/gnome-terminal.png:
+	* icons/Industrial/32x32/apps/gnome-terminal.png:
+	* icons/Industrial/32x32/apps/tsclient.png:
+	* icons/Industrial/32x32/apps/Makefile.am: missing small vers.
+
+2003-04-21  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/32x32/apps/gnome-printers-properties.png:
+	* icons/Industrial/48x48/apps/gnome-printers-properties.png:
+	* icons/Industrial/32x32/apps/gdm.png:
+	* icons/Industrial/48x48/apps/gdm.png:
+	* icons/Industrial/32x32/apps/keyboard.png:
+	* icons/Industrial/48x48/apps/keyboard.png:
+	* icons/Industrial/32x32/apps/redhat-config-language.png:
+	* icons/Industrial/48x48/apps/redhat-config-language.png:
+	* icons/Industrial/32x32/apps/redhat-config-xfree.png:
+	* icons/Industrial/48x48/apps/redhat-config-xfree.png:
+	* icons/Industrial/32x32/apps/redhat-config-date.png:
+	* icons/Industrial/48x48/apps/redhat-config-date.png:
+	* icons/Industrial/32x32/apps/Makefile.am:
+	* icons/Industrial/48x48/apps/Makefile.am: RH config stuff
+
+2003-04-18    <tigert@ximian.com>
+
+	* gdm/industrial.xml: fixed the spacing issue on the gdm login screen, 
+	should now have more space between "Username:" and the input box.
+
+=== ximian-artwork-0.2.19 ===
+
+2003-04-18  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.19.
+
+2003-04-18  Jakub Steiner <jimmac@ximian.com>
+
+	* wallpapers/FrostyLeaves.jpeg: removed, jimmac doesn't like
+	* wallpapers/BubbleBath.jpeg: removed, tigert doesn't like ;)
+	* wallpapers/Makefile.am: sorry forgot to remove
+	
+2003-04-18  Jakub Steiner <jimmac@ximian.com>
+
+	* wallpapers/BlueWaves.jpeg:
+	* wallpapers/Clouds.jpeg:
+	* wallpapers/Flowerpower.jpeg:
+	* wallpapers/RedLeaves.jpeg:  	
+	* wallpapers/Roses.jpeg:
+	* wallpapers/Subway.jpeg:
+	* wallpapers/pixelback.jpeg: s/desktop//; get rid of it
+	  elsewhere; cleaned up with selective gaussian blur too
+
+	* wallpapers/BubbleBath.jpeg:
+	* wallpapers/Mono.jpeg: added these
+
+2003-04-17  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/ximian-redhat-config-users.png: remove
+	* icons/Industrial/32x32/apps/redhat-config-users.png:
+	* icons/Industrial/48x48/apps/redhat-config-users.png: user
+	  config tool. If I'm not mistaken, it won't show up for anyone
+	  not having it installed. no need to have it unique, since
+	  non-industrial themes will use the RH default. Industrial will
+	  have it nicely themed. Other to follow
+	* icons/Industrial/32x32/apps/Makefile.am: 
+	* icons/Industrial/48x48/apps/Makefile.am: add them
+
+2003-04-17  Jakub Steiner <jimmac@ximian.com>
+
+	* gnome-session/ximian-desktop-2.0-splash.png: pwettify
+	
+2003-04-17  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/32x32/gnome-media-player.png:
+	* icons/Industrial/48x48/gnome-media-player.png: more appropriate
+	  for mostly audio stuff.
+
+2003-04-17  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/32x32/apps/gnome-pdf.png:
+	* icons/Industrial/48x48/apps/gnome-pdf.png: PDF
+	* icons/Industrial/32x32/apps/Makefile.am: 
+	* icons/Industrial/48x48/apps/Makefile.am: add them
+	* icons/Industrial/32x32/gnome-media-player.png:
+	* icons/Industrial/48x48/gnome-media-player.png: xmms
+	* icons/Industrial/32x32/apps/Makefile.am: 
+	* icons/Industrial/48x48/apps/Makefile.am: add them
+
+2003-04-17  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/32x32/apps/xchat.png:
+	* icons/Industrial/48x48/apps/xchat.png: make more distinct (resolves #40873)
+	
+2003-04-17  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/32x32/apps/gnome-gsame.png:
+	* icons/Industrial/48x48/apps/gnome-gsame.png:
+	* icons/Industrial/32x32/apps/gnome-nibbles.png:
+	* icons/Industrial/48x48/apps/gnome-nibbles.png: XD2 icons for
+     the extra twogames
+	* icons/Industrial/32x32/apps/more-menu.png: icon for submenus
+	* icons/Industrial/32x32/apps/dia_gnome_icon.png: 
+	* icons/Industrial/48x48/apps/dia_gnome_icon.png: not superb, but
+     better than the current
+	* icons/Industrial/32x32/apps/Makefile.am: add them
+
+=== ximian-artwork-0.2.18 ===
+
+2003-04-07  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.18
+
+2003-04-08  Tuomas Kuosmanen  <tigert@quicksilver.tigert.priv>
+
+	* gdm/industrial.xml: Updated the GDM graphical greeter theme
+	to the new look. Beware, please test and let me know of any
+	problems with it!
+
+=== ximian-artwork-0.2.17 ===
+
+2003-04-01  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (draw_slider): Typo here.
+
+2003-04-01  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: 0.2.17.
+
+2003-04-01  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Handle small scrollbars and
+	buttons properly.
+
+2003-03-13  Jakub Steiner <jimmac@ximian.com>
+
+	* emblem-bin.png:
+	* emblem-camera.png:
+	* emblem-cool.png:
+	* emblem-multimedia.png:
+	* emblem-note.png:
+	* emblem-ohno.png:
+	* emblem-web.png: theme our emblems
+
+2003-03-12  Jakub Steiner <jimmac@ximian.com>
+
+	* file-manager.png: nautilus icon
+
+2003-03-11  Jakub Steiner <jimmac@ximian.com>
+
+	* administration.png 
+	* apacheconf.png
+	* disks.png 
+	* gnome-monitor.png
+	* gnome-networktool.png
+   * gnome-cd-player-icon.png
+	* hwbrowser.png
+	* logviewer.png
+	* network-config.png
+	* network.png
+	* applets-screenshooter.png
+	* gnome-ftp.png
+	* realplayer.png
+	* sodipodi.png
+	* tsclient.png
+	* xcdroast.png
+	* xchat.png
+	* xsane.png
+	* serviceconf.png: in 48x48, 32x32; move some stuff to gnome
+     theme, so that other themes inheriting from the gnome theme
+     have icons for panel items
+	
+2003-03-11  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/applets-network-48.png:
+	* icons/applets-network-48-alt.png: remove duplaicates of
+	  ximian-network*.png
+
+2003-03-10  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/filesystems/gnome-fs-directory.icon:
+	* icons/Industrial/48x48/filesystems/gnome-fs-directory-accept.icon:
+	  emblem anchors for 48x48
+	* icons/Industrial/48x48/filesystems/gnome-fs-directory-accept.png: 
+	  the mix of png/svg would jump around
+
+2003-03-07  Jakub Steiner <jimmac@ximian.com>
+
+	* wallpapers/BlueWaves.jpeg:
+	* wallpapers/Clouds.jpeg:
+	* wallpapers/Flowerpower.jpeg:
+	* wallpapers/Roses.jpeg:
+	* wallpapers/RedLeaves.jpeg:
+	* wallpapers/pixelback.jpeg:
+	* wallpapers/Subway.jpeg: s/TM/R/
+
+	* wallpapers/SteelStripes.jpeg: I'd like to ship this
+
+   * gnome-mime-application-x-shockwave-flash.png: xd2 globe
+
+2003-03-06  Jakub Steiner <jimmac@ximian.com>
+
+	* xmms/pledit.txt: make color readable
+
+2003-03-02  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Removed duplicate Makefile output entry.
+
+2003-03-02  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version to 0.2.16.
+
+	* icons/Makefile.am (icons_DATA): Added a bunch of images.
+
+	* icons/ximian-*: Added a bunch of images.
+
+2003-02-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* .cvsignore: Added index.theme.
+
+	* Makefile.am (themedir): Added index.theme here.
+
+	* configure.ac: Bumped version number to 0.2.15.
+
+	* index.theme.in: New index for the Industrial metatheme.
+
+2003-02-19  Jakub Steiner <jimmac@ximian.com>
+
+	* icons/Industrial/48x48/filesystems/gnome-fs-ssh.png: ssh vfs
+	  method
+	* Makefile.am: add icon
+	
+2003-02-11  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version number.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Set the selected shadow type
+	for menuitems.
+
+2003-01-31  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version number.
+
+2003-01-31  Christopher James Lahey  <clahey@ximian.com>
+
+	* Makefile.am: Added po to SUBDIRS.  Added intltool to EXTRA_DIST.
+
+	* configure.ac: Require intltool 0.23.
+
+2003-01-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version number.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Fixed up handle code and
+	shades.  Fixed scrollbars for mozilla/galeon.
+
+2003-01-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version number.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Made paned's work right.
+
+2003-01-21  Christopher James Lahey  <clahey@ximian.com>
+
+	* Makefile.am: Added galeon to SUBDIRS.
+
+	* configure.ac: Added galeon/Makefile.  Bumped version number.
+
+	* galeon/Back.png, galeon/Forward.png, galeon/Home.png,
+	galeon/Refresh.png, galeon/Stop.png galeon/Up.png: Theme files.
+
+	* galeon/Makefile.am: List of theme files to be installed.
+
+2003-01-14  Jakub Steiner <jimmac@ximian.com>
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: 
+	* gtk/gtk1-engine/gtk/gtkrc: ummm, lighten a bit ;)
+
+2003-01-13  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bump to 0.2.8.
+
+2003-01-13  Jakub Steiner <jimmac@ximian.com>
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: 
+	* gtk/gtk1-engine/gtk/gtkrc: darken a bit
+
+2002-12-03  Jakub Steiner <jimmac@ximian.com>
+
+	* xmms/eq_ex.bmp: fix a detail
+
+2002-11-28  Alex Graveley  <alex@ximian.com>
+
+	* configure.ac: Bump to 0.2.7.
+
+	* icons/Makefile.am (icons_DATA): Layout sanely. Include My
+	Computer icons here.
+
+2002-11-26  Alex Graveley  <alex@ximian.com>
+
+	* configure.ac: Bump version to 0.2.6.
+
+	* Added documents.png, favourite-folders.png, my-computer.png,
+	and programs.png to icons/ directory to support my computer.
+
+2002-11-19  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number to 0.2.5.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (real_draw_box): Turn back on
+	the buttondefault background and black border in the depressed
+	case.
+
+2002-11-19  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number to 0.2.4.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (real_draw_box): Turn off the
+	button shadow if the button is depressed.
+
+2002-11-12  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Changed industrial-tree style
+	to inherit from industrial-default and copied the engine
+	properties from industrial-unrounded.
+
+2002-11-12  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number.
+
+	* gtk/gtk1-engine/gtk/gtkrc: Added EMinicardViewWidget style.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Moved tree style declarations
+	up within the file.
+
+2002-11-07  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version number to 0.2.1.
+
+2002-11-07  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial1_theme_main.c (set_props): Turn on
+	always_redraw for GtkRange.
+
+2002-11-04  Tuomas Kuosmanen  <tigert@localhost.localdomain>
+
+	* wallpapers/monkeyXplosion.jpeg: Removed the logo, it is in the
+	image itself anyway..
+
+2002-11-04  Jakub Steiner <jimmac@ximian.com>
+
+	* wallpapers/pixelback.jpeg:
+	* wallpapers/Makefile.am (wallpaper_DATA): added there
+
+	* nautilus/i-drectory*:
+	* nautilus/theme-preview.png:
+	* nautilus/desktop-home.svg:
+	* nautilus/i-network.png:
+	* nautilus/i-nfs.png:
+	* nautilus/i-smb.png:
+	* nautilus/i-ftp.png: back to beige
+
+2002-11-01  Tuomas Kuosmanen  <tigert@localhost.localdomain>
+
+	* wallpapers/Makefile.am (wallpaper_DATA): Added a bunch of files,
+	renamed "bluewaves.jpeg" to "BlueWaves.jpeg" so it looks nicer on
+	the background capplet..
+
+2002-10-31  Jakub Steiner <jimmac@ximian.com>
+
+	* nautilus/i-directory.svg:
+	* nautilus/desktop-home.svg:
+	* nautilus/i-directory-accept.svg: fix the vertical 'hinting'
+	* nautilus/theme-preview.png:
+	* nautilus/i-network.png:
+	* nautilus/i-nfs.png:
+	* nautilus/i-smb.png:
+	* nautilus/i-ftp.png: blue versions
+	* nautilus/i-cdrom.svg: vector version
+
+2002-10-30  Jakub Steiner <jimmac@ximian.com>
+
+	* xmms/titlebar.bmp: add a title/label
+
+2002-10-29  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (real_draw_box): Made option
+	menus, steppers, and sliders round two pixels.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Made the active tab an extra
+	pixel larger.
+
+2002-10-29  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (draw_slider): Cut off handle
+	where appropriate.
+	(real_draw_box): Added two pixel rounding and a bevel for
+	scrollbars.
+
+2002-10-29  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Fixed up colors for slider
+	handles and troughs.
+
+	* gtk/gtk1-engine/gtk/gtkrc, gtk/gtk2-engine/gtk-2.0/gtkrc.in:
+	Made notebooks have less padding.  General changes.
+
+2002-10-28  Jakub Steiner <jimmac@ximian.com>
+
+	* nautilus/trash*.png:
+	* nautilus/trash*.svg:
+	* nautilus/Makefile.am: SVG trash is back
+
+2002-10-25  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Up version to 0.2.0, add xmms theme
+	* Makefile.am: Add xmms to SUBDIRS
+	* xmms/*: Add the xmms theme
+	
+2002-10-22  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Up version to 0.1.5 for a new tarball
+	
+2002-10-23  Tuomas Kuosmanen  <tigert@localhost.localdomain>
+
+	* wallpapers/flowerpower.jpeg: changed to JPEG and updated
+	the image a bit. It is now greenish so that we have some variation
+	on the custom wallpapers - the default is blue but green is a nice
+	relaxing color which suits well for office work.
+
+2002-10-18  Tuomas Kuosmanen  <tigert@localhost.localdomain>
+
+	* nautilus/industrial.xml: Updated the "rubber band" box color
+	(the thing you see when you drag to select files) - it was blue
+	which clashed with some backgrounds. It is white now for desktop so
+	it should work ok and be more visible, and it is The Blue on directory
+	windows.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in, gtk/gtk1-engine/gtk/gtkrc:
+	#fafafa for background color, the f0f0f0 made it look too gray and
+	we lost the bright appearance.
+
+	* nautilus/emblem-nowrite.png: Updated..
+	* nautilus/emblem-noread.png: Updated..
+	* nautilus/emblem-symbolic-link.png: Updated..
+
+2002-10-15  Jakub Steiner <jimmac@ximian.com>
+
+	* nautilus/trash*: fix stroke color/size
+
+2002-10-15  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number to 0.1.4.2.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (shade_hex): Changed the base
+	for colors back to 0xfd.
+
+2002-10-15  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (WIDGET_TYPE_NAME): Removed the
+	space before the ( in this #define.
+
+2002-10-15  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number to 0.1.4.1 (bug fix
+	release.)
+
+2002-10-15  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (WIDGET_TYPE_NAME): Added this
+	#define to properly check the type name of the given widget.
+
+2002-10-11  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial1.h,
+	gtk/gtk2-engine/industrial_rc_style.h: Added IndustrialFields.
+
+	* gtk/gtk1-engine/industrial1_theme_main.c,
+	gtk/gtk2-engine/industrial_rc_style.c: Use IndustrialFields when
+	merging.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.h: Fixed SHADE_0x9E to be 9E
+	instead of 8E.  Set HANDLE_SHADE and SLIDER_HANDLE_SHADE to
+	SHADE_0xEA.
+	(draw_slider): Made scrollbar merge at top and bottom pixel.
+	(draw_box): Handle toggle buttons.  Made handlebox_bin, dockitem
+	and PanelAppletFrame TROUGH_BORDER_SHADE.  Draw non GtkScrollbar
+	"slider"s vertical if they're taller than they are wide.
+	(draw_focus): Tweaked focus box size and placement for a number of
+	widgets.
+
+	* gtk/gtk1-engine/parse_rc_style.h,
+	gtk/gtk2-engine/parse_rc_style.h: Set IndustrialFields when
+	parsing.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Added widget
+	"*.tasklist-button" style "industrial-unrounded".
+
+2002-10-11  Jakub Steiner <jimmac@ximian.com>
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: 
+	* gtk/gtk1-engine/gtk/gtkrc: darken the basic white so it's a bit
+	  more dirty, but still whiteish. #fbfbfb hurts
+	* nautilus/i-regular.xml: fix clipping rectangle 
+	* nautilus/emblem-noread.png:
+	* nautilus/emblem-nowrite.png:
+	* nautilus/emblem-symbolic-link.png: emblems weren't up-to-date
+
+2002-10-11  Rodney Dawes  <dobey@ximian.com>
+
+	* COPYING.ximian-logos: Add the Ximian Logo License in
+	* gtk/gtk2-engine/gtk-2.0/Makefile.am: Fix the stock icons
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Fix the stock icons
+	* gtk/gtk2-engine/gtk-2.0/stock_apply.png: Replace with old ok icon
+	* gtk/gtk2-engine/gtk-2.0/stock_ok-16.png: Remove this icon
+	* gtk/gtk2-engine/gtk-2.0/stock_ok.png: Replace with correct icon
+	
+2002-10-11  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (draw_check, draw_option): Draw
+	these using base for GTK_STATE_NORMAL and using GTK_STATE_NORMAL
+	at all times under gtk1.
+
+2002-10-10  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (ensure_pixmap): Use
+	style->colormap here so that it'll work if window is a GdkPixmap.
+	(draw_handle): Check for PanelAppletFrame here.
+	(draw_shadow): Draw shadows one pixel bigger in every direction
+	for focused texts and entrys.
+	(draw_extension): Draw a point at BR 0, 0, BL 0, 0, and only draw
+	BL 1, 0 once, even if check_page is true.
+	(draw_focus): Don't draw focus for entries or texts since it'll
+	just get erased anyway.
+
+	* gtk/gtk1-engine/industrial_style_versioned_code.h,
+	gtk/gtk2-engine/industrial_style_versioned_code.h (check_page):
+	Made this code cleaner.
+
+2002-10-11  Jakub Steiner <jimmac@ximian.com>
+
+	* nautilus/trash*.svg:
+	* nautilus/desktop-home.svg:
+	* nautilus/i-directory.svg:
+	* nautilus/i-directory-accept.svg: fix dimensions, 'hinting' (if
+	  used with the latest librsvg, fixes #31408.
+
+2002-10-04  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number.
+
+	* gtk/gtk1-engine/industrial1_theme_main.c
+	(theme_duplicate_style): Allocate a new IndustrialData here.
+
+2002-10-04  Jakub Steiner <jimmac@ximian.com>
+
+	* gtk/gtk1-engine/gtk/gtkrc: 
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: darken the white background
+	  color a bit. Use only one shade of blue. (+reverted tig's menu
+     color change); and added fg[PRELIGHT]
+	* gdm/industrial.xml: enlarged the font for Cpas lock and error
+     messages 
+	
+2002-10-04  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/gtk/gtkrc: Changed the colors here to match the
+	gtk2 theme changes.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Fixed drawing of default
+	button.  Fixed option menus and checkboxes not to be blue when
+	clicking.
+
+2002-10-04  Rodney Dawes <dobey@ximian.com>
+
+	* configure.ac: Bump the version to 0.1.2
+	* gtk/Makefile.am: Ignore the theme desktop-stripe images for now
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Apply tigert's changes
+	* icons/Makefile.am: Add the generic ximian-desktop-stripe.png
+	* icons/ximian-desktop-stripe.png: Add image
+	
+2002-10-02  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped the version number to 0.1.1.
+
+2002-10-01  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial1.h,
+	gtk/gtk1-engine/industrial1_theme_main.c,
+	gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk1-engine/industrial_style_versioned_include.h,
+	gtk/gtk1-engine/parse_rc_style.h, gtk/gtk1-engine/gtk/gtkrc,
+	gtk/gtk2-engine/industrial_rc_style.c,
+	gtk/gtk2-engine/industrial_rc_style.h,
+	gtk/gtk2-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.h,
+	gtk/gtk2-engine/industrial_style_versioned_code.h,
+	gtk/gtk2-engine/industrial_style_versioned_include.h,
+	gtk/gtk2-engine/parse_rc_style.h,
+	gtk/gtk2-engine/gtk-2.0/gtkrc.in: Added rounded_buttons and
+	contrast_center options.  Made contrast stuff work properly.
+
+2002-10-01  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial1_theme_main.c (G_N_ELEMENTS): This
+	should be elements, not symbols.
+
+2002-09-30  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Up version to 0.1.0, Remove AM_PATH_GDK_PIXBUF
+	* gtk/gtk2-engine/Makefile.am: Remove pixbuf dependency
+	* icons/Makefile.am: Remove help-chat, add web-support images
+	* icons/help-chat-32.png: Remove image
+	* icons/web-support*.png: Added images
+	
+2002-09-30  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/Makefile.am, gtk/gtk2-engine/Makefile.am: Added
+	parse_rc_style.h.
+
+	* gtk/gtk1-engine/industrial1.h: Removed old stuff.  Added
+	contrast to the IndustrialData structure.
+
+	* gtk/gtk1-engine/industrial1_theme_main.c: Removed all the
+	parsing stuff to parse_rc_style.h.  Include this file.  Removed
+	old stuff.  Removed all gdk pixbuf references.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Fixed contrast code.  Replaced
+	const with INDUSTRIAL_CONST for warning fixes.  Made draw_shadow
+	not fill the given area.  Clip in real_draw_box_gap.  Fill bg in
+	draw_box_gap.  Added draw_focus for use in gtk1.
+
+	* gtk/gtk1-engine/industrial_style_versioned_code.h: Removed old
+	code.
+
+	* gtk/gtk1-engine/industrial_style_versioned_include.h,
+	gtk/gtk2-engine/industrial_style_versioned_include.h: Removed gdk
+	pixbuf references and defined INDUSTRIAL_CONST.
+
+	* gtk/gtk1-engine/parse_rc_style.h,
+	gtk/gtk2-engine/parse_rc_style.h: New shared file that contains
+	the code to parse our section of the rc file.
+
+	* gtk/gtk1-engine/gtk/gtkrc, gtk/gtk2-engine/gtk-2.0/gtkrc.in: Set
+	contrast to 1.0.  Removed base[ACTIVE] and text[ACTIVE].
+
+	* gtk/gtk2-engine/industrial_rc_style.c: Include parse_rc_style.h
+	for parsing code.
+
+	* gtk/gtk2-engine/industrial_rc_style.h: Added gboolean wide.
+
+2002-09-27  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version to 0.0.8.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (draw_shadow): Just chain this
+	to our draw_box function, unless shadow_type == GTK_SHADOW_NONE.
+	(real_draw_box_gap): Draw gap background color if it's wider than
+	0 pixels.
+	(draw_extension): Draw shadow on background tabs.
+	(draw_arrow): This is only used in gtk1.  For scrollbars, draw a
+	box and make the button three pixels shorter.  For spinbuttons,
+	make it two pixels shorter.  For all others, make it one pixel
+	shorter.
+	(draw_tab): Copied this code from gtk2 default theme, hard coding
+	some values that are dynamic in gtk2.  This is only used in gtk1.
+
+	* gtk/gtk1-engine/industrial_style_versioned_code.h
+	(industrial_initialize_style): Connect up the draw_tab function.
+
+	* gtk/gtk1-engine/gtk/gtkrc: Changed bluecurve to industrial
+	throughout.
+
+2002-09-26  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/Makefile.am (EXTRA_DIST): Typo.
+
+2002-09-25  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version to 0.0.7.1.
+
+	* gtk/gtk1-engine/Makefile.am, gtk/gtk2-engine/Makefile.am: Added
+	xpm files.
+
+	* gtk/gtk1-engine/menu-checkbox-mixed.xpm,
+	gtk/gtk1-engine/menu-checkbox-off.xpm,
+	gtk/gtk1-engine/menu-checkbox-on.xpm,
+	gtk/gtk1-engine/menu-radio-mixed.xpm,
+	gtk/gtk1-engine/menu-radio-off.xpm,
+	gtk/gtk1-engine/menu-radio-on.xpm,
+	gtk/gtk2-engine/menu-checkbox-mixed.xpm,
+	gtk/gtk2-engine/menu-checkbox-off.xpm,
+	gtk/gtk2-engine/menu-checkbox-on.xpm,
+	gtk/gtk2-engine/menu-radio-mixed.xpm,
+	gtk/gtk2-engine/menu-radio-off.xpm,
+	gtk/gtk2-engine/menu-radio-on.xpm: Added these images for use in
+	drawing radio buttons and checkboxes.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Added small versions of the
+	pixmaps in use.  Made the pixmaps save their bitmask for
+	transparency and used it.
+
+2002-09-25  Christopher James Lahey  <clahey@ximian.com>
+
+	* configure.ac: Bumped version to 0.0.7.
+
+	* gtk/gtk1-engine/Makefile.am, gtk/gtk2-engine/Makefile.am: Added
+	xpm files.
+
+	* gtk/gtk1-engine/checkbox-mixed.xpm,
+	gtk/gtk1-engine/checkbox-off.xpm, gtk/gtk1-engine/checkbox-on.xpm,
+	gtk/gtk1-engine/radio-mixed.xpm, gtk/gtk1-engine/radio-off.xpm,
+	gtk/gtk1-engine/radio-on.xpm, gtk/gtk2-engine/checkbox-mixed.xpm,
+	gtk/gtk2-engine/checkbox-off.xpm, gtk/gtk2-engine/checkbox-on.xpm,
+	gtk/gtk2-engine/radio-mixed.xpm, gtk/gtk2-engine/radio-off.xpm,
+	gtk/gtk2-engine/radio-on.xpm: Added these images for use in
+	drawing radio buttons and checkboxes.
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c: Implemented shading pixmaps to
+	match fg & bg color.  Used this to implement radio buttons and
+	checkboxes.
+
+	* gtk/gtk1-engine/industrial_style_versioned_code.h,
+	gtk/gtk2-engine/industrial_style_versioned_code.h: Hooked up radio
+	buttons (draw_option) and checkboxes (draw_check).
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Fixed indicator sizes.  Added
+	PanelMenu settings.
+
+2002-09-23  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.c (DEBUG): Turned off debugging.
+
+2002-09-20  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk1-engine/Makefile.am: Added industrial_style.c,
+	industrial_style_versioned_include.h, and
+	industrial_style_versioned_code.h.
+
+	* gtk/gtk1-engine/industrial1.h: Added shading_hash.  Renamed all
+	bluecurve to industrial.
+
+	* gtk/gtk1-engine/industrial1_theme_draw.c: Removed this file.
+	It's superceded by industrial_style.c.
+
+	* gtk/gtk1-engine/industrial1_theme_main.c: Sets shading_hash to
+	NULL.  Renamed all bluecurve to industrial.
+
+	* gtk/gtk1-engine/industrial_style.c: This is a byte for byte copy
+	of the industrial_style.c from gtk2-engine.  It'll be maintained
+	as identical code.
+
+	* gtk/gtk1-engine/industrial_style_versioned_include.h,
+	gtk/gtk1-engine/industrial_style_versioned_code.h: Files to
+	specify gtk1 specific code for the theme.
+
+	* gtk/gtk1-engine/gtk/gtkrc: Changed these colors to match the
+	gtk2 gtkrc.
+
+	* gtk/gtk2-engine/Makefile.am: Added
+	industrial_style_versioned_include.h and
+	industrial_style_versioned_code.h.
+
+	* gtk/gtk2-engine/industrial_style.c: Made this include versioned
+	files from this same directory.  A week's worth of development on
+	the theme.
+
+	* gtk/gtk2-engine/industrial_style.h: Minor changes.
+
+	* gtk/gtk2-engine/industrial_style_versioned_include.h,
+	gtk/gtk2-engine/industrial_style_versioned_code.h: Files to
+	specify gtk2 specific code for the theme.
+
+	* gtk/gtk1-engine/gtk-2.0/gtkrc.in: Minor changes.
+
+2002-09-20  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Up version to 0.0.5.2
+	* icons/Makefile.am: Add system-floppy-32.png
+	* icons/system-floppy-32.png: Add file
+	
+2002-09-19  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Up version to 0.0.5.1
+	* icons/*: Add panel icons and smb icons
+	
+2002-09-13  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Up version to 0.0.5
+	* gdm/ximian-desktop-2.0-gdm-screen.png: Add image
+	* gdm/Makefile.am: Add the gdmlogin pixmap
+	
+2002-09-13  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk2-engine/industrial_style.c: Handle option menus and
+	draw_vline and draw_hline.
+
+2002-09-13  Christopher James Lahey  <clahey@ximian.com>
+
+	* gtk/gtk2-engine/industrial_rc_style.c,
+	gtk/gtk2-engine/industrial_rc_style.h,
+	gtk/gtk2-engine/industrial_style.c,
+	gtk/gtk2-engine/industrial_style.h,
+	gtk/gtk2-engine/industrial_theme_main.c: First draft of the new
+	theme.
+
+	* gtk/gtk2-engine/gtk-2.0/gtkrc: Changed button child_displacement
+	and default_border and default_outside_border.
+
+2002-09-12  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Upped version to 0.0.4.1
+	* gtk/gtk2-engine/gtk-2.0/Makefile.am: Add refresh icons
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Add refresh icon replacement
+	* gtk/gtk2-engine/gtk-2.0/stock_refresh*.png: Add icons
+	
+2002-09-11  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Upped version to 0.0.4, output the gtk2 gtkrc
+	* gtk/gtk2-engine/gtk-2.0/Makefile.am: Use a generated gtkrc
+	* gtk/gtk2-engine/gtk-2.0/gtkrc(-icon-mapping): Removed files
+	* gtk/gtk2-engine/gtk-2.0/gtkrc.in: Add a file to generate the
+	  gtkrc from
+	* nautilus/Makefile.am:
+	* nautilus/*/Makefile.am: industrial instead of Industrial
+	
+2002-09-04  Dave Camp  <dave@ximian.com>
+
+	* nautilus/:
+	* metacity/: Updated from art/
+	* gtk/gtk2-engine:
+	* gtk/gtk1-engine: Imported Bluecurve.
+
+2002-08-28  Rodney Dawes  <dobey@ximian.com>
+
+	* icons/Makefile.am: Add helix-button-yellow.png
+	* icons/helix-button-yellow.png: Added file
+	
+2002-08-23  Rodney Dawes  <dobey@ximian.com>
+
+	* */Makefile.am: Added EXTRA_DIST
+	* gdm/Makefile.am: clouds.jpg not png
+	* nautilus/Makefile.am: Fix a few typos
+	
+2002-08-23  Rodney Dawes  <dobey@ximian.com>
+
+	* configure.ac: Don't use AC_PROG_INTLTOOL
+	* */.cvsignore: Add cvsignores for everything
+	* nautilus/Makefile.am: Fix a typo
+

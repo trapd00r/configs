@@ -1,0 +1,40 @@
+AC_INIT(Theme)
+
+# For automake.
+VERSION=2.0.0
+PACKAGE=gtk2-bluecurve-engine
+
+# Honor aclocal flags
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+AM_PROG_LIBTOOL
+
+# Checks for libraries.
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([string.h])
+
+PKG_CHECK_MODULES(GTK2, gtk+-2.0 >= 2.0.0,,
+	          AC_MSG_ERROR([GTK+-2.0 is required to compile redhat-artwork]))
+
+GTK2_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK2_CFLAGS)
+AC_SUBST(GTK2_LIBS)
+AC_SUBST(GTK2_VERSION)
+
+	
+AC_OUTPUT([
+Makefile
+Theme/Makefile
+Theme/gtk-2.0/Makefile
+])

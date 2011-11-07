@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=olscool
+Type=X-GNOME-Metatheme
+Comment=A Sleek and Compact Theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=olscool
+MetacityTheme=olscool
+IconTheme=Industrial

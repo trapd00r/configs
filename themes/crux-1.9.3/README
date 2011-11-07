@@ -1,0 +1,14 @@
+
+This is a GTK+ theme engine. It will eventually replace the `Eazel'
+pixmap theme.
+
+It's still unfinished in many areas.
+
+To compile from CVS you need Perl. Do:
+
+	./autogen.sh CONFIGURE-OPTIONS
+	make
+	make install
+
+ - John Harper <jsh@eazel.com>
+

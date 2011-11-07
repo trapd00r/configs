@@ -1,0 +1,33 @@
+# Prion
+# This makes use of the slick Industrial gtk engine which effects both gtk1
+# and gtk2 widgets for a nice consistant look for those of us still using
+# some gtk1 programs.
+
+style "Prion" {
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#314a82"
+  fg[PRELIGHT]     = "#415a92"
+  fg[SELECTED]     = "#ffffff"
+  fg[INSENSITIVE]  = "#969696"
+  
+  bg[NORMAL]       = "#e2e2de"
+  bg[ACTIVE]       = "#c2c2be"
+  bg[PRELIGHT]     = "#f2f2ee"
+  bg[SELECTED]     = "#a5abba"
+  bg[INSENSITIVE]  = "#e2e2de"
+  
+  base[NORMAL]     = "#ffffff"
+  base[SELECTED]   = "#a5abba"
+  base[ACTIVE]     = "#ffffff"
+  base[PRELIGHT]   = "#eaeaea"
+  base[INSENSITIVE]= "#ffffff"
+  
+  text[INSENSITIVE]= "#000000"
+  text[SELECTED]   = "#000000"
+  text[ACTIVE]     = "#000000"
+
+  engine "industrial" {} 
+
+}
+
+class "GtkWidget" style "Prion"

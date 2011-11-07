@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=AluminumAlloy-Volcanic
+Type=X-GNOME-Metatheme
+Comment=AluminumAlloy - A Port of a Mac OS X theme originally made by Max Rudberg.
+Name[hu_HU]=AluminumAlloy-Volcanic
+Name[en_US]=AluminumAlloy-Volcanic
+
+[X-GNOME-Metatheme]
+GtkTheme=AluminumAlloy-Volcanic
+MetacityTheme=AluminumAlloy-Volcanic
+IconTheme=gnome

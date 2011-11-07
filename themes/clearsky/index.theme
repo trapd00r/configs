@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=clearsky
+Type=X-GNOME-Metatheme
+Comment=Usability and Aesthetics
+
+[X-GNOME-Metatheme]
+GtkTheme=clearsky
+MetacityTheme=clearsky
+IconTheme=clearsky

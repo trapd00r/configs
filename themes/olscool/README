@@ -1,0 +1,66 @@
+----------------------------------------------------------------
+Theme Author
+----------------------------------
+
+	silenteef (aka Mystilleef)
+	mystilleef@gmail.com
+
+---------------------------------------------------------------
+Theme Name
+----------------------------------		
+
+	olscool
+
+---------------------------------------------------------------
+Theme Engine
+----------------------------------
+	
+	lighthouseblue
+
+----------------------------------------------------------------
+Stock Icons		
+----------------------------------
+
+	Suede2
+
+----------------------------------------------------------------
+Window Decoration (Metacity) Theme
+-----------------------------------
+
+	Human
+	
+----------------------------------------------------------------
+Description
+----------------------------------
+	
+	olscool is the epitome of finesse, style and a retro design. Usability is 
+	the fundamental essence that olscool is founded upon. Smooth, slim and 
+	sleek, olscool utilizes the acclaimed lighthouseblue theme technology to 
+	render a lean, mean and clean desktop for GNOME.
+	
+----------------------------------------------------------------
+License
+----------------------------------
+
+	GNU GPL Version 2
+	
+----------------------------------------------------------------
+Log
+----------------------------------	
+Version 1.2.4
+	-Prelight adjustments
+	-Button size adjustments for lower resolution monitors
+	-Refactored theme
+	-Progressbar adjustments
+	
+Version 1.2.3
+	-Change base color (Thanks Polos)
+
+Version 1.1.3 
+	-Added the Human Metacity theme
+	-Adjusted Metacity theme colors
+	-Fixed progress bar issues
+	-Fixed stock icon issues (muine)
+	
+Version 1.0.0
+	-Initial release

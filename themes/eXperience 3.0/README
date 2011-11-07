@@ -1,0 +1,33 @@
+---------------------------------------------------------
+Readme for the eXperience theme
+---------------------------------------------------------
+
+Name:		eXperience
+Release:		3.0
+Author:		David Christian Berg
+Email:		david@sipsolutions.com
+
+With this release all the benefits of a completely new engine are weaved into the code. A big thank you to my brother Benjamin, who did all the coding of the engine with respect to my suggestions and needs -- I believe he actually did more work for this new release than I did myself. The themes might be slightly slower to me, but the advantage of being able to change color easily is so huge, that I was more than willing to have this slight drawback. The new engine is a branch (eXperience-engine) of the eXperience project.
+To change the color scheme, open the colorscheme file within the gtk-2.0 folder and run the respective comand that you'll find at the bottom of the document. Of course you're welcome to create your own color scheme.
+
+All icons and images are published under GPL.
+
+Feel free to improve the theme and the icon set (esp. I need more Icons). I'd be glad to receive suggestions improvements and such.
+
+Contact me if you have any questions!
+
+---------------------------------------------------------
+TO DO (Last updated 2005-01-02)
+---------------------------------------------------------
+
+- More, a lot more own icons and redo some. (esp. complete the stock icon set!)
+
+- The bug about handle orientation needs to be fixed in Gtk.
+
+- The Gnome pannel should have a gtk_shadow, to be themable. I filed a bug agaist the gnome-panel.
+
+- Redo the buttons and background  of panel drawers as soon as the panel is fixed.
+
+- Try to make a focus for textviews and the such, that looks like the textentry focus (Can't work, I filed a bug agaist Gtk)
+
+

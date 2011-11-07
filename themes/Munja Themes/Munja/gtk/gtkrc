@@ -1,0 +1,81 @@
+
+
+style "industrial-default"
+{
+
+  bg[NORMAL] = "#EAE8E3"
+  bg[PRELIGHT] = "#F0EEE9"
+  bg[ACTIVE] = "#DBD9D4"
+  bg[SELECTED] = "#7590AE"
+  fg[PRELIGHT]    = "#000000"
+  bg[INSENSITIVE] = "#EAE8E3"
+
+  base[SELECTED]  = "#7F9096"
+  text[SELECTED]  = "#000000"
+
+
+  engine "industrial" 
+    {
+      contrast = 1.0
+    }
+}
+
+style "industrial-wide" = "industrial-default"
+{
+  engine "industrial" 
+    {
+      wide = TRUE
+      contrast = 1.0
+    }
+}
+
+style "industrial-unrounded" = "industrial-default"
+{
+  engine "industrial" 
+    {
+      rounded_buttons = TRUE
+      contrast = 1.0
+    }
+}
+
+style "industrial-menu" = "industrial-default"
+{
+  bg[PRELIGHT]    = "#7590AE"
+  bg[SELECTED]    = "#7590AE"
+
+  fg[PRELIGHT]  = "#FFFFFF"
+  fg[SELECTED]  = "#FFFFFF"
+}
+
+style "industrial-frame-title" = "industrial-default"
+{
+  fg[NORMAL] = { 0.25,0.25,0.25 }
+}
+
+style "industrial-tooltips" = "industrial-default"
+{
+  bg[NORMAL] = { 1.0,1.0,0.75 }
+}
+
+style "industrial-evolution-addressbook" = "industrial-default"
+{
+  bg[NORMAL] = "#ECECEC"
+}
+
+class "GtkWidget" style "industrial-default"
+class "GtkButton" style "industrial-wide"
+class "GtkRange" style "industrial-wide"
+class "GtkMenu" style "industrial-wide"
+class "GtkFrame" style "industrial-wide"
+class "GtkStatusbar" style "industrial-wide"
+class "GtkMenuItem" style "industrial-menu"
+widget_class "*.*MenuItem.*" style "industrial-menu"
+class "GtkEntry" style "industrial-wide"
+widget_class "*.GtkFrame.GtkLabel" style "industrial-frame-title"
+widget "gtk-tooltips" style "industrial-tooltips"
+widget_class "*.GtkList.*" style "industrial-unrounded"
+widget_class "*.GtkCList.*" style "industrial-unrounded"
+widget_class "*.ETree.*" style "industrial-unrounded"
+widget_class "*.ETable.*" style "industrial-unrounded"
+
+widget_class "*.EMinicardViewWidget" style "industrial-evolution-addressbook"

@@ -1,0 +1,68 @@
+style "default"
+{
+   fg[ACTIVE]		= "#000000"
+  fg[NORMAL]		= "#000000"
+  fg[INSENSITIVE]	= "#999989"
+  fg[PRELIGHT]		= "#ffffff"
+  fg[SELECTED]		= "#ffffff"
+
+  bg[ACTIVE]		= "#bebfae"
+  bg[NORMAL]		= "#dedfce"
+  bg[INSENSITIVE]	= "#eeeee0"
+  bg[PRELIGHT]		= "#9f9f93"
+  bg[SELECTED]		= "#9f9f93"
+
+  base[ACTIVE]		= "#9f9f9f"
+  base[NORMAL]		= "#ffffff"
+  base[INSENSITIVE]	= "#ddddcf"
+  base[PRELIGHT]	= "#f0f0f0"
+  base[SELECTED]	= "#9f9f93"
+
+  text[ACTIVE]		= "#000000"
+  text[INSENSITIVE]	= "#747474"
+  text[SELECTED]	= "#ffffff"
+  text[NORMAL]            = "#000000"
+  text[PRELIGHT]          = "#000000"
+
+	GtkRange::slider_width = 15
+	GtkRange::stepper_size = 15
+	GtkScrollbar::min_slider_length = 15
+	GtkCheckButton::indicator_size=12
+	GtkRadioButton::indicator_size=12
+	GtkStatusbar::shadow_type = none
+	
+	GtkNotebook::tab_vborder = 1
+	GtkNotebook::tab_hborder = 1
+	xthickness = 1
+	ythickness = 1
+
+	engine "mist"
+ 	{
+	}
+}
+
+style "menuitem"
+{
+        text[PRELIGHT]          = "#ffffff"
+        fg[PRELIGHT]          = "#ffffff"
+}
+
+style "menu" 
+{
+	ythickness = 2
+	xthickness = 2
+} 
+
+class "GtkWidget" style "default"
+class "GtkMenu" style "menu"
+
+widget_class "*.GtkMenuItem.*" style "menuitem"
+widget_class "*.GtkImageMenuItem.*" style "menuitem"
+widget_class "*.GtkAccelMenuItem.*" style "menuitem"
+widget_class "*.GtkRadioMenuItem.*" style "menuitem"
+widget_class "*.GtkCheckMenuItem.*" style "menuitem"
+widget_class "*.GtkMenu.*" style "menuitem"
+
+
+
+

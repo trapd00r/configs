@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=T-ish-Brushed-Bright
+Type=X-GNOME-Metatheme
+Comment=A theme that heavily mods Ish, buttons from Expose and window borders from GlossyP
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=T-ish-Brushed-bright
+MetacityTheme=T-ish-Brushed
+IconTheme=OSX

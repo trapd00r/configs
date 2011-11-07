@@ -1,0 +1,36 @@
+gtk-flat-theme
+===========
+
+Original author: Mark Slicker <jamess1@wwnet.com>
+Ported to GTK+ 2.0: Scott Barnes <reeve@ductape.net>
+
+This theme engine gives gtk+ a flattened appearance with elements
+taken from the MacOS and Metal uis. Modified from the default and
+metal theme engines; the colors and background pixmaps are fully
+customizable.
+
+Requirements
+============
+
+To compile this package, you must have:
+
+ GTK+, version 2.0 or better
+
+   http://www.gtk.org/
+   ftp://ftp.gtk.org/pub/gtk/
+
+
+Installation
+============
+
+ ./configure 
+ make
+ [ become root ]
+ make install
+
+
+If you configured GTK+ in a non-default prefix, you must
+also configure this package the same way. For instance:
+
+ ./configure --prefix=/opt/gtk+
+

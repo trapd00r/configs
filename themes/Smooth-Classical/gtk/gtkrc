@@ -1,0 +1,224 @@
+# Theme Name  : BasicallySmooth
+# Author(s)   : ajgenius ala Andrew Johnson (ajgenius_AT_ajgenius.us) 
+# Description :
+#
+# A Smooth-ified version of the very nice XFCE theme XFCE-Basic, 
+# which simply uses the basic GTK2 default colour scheme.
+
+style "default" {
+	###### GTK Style Colours ######
+	fg[ACTIVE]		= "#000000000000"
+	fg[SELECTED]		= "#ffffffffffff"
+	fg[NORMAL]		= "#000000000000"
+	fg[PRELIGHT]		= "#000000000000"
+	fg[INSENSITIVE]		= "#753075307530"
+
+	bg[ACTIVE]		= "#c350c350c350"
+	bg[SELECTED]		= "#000000009c40"
+	bg[NORMAL]		= "#d6d6d6d6d6d6"
+	bg[PRELIGHT]		= "#ea60ea60ea60"
+	bg[INSENSITIVE] 	= "#d6d6d6d6d6d6"
+
+	text[ACTIVE]		= "#000000000000"
+	text[SELECTED]		= "#ffffffffffff"
+	text[NORMAL]		= "#000000000000"
+	text[PRELIGHT]		= "#000000000000"
+	text[INSENSITIVE]	= "#753075307530"
+
+	base[ACTIVE]		= "#ffffffffffff"
+	base[SELECTED]		= "#000000009c40"
+	base[NORMAL]		= "#ffffffffffff"
+	base[PRELIGHT]		= "#c350c350c350"
+	base[INSENSITIVE]	= "#ffffffffffff"
+
+	###### Theme Engine Style ######
+	engine "smooth" {
+		######  Smooth Faked GTK Style Flags  ###### 
+		GtkWidget::interior_focus		= 0
+		GtkButton::default_spacing		= 8
+		
+		GtkCheckButton::indicator_size		= 13
+		GtkRadioButton::indicator_size		= 12
+	
+		GtkPaned::handle_size			= 7
+	
+		GtkRange::trough_border			= 1
+		GtkRange::slider_width			= 15
+		GtkRange::stepper_size			= 15
+		GtkRange::stepper_spacing		= 0
+
+		tab_style	= square
+		
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			shade1		= 1.1
+			shade2		= 0.95
+		}
+
+		line {
+			style		= smoothbevel
+			thickness	= 2
+		}
+
+		trough {
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+
+				shade1		= 1.0
+				shade2		= 1.03
+			}
+			line {
+				style = bevel
+				thickness = 1
+			}
+		}
+
+		progress {
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+
+				shade1		= 1.2
+				shade2		= 0.85
+			}
+		}
+
+		grip {
+			style		= none
+			count		= 0
+			spacing		= 0
+		}
+
+		check {
+			style	= fast
+			motif	= TRUE
+		}
+
+		option {
+			style	= clean
+			motif	= TRUE
+		}
+
+		arrow {
+			style	= icegradient
+			solid	= TRUE
+			etched	= TRUE
+		}
+	}
+} widget_class "*" style "default"
+
+style "menuitem" {
+	###### GTK Style Colours ######
+	bg[PRELIGHT]		= "#000000009c40"
+	fg[PRELIGHT]		= "#ffffffffffff"
+	base[PRELIGHT]		= "#000000009c40"
+	text[PRELIGHT]		= "#ffffffffffff"
+
+	###### Theme Engine Style ######
+	engine "smooth" {
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+			shade1		= 1.2
+			shade2		= 0.85
+		}
+
+		line {
+			style		= smoothbevel
+			thickness	= 2
+		}
+
+		check {
+			style	= fast
+			motif	= true
+		}
+
+		option {
+			style	= circle
+			motif	= true
+		}
+
+		arrow {
+			style	= icegradient
+			solid	= TRUE
+			etched	= TRUE
+		}
+	}
+}
+class "*MenuItem*" style "menuitem"
+widget_class "*MenuItem*" style "menuitem"
+
+style "scrollbar" 
+{
+	###### Theme Engine Style ######
+	engine "smooth" {
+		######  Smooth Faked GTK Style Flags  ###### 
+		GtkWidget::interior_focus		= 0
+	
+		GtkRange::trough_border			= 1
+		GtkRange::slider_width			= 15
+		GtkRange::stepper_size			= 15
+		GtkRange::stepper_spacing		= 0
+
+		fill {
+			style		= shaded
+			hdirection	= vertical
+			vdirection	= horizontal
+				
+			shade1		= 1.1
+			shade2		= 0.95
+			
+		}
+	
+		line {
+			style		= smoothbevel
+			thickness	= 0
+		}
+	
+		trough {
+			fill {
+				style		= shaded
+				hdirection	= vertical
+				vdirection	= horizontal
+				
+				shade1		= 0.95
+				shade2		= 1.1
+			}
+			line {
+				style = bevel
+				thickness = 1
+			}
+		}
+	
+		grip {
+			style		= none
+			count		= 0
+			spacing		= 0
+		}
+
+		arrow {
+			style	= icegradient
+			solid	= TRUE
+			etched	= TRUE
+			
+			xpadding	= 1
+			ypadding	= 1
+		}
+	}
+}
+widget_class "*Scrollbar*"         style "scrollbar"
+class "*Scrollbar*"                style "scrollbar"
+widget_class "*Scale*"         style "scrollbar"
+class "*Scale*"                style "scrollbar"
+
+style "progressbar" {
+	###### GTK Style Colours ######
+	bg[PRELIGHT]		= "#000000009c40"
+	fg[PRELIGHT]		= "#ffffffffffff"
+} widget_class "*ProgressBar*" style "progressbar"

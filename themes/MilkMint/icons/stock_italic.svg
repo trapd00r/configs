@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generator: Adobe Illustrator 9.0, SVG Export Plug-In  -->
+<svg
+   width="48.000000pt"
+   height="48.000000pt"
+   viewBox="0 0 24 24"
+   xml:space="preserve"
+   id="svg1"
+   sodipodi:version="0.32"
+   inkscape:version="0.38.1"
+   sodipodi:docname="stock_italic.svg"
+   sodipodi:docbase="/usr/share/icons/Suede/scalable/stock"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:xlink="http://www.w3.org/1999/xlink"><defs
+   id="defs30">
+  <linearGradient
+     id="linearGradient861"
+     gradientUnits="userSpaceOnUse"
+     x1="19.2197"
+     y1="18.54"
+     x2="5.3095"
+     y2="6.0043">
+			<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop863" />
+
+
+			<stop
+   offset="1"
+   style="stop-color:#EDEDED"
+   id="stop865" />
+
+
+		</linearGradient>
+</defs>
+<path
+   style="stroke-width:0.85680002;fill:#cacaca;fill-opacity:0.80769229;"
+   d="M 3.4637865,2.4372090 C 2.6637865,2.4372090 2.0637865,3.0372090 2.0637865,3.8372090 L 2.0637865,22.037209 C 2.0637865,22.837209 2.6637865,23.437209 3.4637865,23.437209 L 22.463786,23.437209 C 23.263786,23.437209 23.863786,22.837209 23.863786,22.037209 L 23.863786,3.8372090 C 23.863786,3.0372090 23.263786,2.4372090 22.463786,2.4372090 L 3.4637865,2.4372090 L 3.4637865,2.4372090 z "
+   id="path857" />
+
+<sodipodi:namedview
+   id="base"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageopacity="0.0"
+   inkscape:pageshadow="2"
+   inkscape:zoom="4.7031250"
+   inkscape:cx="64.000000"
+   inkscape:cy="29.980066"
+   inkscape:window-width="1142"
+   inkscape:window-height="745"
+   inkscape:window-x="0"
+   inkscape:window-y="29" />
+
+
+	<g
+   id="Layer_x0020_4"
+   style="fill-rule:nonzero;clip-rule:nonzero;stroke:#000000;stroke-miterlimit:4;">
+		<path
+   style="stroke-width:0.8568;"
+   d="M2.6,1.6C1.8,1.6,1.2,2.2,1.2,3v18.2c0,0.8,0.6,1.4,1.4,1.4h19c0.8,0,1.4-0.6,1.4-1.4V3c0-0.8-0.6-1.4-1.4-1.4h-19z"
+   id="path5" />
+
+
+		<path
+   style="fill:#FFFFFF;stroke:none;"
+   d="M22.1,21.2c0,0.3-0.2,0.5-0.5,0.5h-19c-0.3,0-0.5-0.2-0.5-0.5V3c0-0.3,0.2-0.5,0.5-0.5h19c0.3,0,0.5,0.2,0.5,0.5v18.2z"
+   id="path7" />
+
+
+		<linearGradient
+   id="aigrd1"
+   gradientUnits="userSpaceOnUse"
+   x1="19.2197"
+   y1="18.54"
+   x2="5.3095"
+   y2="6.0043">
+			<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop11" />
+
+
+			<stop
+   offset="1"
+   style="stop-color:#EDEDED"
+   id="stop13" />
+
+
+		</linearGradient>
+
+
+		<path
+   style="fill:url(#aigrd1);stroke:none;"
+   d="M2.6,2.9c-0.1,0-0.1,0-0.1,0.1v18.2c0,0.1,0,0.1,0.1,0.1h19c0.1,0,0.1,0,0.1-0.1V3c0-0.1,0-0.1-0.1-0.1h-19z"
+   id="path16" />
+
+
+	</g>
+
+
+	<g
+   id="Layer_x0020_2"
+   style="fill-rule:nonzero;clip-rule:nonzero;stroke:#000000;stroke-miterlimit:4;">
+		<g
+   id="g21">
+			<path
+   style="stroke:none;"
+   d="M6,18.5l7-12.3h2l2,12.3h-1.6L14.8,15h-5l-2,3.5H6z M10.5,13.7h4.1l-0.5-3.1c-0.2-1.2-0.3-2.3-0.3-3.1c-0.3,0.7-0.7,1.5-1.2,2.5l-2,3.7z"
+   id="path23" />
+
+
+		</g>
+
+
+		<path
+   style="fill:none;stroke:none;"
+   d="M24,24H0V0h24v24z"
+   id="path26" />
+
+
+	</g>
+
+
+
+
+
+	
+		
+
+		
+
+		
+
+		
+
+	
+
+	
+		
+
+		<path
+   style="fill:none;"
+   d="M24,24H0V0h24v24z"
+   id="path878"
+   transform="translate(29.78073,-6.817276)" />
+
+
+	
+
+</svg>

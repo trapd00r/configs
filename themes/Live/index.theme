@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Live
+Type=X-GNOME-Metatheme
+Comment=Live (Based on mockup theme)
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Live
+XfceTheme=Live
+IconTheme=gnome

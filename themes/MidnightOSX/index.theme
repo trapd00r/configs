@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Midnight OS X
+Type=X-GNOME-Metatheme
+Comment=Midnight OS X - Based on Tenebrific and Aquativo, made for Mac lovers and black lovers
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Midnight OS X

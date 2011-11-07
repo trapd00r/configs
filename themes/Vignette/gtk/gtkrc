@@ -1,0 +1,49 @@
+include "/usr/share/themes/Bluecurve/gtk/gtkrc"
+#include "../../Bluecurve/gtk/gtkrc"
+
+style "bluecurve-color-default"
+{
+  bg[NORMAL]      = "#edede4"
+  bg[PRELIGHT]    = "#f5f5f1"
+  bg[ACTIVE]      = "#d6d6c3"
+  bg[SELECTED]    = "#5355a1"
+  bg[INSENSITIVE] = "#e0e0da"
+
+  base[SELECTED]  = "#5355a1"
+  base[ACTIVE]    = "#a0bdee"
+
+  text[SELECTED]  = "#ffffff"
+  text[ACTIVE]    = "#ffffff"
+
+  fg[NORMAL]      = "#000000"
+  fg[ACTIVE]      = "#000000"
+  fg[PRELIGHT]    = "#000000"
+  fg[SELECTED]    = "#ffffff"
+  fg[INSENSITIVE] = "#747354"
+}
+
+style "bluecurve-color-menu" = "bluecurve-color-default"
+{
+  bg[SELECTED]    = "#5355a1"
+  fg[PRELIGHT]  = "#ffffff"
+}
+
+#class "Gtk*Paned" style "bluecurve-color-paned"
+
+class "GtkWidget" style "bluecurve-color-default"
+#class "GtkButton" style "bluecurve-color-wide"
+#class "GtkRange" style "bluecurve-color-wide"
+#class "GtkMenu" style "bluecurve-color-wide"
+class "GtkMenuItem" style "bluecurve-color-menu"
+widget_class "*.GtkMenuItem.*" style "bluecurve-color-menu"
+widget_class "*.GtkAccelMenuItem.*" style "bluecurve-color-menu"
+widget_class "*.GtkRadioMenuItem.*" style "bluecurve-color-menu"
+widget_class "*.GtkCheckMenuItem.*" style "bluecurve-color-menu"
+widget_class "*.GtkImageMenuItem.*" style "bluecurve-color-menu"
+widget_class "*.GtkSeparatorMenuItem.*" style "bluecurve-color-menu"
+#class "GtkEntry" style "bluecurve-color-wide"
+#widget_class "*.PanelWidget.*.GtkToggleButton" style "bluecurve-color-tasklist"
+#widget_class "*.GtkTreeView.GtkButton" style "bluecurve-color-tree"
+#widget_class "*.GtkCTree.GtkButton" style "bluecurve-color-tree"
+#widget_class "*.GtkList.GtkButton" style "bluecurve-color-tree"
+#widget_class "*.GtkCList.GtkButton" style "bluecurve-color-tree"

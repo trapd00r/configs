@@ -1,0 +1,102 @@
+2003-02-28  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* configure.in: Version 0.2
+	* gtk-2.0/galaxy_theme_draw.c: (draw_shadow), (draw_box),
+	(draw_resize_grip): fix Bidi handling and spinbutton painting.
+
+2003-02-20  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* configure.in: Version 0.1
+	* gtk-1.2/galaxy_theme_draw.c: (draw_box): make scrollbar touch
+	scroll buttons when needed, change progressbar gradient.
+	* gtk-1.2/galaxy_theme_main.c: (set_props), (theme_init),
+	(theme_exit): no longer use hacks for scrollbar rendering.
+	* gtk-2.0/galaxy_theme_draw.c: (draw_box): change progressbar gradient
+	* metacity/BT-agrandirfenetre.png:
+	* metacity/BT-fermer.png:
+	* metacity/BT-reduire.png:
+	* metacity/BT-reduirefenetre.png:
+	* metacity/barre-inac-suitearrondigris.png:
+	* metacity/metacity-theme-1.xml: enable prelight and pressed
+	buttons on borders.
+
+2003-02-17  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* configure.in: Version 0.0.4
+	* gtk-1.2/gtkrc: fix text color in non focused selection.
+	* gtk-1.2/galaxy_theme_draw.c: (galaxy_draw_arrow): don't draw
+	borders for arrows in list headers
+	* gtk-2.0/gtkrc: fix text color in galeon bookmarks menu entries.
+
+2003-02-14  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* configure.in: Version 0.0.3
+	
+	* gtk-1.2/galaxy_theme_draw.c: (draw_slider): Don't change
+	scrollbar orientation based on its width/height.
+	* gtk-1.2/galaxy_theme_main.c: (set_props): Remove space.
+	* gtk-1.2/gtkrc: Fix button shape in evolution mail component.
+	* metacity/barre-inac-suitearrondigris.png:
+	* metacity/barre-inactive-morceaugris.png:
+	* metacity/barre-inactive_r1_c5.png: Lighter border when not focused.
+
+2003-02-14  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* configure.in:
+	Version 0.0.2
+	
+	* gtk-1.2/gtkrc: fix button shape in EScrollBar.
+	* gtk-2.0/gtkrc: selected text is now using dark blue.
+	* metacity/metacity-theme-1.xml: Fix borders around buttons.
+
+2003-02-13  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	Initial GTK1.2/GTK2/Metacity release
+
+2003-01-29  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* gtk-2.0/galaxy_theme_draw.c: (draw_shadow), (draw_box),
+	(draw_check), (draw_extension), (draw_layout):
+	* gtk-2.0/gtkrc:
+	-move shadow drawing for many widgets from draw_box to draw_shadow
+	-fix shape of title bar in lists
+	-fix gap in IN/OUT_ETCHED
+
+2003-01-28  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* gtk-2.0/galaxy_rc_style.c: (galaxy_rc_style_parse),
+	(galaxy_rc_style_merge):
+	* gtk-2.0/galaxy_rc_style.h:
+	* gtk-2.0/galaxy_style.h:
+	* gtk-2.0/galaxy_theme_draw.c: (sanitize_size),
+	(galaxy_draw_handlers), (draw_shadow), (draw_diamond), (draw_box),
+	(draw_check), (draw_box_gap), (draw_extension), (draw_slider),
+	(draw_handle), (draw_arrow), (draw_layout), (galaxy_style_realize),
+	(galaxy_style_class_init):
+	* gtk-2.0/galaxy_theme_main.c:
+	* gtk-2.0/gtkrc:
+	-clean rc_style (don't parse smooth_edge parameter any longer)
+	-fix scrollbar and slider
+	-fix menubar
+	-fix text color on progressbar
+
+2003-01-27  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+
+	* gtk-2.0/galaxy_style.h:
+	* gtk-2.0/galaxy_theme_draw.c: (generate_bit), (colorize_bit),
+	(option_menu_get_props), (draw_vgradient), (draw_hgradient),
+	(galaxy_draw_point), (galaxy_draw_handlers), (draw_hline),
+	(draw_vline), (draw_box), (draw_option), (draw_resize_grip),
+	(galaxy_style_init), (realize_color), (pixbuf_to_pixmap),
+	(galaxy_style_realize), (galaxy_style_unrealize),
+	(galaxy_style_class_init):
+	* gtk-2.0/gtkrc:
+	implement drawing for buttons, vertical & horizontal line,
+	combobox, resize grip, handle, radio button
+
+2003-01-23  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* Import of xfce theme
+	
+

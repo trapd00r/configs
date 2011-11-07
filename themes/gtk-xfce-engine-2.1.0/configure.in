@@ -1,0 +1,72 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT(src/xfce_theme_draw.c)
+THEME="xfce"
+
+AC_PREREQ(2.52)
+
+VERSION=2.1.0
+PACKAGE=gtk-${THEME}-engine
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+
+AM_CONFIG_HEADER(config.h)
+AM_MAINTAINER_MODE
+
+## libtool support (for plugins)
+AC_DISABLE_STATIC
+AC_PROG_LIBTOOL
+
+# Honor aclocal flags
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_PROG_CC
+AC_PROG_INSTALL
+
+AC_C_INLINE
+AC_C_CONST
+
+AC_PATH_XTRA
+AC_HEADER_STDC
+
+## Versions of dependencies
+GLIB_REQUIRED_VERSION=2.0.0
+GTK_REQUIRED_VERSION=2.0.0
+
+AC_DEFINE_UNQUOTED(GLIB_REQUIRED_VERSION, $GLIB_REQUIRED_VERSION, [Define glib required version.])
+AC_DEFINE_UNQUOTED(GTK_REQUIRED_VERSION, $GTK_REQUIRED_VERSION, [Define gtk required version.])
+
+AC_SUBST(GLIB_REQUIRED_VERSION)
+AC_SUBST(GTK_REQUIRED_VERSION)
+
+PKG_CHECK_MODULES(XFCE, glib-2.0 >= $GLIB_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION)
+
+GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK_VERSION)
+AC_SUBST(XFCE_CFLAGS)
+AC_SUBST(XFCE_LIBS)
+
+AC_OUTPUT([
+gtk-xfce-engine-2.spec
+Makefile
+src/Makefile
+themes/b5/Makefile
+themes/b5/gtk-2.0/Makefile
+themes/xfce/gtk-2.0/Makefile
+themes/xfce/Makefile
+themes/basic/gtk-2.0/Makefile
+themes/basic/Makefile
+themes/curve/gtk-2.0/Makefile
+themes/curve/Makefile
+themes/kolors/gtk-2.0/Makefile
+themes/kolors/Makefile
+themes/light/Makefile
+themes/light/gtk-2.0/Makefile
+themes/redmondxp/gtk-2.0/Makefile
+themes/redmondxp/Makefile
+themes/saltlake/gtk-2.0/Makefile
+themes/saltlake/Makefile
+themes/smooth/gtk-2.0/Makefile
+themes/smooth/Makefile
+themes/stellar/gtk-2.0/Makefile
+themes/stellar/Makefile
+themes/Makefile
+])

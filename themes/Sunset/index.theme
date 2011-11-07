@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Sunset
+Type=X-GNOME-Metatheme
+Comment=Soft bright colours.
+Name[en_GB]=Sunset
+
+[X-GNOME-Metatheme]
+GtkTheme=Sunset
+IconTheme=gnome
+MetacityTheme=Simple
+Background=gtk-2.0/bubble-blue-prelight.png

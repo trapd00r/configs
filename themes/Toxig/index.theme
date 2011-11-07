@@ -1,0 +1,12 @@
+# $MCom: projects/beastie/index.theme,v 1.3 2005/10/26 04:23:15 ahze Exp $
+
+[Desktop Entry]
+Name=Toxig
+Type=X-GNOME-Metatheme
+Comment=Toxic green theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Toxig
+MetacityTheme=Clearlooks
+IconTheme=gnome

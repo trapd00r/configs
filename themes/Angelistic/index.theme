@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Angelistic
+Type=X-GNOME-Metatheme
+Comment=Version: 2\nEngine: Industrial
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Angelistic
+MetacityTheme=Industrial
+IconTheme=Industrial

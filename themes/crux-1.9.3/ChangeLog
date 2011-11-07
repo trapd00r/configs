@@ -1,0 +1,807 @@
+2002-06-24  Seth Nickell  <snickell@stanford.edu>
+
+	* configure.in:
+
+	Bump version number, release.
+
+2002-06-24  Seth Nickell  <snickell@stanford.edu>
+
+	* eazel-engine.spec.in:
+
+	Remove outdated file.
+	
+	* configure.in:
+	* crux.spec.in:
+
+	Add new spec file (thanks to Damian Ivereigh)
+	
+2002-06-24  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-draw.c: (draw_arrow):
+
+	Add hack from zipht to make arrows draw at the right
+	size. Still not clear why stock images are not being
+	drawn correctly (maybe an initialization issue ???)
+	
+2002-05-26  Seth Nickell  <snickell@stanford.edu>
+
+	* configure.in:
+
+	Bump version number and release.
+
+2002-05-22  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-rc-style.c: (crux_rc_style_finalize):
+
+	Applied patch from Owen, call parent's finalize.
+
+2002-05-12  Seth Nickell  <snickell@stanford.edu>
+
+	* configure.in:
+
+	Update version number to 1.9.1, release.
+
+2002-05-11  Seth Nickell  <snickell@stanford.edu>
+
+	* configure.in:
+	* gtkrc.in:
+
+	Fix black-drawing-with-out-of-process components problem.
+	(thanks to auspex!)
+	
+2002-05-06  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* src/crux-draw.c:
+	add missing include 
+
+2002-05-06  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	* configure.in:
+	* src/Makefile.am:
+	fix crux engine location
+
+2002-05-03  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-style.c: (crux_style_class_init):
+
+	Remove commented out calls. GTK no longer requires
+	these.
+
+2002-04-26  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+
+	Don't hardcode the font.
+	
+2002-04-26  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+
+	Remove module directive.
+
+2002-03-12  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-draw.c: (paint_check):
+
+	Draw checkboxes right with tree view, since focus code works
+	differently there.
+	
+	* src/crux-style.c: (crux_style_class_init):
+
+	Don't draw flat boxes, temporary hack to make tree view alternating
+	colour rows work.
+	
+2002-02-25  Seth Nickell  <snickell@stanford.edu>
+
+	* src/Makefile.am:
+
+	Change where we install to.
+
+2002-02-09  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+	* src/crux-common.h:
+	* src/crux-draw.c: (draw_box):
+	* src/crux-gradient.c: (eazel_engine_gradient_new),
+	(eazel_engine_make_two_point_gradient):
+	* src/crux-main.c: (theme_init):
+	* src/crux-rc-parser.c: (parse_gradient), (parse_gradient_assign),
+	(crux_parse_rc_style):
+	* src/crux-rc-style.c: (crux_rc_style_init), (crux_rc_style_merge):
+	* test.c: (main):
+
+	Fix menubar shadows.
+
+	Fix loading and parsing of gradients, so menu items and a few other
+	things are coloured correctly now. Woo hoo!
+	
+2002-02-06  Seth Nickell  <snickell@stanford.edu>
+
+	* Crux/gtk/Makefile.am:
+
+	Install into GTK2 location.
+
+2002-02-06  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-draw.c: (eazel_engine_widget_in_focused_window_p):
+
+	Temporarily disable the focus hack, make all windows focused
+	and hence fix the colourization.
+
+	* test.c: (main):
+
+	Use the current theme.
+
+2002-02-06  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+	* src/crux-draw.c: (draw_box):
+	* test.glade:
+
+	Well, the option menus look OK now. They aren't exactly
+	like GTK1 Crux option menus, which I like better, but
+	they're at least releasable.
+	
+2002-02-06  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+	* src/crux-draw.c: (draw_box):
+
+	Make optionmenus draw a little better. They're still
+	slightly messed up, but they at least work ok user-wise
+	at this point.
+	
+2002-02-06  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+	* src/crux-draw.c: (draw_shadow), (draw_box), (draw_arrow):
+	* src/crux-rc-parser.c: (parse_color), (parse_gradient):
+	* test.c: (main):
+
+	Make spinbuttons draw beautifully.
+	
+2002-01-19  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+	* src/crux-draw.c: (window_focus_in_callback),
+	(window_focus_out_callback),
+	(eazel_engine_widget_in_focused_window_p), (install_focus_hooks),
+	(draw_box):
+	* src/crux-draw.h:
+	* src/crux-gradient.c: (eazel_engine_gradient_new),
+	(eazel_engine_make_two_point_gradient):
+	* src/crux-main.c: (theme_exit):
+	* src/crux-rc-parser.c: (parse_gradient_assign),
+	(crux_parse_rc_style):
+	* src/crux-style.c:
+	* test.c: (main):
+
+	Tons of twiddling.
+	
+2002-01-18  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-main.c: (theme_init), (theme_exit),
+	(g_module_check_init):
+	* src/crux-rc-parser.c: (crux_rc_parser_init_gradients),
+	(crux_parse_rc_style):
+	* src/crux-style.c: (crux_style_init), (crux_style_class_init):
+
+	Remove pointless debug printing. Clean out some more not-really
+	needed variables.
+	
+2002-01-18  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-main.c:
+
+	Get rid of some now useless variables.
+
+2002-01-18  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+
+	Use a nicer font.
+	
+	* src/crux-gradient.c: (eazel_engine_gradient_new),
+	(eazel_engine_gradient_ref), (eazel_engine_gradient_unref),
+	(eazel_engine_make_two_point_gradient):
+
+	Don't print crap.
+	
+	* src/crux-rc-style.c: (crux_rc_style_init),
+	(crux_rc_style_class_init), (crux_rc_style_finalize),
+	(crux_rc_style_merge):
+
+	Fix trashing of a static variable.
+	
+	* test.glade:
+
+	Update to glade2.
+
+2002-01-18  Seth Nickell  <snickell@stanford.edu>
+
+	* gtkrc.in:
+
+	Set GtkProperties affecting scrollbar width,
+	scale widget size, checkbox size and a few
+	others.
+	
+	* src/crux-draw.c: (draw_box), (draw_slider):
+	* src/crux-main.c: (theme_init):
+
+	Distinguish drawing a scale widget and a
+	scrollbar (aka "slider").
+
+2002-01-18  Seth Nickell  <snickell@stanford.edu>
+
+	* src/crux-draw.c: (paint_stock_image), (draw_arrow),
+	(draw_slider):
+
+	Fix slider drawing by hacking paint_stock_image.
+	
+	* src/crux-pixmaps.c:
+
+	Add missing #include.
+	
+2002-01-18  Seth Nickell <snickell@stanford.edu>
+
+	Initial port to GTK2.
+	
+2001-06-15  Frederic Crozat  <fcrozat@mandrakesoft.com>
+
+	Fix crashes with some broken applications (gfloppy, xcdroast)
+
+	* src/eazel-theme-draw.c: some broken applications can give
+	negative (ie < -1) width or height. This is now detected with
+	asserts in drawing functions.
+
+2001-05-22  John Harper  <jsh@pixelslut.com>
+
+	Fixed bug 8050 (GIMP crashes in eazel-theme-gradient.c):
+
+	* src/eazel-theme-draw.c: in some of the drawing functions,
+	assert that passed-in WIDTH and HEIGHT parameters are less than
+	32768. This is a kludge, but it avoids the case where GTK
+	widgets do unsigned arithmetic on 16-bit values and ask us to
+	draw things 65535 by 65535!
+
+	(GtkOptionMenu was the offender in the reported bug)
+
+2001-03-23  John Harper  <jsh@eazel.com>
+
+	* src/eazel-theme-main.c (parse_gradient): if the contents of
+	the output pointer is non-null, unref it (thanks to Jacob
+	Berkman for pointing this out)
+
+2001-02-14  John Harper  <jsh@eazel.com>
+
+	* test.c, configure.in: added feature tests for setenv () and
+	putenv () then use whatever exists. Fixes problem on solaris
+	systems
+
+	* config.h.in: removed from cvs, it's autogenerated
+
+2001-02-12  John Harper  <jsh@eazel.com>
+
+	* configure.in: version 0.3
+
+	* make-gtkrc.pl, gtkrc.in: 
+	* Crux/gtk/Makefile.am:
+
+	Include a `module_path' setting in the built gtkrc files. It
+	points to the directory in which the engine got installed. This
+	fixes the problem where using a GTK in a different prefix
+	couldn't find the engine module. Unfortunately it also means
+	that Perl is required at compile-time (since the necessary
+	directory isn't known until then)
+
+	* src/eazel-theme-main.c: reworked how the focus-change state
+	is kept, only non-trivial difference is that we can now
+	disconnect all signals we connected to - this allows theme_exit
+	() to not leave any stale signal handlers connected
+
+	* gtkrc.in: fixed some minor typos (`@endif' -> `@endif@')
+
+2001-02-09  John Harper  <jsh@eazel.com>
+
+	* configure.in: version 0.2
+
+2001-01-26  John Harper  <jsh@eazel.com>
+
+	Work to make accent-colored widgetry `grey-out' when the window
+	they're in isn't focused:
+
+	* src/eazel-theme-main.c (theme_set_background): added an
+	`interesting' hack to check if the GdkWindow is associated with
+	a GtkWindow. If so, then make sure that focus-in/out signals
+	are connected, so that we can queue redraws of the necessary
+	widgets when the top-level focus changes
+
+	* src/eazel-theme-main.c
+	(eazel_engine_widget_in_focused_window_p): new function,
+	returns true if the given widget is in the currently focused
+	window
+
+	* gtkrc.in, src/eazel-theme.h, src/eazel-theme-pixmaps.c,
+	src/eazel-theme-draw.c: added `_INACTIVE' variants of all
+	images that get recolored with the accent color. Use them when
+	the window containing the widget is unfocused
+
+2001-01-22  John Harper  <jsh@eazel.com>
+
+	* test.c, Makefile.am: fixed the test program after changing
+	the theme names
+
+	* src/eazel-theme-draw.c (draw_box): call
+	gdk_gc_set_clip_rectangle for each gc used, not just the bg
+
+	* eazel-engine.spec.in, Crux/Makefile.am, Crux/gtk/Makefile.am:
+	fix build problems
+
+	Removed all `Eazel-Foo' themes. There's just a single theme
+	`Crux' now. It's a copy of what used to be `Eazel-Custom'
+
+	Bumped version to 0.1
+
+	* configure.in, Makefile.am: 
+	* Crux/README, Crux/Makefile.am, Crux/.cvsignore: 
+	* Crux/gtk/Makefile.am, Crux/gtk/.cvsignore: added
+
+	* Eazel-Blue/README, Eazel-Blue/Makefile.am,
+	Eazel-Blue/.cvsignore: 
+	* Eazel-Blue/gtk/Makefile.am, Eazel-Blue/gtk/.cvsignore: 
+	* Eazel-Custom/README, Eazel-Custom/Makefile.am,
+	Eazel-Custom/.cvsignore: 
+	* Eazel-Custom/gtk/Makefile.am, Eazel-Custom/gtk/.cvsignore: 
+	* Eazel-Orange/README, Eazel-Orange/Makefile.am,
+	Eazel-Orange/.cvsignore: 
+	* Eazel-Orange/gtk/Makefile.am, Eazel-Orange/gtk/.cvsignore: 
+	* Eazel-Purple/README, Eazel-Purple/Makefile.am,
+	Eazel-Purple/.cvsignore: 
+	* Eazel-Purple/gtk/Makefile.am, Eazel-Purple/gtk/.cvsignore: 
+	* Eazel-Teal/README, Eazel-Teal/Makefile.am,
+	Eazel-Teal/.cvsignore: 
+	* Eazel-Teal/gtk/Makefile.am, Eazel-Teal/gtk/.cvsignore: 
+	Deleted
+
+	* capplet/eazel-engine-properties.desktop,
+	capplet/eazel-engine-capplet.c: changed text for the new theme
+	name
+
+	* src/eazel-theme-main.c (parse_color): when trying to read
+	colours from files, if the file doesn't exist, default to the
+	`teal' colour
+
+2001-01-21  John Harper  <jsh@eazel.com>
+
+	* capplet/eazel-engine-capplet.c: this now displays a
+	GnomeColorPicker widget, instead of embedding the color
+	selector into the actual capplet window
+
+	* make-gtkrc.pl, gtkrc.in: new substitution option
+	`lists_have_separators'. Disabled by default
+
+	* capplet/Makefile.am: fix `make distcheck'
+
+	Work to make the theme be customizable within the control
+	center:
+
+	* Eazel-Blue/gtk/substs, Eazel-Blue/gtk/Makefile.am: 
+	* Eazel-Orange/gtk/substs, Eazel-Orange/gtk/Makefile.am: 
+	* Eazel-Purple/gtk/substs, Eazel-Purple/gtk/Makefile.am: 
+	* Eazel-Teal/gtk/substs, Eazel-Teal/gtk/Makefile.am: 
+
+	Removed the `substs' files. The sole argument to the expansion
+	(the selection color) is set in the Makefile.am now
+
+	* src/eazel-theme.h, src/eazel-theme-main.c: lots of syntax
+	changes. Expanded the use of the palette so that any color or
+	gradient may be fetched from a palette entry. This is how the
+	customizable theme works, it loads the color into a palette
+	slot, then references that slot from multiple places
+
+	* gtkrc.in: many changes to use new syntax, mostly to make the
+	`Eazel-Custom' theme possible
+
+	* Eazel-Custom/README, Eazel-Custom/Makefile.am,
+	Eazel-Custom/.cvsignore: 
+	* Eazel-Custom/gtk/Makefile.am, Eazel-Custom/gtk/.cvsignore: 
+
+	New theme variant. The accent color is read from
+	~/.eazel-engine-color
+
+	* capplet/eazel-engine-properties.desktop,
+	capplet/eazel-engine-capplet.c, capplet/Makefile.am,
+	capplet/.cvsignore: 
+
+	Control center applet to read and write ~/.eazel-engine-color.
+	Needs more work before it's remotely presentable (currently its
+	just a GtkColorSelection widget)
+
+	* make-gtkrc.pl: added `-c COLOR' option to set the focus_color
+	substitution
+
+	* src/eazel-theme-draw.c (draw_arrow): fixed drawing
+	insensitive spin buttons, by using a mixture of kludges
+
+2001-01-18  John Harper  <jsh@eazel.com>
+
+	* make-gtkrc.pl: fixed typo in one of the default insensitive
+	colors
+
+2001-01-17  John Harper  <jsh@eazel.com>
+
+	* Eazel-Purple/gtk/substs: washed out the purple colors
+	slightly
+
+2001-01-17  John Harper  <jsh@eazel.com>
+
+	* Eazel-Blue/gtk/substs, Eazel-Orange/gtk/substs,
+	Eazel-Purple/gtk/substs, Eazel-Teal/gtk/substs: changed the
+	menuitem gradients to be 4-point gradients (to get a shadow
+	effect)
+
+	* src/eazel-theme-hacks.c: removed the gtk_menu_size_allocate
+	hack. (We want menus to have drop-shadows now). Down to two
+	hacks only!
+
+	* src/eazel-theme-draw.c (paint_menuitem_shadow): new function,
+	used to draw shadows for menuitems. Make them look as though
+	they're sunk into the menu pane
+
+	* src/eazel-theme-gradient.c
+	(eazel_engine_fill_gradient_rgb_buffer): when calculating the
+	number of pixels to draw in each step, multiply before dividing
+	to avoid loss of accuracy (which could mean that the last
+	gradient didn't quite reach the last pixel to be drawn)
+
+	* src/eazel-theme-main.c (theme_init): reversed the default
+	ACTIVE gradient (so it's the same direction as the other
+	gradients)
+
+	* gtkrc.in: changed `bg[ACTIVE]' to #bbbbbb instead of
+	something darker; makes shadows of buttons and toolbar handles
+	look a lot better
+
+	* make-gtkrc.pl: added @if bool@, @else@ and @endif@ statements
+	to the substitution language. Removed the `booleans as
+	comments' hack
+
+	* gtkrc.in: used @if@ and friends to express some expansions
+
+	* gtkrc.in: added GtkPlug, GtkSocket, BonoboPlug and
+	BonoboSocket to the list of widgets that use the
+	parent-relative background style. Partially fixes the problems
+	with the new nautilus throbber (bug 5685)
+
+	* src/eazel-theme-draw.c (draw_handle): draw the `grip'
+	correctly for vertically oriented toolbars
+
+	* gtkrc.in: set borders of {V,H}_SLIDER_THUMB images
+
+2001-01-16  John Harper  <jsh@eazel.com>
+
+	* src/eazel-theme-draw.c (draw_handle): if `detail' is
+	"dockitem" and state is NORMAL, change state to ACTIVE. (This
+	makes the handle on dock items darker, fixing bug 5467)
+
+	* data/slider_v_trough_focus.png,
+	data/slider_h_trough_focus.png: 
+	* src/eazel-theme-draw.c: 
+
+	Tweaked focused state of sliders to have a single pixel outline
+	instead of two. Also fixed the bug of draw_focus () redrawing
+	the slider focus ring
+
+	* data/slider_v_trough_focus.png, data/slider_v_trough.png,
+	data/slider_v_thumb.png, data/slider_h_trough_focus.png,
+	data/slider_h_trough.png, data/slider_h_thumb.png:
+
+	Added new slider design
+
+	* gtkrc.in: 
+	* data/tab_usel-bottom.png, data/tab_usel-bottom-left.png,
+	data/tab_sel-bottom.png, data/Makefile.am: 
+
+	Added Arlo's new design for bottom-oriented tabs
+
+2001-01-15  John Harper  <jsh@eazel.com>
+
+	* src/eazel-theme-draw.c, gtkrc.in: scale the slider thumb to
+	meet the requested size, also set thickness to zero. Arlo's
+	working on some tweaks for the images..
+
+	* src/eazel-theme-draw.c: centered the pair of arrows on option
+	menu buttons
+
+	* src/eazel-theme-draw.c, src/eazel-theme.h, gtkrc.in:
+	implemented new tab design (code to draw focus on tabs is
+	disabled for now)
+
+	* src/eazel-theme-draw.c (paint_arrow): chopped a pixel from
+	the base of arrows per Arlo's request
+
+	* src/eazel-theme-draw.c (paint_background_area): new function,
+	used in a couple of places to make sure the background pixels
+	of shaped images are drawn the right color
+
+	* make-gtkrc.pl: disable gradiented menus by default
+
+	* src/eazel-theme-draw.c (paint_arrow): draw fixed size arrows,
+	disregarding the WIDTH and HEIGHT parameters that are passed
+	in.. it looks better this way
+
+	* src/eazel-theme-draw.c (draw_box): progress bar is now drawn
+	in three sections (two of which are optional, depending on the
+	left/right positions of the bar)
+
+	* data/progressbar_trough.png, data/progressbar.png,
+	data/progressbar-right.png, data/progressbar-left.png,
+	data/Makefile.am:
+	* gtkrc.in:
+	* src/eazel-theme.h:
+
+	Added new progress bar design from Arlo
+
+2001-01-12  John Harper  <jsh@eazel.com>
+
+	* make-gtkrc.pl, gtkrc.in: add support for boolean options that
+	expand to one of two strings depending on their value. Used
+	this to add two new substitution options: `gradiented_menus'
+	and `prelight_check_buttons'
+
+	* Eazel-Blue/gtk/Makefile.am:
+	* Eazel-Orange/gtk/Makefile.am:
+	* Eazel-Purple/gtk/Makefile.am:
+	* Eazel-Teal/gtk/Makefile.am:
+	Added make-gtkrc.pl to dependences for gtkrc targets
+
+2001-01-11  John Harper  <jsh@eazel.com>
+
+	* Eazel-Purple/gtk/substs: toned down the purple a bit
+
+	* configure.in, Makefile.am: 
+	* Eazel-Orange/README, Eazel-Orange/Makefile.am,
+	Eazel-Orange/.cvsignore: 
+	* Eazel-Orange/gtk/substs, Eazel-Orange/gtk/Makefile.am,
+	Eazel-Orange/gtk/.cvsignore: 
+	* Eazel-Purple/README, Eazel-Purple/Makefile.am,
+	Eazel-Purple/.cvsignore: 
+	* Eazel-Purple/gtk/substs, Eazel-Purple/gtk/Makefile.am,
+	Eazel-Purple/gtk/.cvsignore: 
+
+	Added Eazel-Purple and Eazel-Orange color schemes (my colors,
+	not Arlo's, so blame me..)
+
+	* gtkrc.in: insensitive colors setting is now got from
+	@insensitive_colors@ expansion; removed thickness=0 setting for
+	GtkRange-derived widgets
+
+	* data/Makefile.am, data/scroller-v-thumb-pressed.png,
+	data/scroller-v-pressed.png, data/scroller-h-thumb-pressed.png,
+	data/scroller-h-pressed.png: removed these images - GTK never
+	lets them be used
+
+	* src/eazel-theme-draw.c: don't even try to use ACTIVE variants
+	of scrollbar images (they never were, anyway)
+
+	* data/scroller-v.png, data/scroller-v-trough.png,
+	data/scroller-v-thumb.png, data/scroller-v-thumb-hilight.png,
+	data/scroller-v-hilight.png, data/scroller-h.png,
+	data/scroller-h-trough.png, data/scroller-h-thumb.png,
+	data/scroller-h-thumb-hilight.png, data/scroller-h-hilight.png,
+	data/scroller-arrow-up.png, data/scroller-arrow-up-pressed.png,
+	data/scroller-arrow-up-hilight.png,
+	data/scroller-arrow-right.png,
+	data/scroller-arrow-right-pressed.png,
+	data/scroller-arrow-right-hilight.png,
+	data/scroller-arrow-left.png,
+	data/scroller-arrow-left-pressed.png,
+	data/scroller-arrow-left-hilight.png,
+	data/scroller-arrow-down.png,
+	data/scroller-arrow-down-pressed.png,
+	data/scroller-arrow-down-hilight.png:
+
+	New scrollbar design from Arlo. The `hilight' state images were
+	done by me by just changing the color curves in the Gimp, so
+	they may need to be redone. The `pressed' images are currently
+	the same as the normal images
+
+	* src/eazel-theme-main.c: give newly allocated stock tables a
+	ref count of one (don't leave it at zero!). This fixes the
+	crashes when switching themes. Made the method of handling
+	default stock tables and settings somewhat saner (any engine
+	data sections that specify a stock table also set any default
+	values, and the default stock table, for subsequent sections).
+	Also changed the range class geometry settings to match the new
+	scrollbars
+
+2001-01-10  John Harper  <jsh@eazel.com>
+
+	* data/Makefile.am: list all images individually so that `make
+	distcheck' passes
+	* Eazel-Blue/gtk/Makefile.am, Eazel-Teal/gtk/Makefile.am: when
+	`make dist'ing, copy gtkrc from the directory it was found in
+
+	* gtkrc.in, src/eazel-theme.h: remove TAB_{LEFT,RIGHT}_* images
+	(for now, anyway)
+
+	* check-data.sh: new script, checks that all the necessary
+	images are listed in data/Makefile.am. If it fails, so does
+	`make dist'
+
+	* Big reorganizational changes. Image files are now in `data'
+	subdirectory; two theme directories `Eazel-Teal' and
+	`Eazel-Blue'. The gtkrc files for these are generated from a
+	common template gtkrc.in, using a Perl script (but they're
+	built by the `dist' target, so Perl isn't required unless
+	compiling from CVS)
+
+	The other main change is adding support for recolouring images
+	as they're loaded into the stock table. Given a gradient, any
+	pixels in the recoloured image with zero red and blue channels
+	gets a colour from the gradient (using the value of the green
+	channel to pick where to sample the gradient)
+
+	Also, the `make dist' target now works properly, and I've added
+	a .spec file for building rpms. The eazel-engine directory is
+	now completely self-standing - it no longer has any relation to
+	the rest of the eazel-themes module
+
+	* src/eazel-theme-draw.c: first attempt at drawing spin buttons
+
+	* src/eazel-theme-gradient.c, src/eazel-theme.h: gradients are
+	now ref-counted
+
+	* src/eazel-theme-pixmaps.c (recolor_pixbuf): the function to
+	do the recolouring, deleted the old multiplication and
+	sunbstitution functions, which aren't going to be used anyway
+
+2001-01-08  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/src/eazel-theme-main.c (free_gradient): if
+	`do_not_free' flag is set, don't free anything
+
+	(theme_init): set `do_not_free' flag of gradient in the
+	default_theme_data (since they get copied into multiple styles)
+
+	This may leak memory, but at least it means that we don't free
+	data multiple times (which was causing the crashes when
+	changing from this theme to another). And the size of the
+	leakage is bounded, anyway ;-)
+
+	* gtk+/eazel-engine/src/eazel-theme.h (eazel_engine_gradient):
+	added flag `do_not_free'
+
+	* gtk+/eazel-engine/src/eazel-theme-hacks.c (restore_funcs):
+	don't print a message unconditionally
+
+2001-01-06  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c (paint_stock_image):
+	if area != 0, clip to it by hand. Can't use the gc's clip area
+	since we may also use its clip mask. Fixes the bug where
+	notebook page labels get cleared (part of bug 5471)
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c (paint_tick,
+	paint_bullet): new functions
+
+	(paint_check): use the above two when drawing check/radio
+	buttons on menu items, don't draw anything for unset items
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c (paint_default):
+	factored from paint_default_box, with an extra argument, the
+	background color
+
+	(paint_default_highlight): new function, draws the highlight
+	into the top-left corner of the `has-default' ring
+
+2001-01-02  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/*: lots of changes that I'm not going to
+	list individually (including: moved image configuration to
+	gtkrc, some code to do image recoloration)
+
+2000-12-21  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c: re-fixed text/entry
+	shadows; don't draw default marking on focused buttons, just
+	focus marking
+
+	* gtk+/eazel-engine/EazelEngine/gtk/progressbar.png: 
+	* gtk+/eazel-engine/src/eazel-theme-pixmaps.c: shrunk height of
+	this image, so that it fits flush against the top of its trough
+
+2000-12-20  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/EazelEngine/gtk/gtkrc,
+	gtk+/eazel-engine/src/eazel-theme.h,
+	gtk+/eazel-engine/src/eazel-theme-main.c: removed all the
+	bg_gradient junk (not necessary anymore)
+
+	Work to support n-point gradients:
+
+	* gtk+/eazel-engine/src/eazel-theme-main.c
+	(set_two_point_gradient): new function
+
+	(theme_init): use set_two_point_gradient to manually create the
+	default gradients
+
+	(parse_gradient): now parses n-point gradients (with n >= 1).
+	Syntax is either `C1, ..., CN'. Any of the commas can be
+	replaced by a number (int or float) in square brackets. Commas
+	have a weight of one
+
+	(theme_data_unref): free the gradient when ref-count is zero
+
+	* gtk+/eazel-engine/src/eazel-theme.h (eazel_engine_gradient):
+	gradients are now specified as a single `from' color and a list
+	of `to' colors. Each `to' color has a weight defining the
+	relative size it has in the drawn gradient
+
+	* gtk+/eazel-engine/src/eazel-theme-gradient.c
+	(fill_gradient_rgb_buffer): split into two functions, to make
+	it easier to loop over the individual `to' colors
+
+	* gtk+/eazel-engine/EazelEngine/gtk/gtkrc: use a 3-point
+	gradient for prelighted menuitems
+
+2000-12-19  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/EazelEngine/gtk/gtkrc: turn off gradients
+	for the panel's Foobar widget (otherwise there's a patch of
+	grey between the two menu bars)
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c (draw_handle): don't
+	draw the dots on the handle box
+
+	* gtk+/eazel-engine/test.glade, gtk+/eazel-engine/test.c: added
+	some more widgets, connected the delete_event signal properly
+
+2000-12-18  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c (draw_box): don't
+	try to set the background pixmap of pixmaps (fixes deskguide X
+	error)
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c (draw_box): if width
+	== -1 and height == -1, then set the background {pixmap,pixel}
+	of the window instead of just drawing. This works a lot better
+	than the old method
+
+	* gtk+/eazel-engine/src/eazel-theme-gradient.c
+	(eazel_engine_set_bg_gradient): new function, renders a tile,
+	then sets it as the background pixmap of a window
+
+	* gtk+/eazel-engine/src/eazel-theme-main.c
+	(theme_set_background): use eazel_engine_set_bg_gradient
+
+	* gtk+/eazel-engine/src/eazel-theme-hacks.c (class_hacks):
+	don't replace the `draw' and `expose_event' methods of
+	GtkMenuItem. Use a `bg_gradient' setting instead
+
+	* gtk+/eazel-engine/src/eazel-theme-main.c
+	(theme_set_background): implemented this function (one of the
+	GtkStyleClass members). If the given state has an associated
+	`bg_gradient', render this gradient to a pixmap tile, then
+	install it as the window's background pixmap
+
+	* gtk+/eazel-engine/src/eazel-theme-gradient.c
+	(eazel_engine_draw_vertical_gradient,
+	eazel_engine_draw_horizontal_gradient): if the `dither_mode'
+	variable is set to something other than GDK_RGB_DITHER_NONE,
+	use GdkRGB to render the gradient (instead of just drawing
+	lines of each color). This gives _much_ higher quality
+	gradients on 16-bit displays!
+
+	* gtk+/eazel-engine/src/eazel-theme-draw.c: removed some
+	kludges that are no longer needed
+
+	* AUTHORS: added myself
+
+2000-12-15  John Harper  <jsh@eazel.com>
+
+	* gtk+/eazel-engine/*:
+
+	New sub-directory, the beginnings of a gtk theme engine to
+	implement Arlo's gtk style. Still very much a work in progress
+

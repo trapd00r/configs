@@ -1,0 +1,47 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT(dwerg_theme_draw.c)
+THEME="dwerg"
+
+# For automake.
+VERSION=1.1.5
+PACKAGE=gtk-engines-${THEME}
+
+# Save this value here, since automake will set cflags later
+cflags_set=${CFLAGS+set}
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+
+dnl Initialize maintainer mode
+AM_MAINTAINER_MODE
+
+AC_CANONICAL_HOST
+
+AC_PROG_CC
+AM_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+# No static please
+AM_DISABLE_STATIC
+
+dnl Initialize libtool
+AM_PROG_LIBTOOL
+
+PKG_CHECK_MODULES(DWERG, gtk+-2.0 >= 1.3.15,,
+			AC_MSG_ERROR([GTK+-2.0 is required]))
+
+GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(DWERG_CFLAGS)
+AC_SUBST(DWERG_LIBS)
+AC_SUBST(GTK_VERSION)
+
+# Checks for header files.
+AC_HEADER_STDC
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+AC_OUTPUT([
+Makefile
+Theme/Makefile
+Theme/dwerg/Makefile
+])

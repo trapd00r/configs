@@ -1,0 +1,25 @@
+Traspy 1.0 (no lines)
+============
+
+Hi, this is the traspy theme without lines in the background. I hope you'll enjoy it! All the images has been drawn from scratch using Sodipodi and The Gimp (a special thanks to developers who are working on these projects). The "brave" color scheme that I've used on this theme could be cool or terrific for you i think. If you don't like it, you can change it (spend some time playing with the "gtkrc" file in the "gtk-2.0" folder and/or in The Gimp :)).
+
+
+INSTALLATION
+------------
+Just unpack into your ~/.themes directory and select it from the Gnome 2 theme panel.
+
+
+LICENSE
+------------
+This theme is covered by the GNU General Public License.
+For more information see the "LICENSE" file.
+
+
+AUTHOR(s) and changelog
+-------------------------
+
+(please add your name/version/changes here!)
+
+Version 1.0
+- Giovanni Derks <virtualdk@windows-sucks.com>
+	(first version released)

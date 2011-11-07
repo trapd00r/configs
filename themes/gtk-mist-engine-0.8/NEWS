@@ -1,0 +1,7 @@
+gtk-mist-engine-0.6
+-------------------
+
+* Fixed the problem with check boxes in a selected region
+* Fixed a small notebook rendering bug
+* Added a gtk1 engine and theme
+* Tidied up the scrollbar buttons

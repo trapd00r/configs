@@ -1,0 +1,72 @@
+# Edit these colors and fonts however you like.
+style "default"
+{
+#  GtkRange::slider_width = 12
+#  GtkRange::stepper_size = 12
+#  GtkScrollbar::min_slider_length = 14
+#  GtkCheckButton::indicator_size = 12
+
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#999989" # 
+  bg[NORMAL]       = "#eeeee0" #
+  bg[ACTIVE]       = "#ddddcf" #
+  bg[PRELIGHT]     = "#f5f5ec" #
+  bg[SELECTED]     = "#a59db2" #
+  bg[INSENSITIVE]  = "#eeeee0" #
+  base[NORMAL]     = "#ffffff"
+  base[SELECTED]   = "#a59db2"
+  base[ACTIVE]     = "#d3c996"
+  base[PRELIGHT]   = "#E5E5F7"
+  base[INSENSITIVE]= "#ddddcf"
+  text[INSENSITIVE]= "#747474"
+  text[SELECTED]   = "#ffffff"
+  text[ACTIVE]     = "#000000"
+
+  bg_pixmap[NORMAL]      = "bg.xpm"
+  bg_pixmap[PRELIGHT]    = "bg3.xpm"
+  bg_pixmap[ACTIVE]      = "bg2.xpm"
+  bg_pixmap[SELECTED]    = "bg2.xpm"
+  bg_pixmap[INSENSITIVE] = "bg2.xpm"
+
+
+#  font_name = "Tahoma 11"
+  #font_name = "Sans 10"
+  engine "thinice"
+  {
+    # Do you want the scrollbar handles rectangular or a bit shaped?
+    rect_scrollbar = TRUE
+
+    # The following variables are semi-generic, can be applied to
+    # different widget classes etc..
+
+    # Mark type 1 is used on scrollbar handles, handleboxes etc
+#    mark_type1 = DOT
+    # Mark type 2 is used on scrollbar buttons
+#    mark_type2 = ARROW
+  }
+}
+
+style "menu" = "default"
+{
+  bg[PRELIGHT]     = "#ccccbe" 
+		text[PRELIGHT]					= { 1.0, 1.0, 1.0 }
+		engine "redmond95" { }
+}
+style "togglebuttons" = "default"
+{
+   engine "redmond95" { }
+}
+
+class "GtkWidget" style "default"
+class "GtkMenuItem*"	style "menu"
+class "GtkCheckButton" style "togglebuttons"
+class "GtkRadioButton" style "togglebuttons"
+
+
+
+
+
+

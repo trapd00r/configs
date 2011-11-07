@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Foresight
+Type=X-GNOME-Metatheme
+Comment=Foresight default theme based on the Chlorophyll and Clearbox-look-2.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Foresight
+MetacityTheme=Foresight
+IconTheme=gnome

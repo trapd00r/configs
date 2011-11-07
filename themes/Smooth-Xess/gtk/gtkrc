@@ -1,0 +1,374 @@
+style "default" {
+    bg[ACTIVE]		= "#bbbbbb"		# inactive tab, current task in task list
+    fg[ACTIVE]		= "#000000"
+    bg[NORMAL]		= "#d8d4d4"		# normal face color
+    fg[NORMAL]		= "#000000"
+    bg[INSENSITIVE]	= "#b6b6b6"
+    fg[INSENSITIVE]	= "#555555"
+    bg[PRELIGHT]	= "#dddddd"
+    fg[PRELIGHT]	= "#000000"
+    bg[SELECTED]	= "#6a77c7"		# listbox selected line
+    fg[SELECTED]	= "#ffffff"
+    base[NORMAL]	= "#eeeeee"		# entry or listbox background
+    base[ACTIVE]	= "#dddddd"
+    base[SELECTED]	= "#6a77c7"		# selected text
+    base[INSENSITIVE]	= "#e4e4e0" # entry or listbox background when disabled
+    base[PRELIGHT]	= "#e0e0e0"
+
+    engine "smooth" {
+        GtkCheckButton::indicator_size    = 13
+        GtkRadioButton::indicator_size    = 12
+
+        GtkPaned::handle_size  = 10
+
+        GtkRange::trough_border           = 1
+        GtkRange::slider_width            = 13
+        GtkRange::stepper_size            = 13
+        GtkRange::stepper_spacing         = 0
+  
+        GtkScrollbar::has_backward_stepper = 0
+        GtkScrollbar::has_secondary_forward_stepper = 0
+
+        GtkScrollbar::has_forward_stepper = 1
+        GtkScrollbar::has_secondary_backward_stepper = 1
+
+        fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=vertical
+	    shade1=1.09
+	    shade2=0.9
+	}
+
+        line {
+	    style=smooth
+	    thickness=2
+	}
+
+        edge {
+	    line {
+	        style=thin
+	        thickness=1
+	    }
+	}
+
+        grip {
+	    style=bars
+	    line {
+	        style=thin
+	        thickness=0
+	    }
+	    fill {
+	        style=solid
+	    }
+	}
+
+        check {
+	    style=sloppy
+	    motif=true
+	    fill {
+	        style=shaded
+		hdirection=fdiagonal
+		vdirection=fdiagonal
+		shade1=1.09
+		shade2=0.9
+	    }
+	}
+	
+	arrow {
+           style=CleanIce
+	   solid=TRUE
+        }
+
+	tab_style=round
+    }
+} widget_class "*" style "default"
+
+style "toolbar" {
+    engine "smooth" {
+        line {
+	    style=thin
+	    thickness=1
+	}
+	
+	fill {
+	    style=solid
+	}
+	
+	grip {
+	    style=bars
+	    toolbar_overlap=TRUE
+	}
+    }
+}
+widget_class "*BonoboDockItem*" style "toolbar"
+class "*BonoboDockItem*" style "toolbar"
+
+widget_class "*HandleBox*" style "toolbar"
+class "*HandleBox*" style "toolbar"
+
+widget_class "*Tool*" style "toolbar"
+class "*Tool*" style "toolbar"
+
+widget_class "*MenuBar*" style "toolbar"
+class "*MenuBar*" style "toolbar"
+
+style "menuitem" {
+    bg[PRELIGHT]	= "#bbbbbb" # when mouse over
+    engine "smooth" {
+        line {
+	    style=thin
+	    thickness=1
+	}
+	
+	fill {
+	    style=solid
+	}
+	
+	check {
+	    style=sloppy
+	    line {
+	        style=none
+		thickness=0
+	    }
+	}
+	
+	option {
+	    style=round
+	    line {
+	        style=none
+		thickness=0
+	    }
+	}
+
+ 	arrow {
+           style=CleanIce
+	   solid=TRUE
+        }
+    }
+} 
+class "*MenuItem*"		style "menuitem"
+widget_class "*MenuItem*"		style "menuitem"
+
+style "radiobutton" {
+    bg[NORMAL]		= "#d8d8d8"
+    bg[ACTIVE]		= "#dddddd" # when mouse down
+    bg[PRELIGHT]	= "#dddddd" # when mouse over
+    bg[INSENSITIVE]	= "#d0d0d0" # when diabled
+    base[NORMAL]	= "#d8d4d4" # checkbox or radio
+    base[ACTIVE]	= "#eeeeee" # 3-state-button when selected
+    base[PRELIGHT]	= "#dddddd" # 3-state-button or checkbox or radio when selected and mouse over
+
+    text[PRELIGHT]	= "#6a77c7" #radio buttons use text[state] for the check colour
+    text[ACTIVE]		= "#f4f0e0"
+    text[NORMAL]	= "#6a77c7"
+    text[SELECTED]	= "#f4f0e0"
+
+    engine "smooth" {
+        line {
+	    style=smooth
+	    thickness=2
+	}
+
+        fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=vertical
+	    shade1=1.09
+	    shade2=0.9
+	}
+
+	option {
+	    style=round
+	    motif=true
+	    fill {
+	        style=shaded
+		hdirection=fdiagonal
+		vdirection=fdiagonal
+		shade1=1.09
+		shade2=0.9
+	    }
+	}
+    }
+}
+class "*RadioButton*" style "radiobutton"
+widget_class "*RadioButton*" style "radiobutton"
+
+style "scrollbar" {
+    bg[NORMAL]		= "#d8d8d8"
+    bg[ACTIVE]		= "#bbbbbb"		#scroll bar background
+    bg[PRELIGHT]	= "#dddddd" # when mouse over
+    bg[INSENSITIVE]	= "#d0d0d0" # when diabled
+    base[NORMAL]	= "#d8d4d4" # checkbox or radio
+    base[ACTIVE]	= "#eeeeee" # 3-state-button when selected
+    base[PRELIGHT]	= "#dddddd" # 3-state-button or checkbox or radio when selected and mouse over
+
+    engine "smooth" {
+        fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	line {
+	    style=thin
+	    thickness=1
+	}
+	
+	trough {
+	    fill {
+	        style=solid
+	    }
+	}
+	
+	grip {
+	    style=none
+	}
+	
+	arrow {
+           style=CleanIce
+	   solid=TRUE
+        }
+    }
+}
+widget_class "*Scrollbar*" style "scrollbar"
+class "*Scrollbar*" style "scrollbar"
+
+style "hscales"  {
+    bg[NORMAL]		= "#d8d8d8"
+    bg[ACTIVE]		= "#bbbbbb" #scroll bar background
+    bg[SELECTED]	= "#6a77c7" #scroll bar background
+    bg[PRELIGHT]	= "#dddddd" # when mouse over
+    bg[INSENSITIVE]	= "#d0d0d0" # when diabled
+    base[NORMAL]	= "#d8d4d4" # checkbox or radio
+    base[ACTIVE]	= "#eeeeee" # 3-state-button when selected
+    base[PRELIGHT]	= "#dddddd" # 3-state-button or checkbox or radio when selected and mouse over
+    
+    engine "smooth" {	
+
+        GtkRange::trough_border = 0
+        GtkRange::slider-width = 11	
+        GtkScale::slider-length = 30
+
+        line {
+	    style=thin
+	    thickness=1
+	}
+	
+	fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	trough {
+	    xpadding=3
+	    ypadding=1
+	    show_value=TRUE
+	}
+	
+	grip {
+	    style=midlines
+	    count=5
+	    spacing=1
+	    xpadding = -2
+	    ypadding = 0
+	}
+	
+	real_sliders=FALSE
+    }
+} 
+widget_class "*HScale*" style "hscales"
+class "*HScale*" style "hscales"
+
+style "vscales"  {
+    bg[NORMAL]		= "#d8d8d8"
+    bg[ACTIVE]		= "#bbbbbb" #scroll bar background
+    bg[SELECTED]	= "#6a77c7" #scroll bar background
+    bg[PRELIGHT]	= "#dddddd" # when mouse over
+    bg[INSENSITIVE]	= "#d0d0d0" # when diabled
+    base[NORMAL]	= "#d8d4d4" # checkbox or radio
+    base[ACTIVE]	= "#eeeeee" # 3-state-button when selected
+    base[PRELIGHT]	= "#dddddd" # 3-state-button or checkbox or radio when selected and mouse over
+    
+    engine "smooth" {	
+
+        GtkRange::trough_border = 0
+        GtkRange::slider-width = 11	
+        GtkScale::slider-length = 30
+
+        line {
+	    style=thin
+	    thickness=1
+	}
+	
+	fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	trough {
+	    xpadding=1
+	    ypadding=3
+	    show_value=TRUE
+	}
+	
+	grip {
+	    style=midlines
+	    count=5
+	    spacing=1
+	    xpadding = 0
+	    ypadding = -2
+	}
+	
+	real_sliders=FALSE
+    }
+} 
+widget_class "*VScale*" style "vscales"
+class "*VScale*" style "vscales"
+
+style "infobar" {
+    bg[NORMAL]="#afaead"
+    bg[PRELIGHT]= "#6a77c7"
+
+    engine "smooth" {
+	fill {
+	    style=solid
+	}
+	
+	progress {
+	    line {
+	        style=none
+	        thickness=0
+	    }
+	}
+
+	trough {
+	    line {
+	        style=thin
+	        thickness=1
+	    }
+	}
+    }
+}
+class "*Progress*" style "infobar"
+widget_class "*Progress*" style "infobar"
+
+style "list" {
+    base[ACTIVE]	="#ffffff"
+}
+
+widget_class "*List*"	style "list"
+widget_class "*tree*"	style "list"
+
+style "tooltips" {
+    bg[NORMAL]		= "#f4f0e0"
+    fg[NORMAL]		= "#000000"
+} widget "gtk-tooltips*"		style "tooltips"

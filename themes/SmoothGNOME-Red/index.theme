@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SmoothGNOME-Red
+Type=X-GNOME-Metatheme
+Comment=A very basic, conservative HIG-colored theme, with red highlights.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SmoothGNOME-Red
+MetacityTheme=SmoothGNOME
+IconTheme=SmoothGNOME

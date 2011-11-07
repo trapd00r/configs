@@ -1,0 +1,41 @@
+ Glossy P
+-------------
+
+   "Glossy P" is a set of themes for gtk2 and metacity. It is based on graphic elements I liked from various mac
+themes, but is not meant to faithfully reproduce any of them. It has two main goals:
+
+1) To be a good looking theme that people enjoy using.
+
+2) To provide a well documented template that helps new themers produce their own themes.
+
+Anyone is free to modify and distribute this theme as long as they obey the following rules:
+
+1) You allow others to modify and distribute your version according to these same rules.
+
+2) You try and acknowledge those whose work influenced or helped you. (The Karma Clause)
+
+3) Any modified versions of this theme that are distributed should contain documentation that is
+   "morally equivalent to or better than" the current documentation. The purpose of trying to doc-
+   ument the themes is to make it easier for people to make great looking themes without knowing
+   all of the details of gtk2 or metacity. So, if you're going to distribute a modified or derivative ver-
+   sion of this theme please leave all the documentation in the files or, if possible, improve on it! The
+   documentation is certainly not complete, so if you add new features please explain how they
+   work. If you think an explanation is bad or wrong, replace it with a better one. Make sure that
+   someone who downloads your file can understand what you've done.
+
+
+    I've included a few alternate pixmaps that can be used to alter certain portions of the theme.
+In the gtk2 theme the pixmap used to draw the gnome panel can be switched from the default
+glossy look to a darker grey background that looks like the window titlebars. The glossy pixmap
+is "panel_background_1.png" and the grey pixmap is "panel_background_2.png". Both are located
+in the gtk-2.0 folder. Simply copy the one you want to use to "panel_background.png". Similary,
+you can change the decorations used for the window titlebars by modifying the "metacity-theme-1.xml"
+file in the metacity directory. The comments in the file explain how to do this.
+
+    Post any bugs, comments, or improvements on Aquasoft (www.aqua-soft.org) or Gooeylinux
+(www.gooeylinux.com). Have fun!
+
+::m5brane
+
+
+

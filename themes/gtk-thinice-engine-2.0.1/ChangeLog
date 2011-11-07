@@ -1,0 +1,291 @@
+2002-06-08  Tomas Ögren  <stric@ing.umu.se>
+
+	* Theme/gtk-2.0/gtkrc:
+	  Made scrollbars 11px again, odd size is good for centering.
+	  Made buttons with "default focus" the same size as those without
+	  paned_dots = SOME  as default
+	* thinice_theme_draw.c:
+	  Fixed arrow styles, accidentally made them =arrows all the time
+	  Some other misc fixes to arrow stuff
+
+2002-06-08  Tomas Ögren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c:
+	  Change arrow drawing to match gtk (less pain)
+
+2002-03-30  Tomas Ögren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c:
+	  Fix gc clipping for the paned thingies
+
+2002-03-30  Tomas Ögren  <stric@ing.umu.se>
+
+	* thinice_rc_style.c, thinice_rc_style.h, thinice_theme_draw.c,
+	  Theme/gtk-2.0/gtkrc:
+	  Add support for paned_dots = (NONE|SOME|FULL)
+
+2002-03-29  Tomas Ögren  <stric@ing.umu.se>
+
+	* Makefile.am: Add $(THINICE_LIBS) to _LIBADD
+
+2002-03-22  Tomas Ögren  <stric@ing.umu.se>
+
+	* Theme/gtk-2.0/gtkrc: Made combo menus a bit smaller
+
+2002-03-11  Tomas Ögren  <stric@ing.umu.se>
+
+	* Finished the port to Gtk+ 2.
+
+2001-12-09  Richard Hult  <rhult@codefactory.se>
+
+	* Most of the files: Initial port to Gtk+ 2.
+
+2001-04-08  Tomas Ogren  <stric@ing.umu.se>
+
+	* Released 1.0.4, GEGL edition.
+
+2001-04-08  Tomas Ogren  <stric@ing.umu.se>
+
+	* Added an example_gtkrc showing off some more style stuff
+
+2001-04-08  Tomas Ogren  <stric@ing.umu.se>
+
+	* Bumped version number some and removed the generated gtkrc
+
+2001-04-07  Tomas Ogren  <stric@ing.umu.se>
+
+	* Cleanups for build and other stuff
+
+2000-12-17  Tomas Ogren  <stric@ing.umu.se>
+
+	* Fix Tim's email address
+
+2000-11-13  Tomas Ogren  <stric@ing.umu.se>
+
+	* Some clipping fixes to the scrollbar thumbs
+	* Minor fix to gtkrc
+
+2000-11-12  Tomas Ogren  <stric@ing.umu.se>
+
+	* Fixed colors on insensitive textboxes, fg == bg isn't that sexy 8)
+	* Increased the threshold for turning scrollbar thumbs into rectangular
+	  so it looks better with the new mark types
+
+2000-11-12  Tomas Ogren  <stric@ing.umu.se>
+
+	* Patch from Defresne Sylvain <sylvain.defresne@enst-bretagne.fr>
+	  to make progress bars not display if too small (caused wraparounds)
+
+2000-11-12  Tomas Ogren  <stric@ing.umu.se>
+
+	* Made disabled arrows in spin buttons look sane
+	* Took back scroll_button_marks so old configs work
+	* Put an arrow on the option menus instead of a box
+
+2000-09-10  Decklin Foster <decklin@red-bean.com>
+
+	* Make textboxes the gtkrc color instead of white
+	* draw framed boxes with an etched-in groove
+	* use light_gc instead of white_gc for disabled text
+	* kludge around extra border for textboxes
+	* draw shadow for menus
+	* add raised-type shadow for handleboxes
+
+2000-03-18  Tomas Ogren  <stric@ing.umu.se>
+
+	* Removed some debug output for now
+
+2000-03-05  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c: Some indent stuff and added configurability
+	  of the handle boxes as well (maybe done)
+	* example_gtkrc: Updated example
+	* TODO: Removed the white bg stuff
+
+2000-03-04  Tomas Ogren  <stric@ing.umu.se>
+
+	* Work in progress... More configurability..
+	* example_gtkrc: Example file
+
+2000-02-28  Tomas Ogren  <stric@ing.umu.se>
+
+	* Changed TRUE/FALSE parsing to use one function instead of one for
+	  each var to be set
+	* Some minor fixes (includes etc)
+
+2000-02-21  Tomas Ogren  <stric@ing.umu.se>
+
+	* Reincarnated development some...
+	* Fixed text entries to use background color from base[NORMAL] instead
+	  of always white..
+
+1999-08-14  Tomas Ogren  <stric@ing.umu.se>
+
+	* Updated libtool to 1.3.3
+
+1999-07-10  Tomas Ogren  <stric@ing.umu.se>
+
+	* Changed a thing in gtkrc
+
+1999-06-10  Tomas Ogren  <stric@ing.umu.se>
+
+	* Made the .so depend on $(GTK_LIBS), so gtk-perl, gnome-python etc
+	works... See http://www.debian.org/Bugs/db/38/38138.html
+	* Updated libtool to 1.3.2
+	* Added a .spec
+	* Removed font from gtkrc so the theme selector can do its work
+	* Released 1.0.3
+
+1999-04-18  Tomas Ogren  <stric@ing.umu.se>
+
+	* Changed the colors in gtkrc to be #rrggbb instead of those floats
+
+1999-04-17  Tomas Ogren  <stric@ing.umu.se>
+
+	* Removed some gcc:isms
+	* Upped libtool to 1.2f and added -avoid-version
+	* Released 1.0.2
+
+1999-04-01  Tomas Ogren  <stric@ing.umu.se>
+
+	* Fixed some issues with arrow-drawing and radio-buttons
+	* Released 1.0.1
+
+1999-03-28  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c: Fixed a bunch of pixmap issues
+	* configure.in: Bumped to 1.0.0
+	* Released 1.0.0
+
+1999-03-07  Tim P. Gerla <timg@rrv.net>
+
+	* thinice_theme_main.c: Added dest->klass = &thinice_default_class
+	  for Pavlov. 
+
+1999-02-12  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c: Changed gtk_style_apply_default_pixmap to
+	gtk_style_apply_default_background (with the changed params).
+	* configure.in: Bumped to 0.5.0.
+	* Released 0.5.0
+
+1999-02-09  Tomas Ogren  <stric@ing.umu.se>
+
+	* Theme/gtk/gtkrc: Changed base[ACTIVE] to be a little more discrete
+
+Sun Jan 31 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Added some defaultwidths/heights for scrollbars/scrollbuttons
+
+Sun Jan 31 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Removed some commented stuff and fixed prototypes
+
+Sun Jan 31 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Fixed some building issues (stop linking gtk etc)
+
+Wed Jan 27 1999  Tim P. Gerla  <timg@rrv.net>
+
+	* Added version check code from pixmap theme, to 
+          ensure that we are linked to the right gtk.
+
+Wed Jan 13 1999  Tim P. Gerla  <timg@rrv.net>
+	
+	* Bumped version to 0.4.0.
+
+Tue Jan 12 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Upped gtk requirement to 1.1.5 as gtk-engines ...
+
+Tue Jan 12 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Fixed up some rules in configure.in .. we don't want static stuff..
+	* Upped version in configure.in to 0.3.99
+	* Changed version of libtool in autogen.sh
+	* Added config option for 'handlebar_marks' which is used in
+	  handleboxes, defaults to on. Updated gtkrc.
+	* Updated README.html slightly (the notebook entry)
+
+Sun Jan 10 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Added thinice_tab() - takes care of notebook tabs
+	* Fixed the notebook tabs.. still a minor glitch when at the ends,
+	  have to fix the actual notebook for that... later..
+
+Sun Jan 10 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Stole the 'DETAIL' define from Metal and applied all over the place
+	* Added two funcs, 'thinice_slash_one' and 'thinice_slash_two' which
+	  draws either / or // in a box.. replaces the inline hacks for
+	  scrollbars etc.
+	  Replaced all the "unnecessary" code..
+	* Cleaned up some checks for user-data
+
+Sat Jan  2 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Changed the look of LEFT_ARROW (tearoff-menus etc)
+	* Added an ACTIVE color for lists and changed the bg from white to
+	  cyan-whitish
+
+Sat Jan  2 1999  Tomas Ogren  <stric@ing.umu.se>
+
+	* Changed the look of UP_ARROW and DOWN_ARROW (spinbuttons etc)
+
+Thu Dec  3 23:24:40 CST 1998	Tim P. Gerla <timg@rrv.net>
+
+	* Distribute autogen.sh
+
+
+Sun Nov 30 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* Changed the look of RIGHT_ARROW (used in menus for example)
+
+Sun Nov 29 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* Added configuration for the scrollbar-handles & buttons:
+	  rect_scrollbar (default FALSE): rectangular or shaped scrollbar handles
+	  scrollbar_marks (default TRUE): cute marks on the scrollbar handles
+	  scroll_button_marks (default TRUE): cute marks on the scrollbar buttons
+	* new file: thinice_theme.h: config-stuff & defaults
+	* Updated Theme/README.html ... removed the bug about entry-boxes..
+	* Updated Theme/gtk/gtkrc ... Added the new config-stuff with comments
+
+Thu Nov 26 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* Fixed the scroll-thumb to fallback to a rectangle if it gets too small...
+
+Thu Nov 26 06:10:57 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c (draw_arrow): Added check for vscrollbar as well for the end-"arrows"
+	* thinice_theme_draw.c (draw_box): Set the correct background behind the sliders on scrollbars
+
+1998-11-25  Tim P. Gerla  <timg@rrv.net>
+
+	* thinice_theme_draw.c (draw_check): Changed back to motif style to match the new option buttons
+	* thinice_theme_draw.c (draw_option): Merged Ice's patches in.
+
+Tue Nov 24 16:30:36 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c (draw_check, draw_option): Changed c++ comments to c comments
+	
+Tue Nov 24 04:29:31 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c (draw_arrow): Added the "arrows" for scrollbars
+	* thinice_theme_draw.c (draw_box): Fixed the scrollbars.. almost done now...
+	* thinice_theme_draw.c (draw_slider): #ifdef'd some debug-stuff
+
+1998-11-23  Tim P. Gerla  <timg@rrv.net>
+
+	* thinice_theme_draw.c (thinice_default_class =): Changed thickness back to 2. 
+
+Tue Nov 24 00:40:41 1998  Tomas Ogren  <stric@ing.umu.se>
+
+	* thinice_theme_draw.c (draw_check, draw_option): stole code from Metal 
+
+1998-11-23  Tim P. Gerla  <timg@rrv.net>
+
+	* thinice_theme_draw.c (draw_flat_box): Use white_gc for entry backgrounds.
+	* thinice_theme_draw.c (toplevel): Change width from 2 to 1.
+	* Added autogen.sh.
+	* Removed some autogenerated files.

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SmoothGNOME
+Type=X-GNOME-Metatheme
+Comment=A very basic, conservative HIG-colored theme.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SmoothGNOME
+MetacityTheme=SmoothGNOME
+IconTheme=SmoothGNOME

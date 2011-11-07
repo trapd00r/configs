@@ -1,0 +1,81 @@
+# Bluecurve-Blue GTK+ RC file
+# Based on Bluecurve by Garrett <garrett@linuxart.com>
+
+style "bluecurve-default" {
+  #GtkWidget::interior_focus = 1
+  #GtkButton::default_border = { 0, 0, 0, 0 }
+  #GtkButton::default_outside_border = { 0, 0, 0, 0 }
+  #GtkRange::trough_border = 0
+
+  #GtkWidget::focus_padding = 1
+
+  #GtkPaned::handle_size = 6
+  
+  #GtkRange::slider_width = 15
+  #GtkRange::stepper_size = 15
+  #GtkScrollbar::min_slider_length = 30
+  #GtkCheckButton::indicator_size = 12
+  #GtkMenuBar::internal-padding = 0
+
+  ##GtkOptionMenu::indicator_size = { 11, 6 }
+  ##GtkOptionMenu::indicator_spacing = { 4, 5, 2, 2 }
+
+  fg[NORMAL] = { 0.0, 0.0, 0.0 }
+  fg[ACTIVE] = { 0.0, 0.0, 0.0 }
+  fg[PRELIGHT] = { 0.0, 0.0, 0.0 }
+  fg[SELECTED] = { 1.0, 1.0, 1.0 }
+  fg[INSENSITIVE]  = { 0.5, 0.5, 0.5 }
+  
+  bg[NORMAL]      = { 0.82, 0.83, 0.85 } #
+  bg[PRELIGHT]	  = { 0.86, 0.87, 0.9 }  #
+  bg[ACTIVE]	  = { 0.72, 0.73, 0.78 } #
+  bg[INSENSITIVE] = { 0.76, 0.77, 0.8 }  #
+  bg[SELECTED]    = { 0.30,0.35,0.65 }
+  
+  base[SELECTED]  = { 0.30,0.35,0.65 }
+  text[SELECTED]  = { 1.0, 1.0, 1.0 }
+  
+#  base[ACTIVE]    = { 0.6, 0.65, 0.75 }
+#  text[ACTIVE]    = { 1.0, 1.0, 1.0 }
+  
+  engine "bluecurve" 
+    {
+      contrast = 1.0
+    }
+}
+
+style "bluecurve-wide" = "bluecurve-default"
+{
+  engine "bluecurve" 
+    {
+      wide = TRUE
+    }
+}
+
+style "bluecurve-menu" = "bluecurve-default"
+{
+  bg[SELECTED]    = { 0.30,0.35,0.65 }
+  fg[PRELIGHT]  = "#ffffff"
+}
+
+style "bluecurve-frame-title" = "bluecurve-default"
+{
+  fg[NORMAL] = { 0.25,0.25,0.30 }
+}
+
+style "bluecurve-tooltips" = "bluecurve-default"
+{
+  bg[NORMAL] = { 0.75,0.75,1.0 }
+}
+
+class "GtkWidget" style "bluecurve-default"
+class "GtkButton" style "bluecurve-wide"
+class "GtkRange" style "bluecurve-wide"
+class "GtkMenu" style "bluecurve-wide"
+class "GtkFrame" style "bluecurve-wide"
+class "GtkStatusbar" style "bluecurve-wide"
+class "GtkMenuItem" style "bluecurve-menu"
+widget_class "*.*MenuItem.*" style "bluecurve-menu"
+class "GtkEntry" style "bluecurve-wide"
+widget_class "*.GtkFrame.GtkLabel" style "bluecurve-frame-title"
+widget "gtk-tooltips" style "bluecurve-tooltips"

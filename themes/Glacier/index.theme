@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Glacier
+Type=X-GNOME-Metatheme
+Comment=Calm, simple and unintrusive.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Glacier
+MetacityTheme=Simple
+IconTheme=Iris

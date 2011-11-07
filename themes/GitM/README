@@ -1,0 +1,20 @@
+GitM v. 2 
+GitM (Gorillas in the Mist) is a recoloring of the default Mist theme
+with the Ximian palette and "Accent Yellow Dark" as the selection 
+color. It plays well with the Gorilla Sawfish/Metacity theme, and 
+requires the Mist engine by Dave Camp. This tarball also includes the 
+theme for GTK1.
+
+Changes from the previous version include:
+button and menu padding updated to the newest Mist engine
+prelight color changed to a light orange (Accent Yellow Light)
+secondary scrollbar down button (gtk-2 only)
+
+
+I'm trying to get a secondary scrollbar button in the gtk1 version,
+but I haven't found the right command/engine to do that yet.
+
+If you want to change back to the old prelight color, read the gtkrc.
+
+-Chris Possinger
+-cposs@mit.edu

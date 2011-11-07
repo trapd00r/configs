@@ -1,0 +1,333 @@
+# Theme Name  : BlueSmooth
+# Author      : elanthis ala Sean Middleditch (elanthis@awesomeplay.com)
+# Description :
+#
+# A Smooth-engine gtk/gtk2 theme based on the Bluecurve colours. 
+# Intended to be a sensible, professional theme. 
+
+style "default" { 
+    fg[ACTIVE]        = "#000000"
+    fg[INSENSITIVE]   = "#777777"
+    fg[NORMAL]        = "#000000"
+    fg[PRELIGHT]      = "#000000"
+    fg[SELECTED]      = "#ffffff"
+
+    bg[ACTIVE]        = "#cccccc"
+    bg[INSENSITIVE]   = "#eeeeee"
+    bg[NORMAL]        = "#e6e6e6"
+    bg[PRELIGHT]      = "#f5f5f5"
+    bg[SELECTED]      = "#4464ac"
+
+    base[ACTIVE]      = "#5e7ab7"
+    base[INSENSITIVE] = "#f0f0f0"
+    base[NORMAL]      = "#ffffff"
+    base[PRELIGHT]    = "#4464ac"
+    base[SELECTED]    = "#4464ac"
+
+    text[ACTIVE]      = "#ffffff"
+    text[INSENSITIVE] = "#747474"
+    text[NORMAL]      = "#000000"
+    text[PRELIGHT]    = "#000000"
+    text[SELECTED]    = "#ffffff"  
+ 
+    engine "smooth" {
+      GtkCheckButton::indicator_size    = 13
+      GtkRadioButton::indicator_size    = 12
+
+      GtkPaned::handle_size  = 10
+
+      GtkRange::trough_border           = 2
+      GtkRange::slider_width            = 13
+      GtkRange::stepper_size            = 13
+      GtkRange::stepper_spacing         = 0
+  
+       GtkScrollbar::has_backward_stepper = 1
+       GtkScrollbar::has_secondary_forward_stepper = 0
+
+       GtkScrollbar::has_forward_stepper = 1
+       GtkScrollbar::has_secondary_backward_stepper = 1
+        fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=vertical
+	    shade1=1.09
+	    shade2=0.9
+	}
+
+        line {
+	    style=smooth
+	    thickness=1
+	}
+
+        grip {
+	    style=bars
+	    fill {
+	        style=solid
+	    }
+	}
+
+        check {
+	    style=clean
+	    motif=true
+	    fill {
+	        style=shaded
+		hdirection=fdiagonal
+		vdirection=fdiagonal
+		shade1=1.09
+		shade2=0.9
+	    }
+	}
+	
+	option {
+	    style=round
+	    motif=true
+	    fill {
+	        style=shaded
+		hdirection=fdiagonal
+		vdirection=fdiagonal
+		shade1=1.09
+		shade2=0.9
+	    }
+	}
+	
+	arrow {
+           style=cleanice
+	   solid=TRUE
+        }
+
+	tab_style=round
+    }
+} widget_class "*" style "default"
+
+style "toolbar" {
+    engine "smooth" {
+        line {
+	    style=smooth
+	    thickness=1
+	}
+	
+	fill {
+	    style=solid
+	}
+	
+	grip {
+	    style=bars
+	    toolbar_overlap=TRUE
+	}
+    }
+}
+widget_class "*BonoboDockItem*" style "toolbar"
+class "*BonoboDockItem*" style "toolbar"
+
+widget_class "*HandleBox*" style "toolbar"
+class "*HandleBox*" style "toolbar"
+
+widget_class "*Tool*" style "toolbar"
+class "*Tool*" style "toolbar"
+
+widget_class "*MenuBar*" style "toolbar"
+class "*MenuBar*" style "toolbar"
+
+style "menuitem" {
+    text[PRELIGHT]	= "#8092dc" # Radio/Check items use text[state]
+    				    # for the check colour
+    text[NORMAL]	= "#000000"
+    
+    engine "smooth" {
+        fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=vertical
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	line {
+	    style=thin
+	    thickness=1
+	}
+	
+	edge {
+	    line {
+	        style=smooth
+		thickness=1
+	    }
+	}
+	
+	check {
+	    style=clean
+	    line {
+	        style=flat
+		thickness=1
+	    }
+	    fill {
+	        style=solid
+	    }
+	}
+	
+	option {
+	    style=round
+	    line {
+	        style=none
+		thickness=0
+	    }
+	    fill {
+	        style=solid
+	    }
+	}
+	
+	arrow {
+           style=cleanice
+	   solid=TRUE
+        }
+    }
+}
+widget_class "*MenuItem*" style "menuitem"
+class "*MenuItem*" style "menuitem"
+
+style "radio_check" {
+    text[PRELIGHT]	= "#8092dc" # Radio/Check items use text[state]
+    				    # for the check colour
+    text[ACTIVE]	= "#afafaf"
+    text[NORMAL]	= "#000000"
+    text[SELECTED]	= "#afafaf"
+}
+widget_class "*RadioButton*" style "radio_check"
+widget_class "*CheckButton*" style "radio_check"
+
+style "scrollbar" {
+    engine "smooth" {
+        fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	line {
+	    style=smooth
+	    thickness=0
+	}
+	
+	trough {
+	    fill {
+	        style=solid
+	    }
+	}
+	
+	grip {
+	    style=midlines
+	    count=3
+	    spacing=1
+	}
+	
+	arrow {
+           style=cleanice
+	   solid=TRUE
+        }
+    }
+}
+widget_class "*Scrollbar*" style "scrollbar"
+class "*Scrollbar*" style "scrollbar"
+
+style "hscales"  {
+    bg[SELECTED]		= "#8092dc" #scroll bar background    
+    engine "smooth" {	
+       GtkRange::trough_border	= 0
+       GtkRange::slider-width	= 22
+       GtkScale::slider-length	= 12
+
+        line {
+	    style=smooth
+	    thickness=2
+	}
+	
+	fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	trough {
+	    xpadding=7
+	    ypadding=1
+	    show_value=TRUE
+	}
+	
+	grip {
+	    style=dots_in
+	    count=1
+	    spacing=2
+	}
+	
+	real_sliders=FALSE
+    }
+}
+widget_class "*HScale*" style "hscales"
+class "*HScale*" style "hscales"
+
+style "vscales"  {
+    bg[SELECTED]		= "#8092dc" #scroll bar background   
+    engine "smooth" {
+       GtkRange::trough_border	= 0
+       GtkRange::slider-width	= 22
+       GtkScale::slider-length	= 12
+
+        line {
+	    style=smooth
+	    thickness=2
+	}
+	
+	fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.09
+	    shade2=0.9
+	}
+	
+	trough {
+	    xpadding=1
+	    ypadding=7
+	    show_value=TRUE
+	}
+	
+	grip {
+	    style=dots_in
+	    count=1
+	    spacing=2
+	}
+	
+	real_sliders=FALSE
+    }
+}
+widget_class "*VScale*" style "vscales"
+class "*VScale*" style "vscales"
+
+style "infobar" {
+    engine "smooth" {
+        line {
+	    style=smooth
+	    thickness=2
+	}
+	
+	fill {
+	    style=shaded
+	    hdirection=vertical
+	    vdirection=horizontal
+	    shade1=1.195
+	    shade2=0.73
+	}
+	
+	trough {
+	    fill {
+	        style=solid
+	    }
+	}
+    }
+}
+class "*Progress*" style "infobar"
+widget_class "*Progress*" style "infobar"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SmoothGNOME-Green
+Type=X-GNOME-Metatheme
+Comment=A very basic, conservative HIG-colored theme, with green highlights.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SmoothGNOME-Green
+MetacityTheme=SmoothGNOME
+IconTheme=SmoothGNOME

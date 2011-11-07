@@ -1,0 +1,34 @@
+style "default"
+{
+  font = "-*-helvetica-medium-r-normal--14-*-*-*-*-*-*-*"
+  fg[NORMAL]      = "#E1BCFF"
+  fg[PRELIGHT]    = "#FFFFFF"
+  fg[ACTIVE]      = "#7D5B9A"
+  fg[SELECTED]    = "#E1BCFF"#7D5A99
+  fg[INSENSITIVE] = "#281D31"
+
+  bg[NORMAL]      = "#573F6B"
+  bg[PRELIGHT]    = "#73538E"
+  bg[ACTIVE]      = "#453255"
+  bg[SELECTED]    = "#7D5A99"
+  bg[INSENSITIVE] = "#3D2C4B"
+#  base[NORMAL]      = "#573F6B"
+  base[NORMAL]      = "#000000"
+  base[PRELIGHT]    = "#6E4F87"#765591"
+  base[ACTIVE]      = "#533C66"
+  base[SELECTED]    = "#573F6B"
+  base[INSENSITIVE] = "#31233C" 
+
+  text[NORMAL]	= "#E1BCFF"
+  text[ACTIVE]	= "#E1BCFF"
+  text[PRELIGHT]	= "#E1BCFF"
+  text[SELECTED]	= "#E1BCFF"
+  text[INSENSITIVE] = "#655573"
+}
+class "GtkWidget" style "default"
+
+
+
+
+
+

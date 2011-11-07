@@ -1,0 +1,103 @@
+
+pixmap_path '/usr/share/themes/dwerg/gtk-2.0/'
+
+style "default"
+{
+  GtkRange::slider_width = 12
+  GtkRange::stepper_size = 12
+  GtkScrollbar::min_slider_length = 17
+  GtkCheckButton::indicator_size = 10
+
+  font = "Verdana 8"
+
+  base[NORMAL]      = "#f9f9f9"
+  base[SELECTED]    = "#e0e0e0"
+  
+  fg[NORMAL]        = "#000000"
+  fg[SELECTED]      = "#909090"
+  fg[INSENSITIVE]   = "#858585"
+
+  bg[NORMAL]        = "#f1f1f1"
+  bg[SELECTED]      = "#f1f1f1"
+  bg[ACTIVE]        = "#f1f1f1"
+
+  text[NORMAL]      = "#858585"
+  text[SELECTED]    = "#909090"
+
+  engine "dwerg"
+  {
+  }
+}
+
+widget_class "*" style "default"
+
+style "entries" = "default"
+{
+  bg[NORMAL]        = "#f6f6f6"
+
+  fg[NORMAL]        = "#858585"
+
+  text[SELECTED]    = "#404040"
+}
+
+widget_class "*Entry*" style "entries"
+widget_class "*List*"  style "entries"
+widget_class "*Tree*"  style "entries"
+
+style "progress" = "default"
+{
+  bg[NORMAL]        = "#f6f6f6"
+  bg[SELECTED]      = "#dddddd"
+  fg[NORMAL]        = "#858585"
+  fg[SELECTED]      = "#858585"
+}
+
+widget_class "*Progress*" style "progress"
+
+style "notebook" = "default"
+{
+  bg[NORMAL]        = "#f9f9f9"
+  bg[ACTIVE]        = "#f0f0f0"
+}
+widget_class "*Notebook*" style "notebook"
+
+style "scale" = "default"
+{
+  bg[ACTIVE]        = "#f1f1f1"
+  bg[PRELIGHT]      = "#000000"
+}
+widget_class "*Scale*" style "scale"
+
+style "scrollbar" = "default"
+{
+  bg[NORMAL]        = "#dddddd"
+  bg[PRELIGHT]      = "#fdfdfd"
+  bg[ACTIVE]        = "#dddddd"
+}
+widget_class "*Scrollbar*" style "scrollbar"
+widget_class "*Scale*" style "scrollbar"
+
+style "menu" = "default"
+{
+  bg[PRELIGHT]      = "#fdfdfd"
+  fg[PRELIGHT]      = "#858585"
+  bg[SELECTED]      = "#fdfdfd"
+  fg[SELECTED]      = "#858585"
+}
+
+widget_class "*Menu*" style "menu"
+
+style "toolbar" = "default"
+{
+  bg[NORMAL]        = "#fdfdfd"
+}
+
+widget_class "*Toolbar*" style "toolbar"
+
+style "button" = "default"
+{
+  bg[PRELIGHT]      = "#ffffff"
+  bg[ACTIVE]        = "#bbbbbb"
+}
+
+widget_class "*Button*" style "button"

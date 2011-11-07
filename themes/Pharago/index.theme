@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pharago
+Type=X-GNOME-Metatheme
+Comment=Pharago = Gonxical + Gnursid\nGonxical for the widgets, Gnursid for the colours.\nUsing Gnursid for Metacity.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Pharago
+MetacityTheme=Gnursid
+IconTheme=Clearlooks

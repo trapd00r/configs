@@ -1,0 +1,149 @@
+!! "Preternatural" theme for Openbox 3
+!! Author: Matthew Graybosch (public@starbreaker.net)
+!! Theme created on 12 December 2003
+!! Theme available under terms of BSD License
+
+!! Menu settings
+menu.title.bg: Raised Bevel1 Gradient Vertical
+menu.title.bg.color: #979199
+menu.title.bg.colorTo: #d7d1dd
+menu.title.text.color: #111111
+menu.title.text.justify: center
+
+menu.items.bg: Raised Bevel1 Gradient CrossDiagonal
+menu.items.bg.color: #000000
+menu.items.bg.colorTo: #141414
+menu.items.text.color: #f9f3ff
+menu.items.disableColor: #aaaaaa
+
+menu.items.active.bg: Raised Bevel2 Gradient Vertical
+menu.items.active.bg.color: #979199
+menu.items.active.bg.colorTo: #d7d1dd
+menu.items.active.text.color: #111111
+menu.items.active.bg.border.color: #adafaf
+
+!! General window settings
+window.button.pressed.focus: Raised Bevel1 Gradient Vertical
+window.button.pressed.unfocus: Sunken Bevel1 Gradient Vertical
+window.button.pressed.bg.color: #adafaf
+window.button.pressed.bg.colorTo: #f9f3ff
+window.label.text.justify: center
+
+!! focused window settings
+window.active.client.color: #f9f3ff
+
+window.active.title.bg: Raised Bevel1 Gradient Vertical
+window.active.title.bg.color: #979199
+window.active.title.bg.colorTo: #000000
+
+window.active.handle.bg:  Raised Bevel1 Gradient Vertical
+window.active.handle.bg.color: #141414
+window.active.handle.bg.colorTo: #000000
+
+window.active.grip.bg:  Raised Bevel1 Gradient Vertical
+window.active.grip.bg.color: #141414
+window.active.grip.bg.colorTo: #000000
+
+window.active.label.bg: Raised Bevel1 Gradient Vertical
+window.active.label.bg.color: #979199
+window.active.label.bg.colorTo: #d7d1dd
+window.active.label.text.color: #111111
+
+window.active.button.unpressed.bg: flatborder solid
+window.active.button.unpressed.bg.color: #979199
+window.active.button.unpressed.bg.colorTo: #d7d1dd
+window.active.button.unpressed.image.Color: #141414
+window.active.button.unpressed.bg.border.color: #adafaf
+
+window.active.button.pressed.bg: flatborder solid
+window.active.button.pressed.bg.color: #000000
+window.active.button.pressed.bg.colorTo: #4f4f4f
+window.active.button.pressed.image.Color: #f9f3ff
+window.active.button.pressed.bg.border.color: #f9f3ff
+
+!! unfocused window settings
+window.inactive.client.color: #000000
+
+window.inactive.title.bg:  Raised Bevel1 Gradient Vertical
+window.inactive.title.bg.color: #1c1c1c
+window.inactive.title.bg.colorTo: #1c1c1c
+
+window.inactive.handle.bg:  Raised Bevel1 Gradient Vertical
+window.inactive.handle.bg.color: #1c1c1c
+window.inactive.handle.bg.colorTo: #1c1c1c
+
+window.inactive.grip.bg:  Raised Bevel1 Gradient Vertical
+window.inactive.grip.bg.color: #1c1c1c
+window.inactive.grip.bg.colorTo: #1c1c1c
+
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #8b8e8e
+
+window.inactive.button.unpressed.bg: flatborder gradient vertical
+window.inactive.button.unpressed.bg.color: #1c1c1c
+window.inactive.button.unpressed.bg.colorTo: #1c1c1c
+window.inactive.button.unpressed.image.Color:  #8b8e8e
+window.inactive.button.unpressed.bg.border.color: #8b8e8e
+
+window.inactive.button.pressed.bg: flatborder solid
+window.inactive.button.pressed.bg.color: #222222
+window.inactive.button.pressed.bg.colorTo: #000000
+window.inactive.button.pressed.bg.border.color: #7b7d7b
+
+!#disabled
+window.active.button.disabled.bg: flat border
+window.active.button.disabled.bg.color: #990000
+window.active.button.disabled.bg.colorTo: #990000
+window.active.button.disabled.image.Color: #f9f3ff
+window.active.button.disabled.bg.border.color: #a4b2c5
+
+window.inactive.button.disabled.bg: flatborder gradient vertical
+window.inactive.button.disabled.bg.color: #d5dad5
+window.inactive.button.disabled.bg.colorTo: #b4b6b4
+window.inactive.button.disabled.image.Color:  #7b7d7b
+window.inactive.button.disabled.bg.border.color: #a4b2c5
+
+!#hover
+window.active.button.hover.bg: flatborder
+window.active.button.hover.image.Color: #efefef
+window.active.button.hover.bg.color: #a0a0a0
+window.active.button.hover.bg.border.color: #adafaf
+
+window.button.hover.toggled.unfocus: flatborder gradient vertical
+window.button.hover.toggled.unfocus.bg.color: #f7f7f7
+window.button.hover.toggled.unfocus.bg.colorTo: #f7f7f7
+window.button.hover.toggled.unfocus.image.Color:  #ac9ac4
+window.button.hover.toggled.unfocus.bg.border.color: #d7d1dd
+
+!#toggles
+window.active.button.toggled.bg: flatborder
+window.active.button.toggled.bg.color: #4f4f4f
+window.active.button.toggled.bg.colorTo: #000000
+window.active.button.toggled.image.Color:  #adafaf
+window.active.button.toggled.bg.border.color: #adafaf
+
+window.inactive.button.toggled.bg: flatborder gradient vertical
+window.inactive.button.toggled.bg.color: #4f4f4f
+window.inactive.button.toggled.bg.colorTo: #000000
+window.inactive.button.toggled.image.Color:  #adafaf
+window.inactive.button.toggled.bg.border.color: #adafaf
+
+!! Global width settings
+border.width: 1
+padding.width: 1
+window.handle.width: 2
+window.client.padding.width: 0
+border.color: #adafaf
+menu.overlap: 8
+*frameColor: #adafaf
+
+!! Bullet
+menu.items.bullet: circle
+menu.items.bullet.position: right
+
+!!# font me!
+window.active.label.text.font:   Bitstream Vera Sans,sans:pixelsize=12:bold:shadowoffset=3:shadowtint=25:shadow=y
+window.inactive.label.text.font: Bitstream Vera Sans,sans:pixelsize=12:slant=italic,oblique:shadowoffset=3:shadowtint=25:shadow=n
+menu.title.text.font:Bitstream Vera Sans,sans:pixelsize=12:bold:shadowoffset=3:shadowtint=25:shadow=y
+menu.items.font:Bitstream Vera Sans,sans:pixelsize=12:shadowoffset=3:shadowtint=25:shadow=y
+menu.items.active.font:Bitstream Vera Sans,sans:pixelsize=12:shadowoffset=3:shadowtint=25:shadow=y

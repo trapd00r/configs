@@ -1,0 +1,17 @@
+Welcome to dwerg version 0.2
+
+This theme-engine was based on a skin made my Everaldo <everaldo@everaldo.com> for trillian, I've stole the code from the cleanice engine and this theme still shares some code with it. So; thanks to Everaldo and the authors of Cleanice.
+
+To install just fo the following (well known) magic:
+
+./configure [--prefix=/where/you/installed/gtk2]
+make
+make install
+
+Then either use the Gnome Control Center to select the theme or put the
+following into your ~/.gtkrc-2.0 :
+
+gtk-theme-name = "dwerg"
+
+Have fun!
+    Manfred Stienstra <manfred.stienstra@dwerg,net>

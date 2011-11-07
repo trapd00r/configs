@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   version="1.0"
+   x="0"
+   y="0"
+   width="60.0000000"
+   height="60.0000000"
+   viewBox="0 0 256 256"
+   id="svg153"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   sodipodi:version="0.33pre"
+   sodipodi:docname="/home/lapo/.themes/Lapo/metacity-1/wm-max-alt.svg"
+   sodipodi:docbase="/home/lapo/.themes/Lapo/metacity-1/">
+  <sodipodi:namedview
+     id="base" />
+  <defs
+     id="defs210">
+    <linearGradient
+       x1="134.070297"
+       y1="106.996597"
+       x2="134.070297"
+       y2="226.002304"
+       id="XMLID_4_"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.00560000"
+         id="stop196" />
+      <stop
+         style="stop-color:#cccccc;stop-opacity:1;"
+         offset="1"
+         id="stop197" />
+    </linearGradient>
+    <linearGradient
+       x1="126.668503"
+       y1="14.052700"
+       x2="126.668503"
+       y2="99.681503"
+       id="XMLID_5_"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.00560000"
+         id="stop203" />
+      <stop
+         style="stop-color:#99ccff;stop-opacity:1;"
+         offset="1"
+         id="stop204" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient747"
+       xlink:href="#XMLID_4_" />
+    <linearGradient
+       id="linearGradient748"
+       xlink:href="#XMLID_4_" />
+  </defs>
+  <g
+     style="font-size:12;stroke:#000000;"
+     id="Layer_1">
+    <path
+       d="M 256 256 L 0 256 L 0 0 L 256 0 L 256 256 z "
+       style="fill:none;stroke:none;"
+       id="path155" />
+  </g>
+  <g
+     transform="matrix(1.355054,0.000000,0.000000,1.355054,-45.62582,-45.26795)"
+     style="font-size:12;fill:#ffffff;fill-opacity:1;"
+     id="g573">
+    <rect
+       width="181.417343"
+       height="45.3543358"
+       ry="14.6771240"
+       x="37.7952728"
+       y="172.850388"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#ffffff;fill-opacity:1;"
+       id="rect564" />
+    <rect
+       width="181.417358"
+       height="75.5906067"
+       ry="17.0423431"
+       x="37.7952728"
+       y="36.7873611"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#ffffff;fill-opacity:1;"
+       id="rect569" />
+    <rect
+       width="45.3543282"
+       height="98.2677231"
+       x="37.7952766"
+       y="89.7007675"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#ffffff;fill-opacity:1;"
+       id="rect570" />
+    <rect
+       width="45.3543282"
+       height="98.2677231"
+       x="173.858276"
+       y="89.7007828"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#ffffff;fill-opacity:1;"
+       id="rect571" />
+  </g>
+  <g
+     transform="matrix(1.355054,0.000000,0.000000,1.355054,-45.62582,-45.26795)"
+     style="font-size:12;fill:#7f7f7f;fill-opacity:1;"
+     id="g581">
+    <rect
+       width="166.299225"
+       height="60.4724236"
+       ry="7.36230087"
+       x="45.3543282"
+       y="44.3464546"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#7f7f7f;fill-opacity:1;"
+       id="rect572" />
+    <rect
+       width="166.299225"
+       height="30.2362118"
+       ry="7.05552673"
+       x="45.3543282"
+       y="180.409454"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#7f7f7f;fill-opacity:1;"
+       id="rect578" />
+    <rect
+       width="30.2362251"
+       height="90.7086563"
+       x="45.3543282"
+       y="97.2598495"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#7f7f7f;fill-opacity:1;"
+       id="rect579" />
+    <rect
+       width="30.2362251"
+       height="90.7086563"
+       x="181.417313"
+       y="98.7716446"
+       style="fill-rule:evenodd;stroke-width:1pt;fill:#7f7f7f;fill-opacity:1;"
+       id="rect580" />
+  </g>
+</svg>

@@ -1,0 +1,50 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT(gtk-2.0/galaxy_theme_draw.c)
+THEME="galaxy"
+
+# For automake.
+VERSION=0.2
+PACKAGE=${THEME}
+
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+
+AM_CONFIG_HEADER(config.h)
+
+# Honor aclocal flags
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_PROG_CC
+AC_PROG_INSTALL
+
+# No static please
+AM_DISABLE_STATIC
+
+dnl Initialize libtool
+AM_PROG_LIBTOOL
+
+PKG_CHECK_MODULES(GTK2, gtk+-2.0 >= 2.0.0,,
+		  AC_MSG_ERROR([GTK+-2.0 is required to compile galaxy-theme]))
+
+GTK2_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK2_VERSION)
+AC_SUBST(GTK2_CFLAGS)
+AC_SUBST(GTK2_LIBS)
+
+AM_PATH_GTK(1.2.9, ,
+        AC_MSG_ERROR([*** GTK+-1.2.9 not installed - please install first ***]))
+AC_CHECK_LIB(gtk, gtk_style_set_prop_experimental, :,
+             AC_MSG_ERROR([*** gtk_style_set_prop_experimental() not found; perhaps you have an old CVS version of GTK+ ***]),
+             $GTK_LIBS)
+AM_PATH_GDK_PIXBUF
+
+# Checks for header files.
+AC_HEADER_STDC
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+AC_OUTPUT([
+Makefile
+gtk-2.0/Makefile
+gtk-1.2/Makefile
+])

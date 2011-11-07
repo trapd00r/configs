@@ -1,0 +1,322 @@
+style "default" {
+    fg[NORMAL]              = "#0f0f0f"
+    fg[ACTIVE]              = "#0f0f0f"
+    fg[INSENSITIVE]         = "#909090"
+    fg[PRELIGHT]            = "#0f0f0f"
+    fg[SELECTED]            = "#0f0f0f"
+
+    bg[ACTIVE]              = "#d0d0d0"
+    bg[NORMAL]              = "#e0e0e0"
+    bg[INSENSITIVE]         = "#d2d2d2"
+    bg[PRELIGHT]            = "#4FA9EA"
+    bg[SELECTED]            = "#1E7ADB"
+
+    base[NORMAL]            = "#fdfdfd"
+    base[ACTIVE]            = "#4FA9EA"
+    base[INSENSITIVE]       = "#fdfdfd"
+    base[PRELIGHT]          = "#ffffff"
+    base[SELECTED]          = "#4FA9EA"
+
+    text[NORMAL]            = "#0f0f0f"
+    text[ACTIVE]            = "#0d0d0d"
+    text[PRELIGHT]          = "#0f0f0f"
+    text[SELECTED]          = "#0f0f0f"
+    text[INSENSITIVE]       = "#a0a0a0"
+    engine "smooth" {
+      GtkCheckButton::indicator_size    = 13
+      GtkRadioButton::indicator_size    = 12
+
+      GtkPaned::handle_size  = 8
+
+      GtkRange::trough_border           = 2
+      GtkRange::slider_width            = 15
+      GtkRange::stepper_size            = 15
+      GtkRange::stepper_spacing         = 0
+
+      fill {
+        style=shaded
+        hdirection = vertical
+        vdirection = vertical
+        shade1 = 0.9
+        shade2 = 1.09
+      }
+
+    line {
+        style=smooth
+        thickness=1
+    }
+
+   grip {
+        style=dots_out
+        count = 3
+        spacing = 2
+        toolbar_overlap = FALSE  
+        line {
+          style=smooth
+          thickness=2
+        }
+      fill {
+        style=shaded
+        hdirection = vertical
+        vdirection = vertical
+        shade1 = 0.9
+        shade2 = 1.09
+      }
+    }
+
+    check {
+       style=clean
+       motif=true
+       line {
+          style=smooth
+          thickness=2
+      }
+      fill {
+        style=shaded
+        hdirection =fdiagonal
+        vdirection =fdiagonal
+        shade1 = 0.9
+        shade2 = 1.09
+      }
+    }
+
+    option {
+       style=round
+       motif=true
+       line {
+          style=smooth
+          thickness=2
+      }
+      fill {
+        style=shaded
+        hdirection =fdiagonal
+        vdirection =fdiagonal
+        shade1 = 0.9
+        shade2 = 1.09
+      }
+    }
+
+    arrow {
+        style= wonderland
+        solid=TRUE
+        etched=FALSE
+    }
+    tab_style = square
+  }
+} widget_class "*" style "default"
+
+style "toolbar" {
+    engine "smooth" {
+        line {
+	    style=smooth
+	    thickness=2
+	}
+	
+	fill {
+            style=shaded
+            hdirection = vertical
+            vdirection = vertical
+            shade1 = 0.9
+            shade2 = 1.09
+	}
+	
+	grip {
+	    style=dots_out
+	    count=3
+	    spacing=2
+	    toolbar_overlap=false
+            fill {
+               style=solid
+            }
+	}
+    }
+}
+widget_class "*BonoboDockItem*" style "toolbar"
+class "*BonoboDockItem*" style "toolbar"
+
+widget_class "*HandleBox*" style "toolbar"
+class "*HandleBox*" style "toolbar"
+
+widget_class "*Tool*" style "toolbar"
+class "*Tool*" style "toolbar"
+
+widget_class "*MenuBar*" style "toolbar"
+class "*MenuBar*" style "toolbar"
+
+style "menuitem" {
+   engine "smooth" {
+      fill {
+          style=shaded
+          hdirection = vertical
+          vdirection =vertical
+          shade1 = 0.9
+          shade2 = 1.09
+      }
+
+      line {
+          style=thin
+          thickness=1
+      }
+
+      edge {
+          line {
+             style=flat
+             thickness=0
+          }
+      }
+
+      check {
+          style=fast
+          line {
+             style=none
+             thickness=2
+          }
+          fill {
+             style=solid
+          }
+      }
+
+      option {
+          style=round
+          line {
+             style=none
+             thickness=0
+          }
+          fill {
+             style=solid
+          }
+      }
+
+      arrow {
+          style= wonderland
+          solid=TRUE
+          etched=FALSE
+      }
+   }
+} widget_class "*MenuItem*"		style "menuitem"
+class "*MenuItem*"		style "menuitem"
+
+style "radio_check" {
+    text[PRELIGHT]	="#fdfdfd" #radio buttons use text[state] for the check colour
+    text[ACTIVE]		= "#1E7ADB"
+    text[NORMAL]	= "#000000"
+    text[SELECTED]	="#1E7ADB"
+}
+widget_class "*RadioButton*" style "radio_check"
+widget_class "*CheckButton*" style "radio_check"
+
+style "scrollbar" {
+    engine "smooth" {
+      fill {
+        style=shaded
+        hdirection = vertical
+        vdirection =horizontal
+        shade1 = 0.9
+        shade2 = 1.09
+      }
+
+      line {
+          style=smooth
+          thickness=1
+      }
+
+      trough {
+          xpadding = 0
+          ypadding = 0
+          show_value = TRUE
+        
+          line {
+              style=smooth
+              thickness=2
+          }
+
+          fill {
+              style = shaded
+              hdirection = vertical
+              vdirection =horizontal
+              shade1 = 0.90
+              shade2 = 1.06
+          }
+      }
+
+      grip {
+          style=dots_out
+          count = 2
+          spacing = 4
+      }
+
+      arrow {
+          style= wonderland
+          solid=TRUE
+          etched=FALSE
+      }
+  }
+}
+widget_class "*Scrollbar*" style "scrollbar"
+class "*Scrollbar*" style "scrollbar"
+
+style "scales"  {
+  bg[SELECTED]		= "#1E7ADB"		#scroll bar background
+  engine "smooth"
+  {	
+      real_sliders = FALSE
+      fill {
+        style=shaded
+        hdirection = vertical
+        vdirection = horizontal
+        shade1 = 0.9
+        shade2 = 1.09
+      }
+      line {
+        style=smooth
+        thickness=2
+      }
+      trough {
+          xpadding = 3
+          ypadding = 3
+          show_value = TRUE
+      }
+      grip {
+          style=dots_out
+          count = 1
+          spacing = 3
+          xpadding =0
+          ypadding = 0
+      }
+  }
+} 
+widget_class "*Scale*" style "scales"
+class "*Scale*" style "scales"
+
+style "infobar" {
+  engine "smooth"
+  {	
+      fill {
+        style=shaded
+        hdirection = vertical
+        vdirection =horizontal
+        shade1 = 0.73
+        shade2 = 1.195
+      }
+
+      progress {
+        line {
+          style=smooth
+          thickness=2
+        }
+      }
+
+      trough {
+        line {
+          style=smooth
+          thickness=1
+        }
+
+        fill {
+          style=solid
+        }
+      }
+  }
+}
+class "*Progress*"		style "infobar"
+widget_class "*Progress*"		style "infobar"

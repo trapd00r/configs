@@ -1,0 +1,30 @@
+Simple, clean theme engine...
+
+./configure [--prefix=/where/you/installed/gtk2]
+make
+make install
+
+Then either use the Gnome Control Center to select the theme or put the
+following into your ~/.gtkrc-2.0 :
+
+gtk-theme-name = "ThinIce"
+
+You can apply different engine styles to different widget (or widget classes).
+The scrollbar uses mark_type1 for the slider and mark_type2 for the buttons
+on the end. Handles on toolbars uses mark_type1.
+Valid options for the mark types are:
+NOTHING - nothing
+SLASH - single (buttons) or double (slider + handles) slashes
+INVSLASH - inverted slash(es)
+DOT - dot(s)
+INVDOT - inverted dot(s)
+ARROW - arrows (only works on scrollbar buttons)
+
+The styles 'handlebox_marks', 'scrollbar_marks' and 'scroll_button_marks' are
+kinda deprecated.. almost.. they're just mapped to the mark_typeX styles..
+
+Enjoy!
+
+Tomas Ögren <stric@ing.umu.se>
+Tim Gerla <timg@rrv.net>
+Richard Hult <rhult@codefactory.se>

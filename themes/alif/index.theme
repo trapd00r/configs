@@ -1,0 +1,11 @@
+# alif metatheme
+[Desktop Entry]
+Name=alif
+Type=X-GNOME-Metatheme
+Comment=simple, slim and sleek
+Encoding=UTF-8
+[X-GNOME-Metatheme]
+GtkTheme=alif
+MetacityTheme=Brace
+
+

@@ -1,0 +1,235 @@
+style "default" {
+    fg[ACTIVE]        = "#000000"
+    fg[INSENSITIVE]   = "#848484"
+    fg[NORMAL]        = "#000000"
+    fg[PRELIGHT]      = "#000000"
+    fg[SELECTED]      = "#f6f7ec"
+
+    bg[ACTIVE]        = "#848484"
+    bg[INSENSITIVE]   = "#aeaaae"
+    bg[NORMAL]        = "#aeaaae"
+    bg[PRELIGHT]      = "#f6f7ec"
+    bg[SELECTED]      = "#848484"
+
+    base[ACTIVE]      = "#848484"	
+    base[INSENSITIVE] = "#aeaaae"
+    base[NORMAL]      = "#f4f4e0"
+    base[PRELIGHT]    = "#c6c7b5"
+    base[SELECTED]    = "#848484"
+
+    text[ACTIVE]      = "#000000"
+    text[INSENSITIVE] = "#000000"
+    text[NORMAL]      = "#000000"
+    text[PRELIGHT]    = "#000000"
+    text[SELECTED]    = "#f4f4e0"
+
+    engine "smooth"  {
+       GtkCheckButton::indicator_size    = 15
+       GtkRadioButton::indicator_size    = 15
+
+    GtkRange::trough_border           = 1
+    GtkRange::slider_width            = 13
+    GtkRange::stepper_size            = 13
+    GtkRange::stepper_spacing         = 0
+  
+       GtkPaned::handle_size  = 10
+
+       GtkScrollbar::has_backward_stepper = 0
+       GtkScrollbar::has_secondary_forward_stepper = 0
+
+       GtkScrollbar::has_forward_stepper = 1
+       GtkScrollbar::has_secondary_backward_stepper = 1
+
+       fill {
+           style=shaded
+           hdirection = vertical
+           vdirection = horizontal
+           shade1 = 0.98
+           shade2 = 1.03
+      }
+
+      line {
+         style=smooth
+         thickness=2
+      }
+
+      grip {
+         style= dots_in
+         count = 1
+         spacing = 0
+     }
+  
+     check {
+         style=clean
+         fill {
+             style=shaded
+             hdirection = fdiagonal
+             vdirection = fdiagonal
+             shade1 = 0.95
+             shade2 = 1.03
+        }
+     }
+     
+     option {
+         style=circle
+         fill {
+             style=shaded
+             hdirection = fdiagonal
+             vdirection = fdiagonal
+             shade1 = 0.98
+             shade2 = 1.03
+        }
+     }
+
+   trough {
+      fill {
+        style=solid
+      }
+    }
+
+     arrow {
+        style=xfce
+	solid=TRUE
+    }
+
+    tab_style = triangle
+   }
+} widget_class "*" style "default"
+
+style "button" = "default"
+{
+  bg[NORMAL]   = "#aeaaae"
+  bg[PRELIGHT] = "#aeaaae"
+  bg[ACTIVE]   = "#f4f4e0"
+#  fg[PRELIGHT] =
+}
+
+style "menu" {
+   bg[PRELIGHT] ="#f4f4e0"
+   fg[PRELIGHT]  = "#000000"
+   engine "smooth" {
+       fill {
+           style=shaded
+           hdirection = vertical
+           vdirection = horizontal
+           shade1 = 0.98
+           shade2 = 1.03
+      }
+
+      line {
+         style=smooth
+         thickness=2
+      }
+
+     check {
+         style=clean
+          line {
+            style=none
+            thickness=1
+          }
+     }
+     
+     option {
+         style=circle
+          line {
+            style=none
+            thickness=1
+          }
+     }
+
+     arrow {
+        style=xfce
+	solid=TRUE
+    }
+  }
+}
+class "*MenuItem*" style "menu"
+widget_class "*MenuItem*" style "menu"
+class "*Toolbar*.*" style "menu"
+widget_class "*Toolbar*.*" style "menu"
+
+style "scrollbar" {
+    bg[NORMAL]   = "#aeaaae"
+    bg[PRELIGHT] = "#aeaaae"
+    engine "smooth" {
+       fill {
+           style=shaded
+           hdirection = vertical
+           vdirection = horizontal
+           shade1 = 0.98
+           shade2 = 1.03
+      }
+
+      line {
+         style=smooth
+         thickness=2
+      }
+
+      grip {
+         style= dots_in
+         count = 1
+         spacing = 0
+     }
+  
+   trough {
+      fill {
+        style=solid
+      }
+    }
+
+     arrow {
+        style=xfce
+	solid=TRUE
+        xpadding = 0
+        ypadding = 0
+    }
+  }
+}
+
+widget_class "*Button" style "button"
+widget_class "*Scrollbar*" style "scrollbar"
+class "*Scrollbar*" style "scrollbar"
+
+style "check" {
+    fg[ACTIVE]        = "#000000"
+    fg[INSENSITIVE]   = "#000000"
+    fg[NORMAL]        = "#000000"
+    fg[PRELIGHT]      = "#000000"
+    fg[SELECTED]      = "#000000"
+
+    bg[ACTIVE]        = "#aeaaae"
+    bg[INSENSITIVE]   = "#aeaaae"
+    bg[NORMAL]        = "#aeaaae"
+    bg[PRELIGHT]      = "#aeaaae"
+    bg[SELECTED]      = "#aeaaae"
+
+    text[ACTIVE]      = "#f4f4e0"
+    text[NORMAL]      = "#f4f4e0"
+    text[PRELIGHT]    = "#f4f4e0"
+}
+
+style "radio" {
+    fg[ACTIVE]        = "#000000"
+    fg[INSENSITIVE]   = "#000000"
+    fg[NORMAL]        = "#000000"
+    fg[PRELIGHT]      = "#000000"
+    fg[SELECTED]      = "#000000"
+
+    bg[ACTIVE]        = "#aeaaae"
+    bg[INSENSITIVE]   = "#aeaaae"
+    bg[NORMAL]        = "#aeaaae"
+    bg[PRELIGHT]      = "#aeaaae"
+    bg[SELECTED]      = "#aeaaae"
+
+    text[ACTIVE]      = "#f4f4e0"
+    text[NORMAL]      = "#f4f4e0"
+    text[PRELIGHT]    = "#f4f4e0"
+}
+widget_class "*RadioButton*" style "radio"
+widget_class "*CheckButton*" style "check"
+
+style "infobar" {
+  bg[PRELIGHT] = "#848484"
+  fg[PRELIGHT]  = "#f6f7ec"
+}
+widget_class "*Progress*"		style "infobar"

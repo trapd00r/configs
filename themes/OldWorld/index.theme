@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Old World
+Type=X-GNOME-Metatheme
+Comment=A minimalistic, gold-colored appearance
+Comment[en_GB]=A minimalistic, gold-coloured appearance
+Encoding=UTF-8
+Hidden=true
+
+[X-GNOME-Metatheme]
+GtkTheme=OldWorld
+MetacityTheme=Mist
+IconTheme=Industrial

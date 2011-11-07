@@ -1,0 +1,416 @@
+#	Theme Name	: Delightfully-Smooth
+#	Author		: ajgenius
+#	Description	:
+#	
+#		A Smooth theme based on starlysium colours, with
+#	various portions based off the looks of Smooth-2000,
+#	Smooth Tangerine; and Nuvola. It was originally
+#	designed to match the Metanetics icon theme.
+
+style "default" {
+	fg[ACTIVE]		= "#000000"
+	fg[INSENSITIVE]		= "#747474"
+	fg[NORMAL]		= "#000000"
+	fg[PRELIGHT]		= "#FFFFFF"
+	fg[SELECTED]		= "#EFEFEF"
+
+	bg[ACTIVE]		= "#D2D0D7"
+	bg[INSENSITIVE]		= "#EFEFEF"
+	bg[NORMAL]		= "#ECECEC"
+	bg[PRELIGHT]		= "#9B96AB"
+	bg[SELECTED]		= "#8B869B"
+
+	base[ACTIVE]		= "#D4D0C8"
+	base[INSENSITIVE]	= "#D4D0C8"
+	base[NORMAL]		= "#FFFFFF"
+	base[PRELIGHT]		= "#8B869B"
+	base[SELECTED]		= "#8B869B"
+
+	text[ACTIVE]		= "#000000"
+    	text[INSENSITIVE]	= "#000000"
+	text[NORMAL]		= "#000000"
+	text[PRELIGHT]		= "#EFEFEF"
+	text[SELECTED]		= "#EFEFEF"
+
+	engine "smooth" {
+		GtkWidget::interior_focus		= 5
+
+		GtkCheckButton::indicator_size		= 13
+		GtkRadioButton::indicator_size		= 12
+
+		GtkPaned::handle_size			= 10
+
+		GtkRange::trough-border			= 1
+		GtkRange::slider-width			= 13
+		GtkRange::stepper-size			= 13
+		GtkRange::stepper-spacing		= 0
+
+		fill {
+			style		= gradient
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			color1[ACTIVE]		= "#F4F4F4"
+			color2[ACTIVE]		= "#D4D4D4"
+			color1[SELECTED]	= "#F4F4F4"
+			color2[SELECTED]	= "#D4D4D4"
+			color1[NORMAL]		= "#F4F4F4"
+			color2[NORMAL]		= "#D4D4D4"
+			color1[PRELIGHT]	= "#DCCFEA"
+			color2[PRELIGHT]	= "#94919f"
+		}
+
+		line {
+			style		= smooth
+			thickness	= 2
+		}
+	
+		edge {
+			line {
+				style		= thin
+				thickness	= 1
+			}
+		}
+        
+		grip {
+			style		= dots_out
+			count	=  3
+			
+			fill {
+				style	= solid
+			}
+		}
+
+		check {
+			style	= clean
+			motif	= TRUE
+			
+			fill {
+				style		= gradient
+				hdirection	= fdiagonal
+				vdirection	= fdiagonal
+				color1[ACTIVE]		= "#F4F4F4"
+				color2[ACTIVE]		= "#D4D4D4"
+				color1[SELECTED]	= "#F4F4F4"
+				color2[SELECTED]	= "#D4D4D4"
+				color1[NORMAL]	= "#F4F4F4"
+				color2[NORMAL]	= "#D4D4D4"
+				color1[PRELIGHT]	= "#DCCFEA"
+				color2[PRELIGHT]	= "#94919f"
+	  		}
+		}
+	
+		option {
+			style	= round
+			motif	= TRUE
+			
+			fill {
+				style		= gradient
+				hdirection	= fdiagonal
+				vdirection	= fdiagonal
+				
+				color1[ACTIVE]		= "#F4F4F4"
+				color2[ACTIVE]		= "#D4D4D4"
+				color1[SELECTED]	= "#F4F4F4"
+				color2[SELECTED]	= "#D4D4D4"
+				color1[NORMAL]	= "#F4F4F4"
+				color2[NORMAL]	= "#D4D4D4"
+				color1[PRELIGHT]	= "#E2DeEf"
+				color2[PRELIGHT]	= "#94919f"
+	  		}
+
+			line {
+				style=smooth
+			}			
+		}
+	
+		arrow {
+			style	= cleanice
+			solid	= TRUE
+		}
+
+		tabs {
+			style	= square
+		}	
+
+	}
+} widget_class "*" style "default"
+
+style "toolbar" {
+	engine "smooth" {
+		fill {
+			style	= solid
+		}
+	
+		line {
+			style		= thin
+			thickness	= 1
+		}
+	
+		grip {
+			style			= bars
+			toolbar_overlap	= TRUE
+			xpadding 		= 2
+		}
+	}
+}
+widget_class "*BonoboDockItem*" style "toolbar"
+class "*BonoboDockItem*" style "toolbar"
+
+widget_class "*HandleBox*" style "toolbar"
+class "*HandleBox*" style "toolbar"
+
+widget_class "*Tool*" style "toolbar"
+class "*Tool*" style "toolbar"
+
+widget_class "*MenuBar*" style "toolbar"
+class "*MenuBar*" style "toolbar"
+
+style "menuitem" {
+	engine "smooth" {
+		fill {
+			style		= gradient
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			color1[ACTIVE]		= "#F4F4F4"
+			color2[ACTIVE]		= "#D4D4D4"
+			color1[SELECTED]	= "#F4F4F4"
+			color2[SELECTED]	= "#D4D4D4"
+			color1[NORMAL]	= "#F4F4F4"
+			color2[NORMAL]	= "#D4D4D4"
+			color1[PRELIGHT]	= "#DCCFEA"
+			color2[PRELIGHT]	= "#94919f"
+		}
+	
+		line {
+			style		= thin
+			thickness	= 1
+		}
+	
+		edge {
+			line {
+				style		= thin
+				thickness	= 0
+			}
+		}
+	
+		check {
+			style	= clean
+			
+			fill {
+				style	= solid
+			}
+			
+			line {
+				style		= none
+				thickness	= 0
+			}
+		}
+	
+		option {
+			style	= round
+			
+			fill {
+				style	= solid
+			}
+			
+			line {
+				style		= none
+				thickness	= 0
+			}
+		}
+	
+		arrow {
+			style	= cleanice
+			solid	= TRUE
+		}
+	}
+}
+widget_class "*MenuItem*" style "menuitem"
+class "*MenuItem*" style "menuitem"
+
+style "scrollbar" {
+	engine "smooth" {
+		GtkRange::trough-border			= 1
+		GtkRange::slider-width			= 13
+		GtkRange::stepper-size			= 13
+		GtkRange::stepper-spacing		= 0
+  
+		GtkScrollbar::has_forward_stepper 	= 1
+		GtkScrollbar::has_backward_stepper 	= 1
+		GtkScrollbar::has_secondary_backward_stepper = 1
+
+		fill {
+			style		= gradient
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			color1[ACTIVE]		= "#F4F4F4"
+			color2[ACTIVE]		= "#D4D4D4"
+			color1[SELECTED]	= "#F4F4F4"
+			color2[SELECTED]	= "#D4D4D4"
+			color1[NORMAL]		= "#F4F4F4"
+			color2[NORMAL]		= "#D4D4D4"
+			color1[PRELIGHT]	= "#DCCFEA"
+			color2[PRELIGHT]	= "#94919f"
+		}
+	
+		line {
+			style		= thin
+			thickness	= 2
+		}
+	
+		trough {
+			fill {
+				style	= solid
+			}
+		}
+	
+		grip {
+			style	= none
+		}
+	
+		arrow {
+			style		= cleanice
+			solid		= TRUE
+			xpadding	= 1	
+			ypadding	= 1
+		}
+	}
+}
+widget_class "*Scrollbar*" style "scrollbar"
+class "*Scrollbar*" style "scrollbar"
+
+style "hscales"  {
+	bg[SELECTED]			= "#9b96Ab"
+    
+	engine "smooth" {	
+		GtkRange::trough-border			= 0
+		GtkRange::slider-width			= 22
+		GtkScale::slider-length			= 12
+
+		real_sliders	= FALSE
+	
+		fill {
+			style=gradient
+			hdirection=vertical
+			vdirection=horizontal
+			
+			color1[ACTIVE]		= "#D4D4D4"
+			color2[ACTIVE]		= "#F4F4F4"
+			color1[SELECTED]	= "#94919f"
+			color2[SELECTED]	= "#DCCFEA"
+			color1[NORMAL]	= "#F4F4F4"
+			color2[NORMAL]	= "#D4D4D4"
+			color1[PRELIGHT]	= "#DCCFEA"
+			color2[PRELIGHT]	= "#94919f"
+		}
+
+		line {
+			style		= thin
+			thickness	= 2
+		}
+
+		trough {
+			show_value	= TRUE
+			xpadding		= 7
+			ypadding		= 1
+			
+			fill {
+				style	= solid
+			}
+		}
+	
+		grip {
+			style	= none
+		}
+	}
+}
+widget_class "*HScale*" style "hscales"
+class "*HScale*" style "hscales"
+
+style "vscales"  {
+	bg[SELECTED]			= "#9b96Ab"
+    
+	engine "smooth" {	
+		GtkRange::trough-border			= 0
+		GtkRange::slider-width			= 22
+		GtkScale::slider-length			= 12
+
+		real_sliders	= FALSE
+
+		fill {
+			style=gradient
+			hdirection=vertical
+			vdirection=horizontal
+			
+			color1[ACTIVE]		= "#D4D4D4"
+			color2[ACTIVE]		= "#F4F4F4"
+			color1[SELECTED]	= "#94919f"
+			color2[SELECTED]	= "#DCCFEA"
+			color1[NORMAL]	= "#F4F4F4"
+			color2[NORMAL]	= "#D4D4D4"
+			color1[PRELIGHT]	= "#DCCFEA"
+			color2[PRELIGHT]	= "#94919f"
+		}
+
+		line {
+			style		= thin
+			thickness	= 2
+		}
+	
+		trough {
+			show_value	= TRUE
+			xpadding		= 1
+			ypadding		= 7
+			
+			fill {
+				style	= solid
+			}
+		}
+	
+		grip {
+			style	= none
+		}
+	}
+}
+widget_class "*VScale*" style "vscales"
+class "*VScale*" style "vscales"
+
+style "infobar" {
+	engine "smooth" {
+		fill {
+			style		= gradient
+			hdirection	= vertical
+			vdirection	= horizontal
+			
+			color1[ACTIVE] 		= "#F4F4F4"
+			color2[ACTIVE]		= "#D4D4D4"
+			color1[SELECTED]	= "#F4F4F4"
+			color2[SELECTED]	= "#D4D4D4"
+			color1[NORMAL]	= "#F4F4F4"
+			color2[NORMAL]	= "#D4D4D4"
+			color1[PRELIGHT]	= "#DCCFEA"
+			color2[PRELIGHT]	= "#94919f"
+		}
+	
+		line {
+			style=none
+			thickness=0
+		}
+	
+		trough {
+			fill {
+				style	= solid
+			}
+			
+			line {
+				style		= thin
+				thickness	= 1
+			}
+		}
+	}
+}
+class "*Progress*" style "infobar"
+widget_class "*Progress*" style "infobar"

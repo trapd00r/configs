@@ -1,0 +1,75 @@
+style "galaxy-default"
+{
+#    GtkButton::default_spacing        = 6
+#    GtkCheckButton::indicator_size    = 15
+#    GtkPaned::handle_size             = 6
+#    GtkRange::trough_border           = 0
+#    GtkRange::slider_width            = 15
+#    GtkRange::stepper_size            = 15
+#    GtkRange::stepper_spacing         = 0
+#    GtkScrollbar::min_slider_length   = 20
+
+    fg[NORMAL]        = "#000000"
+    fg[ACTIVE]        = "#000000"
+    fg[INSENSITIVE]   = "#949694"
+    fg[PRELIGHT]      = "#000000"
+    fg[SELECTED]      = "#FFFFFF"
+
+    bg[ACTIVE]        = "#CECECE"
+    bg[NORMAL]        = "#E6E7E6"
+    bg[INSENSITIVE]   = "#CECECE"
+    bg[PRELIGHT]      = "#EFEFEF"
+    bg[SELECTED]      = "#21459C"
+
+    base[NORMAL]      = "#ffffff"
+#    base[ACTIVE]      = "#7382BD"
+    base[INSENSITIVE] = "#ffffff"
+    base[PRELIGHT]    = "#EFEFEF"
+    base[SELECTED]    = "#4A61AD"
+
+    text[NORMAL]      = "#000000"
+    text[ACTIVE]      = "#000000"
+    text[PRELIGHT]    = "#ffffff"
+    text[SELECTED]    = "#ffffff"
+    text[INSENSITIVE] = "#ffffff"
+
+    engine "galaxy"
+    {
+    }
+}
+
+
+style "galaxy-button" = "galaxy-default"
+{
+    engine "galaxy"
+    {
+     thickness = 4
+    }
+}
+
+style "galaxy-thin" = "galaxy-default"
+{
+    engine "galaxy"
+    {
+     thickness = 1
+    }
+}
+
+
+style "galaxy-menu" = "galaxy-default"
+{
+  fg[PRELIGHT]  = "#ffffff"
+}
+
+class "GtkWidget" style "galaxy-default"
+class "GtkButton" style "galaxy-button"
+class "EComboButton" style "galaxy-thin"
+widget_class "*.*List.GtkButton" style "galaxy-thin"
+widget_class "*.ETable.GtkButton" style "galaxy-thin"
+widget_class "*.*Tree.GtkButton" style "galaxy-thin"
+widget_class "*.EShortcutsView.GtkButton" style "galaxy-thin"
+widget_class "*.EVScrolledBar.GtkButton" style "galaxy-thin"
+widget_class "*.GtkHTMLEmbedded.*GtkButton" style "galaxy-thin"
+class "GtkProgressBar" style "galaxy-menu"
+widget_class "*MenuItem*" style "galaxy-menu"
+class "GtkNotebook" style "galaxy-thin"

@@ -1,0 +1,31 @@
+# This theme for gimp is the same as the Small theme.
+# It is based on the small theme, but fixes some issues that arise
+# if used in conjunction with the eXperience theme
+# ONLY USE THIS THEME WITH THE EXPERIENCE THEME
+# (otherwise you will get some error messages)
+
+# The following needs to be the path to your Small theme
+include "/usr/share/gimp/2.0/themes/Small/gtkrc"
+
+style "fix-style"
+{
+	#this is enough, the focus is not visible, but that isn't too bad, I think
+	GimpDockbook::tab_border          = 1
+}
+
+class "GtkWidget" style "fix-style"
+
+#move arrow of combobox
+
+style "optionmenu-gimp-fix" {
+	engine "experience" {
+             group "gimp_optionmenu_arrow_normal" = "optionmenu_arrow_normal" { padding = {0, 4, 0, 0 } }
+             group "gimp_optionmenu_arrow_prelight" = "optionmenu_arrow_prelight"  { padding = {0, 4, 0, 0 } }
+             group "gimp_optionmenu_arrow_active" = "optionmenu_arrow_active"  { padding = {0, 4, 0, 0 } }
+             group "gimp_optionmenu_arrow_insensitive" = "optionmenu_arrow_insensitive"  { padding = {0, 4, 0, 0 } }
+	}
+}
+
+widget_class    "*OptionMenu*"                          style "optionmenu-gimp-fix"
+widget_class    "*Option*Menu*"                         style "optionmenu-gimp-fix"
+widget_class    "*GimpUnitMenu*"                        style "optionmenu-gimp-fix"

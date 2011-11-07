@@ -1,0 +1,20 @@
+Munja runs on the Smooth & XFce Engine(s).
+If you have any trouble using Munja, then more then likely you are either missing the engine or need to upgrade it.
+
+Smooth 0.5.8
+http://sourceforge.net/projects/smooth-engine/
+
+XFce 2.1.10
+http://prdownloads.sourceforge.net/xfce/gtk-xfce-engine-2.1.10.tar.gz?download
+
+----------------------------------------------------------------------------------------------------------------
+
+The theme is set to be installed system wide under /usr/share/themes/ for an installation under any other location, you will have to do some editing. Start yr favorite text editor & open /Munja/gtk-2.0/iconrc, from there change the pixmap path to the current install path.
+
+example: pixmap_path "/usr/share/themes/Munja/gtk-2.0/stock"
+or
+example: pixmap_path "/home/#USERNAME$/.themes/Munja/gtk-2.0/stock"
+
+If you have any questions, feel free to contact me <pyavitz@comcast.net>
+
+~Patrick

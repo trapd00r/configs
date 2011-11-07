@@ -1,0 +1,20 @@
+2002-10-11  James M. Cape <jcape@ignore-your.tv>
+
+	* Release 1.0.2:
+	  - Pixbufs for Check/Radio marks.
+	  - ROUNDED_OUT, ROUNDED_IN, MOTIF_OUT, MOTIF_IN, SHARP_OUT, SHARP_IN
+	    shadow types implemented.
+	  - Documentation on theme format in README.
+
+2002-10-03  James M. Cape <jcape@ignore-your.tv>
+
+	* Release 1.0.1.
+	* configure.in:
+	  - Bump version to 1.0.1.
+	* Makefile.am, debian/*:
+	  - Added debian subdir from package.
+	* src/rc-style.c, src/draw.c:
+	  - Added font-underline directive, implement.
+	* themes/MagicChicken/gtk-2.0/gtkrc:
+	  - Fix ACTIVE text colors for Check/Radio Buttons.
+	  - Underline PRELIGHT Check/Radio Button text.

@@ -1,0 +1,18 @@
+version 0.5.6 has been released! the 0.5.5 cycle is finished and the 0.5.7 has begun. this version cleans up and rearanges much code, improves gtk1.2 sizing and drawing in many ways, fixed pixbuf mode to use pure pixbuf calls in gtk2, and caches commonly used colors(improves speeds a great deal). It also fixed some arrow bugs and improves focus drawing, including adding the ability to change focus colors per state via new focus part, and enables matching of focus under gtk1.2 for many widgets. Added tab part for customizing tab edges and filles seperately, as well as the ability to change specifically the currently active tab. Adds the button part with the ability to turn off the "default" triangle on buttons, as well as a sub part to change the default more advanced, to enable either win32 gtk none or just the triangle style default indicator, also this allows specially customizing the default bevel when using gtk mode etc. Of note - inspite of the new tabs part tab_style is still supported for backward compatibility with existing 0.5.2 and 0.5.4 themes.
+
+version 0.5.4 has been released, the 0.5.3 cycle is finished. this adds fill=pixbuf/file[state] so slow clunky bg_pixmap[state] should no longer be required for anything. Also fixes tabs, adding triangle support for left and right aligned tabs, removing most tab overlap drawing issues, and all gaps should be fixed. Arrows now all center properly, and cleanice and xfce now support a form of non-solid arrows. grips are more reliable overall, adds several new grip types, and a few new edge styles, notably smoothbevel(although unfinished) and soft(mostly for use with smooth lines/menu spacers etc), and fixes other edge types to be more reliable. Flat now uses dark_gc for everything, giving things a much more polished look overall, and many improvements have been made to make flat themes cleaner. Other misc cleanup probably made, but forgotten about, since thats what happens when you do virtually no changes for 3 months. hopefully more work will continue for the next month. maybe even work toward 0.6 with a better abstraction of gtk1 and gtk2 and generic code, rounded corners.. well maybe... anyone know how to do decent curves(aka better then X) or implement a good bezier function in c?
+
+version 0.5.2 has been released. this adds fill=gradient/color1[state]/color2[state] support to allow more crux like defining of themes; fixes to allow a spacing of 0 for midlines etc; adds support for building rpm's for RH8 and RH9; supports gradients if "metacity" detail; and fixes gradients on menuitems on menubars for gtk1
+
+have decided to start doing sub-releases to get minor fixes out faster, current cvs is 0.5.1, next "official" release will be 0.5.2.
+
+version 0.5 has been released. with this version themes are a seperate module, and most of them are no longer available. This version offers many improvements and bug fixes over the previous, and some things may have got broken, in any event too many things too cover. In short, this version is superior in most ways so use it.
+
+version 0.5 is fast aproaching and CVS etc is now on SF at http://sf.net/projects/smooth-engine
+
+version 0.4 has been released,  this add supports for multiple check  styles, extended line support for theme parts: options, checks, & grips, and
+xpadding & ypadding for theme parts. There are also some minor improvements and the begining of general internal improvements.
+
+version 0.3 has been released, adding support for GTK1.2 along with many new and inexplicable bugs.. Thats right folks, I don't fix bugs, I make 'em.. 
+
+version 0.2 has been released to the public. woohoo!

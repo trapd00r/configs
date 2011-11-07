@@ -1,0 +1,36 @@
+[Icon Theme]
+Name=Yattacier3
+Comment=Little Apple Theme
+Inherits=gnome
+Directories=48x48/devices,48x48/emblems,48x48/filesystems,48x48/mimetypes,48x48/filesystems2,48x48/apps
+
+[48x48/devices]
+Size=48
+Type=Scaled
+Context=Devices
+
+[48x48/emblems]
+Size=48
+Type=Scaled
+Context=Emblems
+
+[48x48/filesystems]
+Size=62
+Type=Scaled
+Context=FileSystems
+
+[48x48/filesystems2]
+Size=48
+Type=Scaled
+Context=FileSystems
+
+[48x48/mime]
+Size=48
+Type=Scaled
+Context=MimeTypes
+
+[48x48/apps]
+Size=48
+Context=Applications
+Type=Fixed
+

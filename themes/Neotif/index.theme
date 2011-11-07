@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Neotif
+Type=X-GNOME-Metatheme
+Comment=Smooth appearance with a Amiga inspired appearance and older UNIX style color scheme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Neotif
+MetacityTheme=Neotif
+IconTheme=OldGNOME
+CursorTheme=DMZ-Black
+ButtonLayout=close:maximize,minimize

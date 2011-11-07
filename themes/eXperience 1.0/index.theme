@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.6
+Encoding=UTF-8
+Name=eXperience 1.0
+Type=X-GNOME-Metatheme
+Comment=eXperience The Power of Linux.\nThis is a close to "as good as it gets" version of the eXperience theme.\nIt's somewhat XP like - but way better.
+
+[X-GNOME-Metatheme]
+GtkTheme=eXperience 1.0
+MetacityTheme=eXperience 1.0
+IconTheme=eXperienceCrystal

@@ -1,0 +1,54 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT(xfce_theme_draw.c)
+THEME="xfce"
+
+# For automake.
+VERSION=2.0.8
+PACKAGE=gtk-${THEME}-engine
+
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+
+AM_CONFIG_HEADER(config.h)
+
+# Honor aclocal flags
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+AC_PROG_CC
+AC_PROG_INSTALL
+
+# No static please
+AM_DISABLE_STATIC
+
+dnl Initialize libtool
+AM_PROG_LIBTOOL
+
+PKG_CHECK_MODULES(XFCE, gtk+-2.0 >= 2.0.0,,
+			AC_MSG_ERROR([GTK+-2.0 is required to compile xfce-theme]))
+
+GTK_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+AC_SUBST(GTK_VERSION)
+AC_SUBST(XFCE_CFLAGS)
+AC_SUBST(XFCE_LIBS)
+
+# Checks for header files.
+AC_HEADER_STDC
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+AC_OUTPUT([
+gtk-xfce-engine-2.spec
+Makefile
+Theme_b5/Makefile
+Theme_b5/gtk-2.0/Makefile
+Theme_basic/Makefile
+Theme_basic/gtk-2.0/Makefile
+Theme_funklor/Makefile
+Theme_funklor/gtk-2.0/Makefile
+Theme/gtk-2.0/Makefile
+Theme/Makefile
+Theme_light/Makefile
+Theme_light/gtk-2.0/Makefile
+Theme_redmondxp/Makefile
+Theme_redmondxp/gtk-2.0/Makefile
+])

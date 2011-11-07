@@ -1,0 +1,14 @@
+# Easy Listening metatheme
+# (c) 2005 Holger Bauer
+
+[Desktop Entry]
+Name=Easy Listening
+Type=X-GNOME-Metatheme
+Comment=Summer theme
+Comment[de]=Sommer Sonne Sonnenschein
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=EasyListening
+MetacityTheme=EasyListening
+IconTheme=Wasp

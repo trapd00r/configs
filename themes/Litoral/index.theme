@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Litoral
+Type=X-GNOME-Metatheme
+Comment=Litoral - Industrial and Plastik modifications.
+
+[X-GNOME-Metatheme]
+GtkTheme=Litoral
+MetacityTheme=Litoral
+IconTheme=gnome

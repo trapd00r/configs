@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=AluminumAlloy-Smog
+Type=X-GNOME-Metatheme
+Comment=AluminumAlloy - A Port of a Mac OS X theme originally made by Max Rudberg.
+Name[hu_HU]=AluminumAlloy-Smog
+Name[en_US]=AluminumAlloy-Smog
+
+[X-GNOME-Metatheme]
+GtkTheme=AluminumAlloy-Smog
+MetacityTheme=AluminumAlloy-Smog
+IconTheme=gnome

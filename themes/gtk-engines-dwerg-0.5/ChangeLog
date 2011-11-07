@@ -1,0 +1,15 @@
+6 dec 2002 Manfred Stienstra <manfred.stienstra@dwerg.net>
+    * Made the lines of the tabs meet at the right place
+    * Created a draw focus, for a better looking focus
+    * Some code cleaning
+    * Fixed checkbox edge problem and radio button color
+
+1 dec 2002 Manfred Stienstra <manfred.stienstra@dwerg.net>
+
+    * Updated some stuff to get the ToolBar to be a little lighter.
+    * Selected items in trees and lists are readable now.
+    * Buttons are a bit more like buttons
+
+30 nov 2002 Manfred Stienstra <manfred.stienstra@dwerg.net>
+
+    * First release, programmed in a day. So probably with some bugs.

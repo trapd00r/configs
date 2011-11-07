@@ -1,0 +1,34 @@
+# Edit these colors and fonts however you like.
+
+style "CoolGorilla" 
+{
+ 
+ 
+  engine "industrial" { } 
+
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#ffffff"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#8b8d99"  
+  
+  bg[NORMAL]       = "#e5e5ca" 
+  bg[ACTIVE]       = "#e3dcb2" 
+  bg[PRELIGHT]     = "#ecaf1e" 
+  bg[SELECTED]     = "#9c8173" 
+  bg[INSENSITIVE]  = "#949180" 
+  
+  base[NORMAL]     = "#ffffff"
+  base[SELECTED]   = "#857d78"
+  base[ACTIVE]     = "#a0a1a5"
+  base[PRELIGHT]   = "#f0f0f0"
+  base[INSENSITIVE]= "#cdcfd8"
+  
+  text[INSENSITIVE]= "#747474"
+  text[SELECTED]   = "#ffffff"
+  text[ACTIVE]     = "#000000"
+}
+
+
+
+class "GtkWidget" style "CoolGorilla"

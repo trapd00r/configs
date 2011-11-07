@@ -1,0 +1,66 @@
+# Edit these colors and fonts however you like.
+module_path "/usr/lib/gtk/themes/engines"
+
+style "default"
+{
+
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#FFFFFF"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#747474"
+  bg[NORMAL]       = "#E6E6E6"
+  bg[ACTIVE]       = "#F4F4F4"
+  bg[PRELIGHT]     = "#607597"
+  bg[SELECTED]     = "#607597"
+  bg[INSENSITIVE]  = "#D3D3DD"
+  base[NORMAL]     = "#F7F7F7"
+  base[ACTIVE]     = "#D3D3DD"
+  base[PRELIGHT]   = "#A5A5A7"
+  base[SELECTED]   = "#607597"
+  base[INSENSITIVE]= "#D3D3DD"
+  text[INSENSITIVE]= "#747474"
+  text[NORMAL]     = "#000000"
+  text[PRELIGHT]   = "#000000"
+  text[ACTIVE]	   = "#000000"
+  text[SELECTED]   = "#ffffff"
+
+  engine "thinice"
+  {
+    handlebox_marks = TRUE
+    # Do you want the // marks on the scrollbar handle?
+    scrollbar_marks = TRUE
+    # Do you want the scrollbar handles rectangular or a bit shaped?
+    rect_scrollbar = TRUE
+
+    # The following variables are semi-generic, can be applied to
+    # different widget classes etc..
+
+  }
+}
+style "scrollbar"
+{
+ 
+
+
+    bg[PRELIGHT]   = "#607597"
+    bg[NORMAL]	= "#DDDDDD"
+    
+}
+style "menu" = "default"
+{
+		  bg[PRELIGHT]     = "#607597"
+		engine "redmond95" { }
+
+}
+
+style "togglebuttons" = "default"
+{
+   engine "redmond95" { }
+}
+class "GtkWidget" style "default"
+class "GtkRange" style "scrollbar"
+class "GtkCheckButton" style "togglebuttons"
+class "GtkRadioButton" style "togglebuttons"
+class "GtkMenuItem*"	style "menu"
+

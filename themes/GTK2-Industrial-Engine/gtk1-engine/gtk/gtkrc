@@ -1,0 +1,106 @@
+
+
+style "industrial-default"
+{
+  #GtkWidget::interior_focus = 1
+  #GtkButton::default_border = { 3, 3, 3, 3 }
+  #GtkButton::default_outside_border = { 3, 3, 3, 3 }
+  #GtkRange::trough_border = 0
+  #
+  #GtkWidget::focus_padding = 1
+  #
+  #GtkPaned::handle_size = 7
+  #
+  #GtkRange::slider_width = 15
+  #GtkRange::stepper_size = 15
+  #GtkScrollbar::min_slider_length = 30
+  #GtkCheckButton::indicator_size = 13
+  #GtkRadioButton::indicator_size = 13
+  #GtkMenuBar::internal-padding = 0
+  #
+  #GtkButton::child_displacement_x = 1
+  #GtkButton::child_displacement_y = 1
+
+  bg[NORMAL]      = "#f6f6f6"
+  bg[PRELIGHT]	   = "#ffffff"
+  fg[PRELIGHT]    = "#202020"
+  bg[ACTIVE]	   = "#d9d9d9"
+  bg[INSENSITIVE] = "#d9d9d9"
+  bg[SELECTED]    = "#99a6bf"
+
+  base[SELECTED]  = "#7b96ac"
+  text[SELECTED]  = "#ffffff"
+
+
+  engine "industrial" 
+    {
+      contrast = 1.0
+    }
+}
+
+style "industrial-wide" = "industrial-default"
+{
+  engine "industrial" 
+    {
+      wide = TRUE
+      contrast = 1.0
+    }
+}
+
+style "industrial-unrounded" = "industrial-default"
+{
+  engine "industrial" 
+    {
+      rounded_buttons = FALSE
+      contrast = 1.0
+    }
+}
+
+style "industrial-menu" = "industrial-default"
+{
+  #bg[PRELIGHT]    = "#7b96ac"
+  #bg[SELECTED]    = "#7b96ac"
+  bg[PRELIGHT]    = "#3e71aa"
+  bg[SELECTED]    = "#577591"
+
+  fg[PRELIGHT]  = "#ffffff"
+  fg[SELECTED]  = "#ffffff"
+}
+
+style "industrial-frame-title" = "industrial-default"
+{
+  fg[NORMAL] = { 0.25,0.25,0.25 }
+}
+
+style "industrial-tooltips" = "industrial-default"
+{
+  bg[NORMAL] = { 1.0,1.0,0.75 }
+}
+
+style "industrial-evolution-addressbook" = "industrial-default"
+{
+  bg[NORMAL] = "#d6d6d6"
+}
+
+class "GtkWidget" style "industrial-default"
+class "GtkButton" style "industrial-wide"
+class "GtkRange" style "industrial-wide"
+class "GtkMenu" style "industrial-wide"
+class "GtkFrame" style "industrial-wide"
+class "GtkStatusbar" style "industrial-wide"
+class "GtkMenuItem" style "industrial-menu"
+widget_class "*.*MenuItem.*" style "industrial-menu"
+class "GtkEntry" style "industrial-wide"
+widget_class "*.GtkFrame.GtkLabel" style "industrial-frame-title"
+widget "gtk-tooltips" style "industrial-tooltips"
+
+#widget_class "*.GtkTreeView.GtkButton" style "industrial-unrounded"
+#widget_class "*.GtkCTree.GtkButton" style "industrial-unrounded"
+#widget_class "*.GtkList.GtkButton" style "industrial-unrounded"
+#widget_class "*.GtkCList.GtkButton" style "industrial-unrounded"
+widget_class "*.GtkList.*" style "industrial-unrounded"
+widget_class "*.GtkCList.*" style "industrial-unrounded"
+widget_class "*.ETree.*" style "industrial-unrounded"
+widget_class "*.ETable.*" style "industrial-unrounded"
+
+widget_class "*.EMinicardViewWidget" style "industrial-evolution-addressbook"

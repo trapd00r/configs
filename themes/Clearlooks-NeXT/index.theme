@@ -1,0 +1,7 @@
+[X-GNOME-Metatheme]
+Name=Clearlooks-NeXT
+Type=X-GNOME-Metatheme
+Comment=Attractive Usability with NeXT style scrollbars
+Encoding=UTF-8
+GtkTheme=Clearlooks-NeXT
+IconTheme=gnome

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SmoothGNOME-Pink
+Type=X-GNOME-Metatheme
+Comment=A very basic, conservative HIG-colored theme, with pink highlights.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SmoothGNOME-Pink
+MetacityTheme=SmoothGNOME
+IconTheme=SmoothGNOME

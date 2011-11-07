@@ -1,0 +1,59 @@
+style "default"
+{
+	fg[NORMAL]			= "#000000"
+	fg[ACTIVE]			= "#000000"
+	fg[INSENSITIVE]		= "#565248"
+	fg[PRELIGHT]			= "#000000"
+	fg[SELECTED]			= "#ffffff"
+        
+	bg[ACTIVE]			= "#bab5ab"
+	bg[NORMAL]			= "#eae8e3"
+	bg[INSENSITIVE]		= "#e1dfda"
+	bg[PRELIGHT]			= "#eed680"
+	bg[SELECTED]			= "#d1940c"
+
+	base[NORMAL]		= "#ffffff"
+	base[ACTIVE]			= "#aaa69a"
+	base[INSENSITIVE]	= "#ffffff"
+	base[PRELIGHT]		= "#eed680"
+	base[SELECTED]		= "#d1940c"
+        
+	text[NORMAL]			= "#000000"
+	text[ACTIVE] 			= "#000000"
+	text[PRELIGHT]		= "#000000"
+	text[SELECTED]		= "#ffffff"
+	text[INSENSITIVE]	= "#565248"
+
+	engine "mist" {
+	}
+}
+
+style "menuitem"
+{
+	text[PRELIGHT]	= "#ffffff"
+	fg[PRELIGHT]		= "#ffffff"
+}
+
+style "clist" 
+{
+	base[ACTIVE] = "#ffffff"
+}
+
+style "button" = "default"
+{
+	bg[NORMAL]       = "#d1cdc5"
+	bg[PRELIGHT]     = "#eed680"
+	#to use the old prelight color, replace #eed680 with #f5f3ee on the line above
+}
+
+class "GtkWidget" style "default"
+class "GtkCList" style "clist"
+class "GtkButton" style "button"
+widget_class "*.GtkMenuItem.*" style "menuitem"
+widget_class "*.GtkPixmapMenuItem.*.*" style "menuitem"
+widget_class "*.GtkPixmapMenuItem.*" style "menuitem"
+widget_class "*.GtkImageMenuItem.*" style "menuitem"
+widget_class "*.GtkAccelMenuItem.*" style "menuitem"
+widget_class "*.GtkRadioMenuItem.*" style "menuitem"
+widget_class "*.GtkCheckMenuItem.*" style "menuitem"
+widget_class "*.GtkButton.*" style "button"

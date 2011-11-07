@@ -1,0 +1,21 @@
+This is the Smooth GTK engine, currently it supports GTK2 and GTK1.2, however GTK 1.2 support is a bit messier/less reliable then GTK2, although it has improved a bit in recent CVS, most noticable problems are changing themes causes sliders and scrollbar sizes to misbehave unless gtk1.2 apps are restarted afterword.
+
+The GTK 1.2 version adds nice support for reading most GTK2 Style Properties and xthickness & ythickness, however it is incomplete and only actualy sets a few of them.
+
+to make,  run: 
+  ./configure --prefix=<prefix> [--enable-gtk-1] [--enable-gtk-2=no]
+  make
+  make install
+
+FEEL FREE TO HELP!
+
+The current version is full of messy & sometimes downright screwy code. I am still attempting to clean up and somewhat organize most of the code, however in the process I often mess up the actual functionality of code, I am slowly finding and fixing these things, but feel free to organize and/or fix the stupid things I have managed to destroy and have yet too fix.
+
+Also, feel free to improve in anyway that makes sense. Though I would prefer proper functionality before adding of new features.
+
+To sum up : if you have the inclination to do so, I would not be opposed to patches to fix any portion of the code whatsoever, from figuring out what to do with draw_polygon to make it obey the theme line style, to fixing any retarded thing I might have done while adding GTK1.2 support, or any of the other more recent features and fixes.
+
+Enjoy!
+
+Andrew Johnson <ajgenius@ajgenius.us>
+Dec 16, 2003

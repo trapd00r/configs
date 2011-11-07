@@ -1,0 +1,10 @@
+An attempt to a simple, pleasant and professional looking theme for GTK1.x and GTK2.0.
+
+The color scheme is loosely based on Solaris/CDE.
+
+It requires the current version of LighthouseBlue engine:
+http://sourceforge.net/projects/lighthouseblue/
+
+To make this work with the LighthouseBlue engine 0.4, as packaged in Debian unstable for example, edit ~/.themes/Sunhouse/gtk-2.0/gtkrc and comment out the three marked lines.
+
+Ovidiu D. Damian <odd@twobaboons.net>

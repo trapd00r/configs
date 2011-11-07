@@ -1,0 +1,35 @@
+Midnight OS X 0.1
+by Azuma Hazuki (AzumaHazuki at gmail dot com)
+
+Description:	A theme based on Tenebrific with some heavily modified pixmaps
+		(some taken from Aquativo 2.0). Made for people who love the Mac
+		look but want a dark version and/or must work in low light
+		conditions. This theme contains only a GTK2 (Gnome 2.x)
+		version and does not include custom stock icons like the original
+		Tenebrific theme did. In accordance with the wishes of the previous
+		authors, documentation and credits from pervious versions of the
+		theme have been left intact, as below. Tenebrific itself started
+		as a modification of the "Glossy-P" theme.
+
+
+Tenebrific 0.40
+by Dave Kaufman <dave@davekaufman.net>
+   http://davekaufman.net/node/view/171
+
+Description:	Tenebrific ("producing darkness") is an dark, aqua-ish GTK2 and metacity theme.
+
+Details:
+					Initially,  all I did was use ImageMagick and the Gimp to invert and darken up the Glossy P graphics, changed a couple color values in the rc files, and voila!
+                    Since that time I have spent considerable effort improving the cohesiveness of the theme, cleaning up pixmaps and trying to make them as consistent as possible.  The gtkrc has also deviated from the original Glossy P, in that I have removed some of the style sections and some of the comments. 
+
+					Many thanks go to m5brane for his excellently documented theme files.  Without them I would have been lost.
+					Per his request, I have included all original documentation and comments.  See the enclosed file ORIGINAL-README for more details.  The whole is summed up nicely in the LICENSING file as well. 
+				
+					Incidentally, I've included a GTK1 theme.  It's nothing more than a simple, dark colored theme that mostly matches. It requires the Industrial engine (http://art.gnome.org/themes/gtk_engines/672/) to work properly.  It is also in much need of improvement.  People who still use GTK1 apps (I don't really make use of any) are encouraged to submit patches, fixes, ideas, and bugs.  If there is enough (indeed, any) request, I will flesh out the GTK1 theme furthur.
+
+There is also an alternative metacity theme included in the archive.  It can be found in the "metacity-0.30.1" directory.  This is the metacity theme as it appeared in the 0.30.1 release.  To switch, simply delete/move/rename the metacity-1 directory, then rename metacity-0.30.1  to metacity-1
+
+
+Comments, Kudos, Polite Requests, Death Threats and all other complaints: dave@davekaufman.net or feel free to comment on the theme page directly: http://davekaufman.net/node/view/171
+
+Feedback is most welcomed.

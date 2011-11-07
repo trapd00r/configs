@@ -1,0 +1,18 @@
+Sylver v2.0
+
+Both themes run on the XFce & Smooth engine.
+For best results use the Smooth Engine that comes w/ Gnome Themes Extras v0.7 or Smooth v0.5.8
+
+NOTE: The Sylver GTK1 Theme uses the Industrial GTK1 Engine... (there is no Sylver Shyne version)
+
+If you should have any problems or questions, feel free to contact me:
+P.Yavitz <pyavitz@comcast.net>
+
+Change Log for v2.0 --- X
+Adjusted & changed the Check & Radio Buttons
+Made the Option Button Menus smaller, including the Arrows
+Fixed the ICONRC file and added more Stock icons (CD Player, Rhythmbox, & Gaim)
+
+NOTE: I still haven't been able to figure out how to set the stock icons so they work no matter where the theme is installed. Be it $HOME$ or System Wide... If anyone knows a fix for this, please let me know...
+
+For the time being they are set by default to be installed under "/usr/share/themes". If you choose to install them else where, you will have to adjust the ICONRC files so that they point to the new location...

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=T-ish-Ubuntulooks
+Type=X-GNOME-Metatheme
+Comment=Theme based on T-ish
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=T-ish-Ubuntulooks
+MetacityTheme=T-ish-Ubuntulooks
+IconTheme=OSX

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Glossy P
+Type=X-GNOME-Metatheme
+Comment=A tweaked version of Glossy, with some changes to colors and graphics. 
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Glossy P
+MetacityTheme=Glossy P
+IconTheme=Industrial

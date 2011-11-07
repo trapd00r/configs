@@ -1,0 +1,81 @@
+style "wonderland-default"
+{
+  #GtkWidget::interior_focus = 1
+  #GtkButton::default_border = { 0, 0, 0, 0 }
+  #GtkButton::default_outside_border = { 0, 0, 0, 0 }
+  #GtkRange::trough_border = 0
+
+  #GtkWidget::focus_padding = 1
+
+  #GtkPaned::handle_size = 6
+  
+  #GtkRange::slider_width = 15
+  #GtkRange::stepper_size = 15
+  #GtkScrollbar::min_slider_length = 30
+  #GtkCheckButton::indicator_size = 12
+  #GtkMenuBar::internal-padding = 0
+
+  ##GtkOptionMenu::indicator_size = { 11, 6 }
+  ##GtkOptionMenu::indicator_spacing = { 4, 5, 2, 2 }
+
+fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#999989" # 
+  bg[NORMAL]       = "#eeeee0" #
+  bg[ACTIVE]       = "#ddddcf" #
+  bg[PRELIGHT]     = "#f5f5ec" #
+  bg[SELECTED]     = "#928da2" #
+  bg[INSENSITIVE]  = "#eeeee0" #
+  base[NORMAL]     = "#ffffff"
+  base[SELECTED]   = "#928da2"
+#  base[ACTIVE]     = "#d3c996"
+  base[PRELIGHT]   = "#E5E5F7"
+  base[INSENSITIVE]= "#ddddcf"
+  text[INSENSITIVE]= "#747474"
+  text[SELECTED]   = "#ffffff"
+#  text[ACTIVE]     = "#000000"
+
+  
+  engine "wonderland" 
+    {
+      contrast = 1.0
+    }
+}
+
+style "wonderland-wide" = "wonderland-default"
+{
+  engine "wonderland" 
+    {
+      wide = TRUE
+    }
+}
+
+style "wonderland-menu" = "wonderland-default"
+{
+  bg[SELECTED]    = { 0.30,0.35,0.65 }
+  fg[PRELIGHT]  = "#ffffff"
+}
+
+style "wonderland-frame-title" = "wonderland-default"
+{
+  fg[NORMAL] = { 0.25,0.25,0.25 }
+}
+
+style "wonderland-tooltips" = "wonderland-default"
+{
+  bg[NORMAL] = { 1.0,1.0,0.75 }
+}
+
+class "GtkWidget" style "wonderland-default"
+class "GtkButton" style "wonderland-wide"
+class "GtkRange" style "wonderland-wide"
+class "GtkMenu" style "wonderland-wide"
+class "GtkFrame" style "wonderland-wide"
+class "GtkStatusbar" style "wonderland-wide"
+class "GtkMenuItem" style "wonderland-menu"
+widget_class "*.*MenuItem.*" style "wonderland-menu"
+class "GtkEntry" style "wonderland-wide"
+widget_class "*.GtkFrame.GtkLabel" style "wonderland-frame-title"
+widget "gtk-tooltips" style "wonderland-tooltips"

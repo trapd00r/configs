@@ -1,0 +1,34 @@
+2003-01-29	Enno Cramer <uebergeek@web.de>
+
+Converted to Gnome Icon Theme
+
+2002-10-22	Baptiste Mille-Mathias <bmm80@ifrance.com>
+
+Real Mac OS X Tab (beautiful) taken from GTK2 theme Aqua X
+Change the left pattern (very translucent); can be easyly 
+changed to thr previous (edit Snow-Apple.xml, and replace
+left_alt.png with left.png)
+
+2002-10-20	Baptiste Mille-Mathias <bmm80@ifrance.com>
+
+New tab for Sidebar (more OS X)
+
+2002-08-30	Baptiste Mille-Mathias <bmm80@ifrance.com>
+
+desktop-home.png added
+CD icon modified (a little bit)
+Extras Directory added which contains great new icons from hein (as documents directory, favorites directory,...).
+Theses icons comes in 64x64, 72x72, 96x96, and 128x128.
+
+2002-08-11	Baptiste Mille-Mathias <bmm80@ifrance.com>
+
+New version:
+Ok, ok, I am not an Unix killer.
+There are somes troubles with right on files
+I erased theses problems (I think)
+
+2002-08-02	Baptiste Mille-Mathias <bmm80@ifrance.com>
+
+First Version of Snow-Apple
+This theme is based on Metal-Apple (from Me) which is based on Ximian-North (it's a good template to create Nautilus theme).
+The background is taken from a GDM theme, the Aqua icons come from Hein (Good Mac OS X's Icon Creator) [www.mixthepix.com]

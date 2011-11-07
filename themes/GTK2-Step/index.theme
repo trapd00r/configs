@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=GTK2-Step
+Type=X-GNOME-Metatheme
+Comment=The Next look of GTK
+Name[en_US]=GTK2-Step
+
+[X-GNOME-Metatheme]
+GtkTheme=GTK2-Step
+MetacityTheme=Mist
+IconTheme=Gorilla

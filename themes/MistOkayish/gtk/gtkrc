@@ -1,0 +1,56 @@
+style "default"
+{
+        fg[NORMAL]              = "#000000"
+        fg[ACTIVE]              = "#000000"
+        fg[INSENSITIVE]         = "#747474"
+        fg[PRELIGHT]            = "#000000"
+        fg[SELECTED]            = "#f5f5f5"
+        
+        bg[ACTIVE]              = "#ccccc0"
+		bg[NORMAL]              = "#eeeee0"
+        bg[INSENSITIVE]         = "#d6d6d6"
+        bg[PRELIGHT]            = "#f5f5f0"
+        bg[SELECTED]            = "#4a5e7d"
+
+        base[NORMAL]            = "#ffffff"
+        base[ACTIVE]            = "#aaaaaa"
+        base[INSENSITIVE]       = "#ffffff"
+        base[PRELIGHT]          = "#eaeaea"
+        base[PRELIGHT]          = "#eaeaea"
+		base[SELECTED]          = "#4a5e7d"
+        
+        text[NORMAL]            = "#000000"
+        text[ACTIVE]            = "#000000"
+        text[PRELIGHT]          = "#000000"
+        text[SELECTED]          = "#FFFFFF"
+        text[INSENSITIVE]       = "#555555"
+
+	engine "mist" {
+	}
+}
+
+style "menuitem"
+{
+        text[PRELIGHT]          = "#ffffff"
+        fg[PRELIGHT]          = "#ffffff"
+}
+
+style "clist" 
+{
+	base[ACTIVE] = "#ffffff"
+}
+
+class "GtkWidget" style "default"
+class "GtkCList" style "clist"
+widget_class "*.GtkMenuItem.*" style "menuitem"
+widget_class "*.GtkPixmapMenuItem.*.*" style "menuitem"
+widget_class "*.GtkPixmapMenuItem.*" style "menuitem"
+widget_class "*.GtkImageMenuItem.*" style "menuitem"
+widget_class "*.GtkAccelMenuItem.*" style "menuitem"
+widget_class "*.GtkRadioMenuItem.*" style "menuitem"
+widget_class "*.GtkCheckMenuItem.*" style "menuitem"
+
+
+
+
+

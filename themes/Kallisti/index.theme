@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Orade2
+Type=X-GNOME-Metatheme
+Comment=
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Orade2
+MetacityTheme=Resilience
+IconTheme=Tangerine

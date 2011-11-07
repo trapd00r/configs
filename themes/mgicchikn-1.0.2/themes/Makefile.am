@@ -1,0 +1,3 @@
+
+SUBDIRS = MagicChicken OkayishChicken CortlandChicken
+

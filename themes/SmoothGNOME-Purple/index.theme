@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SmoothGNOME-Purple
+Type=X-GNOME-Metatheme
+Comment=A very basic, conservative HIG-colored theme, with purple highlights.
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=SmoothGNOME-Purple
+MetacityTheme=SmoothGNOME
+IconTheme=SmoothGNOME

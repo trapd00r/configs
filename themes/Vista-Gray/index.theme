@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Vista-Gray
+Type=X-GNOME-Metatheme
+Comment=Vista Gray for the gray lovers
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Vista-Gray
+MetacityTheme=Vista-Gray
+XfwmTheme=Vista
+IconTheme=Vista

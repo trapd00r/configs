@@ -1,0 +1,79 @@
+# Sunhouse Theme
+
+style "default"
+{
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#F7F7EB"
+  fg[INSENSITIVE]  = "#747474"
+
+  bg[NORMAL]       = "#C7C9D1"
+  bg[ACTIVE]       = "#B5B7BF" 
+  bg[PRELIGHT]     = "#BDBFC7"
+  bg[SELECTED]     = "#666699" 
+  bg[INSENSITIVE]  = "#C7C9D1"
+
+  base[NORMAL]     = "#F7F7EB"
+  base[ACTIVE]     = "#C7C9D1"
+  base[PRELIGHT]   = "#F7F7EB"
+  base[SELECTED]   = "#666699"
+  base[INSENSITIVE]= "#C7C9D1"
+
+  text[NORMAL]     = "#000000"
+  text[ACTIVE]     = "#000000"
+  text[PRELIGHT]   = "#000000"
+  text[SELECTED]   = "#F7F7EB"
+  text[INSENSITIVE]= "#747474"
+
+  engine "lighthouseblue"
+  {}
+}
+
+style "notebook" = "default"
+{
+  bg[NORMAL]       = "#C2C4CC"
+  bg[ACTIVE]       = "#AEB0B8"
+  engine "lighthouseblue" 
+   {
+    wide = TRUE
+   }
+}
+
+style "frame" = "default"
+{
+  bg[NORMAL]       = "#B8BAC2"
+}
+
+style "button" = "default"
+{
+  bg[NORMAL]       = "#BDBFC7"  
+  bg[PRELIGHT]     = "#D1D3DB"
+  bg[ACTIVE]       = "#B5B7BF"
+}
+
+style "togglebutton" = "default"
+{
+  fg[SELECTED] = "#666699"
+
+  bg[NORMAL] = "#BDBFC7"
+  bg[PRELIGHT] = "#D1D3DB"
+  bg[ACTIVE] = "#B5B7BF"
+}
+
+style "menuitem" = "default"
+{
+  bg[PRELIGHT]     = "#666699"
+  fg[PRELIGHT]     = "#F7F7EB"
+}
+
+class "GtkWidget" style "default"
+class "GtkNotebook" style "notebook"
+class "GtkButton" style "button"
+class "GtkFrame" style "frame"
+class "GtkMenuItem" style "menuitem"
+class "GtkToggleButton" style "togglebutton"
+
+widget_class "*.GtkButton.*" style "button"
+widget_class "*.*MenuItem.*" style "menuitem"
+

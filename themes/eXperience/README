@@ -1,0 +1,44 @@
+---------------------------------------------------------
+Readme for the eXperience theme
+---------------------------------------------------------
+
+Name:		eXperience
+Release:		3.03
+Author:		David Christian Berg
+Email:		david@sipsolutions.com
+
+
+3.03
+Added right-to-left support and moved all the icons into the icontheme.
+
+3.02
+There is an option to print out the path of a widget. This is very handy for adjusting the style-bindings in the gtkrc. It has been implemented in 3.0 but I forgot to document it. Simply run a program from the terminal with "EXPERIENCE_PRINT_WIDGET_PATH=TRUE" set.
+Other than that: The ComboBoxes have been fixed. I'm not sure, why I made them look the way they did. I actually believe there was a change in GTK. Also there were many bugs with the Notebooks. I'm not sure, why I haven't noticed them before. Probably the top Extentions were right and only all the others screwed up. Furthermore I changed the orientation of the handles because it they switched them in Bonobo (was a patch) and also gave them a larger padding because I think it looks a little nicer
+
+3.01
+The bug with the inconsistant state of the Radiobuttons and Togglebutton has been fixed. Also the Statusbarbutton has gotten minor improvement in form of bugfixing.
+Futhermore some adjustments to a minor change in the engine have been made.
+
+3.0
+With this release all the benefits of a completely new engine are weaved into the code. A big thank you to my brother Benjamin, who did all the coding of the engine with respect to my suggestions and needs -- I believe he actually did more work for this new release than I did myself. The new themes might be slightly slower, but the advantage of being able to change color easily is so huge, that I was more than willing to take this slight drawback. The new engine is a branch (eXperience-engine) of the eXperience project.
+To change the color scheme, open the colorscheme file within the gtk-2.0 folder and run the respective comand that you'll find at the bottom of the document. Of course you're welcome to create your own color scheme.
+
+All icons I and images I created are published under GPL.
+
+Feel free to improve the theme and the icon set (esp. I need more Icons). I'd be glad to receive suggestions improvements and such.
+
+Contact me if you have any questions!
+
+---------------------------------------------------------
+TO DO (Last updated 2005-02-08)
+---------------------------------------------------------
+
+- More, a lot more own icons and redo some. (esp. complete the stock icon set!)
+
+- The bug about handle orientation needs to be fixed in Gtk. (Patch is in the Tracker -- Bonobo is fixed now!)
+
+- The Gnome pannel should have a gtk_shadow, to be themable. I filed a bug agaist the gnome-panel.
+
+- Redo the buttons and background  of panel drawers as soon as the panel is fixed.
+
+- Try to make a focus for textviews and the such, that looks like the textentry focus (Can't work, I filed a bug agaist Gtk)

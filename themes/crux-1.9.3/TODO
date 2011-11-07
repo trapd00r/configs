@@ -1,0 +1,23 @@
+
+TODO
+****
+
+ - use gdk_draw_points instead of multiple calls to gdk_draw_point
+
+ - spinbutton arrows (5464)
+
+ - paned widget thumbs (5466)
+
+ - ACTIVE state of scrollbar thumbs
+
+   This doesn't seem to be doable. By the time draw_box is called to
+   draw the slider there's nothing set in the GtkRange widget showing
+   whether or not the button is pressed
+
+ - move `scaled' and `setbg' parameters of paint_stock_image to gtkrc
+
+ - fix focused state of notebook tabs (5471?)
+
+ - write formal grammar of engine data somewhere
+
+ - 2d scroller in ggv looks horrible

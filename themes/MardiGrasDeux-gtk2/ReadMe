@@ -1,0 +1,21 @@
+MardiGrasDeux by Kevin Kane (werewolves@werewolves.us)
+
+Based on H20-gtk2 by Eric Reitz.
+
+Altered color balance in the GIMP:
+
+Purple: From grey base
+Red -50
+Green -100
+Blue -25
+Darkened residual white in corner
+
+Green: From emerald base
+Red -100
+Green -20
+Blue -100
+
+Yellow: From grey base
+Red +25
+Green 0
+Blue -100

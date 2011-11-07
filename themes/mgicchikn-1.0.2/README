@@ -1,0 +1,140 @@
+
+Magic Chicken GTK+ 2.0 Engine
+===============================================================================
+
+ABOUT
+-------------------------------------------------------------------------------
+The Magic Chicken Engine is a theme engine for GTK+ 2.0. It supports
+theme-selectable drawing styles and shadows for every widget and every state.
+It also includes the MagicChicken and OkayishChicken themes, which use the
+engine. MagicChicken is a Crux-style theme using the teal-green colors of the
+Crux Teal Nautilus theme. OkayishChicken is a rough copy of the PrettyOkayish
+theme by Tigert <URI:http://tigert.gimp.org/>. It was written by James Cape
+<jcape@ignore-your.tv>.
+
+
+THEME FORMAT
+-------------------------------------------------------------------------------
+
+Directives:
+-----------
+The following theme directives are valid inside the "mgicchikn" engine
+specification.
+
+	shadow[STATE][SHADOW-STYLE] = SHADOW-STYLE
+		Set the shadow style for a particular widget state and *default*
+		border/shadow style.
+
+	shadow-width[STATE][SHADOW-STYLE] = INTEGER
+		How wide to draw the selected shadow. Useful with a SHADOW-STYLE of
+		FLAT, or to get "thin" shadows. Currently only 1 and 2 are supported.
+
+	grippy-style[STATE][SHADOW-STYLE] = { GRIPPY-STYLE, DECIMAL-PERCENTAGE }
+		How to draw grippies (for pane widgets, etc.) based on the widget state
+		and current shadow style. The decimal percentage is what proportion
+		of the widget in question to cover with the grippy.
+
+	font-shadow[STATE] = SHADOW-STYLE
+		What type of shadow to use when drawing text using freetype for a
+		particular widget state. Currently, only IN and ETCHED_IN is supported.
+
+	font-underline[STATE] = UNDERLINE-STYLE
+		Whether or not and/or how to underline text in a particular widget/state.
+
+	stock-image-brightness[STATE] = DECIMAL-NUMBER
+		What level to adjust the brightness of stock (menuitem/toolbar/button/
+		dialog) icons. A level of 1.0 means "do not adjust the level of the
+		original icon." A level of 0.0 will render the icon entirely in black.
+
+	stock-image-saturation[STATE] = DECIMAL-NUMBER
+		What level to adjust the saturation (grayscale <-> colors) of stock
+		(menuitem/toolbar/button/dialog) icons. A level of 0.0 will make an
+		icon grayscale, and a level of 2.0 will "oversaturate" an icon, so it
+		looks almost neon. A level 1.0 means "do not adjust the colors in the
+		original icon."
+
+	stock-image-transparency[STATE] = DECIMAL-NUMBER
+		What level to set the transparency of a stock (menuitem/toolbar/button/
+		dialog) icon to. A level of 0.0 will make an icon invisible (completely
+		transparent). A level of 1.0 will not adjust the transparency of the
+		original icon at all.
+
+	check-image[STATE][SHADOW-STYLE] = FILENAME
+		What image to use for GtkCheckButton indicators (the actual check box).
+
+	radio-image[STATE][SHADOW-STYLE] = FILENAME
+		What image to use for GtkRadioButton indicators (the actual radio dot).
+
+Values:
+-------
+The following are values which can be used within the "mgicchikn" engine
+specification.
+
+	<STATE>:
+		NORMAL
+		PRELIGHT
+		ACTIVE
+		INSENSITVE
+		ALL
+
+	<SHADOW-STYLE>:
+		NONE
+		OUT				GTK+ style at 2px, Xenophilia style at 3px
+		IN
+		ETCHED_OUT
+		ETCHED_IN
+		FLAT			Flat FG colored box
+		SHARP_IN		RedHat 8/BlueCurve style
+		SHARP_OUT
+		ROUNDED_IN		MacOS 8 style at 3px, Rounded BlueCurve at 2px
+		ROUNDED_OUT
+		MOTIF_IN		Motif light/dark style
+		MOTIF_OUT
+		ALL
+
+	<GRIPPY-STYLE>:
+		NONE
+		DOTS_IN
+		DOTS_OUT
+		LINES_IN
+		LINES_OUT
+
+	<UNDERLINE-STYLE>:
+		NONE
+		SINGLE
+		DOUBLE
+
+	<DECIMAL-NUMBER>:
+		(any decimal number)
+		0.0, 1.0, 1.5, 0.34567, etc.
+
+	<DECIMAL-PERCENTAGE>:
+		(any decimal number between 0.0 and 1.0)
+		0.0, 0.25, 0.45899, etc.
+
+	<INTEGER>:
+		(Any integer number)
+		1, 2, 3, 10, etc.
+
+	<FILENAME>:
+		"<default-check>"		The hardcoded "checked" GTK+ check image
+		"<default-uncheck>"		The hardcoded "unchecked" GTK+ check image
+		"<default-incheck>"		The hardcoded "both" GTK+ check image
+		"<default-radio>"		The hardcoded "selected" GTK+ radio image
+		"<default-unradio>"		The hardcoded "unselected" GTK+ radio image
+		"<default-inradio>"		The hardcoded "both" GTK+ radio image
+		(Any valid filename)
+		"mycheck.png", "/usr/share/myradio.gif", etc.
+
+Gtk(Check|Radio)Buttons:
+------------------------
+Certain colors in check and radio button images are recolored to the current
+color scheme:
+	#000000		->		text[STATE]
+	#00ff00		->		text_aa[STATE] (Halfway between text & base)
+	#ffffff		->		base[STATE]
+	#ff0000		->		bg[STATE]
+	#0000ff		->		fg[STATE]
+	#ffff00		->		dark[STATE]
+	#00ffff		->		mid[STATE]
+	#ff00ff		->		light[STATE]

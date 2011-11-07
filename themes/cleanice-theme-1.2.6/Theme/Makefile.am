@@ -1,0 +1,3 @@
+
+SUBDIRS = cleanice cleanice-dark
+

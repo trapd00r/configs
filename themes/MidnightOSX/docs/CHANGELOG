@@ -1,0 +1,27 @@
+v 0.40  Lots of fixes to the GTK2 Theme.
+          - removed extraneous entry style definition, which fixed a bug where highlighted text was indistinguishable from normal text
+          - cleaned up the button look to make it more consistent
+          - reversed the scrollbar and scrollbar_prelight pixmaps
+          - darkened active tab and progressbar pixmaps
+        New Metacity Pixmaps
+          - new, darker, smoother metacity pixmaps, which better match the gtk2 theme
+          - metacity theme from 0.30.1 is still available in the tarball, labelled as such.
+
+
+v 0.30.1 Fixed a stupid error where the inactive title text was black.
+
+v 0.30 Removed border around metacity theme, improving overall meshing of theme.
+				reworked the metacity pixmaps, making the buttons slightly smaller, and considerably cleaner.
+				changed the stock gnome icon, as it looked stupid in the Menu Bar.
+
+v 0.2 	Changes to the default colors for improved contrast, especially in lists.
+				Fixed the bug where the icon text was not visible in Nautilus.
+				Fixed the invisible cursor problem in some gtk apps (e.g. gedit)
+				
+v 0.11  Updated metatheme to suggest the HighContrast icon theme.
+				Tweaked the readme to include the link for the Industrial Engine.
+				Clarified the licensing (I hope).
+				Added a wallpaper.
+				Added this file.
+
+v 0.1 	Initial Release

@@ -1,0 +1,65 @@
+# Solaris theme for GTK+ 1.x
+# (c) fox@ppdv.ru
+#
+
+#include "/usr/share/themes/Raleigh/gtk/gtkrc"
+
+style "default" 
+{
+  fg[NORMAL]       = "#000000"
+  fg[ACTIVE]       = "#000000"
+  fg[PRELIGHT]     = "#000000"
+  fg[SELECTED]     = "#FFFFFF"
+  fg[INSENSITIVE]  = "#9396A4" # 
+  bg[NORMAL]       = "#afb2c3" #
+  bg[ACTIVE]       = "#B8BBCD" #
+  bg[PRELIGHT]     = "#C3C6D9" #
+  bg[SELECTED]     = "#A74F75" #
+  bg[INSENSITIVE]  = "#afb2c3" #
+  base[NORMAL]     = "#F6F7FF"
+  base[SELECTED]   = "#a59db2"
+  base[ACTIVE]     = "#F6F7FF"
+  base[PRELIGHT]   = "#C3C6D9"
+  base[INSENSITIVE]= "#b5b8ca"
+  text[INSENSITIVE]= "#747474"
+  text[SELECTED]   = "#F6F7FF"
+  text[ACTIVE]     = "#000000"
+
+  fontset="-*-tahoma-medium-r-normal-*-11-*-*-*-p-*-koi8-r"
+
+  engine "thinice"
+  {
+	rect_scrollbar = TRUE
+	mark_type1 = DOT
+#	mark_type2 = SLASH
+  }
+}
+
+style "large-font"
+{
+  fontset="-monotype-arial-medium-r-normal-*-12-*-*-*-p-*-koi8-r"
+}
+
+#widget_class "*" style "user-small-font"
+#widget_class "*Menu*" style "user-small-font"
+
+style "menu" = "default"
+{
+  bg[PRELIGHT]     = "#8E909E" 
+  text[PRELIGHT] = { 1.0, 1.0, 1.0 }
+  engine "redmond95" { }
+}
+
+style "togglebuttons" 
+{
+ engine "redmond95" { }
+}
+
+class "GtkWidget" style "default"
+class "GtkMenuItem*" style "menu"
+#class "GtkMenu" style "menu"
+#class "GtkCheckButton" style "togglebuttons"
+#class "GtkRadioButton" style "togglebuttons"
+class "*Text*" style "large-font"
+#widget_class "*Entry*" style "large-font"
+

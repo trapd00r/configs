@@ -1,0 +1,20 @@
+---------------------------------------------------------
+Readme for the eXperience gtk-2.0 theme
+---------------------------------------------------------
+
+Name:			eXperience
+Release:	1.0
+Author:			David Christian Berg
+Email:				david@sipsolutions.com
+
+
+For best results, you must install the magic chicken engine (mgicchikn).
+I'm using Arial font-size = 9 for applications and window title. Looks best I think.
+
+ajgenius is thinking about implementing the transparency and satruation feature within the smooth engine. If he does, I'll be going with that later on.
+
+All icons and images are published under GPL.
+
+Feel free to improve the theme and the icon set. I'd be glad to receive suggestions improvements and such.
+
+Contact me if you have any questions!

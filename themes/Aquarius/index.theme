@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Aquarius
+Type=X-GNOME-Metatheme
+Comment=Clean and fast theme with button lights effects
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Aquarius
+MetacityTheme=Aquarius
+IconTheme=gnome

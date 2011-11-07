@@ -1,0 +1,63 @@
+----------------------------------------------------------------
+Theme Author
+----------------------------------
+
+	silenteef (aka Mystilleef)
+	mystilleef@gmail.com
+
+---------------------------------------------------------------
+Theme Name
+----------------------------------		
+
+	woody 
+
+---------------------------------------------------------------
+Theme Engine
+----------------------------------
+	
+	Industrial
+
+----------------------------------------------------------------
+Stock Icons		
+----------------------------------
+
+	Suede2
+
+----------------------------------------------------------------
+Description
+----------------------------------
+
+	Attention to detail, a consistent color scheme, compact and efficient 
+	widgets, and functional use of space is what differentiates woody from the 
+	pack. In addition to a customized icon set, based on Suede2, woody utilizes
+	Ximian' s powerful theme engine, Industrial, to deliver a unique
+	desktop look, feel and experience unlike any you have witnessed before.
+
+----------------------------------------------------------------
+License
+----------------------------------
+
+	GNU GPL Version 2
+	
+----------------------------------------------------------------
+Log
+----------------------------------	
+
+Version 2.0.0
+	-Made all widgets more compact
+	-Made buttons on panel menu wider
+	-Made tabs wider
+	-Added index theme file 
+	-Added commentary to configuration files
+	-general cleanups
+	
+Version 1.0.0
+	-Initial release	
+
+----------------------------------------------------------------
+Known Issues
+----------------------------------
+
+	Scrollbar is hard to see sometimes. This a bug in the industrial engine. A
+	possible fix will be to design a pixmap based scrollbar. I will look into 
+	the viability of this in the future.

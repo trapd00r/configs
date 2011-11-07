@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+
+export DH_COMPAT=3
+
+configure: config.log
+config.log:
+	dh_testdir
+	./configure --prefix=/usr
+
+build: config.log
+	dh_testdir
+	$(MAKE)
+
+clean:
+	dh_testdir
+	dh_testroot
+	-$(MAKE) distclean
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	$(MAKE) install prefix=$(CURDIR)/debian/gtk-engines-mgicchikn/usr
+	rm -rf `find debian/gtk-engines-mgicchikn/ -name "README.html"`
+	rm -rf `find debian/gtk-engines-mgicchikn/ -name "*.la"`
+
+binary-indep: build install
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installchangelogs ChangeLog
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary
