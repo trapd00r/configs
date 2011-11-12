@@ -67,7 +67,8 @@
 ;; }}}
 ;; music                                                                     {{{
 (define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
-(define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
+;;(define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
+(define-key *root-map* (kbd "p")            "exec sh /home/scp1/dev/utils/mpd_twmn")
 (define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
 (define-key *root-map* (kbd "SPC")          "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
 (define-key *root-map* (kbd ".")            "exec vol_up")
