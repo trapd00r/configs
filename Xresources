@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Created: 2008-04-24
-  Updated: 2011-08-08 14:41:07
+  Updated: Sun Nov 27 08:07:54 CET 2011
 
 Grouped by subject.
 A lot of different hosts use this file. You will not find any color
@@ -24,7 +24,7 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 
 */
 
-# additional rc's                                                            {{{
+! additional rcs                                                             {{{
 !#include "/home/scp1/etc/Xcolors/better_defaults.Xresources"
 !#include "/home/scp1/etc/Xcolors/matrix.Xresources"
 !#include "/home/scp1/etc/Xcolors/random_selection.Xresources"
@@ -37,12 +37,13 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !#include "/home/scp1/etc/Xcolors/trasmatta.Xresources"
 !#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
 !}}}
-# defines                                                                    {{{
-#if WIDTH < 60
-#define FONT -xos4-terminus-medium-r-normal--22-220-72-72-c-110-koi8-u
-#else
+
+! defines                                                                    {{{
+!if WIDTH < 60
+!#define FONT -xos4-terminus-medium-r-normal--22-220-72-72-c-110-koi8-u
+!else
 #define FONT -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-#endif
+!endif
 
 #define FONT_B   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
 #define FONT_I   -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
@@ -99,7 +100,7 @@ XTerm*scrollBar:                  false
 
 
 !}}}
-# urxvt                                                                      {{{
+! urxvt                                                                      {{{
 URxvt.letterSpace: 0
 URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
 URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
@@ -107,6 +108,8 @@ URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:
 ! host: shiva                                                                {{{
 shiva.iso14755:             1
 shiva.iso14755_52:          1
+
+shiva.insecure:             1
 
 shiva.background:           #121212
 shiva.borderColor:          #0E0E0E
@@ -121,15 +124,15 @@ shiva.pointerColor2:        #0092FF
 shiva.pointerColor:         #252525
 shiva.underlineColor:       #0E0E0E
 
-shiva*font:                 -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv
-shiva*boldFont:             -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
+!shiva*font:                 -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv
+!shiva*boldFont:             -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
+!
+!shiva*italicFont:           -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
 
-shiva*italicFont:           -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
-
-!shiva*font:                 -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252,-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1,xft:Terminus Normal:pixelsize=12
-!shiva*boldFont:             FONT_B
-!shiva.italicFont:           FONT_I
-!shiva*boldItalicFont:       FONT_I_B
+shiva*font:                 FONT
+shiva*boldFont:             FONT_B
+shiva*italicFont:           xft:fixed:antialias=true:hinting=true:hintstyle=hintslight
+shiva*boldItalicFont:       FONT_I_B
 
 shiva.cutchars:             "()*,<>[]{}|'"
 shiva.matcher.button:       1
@@ -140,9 +143,11 @@ shiva.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
 shiva.underlineURLs:        false
 shiva.urlLauncher:          /usr/bin/firefox
 
-shiva.perl-lib:             /home/scp1/dev/urxvt-extensions
-shiva.perl-ext-common:      default,matcher
+URxvt.keysym.M-u:           perl:mark-yank-urls:activate_mark_mode
+URxvt.perl-ext:             selection,mark-yank-urls
 shiva.perl-eval:            $^O
+shiva.perl-ext-common:      default,matcher
+shiva.perl-lib:             /home/scp1/dev/urxvt-extensions
 
 shiva.jumpScroll:           true
 shiva.loginShell:           true
@@ -170,7 +175,7 @@ shiva.depth:                32
 !shiva.secondaryScreen:      false
 
 !}}}
-# host: india                                                                {{{
+! host: india                                                                {{{
 india.background:           #030303
 india.borderColor:          #0E0E0E
 india.colorRV:              #333333
@@ -241,7 +246,7 @@ rambo.pointerColor:        #252525
 rambo.underlineColor:      #0E0E0E
 rambo.scrollBar:            false
 rambo.depth:                32
-#}}}
+!}}}
 ! ratmenu                                                                    {{{
 ratmenu*align:                    center
 ratmenu*bgcolor:                  #080808
@@ -306,4 +311,4 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
 .xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
 !}}}
-# vim: set fdm=marker:
+! vim: set fdm=marker:
