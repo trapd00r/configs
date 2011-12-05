@@ -37,6 +37,7 @@ if [ "$HOSTNAME" = 'shiva' ]; then
     setxkbmap se -variant nodeadkeys
 
   urxvtd -q -f -o                     &
+  twmnd &
   (sleep 1; urxvtc -name URxvt.shiva) &
 
 elif [ "$HOSTNAME" = 'india' ]; then
