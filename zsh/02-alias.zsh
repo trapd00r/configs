@@ -21,6 +21,7 @@ alias clisp=' rlwrap clisp'
 #}}}
 
 alias ctags='ctags --format=1'
+alias which='type -a'
 
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
@@ -60,7 +61,7 @@ alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
 alias   editc='vim -X $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/dev/LS_COLORS/LS_COLORS'
-alias   share='perl $HOME/dev/CPAN::Mirror::Server::HTTP/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
+alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
 
@@ -206,7 +207,36 @@ if [ $host_res != 'undef' ]; then
   alias rec="ffmpeg -f x11grab -s $host_res -r 150 -i $DISPLAY -sameq foo.mpg"
 fi
 
-alias         feh='feh -Fzrd'
+# feh[theme][recursive?][slide-delay?]                                       {{{
+# theme = [f]ullscreen | [i]ndex | [j]ust | [t]humbnail
+# recursive: r for recursive, nothing otherwise
+# slide-delay:
+#     none   - no slideshow
+#     x      - slideshow, seconds will be specified on commandline
+#              (like "fehfrx 7 .")
+
+alias feh='feh -FZ --quiet --verbose --action "rm '\'%f\'\"
+alias fehe='feh -Texif'
+alias feher='feh -Texif --recursive'
+alias fehf='feh -Tfs'
+alias fehfr='feh -Tfs --recursive'
+alias fehi='feh .fehindex.jpg'
+alias fehj='feh -Trfs'
+alias fehjr='feh -Trfs --recursive'
+alias fehjx='feh -Trfs --slideshow-delay'
+alias fehfx='feh -Tfs --slideshow-delay'
+alias fehjrx='feh -Trfs --recursive --slideshow-delay'
+alias fehfrx='feh -Tfs --recursive --slideshow-delay'
+alias feht='feh -Tthumb_s'
+alias fehtr='feh -Tthumb_s --recursive'
+alias fehtb='feh -Tthumb_b'
+alias fehtbr='feh -Tthumb_b --recursive'
+alias fehtn='feh -Tthumb_s_nt'
+alias fehtnr='feh -Tthumb_s_nt --recursive'
+alias fehtnb='feh -Tthumb_b_nt'
+alias fehtnbr='feh -Tthumb_b_nt --recursive'
+#}}}
+
 alias     rampeak='dd if=/dev/mem|\cat|strings'
 alias  seen_movie='chmod +t,o+w "$@"'
 alias mountfixbug='echo 64 > /sys/block/sdn/device/max_sectors && mount -a'
