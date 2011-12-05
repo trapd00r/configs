@@ -21,7 +21,7 @@
 (set-unfocus-color    "grey10")
 (set-msg-border-width 1)
 (set-font             "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
-(set-normal-gravity   :center)
+(set-normal-gravity   :left)
 (set-contrib-dir      "/usr/share/stumpwm")
 
 
@@ -42,7 +42,7 @@
   *transient-border-width*         4
 )
 (setf
-  *message-window-gravity*         :bottom-right
+  *message-window-gravity*         :top-left
   *timeout-wait*                   10
   *input-window-gravity*           :top-left
 )
@@ -74,17 +74,17 @@
 (define-key *root-map* (kbd ".")            "exec vol_up")
 (define-key *root-map* (kbd ",")            "exec vol_down")
 
-(define-key *top-map*  (kbd "F1")           "exec rpc change dingata")
-(define-key *top-map*  (kbd "F2")           "exec rpc change gabber")
-(define-key *top-map*  (kbd "F3")           "exec rpc change hardstyle")
-(define-key *top-map*  (kbd "F5")           "exec rpc change hardcore")
-(define-key *top-map*  (kbd "F6")           "exec rpc change psy2")
-(define-key *top-map*  (kbd "F7")           "exec rpc change psy6")
-(define-key *top-map*  (kbd "F8")           "exec rpc change psy4")
-(define-key *top-map*  (kbd "F9")           "exec rpc change p1")
-(define-key *top-map*  (kbd "F10")          "exec rpc change p2")
-(define-key *top-map*  (kbd "F11")          "exec rpc change p3")
-(define-key *top-map*  (kbd "F12")          "exec rpc change p4")
+;;(define-key *top-map*  (kbd "F1")           "exec rpc change dingata")
+;;(define-key *top-map*  (kbd "F2")           "exec rpc change gabber")
+;;(define-key *top-map*  (kbd "F3")           "exec rpc change hardstyle")
+;;(define-key *top-map*  (kbd "F5")           "exec rpc change hardcore")
+;;(define-key *top-map*  (kbd "F6")           "exec rpc change psy2")
+;;(define-key *top-map*  (kbd "F7")           "exec rpc change psy6")
+;;(define-key *top-map*  (kbd "F8")           "exec rpc change psy4")
+;;(define-key *top-map*  (kbd "F9")           "exec rpc change p1")
+;;(define-key *top-map*  (kbd "F10")          "exec rpc change p2")
+;;(define-key *top-map*  (kbd "F11")          "exec rpc change p3")
+;;(define-key *top-map*  (kbd "F12")          "exec rpc change p4")
 
 (define-key *top-map*  (kbd "KP_Begin")     "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
 (define-key *top-map*  (kbd "KP_Right")     "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
@@ -92,7 +92,7 @@
 (define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 ;;}}}
 
-(define-key *root-map* (kbd "c")            "exec urxvtc -name shiva")
+(define-key *root-map* (kbd "c")            "exec urxvt")
 (define-key *root-map* (kbd "d")            "exec dmenuclip")
 (define-key *root-map* (kbd "e")            "exec sh /home/scp1/bin/dmenu.sh")
 (define-key *root-map* (kbd "g")            "exec google_dmenu")
