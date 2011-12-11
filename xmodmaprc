@@ -1,0 +1,11 @@
+clear Mod4
+add Control = Super_L Super_R
+
+remove Shift   = Shift_L
+keysym Shift_L = Control_L
+add Control    = Control_L
+
+clear Lock
+keycode 0x42 = Escape
+keycode 0x30 = apostrophe
+keycode 0x22 = slash

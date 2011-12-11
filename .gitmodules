@@ -76,3 +76,6 @@
 [submodule "vim/bundle/vim-after-syntax-perl"]
 	path = vim/bundle/vim-after-syntax-perl
 	url = git://github.com/trapd00r/vim-after-syntax-perl.git
+[submodule "vim/bundle/vim-ansiesc"]
+	path = vim/bundle/vim-ansiesc
+	url = git://github.com/vim-scripts/AnsiEsc.vim.git

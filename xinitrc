@@ -60,7 +60,8 @@ fi
 #sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_right.sh &
 #sh $HOME/devel/dzen-scripts/dzen_${HOSTNAME}_left.sh  &
 
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
+#xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
+xmodmap $XDG_CONFIG_HOME/xmodmaprc &
 xset fp $(echo "$HOME/.fonts,
   /usr/share/fonts/TTF,
   /usr/share/fonts/artwiz-fonts,
