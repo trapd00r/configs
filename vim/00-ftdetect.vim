@@ -1,6 +1,7 @@
 "    File: $HOME/etc/ftdetect.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-11-06 02:33:56
+" Updated: 2011-12-11 18:42:57
+"
 
 filetype plugin indent on
 
@@ -10,10 +11,25 @@ set formatoptions=qro
 "au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e | :19
 
 if &term != 'linux'
-  au InsertEnter * :silent !printf '\e]12;\#ffff00\a'
-  au InsertLeave * :silent !printf '\e]12;\#ff0000\a'
-  au VimLeave    * :silent !printf '\e]12;\#69ff00\a'
+  au InsertEnter * :silent !printf '\e]12;\#dc410d\a'
+  au InsertLeave * :silent !printf '\e]12;\#a5dc0d\a'
+  au VimLeave    * :silent !printf '\e]12;\#00adff\a'
+
+  "let italic = '-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
+  "au InsertEnter * :silent !printf '\e]710;6x13\a\e]711;6x13b\e]712;%s\a' italic 
 endif
+
+
+augroup FastEscape
+  autocmd!
+  
+  set notimeout
+  set ttimeout
+  set timeoutlen=10
+
+  au InsertEnter * set timeout
+  au InsertLeave * set notimeout
+augroup END
 
 au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl   |
   \ call search('APP')  | normal di':startinsert
@@ -34,6 +50,7 @@ au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c    |
 
 au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown |
   \ :0 | exe 'normal d$A' | startinsert
+
 
 au BufNewFile *.bash silent! 0r ~/etc/vim/templates/template.bash
 
@@ -56,8 +73,20 @@ au FileType           pl,pm,t      set ft=perl
 au Filetype           git,*commit* call ToggleSpell()
 au Filetype           help         call Filetype_Help()
 
+au CmdwinEnter        *            nnoremap <buffer> <ESC> :q<CR>
+au CmdwinEnter        *            nnoremap <buffer> <CR> a<CR>
+au CmdwinEnter        *            set ft=
+
+au WinEnter           *            :set winfixheight
+au WinEnter           *            :wincmd =
+
 au BufRead,BufNewFile README.{md,markdown,pod} let $BROWSER='firefox'
-au BufRead,BufNewFile ~/etc/zsh/01-colors.zsh  set syntax=
+au BufRead            ~/etc/zsh/01-colors.zsh  set syntax=
+au BufRead            ~/etc/feh/keys           call Filetype_feh()
+
+"au WinEnter           *            setlocal number
+"au WinLeave           *            setlocal nonumber
+
 
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:extradite_width              = 40
@@ -73,7 +102,6 @@ let g:mpc_lyrics_use_cache         = 1
 " xclipboard.vim                                                             {{{
 let g:xclipboard_pipe_path         = '/home/scp1/etc/vim/xclipboard.fifo'
 "}}}
-
 " C                                                                          {{{
 let c_comment_strings              = 1
 let c_gnu                          = 1
@@ -129,3 +157,24 @@ let lua_subversion                 = 0
 let g:vt_author                    = 'Magnus Woldrich'
 let g:vt_email                     = 'm@japh.se'
 let g:vt_template_dir_path         = '~/.vim/templates/'
+
+
+func! Filetype_txt()
+  if (&modifiable == 1)
+    normal ggVGgqgg0
+    set ft=_txt
+  endif
+endfunc
+
+func! Filetype_Help()
+  set colorcolumn=0
+  set listchars=tab:\ \
+endfunc
+
+func! Filetype_feh()
+  syn match feh_action '\v^\w+' nextgroup=feh_keys skipwhite
+  syn match feh_keys   '\v.+'   contained
+  hi feh_action ctermfg=202
+  hi feh_keys   ctermfg=106
+endfunc
+
