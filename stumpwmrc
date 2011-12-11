@@ -99,4 +99,9 @@
 (define-key *root-map* (kbd "m")            "exec dmenurl")
 (define-key *root-map* (kbd "x")            "exec xterm")
 
+(defcommand send-selection nil nil
+  (window-send-string (get-x-selection))
+)
+(define-key *top-map* (kbd "C-Insert") "send-selection")
+
 (restore-from-file #p"/home/scp1/etc/stumpwm_dev.desktop")
