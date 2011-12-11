@@ -1,7 +1,7 @@
 "    File: $HOME/etc/vimrc
 "  Author: Magnus Woldrich <m@japh.se>
 " Created: 2009-04-24
-" Updated: 2011-07-27 12:34:02
+" Updated: 2011-11-16 06:06:44
 "    What: Highly optimized for Perl, C, Viml and Lua hacking.
 
 if !isdirectory('/tmp/scp1')
@@ -19,6 +19,8 @@ let &runtimepath = &runtimepath . printf('%s/after,%s/after', $VIM, $VIMRUNTIME)
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
 
+set rs
+set t_ti=7[r[?47h t_te=[?47l8
 set nocompatible
 set autoread
 set autochdir
@@ -58,9 +60,9 @@ set isfname+=:
 set laststatus=2
 set list
 "let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
-set listchars=tab:»\ ,trail:·,eol:¶,nbsp:⎵,precedes:←,extends:→ sbr=↪
+set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪
 set magic
-set makeprg=/usr/bin/make
+set makeprg=mymake
 set matchtime=2
 set maxmapdepth=500
 set matchpairs+==:;
