@@ -1,9 +1,13 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-10-05 08:15:07
+" Updated: 2011-12-11 18:41:55
+
+func! LS()
+  :source /home/scp1/dev/vim-lscolors/plugin/lscolors.vim
+endfunc
 
 " :cabbrev that apply only at start of line                                  {{{
-" makes Cabbrev('W', 'w') only abbrevate if W is the first char on the line
+" makes Cabbrev('W', 'w') only abbreviate if W is the first char on the line
 func! Single_quote(str)
   return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
 endfunc
@@ -55,13 +59,6 @@ func! OddEvenHL()
   hi oddOdd  ctermbg=234
 endfunc
 
-func! Filetype_txt()
-  if (&modifiable == 1)
-    normal ggVGgqgg0
-    set ft=_txt
-  endif
-endfunc
-
 func! InsertDataDumper()
   if (&ft != 'perl') || (&ft != 'pod')
     let ok = confirm("Not a Perl file, proceed anyway?", "&Yes\n&No\n", 2)
@@ -77,7 +74,6 @@ func! InsertDataDumper()
   let l:dd_options_2 = "$Quotekeys = 0;\n}\n\n"
 
   return dd_include . dd_package . dd_no_strict . dd_options_1 . dd_options_2
-
 endfunc
 
 " Show syntax highlighting groups for word under cursor
@@ -94,11 +90,6 @@ func! TitleCaseCenter()
   s/\w\+/\u&/g
   center
   echo "Word under cursor was " . word
-endfunc
-
-func! Filetype_Help()
-  set colorcolumn=0
-  set listchars=tab:\ \
 endfunc
 
 func! RemoveTrailingCrap()
@@ -123,45 +114,33 @@ endfunc
 
 autocmd BufReadPost * call SetCursorPosition()
 func! SetCursorPosition()
-    if &filetype !~ 'svn\|commit\c'
-        if line("'\"") > 0 && line("'\"") <= line("$")
-            exe "normal! g`\""
-            normal! zz
-        endif
-    end
+  if &filetype !~ 'svn\|commit\c'
+    if line("'\"") > 0 && line("'\"") <= line("$")
+      exe "normal! g`\""
+      normal! zz
+    endif
+  end
 endfunc
 
 
 func! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return "0"
-    endif
-    if bytes < 1024
-        return bytes
-    else
-        return (bytes / 1024) . "K"
-    endif
+  let bytes = getfsize(expand("%:p"))
+  if bytes <= 0
+    return "0"
+  endif
+  if bytes < 1024
+    return bytes
+  else
+    return (bytes / 1024) . "K"
+  endif
 endfunc
 
 
 func! ToggleRelativeAbsoluteNumber()
-  if &number
-    set relativenumber
-  else
-    set number
-  endif
+  exe 'set ' . (&number ? 'relativenumber' : 'number')
 endfunc
 
 
 func! ToggleSpell()
-  if &spell
-    set nospell
-  else
-    set spell
-    "hi SpellBad ctermfg=196 ctermbg=234 cterm=bold
-    "hi SpellCap ctermfg=160 ctermbg=234 cterm=bold
-    "hi SpellRare ctermfg=196 ctermbg=233 cterm=bold
-    "hi SpellLocal ctermfg=160 ctermbg=235 cterm=bold
-  endif
+  exe 'set ' . (&spell ? 'nospell' : 'spell')
 endfunc
