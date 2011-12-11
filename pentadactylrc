@@ -39,7 +39,7 @@ nnoremap <leader>z :js window.content.document.toggleImageSize();<CR>
 
 nnoremap <C-h> <NOP>
 nnoremap A     :noscript toggleperm<CR>
-nnoremap C     :tabclose<CR>
+nnoremap <C-c> :tabclose<CR>
 nnoremap a     :noscript toggletemp<CR>
 nnoremap d     :tabclose<CR>
 nnoremap j     10j
