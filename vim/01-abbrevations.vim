@@ -44,8 +44,9 @@ ia json_encode  encode_json
 "}}}
 "
 if &ft == 'mail'
-  ia leifa leif.pennryd@ntmdistribution.se
-  ia olof  olof@ethup.se
+  ia leifa   leif.pennryd@ntmdistribution.se
+  ia dttobbe tobias.jansson@ntmdistribution.se
+  ia olof    olof@ethup.se
 endif
 
 
