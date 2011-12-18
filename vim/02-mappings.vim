@@ -130,11 +130,22 @@ nnoremap <leader>8 :8b<CR>
 nnoremap <leader>9 :9b<CR>
 nnoremap <leader>0 :10b<CR>
 
+nnoremap *     :1b<CR>
+nnoremap "     :2b<CR>
+nnoremap £     :3b<CR>
+nnoremap $     :4b<CR>
+nnoremap €     :5b<CR>
+nnoremap ¥     :6b<CR>
+nnoremap {     :7b<CR>
+nnoremap [     :8b<CR>
+nnoremap ]     :9b<CR>
 "nnoremap <leader>a :bdelete!<CR>
 
 nnoremap <leader>f :set paste<CR>
 nnoremap <leader>s :call RemoveTrailingCrap()
 nnoremap <leader>v V`]
+
+nnoremap ,g :sil exe 'grep! -R '.shellescape("<cWORD>")." ."<CR>:cope<CR>:winc w<CR>
 " }}}
 " sane regex                                                                {{{
 cnoremap %s#      %s#\v
