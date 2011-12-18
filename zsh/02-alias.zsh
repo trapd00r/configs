@@ -13,8 +13,7 @@ if [ -d "$HOME/dev/PKGBUILDS" ]; then
   "
 fi
 
-alias foo='rm -r /foo'
-
+alias termsize='printf "%dx%d\n" $COLUMNS $LINES'
 # lisp                                                                     {{{
 alias bigloo='rlwrap bigloo'
 alias clisp=' rlwrap clisp'
@@ -24,7 +23,7 @@ alias ctags='ctags --format=1'
 alias which='type -a'
 
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
-alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode::Normalize=NFD,NFC,NFKD,NFKC'
+alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode-Normalize=NFD,NFC,NFKD,NFKC'
 
 alias swe='translate -from en -to swe'
 alias  en='translate -from swe -to en'
@@ -60,7 +59,7 @@ alias    hour="echo *(e-age $(date +%H:00) now-)|perl -pe 's/ /\n/g'"
 alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 alias    gccc='gcc -ansi -pedantic -Wall'
 alias csyntax='gcc -fsyntax-only'
-alias   editc='vim -X $HOME/.zsh/01-colors.zsh $HOME/dev/File::LsColor/lib/File/LsColor.pm $HOME/dev/LS_COLORS/LS_COLORS'
+alias   editc='vim -X $HOME/.zsh/01-colors.zsh $HOME/dev/File-LsColor/lib/File/LsColor.pm $HOME/dev/LS_COLORS/LS_COLORS'
 alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
@@ -95,7 +94,7 @@ alias   perlf='ack -f --perl'
 
 
 #alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
-alias        r='perl $HOME/dev/App::Rel/rel/'
+alias        r='perl $HOME/dev/App-Rel/rel/'
 
 alias     x='cd $XDG_CONFIG_HOME'
 alias     h='cd $HOME/dev/trapd00r.se'
@@ -108,23 +107,23 @@ alias     d='cd $HOME/dev'
 alias     u='cd $HOME/dev/utils'
 alias     g='cd $HOME/bin/upstream'
 alias     z='cd $HOME/.zsh'
-alias    aa='cd $HOME/dev/App::Autotest'
-alias    ap='cd $HOME/dev/App::Pimpd'
-alias    pp='cd $HOME/dev/App::Pimpd'
-alias   apl='cd $HOME/dev/App::Pimpd_Legacy'
-alias     p='cd $HOME/dev/App::Pimpd_Legacy'
+alias    aa='cd $HOME/dev/App-Autotest'
+alias    ap='cd $HOME/dev/App-Pimpd'
+alias    pp='cd $HOME/dev/App-Pimpd'
+alias   apl='cd $HOME/dev/App-Pimpd_Legacy'
+alias     p='cd $HOME/dev/App-Pimpd_Legacy'
 alias     q='cd $HOME/dev/pickyfont'
-alias    ar='cd $HOME/dev/App::Rel/'
-alias   RPD='cd $HOME/dev/App::RPD'
+alias    ar='cd $HOME/dev/App-Rel/'
+alias   RPD='cd $HOME/dev/App-RPD'
 alias    at='cd $HOME/dev/ttycolor'
-alias    dm='cd $HOME/dev/Daemon::Mplayer'
-alias   flc='cd $HOME/dev/File::LsColor'
-alias   tec='cd $HOME/dev/Term::ExtendedColor'
-alias   tet='cd $HOME/dev/Term::ExtendedColor::TTY'
-alias   tex='cd $HOME/dev/Term::ExtendedColor::Xresources'
-alias   mll='cd $HOME/dev/Module::LocalLoad'
-alias   mnp='cd $HOME/dev/Mplayer::NowPlaying-CPAN'
-alias xxlfd='cd $HOME/dev/Xorg::XLFD'
+alias    dm='cd $HOME/dev/Daemon-Mplayer'
+alias   flc='cd $HOME/dev/File-LsColor'
+alias   tec='cd $HOME/dev/Term-ExtendedColor'
+alias   tet='cd $HOME/dev/Term-ExtendedColor-TTY'
+alias   tex='cd $HOME/dev/Term-ExtendedColor-Xresources'
+alias   mll='cd $HOME/dev/Module-LocalLoad'
+alias   mnp='cd $HOME/dev/Mplayer-NowPlaying-CPAN'
+alias xxlfd='cd $HOME/dev/Xorg-XLFD'
 alias   mp3='cd /mnt/Leftover/TransferMusic'
 alias     t='mkdr /tmp/scp1 ; cd /tmp/scp1'
 alias    tt='cd $HOME/dev/_upstream'
@@ -246,7 +245,7 @@ alias     japh='echo http://japh.se && echo http://japh.se|xclip'
 alias      pst='echo http://p.japh.se && echo http://p.japh.se|xclip'
 alias     todo='$HOME/dev/time-spent-in-vim/vim $HOME/doc/TODO'
 
-alias    dmesg='$HOME/dev/Term::ExtendedColor/bin/colored_dmesg|grep -v TCP'
+alias    dmesg='$HOME/dev/Term-ExtendedColor/bin/colored_dmesg|grep -v TCP'
 alias  vimtime='/home/scp1/dev/time-spent-in-vim/vim --total'
 alias    vimsh='vim -X *.sh'
 alias    vimpm='vim -X *.pm'
@@ -285,7 +284,7 @@ alias   f='pickyfont monte1 normal \
             && pickyfont pro1 italic'
 
 alias evil="grep 'sub escape' -A 2 \
-  $HOME/dev/App::Pimpd/lib/App/Pimpd/Validate.pm |
+  $HOME/dev/App-Pimpd/lib/App/Pimpd/Validate.pm |
   tail -1|perl -pe 's/^\s+\$str =~ //'"
 
 alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
