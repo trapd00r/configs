@@ -77,8 +77,8 @@ au CmdwinEnter        *            nnoremap <buffer> <ESC> :q<CR>
 au CmdwinEnter        *            nnoremap <buffer> <CR> a<CR>
 au CmdwinEnter        *            set ft=
 
-au WinEnter           *            :set winfixheight
-au WinEnter           *            :wincmd =
+" au WinEnter           *            :set winfixheight
+" au WinEnter           *            :wincmd =
 
 au BufRead,BufNewFile README.{md,markdown,pod} let $BROWSER='firefox'
 au BufRead            ~/etc/zsh/01-colors.zsh  set syntax=
