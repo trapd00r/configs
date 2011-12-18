@@ -104,6 +104,6 @@ unignore User-Agent:
 
 auto_view text/x-diff
 auto_view text/x-patch
-auto_view text/html
+#auto_view text/html
 
 my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
