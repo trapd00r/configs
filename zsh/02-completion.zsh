@@ -45,6 +45,7 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
 #}}}
 # mplayer                                                                    {{{
 zstyle ':completion:*:*:mplayer:*'           tag-order files
+zstyle ':completion:*:*:mplayer:*'           ignored-patterns '*.(nfo|sfv|rar)'
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
        '*.(rmvb|mkv|mpg|wmv|mpeg|avi|flv|mp3|mp4|flac|ogg|webm|iso|img):video' \
        '*:all-files' '*(-/):directories'
