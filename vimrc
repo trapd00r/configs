@@ -98,7 +98,7 @@ set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set scrolloff=5
-set ssop=buffers,folds,globals,help,localoptions,options,resize,tabpages
+set ssop=buffers,folds,globals,help,localoptions,options,resize
 set shiftwidth=2
 set shortmess=aIoOT
 set showmatch
