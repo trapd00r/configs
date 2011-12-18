@@ -7,6 +7,10 @@
 #
 #zmodload zsh/zprof
 
+#umask 077
+
+eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
+
 # set up some traps (watch out)
 
 TRAPUSR1() { source ~/.zshrc }
