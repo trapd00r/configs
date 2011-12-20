@@ -1,6 +1,6 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-10-25 07:05:41
+" Updated: 2011-12-20 10:14:07
 
 let mapleader = ';'
 
@@ -50,8 +50,8 @@ map <C-h> <C-w><Left>
 map <C-h> <C-w><Left>
 map <C-j> <C-w><Down>
 
-map +  <C-W>+
-map -  :split<CR>
+nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<CR>
+nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<CR>
 "map =  <C-W>-
 "map \| :vsplit<CR>
 " }}}
@@ -130,15 +130,15 @@ nnoremap <leader>8 :8b<CR>
 nnoremap <leader>9 :9b<CR>
 nnoremap <leader>0 :10b<CR>
 
-nnoremap *     :1b<CR>
-nnoremap "     :2b<CR>
-nnoremap £     :3b<CR>
-nnoremap $     :4b<CR>
-nnoremap €     :5b<CR>
-nnoremap ¥     :6b<CR>
-nnoremap {     :7b<CR>
-nnoremap [     :8b<CR>
-nnoremap ]     :9b<CR>
+"nnoremap *     :1b<CR>
+"nnoremap "     :2b<CR>
+"nnoremap £     :3b<CR>
+"nnoremap $     :4b<CR>
+"nnoremap €     :5b<CR>
+"nnoremap ¥     :6b<CR>
+"nnoremap {     :7b<CR>
+"nnoremap [     :8b<CR>
+"nnoremap ]     :9b<CR>
 "nnoremap <leader>a :bdelete!<CR>
 
 nnoremap <leader>f :set paste<CR>
