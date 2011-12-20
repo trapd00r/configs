@@ -6,6 +6,9 @@ abbreviations=(
     perl -e "@_=<>; print sort grep {! /^[.]/ } @_; print sort grep { /^[.]/ } @_" | \
     ls_color'
 
+  'Glob'  '{*,*/*,*/*/*,*/*/*/*,*/*/*/*/*,*/*/*/*/*/*}'
+  'GlobV' '{*,*/*,*/*/*,*/*/*/*,*/*/*/*/*,*/*/*/*/*/*}.(mkv|mp4|wmv|mpe?g|avi|mov)'
+  'GlobM' '{*,*/*,*/*/*,*/*/*/*,*/*/*/*/*,*/*/*/*/*/*}.(flac|mp3)'
   "pinc"         "/usr/{lib,share}/perl5/{core,site,vendor}_perl/"
   "Paralel"      "Parallel"
   "Paralell"     "Parallel"
