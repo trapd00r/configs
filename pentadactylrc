@@ -12,6 +12,7 @@ set findcase='smart'
 set followhints=0
 set guioptions-=rlb
 set hintkeys=asdfg;lkjh
+set hlfind
 set mapleader=","
 set maxitems=10
 set pageinfo=gfm
