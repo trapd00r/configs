@@ -1,6 +1,10 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-12-11 18:41:55
+" Updated: 2012-01-07 14:57:00
+
+func! Markdown_Preview()
+  :silent exe '!markdown_preview ' . expand('%:p')
+endfunc
 
 func! LS()
   :source /home/scp1/dev/vim-lscolors/plugin/lscolors.vim
