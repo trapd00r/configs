@@ -14,6 +14,7 @@ if [ -d "$HOME/dev/PKGBUILDS" ]; then
 fi
 
 alias termsize='printf "%dx%d\n" $COLUMNS $LINES'
+alias cclive='cclive --config-file $XDG_CONFIG_HOME/ccliverc -f best'
 # lisp                                                                     {{{
 alias bigloo='rlwrap bigloo'
 alias clisp=' rlwrap clisp'
