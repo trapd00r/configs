@@ -1,0 +1,57 @@
+# vim: set ft=sshconfig cc=0 fdm=marker:
+host *
+  controlmaster           auto
+  controlpath             ~/.ssh/connections/%r_%h_%p
+host laleh                                                                   {{{
+  user                    scp1
+  hostname                192.168.1.128
+  port                    19217
+  compression             no
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          3
+  permitlocalcommand      yes
+  localcommand            printf "Connected \e[1m$USER\e[m to \e[33;1m$HOST\e[m.\n"
+  numberofpasswordprompts 10
+  sendenv                 PERL5OPT
+#}}}
+host rambo                                                                   {{{
+  user                    scp1
+  hostname                192.168.1.103
+  port                    19216
+  compression             no
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          3
+  permitlocalcommand      yes
+  localcommand            date
+  numberofpasswordprompts 10
+#}}}
+host shiva                                                                   {{{
+  user                    scp1
+  hostname                192.168.1.101
+  port                    19218
+  compression             no
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          3
+  permitlocalcommand      yes
+  localcommand            date;pwc
+  numberofpasswordprompts 10
+#}}}
+host n900 #                                                                  {{{
+  user                    user
+  hostname                192.168.1.112
+  port                    22
+  compression             no
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          10
+#}}}
+host japh.se                                                                 {{{
+  user                    scp1
+  hostname                japh.se
+  port                    19217
+  compression             no
+  ciphers                 blowfish-cbc
+#}}}
