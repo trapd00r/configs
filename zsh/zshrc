@@ -16,6 +16,15 @@ eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
 TRAPUSR1() { source ~/.zshrc }
 TRAPUSR2() { feh -FZrD3 /mnt/Porn/00-pics/ &; exit };
 
+chpwd_functions=(update_mplayer)
+update_mplayer() {
+  if [[ $(pwd) == /mnt/Porn* ]]; then
+    mplayer() {
+      /usr/bin/mplayer -include $XDG_CONFIG_HOME -profile porn "$@"
+    }
+  fi
+}
+
 export VIMRUNTIME="$HOME/etc/vim"
 
 for r in $HOME/etc/zsh/*.zsh; do
