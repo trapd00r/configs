@@ -1,6 +1,6 @@
 if [ -f "$HOME/.ssh/config" ]; then
   for host in $(
-    perl -ne 'print "$1\n" if /^Host\s+(.+)$/' $HOME/.ssh/config
+    perl -ne 'print "$1\n" if /^[Hh]ost\s+(.+)$/' $HOME/.ssh/config
   ); do
     alias $host="ssh $host '$@'"
   done
