@@ -1,7 +1,7 @@
 "    File: $HOME/etc/vimrc
 "  Author: Magnus Woldrich <m@japh.se>
 " Created: 2009-04-24
-" Updated: 2011-11-16 06:06:44
+" Updated: 2012-01-22 03:24:04
 "    What: Highly optimized for Perl, C, Viml and Lua hacking.
 
 if !isdirectory('/tmp/scp1')
@@ -14,7 +14,8 @@ for f in split(globpath(&runtimepath, '*.vim'), "\n")
   endif
 endfor
 
-let &runtimepath = &runtimepath . printf('%s/after,%s/after', $VIM, $VIMRUNTIME)
+let &rtp = &rtp . printf('%s/after', $VIMRUNTIME)
+let &rtp = substitute(globpath(expand('~/dev'), 'vim-*'), '\n', ',', 'g') . &rtp
 
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
