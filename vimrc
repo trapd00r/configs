@@ -59,6 +59,7 @@ set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')
 set incsearch
 set isfname+=:
 set laststatus=2
+set lazyredraw
 set list
 "let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
 set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪
@@ -106,6 +107,7 @@ set showmatch
 set showmode
 set smartcase
 set smarttab
+set suffixes=~,.swp,swo,o,gz
 set synmaxcol=160
 set tabpagemax=50
 set tabstop=2
@@ -118,13 +120,13 @@ set title
 set ttyfast
 set undofile
 set undolevels=512
-set undodir=/mnt/Docs/Backup/undo
+set undodir=/mnt/Docs/Backup/undo,.
 set visualbell t_vb=
 set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
-set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g
+set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
 set winfixwidth
 set winfixheight
 set winwidth=80
