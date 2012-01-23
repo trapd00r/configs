@@ -1,6 +1,44 @@
 "    File: $HOME/etc/functions.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2012-01-07 14:57:00
+" Updated: 2012-01-23 09:11:36
+
+func! Vidir_Sanitize(content)
+  mark z
+  " get rid of annoying swedish characters                                     {{{
+  silent! %s/\v[åä]/a/g
+  silent! %s/\v[ö]/o/g
+  silent! %s/\v[ÅÄ]/A/g
+  silent! %s/\v[Ö]/O/g
+  "}}}
+
+  silent! %s/\v[ ]/_/g
+  silent! %s/,/./g
+  silent! %s/\v[;<>*|'&!#)([\]{}]//g
+  silent! %s/\v./\L&/g
+  silent! %s/\v_+\ze[.]|\zs[.]\ze_+//g
+  silent! %s/[$]/S/g
+  silent! %s/\v-{2,}/-/g
+  silent! %s/\v_-_/-/g
+  silent! %s/\v[_]{2,}/_/g
+  silent! %s/\v[/_-]@<\=[a-z]/\U&/g
+  silent! %s/\v_(Feat|The|It|Of|At)_/\L&/ig
+  silent! %s/\v_(Och|N[åa]n)_/\L&/g
+
+  if (a:content == 'music') || (a:content == 'mvid')
+    :silent! %s/\v[&]/feat/g
+    :silent! %s/\v(_[el]p[_]?)/\U\1/ig
+  else
+    :silent! %s/\v[&]/and/g
+  endif
+
+  'z
+  delmark z
+endfunc
+
+func! Vidir_SmartUC()
+  :s/\<\@<![A-Z]/_&/g
+  ":s/\w\@<=\ze\u/_/g
+endfunc
 
 func! Markdown_Preview()
   :silent exe '!markdown_preview ' . expand('%:p')
