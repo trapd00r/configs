@@ -51,6 +51,7 @@ _x_arguments -C -s \
   '-input:command:(conf ar-delay ar-rate keylist cmdlist js-dev file)' \
   '-jpeg:option' -lavdopts:option \
   '-lircconf:lirc config file:_files' '-loop:repetitions' \
+  '-list-properties' \
   '-mc[specify max sync correction]:max sync correction' \
   '-mf[specify option when decoding multiple PNG or JPEG files]:option' \
   '-mixer:mixer device:_files -g "*(-%b)"' \
