@@ -1,83 +1,83 @@
-source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trans-green; fi`
+source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
+mailboxes `find /mnt/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 
-
-set abort_nosubject=no
-set abort_unmodified=no
-set arrow_cursor
-set ascii_chars
-set attribution="On %d, %n wrote:"
-set autoedit
-set charset="UTF-8"
-set compose_format="--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%>-"
-set date_format="%Y-%m-%d %H:%M"
-set delete=yes
-set display_filter="tr '\240\204\223\226' ' \"\"-'"
-set edit_headers
-#set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
-#set editor="vim +':set tw=77' +':set wrap :set ft=perl' +\`awk '/^$/ {print i+2; exit} {i++}' %s\` %s"
-set editor="vim -c \"set spell spelllang=en | so ~/etc/vim/01-abbrevations.vim\""
-set fast_reply
-set folder=/mnt/Mail/inbox
-set forward_format="Fw: %s"     # subject in forwarded messages
-#set from="magnus@trapd00r.se"
-#set from="magnus@japh.se"
-set from="m@japh.se"
-set realname="Magnus Woldrich"
-set header_cache=/mnt/Mail/.hcache
-set hide_missing=yes
-set hostname="japh.se"
-set implicit_autoview=yes
+# options                                                                    {{{
+set abort_nosubject     = no
+set abort_unmodified    = no
+set attribution         = "On %d, %n wrote:"
+set autoedit            = yes
+set charset             = UTF-8
+set collapse_unread     = no
+set compose_format      = "--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%>-"
+set date_format         = "%y%m%d %H:%M  "
+set delete              = yes
+set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
+set duplicate_threads   = yes
+set edit_headers        = yes
+set editor              = "vim -c \"set spell spl=en | so ~/etc/vim/01-abbrevations.vim\""
+set fast_reply          = yes
+set folder              = /mnt/Mail/inbox
+set forward_format      = "Fw: %s"
+set from                = "m@japh.se"
+set header_cache        = /mnt/Mail/.hcache
+set hide_missing        = yes
+set hide_thread_subject = yes
+set hostname            = japh.se
+set implicit_autoview   = yes
 set include
-set index_format = "%Z %4D %40.40s▕▏ %n"
-set mail_check=5
-set markers=no
-#set mbox=+mbox
-set mbox="=received"
-set mbox_type=Maildir
-set move=no
+set index_format        = "%[%b %d]▕ %X:%Z ▕ %30.30L▕ %s"
+set mail_check          = 5
+set markers             = no
+set mbox                = =received
+set mbox_type           = Maildir
+set move                = no
+set narrow_tree         = yes
 set nobeep
 set noconfirmappend
 set nohelp
 set nomark_old
 set nowait_key
-set pager_context=3
-set pager_format="-%S- %-20.20f %s"
-#set pager="/home/scp1/dev/utils/mutt_pager"
-set pager_index_lines=0
-
-set post_indent_string='---end quoted text---'
-set postponed=+drafts
-set postponed=+postponed
-#set print=ask-no
-set print_command="muttprint -r $HOME/etc/muttprintrc"
-set query_command = "abook --mutt-query '%s'"
-set quit=yes
-set quote_regexp="^ *[a-zA-Z]*[>|][>:|]*"
-set quote_regexp="^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
-set read_inc=25
-set record=/mnt/Mail/sent-`date +"%y%m"`
-set reply_regexp='^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
-set reply_to=yes
-set reverse_alias
-set send_charset="utf-8"
-set sendmail="/usr/bin/msmtp"
-set shell='/bin/zsh'
-set signature="~/.signature"
+set pager_context       = 3
+set pager_format        = "-%S- %-20.20f %s"
+set pager_index_lines   = 0
+set post_indent_string  = '---end quoted text---'
+set postponed           = +drafts
+set postponed           = +postponed
+set print_command       = "muttprint -r $HOME/etc/muttprintrc"
+set query_command       = "abook --mutt-query '%s'"
+set quit                = ask-yes
+set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
+set quote_regexp        = "^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
+set read_inc            = 25
+set realname            = "Magnus Woldrich"
+set record              = /mnt/Mail/sent-`date +"%y%m"`
+set reply_regexp        = '^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
+set reply_to            = yes
+set reverse_alias       = yes
+set send_charset        = "utf-8"
+set sendmail            = /usr/bin/msmtp
+set shell               = /bin/zsh
+set signature           = ~/.signature
 set smart_wrap
-set smileys="^$"
-set sort=threads
-set spoolfile=+
+set smileys             = "^$"
+set sort                = threads
+set sort_aux            = last-date-received
+set sort_browser        = reverse-date
+set sort_re
+set spoolfile           = +
 set status_on_top
-set strict_threads
 set text_flowed
-set tmpdir=/tmp/scp1
-set wrapmargin=4
-
+set thread_received     = yes
+set tmpdir              = /tmp/scp1
+set wrapmargin          = 4
+#}}}
+# macros                                                                     {{{
 macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
 macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 macro index .. "c=\n" "Go to inbox"
-
+#}}}
+# binds                                                                      {{{
 bind pager k previous-line
 bind pager < previous-line
 bind pager j next-line
@@ -86,10 +86,38 @@ bind pager down next-page
 bind pager up previous-page
 bind index [ previous-line
 bind index ] next-line
-
+#}}}
+# hooks                                                                      {{{
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
-hdr_order From: Reply-To: Date: To: Cc: Subject: User-Agent:
-mailboxes `find /mnt/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
+
+save-hook nobody\@archlinux.org                                       =arch-bbs
+save-hook announce\@archlinux.org                                     =arch-news
+save-hook @arenabolaget.se                                            =arenabolaget
+save-hook @bokus.com                                                  =bokus
+save-hook @citynetwork.se                                             =citynetwork
+save-hook @gents.se                                                   =gents
+save-hook @reply.github.com                                           =github
+save-hook @plus.google.com                                            =google_plus
+save-hook laredoute.se                                                =laredoute
+save-hook "~t musicpd-dev-team@lists.sourceforge.net"                 =mpd_dev
+save-hook @ntmdistribution.se                                         =NTM
+save-hook "~(~t perl5-porters@perl.org) | ~c perl5-porters@perl.org"  =p5p
+save-hook "~t perlweekly@perlweekly.org"                              =perlweekly
+save-hook "~t rockbox@cool.haxx.se"                                   =rockbox
+save-hook "~c rxvt-unicode@lists.schmorp.de"                          =urxvt
+save-hook "~t stumpwm-devel@nongnu.org | ~c stumpwm-devel@nongnu.org" =stumpwm-devel
+save-hook "~t stumpwm-devel@nongnu.org | ~c stumpwm-devel@nongnu.org" =stumpwm-devel
+save-hook @ticnet.se                                                  =ticnet
+save-hook "~t tmux-users@lists.sourceforge.net"                       =tmux
+save-hook "~c tmux-users@lists.sourceforge.net"                       =tmux
+save-hook "~t vim_dev@vim.org"                                        =vim_dev
+save-hook "~t vim@vim.org | ~t vim_use@googlegroups.com"              =vim_use
+save-hook @webhallen.com                                              =webhallen
+save-hook "~t zsh-devs@zsh.org  | ~c zsh-dev@zsh.org"                 =zsh_dev
+save-hook "~t zsh-users@zsh.org | ~c zsh-uers@zsh.org"                =zsh_users
+#}}}
+# headers                                                                    {{{
+hdr_order Delivered-To Subject In-Reply-To X-Mailing-List
 
 ignore *
 unignore From:
@@ -102,8 +130,11 @@ unignore BCC:
 unignore X-Mailer:
 unignore User-Agent:
 
+my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
+#}}}
+# mime autoview                                                              {{{
 auto_view text/x-diff
 auto_view text/x-patch
-#auto_view text/html
+#}}}
 
-my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
+# vim: set cc=0 tw=0 fdm=marker:
