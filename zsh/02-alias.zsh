@@ -21,7 +21,6 @@ alias clisp=' rlwrap clisp'
 #}}}
 
 alias ctags='ctags --format=1'
-alias which='type -a'
 
 alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode-Normalize=NFD,NFC,NFKD,NFKC'
@@ -215,7 +214,7 @@ fi
 #     x      - slideshow, seconds will be specified on commandline
 #              (like "fehfrx 7 .")
 
-alias feh='feh -FZ --quiet --verbose --action "rm '\'%f\'\"
+alias feh='feh -FZ --quiet --verbose -G -d --draw-tinted --action "rm '\'%f\'\"
 alias fehe='feh -Texif'
 alias feher='feh -Texif --recursive'
 alias fehf='feh -Tfs'
