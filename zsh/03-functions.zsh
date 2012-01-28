@@ -1,3 +1,7 @@
+which() {
+  builtin which "$@" && builtin type "$@"
+}
+
 pacman() {
   sexpac "$@"
 }
