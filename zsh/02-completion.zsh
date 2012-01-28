@@ -47,7 +47,7 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
 zstyle ':completion:*:*:mplayer:*'           tag-order files
 zstyle ':completion:*:*:mplayer:*'           ignored-patterns '*.(nfo|sfv|rar)'
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
-       '*.(rmvb|mkv|mpg|wmv|mpeg|avi|flv|mp3|mp4|flac|ogg|webm|iso|img):video' \
+       '*.(rmvb|mkv|mpe?g|mpe|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf):video' \
        '*:all-files' '*(-/):directories'
 #}}}
 # ssh                                                                        {{{
@@ -107,4 +107,4 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 
 zstyle '*' single-ignored show
 
-# vim: set ts=2 et sw=2 fdm=marker:
+# vim: set ts=2 et sw=2 fdm=marker cc=:
