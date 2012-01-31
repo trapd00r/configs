@@ -48,7 +48,21 @@
 )
 
 
+(define-frame-preference "media"
+  ( 0 t t :class "MPlayer")
+)
 
+;; group management                                                          {{{
+(define-key *root-map* (kbd "!")            "gselect 1")
+(define-key *root-map* (kbd "'")            "gselect 2")
+(define-key *root-map* (kbd "#")            "gselect 3")
+(define-key *root-map* (kbd "$")            "gselect 4")
+(define-key *root-map* (kbd "%")            "gselect 5")
+(define-key *root-map* (kbd "&")            "gselect 6")
+(define-key *root-map* (kbd "/")            "gselect 7")
+(define-key *root-map* (kbd "(")            "gselect 8")
+(define-key *root-map* (kbd ")")            "gselect 9")
+;;}}}
 ;; window management                                                         {{{
 (define-key *root-map* (kbd "h")            "move-focus left")
 (define-key *root-map* (kbd "j")            "move-focus down")
@@ -99,8 +113,11 @@
 (define-key *root-map* (kbd "m")            "exec dmenurl")
 (define-key *root-map* (kbd "x")            "exec xterm")
 
+;(defcommand send-selection nil nil
+;  (window-send-string (get-x-selection))
+;)
 (defcommand send-selection nil nil
-  (window-send-string (get-x-selection))
+  (window-send-string (run-shell-command "xclip -o" t))
 )
 (define-key *top-map* (kbd "C-Insert") "send-selection")
 
