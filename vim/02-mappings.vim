@@ -1,6 +1,6 @@
 "    File: $HOME/etc/mappings.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-12-20 10:14:07
+" Updated: 2012-02-04 13:51:07
 
 let mapleader = ';'
 
@@ -8,10 +8,16 @@ nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nmap <leader>O :%w >> ~/vim_output<CR>
 "nmap <leader>o :exec ':.w >> ' . eval(string( xclipboard_pipe_path ))<CR>
 
-
+" searching                                                                  {{{
+nnoremap <silent> ! *:call HL_Search_Cword()<CR>
+nnoremap <silent> # #:call HL_Search_Cword()<CR>
+nnoremap <silent> * *:call HL_Search_Cword()<CR>
+nnoremap <silent> N N:call HL_Search_Cword()<CR>
+nnoremap <silent> n n:call HL_Search_Cword()<CR>
+"}}}
 " user interface                                                             {{{
 nnoremap <CR>   zA       " toggle folds recursively
-nnoremap '      `        " switch ' and ` ...
+"nnoremap '      `        " switch ' and ` ...
 nnoremap `      '        " ... and do the right thing
 cmap     qq     qa!<CR>  " quit really, really fast
 nnoremap ``     ''       " switch those two as well
@@ -112,6 +118,8 @@ nnoremap     <leader><TAB> :call ToggleSpell()<CR>
 " cd to the directory of the open buffer, if possible
 map <leader>cd :cd %:p:h<CR>
 
+nnoremap <silent> <C-l> :noh<CR><C-l>
+
 nnoremap <C-n>     :bnext<CR>
 nnoremap <C-p>     :bprev<CR>
 nnoremap <leader>b :ls<CR>:buffer<space>
@@ -148,16 +156,36 @@ nnoremap <leader>v V`]
 nnoremap ,g :sil exe 'grep! -R '.shellescape("<cWORD>")." ."<CR>:cope<CR>:winc w<CR>
 " }}}
 " sane regex                                                                {{{
-cnoremap %s#      %s#\v
-cnoremap %s/      %s/\v
-cnoremap %s@      %s@\v
-cnoremap '<,'>s#  '<,'>s#\v
-cnoremap '<,'>s/  '<,'>s/\v
-cnoremap '<,'>s@  '<,'>s@\v
-cnoremap s#       s#\v
-cnoremap s/       s/\v
-cnoremap s@       s@\v
-nnoremap /        /\v
+
+" use this custom function for cabbrevations. This makes sure that they only
+" apply in the beginning of a command. Else we might end up with stuff like
+"   :%s/\vfoo/\v/\vbar/  
+" if we happen to move backwards in the pattern.
+call Cabbrev('/',   '/\v')
+call Cabbrev('?',   '?\v')
+
+call Cabbrev('s/',  's/\v')
+call Cabbrev('%s/', '%s/\v')
+
+call Cabbrev('s#',  's#\v')
+call Cabbrev('%s#', '%s#\v')
+
+call Cabbrev('s@',  's@\v')
+call Cabbrev('%s@', '%s@\v')
+
+call Cabbrev('s!',  's!\v')
+call Cabbrev('%s!', '%s!\v')
+
+call Cabbrev('s%',  's%\v')
+call Cabbrev('%s%', '%s%\v')
+
+call Cabbrev('/',   '/\v')
+
+call Cabbrev("'<,'>s/", "'<,'>s/\v")
+call Cabbrev("'<,'>s#", "'<,'>s#\v")
+call Cabbrev("'<,'>s@", "'<,'>s@\v")
+call Cabbrev("'<,'>s!", "'<,'>s!\v")
+
 vnoremap /        /\v
 " }}}
 " emacs keymap in the commandline                                          {{{
@@ -172,6 +200,13 @@ cnoremap  <c-n>   <down>
 cnoremap  <c-p>   <up>
 cnoremap  <C-*>   <c-a>
 " }}}
+" additional commandline mappings                                            {{{
+cnoremap  <c-j>   <down>
+cnoremap  <c-k>   <up>
+" let use get there fast from normal mode as well
+nnoremap <c-j>    :<down>
+nnoremap <c-k>    :<up>
+"}}}
 " fix xterm keys {{{
 map  <Esc>[1;2A <S-Up>
 map! <Esc>[1;2A <S-Up>
