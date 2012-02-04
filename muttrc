@@ -4,14 +4,16 @@ mailboxes `find /mnt/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune 
 # options                                                                    {{{
 set abort_nosubject     = no
 set abort_unmodified    = no
-set attribution         = "On %d, %n wrote:"
+set allow_ansi          = yes
+set arrow_cursor        = yes
+set attribution         = "On %[%b %d], %n (%F) wrote:"
 set autoedit            = yes
 set charset             = UTF-8
 set collapse_unread     = no
 set compose_format      = "--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%>-"
 set date_format         = "%y%m%d %H:%M  "
 set delete              = yes
-set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
+#set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
 set duplicate_threads   = yes
 set edit_headers        = yes
 set editor              = "vim -c \"set spell spl=en | so ~/etc/vim/01-abbrevations.vim\""
