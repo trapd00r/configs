@@ -164,12 +164,12 @@ alias          npd='srinfo -np'
 alias         scat='source-highlight -o STDOUT -f esc -i'
 
 if [ -f '/etc/rc.d/oss' ]; then
-  alias        v+='ossmix vmix0.pcm8  -- +2'
-  alias        v-='ossmix vmix0.pcm8  -- -2'
-  alias       v++='ossmix vmix0.pcm9  -- +2'
-  alias       v--='ossmix vmix0.pcm9  -- -2'
-  alias      v+++='ossmix vmix0.pcm10 -- +2'
-  alias      v+++='ossmix vmix0.pcm10 -- +2'
+  alias        v+='ossmix vmix0.pcm8   -- +2'
+  alias        v-='ossmix vmix0.pcm8   -- -2'
+  alias       v++='ossmix vmix0.pcm9   -- +2'
+  alias       v--='ossmix vmix0.pcm9   -- -2'
+  alias      v+++='ossmix vmix0.pcm10  -- +2'
+  alias       v---='ossmix vmix0.pcm10 -- -2'
 fi
 
 alias      wmp='wminput -c mplayer&'
