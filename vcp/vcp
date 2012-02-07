@@ -1,0 +1,9 @@
+border  = "on"
+color   = "blue2"
+flags   = "tvi"
+readbuf = ""
+# screen state when exiting,
+#  leave will simply exit
+#  summary will output to console
+#  keywait waits for a keypress then exits (default)
+screen  = "summary" # 
