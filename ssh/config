@@ -48,10 +48,17 @@ host n900 #                                                                  {{{
   checkhostip             no
   connecttimeout          10
 #}}}
-host japh.se                                                                 {{{
+host japh.se #                                                               {{{
   user                    scp1
   hostname                japh.se
   port                    19217
+  compression             no
+  ciphers                 blowfish-cbc
+#}}}
+host brutus.ethup.se #                                                       {{{
+  user                    scp1
+  hostname                brutus.ethup.se
+  port                    22
   compression             no
   ciphers                 blowfish-cbc
 #}}}
