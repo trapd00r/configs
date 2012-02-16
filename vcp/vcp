@@ -1,6 +1,6 @@
 border  = "on"
 color   = "blue2"
-flags   = "tvi"
+flags   = "tv"
 readbuf = ""
 # screen state when exiting,
 #  leave will simply exit
