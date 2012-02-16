@@ -1,5 +1,4 @@
-[shiva]
-
+[shiva]#{{{
 alang              = en
 af                 = stats
 ao                 = oss
@@ -36,9 +35,8 @@ unrarexec          = /usr/bin/unrar
 use-filename-title = 1
 volume             = 80
 utf8               = 1
-
-[rambo]
-
+#}}}
+[rambo]#{{{
 alang              = sv
 ao                 = oss,alsa,
 #device            = spdif
@@ -50,7 +48,7 @@ msgcolor           = 1
 msgmodule          = 1
 noborder           = 1
 osd-duration       = 5000
-osdlevel           = 0
+osdlevel           = 2
 prefer-ipv4        = 1
 slang              = sv
 spuaa              = 4
@@ -62,13 +60,12 @@ unrarexec          = /usr/bin/unrar
 vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,
 vo                 = vdpau
 volume             = 90
-
-[porn]
-
+#}}}
+[porn]#{{{
 noborder           = 1
 osd-duration       = 3000
 volume             = 20
 fs                 = 1
 unrarexec          = /usr/bin/unrar
-
-# vim: set ft=dosini:
+#}}}
+# vim: set ft=mplayerconf:
