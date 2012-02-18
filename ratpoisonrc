@@ -1,0 +1,45 @@
+defbarpadding 0 0
+defborder 0
+defpadding 0 0 0 0
+escape C-f
+exec unclutter -idle 1 -root
+exec xsetroot -cursor_name center_ptr
+gravity se
+set border 0
+set bgcolor #000000
+set bwcolor #000000
+set fgcolor #66ff00
+set font terminus-32
+set fwcolor #000000
+set waitcursor 0
+set winname class
+startup_message off
+
+bind 0 exec ratpoison -c "frestore $(ratpoison -c 'getenv fs1')"
+bind = exec ratpoison -c "setenv fs1 $(ratpoison -c 'fdump')"
+bind C-f-k focusup
+bind H exchangeleft
+bind J exchangedown
+bind K exchangeup
+bind L exchangeright
+bind c exec urxvtc -name rambo
+bind dead_acute exec rpws init 2 -ak
+bind e exec dmenu_run
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+bind m  exec ~/devel/clipbored/scripts/fmenuclip
+bind n  exec ~/devel/clipbored/scripts/dmenurl
+bind o exec rmcd -t
+bind p exec mpc next
+bind space exec ratpoison -c "echo $(mpc|head -1)"
+bind t exec perl $HOME/bin/expose
+
+#bind H rpwsp
+#bind L rpwsn
+#bind c exec urxvtc -name URxvt.india -e zsh -c 'xtermcolorchange;exec zsh'
+#bind o exec mplayerd -cmd toggle
+#bind p exec rmcd -n
+#set border 1
+#set padding 0 14 0 0
