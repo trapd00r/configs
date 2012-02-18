@@ -1,4 +1,4 @@
-/*
+/*~/etc/Xresources                                                           {{{
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Created: 2008-04-24
@@ -21,11 +21,10 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 [1]: https://github.com/trapd00r/colorcoke
 [2]: https://github.com/trapd00r/Term-ExtendedColor-Xresources
 [3]: https://github.com/trapd00r/pickyfont
-
-*/
-
-! additional rcs                                                             {{{
-!#include "/home/scp1/etc/Xcolors/better_defaults.Xresources"
+}}}*/
+! additional rc                                                              {{{
+#include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
+!include "/home/scp1/etc/Xcolors/better_defaults.Xresources"
 !#include "/home/scp1/etc/Xcolors/matrix.Xresources"
 !#include "/home/scp1/etc/Xcolors/random_selection.Xresources"
 !#include "/home/scp1/etc/Xcolors/rasi.Xresources"
@@ -33,77 +32,66 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !#include "/home/scp1/etc/Xcolors/tango.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_correct_ansi.Xresources"
 !#include "/home/scp1/etc/Xcolors/trapd00r_default.Xresources"
-#include "/home/scp1/etc/Xcolors/trapd00r_new.Xresources"
 !#include "/home/scp1/etc/Xcolors/trasmatta.Xresources"
 !#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
 !}}}
-
-! defines                                                                    {{{
-!if WIDTH < 60
-!#define FONT -xos4-terminus-medium-r-normal--22-220-72-72-c-110-koi8-u
-!else
-#define FONT -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-!endif
-
-#define FONT_B   -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-#define FONT_I   -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
-#define FONT_I_B -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-
-#define PROFONT_HUGE  -nil-profont-medium-r-normal--29-290-72-72-c-160-iso8859-1
-#define TERMINUS_HUGE -xos4-terminus-medium-r-normal--28-280-72-72-c-140-koi8-u
+! fonts                                                                      {{{
+#define FONT_NORMAL     6x10
+#define FONT_BOLD       -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
+#define FONT_ITALIC     -b&h-lucidatypewriter-bold-r-normal-sans-10-100-75-75-m-60-iso10646-1
+#define FONT_BOLDITALIC -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
 !}}}
 ! vte                                                                        {{{
-vte*background:                   #121212
-vte*boldFont:                     FONT_B
-vte*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
-vte*foreground:                   #d6d6d6
-vte*italicFont:                   FONT_I
-vte*scrollBar:                    false
+  vte*font:       FONT_NORMAL
+  vte*boldFont:   FONT_BOLD
+  vte*italicFont: FONT_ITALIC
+  vte*background: #121212
+  vte*foreground: #d6d6d6
+  vte*scrollBar:  false
 !}}}
 ! vim                                                                        {{{
+vim*font:                         FONT
+vim*boldFont:                     FONT_BOLD
+vim*italicFont:                   FONT_ITALIC
+vim*boldItalicFont:               FONT_BOLDITALIC
 vim*background:                   #121212
-vim*boldFont:                     FONT_B
-vim*font:                         -xos4-terminus-medium-r-normal--0-0-72-72-c-0-koi8-u, FONT
 vim*foreground:                   #d6d6d6
-vim*italicFont:                   FONT_I
 vim*scrollBar:                    false
 !}}}
 ! XTerm                                                                      {{{
-/* Term::ExtendedColor::Xresources */
-XTerm.VT100.allowColorOps:        1
-XTerm*dynamicColors:              On
-XTerm*allowWindowOps:             true
+XTerm*allowColorOps:       1
+XTerm*allowFontOps:        1
+XTerm*allowTcapOps:        1
+XTerm*allowTitleOps:       1
+XTerm*allowWindowOps:      1
+XTerm*dynamicColors:       1
 
-XTerm*background:                 #121212
-XTerm*boldFont:                   FONT_B
-XTerm*colorBD:                    #FFFFFF
-XTerm*colorBDMode:                On
-XTerm*colorMode:                  On
-XTerm*colorUL:                    #FFFFFF
-XTerm*colorULMode:                On
-XTerm*font:                       FONT
-XTerm*foreground:                 #FFFFFF
-XTerm.italicFont:                 FONT_I
+XTerm*font:                FONT_NORMAL
+XTerm*boldFont:            FONT_BOLD
+XTerm.italicFont:          FONT_ITALIC
+XTerm*foreground:          #FFFFFF
+XTerm*background:          #121212
+XTerm*colorBD:             #FFFFFF
+XTerm*colorBDMode:         1
+XTerm*colorMode:           1
+XTerm*colorUL:             #FFFFFF
+XTerm*colorULMode:         1
 
-XTerm*jumpScroll:                 on
-XTerm*metaSendsEscape:            True
-XTerm*multiScroll:                on
-XTerm*vt100.scrollBar:            False
-xterm*SaveLines:                  2500
+XTerm*jumpScroll:          1
+XTerm*metaSendsEscape:     1
+XTerm*multiScroll:         1
+XTerm*vt100.scrollBar:     0
+XTerm*SaveLines:           2500
+XTerm*scrollBar:           0
 
 /* http://shallowsky.com/linux/noaltscreen.html */
-XTerm*titeInhibit:                true
-
-/* eyecandy */
-XTerm*scrollBar:                  false
-
-
-
+XTerm*titeInhibit:         1
 !}}}
 ! urxvt                                                                      {{{
 URxvt.letterSpace: 0
 URxvt.selection.pattern-0:        ( at .*? line \\d+[,.])
 URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:$2\\x0d/
+URxvt.keysym.C-Up:      \033[1;5A
 !}}}
 ! host: shiva                                                                {{{
 shiva.iso14755:             1
@@ -124,15 +112,10 @@ shiva.pointerColor2:        #0092FF
 shiva.pointerColor:         #252525
 shiva.underlineColor:       #0E0E0E
 
-!shiva*font:                 -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv
-!shiva*boldFont:             -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
-!
-!shiva*italicFont:           -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
-
-shiva*font:                 FONT
-shiva*boldFont:             FONT_B
-shiva*italicFont:           xft:fixed:antialias=true:hinting=true:hintstyle=hintslight
-shiva*boldItalicFont:       FONT_I_B
+shiva*font:                 FONT_NORMAL
+shiva*boldFont:             FONT_BOLD
+shiva*italicFont:           FONT_ITALIC
+shiva*boldItalicFont:       FONT_BOLDITALIC
 
 shiva.cutchars:             "()*,<>[]{}|'"
 shiva.matcher.button:       1
@@ -145,9 +128,9 @@ shiva.urlLauncher:          /usr/bin/firefox
 
 URxvt.keysym.M-u:           perl:mark-yank-urls:activate_mark_mode
 URxvt.perl-ext:             selection,mark-yank-urls
-shiva.perl-eval:            $^O
-shiva.perl-ext-common:      default,matcher
-shiva.perl-lib:             /home/scp1/dev/urxvt-extensions
+URxvt.perl-eval:            $^O
+URxvt.perl-ext-common:      default,matcher
+URxvt.perl-lib:             /home/scp1/dev/urxvt-extensions
 
 shiva.jumpScroll:           true
 shiva.loginShell:           true
@@ -227,20 +210,22 @@ india.depth:                32
 !india.secondaryScroll:     true
 !}}}
 ! host: rambo                                                                {{{
-rambo*font:                TERMINUS_HUGE
-rambo*boldFont:            TERMINUS_HUGE
-rambo*italicFont:          TERMINUS_HUGE
-rambo*boldItalicFont:      TERMINUS_HUGE
+rambo*font:                xft:Droid Sans Mono Slashed:style=Regular:pixelsize=32:antialias=1:hinting=1
+rambo*boldFont:            xft:Droid Sans Mono Slashed:pixelsize=32:antialias=1:hinting=1:embolden=1
+rambo*italicFont:          xft:Droid Sans Mono Slashed:pixelsize=32:antialias=1:hinting=1:slant=italic
+rambo*boldItalicFont:      -xos4-terminus-bold-r-normal--32-320-72-72-c-160-koi8-u
 
-rambo.background:          #121212
-rambo.borderColor:         #0E0E0E
+rambo.chdir:               /mnt/Mvids
+
+rambo.background:          #000000
+rambo.borderColor:         #000000
 rambo.colorBD:             #FFFFFF
 rambo.colorIT:             #FFFFFF
 rambo.colorRV:             #333333
 rambo.colorUL:             #FF8F00
 rambo.cursorColor2:        #252525
 rambo.cursorColor:         #EB122E
-rambo.foreground:          #cacaca
+rambo.foreground:          #ffffff
 rambo.pointerColor2:       #0092FF
 rambo.pointerColor:        #252525
 rambo.underlineColor:      #0E0E0E
@@ -311,4 +296,4 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
 .xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
 !}}}
-! vim: set fdm=marker:
+! vim: set fdm=marker et sw=2 tw=0:
