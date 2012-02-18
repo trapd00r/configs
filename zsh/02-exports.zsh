@@ -5,6 +5,8 @@ if [ $HOST = 'rambo' ]; then
 fi
 
 export LD_PRELOAD="$HOME/lib/stderred.so"
+export RLWRAP_FILTERDIR="$HOME/dev/_upstream/rlwrap/filters"
+export INPUTRC='$XDG_CONFIG_HOME/inputrc'
 
 export ACKRC="$HOME/etc/ackrc"
 export BROWSER="/usr/bin/w3m"
@@ -64,7 +66,7 @@ export XDG_VIDEOS_DIR="/mnt/Movies_1/"
 # zsh                                                                        {{{
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export ZSH_THEME="trapd00r"
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 #}}}
 # history                                                                    {{{
 export HISTFILE=$XDG_DATA_HOME/zsh/history
