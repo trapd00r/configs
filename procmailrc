@@ -51,7 +51,11 @@ DEFAULT=$MAILDIR/inbox/
 /dev/null
 
 :0
-* ^Subject:.*OreillyMedia\sjust\suploaded\sa\video
+* ^Subject:.*OreillyMedia\sjust\suploaded\sa\svideo
+/dev/null
+
+:0
+* ^FROM_no-reply@spraydate.se
 /dev/null
 #}}}
 
