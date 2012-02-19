@@ -1,0 +1,131 @@
+// vim: set ft=xkb colorcolumn=0 tw=0:
+// A complete Swedish map for use with HHKB Pro 2 with SW 01 1010,
+// that is Lite ext, Backspace on rubout and diamond gives Alt.
+
+
+default partial alphanumeric_keys modifier_keys
+
+
+xkb_symbols "se-complete" {
+    key <AE01> { [ exclam, 1, leftdoublequotemark, rightdoublequotemark ] };
+    key <AE02> { [ quotedbl, 2, rightdoublequotemark, rightsinglequotemark ] };
+    key <AE03> { [ numbersign, 3, sterling, NoSymbol ] };
+    key <AE04> { [ dollar, 4, dollar ] };
+    key <AE05> { [ percent, 5, EuroSign, cent, NoSymbol ] };
+    key <AE06> { [ ampersand, 6, yen, NoSymbol ] };
+    key <AE07> { [ slash, 7] };
+    key <AE08> { [ parenleft, 8 ] };
+    key <AE09> { [ parenright, 9 ] };
+    key <AE10> { [ equal, 0 ] };
+    key <AE11> { [ question, plus ] };
+    key <AE12> { [ grave, at, dead_acute, dead_grave ] };
+    key <BKSL> { [ apostrophe, asterisk] };
+    key <TLDE> { [ less, greater ] };
+
+    key <AD01> { [ q, Q ] };
+    key <AD02> { [ w, W ] };
+    key <AD03> { [ e, E, eacute, Eacute ] };
+    key <AD04> { [ r, R ] };
+    key <AD05> { [ t, T, thorn, THORN ] };
+    key <AD06> { [ y, Y ] };
+    key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
+    key <AD08> { [ i, I ] };
+    key <AD09> { [ o, O, oslash, Ooblique] };
+    key <AD10> { [ p, P ] };
+    key <AD11> { [ braceright, bracketright ] };
+    key <AD12> { [ asciitilde, asciicircum, dead_diaeresis, dead_circumflex] };
+
+    key <AC01> { [ a, A, ae, AE ] };
+    key <AC02> { [ s, S, ssharp, NoSymbol ] };
+    key <AC03> { [ d, D, eth, ETH ] };
+    key <AC04> { [ f, F ] };
+    key <AC05> { [ g, G ] };
+    key <AC06> { [ h, H ] };
+    key <AC07> { [ j, J, comma ] };
+    key <AC08> { [ k, K, semicolon ] };
+    key <AC09> { [ l, L ] };
+    key <AC10> { [ bar, backslash ] };
+    key <AC11> { [ braceleft, bracketleft ] };
+
+    key <AB01> { [ z, Z, guillemotleft ] };
+    key <AB02> { [ x, X, guillemotright ] };
+    key <AB03> { [ c, C, copyright ] };
+    key <AB04> { [ v, V ] };
+    key <AB05> { [ b, B ] };
+    key <AB06> { [ n, N, ntilde, Ntilde ] };
+    key <AB07> { [ m, M, mu, NoSymbol ] };
+    key <AB08> { [ semicolon, comma ] };
+    key <AB09> { [ colon, period ] };
+    key <AB10> { [ minus, underscore ] };
+
+    key <LWIN> { [ Super_L ] };
+    key <RWIN> { [ Meta_R ] };
+    key <RALT> { [ ISO_Level3_Shift ] };
+
+    key <CAPS> { [ Escape ] };
+
+ 
+    //key <RALT> { [ Meta_R ] };
+    //key <RALT> { [ ISo_Level3_Shift ] };
+    //key <RWIN> { [ ISO_Level3_Shift ] };
+
+    modifier_map Mod1 { Meta_L, Meta_R };
+    modifier_map Mod4 { Super_L };
+    modifier_map Mod5 { ISO_Level3_Shift };
+};
+
+// Swedish map for use with HHKB Pro 2 with SW 01 1010, that is Lite ext,
+// Backspace on rubout and diamond gives Alt.
+partial alphanumeric_keys modifier_keys
+xkb_symbols "se" {
+    include "latin(type2)"
+    include "latin(type2_nodeadkeys)"
+    include "se(se)"
+
+    key <AE04> { [ 4, dollar ] };
+    key <AE05> { [ 5, percent, EuroSign, cent ] };        
+    key <AE11> { [ plus, question, backslash ] };
+    key <AE12> { [ grave, at, dead_acute, dead_grave ] };
+    key <BKSL> { [ apostrophe, asterisk ] };
+    key <TLDE> { [ less, greater ] };
+
+    key <AD03> { [ e, E, eacute, Eacute ] };
+    key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
+    key <AD11> { [ aring, Aring, braceright, bracketright ] };
+    key <AD12> { [ asciitilde, asciicircum, dead_diaeresis, dead_circumflex] };
+
+    key <AC10> { [ odiaeresis, Odiaeresis, bar, backslash ] };
+    key <AC11> { [ adiaeresis, Adiaeresis, braceleft, bracketleft ] };
+
+    key <AB06> { [ n, N, ntilde, Ntilde ] };
+
+    key <LWIN> { [ Super_L ] };
+    key <LALT> { [ LALT ] };
+    //key <LALT> { [ Meta_L ] };
+    key <RWIN> { [ Meta_R ] };
+    key <RALT> { [ ISO_Level3_Shift ] };
+
+    modifier_map Mod1 { Meta_L, Meta_R };
+    modifier_map Mod4 { Super_L };
+    modifier_map Mod5 { ISO_Level3_Shift };
+};
+
+// American version of the above but with Swedish characters on
+// AltGr+brackets, braces, backslash and bar.
+partial alphanumeric_keys modifier_keys
+xkb_symbols "us" {
+    include "us"
+
+    key <AD11> { [ bracketleft, braceleft, adiaeresis, Adiaeresis ] };
+    key <AD12> { [ bracketright, braceright, aring, Aring ] };
+    key <BKSL> { [ backslash, bar, odiaeresis, Odiaeresis ] };
+
+    key <LWIN> { [ Super_L ] };
+    key <LALT> { [ LALT ] };
+    key <RWIN> { [ Meta_R ] };
+    key <RALT> { [ ISO_Level3_Shift ] };
+
+    modifier_map Mod1 { Meta_L, Meta_R };
+    modifier_map Mod4 { Super_L };
+    modifier_map Mod5 { ISO_Level3_Shift };
+};
