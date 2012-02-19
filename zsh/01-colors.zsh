@@ -17,5 +17,5 @@ if [[ -z $LS_COLORS ]]; then
 fi
 
 if [ "$TERM" != "linux" ]; then
-  export GREP_COLORS="38;5;230:sl=38;5;240:cs=38;5;100:mt=38;5;161;1:fn=38;5;197:ln=38;5;212:bn=38;5;44:se=38;5;166"
+  export GREP_COLORS='38;5;230:sl=38;5;240:cs=38;5;100:mt=38;5;85;1:fn=38;5;86:ln=38;5;212:bn=38;5;44:se=38;5;166'
 fi
