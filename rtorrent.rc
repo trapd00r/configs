@@ -24,6 +24,7 @@ max_memory_usage = 9999999999999999
 schedule = home1    ,5, 5, "load_start=/home/scp1/*.torrent,                       d.set_directory=/home/scp1/"
 schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,             d.set_directory=/mnt/Books/.new"
 schedule = porn1    ,5, 5, "load_start=/mnt/Porn/.torrents/*.torrent,              d.set_directory=/mnt/Porn/.new"
+schedule = porn2    ,5, 5, "load_start=/mnt/Porn_2/.torrents/*.torrent,            d.set_directory=/mnt/Porn_2/.new"
 schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
 schedule = porn2    ,5, 5, "load_start=/mnt/Backup/.torrents/*.torrent,            d.set_directory=/mnt/Backup/.new"
 #schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,            d.set_directory=/mnt/Mvids/.new/"
