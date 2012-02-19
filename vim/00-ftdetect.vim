@@ -11,18 +11,19 @@ set formatoptions=qro
 "au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e | :19
 
 if &term != 'linux'
-  au InsertEnter * :silent !printf '\e]12;\#dc410d\a'
-  au InsertLeave * :silent !printf '\e]12;\#a5dc0d\a'
-  au VimLeave    * :silent !printf '\e]12;\#00adff\a'
+  "au InsertEnter * :silent !printf '\e]12;\#dc410d\a'
+  "au InsertLeave * :silent !printf '\e]12;\#a5dc0d\a'
+  "au VimLeave    * :silent !printf '\e]12;\#00adff\a'
 
   "let italic = '-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
-  "au InsertEnter * :silent !printf '\e]710;6x13\a\e]711;6x13b\e]712;%s\a' italic 
+  "au InsertEnter * :silent !printf '\e]710;6x13\a\e]711;6x13b\e]712;%s\a' italic
 endif
 
+au BufNewFile,BufRead *.playlist :so /home/scp1/dev/vim-lscolors/plugin/lscolors.vim
 
 augroup FastEscape
   autocmd!
-  
+
   set notimeout
   set ttimeout
   set timeoutlen=10
@@ -46,7 +47,7 @@ au BufNewFile *.t  silent! 0r ~/etc/vim/templates/template.t    |
 au BufNewFile *.vim silent! 0r ~/etc/vim/templates/template.vim |
 
 au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c    |
-  \ :5 | exe 'normal o ' | startinsert 
+  \ :5 | exe 'normal o ' | startinsert
 
 au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown |
   \ :0 | exe 'normal d$A' | startinsert
@@ -122,8 +123,8 @@ let g:sh_maxlines                  = 200
 let g:sh_minlines                  = 100
 "}}}
 " netrw                                                                      {{{
-let g:netrw_http_cmd               = 'w3m'
-let g:netrw_http_xcmd              = '-dump >'
+let g:netrw_http_cmd               = 'wget'
+let g:netrw_http_xcmd              = '-q -O'
 "}}}
 " perl                                                                       {{{
 let g:perl_compiler_force_warnings = 0
