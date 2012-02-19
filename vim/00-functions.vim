@@ -5,11 +5,15 @@
 " Vidir - sanitize filenames                                                 {{{
 fu! Vidir_Sanitize(content)
   mark z
+
+  silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
+  "%s/\(\_^\s*\|\_^\s\+\d\+\)\@<!\s/_/g
+
   silent! %s/\v[åä]/a/g
   silent! %s/\v[ö]/o/g
   silent! %s/\v[ÅÄ]/A/g
   silent! %s/\v[Ö]/O/g
-  silent! %s/\v[ ]/_/g
+  silent! %s/\v^\s*[0-9]+\s+\zs\s+/_/g
   silent! %s/,/./g
   silent! %s/\v[;<>*|'&!#)([\]{}]//g
   silent! %s/\v./\L&/g
@@ -34,30 +38,32 @@ fu! Vidir_Sanitize(content)
 endfu
 "}}}
 " Vidir - sort-of-TitleCase helper                                           {{{
-fu! Vidir_SmartUC() 
+fu! Vidir_SmartUC()
   :s/\<\@<![A-Z]/_&/g
   ":s/\w\@<=\ze\u/_/g
 endfu
 "}}}
 " highlights - hl match under cursor differently from Search                 {{{
-fu! HL_Search_Cword()
-  let s:old_cpo = &cpo
-  set cpo&vim
-
-  if exists('b:search_cword_item')
-    try
-      call matchdelete(b:search_cword_item)
-    catch /^Vim\%((\a\+\)\=:E/ " ignore E802,E803
-    endtry
-  endif
-
-  hi Search       ctermfg=106 ctermbg=233 cterm=bold,reverse
-  hi search_cword ctermfg=085 ctermbg=234 cterm=bold
-
-  let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
-
-  let &cpo = s:old_cpo
-endfu
+"fu! HL_Search_Cword()
+"  let s:old_cpo = &cpo
+"  set cpo&vim
+"
+"  if exists('b:search_cword_item')
+"    try
+"      call matchdelete(b:search_cword_item)
+"    catch /^Vim\%((\a\+\)\=:E/ " ignore E802,E803
+"    endtry
+"  endif
+"
+"  " :silent !printf '\e]12;\#242424\a'
+"  hi Search       ctermfg=233 ctermfg=106 cterm=bold
+"  "hi Search       ctermfg=106 ctermbg=233 cterm=bold
+"  hi search_cword ctermfg=085 ctermbg=234 cterm=bold
+"
+"  let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
+"
+"  let &cpo = s:old_cpo
+"endfu
 "}}}
 " highlights - hl every even/odd line                                        {{{
 fu! OddEvenHL()
