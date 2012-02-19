@@ -4,7 +4,9 @@ runtime! macros/less.vim
 
 let no_plugin_maps = 1
 
-set scrolloff=999
+set scroll=15
+"set scrolloff=999
+set scrolljump=15
 set foldlevel=999
 set colorcolumn=0
 set tw=80
