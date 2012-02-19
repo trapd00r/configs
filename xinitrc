@@ -62,7 +62,9 @@ fi
 
 #xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' &
 xmodmap $XDG_CONFIG_HOME/xmodmaprc &
+
 xset fp $(echo "$HOME/.fonts,
+  /mnt/Docs/Fonts/,
   /usr/share/fonts/TTF,
   /usr/share/fonts/artwiz-fonts,
   /usr/share/fonts/local,
