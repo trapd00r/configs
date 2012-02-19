@@ -15,9 +15,10 @@ fi
 
 alias termsize='printf "%dx%d\n" $COLUMNS $LINES'
 alias cclive='cclive --config-file $XDG_CONFIG_HOME/ccliverc -f best'
-# lisp                                                                     {{{
+# lisp                                                                       {{{
 alias bigloo='rlwrap bigloo'
 alias clisp=' rlwrap clisp'
+alias irb='   rlwrap irb-1.8'
 #}}}
 
 alias ctags='ctags --format=1'
@@ -94,45 +95,36 @@ alias   perlf='ack -f --perl'
 
 
 #alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
-alias        r='perl $HOME/dev/App-Rel/rel/'
-
-alias     x='cd $XDG_CONFIG_HOME'
-alias     h='cd $HOME/dev/trapd00r.se'
-alias    vb='cd $HOME/etc/vim/bundle'
-alias tests='cd $HOME/dev/CPANTS'
-
-alias     b='cd $HOME/bin'
-alias     c='cd $HOME/etc'
-alias     d='cd $HOME/dev'
-alias     u='cd $HOME/dev/utils'
-alias     g='cd $HOME/bin/upstream'
-alias     z='cd $HOME/.zsh'
-alias    aa='cd $HOME/dev/App-Autotest'
-alias    ap='cd $HOME/dev/App-Pimpd'
-alias    pp='cd $HOME/dev/App-Pimpd'
-alias   apl='cd $HOME/dev/App-Pimpd_Legacy'
-alias     p='cd $HOME/dev/App-Pimpd_Legacy'
-alias     q='cd $HOME/dev/pickyfont'
-alias    ar='cd $HOME/dev/App-Rel/'
-alias   RPD='cd $HOME/dev/App-RPD'
-alias    at='cd $HOME/dev/ttycolor'
-alias    dm='cd $HOME/dev/Daemon-Mplayer'
-alias   flc='cd $HOME/dev/File-LsColor'
-alias   tec='cd $HOME/dev/Term-ExtendedColor'
-alias   tet='cd $HOME/dev/Term-ExtendedColor-TTY'
-alias   tex='cd $HOME/dev/Term-ExtendedColor-Xresources'
-alias   mll='cd $HOME/dev/Module-LocalLoad'
-alias   mnp='cd $HOME/dev/Mplayer-NowPlaying-CPAN'
-alias xxlfd='cd $HOME/dev/Xorg-XLFD'
-alias   mp3='cd /mnt/Leftover/TransferMusic'
-alias     t='mkdr /tmp/scp1 ; cd /tmp/scp1'
-alias    tt='cd $HOME/dev/_upstream'
+alias     b='builtin cd $HOME/bin'
+alias     c='builtin cd $HOME/etc'
+alias     d='builtin cd $HOME/dev'
+alias     g='builtin cd $HOME/dev/_upstream'
+alias     h='builtin cd $HOME/http/japh.se'
+alias     q='builtin cd $HOME/dev/pickyfont'
+alias     u='builtin cd $HOME/dev/utils'
+alias     x='builtin cd $XDG_CONFIG_HOME'
+alias     z='builtin cd $HOME/etc/zsh'
+alias    aa='builtin cd $HOME/dev/App-Autotest'
+alias    ap='builtin cd $HOME/dev/pimpd2'
+alias    at='builtin cd $HOME/dev/ttycolor'
+alias    dm='builtin cd $HOME/dev/Daemon-Mplayer'
+alias    pp='builtin cd $HOME/dev/pimpd'
+alias   RPD='builtin cd $HOME/dev/RPD'
+alias   flc='builtin cd $HOME/dev/File-LsColor'
+alias   mll='builtin cd $HOME/dev/Module-LocalLoad'
+alias   mnp='builtin cd $HOME/dev/Mplayer-NowPlaying-CPAN'
+alias   mp3='builtin cd $HOME/toburn'
+alias   tec='builtin cd $HOME/dev/Term-ExtendedColor'
+alias   tet='builtin cd $HOME/dev/Term-ExtendedColor-TTY'
+alias   tex='builtin cd $HOME/dev/Term-ExtendedColor-Xresources'
+alias xxlfd='builtin cd $HOME/dev/Xorg-XLFD'
+alias     t='mkdr /tmp/scp1 ; builtin cd /tmp/scp1'
 
 alias lsusb='lsusb | matchline -random'
 alias lspci='lspci | matchline -lspci'
 
 if [ "$TERM" = 'linux' ]; then
-  alias  ls=' ls++ -ansi'
+  alias  ls=' ls++'
 else
   alias ls='ls++'
 fi
@@ -282,10 +274,6 @@ alias  kk='pickyfont -f clea3'
 alias   f='pickyfont monte1 normal \
             && pickyfont monte2 bold \
             && pickyfont pro1 italic'
-
-alias evil="grep 'sub escape' -A 2 \
-  $HOME/dev/App-Pimpd/lib/App/Pimpd/Validate.pm |
-  tail -1|perl -pe 's/^\s+\$str =~ //'"
 
 alias gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
 alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
