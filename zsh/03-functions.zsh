@@ -1,5 +1,19 @@
+
+#evil() {
+#  printf 's/([;<>\*\|`&\$!#\(\)\[\]\{\}:'"])/\\$1/g'
+#}
+
+df() {
+  /bin/df --total "$@"
+}
+
 which() {
-  builtin which "$@" && builtin type "$@"
+  printf '\e[?7t'
+  builtin which "$@" \
+    && builtin type "$@" \
+    && whereis "$@" \
+    && file $(builtin type "$@" | awk '{print $3}') 2> /dev/null
+  printf '\e[?7t'
 }
 
 pacman() {
@@ -42,7 +56,22 @@ neverball() {
 }
 
 mplayer() {
-  /usr/bin/mplayer -include $XDG_CONFIG_HOME/mplayer/config -profile $HOST "$@"
+  #absname "$@"
+  /usr/bin/mplayer -include $XDG_CONFIG_HOME/mplayer/config -profile $HOST $@
+}
+
+mplayer_redir() {
+  /usr/bin/mplayer \
+    -identify -include $XDG_CONFIG_HOME/mplayer/config \
+    -profile $HOST $(absname "$@") | tee $XDG_CONFIG_HOME/mplayer/log.txt
+  rm -v $XDG_CONFIG_HOME/mplayer/log.txt
+}
+
+mplayer_pipe() {
+  /usr/bin/mplayer \
+    -quiet -msglevel all=0 -identify -include $XDG_CONFIG_HOME/mplayer/config \
+    -profile $HOST > $XDG_CONFIG_HOME/mplayer/log.txt
+  rm -v $XDG_CONFIG_HOME/mplayer/log.txt
 }
 
 mplayer_headphones() {
