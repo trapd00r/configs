@@ -20,7 +20,6 @@ vim/.netrwhist
 *.zwc
 *.swp
 *.swo
-ncmpcpp/artists/
 ncmpcpp/error.log
 getmail/
 keychain/
