@@ -153,6 +153,6 @@ endif
 "}}}
 
 
-exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-highlights.vim'
+exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-syntax.vim'
 
 call pathogen#infect()
