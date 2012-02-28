@@ -1,0 +1,71 @@
+PERFORMER "VA"
+TITLE "Euphoria: Return To Ibiza CD2"
+FILE "201-va-euphoria_return_to_ibiza_cd2.mp3" MP3
+  TRACK 01 AUDIO
+    TITLE "Hold That Sucker Down (Builds Like A Skyscraper Mix)"
+    PERFORMER "O.T. Quartet"
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    TITLE "Don't You Want Me (Pants & Corset Mix)"
+    PERFORMER "Felix"
+    INDEX 01 04:21:46
+  TRACK 03 AUDIO
+    TITLE "Everyday"
+    PERFORMER "Agnelli & Nelson"
+    INDEX 01 08:50:06
+  TRACK 04 AUDIO
+    TITLE "Into The Dawn (James Holden Remix)"
+    PERFORMER "Accadia"
+    INDEX 01 13:18:18
+  TRACK 05 AUDIO
+    TITLE "Magic Carpet Ride"
+    PERFORMER "Mighty Dub Katz"
+    INDEX 01 16:07:46
+  TRACK 06 AUDIO
+    TITLE "Castles In The Sky (Whippenberg Club Mix)"
+    PERFORMER "Ian Van Dahl"
+    INDEX 01 21:11:25
+  TRACK 07 AUDIO
+    TITLE "From Russia With Love (Solar Stone Mix)"
+    PERFORMER "Matt Darey Presents DSP"
+    INDEX 01 24:21:69
+  TRACK 08 AUDIO
+    TITLE "Born Slippy"
+    PERFORMER "Underworld"
+    INDEX 01 29:46:38
+  TRACK 09 AUDIO
+    TITLE "Happiness Happening"
+    PERFORMER "Lost Witness"
+    INDEX 01 33:57:17
+  TRACK 10 AUDIO
+    TITLE "What Ya Got 4 Me (Original 12" Vocal)"
+    PERFORMER "Signum"
+    INDEX 01 39:21:67
+  TRACK 11 AUDIO
+    TITLE "Wizards Of The Sonic (Matt Darey Remix)"
+    PERFORMER "WestBam"
+    INDEX 01 42:53:46
+  TRACK 12 AUDIO
+    TITLE "Open Your Mind 007"
+    PERFORMER "U.S.U.R.A."
+    INDEX 01 48:23:47
+  TRACK 13 AUDIO
+    TITLE "Now Is The Time"
+    PERFORMER "Darren Tate Vs Mike Koglin"
+    INDEX 01 51:58:70
+  TRACK 14 AUDIO
+    TITLE "Space Cowboy"
+    PERFORMER "Jamiroquai"
+    INDEX 01 57:17:01
+  TRACK 15 AUDIO
+    TITLE "For What You Dream Of (Full On Renaissance Mix)"
+    PERFORMER "Bedrock Feat. KYO Aka Carole Leeming"
+    INDEX 01 61:51:25
+  TRACK 16 AUDIO
+    TITLE " Enjoy The Gravy (James Zabiela's Totally Turntabled Mix)"
+    PERFORMER "Sasha Vs Mike Koglin"
+    INDEX 01 68:48:04
+  TRACK 17 AUDIO
+    TITLE "Pacific 202"
+    PERFORMER "808 State"
+    INDEX 01 73:53:16
