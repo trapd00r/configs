@@ -45,9 +45,12 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
 #}}}
 # mplayer                                                                    {{{
 zstyle ':completion:*:*:mplayer:*'           tag-order files
-zstyle ':completion:*:*:mplayer:*'           ignored-patterns '*.(nfo|sfv|rar)'
+zstyle ':completion:*:*:mplayer:*'           ignored-patterns '*.(nfo|sfv|rar|r[0-9])'
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
-       '*.(rmvb|mkv|mpe?g|mpe|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf):video' \
+       '*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
+       '*:all-files' '*(-/):directories'
+zstyle ':completion:*:*:ffprobe:*'           file-patterns   \
+       '*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
        '*:all-files' '*(-/):directories'
 #}}}
 # ssh                                                                        {{{
