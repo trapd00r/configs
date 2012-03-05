@@ -1,0 +1,63 @@
+Ergo,
+Oceanus, maritimus,
+Ergo
+Opacare, matutinus,
+Ergo
+Septentrio, meridies,
+Ergo
+Occidens et orientis,
+Ergo
+Oceanus, maritimus,
+Opacare, matutinus,
+Septentrio, meridies,
+Occidens et orientis,
+Ergo
+Terra, stella,
+Hiems et aestas,
+Ergo
+Autumnus et 
+Tempus vernum,
+Ergo
+Radius solis 
+Et umbra,
+Ignis, aqua
+Caelum, luna,
+Terra, stella,
+Hierns et aestas,
+Autumnus et 
+Tempus vernum
+
+Tempus vernum
+
+[Translation]
+
+Therefore  
+Ocean, sea,  
+Therefore
+Dusk, dawn,  
+Therefore
+North, south,
+Therefore
+West and east,
+Therefore 
+Ocean, sea
+Dusk, dawn,
+North, south,
+West and east,
+Therefore
+Earth, star,
+Winter and summer,
+Therefore
+Autumn and 
+Spring time,
+Therefore
+Ray of the sun 
+And shade,
+Fire, water
+Sky, moon,
+Earth, star,
+Winter and summer,
+Autumn and 
+Spring time
+
+Spring time
