@@ -37,8 +37,8 @@ done
 source $XDG_CONFIG_HOME/zsh/$ZSH_THEME.theme
 source $XDG_CONFIG_HOME/zsh/02-abbrevations.zsh
 
-if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_dsa ]]; then
-  eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
+if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_dsa.priv ]]; then
+  eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa.priv`
 fi
 export TZ='Europe/Stockholm'
 
@@ -51,5 +51,10 @@ fpath=($XDG_CONFIG_HOME/zsh/compdef $fpath)
 
 compdef _files mkdir
 compdef _gnu_generic ln
+compdef _mplayer mplayer_redir
+compdef _mplayer mplayer_delete_current_file
+compdef _mplayer mplayer_6ch_headphones
+compdef _mplayer mplayer_headphones
+
 
 #zprof
