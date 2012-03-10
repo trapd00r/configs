@@ -1,0 +1,75 @@
+#compdef ffprobe
+
+local arguments curcontext="$curcontext"
+typeset -A opt_args
+
+
+arguments=(
+  '-show_format[show format info]'
+  '-show_streams[show streams info]'
+  '-show_packets[show packets info]'
+  '-show_region[show the grabbing region]'
+  '-formats[show available formats]'
+  '-f[format           force format]'
+  '-print_format[format  set the output printing format (json)]'
+  '-show_format[show format/container info]'
+
+  '-L[show license]'
+  '-h[show help]'
+  '-help[show help]'
+  '-version[show version]'
+
+  '-allowed_media_types[<flags> .D... Media types to accept from the server]'
+  '-analyzeduration[<int>   .D... how many microseconds are analyzed to estimate duration]'
+  '-bit_rate[<int>   .D... ]'
+  '-bsfs[show available bit stream filters]'
+  '-byte_binary_prefix[use binary prefixes for byte units]'
+  '-channel[<int>   .D... ]'
+  '-channels[<int>   .D... ]'
+  '-chars_per_frame[<int>   .D... ]'
+  '-codecs[show available codecs]'
+  '-compute_pcr[<int>   .D... Compute exact PCR for each transport stream packet.]'
+  '-cryptokey[<binary> .D... decryption key]'
+  '-debug[flags        set debug flags]'
+  '-default[generic catch all option]'
+  '-draw_mouse[<int>   .D... Draw the mouse pointer.]'
+  '-fdebug[<flags> ED... print specific debug info]'
+  '-fer[<int>   .D... set error detection aggressivity]'
+  '-fflags[<flags> ED...]'
+  '-filters[show available filters]'
+  '-follow_mouse[<int>   .D... Move the grabbing region when the mouse pointer reaches within specified amount of pixels to the edge of region.]'
+  '-fpsprobesize[<int>   .D... number of frames used to probe fps]'
+  '-framerate[<string> .D... ]'
+  '-graph[<string> .D... Libavfilter graph]'
+  '-i[input_file       read specified file]'
+  '-indexmem[<int>   .D... max memory used for timestamp index (per stream)]'
+  '-initial_pause[<int>   .D... Dont start playing the stream immediately]'
+  '-loglevel[loglevel  set libav* logging level]'
+  '-loop[<int>   .D... ]'
+  '-max_delay[<int>   ED... maximum muxing or demuxing delay in microseconds]'
+  '-pix_fmts[show available pixel formats]'
+  '-pixel_format[<string> .D... ]'
+  '-prefix[use SI prefixes for the displayed values]'
+  '-pretty[prettify the format of displayed values, make it more human readable]'
+  '-probesize[<int>   .D... set probing size]'
+  '-protocols[show available protocols]'
+  '-rtbufsize[<int>   .D... max memory used for buffering real-time frames]'
+  '-rtp_flags[<flags> .D... RTP flags]'
+  '-rtsp_flags[<flags> .D... RTSP flags]'
+  '-rtsp_transport[<flags> ED... RTSP transport protocols]'
+  '-sample_fmts[show available audio sample formats]'
+  '-sample_rate[<int>   .D... ]'
+  '-sdp_flags[<flags> .D... SDP flags]'
+  '-sexagesimal[use sexagesimal format HOURS:MM:SS.MICROSECONDS for time units]'
+  '-standard[<string> .D... ]'
+  '-unit[show unit of the displayed values]'
+  '-use_odml[<int>   .D... use odml index]'
+  '-v[loglevel         set libav* logging level]'
+  '-video_size[<string> .D... A string describing frame size, such as 640x480 or hd720.]'
+  '*:Media:_files -/ -g "*.(#i)(asf|asx|avi|flac|flv|m1v|m2p|m2v|mjpg|mka|mkv|mov|m4a|mp3|mp4|mpe|mpeg|mpg|ogg|ogm|qt|rm|vob|wav|webm|wma|wmv|)(-.)"'
+)
+_arguments -s $arguments \
+  && return 0
+
+return 1 
+
