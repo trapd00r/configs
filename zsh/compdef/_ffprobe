@@ -66,7 +66,8 @@ arguments=(
   '-use_odml[<int>   .D... use odml index]'
   '-v[loglevel         set libav* logging level]'
   '-video_size[<string> .D... A string describing frame size, such as 640x480 or hd720.]'
-  '*:Media:_files -/ -g "*.(#i)(asf|asx|avi|flac|flv|m1v|m2p|m2v|mjpg|mka|mkv|mov|m4a|mp3|mp4|mpe|mpeg|mpg|ogg|ogm|qt|rm|vob|wav|webm|wma|wmv|)(-.)"'
+  #              ignore case ⇊
+  '*:Media:_files -/ -g "*.(#i)(asf|asx|avi|flac|flv|m1v|m2p|m2v|mjpg|mka|mkv|mov|m4a|mp3|mp4|mpe|mpeg|mpg|ogg|ogm|qt|rm|vob|wav|webm|wma|wmv)(-.)"'
 )
 _arguments -s $arguments \
   && return 0
