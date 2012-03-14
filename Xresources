@@ -36,10 +36,15 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !#include "/home/scp1/etc/Xcolors/xterm_default.Xresources"
 !}}}
 ! fonts                                                                      {{{
-#define FONT_NORMAL     6x10
-#define FONT_BOLD       -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
-#define FONT_ITALIC     -b&h-lucidatypewriter-bold-r-normal-sans-10-100-75-75-m-60-iso10646-1
-#define FONT_BOLDITALIC -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=
+#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+#define FONT_ITALIC     xft:Anonymous Pro:style=Italic:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+#define FONT_BOLDITALIC xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+
+!#define FONT_NORMAL     6x10
+!#define FONT_BOLD       -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
+!#define FONT_ITALIC     -b&h-lucidatypewriter-bold-r-normal-sans-10-100-75-75-m-60-iso10646-1
+!#define FONT_BOLDITALIC xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !}}}
 ! vte                                                                        {{{
   vte*font:       FONT_NORMAL
@@ -94,9 +99,13 @@ URxvt.selection-autotransform.0:  s/^ at (.*?) line (\\d+)[,.]$/:e \\Q$1\E\\x0d:
 URxvt.keysym.C-Up:      \033[1;5A
 !}}}
 ! host: shiva                                                                {{{
+! XXX
+shiva.keysym.M-S-q: command:\033]710;10x20\007
+
 shiva.iso14755:             1
 shiva.iso14755_52:          1
 
+shiva.skipBuiltinGlyphs:    1
 shiva.insecure:             1
 
 shiva.background:           #121212
