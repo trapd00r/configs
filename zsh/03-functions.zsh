@@ -1,7 +1,9 @@
-
-#evil() {
-#  printf 's/([;<>\*\|`&\$!#\(\)\[\]\{\}:'"])/\\$1/g'
-#}
+tcx() {
+  /usr/bin/tmux attach || /usr/bin/tmux -f $HOME/etc/tmux.conf
+}
+scrot() {
+  /usr/bin/scrot -q 100 "$@"
+}
 
 df() {
   /bin/df --total "$@"
@@ -56,7 +58,6 @@ neverball() {
 }
 
 mplayer() {
-  #absname "$@"
   /usr/bin/mplayer -include $XDG_CONFIG_HOME/mplayer/config -profile $HOST $@
 }
 
@@ -78,6 +79,9 @@ mplayer_headphones() {
   /usr/bin/mplayer \
     -msgmodule 1 -msgcolor -include $XDG_CONFIG_HOME/mplayer/config \
     -channels 6 -af resample=48000,hrtf "$@"
+}
+mplayer_6ch_headphones() {
+  /usr/bin/mplayer -channels 6 -af resample=48000,hrtf  -include $XDG_CONFIG_HOME/mplayer/config $@
 }
 
 zc() {
