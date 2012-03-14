@@ -2,3 +2,4 @@
 progressbar     = simple
 update-interval = 0.2
 subst           = s{\s+}{_}g
+agent           = "Mozilla/5.0"
