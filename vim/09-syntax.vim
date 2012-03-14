@@ -11,10 +11,15 @@ hi link shShellVariables Identifier
 syn match shLogicalAnd '[&]\{2}'
 hi link   shLogicalAnd shConditional
 
-syn match ncmpcppVar '\v^\w+'
-syn match ncmpcppStr '\v\s*\=\s*"\zs.+\ze"'
-hi link ncmpcppVar   Identifier
-hi link ncmpcppStr   String
+"syn match ncmpcppVar '\v^\w+'
+"syn match ncmpcppStr '\v\s*\=\s*"\zs.+\ze"'
+"
+"syn match  ncmpcppComment '\v^\s*#.*$'
+"syn region ncmpcppComment start=/#/ end=/\n/
+"
+"hi link ncmpcppVar     Identifier
+"hi link ncmpcppStr     String
+"hi link ncmpcppComment Comment
 
 hi makeTarget   ctermfg=166 cterm=bold
 hi makeCommands ctermfg=246
