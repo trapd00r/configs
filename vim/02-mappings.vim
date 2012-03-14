@@ -159,7 +159,7 @@ nnoremap ,g :sil exe 'grep! -R '.shellescape("<cWORD>")." ."<CR>:cope<CR>:winc w
 
 " use this custom function for cabbrevations. This makes sure that they only
 " apply in the beginning of a command. Else we might end up with stuff like
-"   :%s/\vfoo/\v/\vbar/  
+"   :%s/\vfoo/\v/\vbar/
 " if we happen to move backwards in the pattern.
 call Cabbrev('/',   '/\v')
 call Cabbrev('?',   '?\v')
@@ -203,9 +203,12 @@ cnoremap  <C-*>   <c-a>
 " additional commandline mappings                                            {{{
 cnoremap  <c-j>   <down>
 cnoremap  <c-k>   <up>
-" let use get there fast from normal mode as well
-nnoremap <c-j>    :<down>
-nnoremap <c-k>    :<up>
+" let us get there fast from normal mode as well
+nnoremap <c-j>    <down>
+nnoremap <c-k>    <up>
+
+cnoremap <C-h> <S-Left>
+cnoremap <C-l> <S-Right>
 "}}}
 " fix xterm keys {{{
 map  <Esc>[1;2A <S-Up>
