@@ -141,6 +141,8 @@ bindkey -a "Y"     vi-yank-whole-line
 #}}}
 # viins                                                                      {{{
 bindkey -s -M viins "^T"  "\\\top\n"
+bindkey -M viins "^K" up-line-or-history
+bindkey -M viins "^J" down-line-or-history
 
 autoload edit-command-line
 bindkey --s -M viins '^V0' edit-command-line
