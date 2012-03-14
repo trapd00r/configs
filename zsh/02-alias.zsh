@@ -1,25 +1,28 @@
-if [ -f "$HOME/.ssh/config" ]; then
-  for host in $(
-    perl -ne 'print "$1\n" if /^[Hh]ost\s+(.+)$/' $HOME/.ssh/config
-  ); do
-    alias $host="ssh $host '$@'"
-  done
-fi
+if [[ $UID != 0 ]]; then
+  if [ -f "$HOME/.ssh/config" ]; then
+    for host in $(
+      perl -ne 'print "$1\n" if /^[Hh]ost\s+(.+)$/' $HOME/.ssh/config
+    ); do
+      alias $host="ssh $host '$@'"
+    done
+  fi
 
-if [ -d "$HOME/dev/PKGBUILDS" ]; then
-  alias pkgclean="\
-    yes | rm -r $(find $HOME/dev/PKGBUILDS -name 'pkg' \
-        && find $HOME/dev/PKGBUILDS -name 'src')       \
-  "
-fi
+  if [ -d "$HOME/dev/PKGBUILDS" ]; then
+    alias pkgclean="\
+      yes | rm -r $(find $HOME/dev/PKGBUILDS -name 'pkg' \
+          && find $HOME/dev/PKGBUILDS -name 'src')       \
+    "
+  fi
 
-alias termsize='printf "%dx%d\n" $COLUMNS $LINES'
-alias cclive='cclive --config-file $XDG_CONFIG_HOME/ccliverc -f best'
-# lisp                                                                       {{{
-alias bigloo='rlwrap bigloo'
-alias clisp=' rlwrap clisp'
-alias irb='   rlwrap irb-1.8'
+  alias cclive='cclive --config-file $XDG_CONFIG_HOME/ccliverc -f best'
+  alias termsize='printf "%dx%d\n" $COLUMNS $LINES'
+# readline                                                                     {{{
+  alias bigloo='rlwrap bigloo'
+  alias clisp=' rlwrap clisp'
+  alias irb='   rlwrap irb-1.8'
 #}}}
+fi
+
 
 alias ctags='ctags --format=1'
 
