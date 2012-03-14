@@ -2,7 +2,9 @@
 host *
   controlmaster           auto
   controlpath             ~/.ssh/connections/%r_%h_%p
-host laleh                                                                   {{{
+  controlpersist          4h
+
+host laleh#                                                                  {{{
   user                    scp1
   hostname                192.168.1.128
   port                    19217
@@ -15,7 +17,7 @@ host laleh                                                                   {{{
   numberofpasswordprompts 10
   sendenv                 PERL5OPT
 #}}}
-host rambo                                                                   {{{
+host rambo#                                                                  {{{
   user                    scp1
   hostname                192.168.1.103
   port                    19216
@@ -23,11 +25,12 @@ host rambo                                                                   {{{
   ciphers                 arcfour
   checkhostip             no
   connecttimeout          3
+  localcommand            printf "hi"
   permitlocalcommand      yes
   localcommand            date
   numberofpasswordprompts 10
 #}}}
-host shiva                                                                   {{{
+host shiva#                                                                  {{{
   user                    scp1
   hostname                192.168.1.101
   port                    19218
@@ -39,7 +42,7 @@ host shiva                                                                   {{{
   localcommand            date;pwc
   numberofpasswordprompts 10
 #}}}
-host n900 #                                                                  {{{
+host n900#                                                                   {{{
   user                    user
   hostname                192.168.1.112
   port                    22
@@ -48,17 +51,21 @@ host n900 #                                                                  {{{
   checkhostip             no
   connecttimeout          10
 #}}}
-host japh.se #                                                               {{{
+host japh.se#                                                                {{{
   user                    scp1
   hostname                japh.se
   port                    19217
   compression             no
   ciphers                 blowfish-cbc
 #}}}
-host brutus.ethup.se #                                                       {{{
+host brutus.ethup.se#                                                        {{{
   user                    scp1
   hostname                brutus.ethup.se
   port                    22
   compression             no
   ciphers                 blowfish-cbc
+#}}}
+host github#                                                                 {{{
+  user                    trapd00r
+  hostname                git@github.com
 #}}}
