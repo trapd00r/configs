@@ -18,7 +18,7 @@ set want_ttk 0
 set bgcolor #121212
 set fgcolor #eeeeee
 set colors {green red blue magenta darkgrey brown orange}
-set diffcolors {red #00a000 #009c31}
+set diffcolors {#ff0000 #00a000 #009c31}
 set markbgcolor #a6782e
 set diffcontext 10
 set selectbgcolor #13608b
