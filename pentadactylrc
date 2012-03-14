@@ -1,29 +1,38 @@
-source /home/scp1/etc/pentadactyl/color/sanecrap.penta
-javascript readabilityFootnotes = "true"
+source /home/scp1/dev/pentadactyl-neverland/color/neverland.penta
+"javascript readabilityFootnotes = 'true'
 
 " options {{{
-set activate='addons,extoptions'
+set activate=addons,extoptions,help
 set autocomplete=/ex/(bmarks),^(/|/ex/?)$
-set complete="b"
+set complete='bookmark'
 set cpt=l
 set defsearch=d
-set editor="urxvtc -name shiva -e vim -f -c ':set ft=perl'"
+set downloadsort='-time'
+set editor='urxvtc -name shiva -e vim -f -c ":set ft=perl"'
 set findcase='smart'
+set findflags='r'
 set followhints=0
-set guioptions-=rlb
-set hintkeys=asdfg;lkjh
+set guioptions=CMcs
+"set hintinputs=
+"set hintkeys=asdfg;lkjh
+set hintmatching=firstletters
+set history=50
 set hlfind
-set mapleader=","
+set mapleader=','
 set maxitems=10
 set pageinfo=gfm
-set popups=tab
-set shell=zsh
-set shellcmdflag="-c"
-set showmode
-set showstatuslinks=status
-set showtabline=never
-set titlestring=Fx
-set wildmode=full
+set popups='tab'
+set shell='/bin/zsh'
+set shellcmdflag='-c'
+set showmode='operator'
+set showstatuslinks='command'
+"set strictfocus=despotic
+set showtabline='never'
+set titlestring='Fx'
+set wildmode='full'
+
+set buftabs-completer=''
+set buftabs-maxlength=10
 " }}}
 " commands {{{
 command mem  :tabopen about:mem?verbose
