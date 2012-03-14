@@ -26,7 +26,7 @@ schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,          
 schedule = porn1    ,5, 5, "load_start=/mnt/Porn/.torrents/*.torrent,              d.set_directory=/mnt/Porn/.new"
 schedule = porn2    ,5, 5, "load_start=/mnt/Porn_2/.torrents/*.torrent,            d.set_directory=/mnt/Porn_2/.new"
 schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
-schedule = porn2    ,5, 5, "load_start=/mnt/Backup/.torrents/*.torrent,            d.set_directory=/mnt/Backup/.new"
+schedule = backup    ,5, 5, "load_start=/mnt/Backup/.torrents/*.torrent,            d.set_directory=/mnt/Backup/.new"
 #schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,            d.set_directory=/mnt/Mvids/.new/"
 #schedule = mvids2   ,5, 5, "load_start=/mnt/Mvids_2/.torrents/*.torrent,          d.set_directory=/mnt/Mvids_2/.new/"
 #schedule = mvids3   ,5, 5, "load_start=/mnt/Music_Videos/.torrents/*.torrent,     d.set_directory=/mnt/Music_Videos/.new"
