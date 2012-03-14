@@ -31,7 +31,7 @@ set cmdheight=2
 set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
-set colorcolumn=+1,+2
+set colorcolumn=79,+1
 set completeopt+=menuone
 set cscopeprg=/usr/local/bin/cscope
 set cscopetag
