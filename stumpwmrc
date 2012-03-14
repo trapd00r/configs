@@ -13,6 +13,10 @@
 
 (setf *default-package* :stumpwm)
 
+(set-contrib-dir      "/home/scp1/etc/stumpwm")
+;(load-module          "productivity")
+;(load-module          "productivity")
+
 (set-prefix-key       (kbd "C-f"))
 (set-fg-color         "sienna1")
 (set-bg-color         "grey10")
@@ -22,7 +26,6 @@
 (set-msg-border-width 1)
 (set-font             "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*")
 (set-normal-gravity   :left)
-(set-contrib-dir      "/usr/share/stumpwm")
 
 
 (setf *startup-message*             nil)
@@ -51,6 +54,11 @@
 (define-frame-preference "media"
   ( 0 t t :class "MPlayer")
 )
+;(define-frame-preference "crap"
+;  ( 0 t t :class "Wine System Tray")
+;  ( 0 t t :class " Ares ")
+;)
+
 
 ;; group management                                                          {{{
 (define-key *root-map* (kbd "!")            "gselect 1")
@@ -80,7 +88,7 @@
 (define-key *root-map* (kbd "J")            "gprev-with-window")
 ;; }}}
 ;; music                                                                     {{{
-(define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
+;(define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
 ;;(define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
 (define-key *root-map* (kbd "p")            "exec sh /home/scp1/dev/utils/mpd_twmn")
 (define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
@@ -100,11 +108,13 @@
 ;;(define-key *top-map*  (kbd "F11")          "exec rpc change p3")
 ;;(define-key *top-map*  (kbd "F12")          "exec rpc change p4")
 
-(define-key *top-map*  (kbd "KP_Begin")     "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
-(define-key *top-map*  (kbd "KP_Right")     "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
-(define-key *top-map*  (kbd "KP_Insert")    "exec echo pause > $HOME/.mplayer/fifo")
-(define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
+;(define-key *top-map*  (kbd "KP_Begin")     "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
+;(define-key *top-map*  (kbd "KP_Right")     "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
+;(define-key *top-map*  (kbd "KP_Insert")    "exec echo pause > $HOME/.mplayer/fifo")
+;(define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 ;;}}}
+;;
+;(define-key *top-map* (kbd "<")             "productivity-mode-toggle")
 
 (define-key *root-map* (kbd "c")            "exec urxvt")
 (define-key *root-map* (kbd "d")            "exec dmenuclip")
