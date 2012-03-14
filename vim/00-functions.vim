@@ -2,6 +2,11 @@
 "  Author: Magnus Woldrich <m@japh.se>
 " Updated: 2012-01-23 09:11:36
 
+". do stuff with lines matching pattern
+" :g/\v^#\w+/let @" .= getline('.')."\n"|d _
+
+
+
 " Vidir - sanitize filenames                                                 {{{
 fu! Vidir_Sanitize(content)
   mark z
@@ -29,6 +34,7 @@ fu! Vidir_Sanitize(content)
   if (a:content == 'music') || (a:content == 'mvid')
     :silent! %s/\v[&]/feat/g
     :silent! %s/\v(_[el]p[_]?)/\U\1/ig
+    :silent! %s/\v([_-]?cd[sm][_-]?|flac|[_-]demo|vinyl|[_-](web|pcb|osv))/\U\1/ig
   else
     :silent! %s/\v[&]/and/g
   endif
