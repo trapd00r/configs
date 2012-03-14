@@ -106,6 +106,7 @@ export PERL5OPT="$(echo '
   -MCarp=carp,croak,confess,cluck
   -Mopen=:std,:utf8
   -Mutf8
+  -MData::Printer
   ' | perl -pe 's/\n//g')"
 #export RELEASE_TESTING=1
 #}}}
