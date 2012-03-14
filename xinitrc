@@ -71,6 +71,9 @@ xset fp $(echo "$HOME/.fonts,
   /usr/share/fonts/misc,
   /usr/share/fonts/scp1" | perl -pe 's/[\n\s]+//g')
 
+nvidia-settings -a GlyphCache=1
+nvidia-settings -a InitialPixmapPlacement=2
+
 exec ${host_wm[$HOSTNAME]}
 
 # vim: set ft=sh:
