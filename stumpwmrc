@@ -41,7 +41,7 @@
 (setf
   *maxsize-border-width*           1
   *normal-border-width*            0
-  *window-border-style*            :thin
+  *window-border-style*            :none
   *transient-border-width*         4
 )
 (setf
