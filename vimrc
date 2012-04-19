@@ -82,7 +82,7 @@ set nostartofline
 set noswapfile
 set nowritebackup
 set nowrap
-set nrformats=alpha,octal,hex
+set nrformats=alpha,hex
 set numberwidth=2
 set pastetoggle=<F42>
 set preserveindent
