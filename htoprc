@@ -1,8 +1,30 @@
 # Beware! This file is rewritten every time htop exits.
 # The parser is also very primitive, and not human-friendly.
 # (I know, it's in the todo list).
-fields=0 48 17 18 38 39 40 2 46 47 49 1 
-sort_key=46
+#      PID USER
+# 0  PID
+# 48 USER
+# 17 PRI(ority)
+# 18 NI(ceness)
+# 38 VIRT(ual memory)
+# 39 RES(ident memory)
+# 40 SHR(ed pages)
+# 2  S(tate)
+#      S for sleeping (idle)
+#      R for running
+#      D for disk sleep (uninterruptible)
+#      Z for zombie (waiting for parent to read it's exit status)
+#      T for traced or suspended (e.g by SIGTSTP)
+#      W for paging
+# 46 CPU
+#      The ID of the CPU the process last executed on.
+# 47 MEM
+#
+#
+#
+#
+fields= 0 48 17 18 38 39 40 2 46 47 49 1 
+sort_key=STATE
 sort_direction=1
 hide_threads=0
 hide_kernel_threads=1
