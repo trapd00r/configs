@@ -3,7 +3,7 @@ shiva.color1: #404040
 shiva.color2: #4d4c4c
 shiva.color3: #ff8f00
 shiva.color4: #008787
-/*shiva.color4: #1165e9*/
+!shiva.color4: #1165e9
 shiva.color5: #f73574
 shiva.color6: #ff3500
 shiva.color7: #ffffff
@@ -54,7 +54,8 @@ shiva.color48: #00ff87
 shiva.color49: #00ffaf
 shiva.color50: #00ffd7
 shiva.color51: #00ffff
-shiva.color52: #5f0000
+shiva.color52: #131324
+!shiva.color52: #5f0000
 shiva.color53: #5f005f
 shiva.color54: #5f0087
 shiva.color55: #5f00af
@@ -90,10 +91,10 @@ shiva.color84: #5fff87
 
 
 /* start mutt */
-shiva.color85: #fc3a0a /* indicator */
-shiva.color86: #565944 /* old */
-shiva.color87: #594459 /* deleted */
-shiva.color88: #009bff /* new */
+shiva.color85: #fc3a0a
+shiva.color86: #565944
+shiva.color87: #594459
+shiva.color88: #009bff
 /* end mutt */
 
 shiva.color89: #87005f
@@ -193,7 +194,7 @@ shiva.color182: #d7afd7
 shiva.color183: #d7afff
 shiva.color184: #d7d700
 ! start mutt
-shiva.color185: #ffff00 
+shiva.color185: #ffff00
 shiva.color186: #d7d787
 shiva.color187: #d7d7af
 shiva.color188: #d7d7d7
