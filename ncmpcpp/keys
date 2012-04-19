@@ -16,7 +16,6 @@ key_go_to_now_playing             = 39
 key_add                           = 'a'
 key_add_selected_items            = 'A'
 key_toggle_separators_in_playlist = 'b'
-key_select_album                  = 'B'
 key_delete                        = 'd'
 key_go_to_containing_directory    = 'f' # gf :(
 key_home                          = 'g'
