@@ -1,0 +1,78 @@
+$(function() {
+        
+        updateRating = function ( rating ) {
+            var avg = rating.votecount ? (rating.votesum/rating.votecount).toFixed(1) : 0;
+            var cnt = rating.votecount ? rating.votecount : 0;
+            
+            $("#Rating-value").html ( avg );
+            $("#Rating-votes").html ( cnt );
+        }
+        
+        $.get('/tools/down/lyricsvip.com/', { hostid: 4950398}, function ( data ) {
+            //--- data received here --  
+            if ( data.status == 'ok' ) {
+                
+                $("#downresults").html ( data.downresults );
+                $("#dr-summary").html ( data.downsummary );
+                
+                updateRating ( data.rating );
+                var init = data.rating.votecount ? (data.rating.votesum/data.rating.votecount).toFixed(1) : 0
+                //--- init raty here ---
+                $('#star').raty({
+                    
+                    start: ( data.rating.yourrate ? data.rating.yourrate : init ),
+                    number: 5,
+                    readOnly: (data.rating.yourrate > 0),
+                    halfShow: true, 
+                    
+                    path : 'http://f.markosweb.com/img/', 
+                    click : function ( score, evt ) {
+                       $(this).raty ( 'readOnly', true );
+                       //--- remote voter call here ---
+                       $.get("/tools/rate/", { 'hostid' : 4950398, 'value': score}, function (data) {
+                           if ( data.status == 'ok' ) {
+                               updateRating ( data.rating );
+                           }
+                       });
+
+                    }
+                });
+            }
+            
+        });
+
+         
+    });
+
+
+     
+  
+
+   var tries = 0;
+   function createScreen(id) {
+       var img = $("#screenshot");
+       img.fadeTo ( 'fast', 0 );     
+       $.get("/tools/screen/", { id : id }, function(data, textStatus) {
+           ++tries;
+           var el = data.split ( "||");
+           img.attr("src", el[0]+ "?" +  tries);
+           img.load ( function() {
+              img.fadeTo("fast", 1);
+              img.attr ( "onclick", "" );
+              $("#screenlink").attr ( "href",  "" );           
+              $("#screenlink").attr ( "onclick"," pageTracker._trackEvent('clicks', 'screenshot', 'lyricsvip.com');" );
+           });   
+       });
+   }
+
+
+
+    
+    
+    
+    
+   
+   Rating   
+       
+           
+        4 of 5 based on 5  votes.
