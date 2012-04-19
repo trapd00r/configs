@@ -1,44 +1,53 @@
 source /home/scp1/dev/pentadactyl-neverland/color/neverland.penta
 "javascript readabilityFootnotes = 'true'
 
-" options {{{
 set activate=addons,extoptions,help
 set autocomplete=/ex/(bmarks),^(/|/ex/?)$
 set complete='bookmark'
 set cpt=l
 set defsearch=d
 set downloadsort='-time'
-set editor='urxvtc -name shiva -e vim -f -c ":set ft=perl"'
+set editor='urxvt -name vim -e /usr/bin/vim -X -f'
 set findcase='smart'
 set findflags='r'
 set followhints=0
 set guioptions=CMcs
-"set hintinputs=
-"set hintkeys=asdfg;lkjh
-set hintmatching=firstletters
+set hintmatching=transliterated
+"set hintmatching=firstletters
 set history=50
 set hlfind
 set mapleader=','
-set maxitems=10
+set maxitems=50
 set pageinfo=gfm
 set popups='tab'
 set shell='/bin/zsh'
 set shellcmdflag='-c'
 set showmode='operator'
 set showstatuslinks='command'
-"set strictfocus=despotic
 set showtabline='never'
 set titlestring='Fx'
 set wildmode='full'
 
+"set hintinputs=
+"set hintkeys=asdfg;lkjh
+"set strictfocus=despotic
 set buftabs-completer=''
 set buftabs-maxlength=10
-" }}}
-" commands {{{
-command mem  :tabopen about:mem?verbose
-command conf :tabopen about:config
-" }}}
-" mappings {{{
+command Mem  :tabopen about:mem?verbose
+command Conf :tabopen about:config
+
+:js function r255() { return Math.round(Math.random()*255) }
+":js window.content.document.body.style.backgroundColor='rgb('+r255()+','+r255()+','+r255()+')';<cr>
+
+cnoremap <C-h> <HOME>
+cnoremap <C-j> <down>
+cnoremap <C-k> <up>
+cnoremap <C-l> <END>
+nnoremap <C-c> :tabclose<CR>
+nnoremap <C-h> <NOP>
+nnoremap <C-j> <down>
+nnoremap <C-k> <up>
+
 nnoremap <leader>O O<CR>
 nnoremap <leader>d :tabclose<CR>
 nnoremap <leader>j :jumps<CR>
@@ -46,16 +55,15 @@ nnoremap <leader>m :um!<CR>
 nnoremap <leader>p :pa<CR>
 nnoremap <leader>q :qa!<CR>
 nnoremap <leader>z :js window.content.document.toggleImageSize();<CR>
+nnoremap <leader>c :js window.content.document.body.style.backgroundColor='rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')'<CR>
 
-nnoremap <C-h> <NOP>
 nnoremap A     :noscript toggleperm<CR>
-nnoremap <C-c> :tabclose<CR>
 nnoremap a     :noscript toggletemp<CR>
 nnoremap d     :tabclose<CR>
 nnoremap j     10j
 nnoremap k     10k
 
-command Q  :tabclose
-command QQ :qa!
+"command Q  :tabclose
+"command QQ :qa!
 
 " vim: set ft=vim:
