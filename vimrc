@@ -155,4 +155,7 @@ endif
 
 exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-syntax.vim'
 
+syn match visualLast /\%V.*\%V/
+hi visualLast ctermbg=100 cterm=bolditalic
+
 call pathogen#infect()
