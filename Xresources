@@ -39,7 +39,7 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 #define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 #define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 #define FONT_ITALIC     6x9
-#define FONT_BOLDITALIC -windows-proggysmall-medium-r-normal--10-80-96-96-c-70-iso8859-1
+#define FONT_BOLDITALIC xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 
 !#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=
 !#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
