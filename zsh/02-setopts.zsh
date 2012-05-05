@@ -3,11 +3,14 @@
 #No flow control please.
 stty -ixon
 
-unsetopt bgnice
-unsetopt autoparamslash
 unsetopt auto_remove_slash
+unsetopt autoparamslash
+unsetopt bgnice
+unsetopt globalrcs
 unsetopt list_types
+unsetopt notify
 
+#setopt interactive_comments
 setopt all_export
 setopt auto_param_keys
 setopt auto_param_slash
@@ -21,13 +24,15 @@ setopt complete_in_word
 setopt extended_history
 setopt extendedglob
 setopt globdots
-setopt histignorealldups
-setopt interactive_comments
-setopt kshglob
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_lex_words
+setopt hist_save_no_dups
+setopt inc_append_history
+#setopt kshglob
 setopt longlistjobs
 setopt mailwarning
 setopt nobareglobqual
-setopt notify
 setopt nullglob
 setopt numeric_glob_sort
 setopt octal_zeroes
