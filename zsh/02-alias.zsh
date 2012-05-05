@@ -176,30 +176,28 @@ alias      wit='wminput -c buttons-term&'
 
 alias       fevil='find . -regextype posix-extended -regex'
 
-case $HOST in
-  'shiva'*)
-    host_res='3360x1050'
-    ;;
-  'rambo'*)
-    host_res='1920x1080'
-    ;;
-  'india'*)
-    host_res='1360x1024'
-    ;;
-  'n900'*)
-    host_res='800x480'
-    ;;
-  'laleh'*)
-    host_res='800x600'
-    ;;
-  *)
-    host_res='undef'
-    exit 1
-esac
+#case $HOST in
+#  'shiva'*)
+#    host_res='3360x1050'
+#    ;;
+#  'rambo'*)
+#    host_res='1920x1080'
+#    ;;
+#  'india'*)
+#    host_res='1360x1024'
+#    ;;
+#  'n900'*)
+#    host_res='800x480'
+#    ;;
+#  'laleh'*)
+#    host_res='800x600'
+#    ;;
+#  *)
+#    host_res='undef'
+#    exit 1
+#esac
 
-if [ $host_res != 'undef' ]; then
-  alias rec="ffmpeg -f x11grab -s $host_res -r 150 -i $DISPLAY -sameq foo.mpg"
-fi
+alias rec="ffmpeg -f x11grab  -s $1 -r 25 -i :0.0+840,4 -sameq foo.mpg"
 
 # feh[theme][recursive?][slide-delay?]                                       {{{
 # theme = [f]ullscreen | [i]ndex | [j]ust | [t]humbnail
