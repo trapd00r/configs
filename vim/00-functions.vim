@@ -11,17 +11,15 @@
 fu! Vidir_Sanitize(content)
   mark z
 
-  silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
+  "silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
   "%s/\(\_^\s*\|\_^\s\+\d\+\)\@<!\s/_/g
 
   silent! %s/\v[åä]/a/g
   silent! %s/\v[ö]/o/g
   silent! %s/\v[ÅÄ]/A/g
   silent! %s/\v[Ö]/O/g
-  silent! %s/\v^\s*[0-9]+\s+\zs\s+/_/g
   silent! %s/,/./g
   silent! %s/\v[;<>*|'&!#)([\]{}]//g
-  silent! %s/\v./\L&/g
   silent! %s/\v_+\ze[.]|\zs[.]\ze_+//g
   silent! %s/[$]/S/g
   silent! %s/\v-{2,}/-/g
@@ -32,9 +30,16 @@ fu! Vidir_Sanitize(content)
   silent! %s/\v_(Och|N[åa]n)_/\L&/g
 
   if (a:content == 'music') || (a:content == 'mvid')
+    silent! %s/\v./\L&/g
+    silent! %s/\v^\s*[0-9]+\s+\zs\s+/_/g
+    silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
     :silent! %s/\v[&]/feat/g
     :silent! %s/\v(_[el]p[_]?)/\U\1/ig
     :silent! %s/\v([_-]?cd[sm][_-]?|flac|[_-]demo|vinyl|[_-](web|pcb|osv))/\U\1/ig
+  elseif (a:content == 'tv')
+    :silent! %s/\v^\s*[0-9]+\s+\zs\s+/./g
+    silent! %s/\(\_^[ ]*\)\@<![ ]\+/./g
+    silent! %s/\v[.]-[.]/./g
   else
     :silent! %s/\v[&]/and/g
   endif
