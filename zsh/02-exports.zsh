@@ -1,29 +1,26 @@
 #!/usr/bin/zsh
 
-if [ $HOST = 'rambo' ]; then
+if [[ $HOSTNAME == 'rambo' ]]; then
   export DISPLAY=:0.0
 fi
 
 export LD_PRELOAD="$HOME/lib/stderred.so"
-export RLWRAP_FILTERDIR="$HOME/dev/_upstream/rlwrap/filters"
-export INPUTRC='$XDG_CONFIG_HOME/inputrc'
 
-export ACKRC="$HOME/etc/ackrc"
-export BROWSER="/usr/bin/w3m"
-export CLIVE_CONFIG="$HOME/etc/cliverc"
-export EDITOR=vim
-export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | :set ft=vidir-ls'
-export GIST_DIR=$HOME/dev/_gists/
-export HOSTNAME="shiva"
-export LISTMAX=300
-export MAILDIR="/mnt/Docs/Mail/inbox/new"
-export MOZ_DISABLE_PANGO=1
-export PAGER="vimpager"
-export VI_QUICKFIX_SOURCEFILE='stdin'
+export EDITOR="vim"
+export GIST_DIR="$HOME/dev/_gists/"
+export LISTMAX="300"
+export MOZ_DISABLE_PANGO="1"
 export X_OSD_COLOR='#a8ff00'
+export ACKRC="$HOME/etc/ackrc"
+export CLIVE_CONFIG="$HOME/etc/cliverc"
+export MAILDIR="/mnt/Docs/Mail/inbox/new"
+export HOSTNAME="shiva"
+export BROWSER="/usr/bin/w3m"
+export PAGER="vimpager"
 
 # my stuff                                                                   {{{
 export OREILLY_BOOKS_DATABASE="$XDG_DOCUMENTS_DIR/oreilly.db"
+export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0'
 #}}}
 # PATH                                                                       {{{
 export PATH="$( echo \
@@ -63,16 +60,19 @@ export XDG_PUBLICSHARE_DIR="/tmp/.${UID}"
 export XDG_TEMPLATES_DIR="/tmp/.${UID}"
 export XDG_VIDEOS_DIR="/mnt/Movies_1/"
 #}}}
-# zsh                                                                        {{{
+# terminal                                                                      {{{
+export INPUTRC='$XDG_CONFIG_HOME/inputrc'
+export RLWRAP_FILTERDIR="$HOME/dev/_upstream/rlwrap/filters"
+export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export ZSH_THEME="trapd00r"
-export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+export KEYTIMEOUT="10"
 #}}}
 # history                                                                    {{{
 export HISTFILE=$XDG_DATA_HOME/zsh/history
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
-export HISTSIZE=5000
-export SAVEHIST=1000000
+export HISTSIZE=512
+export SAVEHIST=512
 #}}}
 # clipbored ( https://github.com/trapd00r/clipbored )                        {{{
 export CLIPBORED_DMENU_FONT=${FONT}
@@ -98,6 +98,7 @@ export PERLBREW_ROOT="$HOME/usr/share/perl5"
 export PERL_HACK_LIB="/tmp"
 export PERL_MM_USE_DEFAULT=1
 export PERLDOC="-t"
+export VI_QUICKFIX_SOURCEFILE='stdin'
 
 export PERL5OPT="$(echo '
   -Ilib
@@ -106,7 +107,6 @@ export PERL5OPT="$(echo '
   -MCarp=carp,croak,confess,cluck
   -Mopen=:std,:utf8
   -Mutf8
-  -MData::Printer
   ' | perl -pe 's/\n//g')"
 #export RELEASE_TESTING=1
 #}}}
