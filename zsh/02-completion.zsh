@@ -7,6 +7,7 @@ zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 #}}}
 # for everything                                                             {{{
 zstyle ':completion:*'                       accept-exact      '*(N)'
+zstyle ':completion:*'                       add-space         true
 zstyle ':completion:*'                       list-dirs-first   true
 zstyle ':completion:*'                       matcher-list      'm:{a-z}={A-Z}'
 zstyle ':completion:*'                       menu select       200
@@ -36,22 +37,27 @@ zstyle ':completion:*:*:(cd):*'         menu select
 #zstyle ':completion:*:*:(cd):*'        file-sort access
 #}}}
 # vim                                                                        {{{
-zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' file-sort name
-zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' tag-order files
-zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
-  ignored-patterns '*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
-  file-sort modification
+#zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' file-sort modification
+#zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' tag-order files
+#zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
+#  ignored-patterns '*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
+#  file-sort modification
 #zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
 #}}}
 # mplayer                                                                    {{{
 zstyle ':completion:*:*:mplayer:*'           tag-order files
 zstyle ':completion:*:*:mplayer:*'           ignored-patterns '*.(nfo|sfv|rar|r[0-9])'
+zstyle ':completion:*:*:mplayer:*'           ignored-patterns 'Sample|Subs'
 zstyle ':completion:*:*:mplayer:*'           file-patterns   \
-       '*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
+  '*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
        '*:all-files' '*(-/):directories'
 zstyle ':completion:*:*:ffprobe:*'           file-patterns   \
        '*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
        '*:all-files' '*(-/):directories'
+
+zstyle ':completion:*:*:mplayer_6ch_headphones:*' file-patterns '*.(dts|ac3|flac|mkv|mp4)(#i)' '*(-/):directories'
+
+
 #}}}
 # ssh                                                                        {{{
 zstyle ':completion:*:*:(scp):*' file-list true
@@ -103,7 +109,8 @@ zstyle ':completion:*:descriptions' \
 #zstyle ':completion:*:warnings' \
 #  format $'%{\e[38;5;240;1m%}%d%{\e[m%}'
 #}}}
-
+#
+zstyle ':completion:*:*:unrar:*'       ignored-patterns 'Sample|Subs'
 zstyle ':completion:*:*:perl:*'        file-patterns '*'
 zstyle ':completion:*:*:apvlv:*'       tag-order files
 zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
