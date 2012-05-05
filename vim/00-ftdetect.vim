@@ -8,8 +8,6 @@ filetype plugin indent on
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
 
-"au BufNewFile         *            silent! 0r ~/etc/vim/templates/template.%:e | :19
-
 if &term != 'linux'
   "au InsertEnter * :silent !printf '\e]12;\#dc410d\a'
   "au InsertLeave * :silent !printf '\e]12;\#a5dc0d\a'
@@ -19,7 +17,8 @@ if &term != 'linux'
   "au InsertEnter * :silent !printf '\e]710;6x13\a\e]711;6x13b\e]712;%s\a' italic
 endif
 
-au BufNewFile,BufRead *.playlist :so /home/scp1/dev/vim-lscolors/plugin/lscolors.vim
+"au BufNewFile,BufRead *.playlist :so /home/scp1/dev/vim-lscolors/plugin/lscolors.vim
+"au BufNewFile,BufRead *.playlist :set ft=lscolors
 
 augroup FastEscape
   autocmd!
@@ -54,6 +53,7 @@ au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown |
 
 
 au BufNewFile *.bash silent! 0r ~/etc/vim/templates/template.bash
+au BufNewFile http*  :r !curl -s fnamemodify(expand('%'), ':p')
 
 au BufRead            *            call SetCursorPosition()
 au BufNewFile         *.txt        set ft=_txt
