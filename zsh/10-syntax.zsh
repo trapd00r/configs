@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Name:   zsh-syntax-highlighting-filetypes
 # Author: Magnus Woldrich <m@japh.se>
-# Update: 2011-06-20 23:26:38
+# Update: 2012-04-20 15:23:50
 #
 # This is based on nicoulaj's zsh-syntax-highlighting project [0]. I've
 # taken the initial version of his script and added highlighting for
@@ -103,9 +103,9 @@ _zsh_highlight_add-highlighter() {
 
 ZSH_HIGHLIGHT_STYLES+=(
   default                       'fg=248'
-  unknown-token                 'fg=196,bold,bg=234'
+  unknown-token                 'fg=88,bg=234'
   reserved-word                 'fg=197,bold'
-  alias                         'fg=197,bold'
+  alias                         'fg=111,bold'
   builtin                       'fg=107,bold'
   function                      'fg=85,bold'
   command                       'fg=166,bold'
