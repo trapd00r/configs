@@ -1,3 +1,6 @@
+pstree() {
+  =pstree -h -s -G
+}
 tcx() {
   /usr/bin/tmux attach || /usr/bin/tmux -f $HOME/etc/tmux.conf
 }
@@ -10,6 +13,7 @@ df() {
 }
 
 which() {
+  IFS="$(printf '\n\t')"
   printf '\e[?7t'
   builtin which "$@" \
     && builtin type "$@" \
