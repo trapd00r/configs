@@ -1,4 +1,4 @@
-source /home/scp1/dev/pentadactyl-neverland/color/neverland.penta
+source /home/scp1/etc/pentadactyl/color/neverland.penta
 "javascript readabilityFootnotes = 'true'
 
 set activate=addons,extoptions,help
