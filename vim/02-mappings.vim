@@ -86,6 +86,9 @@ nnoremap <TAB> %
 
 "}}}
 " movement                                                                   {{{
+nnoremap J  10j
+nnoremap K  10k
+
 inoremap jj <ESC>
 inoremap jk <ESC>
 inoremap £1 ()<ESC>i
