@@ -222,7 +222,7 @@ highlight.loadCSS(<![CDATA[
 ]]>);
 
 /// Options
-options.add(["buftabs", "bt"],
+group.options.add(["buftabs", "bt"],
         "Control whether to use buftabs in the statusline",
         "boolean", true, 
         {
@@ -236,7 +236,7 @@ options.add(["buftabs", "bt"],
             }
         });
 
-options.add(["buftabs-maxlength", "btm"],
+group.options.add(["buftabs-maxlength", "btm"],
         "Max length of an entry in the buftabs list",
         "number", "13", 
         {
@@ -247,7 +247,7 @@ options.add(["buftabs-maxlength", "btm"],
             }
         });
 
-options.add(["buftabs-showicons", "btf"],
+group.options.add(["buftabs-showicons", "btf"],
         "Show Favicons in buftabs",
         "boolean", false, 
         {
@@ -260,7 +260,7 @@ options.add(["buftabs-showicons", "btf"],
             }
         });
 
-options.add(["buftabs-completer", "btc"],
+group.options.add(["buftabs-completer", "btc"],
         "How to complete title if longer than maxlength",
         "string", "...", 
         {
