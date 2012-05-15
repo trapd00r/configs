@@ -88,6 +88,8 @@ nnoremap <TAB> %
 " movement                                                                   {{{
 nnoremap J  10j
 nnoremap K  10k
+vnoremap J  10j
+vnoremap K  10k
 
 inoremap jj <ESC>
 inoremap jk <ESC>
