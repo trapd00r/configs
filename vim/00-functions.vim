@@ -6,7 +6,9 @@
 " :g/\v^#\w+/let @" .= getline('.')."\n"|d _
 
 
-
+fu! Sort_By_Number()
+  :sort n /\%V[.]r/
+endfu
 " Vidir - sanitize filenames                                                 {{{
 fu! Vidir_Sanitize(content)
   mark z
@@ -30,7 +32,7 @@ fu! Vidir_Sanitize(content)
   silent! %s/\v_(Och|N[åa]n)_/\L&/g
 
   if (a:content == 'music') || (a:content == 'mvid')
-    silent! %s/\v./\L&/g
+    "silent! %s/\v./\L&/g
     silent! %s/\v^\s*[0-9]+\s+\zs\s+/_/g
     silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
     :silent! %s/\v[&]/feat/g
@@ -50,31 +52,32 @@ endfu
 "}}}
 " Vidir - sort-of-TitleCase helper                                           {{{
 fu! Vidir_SmartUC()
-  :s/\<\@<![A-Z]/_&/g
-  ":s/\w\@<=\ze\u/_/g
+  :s/\w\@<=\ze\u/_/g
+  :s/\v_+/_/g
+  ":s/\<\@<![A-Z]/_&/g
 endfu
 "}}}
 " highlights - hl match under cursor differently from Search                 {{{
-"fu! HL_Search_Cword()
-"  let s:old_cpo = &cpo
-"  set cpo&vim
-"
-"  if exists('b:search_cword_item')
-"    try
-"      call matchdelete(b:search_cword_item)
-"    catch /^Vim\%((\a\+\)\=:E/ " ignore E802,E803
-"    endtry
-"  endif
-"
-"  " :silent !printf '\e]12;\#242424\a'
-"  hi Search       ctermfg=233 ctermfg=106 cterm=bold
-"  "hi Search       ctermfg=106 ctermbg=233 cterm=bold
-"  hi search_cword ctermfg=085 ctermbg=234 cterm=bold
-"
-"  let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
-"
-"  let &cpo = s:old_cpo
-"endfu
+fu! HL_Search_Cword()
+  let s:old_cpo = &cpo
+  set cpo&vim
+
+  if exists('b:search_cword_item')
+    try
+      call matchdelete(b:search_cword_item)
+    catch /^Vim\%((\a\+\)\=:E/ " ignore E802,E803
+    endtry
+  endif
+
+  " :silent !printf '\e]12;\#242424\a'
+  hi Search       ctermfg=233 ctermfg=106 cterm=bold
+  "hi Search       ctermfg=106 ctermbg=233 cterm=bold
+  hi search_cword ctermfg=085 ctermbg=234 cterm=bold
+
+  let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
+
+  let &cpo = s:old_cpo
+endfu
 "}}}
 " highlights - hl every even/odd line                                        {{{
 fu! OddEvenHL()
