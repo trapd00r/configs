@@ -17,14 +17,20 @@ TRAPUSR1() { source ~/.zshrc }
 TRAPUSR2() { feh -FZrD3 /mnt/Porn/00-pics/ &; exit }
 TRAPINT() { print -nP %F{196}%B\^C%f%b; return 1 }
 
-export PERIOD=900; periodic() { setbg }
+#export PERIOD=900; periodic() { setbg }
 
-chpwd_functions=(update_mplayer)
+chpwd_functions=(update_mplayer tv_shortcuts)
 update_mplayer() {
-  if [[ $(pwd) == /mnt/Porn* ]]; then
+  dir=$(pwd)
+  if [[ $dir == /mnt/Porn/* || $dir == /mnt/shiva/mnt/Porn* ]]; then
     mplayer() {
       /usr/bin/mplayer -include $XDG_CONFIG_HOME -profile porn "$@"
     }
+  fi
+}
+tv_shortcuts() {
+  if [[ $(pwd) == /mnt/TV_3* ]]; then
+    hash -d 4=/mnt/TV_4
   fi
 }
 
