@@ -26,6 +26,7 @@ export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0'
 export PATH="$( echo \
   $HOME/dev/utils:\
   ~/bin:\
+  ~/dev/_upstream/git-extras/bin:\
   /bin:\
   /usr/bin:\
   /usr/local/bin:\
@@ -66,13 +67,13 @@ export RLWRAP_FILTERDIR="$HOME/dev/_upstream/rlwrap/filters"
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 export ZSH_THEME="trapd00r"
-export KEYTIMEOUT="10"
+export KEYTIMEOUT="1"
 #}}}
 # history                                                                    {{{
 export HISTFILE=$XDG_DATA_HOME/zsh/history
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
-export HISTSIZE=512
-export SAVEHIST=512
+export HISTSIZE=10000
+export SAVEHIST=25000
 #}}}
 # clipbored ( https://github.com/trapd00r/clipbored )                        {{{
 export CLIPBORED_DMENU_FONT=${FONT}
