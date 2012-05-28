@@ -52,7 +52,19 @@ bindkey "^[[C"  vi-forward-char
 bindkey "^[[D"  vi-backward-char
 #}}}
 # vicmd                                                                      {{{
-#bindkey -M vicmd  "^J"    accept-line
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd "^V"     edit-command-line
+bindkey -M vicmd "v"      edit-command-line
+
+bindkey -M vicmd "ga"     what-cursor-position
+bindkey -M vicmd "g~"     vi-oper-swap-case
+bindkey -M vicmd "di"     delete-in
+bindkey -M vicmd "ci"     change-in
+bindkey -M vicmd "da"     delete-around
+bindkey -M vicmd "ca"     delete-around
+
+
 bindkey -M vicmd  "^M"    accept-line
 bindkey -M vicmd  "^L"    clear-screen
 bindkey -M vicmd  "1"-"9" digit-argument
@@ -65,7 +77,7 @@ bindkey -M vicmd  "="     list-choices
 bindkey -M vicmd  "^D"    list-choices
 bindkey -M vicmd  "^G"    list-expand
 bindkey -M vicmd  "#"     pound-insert
-bindkey -M vicmd  "^R"    redisplay
+bindkey -M vicmd  "^R"    redo
 bindkey -M vicmd  "^P"    up-history
 bindkey -M vicmd  "k"     up-line-or-history
 bindkey -M vicmd  "^[[A"  up-line-or-history
@@ -139,8 +151,9 @@ bindkey -s -M viins "^T"  "\\\top\n"
 bindkey -M viins "^K" up-line-or-history
 bindkey -M viins "^J" down-line-or-history
 
+
 autoload edit-command-line
-bindkey -s -M viins '^V0' edit-command-line
+#bindkey -s -M viins '^V0' edit-command-line
 
 bindkey -s -M viins "^X0" " &> /dev/null "
 bindkey -s -M viins "^X1" "  > /dev/null "
@@ -148,7 +161,8 @@ bindkey -s -M viins "^X2" " 2> /dev/null "
 bindkey -s -M viins "^X3" " 2>&1 "
 bindkey -s -M viins "^G"  'setty background 161917\n'
 
-#bindkey -M viins "^J"    accept-line
+bindkey "^V"             prepend-vim
+bindkey -M viins "^J"    insert-last-word
 bindkey -M viins "^M"    accept-line
 bindkey -M viins "^X^A"  all-matches
 bindkey -M viins "^?"    backward-delete-char
