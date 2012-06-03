@@ -79,3 +79,6 @@
 [submodule "vim/bundle/vim-ansiesc"]
 	path = vim/bundle/vim-ansiesc
 	url = git://github.com/vim-scripts/AnsiEsc.vim.git
+[submodule "vim/bundle/vimpoint"]
+	path = vim/bundle/vimpoint
+	url = git://github.com/trapd00r/vimpoint.git

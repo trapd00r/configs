@@ -1,0 +1,23 @@
+[Male Medic]
+Mr. Mathers?
+Mr. Mathers!
+Mr. Mathers...Mr. Mathers can you hear my voice?
+OK he's not responding
+I'm gonna need an 18 gauge left AC right away
+
+[Female Medic]
+Uh, BP is 90 over palp, respiration's at 8
+OK I'm tubing him
+
+[Male Medic]
+DMC this is medic 41
+
+[Voice over radio]
+Medic 41, this is DMC base, go ahead
+
+[Female Medic]
+He's cold, spike him back and grab the back board
+
+[Male Medic]
+OK, got it, on 3...1, 2...
+Hu-let's move...
