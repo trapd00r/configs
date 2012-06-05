@@ -8,7 +8,7 @@ if !isdirectory('/tmp/scp1')
   call mkdir("/tmp/scp1", "", 0700)
 endif
 
-for f in split(globpath(&runtimepath, '*.vim'), "\n")
+for f in split(globpath('/home/scp1/etc/vim/', '*.vim'), "\n")
   if(f =~ '\v0[0-8].+[.]vim') 
     exe 'source ' . f
   endif
@@ -24,7 +24,7 @@ set rs
 set t_ti=7[r[?47h t_te=[?47l8
 set nocompatible
 set autoread
-set autochdir
+"set autochdir
 set autoindent
 set backspace=start,indent,eol
 set cmdheight=2
@@ -42,8 +42,10 @@ set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:4,vertical
 set display+=lastline,uhex
 set expandtab
-set fillchars=vert:│
+set fillchars=num:\ ,vert:│
+set foldcolumn=4
 set foldmethod=marker
+set foldmarker=#+,#-
 set foldenable
 set formatoptions=tcrqln1
 set grepprg=ack\ -a
@@ -148,7 +150,7 @@ if $TERM == 'linux'
   hi ColorColumn term=none  cterm=none ctermbg=3
   hi CursorLine  term=none  cterm=none ctermbg=none
 else
-  color neverland-ansi
+  color neverland-ansi-two
 endif
 "}}}
 
