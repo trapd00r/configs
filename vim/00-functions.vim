@@ -5,6 +5,9 @@
 ". do stuff with lines matching pattern
 " :g/\v^#\w+/let @" .= getline('.')."\n"|d _
 
+fu! Set(what)
+  exe 'set ' . substitute(a:what, '\v.+', '\L&', 'g')
+endfu
 
 fu! Sort_By_Number()
   :sort n /\%V[.]r/
@@ -62,6 +65,11 @@ fu! HL_Search_Cword()
   let s:old_cpo = &cpo
   set cpo&vim
 
+  if ! exists('s:search_cword_cursor_modified')
+    silent !printf ']12;\#ff0000\a'
+    let s:search_cword_cursor_modified='red'
+  endif
+
   if exists('b:search_cword_item')
     try
       call matchdelete(b:search_cword_item)
@@ -70,13 +78,13 @@ fu! HL_Search_Cword()
   endif
 
   " :silent !printf '\e]12;\#242424\a'
-  hi Search       ctermfg=233 ctermfg=106 cterm=bold
-  "hi Search       ctermfg=106 ctermbg=233 cterm=bold
-  hi search_cword ctermfg=085 ctermbg=234 cterm=bold
+  hi Search       ctermfg=196 cterm=bold  ctermbg=232
+  hi search_cword ctermfg=232 ctermbg=196 cterm=underline
 
   let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
 
   let &cpo = s:old_cpo
+  "let &t_EI = '\]12;#cabdab'
 endfu
 "}}}
 " highlights - hl every even/odd line                                        {{{

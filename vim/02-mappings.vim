@@ -10,11 +10,15 @@ nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 
 " searching                                                                  {{{
 nnoremap <silent> ! *:call HL_Search_Cword()<CR>
+"  :silent !printf '\e]12;\#ff0000'
 nnoremap <silent> # #:call HL_Search_Cword()<CR>
+"  :silent !printf '\e]12;\#56ff00'
 nnoremap <silent> * *:call HL_Search_Cword()<CR>
+"  :silent !printf '\e]12;\#ff33'
 nnoremap <silent> N N:call HL_Search_Cword()<CR>
+"  :silent !printf '\e]12;\#030407'
 nnoremap <silent> n n:call HL_Search_Cword()<CR>
-"}}}
+"  :silent !printf '\e]12;\#030407
 " user interface                                                             {{{
 nnoremap <CR>   zA       " toggle folds recursively
 "nnoremap '      `        " switch ' and ` ...

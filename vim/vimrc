@@ -3,19 +3,17 @@
 " Created: 2009-04-24
 " Updated: 2012-01-22 03:24:04
 "    What: Highly optimized for Perl, C, Viml and Lua hacking.
+set nocp
 
 if !isdirectory('/tmp/scp1')
   call mkdir("/tmp/scp1", "", 0700)
 endif
 
-for f in split(globpath('/home/scp1/etc/vim/', '*.vim'), "\n")
-  if(f =~ '\v0[0-8].+[.]vim') 
+for f in split(globpath(expand($VIMRUNTIME), "*.vim"), "\n")
+  if(f =~ '\v/0[0-9]-\w+[.]vim$')
     exe 'source ' . f
   endif
 endfor
-
-let &rtp = &rtp . printf('%s/after', $VIMRUNTIME)
-let &rtp = substitute(globpath(expand('~/dev'), 'vim-*'), '\n', ',', 'g') . &rtp
 
 " THIS IS HORRIBLE EVILNESS
 "set gdefault 
@@ -31,19 +29,26 @@ set cmdheight=2
 set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
-set colorcolumn=79,+1
+if &ft != 'man'
+  set colorcolumn=+1
+endif
 set completeopt+=menuone
 set cscopeprg=/usr/local/bin/cscope
 set cscopetag
 set cscopetagorder=0
 set cscopeverbose
-set cursorline
+"set cursorline
 set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:4,vertical
 set display+=lastline,uhex
 set expandtab
-set fillchars=num:\ ,vert:│
-set foldcolumn=4
+
+
+
+"set fillchars=num:\ ,vert:│
+
+
+set foldcolumn=2
 set foldmethod=marker
 set foldmarker=#+,#-
 set foldenable
@@ -51,7 +56,7 @@ set formatoptions=tcrqln1
 set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
-set helpheight=60
+set helpheight=20
 set hidden
 set history=50
 set hlsearch
@@ -63,11 +68,9 @@ set isfname+=:
 set laststatus=2
 set lazyredraw
 set list
-"let &lcs = "tab:\273\255,trail:\267,eol:\266,nbsp:\u23b5,precedes:\u2190,extends:\u2192"
 set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪
 set magic
 set makeprg=mymake
-set matchtime=2
 set maxmapdepth=500
 set matchpairs+==:;
 set matchpairs+=<:>
@@ -101,17 +104,20 @@ set relativenumber
 set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-set scrolloff=5
+
+set scrolloff=1
 set ssop=buffers,folds,globals,help,localoptions,options,resize
 set shiftwidth=2
 set shortmess=aIoOT
+set showcmd
 set showmatch
 set showmode
 set smartcase
 set smarttab
+set splitbelow
 set suffixes=~,.swp,swo,o,gz
-set synmaxcol=160
-set tabpagemax=50
+set synmaxcol=120
+set tabpagemax=4
 set tabstop=2
 set t_Co=256
 set timeout
@@ -155,9 +161,9 @@ endif
 "}}}
 
 
-exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-syntax.vim'
+"exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-syntax.vim'
 
-syn match visualLast /\%V.*\%V/
-hi visualLast ctermbg=100 cterm=bolditalic
+"syn match visualLast /\%V.*\%V/
+"hi visualLast ctermbg=100 cterm=bolditalic
 
 call pathogen#infect()

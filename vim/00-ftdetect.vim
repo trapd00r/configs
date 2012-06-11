@@ -1,12 +1,13 @@
-"    File: $HOME/etc/ftdetect.vim
+
 "  Author: Magnus Woldrich <m@japh.se>
 " Updated: 2011-12-11 18:42:57
 "
-
 filetype plugin indent on
-
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 set formatoptions=qro
+
+
+"let &t_SI = "\<Esc>]12;purple\x7"
 
 if &term != 'linux'
   "au InsertEnter * :silent !printf '\e]12;\#dc410d\a'
@@ -31,31 +32,25 @@ augroup FastEscape
   au InsertLeave * set notimeout
 augroup END
 
-au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl   |
-  \ call search('APP')  | normal di':startinsert
+au BufNewFile *.pl silent! 0r ~/etc/vim/templates/template.pl   | call search('APP')  | normal di':startinsert
 
-au BufNewFile *.PL silent! 0r ~/etc/vim/templates/template.PL   |
-  \ call search('__PACKAGE__') | exe 'normal dt} ' | startinsert
+au BufNewFile *.PL silent! 0r ~/etc/vim/templates/template.PL   | call search('__PACKAGE__') | exe 'normal dt} ' | startinsert
 
-au BufNewFile *.pm silent! 0r ~/etc/vim/templates/template.pm   |
-  \ call cursor(0, 9) | exe 'normal d$A ' | startinsert
+au BufNewFile *.pm silent! 0r ~/etc/vim/templates/template.pm   | call cursor(0, 9) | exe 'normal d$A ' | startinsert
 
-au BufNewFile *.t  silent! 0r ~/etc/vim/templates/template.t    |
-  \ :6 | exe 'normal o' | startinsert
+au BufNewFile *.t  silent! 0r ~/etc/vim/templates/template.t    | :6 | exe 'normal o' | startinsert
 
-au BufNewFile *.vim silent! 0r ~/etc/vim/templates/template.vim |
+au BufNewFile *.vim silent! 0r ~/etc/vim/templates/template.vim
 
-au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c    |
-  \ :5 | exe 'normal o ' | startinsert
+au BufNewFile *.c  silent! 0r ~/etc/vim/templates/template.c | :5 | exe 'normal o ' | startinsert
 
-au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown |
-  \ :0 | exe 'normal d$A' | startinsert
+au BufNewFile *.md,*.markdown silent! 0r ~/etc/vim/templates/template.markdown | :0 | exe 'normal d$A' | startinsert
 
 
 au BufNewFile *.bash silent! 0r ~/etc/vim/templates/template.bash
 au BufNewFile http*  :r !curl -s fnamemodify(expand('%'), ':p')
 
-au BufRead            *            call SetCursorPosition()
+"au BufRead            *            call SetCursorPosition()
 au BufNewFile         *.txt        set ft=_txt
 au BufRead,BufNewFile *.css        set sw=2
 au BufRead,BufNewFile *.go         set ft=go
