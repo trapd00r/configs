@@ -82,3 +82,6 @@
 [submodule "vim/bundle/vimpoint"]
 	path = vim/bundle/vimpoint
 	url = git://github.com/trapd00r/vimpoint.git
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
+	url = git://github.com/sjl/gundo.vim.git

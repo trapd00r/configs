@@ -26,16 +26,17 @@ setopt \
      brace_expand           \
   no_bsd_echo               \
      c_bases                \
+     c_precedences          \
      case_glob              \
      case_match             \
   no_cdable_vars            \
   no_chase_dots             \
   no_chase_links            \
      check_jobs             \
-  no_clobber                \
+     clobber                \
      complete_aliases       \
      complete_in_word       \
-     correct                \
+  no_correct                \
   no_correct_all            \
   no_csh_junkie_history     \
   no_csh_junkie_loops       \
