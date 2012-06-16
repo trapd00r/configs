@@ -29,7 +29,7 @@
 
 
 (setf *startup-message*             nil)
-(setf *normal-border-width*         2)
+(setf *normal-border-width*         0)
 (setf *shell-program*               (stumpwm::getenv "SHELL"))
 (setf *mode-line-background-color* "black"
       *mode-line-foreground-color* "White"
@@ -39,10 +39,10 @@
       *window-format*              "^B^8*%n%s%m%30t :: ^7*"
       *group-format*               "%t")
 (setf
-  *maxsize-border-width*           1
+  *maxsize-border-width*           0 
   *normal-border-width*            0
-  *window-border-style*            :none
-  *transient-border-width*         4
+  *window-border-style*            :thin
+  *transient-border-width*         0
 )
 (setf
   *message-window-gravity*         :top-left
@@ -51,9 +51,9 @@
 )
 
 
-(define-frame-preference "media"
-  ( 0 t t :class "MPlayer")
-)
+;(define-frame-preference "media"
+;  ( 0 t t :class "MPlayer")
+;)
 ;(define-frame-preference "crap"
 ;  ( 0 t t :class "Wine System Tray")
 ;  ( 0 t t :class " Ares ")
@@ -90,7 +90,7 @@
 ;; music                                                                     {{{
 ;(define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
 ;;(define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
-(define-key *root-map* (kbd "p")            "exec sh /home/scp1/dev/utils/mpd_twmn")
+(define-key *root-map* (kbd "p")            "exec mpc next")
 (define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
 (define-key *root-map* (kbd "SPC")          "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
 (define-key *root-map* (kbd ".")            "exec vol_up")
@@ -122,13 +122,16 @@
 (define-key *root-map* (kbd "g")            "exec google_dmenu")
 (define-key *root-map* (kbd "m")            "exec dmenurl")
 (define-key *root-map* (kbd "x")            "exec xterm")
+(define-key *root-map*  (kbd "q")           "exec wmctrl -R Fx")
+
+(define-key *top-map*  (kbd "F1")            "exec wmctrl -R Fx")
 
 ;(defcommand send-selection nil nil
 ;  (window-send-string (get-x-selection))
 ;)
-(defcommand send-selection nil nil
-  (window-send-string (run-shell-command "xclip -o" t))
-)
-(define-key *top-map* (kbd "C-Insert") "send-selection")
+;(defcommand send-selection nil nil
+;  (window-send-string (run-shell-command "xclip -o" t))
+;)
+;(define-key *top-map* (kbd "C-Insert") "send-selection")
 
 (restore-from-file #p"/home/scp1/etc/stumpwm_dev.desktop")
