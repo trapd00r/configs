@@ -1,8 +1,9 @@
 "    File: $HOME/etc/vimrc
 "  Author: Magnus Woldrich <m@japh.se>
 " Created: 2009-04-24
-" Updated: 2012-01-22 03:24:04
-"    What: Highly optimized for Perl, C, Viml and Lua hacking.
+" Updated: 2012-06-24 13:21:40
+
+set all&
 set nocp
 
 if !isdirectory('/tmp/scp1')
@@ -22,7 +23,7 @@ set rs
 set t_ti=7[r[?47h t_te=[?47l8
 set nocompatible
 set autoread
-"set autochdir
+set autochdir
 set autoindent
 set backspace=start,indent,eol
 set cmdheight=2
@@ -37,7 +38,7 @@ set cscopeprg=/usr/local/bin/cscope
 set cscopetag
 set cscopetagorder=0
 set cscopeverbose
-"set cursorline
+set cursorline
 set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:4,vertical
 set display+=lastline,uhex
@@ -68,7 +69,7 @@ set isfname+=:
 set laststatus=2
 set lazyredraw
 set list
-set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪
+set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪:conceal=▆
 set magic
 set makeprg=mymake
 set maxmapdepth=500
