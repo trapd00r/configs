@@ -1,18 +1,18 @@
 set tab-size             = 2
 set show-author          = abbreviated
 set show-date            = relative
-set show-rev-graph       = yes
-set show-refs            = yes
 set show-line-numbers    = yes
-set line-number-interval = 1
-set commit-encoding      = "UTF-8"
+set show-refs            = yes
+set show-rev-graph       = yes
 set horizontal-scroll    = 33%
+set line-number-interval = 5
 
 bind main w scroll-line-up
 bind main s scroll-line-down
-bind main P !git format-patch -1 %(commit)
 
+bind main P !git format-patch -1 %(commit)
 bind diff P !git format-patch -1 %(commit)
+
 bind diff a previous
 bind diff d next
 bind diff b move-first-line
