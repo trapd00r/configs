@@ -1,44 +1,23 @@
-# Beware! This file is rewritten every time htop exits.
+# Beware! This file is rewritten by htop when settings are changed in the interface.
 # The parser is also very primitive, and not human-friendly.
-# (I know, it's in the todo list).
-#      PID USER
-# 0  PID
-# 48 USER
-# 17 PRI(ority)
-# 18 NI(ceness)
-# 38 VIRT(ual memory)
-# 39 RES(ident memory)
-# 40 SHR(ed pages)
-# 2  S(tate)
-#      S for sleeping (idle)
-#      R for running
-#      D for disk sleep (uninterruptible)
-#      Z for zombie (waiting for parent to read it's exit status)
-#      T for traced or suspended (e.g by SIGTSTP)
-#      W for paging
-# 46 CPU
-#      The ID of the CPU the process last executed on.
-# 47 MEM
-#
-#
-#
-#
-fields= 0 48 17 18 38 39 40 2 46 47 49 1 
-sort_key=STATE
-sort_direction=1
+fields=20 49 0 3 6 39 37 46 47 2 1 
+sort_key=1
+sort_direction=0
 hide_threads=0
 hide_kernel_threads=1
 hide_userland_threads=0
-shadow_other_users=1
+shadow_other_users=0
+show_thread_names=1
 highlight_base_name=1
 highlight_megabytes=1
 highlight_threads=1
 tree_view=1
 header_margin=0
 detailed_cpu_time=0
-color_scheme=1
+cpu_count_from_zero=1
+color_scheme=0
 delay=15
-left_meters=AllCPUs Memory Swap 
-left_meter_modes=1 1 1 
-right_meters=Tasks LoadAverage Uptime 
-right_meter_modes=2 2 2 
+left_meters=CPU(1) CPU(2) Tasks 
+left_meter_modes=1 1 2 
+right_meters=AllCPUs2 CPU Memory 
+right_meter_modes=1 1 2 
