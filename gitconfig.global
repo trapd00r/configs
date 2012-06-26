@@ -2,10 +2,10 @@
   name  = Magnus Woldrich
   email = m@japh.se
 [core]
-  #pager = v
+  pager = 
 [color]
   branch     = auto
-  diff       = 0
+  diff       = 1
   grep       = auto
   pager      = 0
   showbranch = auto
@@ -13,15 +13,31 @@
   ui         = auto
 
 [color "status"]
-  added     = magenta
-  changed   = cyan
-  untracked = green
+  added     = 2 bold
+  branch    = 100
+  changed   = 085 bold
+  header    = 086
+  nobranch  = 197
+  untracked = 240
 
 [color "branch"]
-  current = yellow reverse
+  current = 172
+  local   = 85 bold
+  remote  = 039
+  plain   = 240 reverse
+
+[color "diff"]
+  old        = 124
+  new        = 34 bold
+  plain      = 137
+  meta       = 85
+  frag       = 86
+  func       = 87
+  commit     = 4
+  whitespace = 160 bold
 
 [man]
-  viewer = vimpager
+  viewer = motherfuckingvimpager
 [receive]
   denyCurrentBranch = ignore
 [core]
@@ -30,7 +46,7 @@
   fontui   = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
   fontdiff = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
 [alias]
-  last = log -1 HEAD
+  last = "!git log -7 HEAD --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[m \\033[32m%s\\033[m  %-.40s \\033[30;1m%s\\033[m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';"
   co   = checkout
   ci   = commit
   st   = status
@@ -39,3 +55,14 @@
   undo = checkout --
   log1 = log --
   whatthefuckdidido = diff HEAD
+  sum  = git-summary
+  effort  = git-summary
+  styoyo = git-awesome-status
+  l    = "!f () { git log --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-40s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';}; f"
+  ll   = "!f () { git log --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-50s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';}; f"
+  lll  = "!f () { git log --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-80s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{79}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }'; }; f"
+  lg40 = "!f () { git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-40s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }'; }; f"
+  lg50 = "!f () { git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-50s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }'; }; f"
+  lg80 = "!f () { git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-80s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{79}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }'; }; f"
+[github]
+  user  = trapd00r
