@@ -100,10 +100,10 @@ endfu
 fu! Single_quote(str)
   return "'" . substitute(copy(a:str), "'", "''", 'g') . "'"
 endfu
-fu! Cabbrev(key, value)
-  exe printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
-    \ a:key, 1+len(a:key), Single_quote(a:value), Single_quote(a:key))
-endfu
+"fu! Cabbrev(key, value)
+"  exe printf('cabbrev <expr> %s (getcmdtype() == ":" && getcmdpos() <= %d) ? %s : %s',
+"    \ a:key, 1+len(a:key), Single_quote(a:value), Single_quote(a:key))
+"endfu
 "}}}
 " sub - TitleCase word                                                       {{{
 fu! TitleCaseCenter()
@@ -135,7 +135,9 @@ endfu
 "}}}
 " toggle paste                                                               {{{
 fun! TogglePaste()
+  echohl Number
   exe 'set ' . (&paste ? 'nopaste' : 'paste')
+  echo &paste
 endfun
 "}}}
 " preview markdown                                                           {{{
