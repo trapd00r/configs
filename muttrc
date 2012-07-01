@@ -16,7 +16,7 @@ set delete              = yes
 #set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
 set duplicate_threads   = yes
 set edit_headers        = yes
-set editor              = "vim -c \"set spell spl=en | so ~/etc/vim/01-abbrevations.vim\""
+set editor              = "wim -c \"set spell spl=en | so ~/etc/vim/01-abbrevations.vim\""
 set fast_reply          = yes
 set folder              = /mnt/Mail/inbox
 set forward_format      = "Fw: %s"
