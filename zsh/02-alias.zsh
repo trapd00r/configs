@@ -1,9 +1,9 @@
 if [[ $UID != 0 ]]; then
   if [ -f "$HOME/.ssh/config" ]; then
     for host in $(
-      perl -ne 'print "$1\n" if /^[Hh]ost\s+(.+)$/' $HOME/.ssh/config
+      perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
     ); do
-      alias $host="ssh $host '$@'"
+      alias $host="ssh -M $host '$@'"
     done
   fi
 
@@ -26,7 +26,6 @@ fi
 
 alias ctags='ctags --format=1'
 
-alias 80='perl -e "print q[x] x 80, qq[\n]"'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode-Normalize=NFD,NFC,NFKD,NFKC'
 
 alias swe='translate -from en -to swe'
@@ -71,7 +70,8 @@ alias     put='woof -u -i 0.0.0.0 -p 4040'
 alias docupd='scp -P 19216 -r /mnt/Leftover/doc/* scp1@192.168.1.128:http/japh.se/doc'
 alias   sshl='sshfs -p 19216 scp1@192.168.1.128:/var/log/lighttpd /mnt/lighttpd'
 
-alias     gs='git status --short -b'
+#alias     gs='git status --short -b'
+alias     gd='GIT_PAGER= git diff'
 alias     gc='git commit'
 alias     gt='git tag|sort --reverse'
 alias     gp='git push'
@@ -84,10 +84,12 @@ alias   what="--stat -p --reverse HEAD@{1}.. | perl -pe 's/^(\++.+).*/\e[38;5;34
 #alias     gd='PAGER="" git diff $ | skate --language diff -'
 
 alias      cp='cp -v'
+alias      rm='rmc'
 alias      mv='mv -v'
-alias      rm='rm -v'
-alias    grep='grep -Pi --color=auto'
-alias   grepp='grep -Pi --color=auto "^|$@"'
+#alias      rm='rm -v'
+# XXX this
+#alias    grep="grep -PIi --color=auto --exclude='*.o' --exclude='*.po' --exclude='*.info'"
+#alias   grepp='grep -PIi --color=always "^|$@"'
 alias    rmvi='rm *.sw*'
 alias prename='prename -v'
 
@@ -98,6 +100,7 @@ alias   perlf='ack -f --perl'
 
 
 #alias upstream='cd $HOME/bin/upstream && git-rec -d . -c pull -b master'
+alias --  -='builtin cd -'
 alias     b='builtin cd $HOME/bin'
 alias     c='builtin cd $HOME/etc'
 alias     d='builtin cd $HOME/dev'
@@ -125,12 +128,6 @@ alias     t='mkdr /tmp/scp1 ; builtin cd /tmp/scp1'
 
 alias lsusb='lsusb | matchline -random'
 alias lspci='lspci | matchline -lspci'
-
-if [ "$TERM" = 'linux' ]; then
-  alias  ls=' ls++'
-else
-  alias ls='ls++'
-fi
 
 alias lso='\ls | pv -qL 10'
 alias lsq='\ls --color=always --time-style=full-iso -AlQ'
@@ -170,7 +167,7 @@ fi
 alias      wmp='wminput -c mplayer&'
 alias      win='wminput -c ir_ptr -w -c neverball&'
 alias      wir='wminput -c ir_ptr -w -c ir_ptr&'
-alias      wim='wminput -c ir_ptr -w -c buttons-mame&'
+#alias      wim='wminput -c ir_ptr -w -c buttons-mame&'
 alias      wig='wminput -c gamepad&'
 alias      wit='wminput -c buttons-term&'
 
@@ -244,22 +241,21 @@ alias    vimsh='vim -X *.sh'
 alias    vimpm='vim -X *.pm'
 alias    vimpl='vim -X *.pl'
 alias     vimc='vim -X *.{c,h}'
-alias      vim='vim -X'
+alias      vim='wim -X'
 alias     cpan='cpanm'
 alias    flash=' clive --stream-exec="mplayer -really-quiet %i" --stream=10'
 alias      cat='v'
 alias      scx='screen -x'
+alias      scd='screen -d'
 alias     make='/home/scp1/dev/utils/mymake'
 alias     wimp='(wminput -c mplayer&); mplayer'
 alias       :q='exit'
 alias       :q!='kill -9 $$'
 alias      die='kill -9 $$'
-alias    urxvt="urxvt -name $HOST $@"
-alias     less='vimpager'
+alias    urxvt="=urxvt -name $HOST $@"
 alias     wget='wget --no-check-certificate -U=Mozilla'
 alias     ptop='watch -n1 ps aux --sort=+%cpu'
 alias     tree='tree -dA'
-alias      mem='su -c mem'
 
 alias   1='printf "\e]710;%s\007" "9x15bold,xft:Kochi Gothic"'
 alias   2='pickyfont -f speedy2'
