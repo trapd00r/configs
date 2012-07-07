@@ -31,13 +31,13 @@
 (setf *startup-message*             nil)
 (setf *normal-border-width*         0)
 (setf *shell-program*               (stumpwm::getenv "SHELL"))
-(setf *mode-line-background-color* "black"
-      *mode-line-foreground-color* "White"
-      *mode-line-border-color*     "darkgrey"
-      *mode-line-timeout*          1
-      *mode-line-screen-position*  :bottom
-      *window-format*              "^B^8*%n%s%m%30t :: ^7*"
-      *group-format*               "%t")
+;(setf *mode-line-background-color* "black"
+;      *mode-line-foreground-color* "White"
+;      *mode-line-border-color*     "darkgrey"
+;      *mode-line-timeout*          1
+;      *mode-line-screen-position*  :bottom
+;      *window-format*              "^B^8*%n%s%m%30t :: ^7*"
+;      *group-format*               "%t")
 (setf
   *maxsize-border-width*           0 
   *normal-border-width*            0
@@ -91,10 +91,10 @@
 ;(define-key *root-map* (kbd "DEL")          "exec pimpd2 --randomalbums 20")
 ;;(define-key *root-map* (kbd "p")            "exec mpc -h 192.168.1.128 next; stumpish echo `mpc -h 192.168.1.128 --format '%artist% - %album% - %title% | [%file%] '|head -1`")
 (define-key *root-map* (kbd "p")            "exec mpc next")
-(define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
-(define-key *root-map* (kbd "SPC")          "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
-(define-key *root-map* (kbd ".")            "exec vol_up")
-(define-key *root-map* (kbd ",")            "exec vol_down")
+;(define-key *root-map* (kbd "o")            "exec mpc -h 192.168.1.128 toggle")
+;(define-key *root-map* (kbd "SPC")          "exec stumpish echo `mpc --host 192.168.1.128 --format '%artist% - %title% (%album%)'|head -1`")
+;(define-key *root-map* (kbd ".")            "exec vol_up")
+;(define-key *root-map* (kbd ",")            "exec vol_down")
 
 ;;(define-key *top-map*  (kbd "F1")           "exec rpc change dingata")
 ;;(define-key *top-map*  (kbd "F2")           "exec rpc change gabber")
@@ -117,21 +117,12 @@
 ;(define-key *top-map* (kbd "<")             "productivity-mode-toggle")
 
 (define-key *root-map* (kbd "c")            "exec urxvt")
-(define-key *root-map* (kbd "d")            "exec dmenuclip")
+(define-key *root-map* (kbd "C")            "exec uxterm")
+;(define-key *root-map* (kbd "d")            "exec dmenuclip")
 (define-key *root-map* (kbd "e")            "exec sh /home/scp1/bin/dmenu.sh")
-(define-key *root-map* (kbd "g")            "exec google_dmenu")
-(define-key *root-map* (kbd "m")            "exec dmenurl")
+;(define-key *root-map* (kbd "g")            "exec google_dmenu")
+;(define-key *root-map* (kbd "m")            "exec dmenurl")
 (define-key *root-map* (kbd "x")            "exec xterm")
 (define-key *root-map*  (kbd "q")           "exec wmctrl -R Fx")
-
-(define-key *top-map*  (kbd "F1")            "exec wmctrl -R Fx")
-
-;(defcommand send-selection nil nil
-;  (window-send-string (get-x-selection))
-;)
-;(defcommand send-selection nil nil
-;  (window-send-string (run-shell-command "xclip -o" t))
-;)
-;(define-key *top-map* (kbd "C-Insert") "send-selection")
 
 (restore-from-file #p"/home/scp1/etc/stumpwm_dev.desktop")
