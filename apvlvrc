@@ -1,6 +1,3 @@
-" map n to <C-f> to goto next page
-"map n <C-f>
-"
 map J 20j
 map I zi
 map O zo
@@ -20,9 +17,6 @@ set guioptions      =
 set noinfo          = yes
 set pdfcache        = 4
 set scrollbar       = no
-set visualmode      = yes
-set wrapscan        = yes
+set visualmode      = no
+set wrapscan        = no
 set zoom            = fitwidth
-
-
-" vim: set ft     = vim:
