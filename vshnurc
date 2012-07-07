@@ -1,19 +1,11 @@
 #!/usr/bin/perl
 
 # .vshnurc - personal extra vshnu reconfiguration file
-# Steve Kinzler, kinzler@cs.indiana.edu, Oct 00
-# see website http://www.cs.indiana.edu/~kinzler/vshnu/
-# http://www.cs.indiana.edu/~kinzler/home.html#unixcfg
 
 # Many of the scripts and supporting external configurations used via this
-# file are available at http://www.cs.indiana.edu/~kinzler/home.html.
+# http://www.cs.indiana.edu/~kinzler/home.html.
 
 # Names used only within this vshnurc are placed in the rc:: package.
-# This file should be reloadable.
-
-###############################################################################
-## Change Log #################################################################
-
 ($rc::vname, $rc::version, $rc::require) = qw(vshnurc 1.0306 1.0306);
 &addversions($rc::vname, $rc::version);
 
@@ -60,7 +52,7 @@
 # 1.0125  18 Mar 2005   Add &rc::edtags and use for ^K command completions
 # 1.0126  18 Mar 2005   Add text view as edit for .doc and .xls files
 # 1.0127  11 Apr 2005   Make external reconfig dependent on tcsh/less presence
-# 1.0128  14 Apr 2005   Delete pager[ar] config; No color reconfig if ! kinzler
+# 1.0128  14 Apr 2005   Delete pager[ar] config; No color reconfig if ! trapd00r
 # 1.0129  17 Apr 2005   Add &rccolorlong for getfacls and listacls
 # 1.0200  29 Apr 2005   Version normalization
 # 1.0201   6 May 2005   Add &hostr
@@ -101,14 +93,14 @@ $shell = 'zsh' unless $?;      # for use by &shell
 
 $stty_cooked = '-istrip';       # corrections to `stty -raw echo`
 
-sub hostr { local $_ = shift; s/^dkinzler\b.*/$ENV{KH}/is; $_ }
+sub hostr { local $_ = shift; s/^dtrapd00r\b.*/$ENV{KH}/is; $_ }
 
 ###############################################################################
 ## Color reconfiguration ######################################################
 
-if ($color && getpwnam('kinzler')) {
-        $co_decor = 'on_magenta' if $> && $user ne 'kinzler';
-        delete $co_user{$user}, @co_user{'kinzler', 'oracle',  'uoracle'} =
+if ($color && getpwnam('trapd00r')) {
+        $co_decor = 'on_magenta' if $> && $user ne 'trapd00r';
+        delete $co_user{$user}, @co_user{'trapd00r', 'oracle',  'uoracle'} =
                                         ('blue',    'magenta', 'magenta');
 }
 
@@ -372,7 +364,7 @@ $keymap_{"M"}[0] =~ s/"make"/"mak"/;
 #&mapadd('keymap_', "N",
 #        ['run -s "nn"', 'run `nn`'], ">M");
 &mapadd('keymap_', "W",
-         ['cd($> && $user ne "kinzler" ? "~$user" : "~/work");'
+         ['cd($> && $user ne "trapd00r" ? "~$user" : "~/work");'
           . ' point "-\$"; win',
           "cd to the user's working directory"], "X");
 $keymap_{"Y"}[0] .= '; $cwd eq untilde("~/work") && msg filecount';
