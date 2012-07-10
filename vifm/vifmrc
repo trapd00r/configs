@@ -1,0 +1,170 @@
+" vim: ft=vim sw=2 et fdm=indent:
+set   autochpos
+set   columns=167
+set   confirm
+set   cpoptions=s
+set   fastrun
+set   followlinks
+set   fusehome=/tmp/scp1/vifm_FUSE
+set   history=100
+set   hlsearch
+set   ignorecase
+set   incsearch
+set   laststatus
+set   fastrun
+set nogdefault
+set noiec
+set   ignorecase
+set   incsearch
+set norunexec
+set noscrollbind
+set   smartcase
+set   sortnumbers
+set novimhelp
+set   wildmenu
+set   rulerformat=%=%l/%S
+set   scrolloff=4
+set   shell=/bin/zsh
+set   slowfs=curlftpfs
+set   smartcase
+set   sort=+name
+set   sortorder=ascending
+set   statusline=" ‹%t%= %A %10u:%-7g %15s %20d  "
+set   timefmt=%m/%d\ %H:%M
+set   timeoutlen=1000
+set   trash
+set   trashdir=/home/scp1/var/vifm/
+set   undolevels=400
+set   vicmd=wim
+set   vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
+"set   vixcmd=wim\ -X
+set   wildmenu
+set   wrap
+set   wrapscan
+
+" :mark mark /full/directory/path [filename]
+
+mark b ~/bin/
+mark h ~/
+
+" :com[mand] command_name action
+" The following macros can be used in a command
+" %a is replaced with the user arguments.
+" %c the current file under the cursor.
+" %C the current file under the cursor in the other directory.
+" %f the current selected file, or files.
+" %F the current selected file, or files in the other directory.
+" %b same as %f %F.
+" %d the current directory name.
+" %D the other window directory name.
+" %m run the command in a menu window
+
+command df df -h %m 2> /dev/null
+command diff wim -d %f %F
+command zip zip -r %f.zip %f
+command run !! ./%f
+command make !!make
+command vgrep wim "+grep %a"
+
+filetype *.pdf zathura %f,apvlv %f,xpdf %f
+fileview *.pdf pdftotext -nopgbrk %c -
+filextype *.ps,*.ps.gz gv %c %i &
+filextype *.djvu apvlv %f
+filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
+       \ {Play using ffplay}
+       \ ffplay %c,
+       \ {Play using MPlayer}
+       \ play_music %f,
+fileviewer *.mp3 mp3info
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
+        \ {View using ffplay}
+        \ ffplay -fs %c,
+        \ {View using mplayer}
+        \ mplayer %f,
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
+         \ ffprobe -show_files -pretty %f 2> /dev/null
+filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
+filetype *.o nm %f | less
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+        \ {View in sxiv}
+        \ feh -FZ,
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
+filetype *.md5
+       \ {Check MD5 hash sum}
+       \ md5sum -c %f,
+
+" FuseZipMount
+filetype *.zip,*.jar,*.war,*.ear
+       \ {Mount with fuse-zip}
+       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+       \ {View contents}
+       \ zip -sf %c | less,
+       \ tar -xf %c,
+fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
+
+" ArchiveMount
+filetype *.tar.bz2,*.tbz2,*.tgz,*.tar.gz
+       \ {Mount with archivemount}
+       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+
+" Rar2FsMount
+filetype *.rar
+       \ {Mount with rar2fs}
+       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+
+" IsoMount
+filetype *.iso
+       \ {Mount with fuseiso}
+       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+
+" SshMount
+filetype *.ssh
+       \ {Mount with sshfs}
+       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR,
+
+" FtpMount
+filetype *.ftp
+       \ {Mount with curlftpfs}
+       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR,
+
+" Fuse7z
+filetype *.7z
+       \ {Mount with fuse-7z}
+       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+
+
+" Directories
+filextype */
+        \ {View in vidir}
+        \ vidirr %f &,
+fileview */ tree %f
+
+" Like in previous versions of vifm
+" set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
+" Like in vi
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+    \phistory,dirstack,registers,bookmarks
+
+nmap  A   cw<c-w>
+nmap cc   cw<c-u>
+nmap ,c   :execute ':!wim $MYVIFMRC' | restart<cr>
+nmap <f3> :!less %f<cr>
+nmap <f4> :edit<cr>
+nmap <f5> :copy<cr>
+nmap <f6> :move<cr>
+nmap <f7> :mkdir<space>
+nmap <f8> :delete<cr>
+nmap gb   :file &<cr>l
+nmap I    cw<c-a>
+nmap O    :!wim %f<cr>
+nmap o    :!wim --remote-tab-silent %f<cr>
+nmap s    :shell<cr>
+nmap S    :sort<cr>
+nmap ,t   :!wterm &<cr>
+nmap ,w   :set wrap!<cr>
+nmap w    :view<cr>
+nmap yd   :!echo %d | xclip %i<cr>
+nmap yf   :!echo %c:p | xclip %i<cr>
+
