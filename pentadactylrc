@@ -1,3 +1,4 @@
+# vim: ft=pentadactyl:
 source /home/scp1/etc/pentadactyl/color/neverland.penta
 "javascript readabilityFootnotes = 'true'
 
@@ -12,7 +13,7 @@ set findcase='smart'
 set findflags='r'
 set followhints=0
 set guioptions=CMcs
-set hintmatching=transliterated
+"set hintmatching=transliterated
 "set hintmatching=firstletters
 set history=50
 set hlfind
@@ -65,5 +66,3 @@ nnoremap k     10k
 
 "command Q  :tabclose
 "command QQ :qa!
-
-" vim: set ft=vim:
