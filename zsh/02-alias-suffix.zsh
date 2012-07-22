@@ -1,8 +1,8 @@
 #!/usr/bin/zsh
 
-local -a MPLAYER VIM FEH XCHM APVLV
+local -a aliases_suffix_{mplayer,vim,feh}
 
-VIM=(
+aliases_suffix_vim=(
   asm
   awk
   bash
@@ -86,7 +86,7 @@ VIM=(
   zsh
 )
 
-MPLAYER=(
+aliases_suffix_mplayer=(
   avi
   cue
   dat
@@ -114,38 +114,7 @@ MPLAYER=(
   wmv
 )
 
-FEH=(
-  bmp
-  cdr
-  gif
-  ico
-  jpeg
-  jpg
-  JPG
-  png
-  svg
-  xpm
-)
-
-XCHM=(
-  chm
-)
-
-APVLV=(
-  pdf
-  djvu
-  umd
-)
-
 local MPLAYER_CONFIG=$XDG_CONFIG_HOME/mplayer/config
 
-alias -s $^VIM='vim -X --'
-alias -s $^MPLAYER='mplayer -msgmodule 1 -msgcolor -include $MPLAYER_CONFIG --'
-alias -s $^FEH='feh -Fzrd --'
-alias -s $^XCHM='xchm --noindex --'
-alias -s $^APVLV='apvlv'
-
-alias -s se='ssh'
-
-
-# vim: set ts=2 expandtab sw=2 ft=sh:
+alias -s $^aliases_suffix_vim="${EDITOR} --"
+alias -s $^aliases_suffix_mplayer='mplayer -msgmodule 1 -msgcolor -include $MPLAYER_CONFIG --'
