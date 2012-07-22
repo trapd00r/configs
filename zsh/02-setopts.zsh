@@ -20,7 +20,7 @@ setopt \
      bare_glob_qual         \
   no_bash_rematch           \
   no_bashautolist           \
-  no_beep                   \
+  beep                      \
   no_bg_nice                \
      brace_ccl              \
      brace_expand           \
@@ -66,7 +66,7 @@ setopt \
      hash_dirs              \
      hash_list_all          \
   no_hist_allow_clobber     \
-  no_hist_beep              \
+  hist_beep                 \
   no_hist_expire_dups_first \
      hist_find_no_dups      \
      hist_ignore_all_dups   \
@@ -91,7 +91,7 @@ setopt \
   no_ksh_typeset            \
   no_ksh_zero_subscript     \
      list_ambiguous         \
-  no_list_beep              \
+  beep                      \
   no_list_packed            \
   no_list_rows_first        \
      list_types             \
@@ -153,19 +153,16 @@ setopt \
      zle                    \
   no_single_command
 
-autoload -U age
-autoload -U compinit
+autoload -U age compinit relative
+zle -C most-accessed-file menu-complete _generic
+
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
 compinit
-# url-quote-magic                                                            {{{
 autoload -U url-quote-magic
 
 function _url-quote-magic() {
   url-quote-magic;
   _zsh_highlight-zle-buffer
 }
-zle -N self-insert _url-quote-magic
-zle -C most-accessed-file menu-complete _generic
-
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
-#}}}
