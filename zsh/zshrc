@@ -1,72 +1,125 @@
 #!/bin/zsh
-# Builtin profiler. Do note that the profiler only profiles functions, not lines
-# of code. We can fool it by wrapping stuff up in dummy functions and calling
-# them. A work in progress.
-#
-# To enable the profiler, uncomment the following line and the last one.
-#
-#zmodload zsh/zprof
+### vim: ft=sh:fdm=marker:et:sw=2:
+###
+#      ${HOME}/etc/zsh/zshrc
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#         btime  2009-04-24
+#         mtime  2012-07-22 06:13:59
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  http://github.com/trapd00r/configs/zsh  (up-to-date)
+#           url  http://devel.japh.se/configs/zsh        (sync 1/24h)
+#           irc  japh@freenode #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###
 
-#umask 077
-
-eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
+umask 0077
 
 # set up some traps (watch out)
-
-TRAPUSR1() { source ~/.zshrc }
+TRAPUSR1() { echo "$@"; DEBUG=1 source ~/.zshrc }
 TRAPUSR2() { feh -FZrD3 /mnt/Porn/00-pics/ &; exit }
-TRAPINT() { print -nP %F{196}%B\^C%f%b; return 1 }
+TRAPINT()  { print -P "\n%F{240%}^%F{196%}C"|perl -pe 's/\n//g'; return 1 }
 
-#export PERIOD=900; periodic() { setbg }
+command_not_found_handler() {
+  if autoload +X $1 >& /dev/null; then
+    $1 "${(@)argv[2,-1]}"
+    return 0
+  else
+    return 1
+  fi
+}
+
+#PERIOD=5; periodic() { setbg }
 
 chpwd_functions=(update_mplayer tv_shortcuts)
 update_mplayer() {
   dir=$(pwd)
   if [[ $dir == /mnt/Porn/* || $dir == /mnt/shiva/mnt/Porn* ]]; then
+    warn 'horny mother fucker'
     mplayer() {
       /usr/bin/mplayer -include $XDG_CONFIG_HOME -profile porn "$@"
     }
   fi
 }
-tv_shortcuts() {
-  if [[ $(pwd) == /mnt/TV_3* ]]; then
-    hash -d 4=/mnt/TV_4
-  fi
-}
+#tv_shortcuts() {
+#  if [[ $(pwd) == /mnt/TV_3* ]]; then
+#    hash -d 4=/mnt/TV_4
+#  fi
+#}
 
-export VIMRUNTIME="$HOME/etc/vim"
-
-for r in $HOME/etc/zsh/*.zsh; do
+for r in $HOME/etc/zsh/[0-9]*.zsh; do
   if [[ $DEBUG > 0 ]]; then
     echo "zsh: sourcing $r"
   fi
   source $r
 done
 
-source $XDG_CONFIG_HOME/zsh/$ZSH_THEME.theme
-source $XDG_CONFIG_HOME/zsh/02-abbrevations.zsh
+source $HOME/etc/zsh/prompt_ft_setup
 
 if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_dsa ]]; then
   eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
 fi
-export TZ='Europe/Stockholm'
 
 # -C will inhibit the check for new completion files, meaning you'll have to
 # manually delete .zcompdump or run compinit without -C. The -i flag will skip
 # the security check but still check for new completion files. It will ignore
 # the insecure files without asking, while -u will use them without asking.
 compinit -u
-fpath=($XDG_CONFIG_HOME/zsh/compdef $fpath)
+compdef      _files       mkdr
+compdef      _files       mkdir
+compdef      _gnu_generic ln
+compdef      _gnu_generic c256
+compdef      _ls          vdir
+compdef      _vim         vidir
+compdef     _vim          wim
+compdef  -p _rm           rmc
+compdef  -p _which        'we*' # XXX can be dangerous
+compdef     _urxvt        xvt
+compdef     _xterm        wxterm
 
-compdef _files mkdir
-compdef _gnu_generic ln
-compdef _gnu_generic c256
-compdef _mplayer mplayer_redir
-compdef _mplayer mplayer_delete_current_file
-compdef _mplayer mplayer_6ch_headphones
-compdef _mplayer mplayer_headphones
+if [[ -n ${SSH_CLIENT} ]] ; then
+  RPROMPT="${Pfg[red]}"'['"${Pfg[cy]}%n${PNC}@${Pfg[cy]}%m${Pfg[red]}"']'"${Pfg[cy]}"
+fi
 
+stty intr    "^C"          2> /dev/null
+stty erase   "^?"          2> /dev/null
+stty eof     "^D"          2> /dev/null
+stty start   "^Q"          2> /dev/null
+stty stop    "^S"          2> /dev/null
+stty susp    "^Z"          2> /dev/null
+stty rprnt   "^R"          2> /dev/null
+stty werase  "^W"          2> /dev/null
+stty lnext   "^V"          2> /dev/null
+stty flush   "^O"          2> /dev/null
+stty eol     "undef"       2> /dev/null
+stty eol2    "undef"       2> /dev/null
+stty swtch   "undef"       2> /dev/null
+stty kill    "undef"       2> /dev/null
+stty quit    "undef"       2> /dev/null
+stty time    0             2> /dev/null
+stty min     0             2> /dev/null
+stty line    6             2> /dev/null
+stty speed   4000000       &> /dev/null
 
-#zprof
+autoload edit-command-line
+zle -N edit-command-line
 
-#for x in $(seq $LINES); do printf '\n'; done
+# XXX move/fix/make something of this
+precmd() {
+  #zle  beginning-of-line
+  #printf "$zle_eval_context\n"
+  #printf "#### RBUF: $RBUFFER\n"
+    #print -s " $PWD"
+  #  LAST_DIR=$PWD
+  #fi
+}
+printf "\e]12;%s\a" "#ffffff"
+
+zstyle ':vcs_info:*'     actionformats " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f"
+zstyle ':vcs_info:*'     formats       " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ma}]%f"
+zstyle ':vcs_info:cvs:*' formats       " %s%F{ma}%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f"
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b%F{red}:%F{ye}%r"
