@@ -4,6 +4,12 @@ bindkey -v
 # main                                                                       {{{
 #bindkey "^J"    accept-line
 
+bindkey -M  vicmd  ":"     _complete_help 
+#bindkey -M vicmd   ";"     _read_comp
+
+bindkey "~~"  _most_recent_file
+
+
 
 #bindkey "^C"    self-insert
 #bindkey "^F"    forward-word
@@ -12,7 +18,6 @@ bindkey -v
 #bindkey "^X "   no-magic-abbrev-expand
 #bindkey "^X"    self-insert
 #bindkey "^X^P"  pids
-#bindkey "^X^R"  _read_comp
 #bindkey "^Xa"   _expand_alias
 #bindkey "^Xe"   _expand_word
 #bindkey "^Xm"   _most_recent_file
@@ -72,7 +77,8 @@ bindkey -M vicmd  "^N"    down-history
 bindkey -M vicmd  "^J"     down-line-or-history
 bindkey -M vicmd  "^[[B"  down-line-or-history
 bindkey -M vicmd  "^[OB"  down-line-or-history
-bindkey -M vicmd  ":"     execute-named-cmd
+#_complete_help -C .complete-word _complete_help
+
 bindkey -M vicmd  "="     list-choices
 bindkey -M vicmd  "^D"    list-choices
 bindkey -M vicmd  "^G"    list-expand
@@ -117,7 +123,8 @@ bindkey -M vicmd  "e"     vi-forward-word-end
 bindkey -M vicmd  "|"     vi-goto-column
 bindkey -M vicmd  "\`"    vi-goto-mark
 bindkey -M vicmd  "'"     vi-goto-mark-line
-bindkey -M vicmd  "/"     vi-history-search-backward
+bindkey -M vicmd  "/"     history-incremental-pattern-search-backward
+#bindkey -M vicmd  "/"     vi-history-search-backward
 bindkey -M vicmd  "?"     vi-history-search-forward
 bindkey -M vicmd  ">"     vi-indent
 bindkey -M vicmd  "i"     vi-insert
