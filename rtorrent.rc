@@ -12,7 +12,7 @@ download_rate = 0
 upload_rate   = 0
 
 # Default directory to save the downloaded torrents.
-directory  = /home/scp1/
+directory  = /mnt/Porn_3/.torrents
 session    = /home/scp1/var/rtorrent/session/
 port_range = 50000-50001
 
@@ -21,11 +21,13 @@ encryption = allow_incoming,try_outgoing,enable_retry
 
 max_memory_usage = 9999999999999999
 
-schedule = home1    ,5, 5, "load_start=/home/scp1/*.torrent,                       d.set_directory=/home/scp1/"
-schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,             d.set_directory=/mnt/Books/.new"
-schedule = games1   ,5, 5, "load_start=/mnt/Games_1/.torrents/*.torrent,           d.set_directory=/mnt/Games_1/.new"
+#schedule = home1    ,5, 5, "load_start=/home/scp1/*.torrent,                       d.set_directory=/home/scp1/"
+#schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,             d.set_directory=/mnt/Books/.new"
+#schedule = games1   ,5, 5, "load_start=/mnt/Games_1/.torrents/*.torrent,           d.set_directory=/mnt/Games_1/.new"
 schedule = porn1    ,5, 5, "load_start=/mnt/Porn/.torrents/*.torrent,              d.set_directory=/mnt/Porn/.new"
 schedule = porn2    ,5, 5, "load_start=/mnt/Porn_2/.torrents/*.torrent,            d.set_directory=/mnt/Porn_2/.new"
+schedule = porn3    ,5, 5, "load_start=/mnt/Porn_3/.torrents/*.torrent,            d.set_directory=/mnt/Porn_3/.new"
+schedule = tv3      ,5, 5, "load_start=/mnt/TV_3/.torrents/*.torrent,              d.set_directory=/mnt/TV_3/.new"
 schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
 schedule = backup   ,5, 5, "load_start=/mnt/Backup/.torrents/*.torrent,            d.set_directory=/mnt/Backup/.new"
 #schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,            d.set_directory=/mnt/Mvids/.new/"
