@@ -5,7 +5,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2012-07-22 08:28:17
+#         mtime  2012-07-26 02:52:58
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -141,26 +141,26 @@ if [ $HOST = "shiva" ]; then
   export MPD_PASS=`smokingkills`
 fi
 
-FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
-FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp1252'
-FONT_I='-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
+# these variables can be used here and there
+  FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
+  FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp1252'
+  FONT_I='-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
 
-# dmenu #+
   DMENU_FONT=${FONT}
   DMENU_LINES='-l 30'
   DMENU_NORMAL_BG='#1c1c1c'
   DMENU_NORMAL_FG='#484848'
   DMENU_SELECT_BG='#292929'
   DMENU_SELECT_FG='#1c78ef'
-# #-
 
-DZEN_ALIGNMENT='c'
-DZEN_BG='#1c1c1c'
-DZEN_FG='#ffffff'
-DZEN_FONT=${FONT}
-DZEN_WIDTH=1680
-DZEN_X_POS=0
-DZEN_Y_POS=1040
+  DZEN_ALIGNMENT='c'
+  DZEN_BG='#1c1c1c'
+  DZEN_FG='#ffffff'
+  DZEN_FONT=${FONT}
+  DZEN_WIDTH=1680
+  DZEN_X_POS=0
+  DZEN_Y_POS=1040
+#
 
 PRINTER="Canon_MP150"
 setopt allexport
