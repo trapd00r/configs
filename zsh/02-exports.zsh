@@ -1,11 +1,11 @@
 #!/bin/zsh
-### vim: ft=sh:fdm=marker:et:sw=2:
+### vim: set ft=sh:fdm=marker:et:sw=2:
 ###
 #      ${HOME}/etc/zsh/02-exports.zsh
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2012-07-26 02:52:58
+#         mtime  2012-07-26 02:53:32
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -134,14 +134,15 @@ export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
 export CLIPBORED_DMENU_NORMAL_FG='#484848'
 export CLIPBORED_DMENU_SELECT_BG='#292929'
 export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
-export MPD_HOST='192.168.1.128'
+export MPD_HOST=laleh
 export MPD_PORT=6600
 export MPD_USER='scp1'
 if [ $HOST = "shiva" ]; then
   export MPD_PASS=`smokingkills`
 fi
 
-# these variables can be used here and there
+#{{{ fonts and colors for essential applications
+  # these variables can be used a little here and there
   FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
   FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp1252'
   FONT_I='-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
@@ -160,7 +161,7 @@ fi
   DZEN_WIDTH=1680
   DZEN_X_POS=0
   DZEN_Y_POS=1040
-#
+#}}}
 
 PRINTER="Canon_MP150"
 setopt allexport
