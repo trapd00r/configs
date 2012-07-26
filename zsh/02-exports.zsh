@@ -22,9 +22,8 @@ setopt allexport
 
 [[ -f ${HOME}/lib/stderred.so ]] && LD_PRELOAD="${HOME}/lib/stderred.so"
 
-GIMP2_DIRECTORY="${HOME}/etc/gimp"
 
-#( PATH
+#{{{ PATH
  BIN_STD=/bin:/usr/bin:/usr/local/bin
 BIN_PERL=/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
 BIN_SUID=/sbin:/usr/sbin
@@ -32,8 +31,11 @@ BIN_SUID=/sbin:/usr/sbin
     # not using $HOME here because UID 0 should be able to use my utils as well
     # and "I know what I'm doing"
     PATH=/home/scp1/bin:/home/scp1/dev/utils/:${PATH}:/home/scp1/dev/git-extras/bin
-#)
 
+ MANPATH=${HOME}/usr/share/man:/usr/local/man
+ AWKPATH=$HOME/dev/lib/awk/
+TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
+#}}}
 
 if [[ -x =wim ]]
 then
@@ -61,7 +63,6 @@ else
   LESS=''
 fi
 
-TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
 DISPLAY=:0.0
 GREP_OPTIONS='-IP --color --line-buffered'
 
@@ -83,63 +84,59 @@ PERL_CPANM_OPT="-l ${HOME} -v --interactive --mirror http://cpan.se"
 OREILLY_BOOKS_DATABASE=${HOME}/usr/share/doc/oreilly.db
 
 
-
-export LESSKEY="${HOME}/etc/lesskey"
+LESSKEY="${HOME}/etc/lesskey"
+FONTCONFIG_PATH=''
+X_OSD_COLOR='#a8ff00'
+CLIVE_CONFIG="$HOME/etc/cliverc"
+MAILDIR="/mnt/Mail/inbox/new"
+SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
+HOSTNAME="shiva"
+ACKRC="$HOME/etc/ackrc"
+GIMP2_DIRECTORY=${HOME}/etc/gimp
+GENISOIMAGERC=${HOME}/etc/genisoimagerc
 #export MOZ_DISABLE_PANGO="1"
-export FONTCONFIG_PATH=''
-export X_OSD_COLOR='#a8ff00'
-export CLIVE_CONFIG="$HOME/etc/cliverc"
-export MAILDIR="/mnt/Mail/inbox/new"
-export SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
-export HOSTNAME="shiva"
-export ACKRC="$HOME/etc/ackrc"
 
-export BROWSER="/usr/bin/w3m"
+BROWSER="/usr/bin/w3m"
 
 
-MANPATH=${HOME}/usr/share/man
-MANPATH=${MANPATH}:/usr/local/man
-AWKPATH=$HOME/dev/lib/awk/
 
- XDG_CACHE_HOME="$HOME/etc/cache"
- XDG_CONFIG_HOME="$HOME/etc"
- XDG_DATA_HOME="$HOME/var"
- XDG_DESKTOP_DIR="/tmp/.${UID}"
- XDG_DOCUMENTS_DIR="${HOME}/usr/share/doc"
- XDG_DOWNLOAD_DIR="/tmp/scp1/"
- XDG_MUSIC_DIR="/mnt/Music_1/"
- XDG_PICTURES_DIR="/mnt/Docs/Photo/"
- XDG_PUBLICSHARE_DIR="/tmp/.${UID}"
- XDG_TEMPLATES_DIR="/tmp/.${UID}"
- XDG_VIDEOS_DIR="/mnt/Movies_1/"
+XDG_CACHE_HOME="$HOME/etc/cache"
+XDG_CONFIG_HOME="$HOME/etc"
+XDG_DATA_HOME="$HOME/var"
+XDG_DESKTOP_DIR="/tmp/.${UID}"
+XDG_DOCUMENTS_DIR="${HOME}/usr/share/doc"
+XDG_DOWNLOAD_DIR="/tmp/scp1/"
+XDG_MUSIC_DIR="/mnt/Music_1/"
+XDG_PICTURES_DIR="/mnt/Docs/Photo/"
+XDG_PUBLICSHARE_DIR="/tmp/.${UID}"
+XDG_TEMPLATES_DIR="/tmp/.${UID}"
+XDG_VIDEOS_DIR="/mnt/Movies_1/"
 
-export RLWRAP_FILTERDIR="$HOME/dev/_upstream/rlwrap/filters"
+RLWRAP_FILTERDIR="$HOME/dev/_upstream/rlwrap/filters"
 
-export WORDCHARS='*?_.[]~&;!#$%^(){}<>'
-export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
-export ZSH_THEME="ftprompt"
-export LISTMAX=0
+WORDCHARS='*?_.[]~&;!#$%^(){}<>'
+ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
+ZSH_THEME="ftprompt"
+LISTMAX=0
 
-export KEYTIMEOUT="1"
+KEYTIMEOUT="1"
 
-export HISTFILE=$XDG_DATA_HOME/zsh/history
-export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
-export HISTSIZE=10000
-export SAVEHIST=25000
+HISTFILE=$XDG_DATA_HOME/zsh/history
+HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*"
+HISTSIZE=10000
+SAVEHIST=50000
 
-export CLIPBORED_DMENU_FONT=${FONT}
-export CLIPBORED_DMENU_LINES=30
-export CLIPBORED_DMENU_LISTMODE='vertical'
-export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
-export CLIPBORED_DMENU_NORMAL_FG='#484848'
-export CLIPBORED_DMENU_SELECT_BG='#292929'
-export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
-export MPD_HOST=laleh
-export MPD_PORT=6600
-export MPD_USER='scp1'
-if [ $HOST = "shiva" ]; then
-  export MPD_PASS=`smokingkills`
-fi
+CLIPBORED_DMENU_FONT=${FONT}
+CLIPBORED_DMENU_LINES=30
+CLIPBORED_DMENU_LISTMODE='vertical'
+CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
+CLIPBORED_DMENU_NORMAL_FG='#484848'
+CLIPBORED_DMENU_SELECT_BG='#292929'
+CLIPBORED_DMENU_SELECT_FG='#1c78ef'
+MPD_HOST=laleh
+MPD_PORT=6600
+MPD_USER='scp1'
+MPD_PASS=`smokingkills`
 
 #{{{ fonts and colors for essential applications
   # these variables can be used a little here and there
