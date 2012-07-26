@@ -85,7 +85,7 @@ OREILLY_BOOKS_DATABASE=${HOME}/usr/share/doc/oreilly.db
 
 
 export LESSKEY="${HOME}/etc/lesskey"
-export MOZ_DISABLE_PANGO="1"
+#export MOZ_DISABLE_PANGO="1"
 export FONTCONFIG_PATH=''
 export X_OSD_COLOR='#a8ff00'
 export CLIVE_CONFIG="$HOME/etc/cliverc"
