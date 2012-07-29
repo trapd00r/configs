@@ -12,7 +12,7 @@ else
   ia <expr> mypc $HOSTNAME
 endif
 
-:call Cabbrev('W', 'w')
+":call Cabbrev('W', 'w')
 
 " Dump output from external cmd to new buffer
 cab ! new<CR>:r !

@@ -1,60 +1,63 @@
-"    File: $HOME/etc/vimrc
-"  Author: Magnus Woldrich <m@japh.se>
-" Created: 2009-04-24
-" Updated: 2012-06-24 13:21:40
+#!/home/scp1/bin/wim --remote-wait-silent vimsy
+"
+" ${VIMRUNTIME}/vimrc ⚡ ${HOME}/etc/vim/vimrc
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+"         owner  Magnus Woldrich <m@japh.se>
+"         btime  2009-04-24
+"         mtime  2012-07-26 12:42:48
+"         perms  You are free to use things you may find useful here.
+"                Would my tweaks happen to give you a raise or fetch you a
+"                girlfriend, it goes without saying I'm counting on you
+"                to share with me as I've shared with you.
+"           git  http://github.com/trapd00r/configs/vim  (up-to-date)
+"           url  http://devel.japh.se/configs/vim        (sync 1/24h)
+"           irc  japh@freenode #vim #zsh #perl
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+"
 
-set all&
-set nocp
+set all&                                  " Vendors tend to screw things up
+set nocp                                  " I'm hardly compatible
 
-if !isdirectory('/tmp/scp1')
-  call mkdir("/tmp/scp1", "", 0700)
-endif
+set nors                                  " This might not be needed, but these
+set t_ti=                                 " has the same effect as disabling
+set t_te=                                 " the alternate screen buffer.
 
-for f in split(globpath(expand($VIMRUNTIME), "*.vim"), "\n")
-  if(f =~ '\v/0[0-9]-\w+[.]vim$')
-    exe 'source ' . f
-  endif
-endfor
 
-" THIS IS HORRIBLE EVILNESS
-"set gdefault 
-
-set rs
-set t_ti=7[r[?47h t_te=[?47l8
-set nocompatible
-set autoread
-set autochdir
+set autoread                              " lovely with 'hidden and 'acd
+set autochdir                             " ahaaha, the sweetest thing
 set autoindent
-set backspace=start,indent,eol
-set cmdheight=2
+
+let &rtp = $VIMRUNTIME                    " don't do this, I know what I'm doing
+
+let &termencoding = &encoding
+
+set backspace=start,indent,eol " unless you can come up with something better
+set cmdheight=2                " try to avoid 'Press ENTER to continue' prompts
+set clipboard=unnamedplus,autoselect " X clipboard stuff
 set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
-if &ft != 'man'
+
+if &ft != 'man' || &ft != 'help'
   set colorcolumn=+1
 endif
+
 set completeopt+=menuone
-set cscopeprg=/usr/local/bin/cscope
-set cscopetag
-set cscopetagorder=0
-set cscopeverbose
 set cursorline
 set define=[^A-Za-z_]
-set diffopt=filler,iwhite,context:4,vertical
+set diffopt=filler,iwhite,context:2,vertical
 set display+=lastline,uhex
 set expandtab
-
-
-
-"set fillchars=num:\ ,vert:│
-
-
+set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,fold:\ ,diff:\ ,vert:\|
 set foldcolumn=2
 set foldmethod=marker
-set foldmarker=#+,#-
+"set foldmarker=#+,#-
 set foldenable
 set formatoptions=tcrqln1
-set grepprg=ack\ -a
+set grepprg=internal
+"set grepprg='grep\ -Im400\ --line-buffered\ -P | argdo try | grepadd! mplayer % | catch /E480:/ | endtry'
+
+"set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
 set helpheight=20
@@ -69,7 +72,8 @@ set isfname+=:
 set laststatus=2
 set lazyredraw
 set list
-set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪:conceal=▆
+"set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪:conceal=▆
+set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪:conceal=·
 set magic
 set makeprg=mymake
 set maxmapdepth=500
@@ -106,13 +110,13 @@ set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 
-set scrolloff=1
+"set scrolloff=1
 set ssop=buffers,folds,globals,help,localoptions,options,resize
 set shiftwidth=2
 set shortmess=aIoOT
 set showcmd
 set showmatch
-set showmode
+"set showmode
 set smartcase
 set smarttab
 set splitbelow
@@ -131,40 +135,73 @@ set undofile
 set undolevels=512
 set undodir=/mnt/Docs/Backup/undo,.
 set visualbell t_vb=
-set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
+"set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
+set viminfo='100,<50,s10,h,%
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
 set winfixwidth
 set winfixheight
-set winwidth=80
-set winminwidth=80
+set winwidth=88
+set winminwidth=88
 set whichwrap=b,s,h,l,<,>
 
 set nomore
 
-runtime macros/matchit.vim
 syntax on
 setlocal nospell spelllang=en_us
 
-" are we in a VC?                                                            {{{
+""" are we in a VC?
 if $TERM == 'linux'
   let &t_Co = 8
   color peachpuff
   set nolist
   set colorcolumn+=81
-  hi ColorColumn term=none  cterm=none ctermbg=3
+
+  hi ColorColumn term=none  cterm=none ctermbg=0
   hi CursorLine  term=none  cterm=none ctermbg=none
 else
   color neverland-ansi-two
 endif
-"}}}
 
+" That was some of the options, now we can start with the rest of the vimrc.
+" I want to keep &rtp as short as I can, so I'm no longer loading these files
+" dynamicly.
+source $VIMRUNTIME/nancy/000-ft.vim           " ftdetect
+source $VIMRUNTIME/nancy/000-functions.vim    " functions
+source $VIMRUNTIME/nancy/001-commands.vim     " user-defined commands
+source $VIMRUNTIME/nancy/009-abbrev.vim       " my wordlist of abbrevations
+source $VIMRUNTIME/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
+source $VIMRUNTIME/nancy/090-syntax.vim       " my syntax additions that doesn't
 
-"exe 'source ' . split($VIMRUNTIME, ':')[0] . '/09-syntax.vim'
+"filetype plugin indent on
+
 
 "syn match visualLast /\%V.*\%V/
 "hi visualLast ctermbg=100 cterm=bolditalic
-
-call pathogen#infect()
+" XXX NOTE TODO PLEASEFIX {{{
+" command! -nargs=1 -complete=color colorbuffer
+"   \   color <args>
+"   \ | let b:colors_name = g:colors_name
+"
+" command! -nargs=1 -complete=color colordefault
+"   \ let s:colors_name = <q-args>
+"   \ | if !exists('b:colors_name')
+"     \ | colors <args>
+"     \ | endif
+" if !exists('g:colors_name')
+"   let g:colors_name = 'default'
+" endif
+"
+" let s:colors_name = g:colors_name
+" au BufEnter *
+" \ let s:new_colors =
+" \   (exists('b:colors_name')
+" \     ? (b:colors_name)
+" \     : (s:colors_name))
+" \   | if s:new_colors != g:colors_name |
+" \      exe 'colors' s:new_colors
+" \   | endif
+" }}}
+" vim: set fdm=marker:et:sw=2 nofoldenable:
