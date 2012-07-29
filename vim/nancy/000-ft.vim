@@ -106,6 +106,7 @@ augroup END
 func! Filetype_Help()
   setl colorcolumn=0
   setl listchars=tab:\ \
+  setl bufhidden=unload
 endfunc
 
 func! Filetype_feh()
