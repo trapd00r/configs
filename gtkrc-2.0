@@ -65,41 +65,37 @@
 #gtk-xft-dpi              gint                  : Read / Write
 #gtk-xft-hintstyle        gchar*                : Read / Write
 #gtk-xft-rgba             gchar*                : Read / Write
-gtk-alternative-button-order=1
+gtk-alternative-button-order=0
 gtk-alternative-sort-arrows=1
 gtk-auto-mnemonics=1
-gtk-button-images=0
-gtk-button-images=0
+gtk-button-images=1
 gtk-can-change-accels=1
-gtk-cursor-blink-time=2
-gtk-cursor-blink-timeout=5
-gtk-cursor-blink=1
+gtk-cursor-blink-timeout=15
+gtk-cursor-blink=0
 gtk-cursor-theme-size=0
 gtk-enable-accels=1
 gtk-enable-animations=1
-gtk-enable-event-sounds=0
 gtk-enable-event-sounds=1
 gtk-enable-input-feedback-sounds=0
-gtk-enable-input-feedback-sounds=1
-gtk-enable-mnemonics=1
+gtk-enable-mnemonics=0
 gtk-enable-tooltips=1
 gtk-entry-select-on-focus=1
 gtk-error-bell=0
-gtk-font-name=ProFont 9
-gtk-icon-theme-name=Echo
+#gtk-font-name=ProFont 9
+#gtk-icon-theme-name=Echo
 gtk-keynav-cursor-only=0
-gtk-keynav-wrap-around=0
-gtk-menu-images=0
+gtk-keynav-wrap-around=1
+gtk-menu-images=1
 gtk-recent-files-limit=1
-gtk-show-input-method-menu=1
+gtk-show-input-method-menu=0
 gtk-show-unicode-menu=1
 gtk-split-cursor=1
-gtk-theme-name=termGTK
-gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
-gtk-toolbar-style=GTK_TOOLBAR_TEXT
-gtk-xft-antialias=0
-gtk-xft-dpi=80
-gtk-xft-hinting=0
+gtk-theme-name=Tactile
+#gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+#gtk-toolbar-style=GTK_TOOLBAR_TEXT
+gtk-xft-antialias=1
+#gtk-xft-dpi=80
+gtk-xft-hinting=1
 
 #gtk-key-theme-name = Vim
 gtk-key-theme-name = Emacs
