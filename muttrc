@@ -92,34 +92,31 @@ bind index ] next-line
 # hooks                                                                      {{{
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 
-save-hook nobody\@archlinux.org                                       =arch-bbs
-save-hook announce\@archlinux.org                                     =arch-news
 save-hook @arenabolaget.se                                            =arenabolaget
 save-hook @bokus.com                                                  =bokus
 save-hook @citynetwork.se                                             =citynetwork
 save-hook @gents.se                                                   =gents
-save-hook @reply.github.com                                           =github
-save-hook @plus.google.com                                            =google_plus
-save-hook laredoute.se                                                =laredoute
-save-hook "~t musicpd-dev-team@lists.sourceforge.net"                 =mpd_dev
-save-hook "~c musicpd-dev-team@lists.sourceforge.net"                 =mpd_dev
 save-hook @ntmdistribution.se                                         =NTM
-save-hook "~(~t perl5-porters@perl.org) | ~c perl5-porters@perl.org"  =p5p
-save-hook "~t perlweekly@perlweekly.org"                              =perlweekly
-save-hook "~t rockbox@cool.haxx.se"                                   =rockbox
-save-hook "~c rxvt-unicode@lists.schmorp.de"                          =urxvt
-save-hook "~t rxvt-unicode@lists.schmorp.de"                          =urxvt
-save-hook "~t stumpwm-devel@nongnu.org | ~c stumpwm-devel@nongnu.org" =stumpwm-devel
-save-hook "~t stumpwm-devel@nongnu.org | ~c stumpwm-devel@nongnu.org" =stumpwm-devel
+save-hook @plus.google.com                                            =google_plus
+save-hook @reply.github.com                                           =github
 save-hook @ticnet.se                                                  =ticnet
-save-hook "~t tmux-users@lists.sourceforge.net"                       =tmux
-save-hook "~c tmux-users@lists.sourceforge.net"                       =tmux
-save-hook "~t vim_dev@vim.org"                                        =vim_dev
-save-hook "~t vim@vim.org | ~t vim_use@googlegroups.com"              =vim_use
 save-hook @webhallen.com                                              =webhallen
-save-hook "~t zsh-devs@zsh.org  | ~c zsh-dev@zsh.org"                 =zsh_dev
-save-hook "~t zsh-users@zsh.org | ~c zsh-uers@zsh.org"                =zsh_users
-save-hook "~C debbugs.gnu.org"                                        =coreutils
+save-hook announce\@archlinux.org                                     =arch-news
+save-hook laredoute.se                                                =laredoute
+save-hook nobody\@archlinux.org                                       =arch-bbs
+save-hook "~C   debbugs.gnu.org"                                      =coreutils
+save-hook "~C   musicpd-dev-team@lists.sourceforge.net"               =mpd_dev
+save-hook "~(~t perl5-porters@perl.org) | ~C perl5-porters@perl.org"  =p5p
+save-hook "~t   perlweekly@perlweekly.org"                            =perlweekly
+save-hook "~t   rockbox@cool.haxx.se"                                 =rockbox
+save-hook "~C   rxvt-unicode@lists.schmorp.de"                        =urxvt
+save-hook "~C   stumpwm-devel@nongnu.org"                             =stumpwm-devel
+save-hook "~C   tmux-users@lists.sourceforge.net"                     =tmux
+save-hook "~t   vim@vim.org | ~C vim_use@googlegroups.com"            =vim_use
+save-hook "~C   vim_dev@vim.org"                                      =vim_dev
+save-hook "~f   Bram@Moolenaar.net"                                   =bram
+save-hook "~C   zsh-workers@zsh.org"                                  =zsh-workers
+save-hook "~C   zsh-users@zsh.org"                                    =zsh_users
 #}}}
 # headers                                                                    {{{
 hdr_order Delivered-To Subject In-Reply-To X-Mailing-List
