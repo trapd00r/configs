@@ -118,6 +118,7 @@ WORDCHARS='*?_.[]~&;!#$%^(){}<>'
 ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 ZSH_THEME="ftprompt"
 LISTMAX=0
+KEYBOARD_HACK=' '
 
 KEYTIMEOUT="1"
 
