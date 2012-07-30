@@ -119,6 +119,7 @@ save-hook "~t vim@vim.org | ~t vim_use@googlegroups.com"              =vim_use
 save-hook @webhallen.com                                              =webhallen
 save-hook "~t zsh-devs@zsh.org  | ~c zsh-dev@zsh.org"                 =zsh_dev
 save-hook "~t zsh-users@zsh.org | ~c zsh-uers@zsh.org"                =zsh_users
+save-hook "~C debbugs.gnu.org"                                        =coreutils
 #}}}
 # headers                                                                    {{{
 hdr_order Delivered-To Subject In-Reply-To X-Mailing-List
