@@ -1,6 +1,7 @@
-# vim: ft=pentadactyl:
-source /home/scp1/etc/pentadactyl/color/neverland.penta
+" vim: ft=pentadactyl:
+
 "javascript readabilityFootnotes = 'true'
+
 
 set activate=addons,extoptions,help
 set autocomplete=/ex/(bmarks),^(/|/ex/?)$
@@ -15,54 +16,53 @@ set followhints=0
 set guioptions=CMcs
 "set hintmatching=transliterated
 "set hintmatching=firstletters
-set history=50
+set history=250
 set hlfind
-set mapleader=','
-set maxitems=50
+"set mapleader=','
+set maxitems=32
 set pageinfo=gfm
 set popups='tab'
 set shell='/bin/zsh'
 set shellcmdflag='-c'
 set showmode='operator'
 set showstatuslinks='command'
-set showtabline='never'
+set showtabline='always'
 set titlestring='Fx'
 set wildmode='full'
 
 "set hintinputs=
 "set hintkeys=asdfg;lkjh
 "set strictfocus=despotic
-set buftabs-completer=''
-set buftabs-maxlength=10
 command Mem  :tabopen about:mem?verbose
 command Conf :tabopen about:config
 
 :js function r255() { return Math.round(Math.random()*255) }
 ":js window.content.document.body.style.backgroundColor='rgb('+r255()+','+r255()+','+r255()+')';<cr>
 
-cnoremap <C-h> <HOME>
-cnoremap <C-j> <down>
-cnoremap <C-k> <up>
-cnoremap <C-l> <END>
-nnoremap <C-c> :tabclose<CR>
-nnoremap <C-h> <NOP>
-nnoremap <C-j> <down>
-nnoremap <C-k> <up>
+cmap -builtin <C-h> <HOME>
+cmap -builtin <C-j> <down>
+cmap -builtin <C-k> <up>
+cmap -builtin  <C-l> <END>
+nmap -builtin <C-c> :tabclose<CR>
+nmap -builtin <C-h> <NOP>
+nmap -builtin <C-j> <down>
+nmap -builtin <C-k> <up>
 
-nnoremap <leader>O O<CR>
-nnoremap <leader>d :tabclose<CR>
-nnoremap <leader>j :jumps<CR>
-nnoremap <leader>m :um!<CR>
-nnoremap <leader>p :pa<CR>
-nnoremap <leader>q :qa!<CR>
-nnoremap <leader>z :js window.content.document.toggleImageSize();<CR>
-nnoremap <leader>c :js window.content.document.body.style.backgroundColor='rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')'<CR>
+nmap -builtin <leader>O O<CR>
+nmap -builtin <leader>d :tabclose<CR>
+nmap -builtin <leader>j :jumps<CR>
+nmap -builtin <leader>m :um!<CR>
+nmap -builtin <leader>p :pa<CR>
+nmap -builtin <leader>q :qa!<CR>
+nmap -builtin <leader>z :js window.content.document.toggleImageSize();<CR>
+nmap -builtin <leader>c :js window.content.document.body.style.backgroundColor='rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')'<CR>
 
-nnoremap A     :noscript toggleperm<CR>
-nnoremap a     :noscript toggletemp<CR>
-nnoremap d     :tabclose<CR>
-nnoremap j     10j
-nnoremap k     10k
+nmap -builtin A     :noscript toggleperm<CR>
+nmap -builtin a     :noscript toggletemp<CR>
+nmap -builtin d     :tabclose<CR>
+nmap -builtin j     10j
+nmap -builtin k     10k
 
 "command Q  :tabclose
 "command QQ :qa!
+silent source /home/scp1/etc/pentadactyl/color/new_njn.vim
