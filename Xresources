@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Created: 2008-04-24
-  Updated: 2012-06-05 08:36:55
+  Updated: 2012-09-08 16:45:22
 
 Grouped by subject.
 A lot of different hosts use this file. You will not find any color
@@ -46,7 +46,7 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 ! fonts                                                                      {{{
 #define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 #define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
-#define FONT_ITALIC     6x9
+#define FONT_ITALIC     xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=0:hinting=1:hintstyle=3
 #define FONT_BOLDITALIC -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
 
 !#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=
@@ -89,7 +89,7 @@ XTerm*font:                FONT_NORMAL
 XTerm*boldFont:            FONT_BOLD
 XTerm*italicFont:          FONT_ITALIC
 XTerm*foreground:          #FFFFFF
-XTerm*background:          #121212
+XTerm*background:          #00000
 XTerm*colorBD:             #FFFFFF
 XTerm*colorBDMode:         1
 XTerm*colorMode:           1
@@ -97,7 +97,7 @@ XTerm*colorUL:             #FFFFFF
 XTerm*colorULMode:         1
 
 XTerm*jumpScroll:          1
-XTerm*metaSendsEscape:     1
+!XTerm*metaSendsEscape:     1
 XTerm*multiScroll:         1
 XTerm*vt100.scrollBar:     0
 XTerm*SaveLines:           2500
