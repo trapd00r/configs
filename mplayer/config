@@ -108,7 +108,7 @@ af                 = stats,volume=10,volnorm
 ao                 = oss
 double             = 1
 ffactor            = 10
-lavdopts           = threads=2
+lavdopts           = threads=8
 embeddedfonts      = 1
 fixed-vo           = 1
 font               = 'Anonymous Pro'
