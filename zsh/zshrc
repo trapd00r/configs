@@ -5,13 +5,13 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2012-07-22 06:13:59
+#         mtime  2012-09-08 19:51:23
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
 #                to share with me as I've shared with you.
 #           git  http://github.com/trapd00r/configs/zsh  (up-to-date)
-#           url  http://devel.japh.se/configs/zsh        (sync 1/24h)
+#           url  http://devel.japh.se/configs/zsh
 #           irc  japh@freenode #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
@@ -58,7 +58,6 @@ for r in $HOME/etc/zsh/[0-9]*.zsh; do
   source $r
 done
 
-source $HOME/etc/zsh/prompt_ft_setup
 
 if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_dsa ]]; then
   eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
@@ -117,9 +116,14 @@ precmd() {
   #  LAST_DIR=$PWD
   #fi
 }
-printf "\e]12;%s\a" "#ffffff"
 
+source $HOME/etc/zsh/prompt_ft_setup
 zstyle ':vcs_info:*'     actionformats " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f"
 zstyle ':vcs_info:*'     formats       " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ma}]%f"
 zstyle ':vcs_info:cvs:*' formats       " %s%F{ma}%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f"
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b%F{red}:%F{ye}%r"
+
+printf "\e]12;%s\a" "#ffffff"
+
+PS1=' > '
+eval $(dircolors -b /home/scp1/dev/LS_COLORS/LS_COLORS)
