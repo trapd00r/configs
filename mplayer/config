@@ -1,3 +1,23 @@
+#
+### vim: set ft=mplayerconf:fdm=marker:et:sw=2:
+###
+#      ${HOME}/etc/mplayer/config
+#      ${XDG_CONFIG_HOME}/mplayer/config
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#         btime  2009-04-24
+#         mtime  2012-09-08 19:45:43
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  http://github.com/trapd00r/configs/mplayer  (up-to-date)
+#           url  http://devel.japh.se/configs/mplayer
+#           irc  japh@freenode #mplayer #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###
+
 [n900]#{{{
 #alang              = en
 #af                 = stats
@@ -23,6 +43,48 @@ prefer-ipv4        = 1
 sid                = 0
 slang              = en
 spuaa              = 4
+spualign           = -1
+sub-bg-alpha       = 0
+sub-bg-color       = 0
+subfont-autoscale  = 3
+subfont-encoding   = unicode
+subfont-osd-scale  = 2
+subfont-text-scale = 4
+sub-bg-color       = 0
+sub-bg-alpha       = 0
+unicode            = 1
+unrarexec          = /usr/bin/unrar
+use-filename-title = 1
+volume             = 100
+utf8               = 1
+quiet              = 1
+identify           = 1
+#}}}
+[n950]#{{{
+#alang              = en
+#af                 = stats
+ao                 = pulse
+double             = 1
+ffactor            = 10
+embeddedfonts      = 1
+fixed-vo           = 1
+#font               = 'Anonymous Pro'
+fs                 = 1
+#lavdopts threads   = 2
+#mixer              = /dev/mixer
+monitoraspect      = 16:9
+#msgcolor           = 1
+#msgmodule          = 1
+noborder           = 1
+nograbpointer      = 1
+nokeepaspect       = 1
+nolirc             = 1
+osd-duration       = 5000
+osdlevel           = 1
+prefer-ipv4        = 1
+sid                = 0
+slang              = en
+#spuaa              = 4
 spualign           = -1
 sub-bg-alpha       = 0
 sub-bg-color       = 0
@@ -119,4 +181,3 @@ fixed-vo           = 1
 fs                 = 1
 unrarexec          = /usr/bin/unrar
 #}}}
-# vim: set ft=mplayerconf:
