@@ -108,10 +108,54 @@ af                 = stats,volume=10,volnorm
 ao                 = oss
 double             = 1
 ffactor            = 10
-lavdopts           = threads=8
+lavdopts           = threads=3
 embeddedfonts      = 1
 fixed-vo           = 1
 font               = 'Anonymous Pro'
+#fs                 = 1
+#lavdopts threads   = 2
+mixer              = /dev/mixer
+monitoraspect      = 16:9
+msgcolor           = 1
+msgmodule          = 1
+noborder           = 1
+nograbpointer      = 1
+nokeepaspect       = 1
+nolirc             = 1
+osd-duration       = 5000
+osdlevel           = 1
+prefer-ipv4        = 1
+sid                = 0
+slang              = en
+spuaa              = 4
+spualign           = -1
+sub-bg-alpha       = 0
+sub-bg-color       = 0
+subfont-autoscale  = 3
+subfont-encoding   = unicode
+subfont-osd-scale  = 2
+subfont-text-scale = 4
+sub-bg-color       = 0
+sub-bg-alpha       = 0
+unicode            = 1
+unrarexec          = /usr/bin/unrar
+use-filename-title = 1
+volume             = 80
+utf8               = 1
+#}}}
+[sid]#{{{
+alang              = en
+af                 = volnorm
+ao                 = oss
+double             = 1
+ffactor            = 10
+#lavdopts           = threads=3
+embeddedfonts      = 1
+fixed-vo           = 1
+font               = 'Anonymous Pro'
+vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdpau,
+vo                 = vdpau
+#afm                = liba52,libdca,hwac3
 #fs                 = 1
 #lavdopts threads   = 2
 mixer              = /dev/mixer
