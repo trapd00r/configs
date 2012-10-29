@@ -1,43 +1,156 @@
-# vim: set tw=0 cc=0 ft=perl:
+#!/usr/bin/rtorrent -n -o ~/etc/rtorrent.rc
+### vim: tw=0 cc=0 ft=ampl smc=80 fdm=marker fen:
+###
+#      ${HOME}/etc/rtorrent.rc
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#         btime  2009-04-24
+#         mtime  2012-10-29 17:59:40
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  git://github.com/trapd00r/configs (up-to-date)
+#                http://github.com/trapd00r/configs
+#           url  http://devel.japh.se/configs
+#           irc  japh@freenode #rtorrent #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###
+# options {{{
+        check_hash = no
+               dht = disable
+        directory  = /mnt/porn6/.t
+     download_rate = 12000
+     encoding_list = utf8
+        encryption = allow_incoming,try_outgoing,enable_retry
+       http_capath = /etc/ssl/certs
+        key_layout = qwerty
+       log.execute = ~/var/rtorrent/execute.log
+  max_memory_usage = 1800M
+#    max_open_files = 1600
+#     max_open_http = 99
+#  max_open_sockets = 600
+#         max_peers = 60
+#    max_peers_seed = 80
+#       max_uploads = 250
+#max_uploads_global = 750
+#         min_peers = 20
+#    min_peers_seed = 30
+     peer_exchange = no
+       port_random = no
+        port_range = 50000-50001
+#        scgi_local = ~/var/rtorrent/scgi
+         scgi_port = localhost:5099
+        session    = /home/scp1/var/rtorrent/session/
+#             umask = 0027
+       upload_rate = 1050
+  use_udp_trackers = no
+ xmlrpc_size_limit = 8M
 
-# 0 = black 1 = red 2 = green 3 = yellow 4 = blue 5 = magenta 6 = cyan 7 = white 
-#set_done_fg_color = 2
-#set_done_bg_color = -1
-#set_active_fg_color = 3
-#set_active_bg_color = -1
+system.method.set_key = event.download.finished,notify_me,"execute=/home/scp1/dev/utils/rt_notify,$d.get_name="
+ system.method.insert = pyro.extended, value|const, 1
+# (this is for curl...)
+branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
+branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
 
-encoding_list = UTF-8
 
-download_rate = 0
-upload_rate   = 0
+system.method.set_key = event.download.inserted_new,log,"print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.finished,log,    "print=\" DONE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.closed,log,      "print=\"CLOSE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
 
-# Default directory to save the downloaded torrents.
-directory  = /mnt/Porn_3/.torrents
-session    = /home/scp1/var/rtorrent/session/
-port_range = 50000-50001
+ system.method.insert = pyro.bin_dir, string|const, ~/bin/
+ system.method.insert = pyro.rc_dialect, string|const|simple, "execute_capture=bash,-c,\"test $1 = 0.8.6 && echo -n 0.8.6 || echo -n 0.8.9\",dialect,$system.client_version="
+ system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-japh.rc"
+               import = $pyro.rtorrent_rc=
+#}}}
+# views {{{
+# Sort "seeding" by ratio
+view_sort_current = seeding,greater=d.get_ratio=
+# Sort incomplete by date added
+view_sort_current = incomplete,greater=d.get_custom=tm_loaded
+view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
+# Show recently completed top-most in "main"
+view_sort_current = main,greater=d.get_custom=tm_completed
+   view_filter_on = main,event.download.finished
+#}}}
+# schedules {{{
+# Make SCGI socket group-writable
+schedule = scgi_permission,0,0,"execute_nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 
-check_hash = no
-encryption = allow_incoming,try_outgoing,enable_retry
+# Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
+# Set the second argument to "-v" or "-q" to change log verbosity.
+schedule = pyro_watchdog,30,300,"pyro.watchdog=~/.pyroscope,"
 
-max_memory_usage = 9999999999999999
+# Show active and incomplete torrents (in view #0) and update every 10s
+#   Items are grouped into complete, incomplete, and queued, in that order
+#   Within each group, they're sorted by download and then upload speed.
+   branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
+   branch=pyro.extended=,"view_sort_current = active,\"compare=----,d.is_open=,d.get_complete=,d.get_down_rate=,d.get_up_rate=\""
+ schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
 
-#schedule = home1    ,5, 5, "load_start=/home/scp1/*.torrent,                       d.set_directory=/home/scp1/"
-#schedule = books1   ,5, 5, "load_start=/mnt/Books/.torrents/*.torrent,             d.set_directory=/mnt/Books/.new"
-#schedule = games1   ,5, 5, "load_start=/mnt/Games_1/.torrents/*.torrent,           d.set_directory=/mnt/Games_1/.new"
-schedule = porn1    ,5, 5, "load_start=/mnt/Porn/.torrents/*.torrent,              d.set_directory=/mnt/Porn/.new"
-schedule = porn2    ,5, 5, "load_start=/mnt/Porn_2/.torrents/*.torrent,            d.set_directory=/mnt/Porn_2/.new"
-schedule = porn3    ,5, 5, "load_start=/mnt/Porn_3/.torrents/*.torrent,            d.set_directory=/mnt/Porn_3/.new"
-schedule = porn4    ,5, 5, "load_start=/mnt/porn4/.torrents/*.torrent,            d.set_directory=/mnt/porn4/.new"
-schedule = tv3      ,5, 5, "load_start=/mnt/TV_3/.torrents/*.torrent,              d.set_directory=/mnt/TV_3/.new"
-schedule = tv2      ,5, 5, "load_start=/mnt/TV_2/.torrents/*.torrent,              d.set_directory=/mnt/TV_2/.new"
-schedule = tv4      ,5, 5, "load_start=/mnt/TV_4/.torrents/*.torrent,              d.set_directory=/mnt/TV_4/.new"
-schedule = tv5      ,5, 5, "load_start=/mnt/TV_5/.torrents/*.torrent,              d.set_directory=/mnt/TV_5/.new"
-schedule = tv1      ,5, 5, "load_start=/mnt/TV_1/.torrents/*.torrent,              d.set_directory=/mnt/TV_1/.new"
-schedule = docs     ,5, 5, "load_start=/mnt/Docs/.torrents/*.torrent,              d.set_directory=/mnt/Docs/.new/"
-schedule = backup   ,5, 5, "load_start=/mnt/Backup/.torrents/*.torrent,            d.set_directory=/mnt/Backup/.new"
-#schedule = mvids1   ,5, 5, "load_start=/mnt/Mvids/.torrents/*.torrent,            d.set_directory=/mnt/Mvids/.new/"
-#schedule = mvids2   ,5, 5, "load_start=/mnt/Mvids_2/.torrents/*.torrent,          d.set_directory=/mnt/Mvids_2/.new/"
-#schedule = mvids3   ,5, 5, "load_start=/mnt/Music_Videos/.torrents/*.torrent,     d.set_directory=/mnt/Music_Videos/.new"
+#schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
+#schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
+#schedule = untied_closing,30,30,close_untied=
+#schedule = low_diskspace,15,60,close_low_diskspace=1000M
 
-#schedule = tv4      ,5, 5, "load_start=/mnt/TV_4/.torrents/*.torrent,             d.set_directory=/mnt/TV_4/.new"
-#schedule = movie3   ,5, 5, "load_start=/mnt/Movies_3/.torrents/*.torrent,         d.set_directory=/mnt/Movies_3/.new"
+schedule = mem    ,10, 10, "load_start=/dev/shm/*.torrent,               d.set_directory=/dev/shm"
+schedule = home1  ,10, 10, "load_start=/home/scp1/dump/*.torrent,        d.set_directory=/home/scp1/dump"
+schedule = books  ,10, 10, "load_start=/mnt/books/.t/*.torrent,          d.set_directory=/mnt/books/.n"
+schedule = games1 ,60, 60, "load_start=/mnt/games1/.torrents/*.torrent,  d.set_directory=/mnt/Games_1/.new"
+schedule = music6 ,60, 60, "load_start=/mnt/music6/.torrents/*.torrent,  d.set_directory=/mnt/music6/.new/"
+schedule = mvids1 ,60, 60, "load_start=/mnt/mvids/.torrents/*.torrent,   d.set_directory=/mnt/mvids/.new/"
+schedule = porn1  ,10, 10, "load_start=/mnt/porn1/.torrents/*.torrent,   d.set_directory=/mnt/porn1/.new"
+schedule = porn2  ,10, 10, "load_start=/mnt/porn2/.torrents/*.torrent,   d.set_directory=/mnt/porn2/.new"
+schedule = porn3  ,10, 10, "load_start=/mnt/porn3/.torrents/*.torrent,   d.set_directory=/mnt/porn3/.new"
+schedule = porn4  ,10, 10, "load_start=/mnt/porn4/.torrents/*.torrent,   d.set_directory=/mnt/porn4/.new"
+schedule = porn5  ,10, 10, "load_start=/mnt/porn5/.torrents/*.torrent,   d.set_directory=/mnt/porn5/.new"
+schedule = porn6  ,10, 10, "load_start=/mnt/porn6/.t/*.torrent,          d.set_directory=/mnt/porn6/.n"
+schedule = tv1    ,10, 10, "load_start=/mnt/tv1/.torrents/*.torrent,     d.set_directory=/mnt/tv1/.new"
+schedule = tv4    ,20, 20, "load_start=/mnt/tv4/.torrents/*.torrent,     d.set_directory=/mnt/tv4/.new"
+#}}}
+# ui {{{
+#      ui.color.alarm.set="bold 160"
+#   ui.color.complete.set="bold 106"
+#       ui.color.even.set=""
+#      ui.color.focus.set="bold 161 on 236"
+#     ui.color.footer.set="245 on 232"
+# ui.color.incomplete.set="160"
+#       ui.color.info.set="137"
+#      ui.color.label.set="224"
+#   ui.color.leeching.set="bold 124"
+#        ui.color.odd.set=""
+#  ui.color.progress0.set="245"
+#ui.color.progress100.set="65"
+#ui.color.progress120.set="148"
+# ui.color.progress20.set="247"
+# ui.color.progress40.set="246"
+# ui.color.progress60.set="14"
+# ui.color.progress80.set="250"
+#     ui.color.queued.set="242"
+#    ui.color.seeding.set="100"
+#    ui.color.stopped.set="124"
+#      ui.color.title.set="243 on 232"
+
+      ui.color.alarm.set="160 on 234"
+   ui.color.complete.set="106"
+       ui.color.even.set="on 232"
+      ui.color.focus.set="reverse"
+     ui.color.footer.set="245 on 232"
+ ui.color.incomplete.set="101"
+       ui.color.info.set="7"
+      ui.color.label.set="101"
+   ui.color.leeching.set="bold 208"
+        ui.color.odd.set="on 232"
+  ui.color.progress0.set="196"
+ui.color.progress100.set="34"
+ui.color.progress120.set="107"
+ ui.color.progress20.set="178"
+ ui.color.progress40.set="202"
+ ui.color.progress60.set="208"
+ ui.color.progress80.set="214"
+     ui.color.queued.set="86"
+    ui.color.seeding.set="71"
+    ui.color.stopped.set="244"
+      ui.color.title.set="242 on 232"
+#}}}
