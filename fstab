@@ -1,79 +1,32 @@
-tmpfs /tmp tmpfs nodev,nosuid,size=2500m,uid=1000,mpol=bind:0-3,5,7,9-15     0 0
-UUID=366be29c-2190-4ddb-b3be-b77866586a4c /             ext3  defaults       0 1
-UUID=c0548545-59ee-4355-8129-6d1df81604b5 /boot         ext2  defaults       0 1
-UUID=f7adb40f-02be-463f-8219-37e94a01c2a4 /mnt/Backup   ext4  defaults       0 0
-UUID=cd54ce5d-7f03-47e4-86e8-9764301e3c5f /mnt/Books    ext4  defaults       0 0
-UUID=d4a3faa4-742e-4332-8396-39a1f4b96f4d /mnt/Docs     ext4  defaults       0 0
-UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/Games_1  ext4  defaults       0 0
-UUID=2ee72fe5-5972-44a0-bae0-53efeeb69cae /mnt/Games_2  ext4  defaults       0 0
-UUID=7b0fe8ef-1604-4420-b330-827cdd8f725e /mnt/Mail     ext3  defaults       0 0
-UUID=31fce00e-016a-466e-9be3-2a7a394d9f05 /mnt/Movies_1 ext4  defaults       0 0
-UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/Movies_2 ext4  defaults       0 0
-UUID=67a3a1b5-5fcb-4d4a-9b9b-70ad217869cd /mnt/Movies_3 ext4  defaults       0 0
-UUID=15c8afd8-409f-44bd-9340-77bb91342f45 /mnt/Music_1  ext3  defaults       0 0
-UUID=e033f03c-9a56-437b-b10d-90f0515a96c4 /mnt/Music_3  ext4  defaults       0 0
-UUID=86fc2ccf-3661-402c-8234-a730bcc408ed /mnt/Music_4  ext4  defaults       0 0
-UUID=a3ba13d3-ef05-440e-ab17-0c18bb0fb3d6 /mnt/Music_5  ext4  defaults       0 0
-UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/Music_6  ext4  defaults       0 0
-UUID=901be115-a506-4ec2-bde8-2f1066eacc95 /mnt/Music_7  ext4  defaults       0 0
-UUID=270a3bc6-7cd9-468d-8a28-f393d8addcc6 /mnt/Mvids    ext4  defaults       0 0
-UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/Porn     ext4  defaults       0 0
-UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/Porn_2   ext4  defaults       0 0
-UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/Porn_3   ext4  defaults       0 0
-UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/TV_1/    ext4  defaults       0 0
-UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/TV_2     ext4  defaults       0 0
-UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/TV_3     ext4  defaults       0 0
-UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/TV_4     ext4  defaults       0 0
+# sid /etc/fstab
+# 2012-11-12 09:42:22
+UUID=ff99ae49-f1c8-4704-8fbd-adea5b4b901b /          ext3  defaults      0 1
+UUID=a8b682d0-705e-483d-acb4-6e49a022e987 /boot      ext2  defaults      0 1
+UUID=4329a99b-f202-402d-8f3d-36f0f55bbd34 /home/scp1 ext3  defaults      0 1
+tmpfs                                     /tmp       tmpfs nodev,nosuid  0 0
+UUID=69110325-a4b1-4932-b244-ffbd890a4bc1 swap       swap  defaults      0 0
+
+LABEL=mail                                /mnt/mail     ext2    rw,nosuid,nodev,noexec,noauto,user,async,noatime,user,nofail 0 0
+LABEL=ARCHBOOT                            /mnt/archboot iso9660 ro,loop,user,nofail                                          0 0
+UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/books    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1   ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=b7d33687-76c1-40a0-8674-e566f1c0bc06 /mnt/mail     ext2    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6   ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/porn1    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/porn2    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/porn3    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=2ee72fe5-5972-44a0-bae0-53efeeb69cae /mnt/porn4    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/porn5    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/tv1      ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/porn6    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/tv4      ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=270a3bc6-7cd9-468d-8a28-f393d8addcc6 /mnt/mvids    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+
+mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5,/mnt/porn6 /mnt/erotica fuse mlimit=500M,user,allow_other      0 0
 
 
-#for drive in /mnt/{Music_{1..7},Books}
-#do
-#  echo
-#  fusermount -q -u $drive &> /dev/null
-#  sshfs \
-#    -o workaround=all         \
-#    -o allow_root             \
-#    -o reconnect              \
-#    -o hard_remove            \
-#    -o direct_io              \
-#    -o sync_read              \
-#    -o umask=0077             \
-#    -o uid=1000               \
-#    -o gid=100                \
-#    -o cache=0                \
-#    -o kernel_cache=0         \
-#    -o noauto_cache           \
-#    -o from_code=UTF-8        \
-#    -o to_code=UTF-8          \
-#    laleh:${drive} ${drive}
-#done
-##    -o default_permissions    \
-#
-#  for drive in /mnt/Games_{1..2} /mnt/TV_{1,2,3,4} /mnt/Movies_{1,2,3,4}
-#  do
-#    fusermount -q -u $drive &> /dev/null
-#    sshfs \
-#      -o workaround=all         \
-#      -o allow_root             \
-#      -o reconnect              \
-#      -o umask=0077             \
-#      -o uid=1000               \
-#      -o gid=100                \
-#      -o sync_read              \
-#      -o cache=0                \
-#      -o kernel_cache=0         \
-#      -o noauto_cache           \
-#      -o from_code=UTF-8        \
-#      -o to_code=UTF-8          \
-#      rambo:${drive} ${drive}
-#  done
-#
-#fusermount -u /mnt/n900 &> /dev/null
-#fusermount -u /mnt/n950 &> /dev/null
-#
-#sshfs -o reconnect,allow_other workaround=all n900:/           /mnt/n900
-#sshfs -o reconnect,allow_other workaround=all n950:/           /mnt/n950
-#sshfs -o reconnect,allow_other workaround=all rambo:/mnt/Mvids /mnt/Mvids
-#sshfs -o reconnect,allow_other workaround=all india:/          /mnt/india
-#sshfs -o reconnect,allow_other workaround=all laleh:http       $HOME/http
-#sshfs -o reconnect,allow_other workaround=all xfloff.se:/      /mnt/floff
+#dev/sdd1: UUID="1854d9f5-9710-4d43-9280-b030d0e30a74" TYPE="ext4"
+#/dev/sdf1: UUID="0ea2b7c1-1b87-466c-ac7c-790a22e5c466" TYPE="ext4"
+#/dev/sdg1: LABEL="music_6" UUID="bba48a87-c456-4786-85d3-f608b8fb11b2" TYPE="ext4"
+
+# vim: ft=fstab et sw=2 fdm=marker tw=130 cc=+1,42:
