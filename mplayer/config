@@ -1,17 +1,17 @@
-#
-### vim: set ft=mplayerconf:fdm=marker:et:sw=2:
+### vim: ft=mplayerconf:fdm=marker:et:sw=2 smc=80:
 ###
 #      ${HOME}/etc/mplayer/config
 #      ${XDG_CONFIG_HOME}/mplayer/config
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2012-09-08 19:45:43
+#         mtime  2012-11-12 20:23:41
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
 #                to share with me as I've shared with you.
-#           git  http://github.com/trapd00r/configs/mplayer  (up-to-date)
+#           git  git://github.com/trapd00r/configs.git
+#                http://github.com/trapd00r/configs/mplayer
 #           url  http://devel.japh.se/configs/mplayer
 #           irc  japh@freenode #mplayer #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
@@ -144,47 +144,56 @@ volume             = 80
 utf8               = 1
 #}}}
 [sid]#{{{
-alang              = en
-af                 = volnorm
-ao                 = oss
+playing-msg        = "\e[m\n\n  \e[38;5;100m⌃\e[38;5;220;3m LISTEN TO THIS MOTHERFUCKER\e[m\e[38;5;106;1;3m\e[38;5;100m ⌄\e[m\n\t\e[38;5;32;3;1m${path}\e[m\n\n\e[38;5;233m"
+alang              = eng,sv,ger,jap,
+#af                 = volnorm
+ao                 = oss,
 double             = 1
 ffactor            = 10
-#lavdopts           = threads=3
+#lavdopts           = threads=4
 embeddedfonts      = 1
 fixed-vo           = 1
-font               = 'Anonymous Pro'
+font               = Monospace
 vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdpau,
-vo                 = vdpau
-#afm                = liba52,libdca,hwac3
+nosub              = 1
+vo                 = vdpau,
+#vo                 = vdpau,gl_nosw,xvmc,
+#vf                 = cropdetect
+#vf                 = screenshot
+#vfm                = ffmpeg,dshow,vfm
+#afm                = ffmpeg
+afm                = liba52,libdca,hwac3,
 #fs                 = 1
-#lavdopts threads   = 2
+#lavdopts=threads=8
 mixer              = /dev/mixer
-monitoraspect      = 16:9
+msglevel           = all=4
+#monitoraspect      = 16:9
 msgcolor           = 1
 msgmodule          = 1
 noborder           = 1
 nograbpointer      = 1
-nokeepaspect       = 1
+#nokeepaspect       = 1
 nolirc             = 1
-osd-duration       = 5000
-osdlevel           = 1
+nojoystick         = 1
+osd-duration       = 2000
+osdlevel           = 3
 prefer-ipv4        = 1
 sid                = 0
-slang              = en
-spuaa              = 4
-spualign           = -1
+slang              = en,sv,ger,
+spuaa              = 0
+#spualign           = -1
 sub-bg-alpha       = 0
 sub-bg-color       = 0
 subfont-autoscale  = 3
 subfont-encoding   = unicode
 subfont-osd-scale  = 2
-subfont-text-scale = 4
+subfont-text-scale = 3
 sub-bg-color       = 0
 sub-bg-alpha       = 0
 unicode            = 1
 unrarexec          = /usr/bin/unrar
-use-filename-title = 1
-volume             = 80
+#use-filename-title = 1
+volume             = 10
 utf8               = 1
 #}}}
 [rambo]#{{{
