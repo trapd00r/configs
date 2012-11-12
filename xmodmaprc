@@ -1,8 +1,8 @@
 ! vim: ft=xmodmap:
-clear   Mod4
+!clear   Mod4
 add     Control = Super_L Super_R
-remove  Shift   = Shift_L
-keysym  Shift_L = Control_L
+!remove  Shift   = Shift_L
+!keysym  Shift_L = Control_L
 add     Control = Control_L
 clear   Lock
 
