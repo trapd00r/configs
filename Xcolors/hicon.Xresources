@@ -1,0 +1,50 @@
+! -----------------------------------------------
+! hiCon theme
+! file:     ~/.Xresources
+! author:   Aaron "ninjaaron" Christianson
+! modified: Wed Oct 10 12:58:13 CDT 2012
+! -----------------------------------------------
+
+! color scheme
+*background: #000000
+*foreground: #ffffff
+! Black + DarkGrey
+*color0:  #444444
+*color8:  #777777
+! Red
+*color1:  #ccbbbb
+*color9:  #ffeeee 
+! Green
+*color2:  #bbccbb
+*color10: #eeffee
+! Yellow
+*color3:  #ccccbb
+*color11: #ffffee
+! Blue
+*color4:  #bbbbcc
+*color12: #eeeeff
+! Magenta
+*color5:  #ccbbcc
+*color13: #ffeeff
+! Cyan
+*color6:  #bbcccc
+*color14: #eeffff
+! LightGrey + White
+*color7: #cccccc
+*color15: #ffffff
+
+! fonts to choose
+URxvt.keysym.M-C-0x30: command:\033]710;xft:bitbuntufull,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x31: command:\033]710;xft:bitocrafull,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x32: command:\033]710;-*-fixed-medium-r-*-*-12-*,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x33: command:\033]710;xft:bitocra13,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x34: command:\033]710;-*-terminus-medium-*-*-*14-*,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x35: command:\033]710;-*-5thElement-*\007
+URxvt.keysym.M-C-0x36: command:\033]710;xft:5thElementHeb,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x37: command:\033]710;-*-bitocra7-*-*-*,xft:Taamey David CLM\007
+URxvt.keysym.M-C-0x38: command:\033]710;xft:bitocra7Heb,xft:Taamey David CLM\007
+URxvt.keysym.M-C-u: command:\033]710;xft:Ubuntu Mono:pixelsize=11:style=bold,xft:Taamey David CLM\007
+URxvt.keysym.M-C-f: command:\033]710;10x20,xft:Taamey David CLM\007
+URxvt.keysym.M-C-m: command:\033]710;xft:Taamey David CLM:pixelsize=20\007
+URxvt.keysym.M-C-o: command:\033]710;xft:ocra10:pixelsize=10,xft:Taamey David CLM\007
+URxvt.keysym.M-C-d: command:\033]710;xft:Dejavu Sans Mono:pixelsize=9:antialias=false,xft:Taamey David CLM\007
