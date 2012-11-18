@@ -1,12 +1,11 @@
 /*~/etc/Xresources {{{
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
-  Created: 2008-04-24
-  Updated: 2012-09-08 16:45:22
+  Crafted: 2008-04-24
+  Updated: 2012-11-16 14:40:08
 
-Grouped by subject.
-A lot of different hosts use this file. You will not find any color
-definitions here; see the "additional rc's" block below.
+- A lot of different hosts use this file.
+- You will not find any color definitions here.
 
 I've patched[0] urxvt to allow for redefinition of the full 256 color
 table. This is a feature that XTerm supports just fine (see resource
@@ -14,8 +13,8 @@ dynamicColors and VT100.allowColorOps). See Colorcoke[1] for how a user
 may change them; see Term::ExtendedColor::Xresources[2] for how you'd do
 it programmatically.
 
-I use three or even up to four different fonts in all standard terminals; one
-per fontface.
+I use up to four different fonts in all standard [uw]rxvt terminals; one
+per fontface. Sorry for the extreme mess.
 I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 
 [0]: https://github.com/trapd00r/rxvt-unicode
@@ -90,6 +89,7 @@ vim.insecure:             1
 
 !}}}
 ! XTerm                                                                      {{{
+XTerm*renderFont:          false
 XTerm*allowColorOps:       1
 XTerm*allowFontOps:        1
 XTerm*allowTcapOps:        1
@@ -110,7 +110,7 @@ XTerm*colorUL:             #FFFFFF
 XTerm*colorULMode:         1
 
 XTerm*jumpScroll:          1
-!XTerm*metaSendsEscape:     1
+XTerm*metaSendsEscape:     0
 XTerm*multiScroll:         1
 XTerm*vt100.scrollBar:     0
 XTerm*SaveLines:           2500
@@ -119,6 +119,38 @@ XTerm*scrollBar:           0
 /* http://shallowsky.com/linux/noaltscreen.html */
 XTerm*titeInhibit:         1
 XTerm*termName:            xterm-256color
+!}}}
+! UXTerm                                                                      {{{
+UXTerm*renderFont:          false
+UXTerm*allowColorOps:       1
+UXTerm*allowFontOps:        1
+UXTerm*allowTcapOps:        1
+UXTerm*allowTitleOps:       1
+UXTerm*allowWindowOps:      1
+UXTerm*dynamicColors:       1
+
+UXTerm*faceName:            FONT_NORMAL
+UXTerm*font:                FONT_NORMAL
+UXTerm*boldFont:            FONT_BOLD
+UXTerm*italicFont:          FONT_ITALIC
+UXTerm*foreground:          #FFFFFF
+UXTerm*background:          #000000
+UXTerm*colorBD:             #ffc200
+UXTerm*colorBDMode:         1
+UXTerm*colorMode:           1
+UXTerm*colorUL:             #FFFFFF
+UXTerm*colorULMode:         1
+
+UXTerm*jumpScroll:          1
+UXTerm*metaSendsEscape:     0
+UXTerm*multiScroll:         1
+UXTerm*vt100.scrollBar:     0
+UXTerm*SaveLines:           2500
+UXTerm*scrollBar:           0
+
+/* http://shallowsky.com/linux/noaltscreen.html */
+UXTerm*titeInhibit:         1
+UXTerm*termName:            xterm-256color
 !}}}
 ! urxvt                                                                      {{{
 !URxvt.letterSpace: -0.2
@@ -143,10 +175,24 @@ sid.externalBorder:       0
 !sid.cursorUnderline:      1
 
 ! fonts {{{
-sid.font:             xft:Fixed:size=14:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
-sid.boldFont:         xft:Fixed:size=14:hinting=false:autohint=false:rgba=:antialias=true:lcdfilter=3
-sid.italicFont:       xft:fixed:dpi=99:size=14:weight=black
-sid.boldItalicFont:   7x14bold
+sid.font:             7x13bold
+sid.boldFont:         xft:Fixed:size=12:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
+sid.italicFont:       xft:Profont:embolden=1
+sid.boldItalicFont:   6x13bold
+
+URxvt*font1:                -xos4-terminus-medium-r-normal-*-13-*-*-*-*-*-*-1
+URxvt*font2:                -xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-1
+URxvt*font3:                -xos4-terminus-medium-r-normal-*-15-*-*-*-*-*-*-1
+URxvt*font4:                -xos4-terminus-medium-r-normal-*-16-*-*-*-*-*-*-1
+URxvt*font5:                -xos4-terminus-medium-r-normal-*-17-*-*-*-*-*-*-1
+URxvt*font6:                -xos4-terminus-medium-r-normal-*-18-*-*-*-*-*-*-1
+URxvt*font7:                -xos4-terminus-medium-r-normal-*-19-*-*-*-*-*-*-1
+URxvt*font8:                -xos4-terminus-medium-r-normal-*-20-*-*-*-*-*-*-1
+
+!sid.font:             xft:Fixed:size=14:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
+!sid.boldFont:         xft:Fixed:size=14:hinting=false:autohint=false:rgba=:antialias=true:lcdfilter=3
+!sid.italicFont:       xft:fixed:dpi=99:size=14:weight=black
+!sid.boldItalicFont:   xft:Fixed:size=12:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
 !sid.font:             9x15bold,\
 !                        -misc-fixed-bold-r-normal--15-140-75-75-c-90-iso10646-1,\
 !                        -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1, \
@@ -226,84 +272,6 @@ sid.depth:                24
 !sid.secondaryScroll:      true
 !sid.secondaryScreen:      false
 
-!}}}
-! host: india                                                                {{{
-india.background:           #030303
-india.borderColor:          #0E0E0E
-india.colorRV:              #333333
-india.colorUL:              #FF8F00
-india.cursorColor2:         #252525
-india.cursorColor:          #eb122e
-india.foreground:           #ffffff
-india.pointerColor:         #cb1c13
-india.underlineColor:       #cb1c13
-
-india*font:                FONT_NORMAL
-india*boldFont:            FONT_BOLD
-india*italicFont:          FONT_ITALIC
-india*boldItalicFont:      FONT_ITALIC_BOLD
-
-india.cutchars:             "()*,<>[]{}|'"
-india.matcher.button:       1
-india.matcher.launcher.1:   /usr/bin/firefox
-india.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-india.matcher.pattern.2:    \\B(/\\S+?):(\\d+)(?=:|$)
-india.underlineURLs:        false
-india.urlLauncher:          /usr/bin/firefox
-
-india.perl-lib:             /usr/lib/urxvt/perl
-india.perl-ext-common:      default,matcher
-india.perl-eval:            $^O
-
-india.jumpScroll:           true
-india.loginShell:           true
-india.pasteableTabs:        true
-india.pointerBlank:         true
-india.pointerBlankDelay:    2
-india.saveLines:            1024
-india.scrollBack:           true
-india.scrollKey:            true
-india.scrollTtyKeypress:    true
-india.scrollTtyOutput:      false
-india.scrollWithBuffer:     true
-india.scrollstyle:          next
-india.skipScroll:           true
-india.trippleclickwords:    true
-india.urgentOnBell:         true
-
-india.scrollBar:            false
-india.depth:                32
-
-india.keysym.M-u:           perl:mark-yank-urls:activate_mark_mode
-india.perl-ext:             selection,mark-yank-urls
-india.perl-eval:            $^O
-india.perl-ext-common:      default,matcher
-india.perl-lib:             /home/scp1/dev/urxvt-extensions
-
-!india.hold:                 0
-!india.secondaryScreen:     true
-!india.secondaryScroll:     true
-!}}}
-! host: rambo                                                                {{{
-!rambo.font:                -misc-fixed-medium-r-normal--13-120-75-75-c-70-koi8-r
-!rambo.boldFont:            -schumacher-clean-medium-r-normal--12-120-75-75-c-60-koi8-r
-!rambo.italicFont:          -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-1
-!rambo.boldItalicFont:      -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-koi8-r
-!
-!rambo.background:          #000000
-!rambo.borderColor:         #ff7800
-!rambo.colorBD:             #FFFFFF
-!rambo.colorIT:             #FFFFFF
-!rambo.colorRV:             #333333
-!rambo.colorUL:             #FF8F00
-!rambo.cursorColor2:        #252525
-!rambo.cursorColor:         #EB122E
-!rambo.foreground:          #ffe7d1
-!rambo.pointerColor2:       #0092FF
-!rambo.pointerColor:        #252525
-!rambo.underlineColor:      #0E0E0E
-!rambo.scrollBar:            false
-!rambo.depth:                32
 !}}}
 ! ratmenu                                                                    {{{
 ratmenu*align:                    center
