@@ -1,45 +1,122 @@
-defbarpadding 0 0
-defborder 0
-defpadding 0 0 0 0
-escape C-f
-exec unclutter -idle 1 -root
-exec xsetroot -cursor_name center_ptr
-gravity se
-set border 0
-set bgcolor #000000
-set bwcolor #000000
-set fgcolor #66ff00
-set font terminus-32
-set fwcolor #000000
-set waitcursor 0
-set winname class
-startup_message off
+### vim: ft=ratpoison fde fdm=marker fmr=#<,#> fdc=3:
+#< ${HOME}/etc/ratpoisonrc
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#       crafted  2009-04-24
+#         mtime  2012-11-21 15:27:02
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  git://github.com/trapd00r/configs.git
+#           url  http://github.com/trapd00r/configs
+#           irc  japh@freenode #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###>
+addhook  switchgroup next
+#< options
+startup_message       off
+escape                C-f
+defresizeunit         80
+set gravity           c
+set bargravity        c
+set wingravity        c
+set winname           title
+set maxsizegravity    c
+set inputwidth        0
+set historyexpansion  1
+set historycompaction 1
+set historysize       100
+set winliststyle      column
+set barpadding        8 8
+set border            0
+set bgcolor           #080808
+set bwcolor           #121212
+set fgcolor           #d75f00
+set fwcolor           #afd700
+#< hack - we need to set font once per head
+nextscreen
+set font profont-24
+nextscreen
+set font profont-24
+#>
+#>
+#< binds
+#< applications
+bind c                 exec LC_CTYPE=en_US.UTF-8 /home/scp1/bin/wrxvt -name sid
+bind C                 exec /home/scp1/bin/wrxvt -name sid -fg '#d5d5d5'
+bind v                 exec wrxvt -name sid -bg '#121212' -fg '#bbaaaa'
+bind x                 exec xterm -name UXTerm
+bind X                 exec xterm -name XTerm
+bind e                 exec rp-runorraise firefox
+bind E                 exec rp-runorraise firefox -search "$(xclip -o)"
+bind M-e               exec rp-runorraise firefox -no-remote
+bind M-E               exec rp-runorraise firefox -safe
+bind M-f               exec rp-runorraise fuck
 
-bind 0 exec ratpoison -c "frestore $(ratpoison -c 'getenv fs1')"
-bind = exec ratpoison -c "setenv fs1 $(ratpoison -c 'fdump')"
-bind C-f-k focusup
-bind H exchangeleft
-bind J exchangedown
-bind K exchangeup
-bind L exchangeright
-bind c exec urxvtc -name rambo
-bind dead_acute exec rpws init 2 -ak
-bind e exec dmenu_run
-bind h focusleft
-bind j focusdown
-bind k focusup
-bind l focusright
-bind m  exec ~/devel/clipbored/scripts/fmenuclip
-bind n  exec ~/devel/clipbored/scripts/dmenurl
-bind o exec rmcd -t
-bind p exec mpc next
-bind space exec ratpoison -c "echo $(mpc|head -1)"
-bind t exec perl $HOME/bin/expose
+definekey top C-Return exec firefox -new-tab "`xclip -o`"
+definekey top S-Return getsel
+definekey top M-Return exec x-terminal-emulator
+definekey top Pause    exec ossmix vmix0.pcm8 -- +2
+definekey top Print    exec ossmix vmix0.pcm8 -- -2
+definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
+definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
+#>
+#< jump around
+definekey top C-space  prevscreen
+bind space             nextscreen
+bind H                 exchangeleft
+bind J                 exchangedown
+bind K                 exchangeup
+bind L                 exchangeright
+bind h                 focusleft
+bind j                 focusdown
+bind k                 focusup
+bind l                 focusright
+definekey top s-Left   focusleft
+definekey top s-Right  focusright
+definekey top s-Up     focusup
+definekey top s-Down   focusdown
+definekey top s-Tab    focusprev
+definekey top s-M-Tab  focuslast
 
-#bind H rpwsp
-#bind L rpwsn
-#bind c exec urxvtc -name URxvt.india -e zsh -c 'xtermcolorchange;exec zsh'
-#bind o exec mplayerd -cmd toggle
-#bind p exec rmcd -n
-#set border 1
-#set padding 0 14 0 0
+bind C-K               kill
+bind M-k               kill
+bind w                 windows
+bind W                 windows
+#>
+exec rpws init 20 -k
+#< groups / workspaces
+bind s-n               gnext
+bind s-p               gprev
+bind G                 gmove
+bind s-c               gnew
+bind s-g               gnew
+
+bind C-l               rpwsn
+bind C-h               rpwsp
+
+## these equals ISO_Level3_Shift-x on a standard layout
+## my number row is already shifted so effectively this means AltGr+[!'#$%&/()=]
+bind M-asterisk        rpws2
+bind M-quotedbl        rpws3
+bind M-U26A1           rpws4
+bind M-238E            rpws5
+bind M-EuroSign        rpws6
+bind M-yen             rpws7
+bind M-braceleft       rpws8
+bind M-bracketleft     rpws9
+bind M-bracketright    rpws10
+bind M-braceright      rpws1
+bind M-U266B           rpws11
+bind M-U2191           rpws12
+bind M-U2661           rpws13
+bind M-U2690           rpws14
+bind M-t               rpws15
+bind M-y               rpws16
+bind M-u               rpws17
+bind M-i               rpws18
+bind M-o               rpws19
+bind M-p               rpws20
+bind M-slash           gother
+#>
