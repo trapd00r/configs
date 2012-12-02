@@ -1,0 +1,96 @@
+# vim: ft=gtkrc et sw=2 fdm=marker fmr=#<,#> fen:
+
+#< vim keymap
+#binding gtk-vi-text-view
+#{
+#  bind <ctrl>d { move-cursor (display-lines, 5, 0) }
+#  bind <ctrl>f { move-cursor (display-lines, 5, 0) }
+#  bind <ctrl>u { move-cursor (display-lines, -5, 0) }
+#  bind <ctrl>b { move-cursor (display-lines, -5, 0) }
+#  bind <ctrl>e { move-cursor (display-lines, -1, 0) }
+#  bind <ctrl>y { move-cursor (display-lines, 1, 0) }
+#  bind j { move-cursor (display-lines, 1, 0) }
+#  bind k { move-cursor (display-lines, -1, 0) }
+#  bind l { move-cursor (logical-positions, 1, 0) }
+#  bind h { move-cursor (logical-positions, -1, 0) }
+#}
+#
+#binding gtk-vi-tree-view
+#{
+#  bind j { move-cursor (display-lines, 1) }
+#  bind k { move-cursor (display-lines, -1) }
+#  bind l { move-cursor (logical-positions, 1) }
+#  bind h { move-cursor (logical-positions, -1) }
+#}
+#
+#class GtkTextView binding gtk-vi-text-view
+#class GtkTreeView binding gtk-vi-tree-view
+#>
+#< options
+#gtk-font-name=ProFont 9
+#gtk-icon-theme-name=Echo
+#gtk-key-theme-name = Vim
+gtk-alternative-button-order=0
+gtk-alternative-sort-arrows=1
+gtk-auto-mnemonics=1
+gtk-button-images=1
+gtk-can-change-accels=1
+gtk-color-palette="black:white:gray50:red:orange:yellow:purple:blue:lightblue:green:goldenrod2:brown:goldenrod4:dodger blue:pink:lightgreen:gray10:gray30:gray75:gray90"
+#gtk-color-scheme         gchar*                : Read / Write
+gtk-cursor-blink-time=1000
+gtk-cursor-blink-timeout=4
+gtk-cursor-blink=1
+#gtk-cursor-theme-name
+gtk-cursor-theme-size=128
+gtk-dnd-drag-threshold=8
+gtk-double-click-distance=3
+gtk-double-click-time=275
+gtk-enable-accels=0
+gtk-enable-animations=1
+gtk-enable-event-sounds=1
+gtk-enable-input-feedback-sounds=1
+gtk-enable-mnemonics=0
+gtk-enable-tooltips=1
+gtk-entry-password-hint-timeout=600
+gtk-entry-select-on-focus=0
+gtk-error-bell=1
+gtk-fallback-icon-theme=OpenWorld
+#gtk-file-chooser-backend gchar*                : Read / Write
+#gtk-font-name            gchar*                : Read / Write
+gtk-icon-sizes="menu=16,16:gtk-button=16,16:gtk-dialog=64,64"
+#gtk-icon-theme-name
+gtk-key-theme-name = Emacs
+gtk-keynav-cursor-only=1
+gtk-keynav-wrap-around=0
+gtk-label-select-on-focus=0
+gtk-menu-bar-accel=F10
+gtk-menu-bar-popup-delay=0
+gtk-menu-images=1
+gtk-menu-popdown-delay=750
+gtk-menu-popup-delay=175
+gtk-print-backends="file cups"
+gtk-print-preview-command="evince --unlink-tempfile --preview --print-settings %s %f"
+gtk-recent-files-limit=0
+gtk-recent-files-max-age=0
+gtk-scrolled-window-placement=GTK_CORNER_TOP_RIGHT
+gtk-show-input-method-menu=0
+gtk-show-unicode-menu=1
+gtk-sound-theme-name=freedesktop
+gtk-split-cursor=0
+#gtk-theme-name=Tactile
+gtk-timeout-expand=500
+gtk-timeout-initial=150
+gtk-timeout-repeat=15
+gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+#gtk-toolbar-style=GTK_TOOLBAR_TEXT
+gtk-toolbar-style=GTK_TOOLBAR_BOTH
+gtk-tooltip-browse-mode-timeout=300
+gtk-tooltip-browse-timeout=40
+gtk-tooltip-timeout=300
+gtk-touchscreen-mode=1
+gtk-xft-antialias=1
+gtk-xft-dpi=101376
+gtk-xft-hinting=1
+gtk-xft-hintstyle=hintfull
+gtk-xft-rgba=vrgb
+#>
