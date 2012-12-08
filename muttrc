@@ -1,5 +1,5 @@
 source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
-mailboxes `find /mnt/Mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
+mailboxes `find /mnt/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 
 # options                                                                    {{{
 set abort_nosubject     = no
@@ -18,10 +18,10 @@ set duplicate_threads   = yes
 set edit_headers        = yes
 set editor              = "wim -c \"set spell spl=en | so ~/etc/vim/nancy/009-abbrev.vim\""
 set fast_reply          = yes
-set folder              = /mnt/Mail/inbox
+set folder              = /mnt/mail/inbox
 set forward_format      = "Fw: %s"
 set from                = "m@japh.se"
-set header_cache        = /mnt/Mail/.hcache
+set header_cache        = /mnt/mail/.hcache
 set hide_missing        = yes
 set hide_thread_subject = yes
 set hostname            = japh.se
@@ -32,6 +32,9 @@ set mail_check          = 5
 set markers             = no
 set mbox                = =received
 set mbox_type           = Maildir
+#set mbox_type           = mbox
+#set mbox_type           = MMDF
+#set mbox_type           = MH
 set move                = no
 set narrow_tree         = yes
 set nobeep
@@ -52,7 +55,7 @@ set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
 set quote_regexp        = "^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 set read_inc            = 25
 set realname            = "Magnus Woldrich"
-set record              = /mnt/Mail/sent-`date +"%y%m"`
+set record              = /mnt/mail/.out/sent-`date +"%y%m"`
 set reply_regexp        = '^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
 set reply_to            = yes
 set reverse_alias       = yes
@@ -70,7 +73,7 @@ set spoolfile           = +
 set status_on_top
 set text_flowed
 set thread_received     = yes
-set tmpdir              = /tmp/scp1
+set tmpdir              = /dev/shm
 set wrapmargin          = 4
 #}}}
 # macros                                                                     {{{
@@ -80,14 +83,17 @@ macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender ad
 macro index .. "c=\n" "Go to inbox"
 #}}}
 # binds                                                                      {{{
-bind pager k previous-line
-bind pager < previous-line
-bind pager j next-line
-bind pager > next-line
+bind pager k    previous-line
+bind pager <    previous-line
+bind pager j    next-line
+bind pager >    next-line
 bind pager down next-page
-bind pager up previous-page
-bind index [ previous-line
-bind index ] next-line
+bind pager up   previous-page
+bind index [    previous-line
+bind index ]    next-line
+
+bind index gg   first-entry
+bind index G    last-entry
 #}}}
 # hooks                                                                      {{{
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
@@ -139,4 +145,4 @@ auto_view text/x-diff
 auto_view text/x-patch
 #}}}
 
-# vim: set cc=0 tw=0 fdm=marker:
+# vim: cc=0 tw=0 fdm=marker:
