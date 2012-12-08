@@ -1,20 +1,139 @@
-source /home/scp1/configs/.vimperator/color/desert_revisited.vimp
-set guioptions-=rlb
-set showtabline=0
-set editor="urxvt -name URxvt.shiva -e vim -f -c ':set ft=perl'"
-set insertmode=0
-set focuscontent=on
+" vim: ft=vimperator smc=80 tw=80 fen fdm=marker fdc=3 fmr="<,">:
+"< options
+set activate=addons,downloads,extoptions,help,homepage,quickmark,paste
+set cdpath=,,
+set complete=b
+set defsearch=d
+set editor="wrxvt -e wim -f -c ':set ft=perl'"
+set encoding=UTF-8
+set eventignore=
+set fileencoding=UTF-8
+set focuscontent=off
 set followhints=0
+set gui-=rlb
+set guioptions-=rlb
+set helpfile=intro
+set hintchars=!'#$%&/()
 set hintinputs="label,name,value"
 set hintmatching=wordstartswith
+set hintmatching=wordstartswith
+set hinttimeout=0
+set history=500
+set hlsearch
+set ignorecase
+set insertmode=0
 set laststatus=0
-set shell=zsh
-set titlestring=Fx
+set linksearch
+set loadplugins
+set maxitems=120
+set messages=50
+set messagetimeout=5000
+set newtab=all
+set noanimations
+set noapptab
+set noautocomplete
+set noerrorbells
+set noexrc
+set nofocuscontent
+set fullscreen
+"set noincsearch
+"set noinspectcontentobjects
+set noprivate
+set noshowmode
+set nosmallicons
+set notabnumbers
+set notranslaten
+set novisualbell
+set online
+set pageinfo=gfm
+set popups=tab
+set runtimepath=~/etc/vimperator/
+set sanitizeitems=downloads,sessions,cookies,formdata,history,cache
+set sanitizetimespan=1
+set scroll=0
+set scrollbars
+set shell=/bin/zsh
+set shellcmdflag=-c
+set showstatuslinks=1
+set showtabline=0
+set smartcase
+set status=tabcount,input,location,position
+set suggestengines=
+set titlestring=fx
+set toolbars=addons,nobookmarks,nomenu,nonavigation,tabs
+set urlseparator=,\s
+set verbose=0
+set wildmode=list:full
+">
+"< mappings
+nnoremap <C-c> :q<CR>
+nnoremap L     :bnext<CR>
+nnoremap H     :bprev<CR>
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-h> :bprev<CR>
+nnoremap l     :bnext<CR>
+nnoremap h     :bprev<CR>
+inoremap <C-l> :bnext<CR>
+inoremap <C-h> :bprev<CR>
 
-" Use duckduckgo as the default search engine. Fuck you, Google.
-set defsearch=d
+nnoremap d     :tabclose!<CR>
+nnoremap j     5j
+nnoremap k     5k
+nnoremap J     15j
+nnoremap K     15k
+nnoremap <C-j> 25j
+nnoremap <C-k> 25k
+nnoremap <C-J> 30J
+nnoremap <C-K> 30K
+
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+
+nnoremap <C-k> <Up>
+nnoremap <C-j> <Down>
+
+"inoremap dw <C-right><C-w>
+">
+
+silent! hi clear
+color  pag
+"color desert_revisited_pentadactyl
+
+"< javascript
+"javascript <<EOF
+"(function(){
+"    var feedPanel = document.createElement("statusbarpanel");
+"    feedPanel.setAttribute("id", "feed-panel-clone");
+"    feedPanel.appendChild(document.getElementById("feed-button"));
+"    feedPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
+"    document.getElementById("status-bar")
+"            .insertBefore(feedPanel, document.getElementById("security-button"));
+"})();
+"EOF
+"js <<EOF
+"    toggle_element = function (name) {
+"        document.getElementById(name).collapsed ^= 1;
+"    }
+"EOF
+"map <silent> <F8> :js toggle_element('toolbar-menubar')<CR>
+"map <silent> <F9> :js toggle_element('nav-bar')<CR>
+"bmark -keyword=mozjscoreref https://developer.mozilla.org/Special:Search?search=%s&type=fulltext
+"ca j mozjscoreref
+"style -name tab-style-fix chrome://* <<EOM
+".tab-text-shadow,
+".tabs-newtab-button {
+"  display: none !important;
+"}
+"EOM
+"" sbmcommentviewerを見やすく
+"" http://vimperator.g.hatena.ne.jp/retlet/20100321/1269165657
+"style -name sbmcommentsviewer chrome://* <<EOM
+"   .liberator-sbmcommentsviewer > dd:nth-child(odd) { background: #222; }
+"   .liberator-sbmcommentsviewer-timestamp { color: #666; }
+"EOM
+
+"exe 'normal <ESC><ESC><ESC>'
+"echo ".. worth repeating."
 
 
-
-
-" vim: set ft=vim:
+">
