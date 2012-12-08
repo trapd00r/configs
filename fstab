@@ -1,32 +1,36 @@
 # sid /etc/fstab
-# 2012-11-12 09:42:22
-UUID=ff99ae49-f1c8-4704-8fbd-adea5b4b901b /          ext3  defaults      0 1
-UUID=a8b682d0-705e-483d-acb4-6e49a022e987 /boot      ext2  defaults      0 1
-UUID=4329a99b-f202-402d-8f3d-36f0f55bbd34 /home/scp1 ext3  defaults      0 1
-tmpfs                                     /tmp       tmpfs nodev,nosuid  0 0
-UUID=69110325-a4b1-4932-b244-ffbd890a4bc1 swap       swap  defaults      0 0
+# 2012-12-08 21:36:14
+UUID=ff99ae49-f1c8-4704-8fbd-adea5b4b901b /              ext3       defaults      0 1
+UUID=a8b682d0-705e-483d-acb4-6e49a022e987 /boot          ext2       defaults      0 0
+UUID=4329a99b-f202-402d-8f3d-36f0f55bbd34 /home/scp1     ext3       defaults      0 0
+tmpfs                                     /tmp           tmpfs      nodev,nosuid  0 0
+UUID=69110325-a4b1-4932-b244-ffbd890a4bc1 swap           swap       defaults      0 0
 
-LABEL=mail                                /mnt/mail     ext2    rw,nosuid,nodev,noexec,noauto,user,async,noatime,user,nofail 0 0
-LABEL=ARCHBOOT                            /mnt/archboot iso9660 ro,loop,user,nofail                                          0 0
-UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/books    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1   ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=b7d33687-76c1-40a0-8674-e566f1c0bc06 /mnt/mail     ext2    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6   ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/porn1    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/porn2    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/porn3    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=2ee72fe5-5972-44a0-bae0-53efeeb69cae /mnt/porn4    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/porn5    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/tv1      ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/porn6    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/tv4      ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=270a3bc6-7cd9-468d-8a28-f393d8addcc6 /mnt/mvids    ext4    rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+LABEL=mail                                /mnt/mail      ext2       rw,nosuid,nodev,noexec,noauto,user,async,noatime,user,nofail 0 0
+LABEL=ARCHBOOT                            /mnt/archboot  iso9660    ro,loop,user,nofail                                          0 0
+UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/books     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=b7d33687-76c1-40a0-8674-e566f1c0bc06 /mnt/mail      ext2       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=86fc2ccf-3661-402c-8234-a730bcc408ed /mnt/music3    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=270a3bc6-7cd9-468d-8a28-f393d8addcc6 /mnt/mvids     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/porn1     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/porn2     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/porn3     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=2ee72fe5-5972-44a0-bae0-53efeeb69cae /mnt/porn4     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/porn5     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/porn6     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/tv1       ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/tv4       ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
 
-mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5,/mnt/porn6 /mnt/erotica fuse mlimit=500M,user,allow_other      0 0
+UUID=e033f03c-9a56-437b-b10d-90f0515a96c4 /mnt/music5    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+
+scp1@192.168.1.5:http                     /home/scp1/srv fuse.sshfs rw,nosuid,nodev,noexec,noauto,allow_other,_netdev            0 0
+scp1@192.168.1.5:                         /mnt/laleh     fuse.sshfs rw,nosuid,nodev,noexec,noauto,allow_other,_netdev            0 0
+mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5,/mnt/porn6 /mnt/erotica fuse mlimit=500M,user,allow_other          0 0
 
 
 #dev/sdd1: UUID="1854d9f5-9710-4d43-9280-b030d0e30a74" TYPE="ext4"
-#/dev/sdf1: UUID="0ea2b7c1-1b87-466c-ac7c-790a22e5c466" TYPE="ext4"
 #/dev/sdg1: LABEL="music_6" UUID="bba48a87-c456-4786-85d3-f608b8fb11b2" TYPE="ext4"
 
-# vim: ft=fstab et sw=2 fdm=marker tw=130 cc=+1,42:
+# vim: ft=fstab et sw=2 fdm=marker tw=130 cc=+1,42 fdm=marker fen:
