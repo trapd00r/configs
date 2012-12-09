@@ -85,7 +85,7 @@ bind M-k               kill
 bind w                 windows
 bind W                 windows
 #>
-exec rpws init 20 -k
+exec rpws init 3 -k
 #< groups / workspaces
 bind s-n               gnext
 bind s-p               gprev
