@@ -81,19 +81,41 @@ macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Ca
 macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
 macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 macro index .. "c=\n" "Go to inbox"
+macro index n "<next-entry><display-message>"
 #}}}
 # binds                                                                      {{{
+# generic alias attach browser editor index compose pager pgp postpone mix
 bind pager k    previous-line
 bind pager <    previous-line
 bind pager j    next-line
 bind pager >    next-line
 bind pager down next-page
 bind pager up   previous-page
+
 bind index [    previous-line
 bind index ]    next-line
 
 bind index gg   first-entry
 bind index G    last-entry
+
+bind index . display-message
+bind index t display-message
+bind index + next-entry
+bind index j next-entry
+bind index J next-entry
+bind index - previous-entry
+bind index k previous-entry
+bind index K previous-entry
+bind index { top-page
+bind index } bottom-page
+bind index f change-folder
+bind index \cu sync-mailbox
+bind index * flag-message
+
+
+
+
+bind browser y  exit
 #}}}
 # hooks                                                                      {{{
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
