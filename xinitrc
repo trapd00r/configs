@@ -1,22 +1,22 @@
-#!/bin/zsh
-# vim: ft=sh et sw=2 cc:
-(
-  xrandr --output  HDMI-0 --mode 1920x1080 --pos 0x0 --rotate left \
-         --output DVI-D-0 --mode 1920x1080 --pos 1080x525 \
-)&
+#!/bin/bash
+# vim: ft=sh smc=80 cc= fdm=marker fen fmr=#<,#>:
 
+#< output
+#xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate left --output HDMI-0 --mode 1920x1080 --pos 1080x528 --rotate normal
+#xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate left --output HDMI-0 --mode 1920x1080 --rotate left --pos 1080x525 &
+xrandr --output DVI-D-0 --mode 1920x1080 --pos 1080x0 --rotate left --output HDMI-0 --mode 1920x1080 --rotate left --pos 0x0 &
+#>
+#< input
 #unclutter -idle 4 &
 #xset m 2 1 &
-#xsetroot  -cursor_name left_ptr
-setxkbmap -option terminate:ctrl_alt_bksp &
+xsetroot  -cursor_name right_ptr
+setxkbmap -option terminate:ctrl_alt_bksp
 setxkbmap se -variant progqwerty \
   || setxkbmap se -variant nodeadkeys
 xmodmap $HOME/etc/xmodmaprc &
-xrdb $HOME/etc/Xresources   &
-#urxvtd -q -f -o                     &
-#(sleep .4; urxvtc -name URxvt.vim) &
-
-# git[master]# pacman -S openbox lxappearance-obconf obmenu perlpanel obconf dwm wmii-hg i3{-wm,status,lock}^C
+#>
+xrdb $HOME/etc/Xresources &
+#< wm
 #exec openbox-session
 #exec  dwm
 #exec  wmiii
@@ -24,8 +24,6 @@ xrdb $HOME/etc/Xresources   &
 #exec enlightenment_start -no-precache
 #exec evilwm
 #exec antiwm
-#exec /home/scp1/bin/wrxvt -name sid -chdir ~/dev &
 exec wrxvt &
-nvidia-settings -a GlyphCache=1 &
-nvidia-settings -a InitialPixmapPlacement=2 &
 exec ratpoison
+#>
