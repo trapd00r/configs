@@ -1,0 +1,127 @@
+# vim: ft=config smc=148 cc= fen fmr=#<,#> fdm=marker:
+###
+###
+#    ${HOME}/etc/pyroscope/rtorrent-japh.rc
+#    ${HOME}/etc/pyroscope/rtorrent-0.8.9.rc
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#         btime  2009-04-24
+#         mtime  2012-12-10 16:17:49
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  git@github.com/trapd00r/configs.git
+#           url  http://github.com/trapd00r/configs
+#           irc  japh@freenode #rtorrent #zsh #vim
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###
+#!!
+# This file is loaded after ${HOME}/etc/rtorrent.rc
+#!!
+
+# Log extension switch setting
+branch=pyro.extended=,print=applemos,print=laskeblask
+# COMMAND: Return startup time (can be used to calculate uptime)
+method.insert = startup_time,value|const,$system.time=
+
+#< events
+# EVENTS: Timestamps
+#   tm_loaded = time loaded into client
+#   tm_started = time of *first* start
+#   tm_completed = time of completion
+method.insert = pyro.tm_started.now,simple|private,"d.custom.set=tm_started,$cat=$system.time= ;d.save_full_session="
+method.set_key = event.download.resumed,time_stamp,"branch=d.custom=tm_started,false=,pyro.tm_started.now="
+method.set_key = event.download.inserted_new,time_stamp,"d.custom.set=tm_loaded,$cat=$system.time= ;d.save_full_session="
+method.set_key = event.download.finished,time_stamp,"d.custom.set=tm_completed,$cat=$system.time= ;d.save_full_session="
+
+# EVENTS: Activation intervals
+method.insert = pyro.activations.append,simple|private,"d.custom.set=activations,\"$cat=$d.custom=activations,$argument.0=,$system.time=\" ;d.save_full_session="
+method.set_key = event.download.paused,activations,"pyro.activations.append=P"
+method.set_key = event.download.resumed,activations,"pyro.activations.append=R"
+#>
+#< schedule
+# SCHEDULE: Set "last_active" custom field for items that have peers
+method.insert = d.last_active, simple|value, "if=$d.peers_connected=,$system.time=,$d.custom=last_active"
+schedule = update_last_active,24,42,"d.multicall=started,\"branch=$d.peers_connected=,\\\"d.custom.set=last_active,$cat=$system.time=\\\"\""
+method.insert = d.last_active.print, simple|private, "print=\"$cat={$convert.date=$d.last_active=, \\\" \\\", $convert.time=$d.last_active=}\""
+#>
+#< ui
+# UI/VIEW: Default view for filtering results (bound to '^' key in rT-PS)
+view.add = rtcontrol
+view.filter = rtcontrol,false=
+branch=pyro.extended=,"schedule = bind_rtcontrol,0,0,\"ui.bind_key=download_list,^,ui.current_view.set=rtcontrol\""
+# UI/VIEW: Show current messages (bound to '!' in rT-PS)
+view.add = messages
+view.filter = messages,d.message=
+branch=pyro.extended=,false=,"view.sort_current = messages,less=d.message="
+branch=pyro.extended=,"view.sort_current = messages,\"compare=,d.message=,d.name=\""
+method.insert = ui.messages.show,simple,"ui.current_view.set=messages ;view.filter=messages,d.message= ;view.sort=messages ;print=$view.size=messages,\" message(s)!\""
+branch=pyro.extended=,"schedule = bind_messages,0,0,\"ui.bind_key=download_list,!,ui.messages.show=\""
+# UI/VIEW: Trackers (all items, sorted by tracker domain and name)
+#          This will ONLY work if you use rT-PS!
+branch=pyro.extended=,"view.add = trackers"
+branch=pyro.extended=,"view.collapsed.toggle = trackers"
+branch=pyro.extended=,"view.sort_new     = trackers,\"compare=,d.tracker_domain=,d.name=\""
+branch=pyro.extended=,"view.sort_current = trackers,\"compare=,d.tracker_domain=,d.name=\""
+branch=pyro.extended=,"schedule = bind_trackers,0,0,\"ui.bind_key=download_list,t,ui.current_view.set=trackers\""
+# UI/VIEW: Manually tag (select) items
+# . = toggle focused item between tagged and untagged
+# T = clear all tags
+# : = show tagged items view
+view.add = tagged
+view.persistent = tagged
+branch=pyro.extended=,view.collapsed.toggle=tagged
+method.insert = view.toggle_visible,simple,"branch=d.views.has=$argument.0=,view.set_not_visible=$argument.0=,view.set_visible=$argument.0="
+method.insert = pyro.view_tagged_clear,simple|private,"view.filter=tagged,false="
+branch=pyro.extended=,"schedule = bind_tag_toggle,0,0,\"ui.bind_key=download_list,.,view.toggle_visible=tagged\""
+branch=pyro.extended=,"schedule = bind_tag_clear,0,0,\"ui.bind_key=download_list,T,pyro.view_tagged_clear=\""
+branch=pyro.extended=,"schedule = bind_tag_show,0,0,\"ui.bind_key=download_list,:,ui.current_view.set=tagged\""
+# UI/VIEW: Bind "*" to toggle between collapsed and expanded display
+branch=pyro.extended=,"schedule = bind_collapsed,0,0,\"ui.bind_key=download_list,*,view.collapsed.toggle=\""
+# UI/CMD: Use rtcontrol filter (^X s=KEYWORD, ^X t=TRACKER, ^X f="FILTER")
+method.insert = s,simple|private,"execute.nothrow=\"$cat=$pyro.bin_dir=,rtcontrol\",--detach,-qV,\"$cat=*,$argument.0=,*\""
+method.insert = t,simple|private,"execute.nothrow=\"$cat=$pyro.bin_dir=,rtcontrol\",--detach,-qV,\"$cat=\\\"alias=\\\",$argument.0=\""
+method.insert = f,simple|private,"execute.nothrow=\"$cat=$pyro.bin_dir=,rtcontrol\",--detach,-qV,$argument.0="
+# UI/CMD: Housekeeping (delete item + data)
+method.insert = purge,simple|private,"execute.nothrow=\"$cat=$pyro.bin_dir=,rtcontrol\",-q,--detach,--purge,--yes,\"$cat=hash=,$d.hash=\""
+method.insert = cull,simple|private,"execute.nothrow=\"$cat=$pyro.bin_dir=,rtcontrol\",-q,--detach,--cull,--yes,\"$cat=hash=,$d.hash=\""
+
+#< graphs
+# Show traffic of the last hour
+network.history.depth.set = 112
+schedule = network_history_sampling,1,32, network.history.sample=
+method.insert = network.history.auto_scale.toggle, simple|private, "branch=network.history.auto_scale=,\"network.history.auto_scale.set=0\",\"network.history.auto_scale.set=1\""
+method.insert = network.history.auto_scale.ui_toggle, simple|private, "network.history.auto_scale.toggle= ;network.history.refresh="
+branch=pyro.extended=,"schedule = bind_auto_scale,0,0,\"ui.bind_key=download_list,=,network.history.auto_scale.ui_toggle=\""
+#>
+
+#>
+#< torque
+# TORQUE: View for queue manager job
+# (this is not the buggy internal scheduler controlled by scheduler.max_active)
+view.add = pyrotorque
+view.filter = pyrotorque,false=
+schedule = filter_pyrotorque,1,15,"view.filter = pyrotorque,\"or={d.up.rate=,d.down.rate=,d.peers_connected=,not=$d.complete=}\""
+branch=pyro.extended=,"schedule = bind_pyrotorque,0,0,\"ui.bind_key=download_list,Q,ui.current_view.set=pyrotorque\""
+
+# TORQUE: Daemon watchdog
+method.insert = pyro.watchdog,simple|private,"execute.nothrow=bash,-c,\"$cat=\\\"test ! -f \\\",$argument.0=,\\\"/run/pyrotorque || \\\",$pyro.bin_dir=,\\\"pyrotorque --cron \\\",$argument.1=\""
+#>
+#< notes
+#   system.method.insert = pyro.bin_dir, string|const,
+#   system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-,\"$system.client_version=\",.rc.default"
+#   import = $pyro.rtorrent_rc=
+#
+# For 0.8.8 and up, use "method.insert" instead.
+#
+# Remove the ".default" if you want to change something (else your
+# changes get over-written on update).
+#
+# Set "pyro.extended" to 1 to activate rTorrent-PS features, but ONLY if
+# you actually run that patched version of rTorrent!
+#
+# Things marked with ♯087♯ are for version 0.8.7+ only (the migration script
+# reacts on that)!
+#>

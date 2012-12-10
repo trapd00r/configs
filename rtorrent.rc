@@ -154,3 +154,4 @@ ui.color.progress120.set="107"
     ui.color.stopped.set="244"
       ui.color.title.set="242 on 232"
 #}}}
+#view.collapsed.toggle
