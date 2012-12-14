@@ -27,7 +27,8 @@ UUID=e033f03c-9a56-437b-b10d-90f0515a96c4 /mnt/music5    ext4       rw,nosuid,no
 
 scp1@192.168.1.5:http                     /home/scp1/srv fuse.sshfs rw,nosuid,nodev,noexec,noauto,allow_other,_netdev            0 0
 scp1@192.168.1.5:                         /mnt/laleh     fuse.sshfs rw,nosuid,nodev,noexec,noauto,allow_other,_netdev            0 0
-mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5,/mnt/porn6 /mnt/erotica fuse mlimit=500M,user,allow_other          0 0
+mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5,/mnt/porn6         /mnt/erotica fuse mlimit=500M,user,allow_other  0 0
+mhddfs#/mnt/music1,/mnt/music3,/mnt/music4/,/mnt/music5,/mnt/music6,/mnt/music7 /mnt/audio    fuse mlimit=500M,user,allow_other  0 0
 
 
 #dev/sdd1: UUID="1854d9f5-9710-4d43-9280-b030d0e30a74" TYPE="ext4"
