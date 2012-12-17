@@ -1,0 +1,30 @@
+###{{{ vim: ft=config:fdm=marker:et:sw=2:
+###
+#      ${HOME}/etc/neercsrc
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#         btime  2012-12-17 18:11:12
+#         mtime  2012-12-17 18:11:16
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  github.com/trapd00r/configs.git
+#           url  http://github.com/trapd00r/configs
+#           irc  japh@freenode #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###}}}
+#full|hsplit|vsplit|card
+window_manager=card
+thumbnails=0
+status_bar=1
+borders=1
+cube_duration=10
+screensaver_timeout=3600
+autolock_timeout=43200
+lock_on_detach=0
+socket_dir=/home/scp1/var/neercs/
+#delay=0
+
+neercs top cacademo zsh
