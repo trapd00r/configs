@@ -13,6 +13,7 @@ UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1    ext4       rw,nosuid,no
 UUID=b7d33687-76c1-40a0-8674-e566f1c0bc06 /mnt/mail      ext2       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
 UUID=15c8afd8-409f-44bd-9340-77bb91342f45 /mnt/music1    ext3       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
 UUID=86fc2ccf-3661-402c-8234-a730bcc408ed /mnt/music3    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=a3ba13d3-ef05-440e-ab17-0c18bb0fb3d6 /mnt/music4    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
 UUID=e033f03c-9a56-437b-b10d-90f0515a96c4 /mnt/music5    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
 UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
 UUID=901be115-a506-4ec2-bde8-2f1066eacc95 /mnt/music7    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
