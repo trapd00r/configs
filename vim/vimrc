@@ -1,4 +1,4 @@
-#!/home/scp1/bin/wim --remote-wait-silent vimsy
+"!/home/scp1/bin/wim --remote-wait-silent vimsy
 "
 " ${VIMRUNTIME}/vimrc ⚡ ${HOME}/etc/vim/vimrc
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
@@ -17,6 +17,8 @@
 
 set all&                                  " Vendors tend to screw things up
 set nocp                                  " I'm hardly compatible
+set exrc
+filetype plugin indent on
 
 set nors                                  " This might not be needed, but these
 set t_ti=                                 " has the same effect as disabling
@@ -54,13 +56,15 @@ set foldmethod=marker
 "set foldmarker=#+,#-
 set foldenable
 set formatoptions=tcrqln1
+set guiheadroom=0
 set grepprg=internal
 "set grepprg='grep\ -Im400\ --line-buffered\ -P | argdo try | grepadd! mplayer % | catch /E480:/ | endtry'
 
 "set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
-set helpheight=20
+set helpfile=~/dev/vim/runtime/doc/help.txt
+set helpheight=8
 set hidden
 set history=50
 set hlsearch
@@ -135,8 +139,8 @@ set undofile
 set undolevels=512
 set undodir=/mnt/Docs/Backup/undo,.
 set visualbell t_vb=
-"set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
-set viminfo='100,<50,s10,h,%
+set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
+"set viminfo='100,<50,s10,h,%
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
@@ -173,7 +177,8 @@ source $VIMRUNTIME/nancy/000-functions.vim    " functions
 source $VIMRUNTIME/nancy/001-commands.vim     " user-defined commands
 source $VIMRUNTIME/nancy/009-abbrev.vim       " my wordlist of abbrevations
 source $VIMRUNTIME/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
-source $VIMRUNTIME/nancy/090-syntax.vim       " my syntax additions that doesn't
+source $VIMRUNTIME/nancy/090-syntax.vim       " my syntax defs
+source $VIMRUNTIME/nancy/099-status.vim       " status, man
 
 "filetype plugin indent on
 
@@ -204,4 +209,4 @@ source $VIMRUNTIME/nancy/090-syntax.vim       " my syntax additions that doesn't
 " \      exe 'colors' s:new_colors
 " \   | endif
 " }}}
-" vim: set fdm=marker:et:sw=2 nofoldenable:
+" vim: fdm=marker:fen:et:sw=2:smc=80:
