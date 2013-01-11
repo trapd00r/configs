@@ -19,7 +19,8 @@ host sid                  #{{{
 host laleh                #{{{
   user                    scp1
   hostname                192.168.1.5
-  port                    16815
+#  port                    16815
+  port                    19217
   compression             no
   ciphers                 arcfour
   checkhostip             no
@@ -28,15 +29,15 @@ host laleh                #{{{
   numberofpasswordprompts 10
   sendenv                 PERL5OPT
 #}}}
-host n900                 #{{{
-  user                    user
-  hostname                192.168.1.9
-  port                    22
-  compression             no
-  ciphers                 arcfour
-  checkhostip             no
-  connecttimeout          10
-#}}}
+#host n900                 #{{{
+#  user                    user
+#  hostname                192.168.1.9
+#  port                    22
+#  compression             no
+#  ciphers                 arcfour
+#  checkhostip             no
+#  connecttimeout          10
+##}}}
 host n950                 #{{{
   user                    user
   hostname                192.168.1.6
@@ -46,13 +47,22 @@ host n950                 #{{{
   checkhostip             no
   connecttimeout          10
 #}}}
-host japh.se              #{{{
-  user                    scp1
-  hostname                japh.se
-  port                    19217
+host n7                 #{{{
+  user                    root
+  hostname                192.168.1.16
+  port                    2222
   compression             no
-  ciphers                 blowfish-cbc
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          10
 #}}}
+#host japh.se              #{{{
+#  user                    scp1
+#  hostname                japh.se
+#  port                    19217
+#  compression             no
+#  ciphers                 blowfish-cbc
+##}}}
 host xfloff.net           #{{{
   user                    scp1
   hostname                xfloff.net
@@ -66,4 +76,14 @@ host xfloff.net           #{{{
   port                    22
   compression             no
   ciphers                 blowfish-cbc
+#}}}
+
+host n900v2               #{{{
+  user                    user
+  hostname                192.168.1.13
+  port                    22
+  compression             yes
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          10
 #}}}
