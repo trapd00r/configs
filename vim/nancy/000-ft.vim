@@ -1,6 +1,20 @@
-"   Where: $VIMRUNTIME/001-ft.vim
-"  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2013-01-14 14:03:30
+"!/home/scp1/bin/wim --remote-wait-silent vimsy
+" vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
+"
+" ${VIMRUNTIME}/nancy/000-ft.vim
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+"         owner  Magnus Woldrich <m@japh.se>
+"         btime  2009-04-24
+"         mtime  2013-01-14 22:01:26
+"         perms  You are free to use things you may find useful here.
+"                Would my tweaks happen to give you a raise or fetch you a
+"                girlfriend, it goes without saying I'm counting on you
+"                to share with me as I've shared with you.
+"           git  git@github.com:trapd00r/configs.git
+"           url  http://github.com/trapd00r/configs/vim
+"           irc  japh@freenode #vim #zsh #perl
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+"
 
 filetype plugin indent on
 
@@ -65,8 +79,17 @@ au Filetype           help           call Filetype_Help()
 au BufNewFile         *.vim silent! 0r $VIMRUNTIME/templates/template.vim
 au BufNewFile         *.c   silent! 0r $VIMRUNTIME/templates/template.c
 
-au InsertEnter        *     match wsEOL /\v\s+\%#\@<!$/
-au InsertLeave        *     match wsEOL /\v\s+$/
+"< highlight trailing whitespace
+"    when not typing on the current line
+"    when we open new buffers
+"  and conceal it if 'cole is set
+syn match wsEOL /\s\+$/ conceal cchar=♥
+highlight wsEOL cterm=bolditalicunderline ctermfg=196 ctermbg=233  
+autocmd BufWinEnter   * match wsEOL /\s\+$/
+autocmd InsertEnter   * match wsEOL /\s\+\%#\@<!$/
+autocmd InsertLeave   * match wsEOL /\s\+$/
+autocmd BufWinLeave   * call clearmatches()
+">
 
 au Filetype perl
   \   setl makeprg=perl\ -c\ %\ $*
