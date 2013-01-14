@@ -1,6 +1,6 @@
 "   Where: $VIMRUNTIME/001-ft.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2012-06-24 14:34:15
+" Updated: 2013-01-14 14:03:30
 
 filetype plugin indent on
 
@@ -64,6 +64,9 @@ au Filetype           help           call Filetype_Help()
 
 au BufNewFile         *.vim silent! 0r $VIMRUNTIME/templates/template.vim
 au BufNewFile         *.c   silent! 0r $VIMRUNTIME/templates/template.c
+
+au InsertEnter        *     match wsEOL /\v\s+\%#\@<!$/
+au InsertLeave        *     match wsEOL /\v\s+$/
 
 au Filetype perl
   \   setl makeprg=perl\ -c\ %\ $*
