@@ -1,9 +1,10 @@
 # vim: set ft=sh tw=0:
+alias  ls='perl /home/scp1/dev/ls--/ls++' 
 alias  cp='cp -v'
-alias  ls='perl =_ls'
 alias  mv='mv -v'
 alias  rm=rmc
 alias vim=wim
+alias prename='prename -v'
 
 if [[ $UID != 0 ]]
 then
@@ -23,30 +24,22 @@ fi
 
 alias    cpan='cpanm'
 
-alias  albums='pimpd2 --albums'
-alias    copy='pimpd2 --copy'
-alias   copya='pimpd2 --copy-album'
 alias    love='pimpd2 --love'
-alias    play='ossmix mplayer 18 || pimpd2 --play'
-alias   slove='pimpd2 --slove'
-alias   songs='pimpd2 --songs'
+alias    play='ossmix mplayer 18:18 || pimpd2 --play'
 alias    stop='ossmix mplayer 0  || pimpd2 --kill'
 alias  unlove='pimpd2 --unlove'
 
 alias     :q!='kill -9 $$'
 alias      :q='exit'
 alias     die='kill -9 $$'
-alias   dmesg='$HOME/dev/Term-ExtendedColor/bin/colored_dmesg|grep -v TCP'
-alias      gd='GIT_PAGER="" git diff'
+alias   dmesg='/home/scp1/dev/Term-ExtendedColor/bin/colored_dmesg|grep -v TCP'
+#alias      gd='GIT_PAGER="" git diff'
 alias     get='woof -u -U -i 0.0.0.0 -p 4040'
 alias  github='PAGER=/bin/cat perl /home/scp1/bin/github'
 alias      gt='git tag|sort --reverse'
-alias prename='prename -v'
 alias     put='woof -u -i 0.0.0.0 -p 4040'
 alias     scd='screen -d'
-alias     scx='screen -x'
 alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
-alias   urxvt="=urxvt -name $HOST $@"
 alias    wget='wget --no-check-certificate -U=Mozilla'
 
 alias --  -='builtin cd -'
@@ -73,7 +66,7 @@ alias   tec='builtin cd $HOME/dev/Term-ExtendedColor'
 alias   tet='builtin cd $HOME/dev/Term-ExtendedColor-TTY'
 alias   tex='builtin cd $HOME/dev/Term-ExtendedColor-Xresources'
 alias xxlfd='builtin cd $HOME/dev/Xorg-XLFD'
-alias     t='mkdr /tmp/scp1; builtin cd /tmp/scp1'
+alias     t='mkdir -p /dev/shm/⚑; builtin cd /dev/shm/⚑'
 
 alias lso='=ls | pv -qL 10'
 alias lsq='=ls --color=always --time-style=full-iso -AlQ'
@@ -111,7 +104,7 @@ fi
 #     none   - no slideshow
 #     x      - slideshow, seconds will be specified on commandline
 #              (like "fehfrx 7 .")
-alias feh='feh -FZ --quiet --verbose -G -d --draw-tinted --action "rm '\'%f\'\"
+alias feh='feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\"
 alias fehe='feh -Texif'
 alias feher='feh -Texif --recursive'
 alias fehf='feh -Tfs'
@@ -169,3 +162,6 @@ alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode-Normalize=NFD,NFC,NFKD,NFKC'
 #alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 #alias    gccc='gcc -ansi -pedantic -Wall'
+alias k=pacman-color
+alias ko=cower
+alias kor=meat
