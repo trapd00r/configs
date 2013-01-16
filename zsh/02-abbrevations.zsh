@@ -10,6 +10,8 @@ abbreviations=(
   "jk"         "!-2$"
   "jjk"        "!-3$"
   "jkk"        "!-4$"
+  "kk"         "!-5$"
+  "kj"         "!-6$"
 )
 
 magic-abbrev-expand() {
