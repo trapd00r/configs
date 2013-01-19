@@ -144,6 +144,7 @@ export ACKRC="${HOME}/etc/ackrc"
 export GIMP2_DIRECTORY=${HOME}/etc/gimp
 export GENISOIMAGERC=${HOME}/etc/genisoimagerc
 #export MOZ_DISABLE_PANGO="1"
+export FIREFOX_DSP='aoss'
 export BROWSER="/usr/bin/w3m"
 
 export XDG_DATA_HOME=${HOME}/var
