@@ -20,7 +20,7 @@ nnoremap <silent> N N:call HL_Search_Cword()<CR>
 nnoremap <silent> n n:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#030407
 " user interface                                                             {{{
-nnoremap <CR>   zA       " toggle folds recursively
+nnoremap <CR>   za
 "nnoremap '      `        " switch ' and ` ...
 nnoremap `      '        " ... and do the right thing
 cmap     qq     qa!<CR>  " quit really, really fast
@@ -165,36 +165,6 @@ nnoremap <leader>v V`]
 nnoremap ,g :sil exe 'grep! -R '.shellescape("<cWORD>")." ."<CR>:cope<CR>:winc w<CR>
 " }}}
 " sane regex                                                                {{{
-
-" use this custom function for cabbrevations. This makes sure that they only
-" apply in the beginning of a command. Else we might end up with stuff like
-"   :%s/\vfoo/\v/\vbar/
-" if we happen to move backwards in the pattern.
-call Cabbrev('/',   '/\v')
-call Cabbrev('?',   '?\v')
-
-call Cabbrev('s/',  's/\v')
-call Cabbrev('%s/', '%s/\v')
-
-call Cabbrev('s#',  's#\v')
-call Cabbrev('%s#', '%s#\v')
-
-call Cabbrev('s@',  's@\v')
-call Cabbrev('%s@', '%s@\v')
-
-call Cabbrev('s!',  's!\v')
-call Cabbrev('%s!', '%s!\v')
-
-call Cabbrev('s%',  's%\v')
-call Cabbrev('%s%', '%s%\v')
-
-call Cabbrev('/',   '/\v')
-
-call Cabbrev("'<,'>s/", "'<,'>s/\v")
-call Cabbrev("'<,'>s#", "'<,'>s#\v")
-call Cabbrev("'<,'>s@", "'<,'>s@\v")
-call Cabbrev("'<,'>s!", "'<,'>s!\v")
-
 vnoremap /        /\v
 " }}}
 " emacs keymap in the commandline                                          {{{
