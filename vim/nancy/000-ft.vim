@@ -67,6 +67,8 @@ let g:xf86conf_xfree86_versio      = 2
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
+au BufWrite           ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+au BufWrite           ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
 au BufRead            ~/etc/feh/keys call Filetype_feh()
 au BufRead,BufNewFile *.overtime     setl ft=overtime
 au BufRead,BufNewFile *.*htm*,*.xml  setl sw=1
