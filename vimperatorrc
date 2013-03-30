@@ -1,80 +1,147 @@
-" vim: ft=vimperator smc=80 tw=80 fen fdm=marker fdc=3 fmr="<,">:
-"< options
-set activate=addons,downloads,extoptions,help,homepage,quickmark,paste
-set cdpath=,,
-set complete=b
-set defsearch=d
-set editor="wrxvt -e wim -f -c ':set ft=perl'"
-set encoding=UTF-8
-set eventignore=
-set fileencoding=UTF-8
-set focuscontent=off
-set followhints=0
-set gui-=rlb
-set guioptions-=rlb
-set helpfile=intro
-set hintchars=!'#$%&/()
-set hintinputs="label,name,value"
-set hintmatching=wordstartswith
-set hintmatching=wordstartswith
-set hinttimeout=0
-set history=500
-set hlsearch
-set ignorecase
-set insertmode=0
-set laststatus=0
-set linksearch
-set loadplugins
-set maxitems=120
-set messages=50
-set messagetimeout=5000
-set newtab=all
+"!/home/scp1/bin/firefox
+" vim: ft=vimperator:fdm=marker:fmr="<,">:fen:et:sw=2:smc&:
+"
+" ${HOME}/etc/vimperatorrc
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+"         owner  Magnus Woldrich <m@japh.se>
+"         btime  2009-04-24
+"         mtime  2013-01-26 12:02:49
+"         perms  You are free to use things you may find useful here.
+"                Would my tweaks happen to give you a raise or fetch you a
+"                girlfriend, it goes without saying I'm counting on you
+"                to share with me as I've shared with you.
+"           git  git@github.com:trapd00r/configs.git
+"           url  http://github.com/trapd00r/configs
+"           irc  japh@freenode #vim #zsh #perl
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+
+"set rtp=~/etc/vimperator
+
+
+"< OPTIONS
+"< firefox preferences
+set! Accessibility.typeaheadfind.autostart=0
+set! Accessibility.typeaheadfind=0
+set! Browser.backspace_action=0
+set! Browser.ctrlTab.previews=1
+"set! Browser.display.auto_quality_min_font_size=0
+set! Browser.display.auto_quality_min_font_size=22
+set! Browser.display.normal_lineheight_calc_control=2
+set! Browser.display.show_image_placeholders=0
+set! Browser.display.use_document_fonts=0
+set! Font.name.monospace.x-western="MonteCarlo"
+set! Font.name.sans-serif.x-western="MonteCarlo"
+set! Font.name.serif.x-western="MonteCarlo"
+set! Browser.display.use_system_colors=1
+set! Browser.download.dir="/home/scp1/dump"
+set! Browser.enable_automatic_image_resizing=0
+set! Browser.fullscreen.animateUp=0
+set! Browser.newtabpage.columns=5
+set! Browser.newtabpage.rows=5
+set! Browser.panorama.animate_zoom=0
+set! Browser.tabs.animate=0
+set! Browser.tabs.closeWindowWithLastTab=0
+set! Browser.tabs.drawInTitlebar=1
+set! Browser.tabs.tabMinWidth=50
+set! Browser.tabs.tabMaxWidth=150
+set! Browser.tabs.insertRelatedAfterCurrent=0
+set! Browser.tabs.onTop=0
+set! Extensions.getAddons.showPane=0
+set! Network.http.pipelining.maxrequests=8
+set! Network.http.pipelining=1
+set! Zoom.minPercent=50
+"set! Network.dnsCacheExpiration=0
+">
+"< vimperator options
+set   activate=addons,downloads,extoptions,help,homepage,quickmark,paste
 set noanimations
 set noapptab
 set noautocomplete
+set   cdpath=~/srv/japh.se/,,
+set   complete=b
+set   defsearch=d
+set   editor="wrxvt -e wim -f -c ':set ft=perl'"
+set   encoding=UTF-8
 set noerrorbells
+set   eventignore=
 set noexrc
+set   fileencoding=UTF-8
 set nofocuscontent
-set fullscreen
+set nofullscreen
+set   gui-=rlb
+set   hintinputs=label,name,value
+set   hintmatching=wordstartswith
+set   history=15
+set   hlsearch
+set noignorecase
+set   loadplugins
+set   maxitems=30
+set   messages=20
+set   newtab=all
+set   online
+set   pageinfo=gfm
+set   popups=tab
+set noprivate
+set   sanitizeitems=downloads,sessions,cookies,formdata,history,cache
+set   sanitizetimespan=1
+set   scroll=0
+set   scrollbars
+set   shell=/bin/zsh
+set   shellcmdflag=-c
+set noshowmode
+set   showstatuslinks=1
+set   smartcase
+set   status=tabcount,position
+set   suggestengines=
+set notabnumbers
+set   titlestring=Fx
+set   toolbars=addons,nobookmarks,nomenu,nonavigation,tabs
+set   urlseparator=,\s
+set   verbose=0
+set novisualbell
+set   wildmode=list:full
+"set   followhints=0
+"set   helpfile=intro
+"set   hintchars=!'#$%&/()
+"set   hinttimeout=0
+"set   insertmode=0
+"set   laststatus=0
+"set   messagetimeout=10000
+"set   showtabline=0
+"set   status=input,location,position
+"set linksearch
 "set noincsearch
 "set noinspectcontentobjects
-set noprivate
-set noshowmode
-set nosmallicons
-set notabnumbers
-set notranslaten
-set novisualbell
-set online
-set pageinfo=gfm
-set popups=tab
-set runtimepath=~/etc/vimperator/
-set sanitizeitems=downloads,sessions,cookies,formdata,history,cache
-set sanitizetimespan=1
-set scroll=0
-set scrollbars
-set shell=/bin/zsh
-set shellcmdflag=-c
-set showstatuslinks=1
-set showtabline=0
-set smartcase
-set status=tabcount,input,location,position
-set suggestengines=
-set titlestring=fx
-set toolbars=addons,nobookmarks,nomenu,nonavigation,tabs
-set urlseparator=,\s
-set verbose=0
-set wildmode=list:full
+"set nosmallicons
+"set notranslaten
 ">
-"< mappings
-nnoremap <C-c> :q<CR>
-nnoremap L     :bnext<CR>
-nnoremap H     :bprev<CR>
-nnoremap <C-l> :bnext<CR>
-nnoremap <C-h> :bprev<CR>
+">
+"< MAPPINGS
+silent! mapclear
+
+nnoremap L     :bNext 2<CR>
+nnoremap H     :bprev 2<CR>
+nnoremap <C-l> :bnext 4<CR>
+nnoremap <C-h> :bprev 4<CR>
 nnoremap l     :bnext<CR>
 nnoremap h     :bprev<CR>
-inoremap <C-l> :bnext<CR>
-inoremap <C-h> :bprev<CR>
+"inoremap <C-l> :bnext<CR>
+"inoremap <C-h> :bprev<CR>
+
+silent map !  b1<cr>
+silent map \' b2<cr>
+silent map #  b3<cr>
+silent map $  b4<cr>
+silent map %  b5<cr>
+silent map &  b6<cr>
+"silent map 7  b7<cr>
+silent map (  b8<cr>
+silent map )  b9<cr>
+silent map =  b10<cr>
+
+nnoremap <C-c> :noscript toggletemp
+map <M-space> usermode!
+map <M-1>     tabgroups switch 
 
 nnoremap d     :tabclose!<CR>
 nnoremap j     5j
@@ -92,14 +159,15 @@ cnoremap <C-j> <Down>
 nnoremap <C-k> <Up>
 nnoremap <C-j> <Down>
 
+"< think of a way to exploit this
 "inoremap dw <C-right><C-w>
 ">
-
-silent! hi clear
-color  pag
-"color desert_revisited_pentadactyl
-
-"< javascript
+">
+"< syntax
+"silent! hi clear
+color  desert_revisited
+">
+"< JAVASCRIPT
 "javascript <<EOF
 "(function(){
 "    var feedPanel = document.createElement("statusbarpanel");
@@ -125,15 +193,12 @@ color  pag
 "  display: none !important;
 "}
 "EOM
+">
+"< sbmcommentviewer
 "" sbmcommentviewerを見やすく
 "" http://vimperator.g.hatena.ne.jp/retlet/20100321/1269165657
 "style -name sbmcommentsviewer chrome://* <<EOM
 "   .liberator-sbmcommentsviewer > dd:nth-child(odd) { background: #222; }
 "   .liberator-sbmcommentsviewer-timestamp { color: #666; }
 "EOM
-
-"exe 'normal <ESC><ESC><ESC>'
-"echo ".. worth repeating."
-
-
 ">
