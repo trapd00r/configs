@@ -1,0 +1,19 @@
+Preset Path                = /home/scp1/usr/share/projectm/presets
+Menu Font                  = /home/scp1/usr/share/projectm/fonts/consolab.ttf
+Title Font                 = /home/scp1/usr/share/projectm/fonts/consola.ttf
+
+Window Height              = 1080
+Window Width               = 1920
+Fullscreen                 = false
+Texture Size               = 512
+Mesh X                     = 192
+Mesh Y                     = 144
+Aspect Correction          = 0
+FPS                        = 45
+Shuffle Enabled            = 0
+Easter Egg Parameter       = 42
+Hard Cut Sensitivity       = 12
+Preset Duration            = 90
+Smooth Preset Duration     = 18
+Smooth Transition Duration = 9
+Soft Cut Ratings Enabled   = 1
