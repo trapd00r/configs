@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #       crafted  2009-04-24
-#         mtime  2012-11-21 15:27:02
+#         mtime  2013-04-06 11:04:46
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -43,18 +43,18 @@ set font profont-24
 #>
 #< binds
 #< applications
-bind c                 exec LC_CTYPE=en_US.UTF-8 /home/scp1/bin/wrxvt -name sid
-bind C                 exec /home/scp1/bin/wrxvt -name sid -fg '#d5d5d5'
+bind c                 exec /home/scp1/bin/wrxvt -name sid
+bind C                 exec /home/scp1/bin/wrxvt -name sid -fg '#fff' bg '#1c1c1c'
 bind v                 exec wrxvt -name sid -bg '#121212' -fg '#bbaaaa'
 bind x                 exec xterm -name UXTerm
 bind X                 exec xterm -name XTerm
 bind e                 exec rp-runorraise firefox
-bind E                 exec rp-runorraise firefox -search "$(xclip -o)"
-bind M-e               exec rp-runorraise firefox -no-remote
-bind M-E               exec rp-runorraise firefox -safe
+bind E                 exec rp-runorraise deluge
+#bind M-e               exec rp-runorraise firefox -no-remote
+#bind M-E               exec rp-runorraise firefox -safe
 bind M-f               exec rp-runorraise fuck
 
-definekey top C-Return exec firefox -new-tab "`xclip -o`"
+#definekey top C-Return exec firefox -new-tab "`xclip -o`"
 definekey top S-Return getsel
 definekey top M-Return exec x-terminal-emulator
 definekey top Pause    exec ossmix vmix0.pcm8 -- +2
