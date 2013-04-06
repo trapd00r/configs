@@ -1,9 +1,9 @@
-### vim: ft=ratpoison fde fdm=marker fmr=#<,#> fdc=3:
+### vim: ft=ratpoison fde fdm=marker fmr=#<,#> fdc=3 fdl=1:
 #< ${HOME}/etc/ratpoisonrc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #       crafted  2009-04-24
-#         mtime  2013-04-06 11:04:46
+#         mtime  2013-04-06 14:21:38
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -26,22 +26,25 @@ set maxsizegravity    c
 set inputwidth        0
 set historyexpansion  1
 set historycompaction 1
-set historysize       100
+set historysize       1000
 set winliststyle      column
 set barpadding        8 8
 set border            0
 set bgcolor           #080808
-set bwcolor           #121212
+set bwcolor           #0c0c0c
 set fgcolor           #d75f00
 set fwcolor           #afd700
 #< hack - we need to set font once per head
 nextscreen
-set font profont-24
+set font Terminus:weight:bold:size=12
 nextscreen
-set font profont-24
+set font Terminus:weight:bold:size=12
 #>
 #>
 #< binds
+unbind w
+bind w exec ~/dev/utils/rp-window-menu
+bind g exec ~/dev/utils/rp-groups-menu
 #< applications
 bind c                 exec /home/scp1/bin/wrxvt -name sid
 bind C                 exec /home/scp1/bin/wrxvt -name sid -fg '#fff' bg '#1c1c1c'
@@ -85,7 +88,7 @@ bind M-k               kill
 bind w                 windows
 bind W                 windows
 #>
-exec rpws init 3 -k
+exec rpws init 5 -k
 #< groups / workspaces
 bind s-n               gnext
 bind s-p               gprev
