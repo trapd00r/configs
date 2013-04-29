@@ -1,10 +1,11 @@
 "!/home/scp1/bin/wim --remote-wait-silent vimsy
+" vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
 "
-" ${VIMRUNTIME}/vimrc ⚡ ${HOME}/etc/vim/vimrc
+" ${VIMRUNTIME}/vimrc
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 "         owner  Magnus Woldrich <m@japh.se>
 "         btime  2009-04-24
-"         mtime  2012-07-26 12:42:48
+"         mtime  2013-04-29 13:34:29
 "         perms  You are free to use things you may find useful here.
 "                Would my tweaks happen to give you a raise or fetch you a
 "                girlfriend, it goes without saying I'm counting on you
@@ -15,33 +16,33 @@
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 "
 
-set all&                                  " Vendors tend to screw things up
-set nocp                                  " I'm hardly compatible
+set all&
+set nocp
 set exrc
 filetype plugin indent on
 
-set nors                                  " This might not be needed, but these
-set t_ti=                                 " has the same effect as disabling
-set t_te=                                 " the alternate screen buffer.
+"set nors                                  " This might not be needed, but these
+"set t_ti=                                 " has the same effect as disabling
+"set t_te=                                 " the alternate screen buffer.
 
 
-set autoread                              " lovely with 'hidden and 'acd
-set autochdir                             " ahaaha, the sweetest thing
+set autoread
+set autochdir
 set autoindent
 
-let &rtp = $VIMRUNTIME                    " don't do this, I know what I'm doing
+let &rtp = $VIMRUNTIME
 
 let &termencoding = &encoding
 
-set backspace=start,indent,eol " unless you can come up with something better
-set cmdheight=2                " try to avoid 'Press ENTER to continue' prompts
-set clipboard=unnamedplus,autoselect " X clipboard stuff
+set backspace=start,indent,eol
+set cmdheight=2 " try to avoid 'Press ENTER to continue' prompts
+set clipboard=unnamedplus,autoselect
 set complete=.,w,b,u,t,i,d,k,kspell
 set cinoptions=:0,l1,t0,g0,(0
 set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 
 if &ft != 'man' || &ft != 'help'
-  set colorcolumn=+1
+  "set colorcolumn=+1
 endif
 
 set completeopt+=menuone
@@ -50,11 +51,31 @@ set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:2,vertical
 set display+=lastline,uhex
 set expandtab
-set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,fold:\ ,diff:\ ,vert:\|
-set foldcolumn=2
-set foldmethod=marker
-"set foldmarker=#+,#-
+set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
+"< folding
+set foldcolumn=5
 set foldenable
+"set foldclose=all
+set foldlevel=1
+set foldlevelstart=1
+set foldmarker=#<,#>
+set foldmethod=marker
+set foldminlines=2
+set foldnestmax=4
+set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo
+fun! Foldtext()
+  let line = getline(v:foldstart)
+  let sub  = substitute(line, '\v^["#!][<]\s+', '', 'g')
+  "let v:folddashes="➤〚◘⭔➳❋✘ ➳   ↴⤵⇵⤵⬎჻"
+  "let v:folddashes="➤⇵〚◘⭔❋✘   ⇲ ⬎ ⇲ ↴➳➳⤵⇵⤵჻"
+  let v:folddashes="▌⇆ "
+
+"  return v:folddashes . sub . ' ' . v:foldstart . ', ' . v:foldend
+"  return v:folddashes . sub . ' ' . v:foldend
+  return v:folddashes . sub . ' '
+endfun
+set foldtext=Foldtext()
+">
 set formatoptions=tcrqln1
 set guiheadroom=0
 set grepprg=internal
@@ -63,8 +84,9 @@ set grepprg=internal
 "set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
-set helpfile=~/dev/vim/runtime/doc/help.txt
-set helpheight=8
+set helpfile=/home/scp1/dev/vim/runtime/doc/help.txt
+set helpheight=5
+set helplang=en,sv,de
 set hidden
 set history=50
 set hlsearch
@@ -76,18 +98,26 @@ set isfname+=:
 set laststatus=2
 set lazyredraw
 set list
-"set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪:conceal=▆
-set listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:←,extends:→ sbr=↪:conceal=·
-set magic
-set makeprg=mymake
-set maxmapdepth=500
-set matchpairs+==:;
-set matchpairs+=<:>
-set matchtime=10
-set maxfuncdepth=1000
-set maxmemtot=200000
-set modeline
-set modelines=2
+"set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥sbr=↪:conceal=⌦
+set   listchars=eol:ñ
+"set   listchars+=tab:»
+set   listchars+=trail:·
+set   listchars+=nbsp: 
+set   listchars+=precedes: 
+set   listchars+=extends: 
+set   listchars+=conceal:⌦
+set   showbreak=↪
+
+set   magic
+set   makeprg=mymake
+set   maxmapdepth=500
+set   matchpairs+==:;
+set   matchpairs+=<:>
+set   matchtime=20
+set   maxfuncdepth=1000
+set   maxmemtot=200000
+set   modeline
+set   modelines=2
 set nobackup
 set nocscopeverbose
 set noequalalways
@@ -114,7 +144,7 @@ set report=0
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 
-"set scrolloff=1
+set scrolloff=40
 set ssop=buffers,folds,globals,help,localoptions,options,resize
 set shiftwidth=2
 set shortmess=aIoOT
@@ -136,8 +166,8 @@ set textwidth=80
 set title
 set ttyfast
 set undofile
-set undolevels=512
-set undodir=/mnt/Docs/Backup/undo,.
+set undolevels=1024
+set undodir=~/var/vim/undo
 set visualbell t_vb=
 set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
 "set viminfo='100,<50,s10,h,%
@@ -153,6 +183,10 @@ set whichwrap=b,s,h,l,<,>
 
 set nomore
 
+set term=rxvt-unicode-256color
+" force an update of the statusline
+let &ro =&ro
+
 syntax on
 setlocal nospell spelllang=en_us
 
@@ -163,22 +197,29 @@ if $TERM == 'linux'
   set nolist
   set colorcolumn+=81
 
-  hi ColorColumn term=none  cterm=none ctermbg=0
-  hi CursorLine  term=none  cterm=none ctermbg=none
+  hi CursorLine term=none  cterm=bold ctermbg=0
+  hi! link CursorColumn CursorLine
+  hi! link ColorColumn  CursorLine
 else
   color neverland-ansi-two
 endif
 
-" That was some of the options, now we can start with the rest of the vimrc.
+"< That was some of the options, now we can start with the rest of the vimrc.
 " I want to keep &rtp as short as I can, so I'm no longer loading these files
 " dynamicly.
+hi Normal ctermfg=225 ctermbg=232
 source $VIMRUNTIME/nancy/000-ft.vim           " ftdetect
 source $VIMRUNTIME/nancy/000-functions.vim    " functions
 source $VIMRUNTIME/nancy/001-commands.vim     " user-defined commands
 source $VIMRUNTIME/nancy/009-abbrev.vim       " my wordlist of abbrevations
 source $VIMRUNTIME/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
+color neverland-ansi_bg
 source $VIMRUNTIME/nancy/090-syntax.vim       " my syntax defs
 source $VIMRUNTIME/nancy/099-status.vim       " status, man
+">
+let &t_SI = "\<Esc>]12;#ff5f00\x7"
+let &t_EI = "\<Esc>]12;#ff0000\x7"
+
 
 "filetype plugin indent on
 
@@ -209,4 +250,3 @@ source $VIMRUNTIME/nancy/099-status.vim       " status, man
 " \      exe 'colors' s:new_colors
 " \   | endif
 " }}}
-" vim: fdm=marker:fen:et:sw=2:smc=80:
