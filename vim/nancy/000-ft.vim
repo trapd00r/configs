@@ -30,7 +30,7 @@ let g:indent_guides_auto           = 0
 let g:lua_subversion               = 0
 let g:lua_version                  = 5
 let g:mpc_lyrics_use_cache         = 1
-let g:mpd_host                     = '192.168.1.128'
+let g:mpd_host                     = '192.168.1.18'
 let g:mpd_port                     = 6600
 let g:netrw_http_cmd               = 'wget'
 let g:netrw_http_xcmd              = '-q -O'
@@ -60,33 +60,34 @@ let g:vimsyn_embed                 = 'p'
 let g:vimsyn_folding               = 'afp'
 let g:vt_author                    = 'Magnus Woldrich'
 let g:vt_email                     = 'm@japh.se'
-let g:vt_template_dir_path         = '~/.vim/templates/'
+let g:vt_template_dir_path         = '~/etc/vim/templates/'
 let g:xclipboard_pipe_path         = '/home/scp1/etc/vim/xclipboard.fifo'
 let g:xf86conf_xfree86_versio      = 2
 
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
-au BufWrite           ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
-au BufWrite           ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
-au BufRead            ~/etc/feh/keys call Filetype_feh()
-au BufRead,BufNewFile *.overtime     setl ft=overtime
-au BufRead,BufNewFile *.*htm*,*.xml  setl sw=1
-au BufRead,BufNewFile *.go           setl ft=go
-au BufRead,BufNewFile *.css          setl sw=2
-au BufNewFile         *.txt          setl cc=
-au Filetype           gitcommit      call ToggleSpell()
-au Filetype           help           call Filetype_Help()
+au BufWrite           ~/.irssi/scripts/*.pl  %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+au BufWrite           ~/.irssi/*             %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+au BufRead            ~/etc/feh/keys         call Filetype_feh()
+au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
+au BufRead,BufNewFile *.overtime             setl ft=overtime
+au BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
+au BufRead,BufNewFile *.go                   setl ft=go
+au BufRead,BufNewFile *.css                  setl sw=2
+au BufNewFile         *.txt                  setl cc=
+au Filetype           gitcommit              call ToggleSpell()
+au Filetype           help                   call Filetype_Help()
 
-au BufNewFile         *.vim silent! 0r $VIMRUNTIME/templates/template.vim
-au BufNewFile         *.c   silent! 0r $VIMRUNTIME/templates/template.c
+au BufNewFile         *.vim                  silent! 0r $VIMRUNTIME/templates/template.vim
+au BufNewFile         *.c                    silent! 0r $VIMRUNTIME/templates/template.c
 
 "< highlight trailing whitespace
 "    when not typing on the current line
 "    when we open new buffers
 "  and conceal it if 'cole is set
 syn match wsEOL /\s\+$/ conceal cchar=♥
-highlight wsEOL cterm=bolditalicunderline ctermfg=196 ctermbg=233  
+highlight wsEOL cterm=bolditalicunderline ctermfg=196 ctermbg=233
 autocmd BufWinEnter   * match wsEOL /\s\+$/
 autocmd InsertEnter   * match wsEOL /\s\+\%#\@<!$/
 autocmd InsertLeave   * match wsEOL /\s\+$/
