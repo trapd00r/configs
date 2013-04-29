@@ -1,41 +1,39 @@
-# sid /etc/fstab
-# 2012-12-14 14:44:50
-UUID=ff99ae49-f1c8-4704-8fbd-adea5b4b901b /              ext3       defaults      0 1
-UUID=a8b682d0-705e-483d-acb4-6e49a022e987 /boot          ext2       defaults      0 0
-UUID=4329a99b-f202-402d-8f3d-36f0f55bbd34 /home/scp1     ext3       defaults      0 0
-tmpfs                                     /tmp           tmpfs      nodev,nosuid  0 0
-UUID=69110325-a4b1-4932-b244-ffbd890a4bc1 swap           swap       defaults      0 0
+## vim: smc&:
+# pid /etc/fstab
+# 2013-04-29 20:10:17
+#
+proc                                      /proc             proc        defaults             0 0
+/dev/scd0                                 /media/cdrom0     udf,iso9660 nofail,user,noauto   0 0
+UUID=afdabcb2-e075-4121-b9d6-d3d6f4520964 /                 ext3        errors=remount-ro    0 1
+UUID=3687d366-cb39-4a9f-b850-9428e2961531 /boot             ext2        defaults             0 2
 
-LABEL=mail                                /mnt/mail      ext2       rw,nosuid,nodev,noexec,noauto,user,async,noatime,user,nofail 0 0
-LABEL=ARCHBOOT                            /mnt/archboot  iso9660    ro,loop,user,nofail                                          0 0
-UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/books     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=b7d33687-76c1-40a0-8674-e566f1c0bc06 /mnt/mail      ext2       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=15c8afd8-409f-44bd-9340-77bb91342f45 /mnt/music1    ext3       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=86fc2ccf-3661-402c-8234-a730bcc408ed /mnt/music3    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=a3ba13d3-ef05-440e-ab17-0c18bb0fb3d6 /mnt/music4    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=e033f03c-9a56-437b-b10d-90f0515a96c4 /mnt/music5    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=901be115-a506-4ec2-bde8-2f1066eacc95 /mnt/music7    ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/books        ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1       ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=a3ba13d3-ef05-440e-ab17-0c18bb0fb3d6 /mnt/music4       ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6       ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/porn1        ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/porn2        ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/porn3        ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/porn5        ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/porn6        ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=807d8a9a-bdea-46fa-bd03-b4499d6d0ee7 /mnt/porn7        ext3        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=1b26ea5e-e77c-4540-9ad3-f11423e45d57 /mnt/porn8        ext3        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=768b4330-ad5d-4116-ac65-826bb0490751 /mnt/ssd          ext2        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/tv1          ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/tv4          ext4        nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
+tmpfs                                     /home/scp1/shm    tmpfs       rw,size=20G,noexec,nodev,nosuid,uid=1000,gid=1000,mode=1700 0 0
+UUID=2DE4111F4995F90C                     /mnt/micke        ntfs        rw,noexec,nodev,nosuid,umask=0000 0 0
 
-UUID=270a3bc6-7cd9-468d-8a28-f393d8addcc6 /mnt/mvids     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/porn1     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/porn2     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/porn3     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=2ee72fe5-5972-44a0-bae0-53efeeb69cae /mnt/porn4     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/porn5     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/porn6     ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/tv1       ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
-UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/tv4       ext4       rw,nosuid,nodev,noexec,auto,user,async,noatime               0 0
+sshfs#root@n7:/storage/emulated/0         /home/scp1/n7     fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#root@n7:/storage/emulated/0/APK     /home/scp1/apk    fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#scp1@bang:                          /home/scp1/bang   fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#scp1@cam:                           /home/scp1/cam    fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#scp1@laleh:/                        /home/scp1/laleh  fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#scp1@laleh:http                     /home/scp1/srv    fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#user@n900v1:                        /home/scp1/n900v1 fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#user@n900v2:                        /home/scp1/n900v2 fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
+sshfs#user@n900v3:                        /home/scp1/n900v3 fuse        allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
 
-
-scp1@192.168.1.5:http                     /home/scp1/srv fuse.sshfs rw,nosuid,nodev,noexec,noauto,allow_other,_netdev            0 0
-scp1@192.168.1.5:                         /mnt/laleh     fuse.sshfs rw,nosuid,nodev,noexec,noauto,allow_other,_netdev            0 0
-mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5,/mnt/porn6         /mnt/erotica fuse mlimit=500M,user,allow_other  0 0
-mhddfs#/mnt/music1,/mnt/music3,/mnt/music4/,/mnt/music5,/mnt/music6,/mnt/music7 /mnt/audio    fuse mlimit=500M,user,allow_other  0 0
-
-
-#dev/sdd1: UUID="1854d9f5-9710-4d43-9280-b030d0e30a74" TYPE="ext4"
-#/dev/sdg1: LABEL="music_6" UUID="bba48a87-c456-4786-85d3-f608b8fb11b2" TYPE="ext4"
-
-# vim: ft=fstab et sw=2 fdm=marker tw=130 cc=+1,42 fdm=marker fen:
+mhddfs#/mnt/porn2/jav,/mnt/porn3/.new,/mnt/porn4/.new,/mnt/porn5/tmp,/mnt/tv1/.new,/mnt/books/Javsort /home/scp1/jav fuse allow_other,logfile=/home/scp1/var/log/mhddfs.jav.log 0 0
+mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5/,/mnt/porn6,/mnt/porn7                  /mnt/erotica   fuse allow_other,logfile=/home/scp1/var/log/mhddfs.erotica.log 0 0
+mhddfs#/mnt/porn4/pix,/mnt/porn5/pix                                                                  /home/scp1/pix fuse allow_other,logfile=/home/scp1/var/log/mhddfs.pix.log 0 0
