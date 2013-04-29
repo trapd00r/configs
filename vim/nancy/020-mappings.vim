@@ -4,20 +4,32 @@
 
 let mapleader = ';'
 
+map <C-s> :call RemoveTrailingCrap()<cr>
+nnoremap b! :b1<cr>
+nnoremap b' :b2<cr>
+nnoremap b# :b3<cr>
+nnoremap b$ :b4<cr>
+nnoremap b% :b5<cr>
+nnoremap b& :b6<cr>
+nnoremap b/ :b7<cr>
+nnoremap b( :b8<cr>
+nnoremap b) :b9<cr>
+nnoremap b= :b10<cr>
+
 nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nmap <leader>O :%w >> ~/vim_output<CR>
 "nmap <leader>o :exec ':.w >> ' . eval(string( xclipboard_pipe_path ))<CR>
 
 " searching                                                                  {{{
-nnoremap <silent> ! *:call HL_Search_Cword()<CR>
+"nnoremap <silent> ! *:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#ff0000'
-nnoremap <silent> # #:call HL_Search_Cword()<CR>
+"nnoremap <silent> # #:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#56ff00'
-nnoremap <silent> * *:call HL_Search_Cword()<CR>
+"nnoremap <silent> * *:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#ff33'
-nnoremap <silent> N N:call HL_Search_Cword()<CR>
+"nnoremap <silent> N N:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#030407'
-nnoremap <silent> n n:call HL_Search_Cword()<CR>
+"nnoremap <silent> n n:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#030407
 " user interface                                                             {{{
 nnoremap <CR>   za
