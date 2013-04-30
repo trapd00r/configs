@@ -1,4 +1,4 @@
-### vim: ft=mplayerconf:fdm=marker:et:sw=2 smc=80:
+### vim: ft=mplayerconf:fdm=marker:fmr=#{{{,#}}}:et:sw=2 smc&:
 ###
 #      ${HOME}/etc/mplayer/config
 #      ${XDG_CONFIG_HOME}/mplayer/config
@@ -17,6 +17,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
 ###
+
 
 [n900]#{{{
 #alang              = en
@@ -58,7 +59,7 @@ use-filename-title = 1
 volume             = 100
 utf8               = 1
 quiet              = 1
-identify           = 1
+#identify           = 1
 #}}}
 [n950]#{{{
 #alang              = en
@@ -108,7 +109,7 @@ af                 = stats,volume=10,volnorm
 ao                 = oss
 double             = 1
 ffactor            = 10
-lavdopts           = threads=3
+lavdopts           = threads=8
 embeddedfonts      = 1
 fixed-vo           = 1
 font               = 'Anonymous Pro'
@@ -143,44 +144,82 @@ use-filename-title = 1
 volume             = 80
 utf8               = 1
 #}}}
+#
+#
+#
 [sid]#{{{
-playing-msg        = "\e[m\n\n  \e[38;5;100m⌃\e[38;5;220;3m LISTEN TO THIS MOTHERFUCKER\e[m\e[38;5;106;1;3m\e[38;5;100m ⌄\e[m\n\t\e[38;5;32;3;1m${path}\e[m\n\n\e[38;5;233m"
-alang              = eng,sv,ger,jap,
-#af                 = volnorm
-ao                 = oss,
+#playing-msg        = "\e[m\n\n  \e[38;5;100m⌃\e[38;5;220;3m LISTEN TO THIS MOTHERFUCKER\e[m\e[38;5;106;1;3m\e[38;5;100m ⌄\e[m\n\t\e[38;5;32;3;1m${path}\e[m\n\n\e[38;5;233m"
+#heartbeat-cmd      = "printf '\033c'"
+alang              = sv,eng,ger,jap,
+#af                 = extrastereo
+af                 = volnorm
+#af-adv             = force=5
+ao                 = pulse,alsa,
 double             = 1
 ffactor            = 10
-#lavdopts           = threads=4
+#vfm = lavf
+vfm = lavf,ffmpeg,dshow,vfw,realvid,
+
+### funkar
+lavdopts=fast=1:threads=8:skiploopfilter=nonkey
+###
+#idx=1
+#lavcopts=sc_threshold=1000000000
+#lavdopts=fast:threads=8:skiploopfilter=nonkey:wait_keyframe=1
+#lavdopts           = skiploopfilter=all:threads=8:wait_keyframe
+#lavdopts           = skiploopfilter=all:skipframe=nonref:threads=8:wait_keyframe
+#loop=1
+#geometry=50%:50%
+stop-xscreensaver=1
+use-filename-title=1
+codecpath = /usr/lib/codecs
 embeddedfonts      = 1
 fixed-vo           = 1
-font               = Monospace
-vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdpau,
-nosub              = 1
-vo                 = vdpau,
+font               = Arial:style=Bold
+fontconfig         = 0
+
+noslices=1
+#vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdpau,
+#nosub              = 1
+#vo                 = vdpau,
 #vo                 = vdpau,gl_nosw,xvmc,
 #vf                 = cropdetect
 #vf                 = screenshot
-#vfm                = ffmpeg,dshow,vfm
-#afm                = ffmpeg
-afm                = liba52,libdca,hwac3,
+#afm                = libdca,hwac3,ffmpeg,dshow,vfm,
+#afm                = libdca,hwac3,dvdpcm,libdca,mp3lib,tremor,faad,realaud,ffmpeg,dshow,realaud,pcm,
+vc                 = ffh264vdpau,ffodivxvdpau,ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,
 #fs                 = 1
-#lavdopts=threads=8
 mixer              = /dev/mixer
-msglevel           = all=4
+#msglevel           = all=2
 #monitoraspect      = 16:9
 msgcolor           = 1
-msgmodule          = 1
-noborder           = 1
-nograbpointer      = 1
+msgmodule          = 0
+noborder           = 0
+nograbpointer      = 0
 #nokeepaspect       = 1
 nolirc             = 1
+nolircc            = 1
+#correct-pts        = 1
+#noar               = 1
+nocache            = 1
+#autoaspect         = 1
+#channels           = 2
+#idx                = 1
+#ni                 = 1
+#nobps              = 1
+#noextbased         = 1
+referrer           = "http://youtu.be/NRHYqhylHCA"
+#tskeepbroken       = 1
+#channels           = 6
+#ignore-start       = 1
+demuxer            = +lavfpref
 nojoystick         = 1
 osd-duration       = 2000
 osdlevel           = 3
 prefer-ipv4        = 1
 sid                = 0
-slang              = en,sv,ger,
-spuaa              = 0
+slang              = en,sv,ger,jap,
+spuaa              = 8
 #spualign           = -1
 sub-bg-alpha       = 0
 sub-bg-color       = 0
@@ -193,9 +232,12 @@ sub-bg-alpha       = 0
 unicode            = 1
 unrarexec          = /usr/bin/unrar
 #use-filename-title = 1
-volume             = 10
+volume             = 18
 utf8               = 1
 #}}}
+#
+#
+#
 [rambo]#{{{
 alang              = sv
 ao                 = oss,alsa,
@@ -205,7 +247,7 @@ fixed-vo           = 1
 font               = Arial
 input              = conf='/home/scp1/etc/mplayer/input.conf'
 fs                 = 1
-lavdopts           = threads=4
+lavdopts           = threads=8
 monitoraspect      = 16:9
 msgcolor           = 1
 msgmodule          = 1
@@ -225,6 +267,9 @@ vc                 = ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdp
 vo                 = vdpau
 volume             = 100
 #}}}
+#
+#
+#
 [porn]#{{{
 noborder           = 1
 osd-duration       = 3000
@@ -234,3 +279,35 @@ fixed-vo           = 1
 fs                 = 1
 unrarexec          = /usr/bin/unrar
 #}}}
+
+
+[default]
+ao=pulse,alsa
+geometry=50%:50%
+ontop=yes
+softvol=yes
+use-filename-title=yes
+#vf=screenshot
+#vo=gl,xv,x11
+volume=20
+font=Arial
+
+[hd]
+lavdopts=fast=1:skiploopfilter=all
+vfm=ffmpeg
+
+[hd-low]
+lavdopts=fast=1:skiploopfilter=all:lowres=1
+vfm=ffmpeg
+
+[reset]
+brightness=0
+contrast=0
+hue=0
+saturation=0
+
+[gapless]
+ao=pcm:nowaveheader:fast:file=aufifo
+vc=null
+vo=null
+
