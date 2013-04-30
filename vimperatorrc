@@ -35,7 +35,7 @@ set   eventignore=
 set noexrc
 set   fileencoding=UTF-8
 set nofocuscontent
-set fullscreen
+set nofullscreen
 set   gui-=rlb
 set   hintinputs=label,name,value
 set   hintmatching=wordstartswith
@@ -60,7 +60,8 @@ set   shellcmdflag=-c
 set noshowmode
 set   showstatuslinks=1
 set   smartcase
-set   status=tabcount,position
+"set   status=tabcount,position
+set status=input,location,tabcount,position
 set   suggestengines=
 set notabnumbers
 "set   titlestring=Fx
@@ -88,14 +89,14 @@ set   wildmode=list:full
 "< MAPPINGS
 silent! mapclear
 
-nnoremap L     :bNext 2<CR>
-nnoremap H     :bprev 2<CR>
-nnoremap <C-l> :bnext 4<CR>
-nnoremap <C-h> :bprev 4<CR>
-nnoremap l     :bnext<CR>
-nnoremap h     :bprev<CR>
-"inoremap <C-l> :bnext<CR>
-"inoremap <C-h> :bprev<CR>
+nnoremap L     :bNext 2<cr>
+nnoremap H     :bprev 2<cr>
+nnoremap <C-l> :bnext 4<cr>
+nnoremap <C-h> :bprev 4<cr>
+nnoremap l     :bnext<cr>
+nnoremap h     :bprev<cr>
+"inoremap <C-l> :bnext<cr>
+"inoremap <C-h> :bprev<cr>
 
 "silent map !  b1<cr>
 "silent map \' b2<cr>
@@ -114,37 +115,56 @@ nnoremap <A-c> :noscript toggleperm<cr>
 map <M-space> usermode!
 map <M-1>     tabgroups switch 
 
-nnoremap d     :tabclose!<CR>
-nnoremap <f1>  :set usermode!<CR>
+nnoremap d     :tabclose!<cr>
+nnoremap <f1>   :set usermode!<cr>
+cnoremap <f1>   :set usermode!<cr>
+nnoremap <f2>   :so ~/etc/vimperatorrc<cr>:echoe '~/etc/vimperatorrc reloaded'<cr>
+cnoremap <f2>   :so ~/etc/vimperatorrc<cr>:echoe '~/etc/vimperatorrc reloaded'<cr>
+nnoremap <f3>   :set! browser.download.dir<cr>:set! browser.download.dir=
+cnoremap <f3>   :set! browser.download.dir<cr>:set! browser.download.dir=
+nnoremap <f4>   :set! browser.display.use_document_fonts=1<cr>
+nnoremap <S-f4> :set! browser.display.use_document_fonts=0
+nnoremap <C-f4> :set! browser.display.use_document_fonts=0
+nnoremap <A-f4> :set! browser.display.use_document_fonts=1
+nnoremap <f5>   :set! browser.display.use_system_colors!<cr>
+cnoremap <f5>   :set! browser.display.use_system_colors!<cr>
+
 nnoremap 0     :brewind<cr>
 nnoremap ^     :bfirst<cr>
 nnoremap $     :blast<cr>
-nnoremap <C-j> 25j
-nnoremap <C-k> 25k
-nnoremap <C-J> 30J
-nnoremap <C-K> 30K
 
+
+nnoremap <C-w> <esc>
+nnoremap <C-q> <esc>:xall
 
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <A-k> <Up><Up><Up>
 cnoremap <A-j> <Down><Down><Down>
 
+inoremap <C-v> <S-Ins>
+nnoremap <C-v> <esc>:<S-Ins><space>
 cnoremap <C-v> <S-Ins><space>
+nnoremap <C-v> <esc>:<S-Ins><space>
 
 nnoremap <C-k> <Up>
 nnoremap <C-j> <Down>
 
-nnoremap j     8j
-nnoremap k     8k
-nnoremap J     16j
-nnoremap K     16k
-nnoremap <C-j> 24j
-nnoremap <C-k> 24k
-nnoremap <A-j> 48j
-nnoremap <A-k> 48k
-nnoremap <C-a> g0
-nnoremap <C-e> g$
+nnoremap j       8j
+nnoremap k       8k
+nnoremap J       16j
+nnoremap K       16k
+nnoremap <C-j>   24j
+nnoremap <C-k>   24k
+nnoremap <C-S-j> 40j
+nnoremap <C-S-k> 40k
+nnoremap <A-j>   32j
+nnoremap <A-k>   32k
+nnoremap <A-S-j> 48j
+nnoremap <A-S-k> 48k
+nnoremap <C-e>   g$
+nnoremap <C-a>   g0
+
 
 
 "< firefox preferences
@@ -189,6 +209,7 @@ set! zoom.minPercent=50
 ">
 
 color  desert_revisited
+hi ErrorMsg font-family: Profont; font-weight: bold; font-size: 16pt; color: #ff0000; background-color: #121212; padding: 0px 1px; border: none
 
 "nnoremap <S-s> :call stop_loading()<cr>
 
@@ -215,8 +236,8 @@ color  desert_revisited
 "        document.getElementById(name).collapsed ^= 1;
 "    }
 "EOF
-"map <silent> <F8> :js toggle_element('toolbar-menubar')<CR>
-"map <silent> <F9> :js toggle_element('nav-bar')<CR>
+"map <silent> <F8> :js toggle_element('toolbar-menubar')<cr>
+"map <silent> <F9> :js toggle_element('nav-bar')<cr>
 "bmark -keyword=mozjscoreref https://developer.mozilla.org/Special:Search?search=%s&type=fulltext
 "ca j mozjscoreref
 "style -name tab-style-fix chrome://* <<EOM
