@@ -1,11 +1,11 @@
 "!/home/scp1/bin/firefox
-" vim: ft=vimperator:fdm=marker:fmr="<,">:fen:et:sw=2:smc&:
+" vim: ft=vimperator:fdm=marker:fmr="<,">:fen:fdl=0:et:sw=2:smc&:
 "
 " ${HOME}/etc/vimperatorrc
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 "         owner  Magnus Woldrich <m@japh.se>
 "         btime  2009-04-24
-"         mtime  2013-01-26 12:02:49
+"         mtime  2013-04-30 07:11:09
 "         perms  You are free to use things you may find useful here.
 "                Would my tweaks happen to give you a raise or fetch you a
 "                girlfriend, it goes without saying I'm counting on you
@@ -17,63 +17,31 @@
 
 "set rtp=~/etc/vimperator
 
+"autocmd PageLoad '^https?://(?:www\.)?(?:youtu\.be/|youtube\.com/watch\?.*?v=)[0-9A-Za-z-_]+' :silent !splay '<url>' &
 
 "< OPTIONS
-"< firefox preferences
-set! Accessibility.typeaheadfind.autostart=0
-set! Accessibility.typeaheadfind=0
-set! Browser.backspace_action=0
-set! Browser.ctrlTab.previews=1
-"set! Browser.display.auto_quality_min_font_size=0
-set! Browser.display.auto_quality_min_font_size=22
-set! Browser.display.normal_lineheight_calc_control=2
-set! Browser.display.show_image_placeholders=0
-set! Browser.display.use_document_fonts=0
-set! Font.name.monospace.x-western="MonteCarlo"
-set! Font.name.sans-serif.x-western="MonteCarlo"
-set! Font.name.serif.x-western="MonteCarlo"
-set! Browser.display.use_system_colors=1
-set! Browser.download.dir="/home/scp1/dump"
-set! Browser.enable_automatic_image_resizing=0
-set! Browser.fullscreen.animateUp=0
-set! Browser.newtabpage.columns=5
-set! Browser.newtabpage.rows=5
-set! Browser.panorama.animate_zoom=0
-set! Browser.tabs.animate=0
-set! Browser.tabs.closeWindowWithLastTab=0
-set! Browser.tabs.drawInTitlebar=1
-set! Browser.tabs.tabMinWidth=50
-set! Browser.tabs.tabMaxWidth=150
-set! Browser.tabs.insertRelatedAfterCurrent=0
-set! Browser.tabs.onTop=0
-set! Extensions.getAddons.showPane=0
-set! Network.http.pipelining.maxrequests=8
-set! Network.http.pipelining=1
-set! Zoom.minPercent=50
-"set! Network.dnsCacheExpiration=0
-">
 "< vimperator options
 set   activate=addons,downloads,extoptions,help,homepage,quickmark,paste
-set noanimations
-set noapptab
+"set noanimations
+"set noapptab
 set noautocomplete
 set   cdpath=~/srv/japh.se/,,
 set   complete=b
-set   defsearch=d
+set   defsearch=duckduckgo
 set   editor="wrxvt -e wim -f -c ':set ft=perl'"
 set   encoding=UTF-8
-set noerrorbells
+"set noerrorbells
 set   eventignore=
 set noexrc
 set   fileencoding=UTF-8
 set nofocuscontent
-set nofullscreen
+set fullscreen
 set   gui-=rlb
 set   hintinputs=label,name,value
 set   hintmatching=wordstartswith
-set   history=15
+set   history=150
 set   hlsearch
-set noignorecase
+"set noignorecase
 set   loadplugins
 set   maxitems=30
 set   messages=20
@@ -82,10 +50,11 @@ set   online
 set   pageinfo=gfm
 set   popups=tab
 set noprivate
-set   sanitizeitems=downloads,sessions,cookies,formdata,history,cache
+"set   sanitizeitems=downloads,sessions,cookies,formdata,history,cache
+set   sanitizeitems=downloads
 set   sanitizetimespan=1
 set   scroll=0
-set   scrollbars
+set noscrollbars
 set   shell=/bin/zsh
 set   shellcmdflag=-c
 set noshowmode
@@ -94,7 +63,7 @@ set   smartcase
 set   status=tabcount,position
 set   suggestengines=
 set notabnumbers
-set   titlestring=Fx
+"set   titlestring=Fx
 set   toolbars=addons,nobookmarks,nomenu,nonavigation,tabs
 set   urlseparator=,\s
 set   verbose=0
@@ -128,36 +97,100 @@ nnoremap h     :bprev<CR>
 "inoremap <C-l> :bnext<CR>
 "inoremap <C-h> :bprev<CR>
 
-silent map !  b1<cr>
-silent map \' b2<cr>
-silent map #  b3<cr>
-silent map $  b4<cr>
-silent map %  b5<cr>
-silent map &  b6<cr>
-"silent map 7  b7<cr>
-silent map (  b8<cr>
-silent map )  b9<cr>
-silent map =  b10<cr>
+"silent map !  b1<cr>
+"silent map \' b2<cr>
+"silent map #  b3<cr>
+"silent map $  b4<cr>
+"silent map %  b5<cr>
+"silent map &  b6<cr>
+""silent map 7  b7<cr>
+"silent map (  b8<cr>
+"silent map )  b9<cr>
+"silent map =  b10<cr>
 
-nnoremap <C-c> :noscript toggletemp
+nnoremap <C-c> :noscript toggletemp<cr>
+nnoremap <C-d> :noscript toggleperm<cr>
+nnoremap <A-c> :noscript toggleperm<cr>
 map <M-space> usermode!
 map <M-1>     tabgroups switch 
 
 nnoremap d     :tabclose!<CR>
-nnoremap j     5j
-nnoremap k     5k
-nnoremap J     15j
-nnoremap K     15k
+nnoremap <f1>  :set usermode!<CR>
+nnoremap 0     :brewind<cr>
+nnoremap ^     :bfirst<cr>
+nnoremap $     :blast<cr>
 nnoremap <C-j> 25j
 nnoremap <C-k> 25k
 nnoremap <C-J> 30J
 nnoremap <C-K> 30K
 
+
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
+cnoremap <A-k> <Up><Up><Up>
+cnoremap <A-j> <Down><Down><Down>
+
+cnoremap <C-v> <S-Ins><space>
 
 nnoremap <C-k> <Up>
 nnoremap <C-j> <Down>
+
+nnoremap j     8j
+nnoremap k     8k
+nnoremap J     16j
+nnoremap K     16k
+nnoremap <C-j> 24j
+nnoremap <C-k> 24k
+nnoremap <A-j> 48j
+nnoremap <A-k> 48k
+nnoremap <C-a> g0
+nnoremap <C-e> g$
+
+
+"< firefox preferences
+set! accessibility.typeaheadfind.autostart='false'
+set! accessibility.typeaheadfind='false'
+set! browser.backspace_action=0
+set! browser.cache.disk.enable='false'
+set! browser.cache.disk.parent_directory=/dev/shm
+set! layout.css.dpi=0
+" actual DPI/96
+set! layout.css.devPixelsPerPx=0.98
+set! network.protocol-handler.expose.magnet=false
+set! browser.cache.memory.enable='true'
+set! browser.cache.memory.max_entry_size=2097152
+set! browser.ctrlTab.previews='true'
+set! browser.display.auto_quality_min_font_size=0
+set! browser.display.normal_lineheight_calc_control=2
+set! browser.display.show_image_placeholders='false'
+set! browser.display.use_document_fonts=0
+set! browser.display.use_system_colors='true'
+set! browser.download.dir="/mnt/porn7"
+set! browser.enable_automatic_image_resizing='false'
+set! browser.fullscreen.animateUp=0
+set! browser.newtabpage.columns=5
+set! browser.newtabpage.rows=5
+set! browser.panorama.animate_zoom='false'
+set! browser.tabs.animate='false'
+set! browser.tabs.closeWindowWithLastTab='false'
+set! browser.tabs.drawInTitlebar='true'
+set! browser.tabs.insertRelatedAfterCurrent='false'
+set! browser.tabs.onTop=0
+set! browser.tabs.tabMaxWidth=150
+set! browser.tabs.tabMinWidth=50
+set! extensions.getAddons.showPane=0
+set! font.name.monospace.x-western="MonteCarlo"
+set! font.name.sans-serif.x-western="MonteCarlo"
+set! font.name.serif.x-western="MonteCarlo"
+"set! network.http.pipelining.maxrequests=8
+"set! network.http.pipelining=1
+set! zoom.minPercent=50
+"set! Network.dnsCacheExpiration=0
+">
+
+color  desert_revisited
+
+"nnoremap <S-s> :call stop_loading()<cr>
 
 "< think of a way to exploit this
 "inoremap dw <C-right><C-w>
@@ -165,7 +198,6 @@ nnoremap <C-j> <Down>
 ">
 "< syntax
 "silent! hi clear
-color  desert_revisited
 ">
 "< JAVASCRIPT
 "javascript <<EOF
