@@ -1,6 +1,6 @@
 " Vim script to work like "less"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2006 Dec 05
+" Maintainer: Bram Moolenaar <Bram@vim.org>
+" Last Change:  2006 Dec 05
 
 " Avoid loading this file twice, allow the user to define his own script.
 if exists("loaded_less")
@@ -15,7 +15,7 @@ if argc() > 0
   while 1
     if filereadable(argv(s:i))
       if s:i != 0
-	sleep 3
+        sleep 3
       endif
       break
     endif
@@ -42,8 +42,8 @@ set hlsearch
 set incsearch
 nohlsearch
 " Don't remember file names and positions
-set viminfo=
-set nows
+"""set viminfo=
+"""set nows
 " Inhibit screen updates while searching
 let s:lz = &lz
 set lz
