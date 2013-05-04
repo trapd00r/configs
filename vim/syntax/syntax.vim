@@ -12,7 +12,8 @@ endif
 " If Syntax highlighting appears to be on already, turn it off first, so that
 " any leftovers are cleared.
 if exists("syntax_on") || exists("syntax_manual")
-  so <sfile>:p:h/nosyntax.vim
+  "so <sfile>:p:h/nosyntax.vim
+  so /home/scp1/dev/vim/runtime/syntax/nosyntax.vim
 endif
 
 " Load the Syntax autocommands and set the default methods for highlighting.
