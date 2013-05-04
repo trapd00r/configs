@@ -66,6 +66,7 @@ or directly to L<m@japh.se>
   CPAN ID: WOLDRICH
   m@japh.se
   http://japh.se
+  http://github.com/trapd00r
 
 =head1 CONTRIBUTORS
 
@@ -73,7 +74,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2011 B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
+Copyright 2013 B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
 
 =head1 LICENSE
 
@@ -82,6 +83,6 @@ the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<stuff|http://japh.se>
+L<~/|http://japh.se>
 
 =cut

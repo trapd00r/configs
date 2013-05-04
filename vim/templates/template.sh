@@ -1,4 +1,4 @@
 #!/bin/sh
+# vim: ft=sh:fdm=marker:fmr=#<,#>:fen:et:sw=2:
 
 
-# vim: set ts=2 expandtab sw=2 fdm=marker:

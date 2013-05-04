@@ -1,7 +1,9 @@
 #!/usr/bin/perl
+# vim: ft=perl:fdm=marker:fmr=#<,#>:fen:et:sw=2:
 use strict;
 use warnings FATAL => 'all';
-use vars qw($VERSION);
+use vars     qw($VERSION);
+use autodie  qw(:all),
 
 my $APP  = '';
 $VERSION = '0.001';
@@ -44,6 +46,7 @@ or directly to L<m@japh.se>
   CPAN ID: WOLDRICH
   m@japh.se
   http://japh.se
+  http://github.com/trapd00r
 
 =head1 CONTRIBUTORS
 
@@ -51,7 +54,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2011 B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
+Copyright 2013 B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
 above.
 
 =head1 LICENSE
@@ -61,6 +64,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<stuff|http://japh.se>
+L<~/|http://japh.se>
 
 =cut
