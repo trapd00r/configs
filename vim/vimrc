@@ -56,7 +56,7 @@ set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
 set foldcolumn=5
 set foldenable
 "set foldclose=all
-set foldlevel=1
+set foldlevel=0
 set foldlevelstart=1
 set foldmarker=#<,#>
 set foldmethod=marker
