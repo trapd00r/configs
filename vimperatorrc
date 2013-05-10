@@ -36,7 +36,7 @@ set noexrc
 set   fileencoding=UTF-8
 set nofocuscontent
 set nofullscreen
-set   gui-=rlb
+set   gui=noaddons,nobookmarks,nomenu,nonavigation,notabs
 set   hintinputs=label,name,value
 set   hintmatching=wordstartswith
 set   history=150
@@ -128,7 +128,8 @@ nnoremap <C-f4> :set! browser.display.use_document_fonts=0
 nnoremap <A-f4> :set! browser.display.use_document_fonts=1
 nnoremap <f5>   :set! browser.display.use_system_colors!<cr>
 cnoremap <f5>   :set! browser.display.use_system_colors!<cr>
-
+nnoremap <f6>   :set! browser.download.useDownloadDir=1<cr>:echo  'Â   using download dir from now on.'<cr>
+nnoremap <S-f6> :set! browser.download.useDownloadDir=0<cr>:echoe 'NOT using download dir anymore.'<cr>
 nnoremap 0     :brewind<cr>
 nnoremap ^     :bfirst<cr>
 nnoremap $     :blast<cr>
@@ -185,8 +186,9 @@ set! browser.display.normal_lineheight_calc_control=2
 set! browser.display.show_image_placeholders='false'
 set! browser.display.use_document_fonts=0
 set! browser.display.use_system_colors='true'
-set! browser.download.dir="/mnt/porn7"
-set! browser.enable_automatic_image_resizing='false'
+set! browser.download.dir="/mnt/porn0"
+"set! browser.download.useDownloadDir=1
+set! browser.enable_automatic_image_resizing='true'
 set! browser.fullscreen.animateUp=0
 set! browser.newtabpage.columns=5
 set! browser.newtabpage.rows=5
