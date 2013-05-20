@@ -1,14 +1,24 @@
 #!/usr/bin/zsh
+#vim :ft=zsh et sw=2 smc=78 fdm=marker fml=2 fmr=#<,#>:
 
-bindkey -v
+#bindkey -v
 # main                                                                       {{{
 #bindkey "^J"    accept-line
 
-bindkey -M  vicmd  ":"     _complete_help 
-#bindkey -M vicmd   ";"     _read_comp
+bindkey -M viins '^O'   all-matches
+bindkey -M vicmd '^O'   all-matches
+bindkey -M  vicmd  ":"  _complete_help 
+bindkey -M vicmd   ";" _read_comp
 
-bindkey "~~"  _most_recent_file
+bindkey -M viins "[29~"  _most_recent_file
 
+#<
+##  remove all key bindings starting with ESC
+#bindkey -M vicmd -rp "^["
+#bindkey -M viins -rp "^["
+## escape as fast as possible from insert mode
+#bindkey -M viins -rp '^['
+#bindkey -M viins     '^[' vi-cmd-mode
 
 
 #bindkey "^C"    self-insert
@@ -35,7 +45,7 @@ bindkey "~~"  _most_recent_file
 bindkey " "     magic-abbrev-expand
 bindkey "^A"    beginning-of-line
 bindkey "^B"    backward-word
-bindkey "^E"    end-of-line
+#bindkey "^E"    end-of-line
 bindkey "^H"    backward-delete-char
 bindkey "^I"    complete-word
 bindkey "^L"    clear-screen
@@ -60,7 +70,7 @@ bindkey "^[[D"  vi-backward-char
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd "^V"     edit-command-line
-bindkey -M vicmd "v"      edit-command-line
+bindkey -M viins "^V"     edit-command-line
 
 bindkey -M vicmd "ga"     what-cursor-position
 bindkey -M vicmd "g~"     vi-oper-swap-case
@@ -71,31 +81,31 @@ bindkey -M vicmd "ca"     delete-around
 
 
 bindkey -M vicmd  "^M"    accept-line
-bindkey -M vicmd  "^L"    clear-screen
 bindkey -M vicmd  "1"-"9" digit-argument
-bindkey -M vicmd  "^N"    down-history
+#bindkey -M vicmd  "^N"    down-history
 bindkey -M vicmd  "^J"     down-line-or-history
-bindkey -M vicmd  "^[[B"  down-line-or-history
-bindkey -M vicmd  "^[OB"  down-line-or-history
+bindkey -M vicmd  "^K"     up-line-or-history
+#bindkey -M vicmd  "^[[B"  down-line-or-history
+#bindkey -M vicmd  "^[OB"  down-line-or-history
 #_complete_help -C .complete-word _complete_help
 
 bindkey -M vicmd  "="     list-choices
 bindkey -M vicmd  "^D"    list-choices
-bindkey -M vicmd  "^G"    list-expand
+#bindkey -M vicmd  "^G"    list-expand
 bindkey -M vicmd  "#"     pound-insert
-bindkey -M vicmd  "^R"    redo
-bindkey -M vicmd  "^P"    up-history
+bindkey -M vicmd  "^R"    history-incremental-search-backward
+#bindkey -M vicmd  "^P"    up-history
 bindkey -M vicmd  "k"     up-line-or-history
-bindkey -M vicmd  "^[[A"  up-line-or-history
-bindkey -M vicmd  "^[OA"  up-line-or-history
+#bindkey -M vicmd  "^[[A"  up-line-or-history
+#bindkey -M vicmd  "^[[B"  down-line-or-history
 bindkey -M vicmd  "A"     vi-add-eol
 bindkey -M vicmd  "a"     vi-add-next
 bindkey -M vicmd  "B"     vi-backward-blank-word
 bindkey -M vicmd  "h"     vi-backward-char
-bindkey -M vicmd  "^H"    vi-backward-char
+#bindkey -M vicmd  "^H"    vi-backward-char
 bindkey -M vicmd  "^?"    vi-backward-char
-bindkey -M vicmd  "^[[D"  vi-backward-char
-bindkey -M vicmd  "^[OD"  vi-backward-char
+#bindkey -M vicmd  "^[[D"  vi-backward-char
+#bindkey -M vicmd  "^[OD"  vi-backward-char
 bindkey -M vicmd  "X"     vi-backward-delete-char
 bindkey -M vicmd  "b"     vi-backward-word
 bindkey -M vicmd  "c"     vi-change
@@ -104,6 +114,8 @@ bindkey -M vicmd  "S"     vi-change-whole-line
 bindkey -M vicmd  "d"     vi-delete
 bindkey -M vicmd  "x"     vi-delete-char
 bindkey -M vicmd  "0"     vi-digit-or-beginning-of-line
+bindkey -M vicmd  "9"     vi-digit-or-beginning-of-line
+bindkey -M vicmd  "="     vi-digit-or-beginning-of-line
 bindkey -M vicmd  "+"     vi-down-line-or-history
 bindkey -M vicmd  "\$"    vi-end-of-line
 bindkey -M vicmd  "G"     vi-fetch-history
@@ -154,9 +166,16 @@ bindkey -M vicmd  "y"     vi-yank
 bindkey -M vicmd  "Y"     vi-yank-whole-line
 #}}}
 # viins                                                                      {{{
-bindkey -s -M viins "^T"  "\\\top\n"
+#bindkey -s -M viins "^T"  "\\\top\n"
 bindkey -M viins "^K" up-line-or-history
 bindkey -M viins "^J" down-line-or-history
+
+bindkey -M viins '^G' xterm-set-bg
+bindkey -M vicmd '^G' xterm-set-bg
+#bindkey -M vicmd '^S' font-711-710-rev
+#bindkey -M viins '^S' font-711-710-rev
+bindkey -M vicmd '^S' wrxvt_spawn_in_cwd
+bindkey -M viins '^S' wrxvt_spawn_in_cwd
 
 
 autoload edit-command-line
@@ -166,18 +185,17 @@ bindkey -s -M viins "^X0" " &> /dev/null "
 bindkey -s -M viins "^X1" "  > /dev/null "
 bindkey -s -M viins "^X2" " 2> /dev/null "
 bindkey -s -M viins "^X3" " 2>&1 "
-bindkey -s -M viins "^G"  'setty background 161917\n'
 
-bindkey "^V"             prepend-vim
-bindkey -M viins "^J"    insert-last-word
+#bindkey "^V"             prepend-vim
+#bindkey -M viins "^J"    insert-last-word
 bindkey -M viins "^M"    accept-line
-bindkey -M viins "^X^A"  all-matches
+#bindkey -M viins "^X^A"  all-matches
 bindkey -M viins "^?"    backward-delete-char
 bindkey -M viins "^H"    backward-delete-char
 bindkey -M viins "^W"    backward-delete-word
 bindkey -M viins "^B"    backward-word
 bindkey -M viins "^[~"   _bash_complete-word
-bindkey -M viins "^X~"   _bash_list-choices
+bindkey -M viins "^E"   _bash_list-choices
 bindkey -M viins "^[[1~" beginning-of-line
 bindkey -M viins "^A"    beginning-of-line
 bindkey -M viins "^L"    clear-screen
@@ -193,7 +211,7 @@ bindkey -M viins "^[[6~" down-line-or-history
 bindkey -M viins "^[[B"  down-line-or-history
 bindkey -M viins "^[OB"  down-line-or-history
 bindkey -M viins "^[[4~" end-of-line
-bindkey -M viins "^E"    end-of-line
+#bindkey -M viins "^E"    end-of-line
 bindkey -M viins "^Xa"   _expand_alias
 bindkey -M viins "^Xe"   _expand_word
 bindkey -M viins "^F"    forward-word
@@ -219,20 +237,34 @@ bindkey -M viins "^U"    vi-kill-line
 bindkey -M viins "^Q"    vi-quoted-insert
 #}}}
 # command {{{
-bindkey -M command "^G" send-break
+#bindkey -M command "^G" send-break
 bindkey -M command "^C" send-break
 #bindkey -M command "^J" send-break
-bindkey -M command "^M" send-break
+#bindkey -M command "^M" send-break
 #}}}
 # isearch                                                                    {{{
 bindkey -M isearch " " self-insert
+bindkey -M isearch "^J" self-insert
 #}}}
+# menuselect                                                                 {{{
+zmodload zsh/complist
+#bindkey -M menuselect -rp '^'
+#bindkey -M menuselect '^J' down-line-or-search
+#bindkey -M menuselect  '^K' up-line-or-search
+bindkey -M menuselect '^J' down-line-or-history
+bindkey -M menuselect  '^K' up-line-or-history
+bindkey -M menuselect  '^E' accept-and-menu-complete
+#bindkey -M menuselect  '^M' accept-and-infer-next-history
+#bindkey -M menuselect  '^M' accept-line-and-down-history
+bindkey -M menuselect  '^M' magic-space
+#}}}
+
 # emacs                                                                      {{{
 bindkey -M emacs "^[a"  accept-and-hold
 bindkey -M emacs "^[A"  accept-and-hold
 #bindkey -M emacs "^J"   accept-line
 bindkey -M emacs "^M"   accept-line
-bindkey -M emacs "^O"   accept-line-and-down-history
+#bindkey -M emacs "^O"   accept-line-and-down-history
 bindkey -M emacs "^B"   backward-char
 bindkey -M emacs "^[[D" backward-char
 bindkey -M emacs "^[OD" backward-char
@@ -267,7 +299,7 @@ bindkey -M emacs "^N"   down-line-or-history
 bindkey -M emacs "^[[B" down-line-or-history
 bindkey -M emacs "^[OB" down-line-or-history
 bindkey -M emacs "^[>"  end-of-buffer-or-history
-bindkey -M emacs "^E"   end-of-line
+#bindkey -M emacs "^E"   end-of-line
 bindkey -M emacs "^X^X" exchange-point-and-mark
 bindkey -M emacs "^[z"  execute-last-named-cmd
 bindkey -M emacs "^[x"  execute-named-cmd
@@ -294,7 +326,7 @@ bindkey -M emacs "^X^N" infer-next-history
 bindkey -M emacs "^[_"  insert-last-word
 bindkey -M emacs "^[."  insert-last-word
 bindkey -M emacs "^X^K" kill-buffer
-bindkey -M emacs "^K"   kill-line
+#bindkey -M emacs "^K"   kill-line
 bindkey -M emacs "^U"   kill-whole-line
 bindkey -M emacs "^[d"  kill-word
 bindkey -M emacs "^[D"  kill-word
@@ -302,7 +334,7 @@ bindkey -M emacs "^[^D" list-choices
 bindkey -M emacs "^Xg"  list-expand
 bindkey -M emacs "^XG"  list-expand
 bindkey -M emacs "^[-"  neg-argument
-bindkey -M emacs "^X^O" overwrite-mode
+#bindkey -M emacs "^X^O" overwrite-mode
 bindkey -M emacs "^Q"   push-line
 bindkey -M emacs "^[q"  push-line
 bindkey -M emacs "^[Q"  push-line
@@ -314,15 +346,15 @@ bindkey -M emacs "^[H"  run-help
 bindkey -M emacs "^[^I" self-insert-unmeta
 bindkey -M emacs "^[^J" self-insert-unmeta
 bindkey -M emacs "^[^M" self-insert-unmeta
-bindkey -M emacs "^G"   send-break
-bindkey -M emacs "^[^G" send-break
+#bindkey -M emacs "^G"   send-break
+#bindkey -M emacs "^[^G" send-break
 bindkey -M emacs "^@"   set-mark-command
 bindkey -M emacs "^[s"  spell-word
 bindkey -M emacs "^[S"  spell-word
 bindkey -M emacs "^[\$" spell-word
 bindkey -M emacs "^T"   transpose-chars
-bindkey -M emacs "^[t"  transpose-words
-bindkey -M emacs "^[T"  transpose-words
+#bindkey -M emacs "^[t"  transpose-words
+#bindkey -M emacs "^[T"  transpose-words
 bindkey -M emacs "^X^U" undo
 bindkey -M emacs "^Xu"  undo
 bindkey -M emacs "^_"   undo
@@ -358,14 +390,14 @@ bindkey -R "^\\\\"-"^_"    self-insert
 bindkey -R "\M-^@"-"\M-^?" self-insert
 #}}}
 # applications                                                               {{{
-bindkey -s "^T" "top\n"
+#bindkey -s "^T" "top\n"
 #bindkey -s "^V" "^Rvim\n"
-bindkey -s "^Z" "urxvt -name shiva\n"
+#bindkey -s "^Z" "urxvt -name shiva\n"
 
-if [[ "$TERM" =~ 'screen' ]]; then
-  bindkey -s '^n' 'tmux next-window\n'
-  bindkey -s '^p' 'tmux previous-window\n'
-fi
+#if [[ "$TERM" =~ 'screen' ]]; then
+#  bindkey -s '^n' 'tmux next-window\n'
+#  bindkey -s '^p' 'tmux previous-window\n'
+#fi
 #}}}
 
 #  remove all key bindings starting with ESC
@@ -376,3 +408,39 @@ bindkey -M viins -rp '^['
 bindkey -M viins     '^[' vi-cmd-mode
 
 #bindkey "^N"      most-accessed-file
+
+# create a zkbd compatible hash;
+# to add other keys to this hash, see: man 5 terminfo
+#typeset -A key
+#
+#key[Home]=${terminfo[khome]}
+#key[End]=${terminfo[kend]}
+#key[Insert]=${terminfo[kich1]}
+#key[Delete]=${terminfo[kdch1]}
+#key[Up]=${terminfo[kcuu1]}
+#key[Down]=${terminfo[kcud1]}
+#key[Left]=${terminfo[kcub1]}
+#key[Right]=${terminfo[kcuf1]}
+#key[PageUp]=${terminfo[kpp]}
+#key[PageDown]=${terminfo[knp]}
+#
+## setup key accordingly
+#[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
+#[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
+#[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+#[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+#[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
+#[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
+#[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
+#[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+#function zle-line-init () {
+##    echoti smkx
+#}
+#function zle-line-finish () {
+##    echoti rmkx
+#}
+#zle -N zle-line-init
+#zle -N zle-line-finish  
