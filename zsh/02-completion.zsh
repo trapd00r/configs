@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-### vim: ft=zsh fdm=marker fml=2 fmr=#<,#> smc& cc&:
+### vim: ft=zsh:fdm=marker:fml=1:fdl=0:fmr={{{,}}}:smc&:cc&:
 #< ${HOME}/etc/zsh/020-completion.zsh
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
@@ -47,6 +47,54 @@ zstyle ':completion:most-accessed-file:*'    match-original   both
 zstyle ':completion:*:*:*:users'             ignored-patterns \
   avahi bin daemon dbus ftp http mail nobody
 #}}}
+# generic & missing {{{
+# -C will inhibit the check for new completion files, meaning you'll have to
+# manually delete .zcompdump or run compinit without -C. The -i flag will skip
+# the security check but still check for new completion files. It will ignore
+# the insecure files without asking, while -u will use them without asking.
+autoload -U age compinit relative
+compinit -u
+compdef     _gnu_generic c256 cc256 ln file vnstat vnstati lscpu lsb_release
+compdef     _feh         f ff
+compdef     _files       mkdir mkdr
+compdef     _mkdir       mkdr
+compdef     _mplayer     m ms mplayer_redir mplayer_delete_current_file mplayer_headphones mplayer_6ch_headphones mplayer_redir
+compdef     _hosts       ping 
+compdef  -p _rm          rmc
+compdef     _ls          vdir l ls++
+compdef     _vim         vidir wim vi
+compdef     _xterm       wxterm uxterm
+compdef     _urxvt       xvt wrxvt
+#compdef  -p _which        'we*' # XXX can be dangerous
+
+() {
+  compinit -u
+  local -a coreutils
+  coreutils=(
+    # /bin
+    cat chgrp chmod chown cp date dd df dir ln ls mkdir mknod mv readlink
+    rm rmdir vdir sleep stty sync touch uname mktemp
+    # /usr/bin
+    install hostid nice who users pinky stdbuf base64 basename chcon cksum
+    comm csplit cut dircolors dirname du env expand factor fmt fold groups
+    head id join link logname md5sum mkfifo nl nproc nohup od paste pathchk
+    pr printenv ptx runcon seq sha1sum sha224sum sha256sum sha384sum
+    sha512sum shred shuf sort split stat sum tac tail tee timeout tr
+    truncate tsort tty unexpand uniq unlink wc whoami yes arch touch
+  )
+  for i in $coreutils; do
+    # all which don't already have one
+    # at time of this writing, those are:
+    # /bin
+    # chgrp chmod chown cp date dd df ln ls mkdir rm rmdir stty sync
+    # touch uname
+    # /usr/bin
+    # nice comm cut du env groups id join logname md5sum nohup printenv
+    # sort stat unexpand uniq whoami
+    (( $+_comps[$i] )) || compdef _gnu_generic $i
+  done
+}
+#}}}
 # cd                                                                         {{{
 zstyle ':completion:*:(cd):*'           group-order 'named-directories'
 zstyle ':completion:*:(cd):*'           ignore-parents parent pwd
@@ -70,7 +118,7 @@ zstyle ':completion:*:*:mplayer:*'           menu select auto
 #zstyle ':completion:*:*:mplayer:*'           file-patterns   \
 #  '(#i)*.(m4a|rm|mkv|mpg|wmv|mpeg|rmvb|nrg|avi|flv|mp3|mp4|flac|ogg|webm|iso|img):vid' \
 #       '*:all-files' '*(-/):directories'
-zstyle ':completion:*:*:(*mplayer*|m|ms):*' file-patterns '(#i)*.(rmvb|mkv|mp4|m4a|iso|wmv|webm|ogv|avi|mpg|mpeg|iso|nrg|mp3|flac|rm|wv):files:mplayer\ eats *(-/):directories:directories'
+zstyle ':completion:*:*:(*mplayer*|m|ms):*' file-patterns '(#i)*.(rmvb|mkv|mp4|m4a|iso|wmv|webm|ogv|avi|mpg|mpeg|iso|nrg|mp3|flac|rm|wv|♡):files:mplayer\ eats *(-/):directories:directories'
 #}}}
 ## ssh                                                                        {{{
 #zstyle ':completion:*:*:(scp):*' file-list true
