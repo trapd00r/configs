@@ -4,13 +4,19 @@
 #bindkey -v
 # main                                                                       {{{
 #bindkey "^J"    accept-line
+zle -C menu-complete-files menu-complete _generic
+zstyle ':completion:menu-complete-files:*' completer _files
+bindkey -M viins '^J' menu-complete-files
 
-bindkey -M viins '^O'   all-matches
-bindkey -M vicmd '^O'   all-matches
-bindkey -M  vicmd  ":"  _complete_help 
+zle -C all-matches complete-word _generic
+bindkey -M viins '^O' all-matches
+zstyle ':completion:all-matches:*'   old-matches only
+zstyle ':completion:all-matches::::' completer _all_matches
+
+bindkey -M vicmd  ":"  _complete_help 
 bindkey -M vicmd   ";" _read_comp
 
-bindkey -M viins "[29~"  _most_recent_file
+bindkey -M viins "^U" all-matches
 
 #<
 ##  remove all key bindings starting with ESC
