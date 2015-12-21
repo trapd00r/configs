@@ -4,9 +4,9 @@ host *
   controlpath             ~/.ssh/connections/%r_%h_%p
   controlpersist          yes
   GSSAPIAuthentication    no
-host sid                  #{{{
+host wid                  #{{{
   user                    scp1
-  hostname                192.168.1.3
+  hostname                192.168.0.195
   port                    16813
   compression             no
   ciphers                 arcfour
@@ -18,8 +18,7 @@ host sid                  #{{{
 #}}}
 host laleh                #{{{
   user                    scp1
-  hostname                192.168.1.5
-#  port                    16815
+  hostname                192.168.0.199
   port                    19217
   compression             no
   ciphers                 arcfour
@@ -29,18 +28,9 @@ host laleh                #{{{
   numberofpasswordprompts 10
   sendenv                 PERL5OPT
 #}}}
-#host n900                 #{{{
-#  user                    user
-#  hostname                192.168.1.9
-#  port                    22
-#  compression             no
-#  ciphers                 arcfour
-#  checkhostip             no
-#  connecttimeout          10
-##}}}
-host n950                 #{{{
+host n900                 #{{{
   user                    user
-  hostname                192.168.1.6
+  hostname                192.168.0.187
   port                    22
   compression             no
   ciphers                 arcfour
@@ -49,20 +39,38 @@ host n950                 #{{{
 #}}}
 host n7                 #{{{
   user                    root
-  hostname                192.168.1.16
+  hostname                192.168.0.192
   port                    2222
   compression             no
   ciphers                 arcfour
   checkhostip             no
   connecttimeout          10
 #}}}
-#host japh.se              #{{{
-#  user                    scp1
-#  hostname                japh.se
-#  port                    19217
-#  compression             no
-#  ciphers                 blowfish-cbc
+host japh.se              #{{{
+  user                    scp1
+  hostname                japh.se
+  port                    19217
+  compression             no
+  ciphers                 blowfish-cbc
 ##}}}
+host n900v2               #{{{
+  user                    user
+  hostname                192.168.0.180
+  port                    22
+  compression             yes
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          10
+#}}}
+host n900v3               #{{{
+  user                    user
+  hostname                192.168.0.180
+  port                    22
+  compression             yes
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          10
+#}}}
 host xfloff.net           #{{{
   user                    scp1
   hostname                xfloff.net
@@ -76,14 +84,4 @@ host xfloff.net           #{{{
   port                    22
   compression             no
   ciphers                 blowfish-cbc
-#}}}
-
-host n900v2               #{{{
-  user                    user
-  hostname                192.168.1.13
-  port                    22
-  compression             yes
-  ciphers                 arcfour
-  checkhostip             no
-  connecttimeout          10
 #}}}
