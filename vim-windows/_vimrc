@@ -1,0 +1,131 @@
+" vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
+"
+"" :echo $MYVIMRC
+"         owner  Magnus Woldrich <m@japh.se>
+"         btime  2009-04-24
+"         mtime  2016-02-22
+"         perms  You are free to use things you may find useful here.
+"                Would my tweaks happen to give you a raise or fetch you a
+"                girlfriend, it goes without saying I'm counting on you
+"                to share with me as I've shared with you.
+"           git  http://github.com/trapd00r/configs/vim  (up-to-date)
+"           url  http://devel.japh.se/configs/vim        (sync 1/24h)
+"           irc  japh@freenode #vim #zsh #perl
+"" this is a modified version of my extensive vim config, for win & gvim
+
+"set all&
+set nocp
+filetype plugin indent on
+set autochdir
+set autoread
+set backspace=2
+set colorcolumn=80
+set columns=86
+set expandtab
+set formatoptions=tcrqln1
+set grepprg=internal
+set guiheadroom=0
+set guioptions=
+set helpheight=5
+set helplang=en,sv,de
+set hidden
+set history=50
+set hlsearch
+set ignorecase
+set include=\\<\\(use\\\|require\\)\\>
+set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')
+set incsearch
+set isfname+=:
+set laststatus=2
+set lazyredraw
+set lines=100
+set list
+set magic
+set matchpairs+=<:>
+set matchpairs+==:;
+set matchtime=20
+set maxfuncdepth=1000
+set maxmapdepth=500
+set maxmemtot=200000
+set modeline
+set modelines=2
+set nobackup
+set nocscopeverbose
+set noequalalways
+set noerrorbells
+set nomore
+set nostartofline
+set noswapfile
+set nowrap
+set nowritebackup
+set nrformats=alpha,hex
+set number
+set numberwidth=2
+set pastetoggle=<F42>
+set preserveindent
+set pumheight=10
+set relativenumber
+set report=0
+set ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set scrolloff=40
+set shiftwidth=2
+set shortmess=aIoOT
+set showcmd
+set showmatch
+set showtabline=2
+set smartcase
+set smarttab
+set splitbelow
+set ssop=buffers,folds,globals,help,localoptions,options,resize
+set suffixes=~,.swp,swo,o,gz
+set synmaxcol=120
+set t_Co=256
+set tabpagemax=4
+set tabstop=2
+set textwidth=80
+set timeout
+set timeoutlen=3000
+set title
+set ttimeoutlen=50
+set ttyfast
+set undodir=X:\\_undo
+set undofile
+set undolevels=1024
+set virtualedit=block
+set visualbell t_vb=
+set whichwrap=b,s,h,l,<,>
+set wildchar=<Tab>
+set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
+set wildmode=list:longest,full
+set winfixheight
+set winfixwidth
+set winwidth=88
+
+syntax on
+setlocal nospell spelllang=en_us
+
+nnoremap <C-t> :tabnew<cr>
+nnoremap <C-l> :tabnext<cr>
+nnoremap <C-h> :tabprev<cr>
+
+nnoremap <C-j> 15j
+nnoremap <C-k> 15k
+vnoremap <C-j> 15j
+vnoremap <C-k> 15k
+nnoremap J     5j
+nnoremap K     5k
+vnoremap J     5j
+vnoremap K     5k
+nnoremap L     5l
+nnoremap H     5h
+vnoremap L     5l
+vnoremap H     5h
+
+set guicursor=a:blinkon0
+"" set guifont=*  for dialog
+set guifont=MonteCarlo_Fixed_12:h12:cANSI
+so C:\\Users\\japh\\Documents\\Github\\configs\\vim\\tabline.vim
+"color darkbone
+color neverlandgui
+"hi NonText guifg=#121212

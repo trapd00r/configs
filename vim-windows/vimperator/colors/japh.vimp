@@ -1,0 +1,36 @@
+" vim:ft=vim:
+" ==Vimperator_Color_Scheme==
+" name: japh (for windows)
+" ==japh==
+
+hi Normal    background: #121212; color: #afafaf;
+hi CmdLine   background: #121212; color: #FF4500; 
+
+hi CompGroup          background: #121212; color: #afafaf; 
+hi CompTitle          background: #121212; color: #afafaf; font-weight: bold;
+hi CompItem           background: #121212; color: #afafaf; padding: 0px 3px;
+hi CompItem[selected] background: #121212; color: #FF4500; font-weight: bold; 
+hi CompDesc           background: #121212; color: #afafaf; 
+hi CompDesc[selected] background: #FF4500; color: #afafaf; 
+hi CompMsg            background: #121212; color: #afafaf; 
+
+"hi Gradient           background: #121212;
+"hi GradientLeft       background: #121212;
+"hi GradientRight      background: #121212;
+
+hi ErrorMsg           background: #ff6565; color: #ffffff;
+hi Filter             color: #FF8B00; font-weight: bold; 
+
+hi InfoMsg           background: #121212; color: #ff8000;
+hi StatusLine         color: #606060; background: #121212;
+"hi StatusLineBroken   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
+"hi StatusLineSecure   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
+
+hi Hint               font-family: terminus; font-size: 12pt; font-weight: bold; color: #FF4500; background-color: #000; padding: 0px 1px; border: 1px solid #121212;
+
+hi Title              font-size: 12pt; color: #121212; background: #afafaf;
+
+style -name statusbar chrome://* <<EOM
+#status-bar statusbarpanel { padding: 0 1px !important; }
+statusbarpanel > * { margin: 0 !important; padding: 0 2px 0 0 !important; }
+EOM

@@ -1,0 +1,248 @@
+"!/home/scp1/bin/firefox
+" vim: ft=vimperator:fdm=marker:fmr="<,">:fen:fdl=0:et:sw=2:smc&:
+"
+" ${HOME}/etc/vimperatorrc
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+"         owner  Magnus Woldrich <m@japh.se>
+"         btime  2009-04-24
+"         mtime  2013-04-30 07:11:09
+"         perms  You are free to use things you may find useful here.
+"                Would my tweaks happen to give you a raise or fetch you a
+"                girlfriend, it goes without saying I'm counting on you
+"                to share with me as I've shared with you.
+"           git  git@github.com:trapd00r/configs.git
+"           url  http://github.com/trapd00r/configs
+"           irc  japh@freenode #vim #zsh #perl
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+
+"set rtp=~/etc/vimperator
+
+"autocmd PageLoad '^https?://(?:www\.)?(?:youtu\.be/|youtube\.com/watch\?.*?v=)[0-9A-Za-z-_]+' :silent !splay '<url>' &
+
+"< OPTIONS
+"< vimperator options
+set   activate=addons,downloads,extoptions,help,homepage,quickmark,paste
+"set noanimations
+"set noapptab
+set noautocomplete
+"set   cdpath=~/srv/japh.se/,,
+set   complete=b
+"set   defsearch=duckduckgo
+"set   editor="wrxvt -e wim -f -c ':set ft=perl'"
+set   encoding=UTF-8
+"set noerrorbells
+set   eventignore=
+set noexrc
+set   fileencoding=UTF-8
+set nofocuscontent
+set nofullscreen
+set   gui=noaddons,nobookmarks,nomenu,nonavigation,notabs
+set   hintinputs=label,name,value
+set   hintmatching=wordstartswith
+set   history=150
+set   hlsearch
+"set noignorecase
+set   loadplugins
+set   maxitems=30
+set   messages=20
+set   newtab=all
+set   online
+set   pageinfo=gfm
+set   popups=tab
+"set noprivate
+"set   sanitizeitems=downloads,sessions,cookies,formdata,history,cache
+set   sanitizeitems=downloads
+set   sanitizetimespan=1
+set   scroll=0
+set noscrollbars
+"set   shell=/bin/zsh
+set   shellcmdflag=-c
+set noshowmode
+set   showstatuslinks=1
+set   smartcase
+"set   status=tabcount,position
+set status=input,location,tabcount,position
+set   suggestengines=
+set notabnumbers
+"set   titlestring=Fx
+set   toolbars=addons,nobookmarks,nomenu,nonavigation,tabs
+set   urlseparator=,\s
+set   verbose=0
+set novisualbell
+set   wildmode=list:full
+"set   followhints=0
+"set   helpfile=intro
+"set   hintchars=!'#$%&/()
+"set   hinttimeout=0
+"set   insertmode=0
+"set   laststatus=0
+"set   messagetimeout=10000
+"set   showtabline=0
+"set   status=input,location,position
+"set linksearch
+"set noincsearch
+"set noinspectcontentobjects
+"set nosmallicons
+"set notranslaten
+">
+">
+"< MAPPINGS
+silent! mapclear
+
+nnoremap L     :bNext 2<cr>
+nnoremap H     :bprev 2<cr>
+nnoremap <C-l> :bnext<cr>
+nnoremap <C-h> :bprev<cr>
+nnoremap l     :bnext<cr>
+nnoremap h     :bprev<cr>
+"inoremap <C-l> :bnext<cr>
+"inoremap <C-h> :bprev<cr>
+nnoremap <C-w> :tabclose<cr>
+
+"silent map !  b1<cr>
+"silent map \' b2<cr>
+"silent map #  b3<cr>
+"silent map $  b4<cr>
+"silent map %  b5<cr>
+"silent map &  b6<cr>
+""silent map 7  b7<cr>
+"silent map (  b8<cr>
+"silent map )  b9<cr>
+"silent map =  b10<cr>
+
+"nnoremap <C-c> :noscript toggletemp<cr>
+"nnoremap <C-d> :noscript toggleperm<cr>
+"nnoremap <A-c> :noscript toggleperm<cr>
+"map <M-space> usermode!
+"map <M-1>     tabgroups switch 
+
+nnoremap d     :tabclose!<cr>
+nnoremap <f1>   :set usermode!<cr>
+cnoremap <f1>   :set usermode!<cr>
+nnoremap <f2>   :so ~/etc/vimperatorrc<cr>:echoe '~/etc/vimperatorrc reloaded'<cr>
+cnoremap <f2>   :so ~/etc/vimperatorrc<cr>:echoe '~/etc/vimperatorrc reloaded'<cr>
+nnoremap <f3>   :set! browser.download.dir<cr>:set! browser.download.dir=
+cnoremap <f3>   :set! browser.download.dir<cr>:set! browser.download.dir=
+nnoremap <f5>   :set! browser.display.use_system_colors!<cr>
+cnoremap <f5>   :set! browser.display.use_system_colors!<cr>
+nnoremap <f6>   :set! browser.download.useDownloadDir=1<cr>:echo  'Â   using download dir from now on.'<cr>
+nnoremap <S-f6> :set! browser.download.useDownloadDir=0<cr>:echoe 'NOT using download dir anymore.'<cr>
+nnoremap 0     :brewind<cr>
+nnoremap ^     :bfirst<cr>
+nnoremap $     :blast<cr>
+
+
+"nnoremap <C-w> <esc>
+nnoremap <C-q> <esc>:xall
+
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <A-k> <Up><Up><Up>
+cnoremap <A-j> <Down><Down><Down>
+
+inoremap <C-v> <S-Ins>
+nnoremap <C-v> <esc>:<S-Ins><space>
+cnoremap <C-v> <S-Ins><space>
+nnoremap <C-v> <esc>:<S-Ins><space>
+
+nnoremap <C-k> <Up>
+nnoremap <C-j> <Down>
+
+nnoremap j       8j
+nnoremap k       8k
+nnoremap J       16j
+nnoremap K       16k
+nnoremap <C-j>   24j
+nnoremap <C-k>   24k
+nnoremap <C-S-j> 40j
+nnoremap <C-S-k> 40k
+nnoremap <A-j>   32j
+nnoremap <A-k>   32k
+nnoremap <A-S-j> 48j
+nnoremap <A-S-k> 48k
+nnoremap <C-e>   g$
+nnoremap <C-a>   g0
+
+
+
+""< firefox preferences
+"set! accessibility.typeaheadfind.autostart='false'
+"set! accessibility.typeaheadfind='false'
+"set! browser.backspace_action=0
+"set! browser.cache.disk.enable='false'
+"set! browser.cache.disk.parent_directory=/dev/shm
+"" actual DPI/96
+"set! network.protocol-handler.expose.magnet=false
+"set! browser.cache.memory.enable='true'
+"set! browser.cache.memory.max_entry_size=2097152
+"set! browser.ctrlTab.previews='true'
+"set! browser.display.normal_lineheight_calc_control=2
+"set! browser.display.show_image_placeholders='false'
+"set! browser.display.use_system_colors='true'
+""set! browser.download.useDownloadDir=1
+"set! browser.enable_automatic_image_resizing='true'
+"set! browser.fullscreen.animateUp=0
+"set! browser.newtabpage.columns=5
+"set! browser.newtabpage.rows=5
+"set! browser.panorama.animate_zoom='false'
+"set! browser.tabs.animate='false'
+"set! browser.tabs.closeWindowWithLastTab='false'
+"set! browser.tabs.drawInTitlebar='true'
+"set! browser.tabs.insertRelatedAfterCurrent='false'
+"set! browser.tabs.onTop=0
+"set! browser.tabs.tabMaxWidth=150
+"set! browser.tabs.tabMinWidth=50
+"set! extensions.getAddons.showPane=0
+""set! network.http.pipelining.maxrequests=8
+""set! network.http.pipelining=1
+"set! zoom.minPercent=50
+""set! Network.dnsCacheExpiration=0
+"">
+"
+color japh
+"
+""nnoremap <S-s> :call stop_loading()<cr>
+"
+""< think of a way to exploit this
+""inoremap dw <C-right><C-w>
+"">
+"">
+""< syntax
+""silent! hi clear
+"">
+""< JAVASCRIPT
+""javascript <<EOF
+""(function(){
+""    var feedPanel = document.createElement("statusbarpanel");
+""    feedPanel.setAttribute("id", "feed-panel-clone");
+""    feedPanel.appendChild(document.getElementById("feed-button"));
+""    feedPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
+""    document.getElementById("status-bar")
+""            .insertBefore(feedPanel, document.getElementById("security-button"));
+""})();
+""EOF
+""js <<EOF
+""    toggle_element = function (name) {
+""        document.getElementById(name).collapsed ^= 1;
+""    }
+""EOF
+""map <silent> <F8> :js toggle_element('toolbar-menubar')<cr>
+""map <silent> <F9> :js toggle_element('nav-bar')<cr>
+""bmark -keyword=mozjscoreref https://developer.mozilla.org/Special:Search?search=%s&type=fulltext
+""ca j mozjscoreref
+""style -name tab-style-fix chrome://* <<EOM
+"".tab-text-shadow,
+"".tabs-newtab-button {
+""  display: none !important;
+""}
+""EOM
+"">
+""< sbmcommentviewer
+""" sbmcommentviewerを見やすく
+""" http://vimperator.g.hatena.ne.jp/retlet/20100321/1269165657
+""style -name sbmcommentsviewer chrome://* <<EOM
+""   .liberator-sbmcommentsviewer > dd:nth-child(odd) { background: #222; }
+""   .liberator-sbmcommentsviewer-timestamp { color: #666; }
+""EOM
+"">
+color japh

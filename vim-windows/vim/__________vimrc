@@ -1,0 +1,134 @@
+"!/home/scp1/bin/wim --remote-wait-silent vimsy
+" vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
+"
+" ${VIMRUNTIME}/vimrc
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+"         owner  Magnus Woldrich <m@japh.se>
+"         btime  2009-04-24
+"         mtime  2013-04-29 13:34:29
+"         perms  You are free to use things you may find useful here.
+"                Would my tweaks happen to give you a raise or fetch you a
+"                girlfriend, it goes without saying I'm counting on you
+"                to share with me as I've shared with you.
+"           git  http://github.com/trapd00r/configs/vim  (up-to-date)
+"           url  http://devel.japh.se/configs/vim        (sync 1/24h)
+"           irc  japh@freenode #vim #zsh #perl
+"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+"
+
+"set all&
+set nocp
+filetype plugin indent on
+set autoread
+set autochdir
+set formatoptions=tcrqln1
+set guiheadroom=0
+set grepprg=internal
+"set grepprg='grep\ -Im400\ --line-buffered\ -P | argdo try | grepadd! mplayer % | catch /E480:/ | endtry'
+
+"set grepprg=ack\ -a
+set guioptions-=m
+set guioptions-=T
+"set helpfile=/home/scp1/dev/vim/runtime/doc/help.txt
+set helpheight=5
+set helplang=en,sv,de
+set hidden
+set history=50
+set hlsearch
+set ignorecase
+set include=\\<\\(use\\\|require\\)\\>
+set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')
+set incsearch
+set isfname+=:
+set laststatus=2
+set lazyredraw
+set list
+"set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥sbr=↪:conceal=⌦
+"set   listchars=eol:ñ
+"set   listchars+=tab:»
+"set   listchars+=trail:·
+"set   listchars+=nbsp: 
+"set   listchars+=precedes: 
+"set   listchars+=extends: 
+"set   listchars+=conceal:⌦
+
+set   magic
+"set   makeprg=mymake
+set   maxmapdepth=500
+set   matchpairs+==:;
+set   matchpairs+=<:>
+set   matchtime=20
+set   maxfuncdepth=1000
+set   maxmemtot=200000
+set   modeline
+set   modelines=2
+set nobackup
+set nocscopeverbose
+set noequalalways
+set noerrorbells
+set nostartofline
+set noswapfile
+set nowritebackup
+set nowrap
+set nrformats=alpha,hex
+set numberwidth=2
+set pastetoggle=<F42>
+set preserveindent
+
+set printoptions=paper:A4,syntax:n,wrap:y,header:0,number:n,duplex:off
+set printoptions+=left:2,right:2,top:2,bottom:2
+set printfont=-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+set printmbfont=r:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+set printmbfont+=b:-windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+set printmbfont+=i:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+
+set pumheight=10
+set relativenumber
+set report=0
+set ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+
+set scrolloff=40
+set ssop=buffers,folds,globals,help,localoptions,options,resize
+set shiftwidth=2
+set shortmess=aIoOT
+set showcmd
+set showmatch
+"set showmode
+set smartcase
+set smarttab
+set splitbelow
+set suffixes=~,.swp,swo,o,gz
+set synmaxcol=120
+set tabpagemax=4
+set tabstop=2
+set t_Co=256
+set timeout
+set timeoutlen=3000
+set ttimeoutlen=50
+set textwidth=80
+set title
+set ttyfast
+set undofile
+set undolevels=1024
+set undodir=~/var/vim/undo
+set visualbell t_vb=
+set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
+"set viminfo='100,<50,s10,h,%
+set virtualedit=block
+set wildchar=<Tab>
+set wildmode=list:longest,full
+set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
+set winfixwidth
+set winfixheight
+set winwidth=88
+set winminwidth=88
+set whichwrap=b,s,h,l,<,>
+
+set nomore
+
+syntax on
+setlocal nospell spelllang=en_us
+
+"hi NonText guifg=#232323
+hi NonText guifg=#000000
