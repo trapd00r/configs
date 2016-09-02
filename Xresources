@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Crafted: 2008-04-24
-  Updated: 2012-11-16 14:40:08
+  Updated: 2016-09-02 07:29:55
 
 - A lot of different hosts use this file.
 - You will not find any color definitions here.
@@ -23,12 +23,12 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 [3]: https://github.com/trapd00r/pickyfont
 }}}*/
 ! xft {{{
-Xft*dpi: 94
-Xft*antialias: true
-!Xft*hinting: true
-Xft*autohint: true
-!Xft*hintstyle: hintfull
-Xft*rgba: vbgr
+!!Xft*dpi: 94
+!!Xft*antialias: true
+!!!Xft*hinting: true
+!!Xft*autohint: true
+!!!Xft*hintstyle: hintfull
+!!Xft*rgba: vbgr
 !Xft*rgba: rgba
 !}}}
 ! standard global fonts {{{
@@ -175,10 +175,10 @@ sid.externalBorder:       0
 !sid.cursorUnderline:      1
 
 ! fonts {{{
-sid.font:             7x13bold
-sid.boldFont:         xft:Fixed:size=12:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
-sid.italicFont:       xft:Profont:embolden=1
-sid.boldItalicFont:   6x13bold
+!sid.font:             7x13bold
+!sid.boldFont:         xft:Fixed:size=12:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
+!sid.italicFont:       xft:Profont:embolden=1
+!sid.boldItalicFont:   6x13bold
 
 URxvt*font1:                -xos4-terminus-medium-r-normal-*-13-*-*-*-*-*-*-1
 URxvt*font2:                -xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-1
@@ -189,6 +189,10 @@ URxvt*font6:                -xos4-terminus-medium-r-normal-*-18-*-*-*-*-*-*-1
 URxvt*font7:                -xos4-terminus-medium-r-normal-*-19-*-*-*-*-*-*-1
 URxvt*font8:                -xos4-terminus-medium-r-normal-*-20-*-*-*-*-*-*-1
 
+sid.font:              xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0
+sid.boldFont:          xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0:embolden=1
+sid.italicFont:        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+sid boldItalicFont:    xft:Fixed:size=9:hinting=0:rgba=0:antialias=0:embolden=1:scale=.8:lcdfilter=2:autohint=1:hintstyle=3
 !sid.font:             xft:Fixed:size=14:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
 !sid.boldFont:         xft:Fixed:size=14:hinting=false:autohint=false:rgba=:antialias=true:lcdfilter=3
 !sid.italicFont:       xft:fixed:dpi=99:size=14:weight=black
@@ -234,11 +238,11 @@ URxvt*font8:                -xos4-terminus-medium-r-normal-*-20-*-*-*-*-*-*-1
 
 
 
-sid*perl-lib:             /home/scp1/dev/urxvt-extensions
-sid*keysym.M-u:           perl:mark-yank-urls:activate_mark_mode
-sid*perl-ext:             selection,mark-yank-urls
-!sid*perl-eval:            $^O
-sid*perl-ext-common:      default,matcher
+!sid*perl-lib:             /home/scp1/dev/urxvt-extensions
+!sid*keysym.M-u:           perl:mark-yank-urls:activate_mark_mode
+!sid*perl-ext:             selection,mark-yank-urls
+!!sid*perl-eval:            $^O
+!sid*perl-ext-common:      default,matcher
 
 sid*cutchars:             "()*,<>[]{}|'"
 sid*matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
@@ -259,7 +263,7 @@ sid.skipScroll:           true
 sid.trippleclickwords:    true
 sid.urgentOnBell:         false
 
-sid.chdir:                /mnt/porn5/pix
+!sid.chdir:                
 sid.pasteableTabs:        false
 sid.pointerBlank:         false
 sid.pointerBlankDelay:    2
