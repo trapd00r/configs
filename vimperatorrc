@@ -25,7 +25,7 @@ set   activate=addons,downloads,extoptions,help,homepage,quickmark,paste
 "set noanimations
 "set noapptab
 set noautocomplete
-set   cdpath=~/srv/japh.se/,,
+"set   cdpath=~/srv/japh.se/,,
 set   complete=b
 set   defsearch=duckduckgo
 set   editor="wrxvt -e wim -f -c ':set ft=perl'"
@@ -210,7 +210,8 @@ set! zoom.minPercent=50
 "set! Network.dnsCacheExpiration=0
 ">
 
-color  desert_revisited
+"color  desert_revisited
+so $HOME/etc/vimperator/color/desert_revisited.vimp
 hi ErrorMsg font-family: Profont; font-weight: bold; font-size: 16pt; color: #ff0000; background-color: #121212; padding: 0px 1px; border: none
 
 "nnoremap <S-s> :call stop_loading()<cr>
