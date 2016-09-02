@@ -5,6 +5,7 @@ alias  mv='mv -v'
 alias  rm=rmc
 alias vim=wim
 alias prename='prename -v'
+alias grep='grep -I -P --exclude-dir=".git" --color=auto'
 
 if [[ $UID != 0 ]]
 then
@@ -27,6 +28,7 @@ alias    cpan='cpanm'
 alias    love='pimpd2 --love'
 alias    play='ossmix mplayer 18:18 || pimpd2 --play'
 alias    stop='ossmix mplayer 0  || pimpd2 --kill'
+alias     top='htop'
 alias  unlove='pimpd2 --unlove'
 
 alias     :q!='kill -9 $$'

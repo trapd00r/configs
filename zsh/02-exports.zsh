@@ -123,8 +123,6 @@ export DVDCSS_VERBOSE=0
 export DVDREAD_NOKEYS=1
 
 # XXX fix packer so we can add -P here
-export GREP_OPTIONS='-I --exclude-dir=".git" --color=auto'
-
 export HARNESS_SUMMARY_COL_FAIL=red
 export HARNESS_SUMMARY_COL_SUC=green
 
