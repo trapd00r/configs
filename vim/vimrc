@@ -201,6 +201,7 @@ if $TERM == 'linux'
   hi! link CursorColumn CursorLine
   hi! link ColorColumn  CursorLine
 else
+"  color neverland-ansi-two
   color neverland-ansi-two
 endif
 
@@ -208,14 +209,14 @@ endif
 " I want to keep &rtp as short as I can, so I'm no longer loading these files
 " dynamicly.
 hi Normal ctermfg=225 ctermbg=232
-source $VIMRUNTIME/nancy/000-ft.vim           " ftdetect
-source $VIMRUNTIME/nancy/000-functions.vim    " functions
-source $VIMRUNTIME/nancy/001-commands.vim     " user-defined commands
-source $VIMRUNTIME/nancy/009-abbrev.vim       " my wordlist of abbrevations
-source $VIMRUNTIME/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
+source /home/scp1/etc/vim/nancy/000-ft.vim           " ftdetect
+source /home/scp1/etc/vim/nancy/000-functions.vim    " functions
+source /home/scp1/etc/vim/nancy/001-commands.vim     " user-defined commands
+source /home/scp1/etc/vim/nancy/009-abbrev.vim       " my wordlist of abbrevations
+source /home/scp1/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
 color neverland-ansi_bg
-source $VIMRUNTIME/nancy/090-syntax.vim       " my syntax defs
-source $VIMRUNTIME/nancy/099-status.vim       " status, man
+source /home/scp1/etc/vim/nancy/090-syntax.vim       " my syntax defs
+source /home/scp1/etc/vim/nancy/099-status.vim       " status, man
 ">
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
 let &t_EI = "\<Esc>]12;#ff0000\x7"
