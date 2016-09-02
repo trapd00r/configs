@@ -71,6 +71,15 @@ host n900v3               #{{{
   checkhostip             no
   connecttimeout          10
 #}}}
+host n9                   #{{{
+  user                    user
+  hostname                192.168.0.198
+  port                    22
+  compression             yes
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          10
+#}}}
 host xfloff.net           #{{{
   user                    scp1
   hostname                xfloff.net
