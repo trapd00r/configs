@@ -1,3 +1,4 @@
+zsh
 shopt -s autocd
 shopt -s cdable_vars
 #shopt -s checkhash
