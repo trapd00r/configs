@@ -146,3 +146,9 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
 #eval $( dircolors -b ${HOME}/dev/LS_COLORS/LS_COLORS )
 
 compdef     _gnu_generic ln file vnstati lscpu lsb_release
+
+PATH="/home/scp1/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/scp1/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/scp1/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/scp1/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/scp1/perl5"; export PERL_MM_OPT;
