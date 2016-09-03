@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Crafted: 2008-04-24
-  Updated: 2016-09-02 07:29:55
+  Updated: 2016-09-03 08:31:14
 
 - A lot of different hosts use this file.
 - You will not find any color definitions here.
@@ -189,10 +189,14 @@ URxvt*font6:                -xos4-terminus-medium-r-normal-*-18-*-*-*-*-*-*-1
 URxvt*font7:                -xos4-terminus-medium-r-normal-*-19-*-*-*-*-*-*-1
 URxvt*font8:                -xos4-terminus-medium-r-normal-*-20-*-*-*-*-*-*-1
 
-sid.font:              xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0
-sid.boldFont:          xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0:embolden=1
-sid.italicFont:        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
-sid boldItalicFont:    xft:Fixed:size=9:hinting=0:rgba=0:antialias=0:embolden=1:scale=.8:lcdfilter=2:autohint=1:hintstyle=3
+sid.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+sid.boldFont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+sid.italicFont:         -b&h-lucidatypewriter-bold-r-normal-sans-10-100-75-75-m-60-iso10646-1
+sid.boldItalicFont:     -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+!sid.font:              xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0
+!sid.boldFont:          xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0:embolden=1
+!sid.italicFont:        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+!sid boldItalicFont:    xft:Fixed:size=9:hinting=0:rgba=0:antialias=0:embolden=1:scale=.8:lcdfilter=2:autohint=1:hintstyle=3
 !sid.font:             xft:Fixed:size=14:hinting=false:autohint=false:rgba=none:antialias=false:lcdfilter=0:embolden=1
 !sid.boldFont:         xft:Fixed:size=14:hinting=false:autohint=false:rgba=:antialias=true:lcdfilter=3
 !sid.italicFont:       xft:fixed:dpi=99:size=14:weight=black
