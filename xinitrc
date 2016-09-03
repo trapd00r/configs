@@ -12,4 +12,4 @@ motion    -c           ${XDG_CONFIG_HOME}/motion.conf &
 xrdb                   ${XDG_CONFIG_HOME}/Xresources  &
 dhcpcd &
 
-exec ratpoison
+ratpoison
