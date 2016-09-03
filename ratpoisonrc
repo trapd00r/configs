@@ -1,9 +1,9 @@
 ### vim: ft=ratpoison fde fdm=marker fmr=#<,#> fdc=3 fdl=1:
 #< ${HOME}/etc/ratpoisonrc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
-#         owner  Magnus Woldrich <m@japh.se>
+#         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #       crafted  2009-04-24
-#         mtime  2013-04-06 14:21:38
+#         mtime  2016-09-03 11:11:29
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -13,95 +13,71 @@
 #           irc  japh@freenode #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###>
-addhook  switchgroup next
+startup_message off
+escape C-f
+defresizeunit 80
+
+addhook switchgroup next
+
 #< options
-startup_message       off
-escape                C-f
-defresizeunit         80
-set gravity           c
-set bargravity        c
-set wingravity        c
-set winname           title
-set maxsizegravity    c
-set inputwidth        0
-set historyexpansion  1
+set           gravity c
+set        bargravity c
+set        wingravity c
+set           winname title
+set    maxsizegravity c
+set        inputwidth 0
+set  historyexpansion 1
 set historycompaction 1
-set historysize       1000
-set winliststyle      column
-set barpadding        8 8
-set border            0
-set bgcolor           #080808
-set bwcolor           #0c0c0c
-set fgcolor           #d75f00
-set fwcolor           #afd700
-#< hack - we need to set font once per head
-nextscreen
-set font Terminus:weight:bold:size=12
-nextscreen
-set font Terminus:weight:bold:size=12
+set       historysize 1000
+set      winliststyle column
+set        barpadding 8 8
+set            border 0
+set           bgcolor #080808
+set           bwcolor #0c0c0c
+set           fgcolor #d75f00
+set           fwcolor #afd700
+set              font Terminus:weight:bold:size=12
 #>
-#>
-#< binds
-unbind w
-bind w exec ~/dev/utils/rp-window-menu
-bind g exec ~/dev/utils/rp-groups-menu
-#< applications
-bind c                 exec /home/scp1/bin/wrxvt -name sid
-bind C                 exec /home/scp1/bin/wrxvt -name sid -fg '#fff' bg '#1c1c1c'
-bind v                 exec wrxvt -name sid -bg '#121212' -fg '#bbaaaa'
-bind x                 exec xterm -name UXTerm
-bind X                 exec xterm -name XTerm
-bind e                 exec rp-runorraise firefox
-bind E                 exec rp-runorraise deluge
-#bind M-e               exec rp-runorraise firefox -no-remote
-#bind M-E               exec rp-runorraise firefox -safe
-bind M-f               exec rp-runorraise fuck
 
-#definekey top C-Return exec firefox -new-tab "`xclip -o`"
-definekey top S-Return getsel
-definekey top M-Return exec x-terminal-emulator
-definekey top Pause    exec ossmix vmix0.pcm8 -- +2
-definekey top Print    exec ossmix vmix0.pcm8 -- -2
-definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
-definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
-#>
-#< jump around
-definekey top C-space  prevscreen
-bind space             nextscreen
-bind H                 exchangeleft
-bind J                 exchangedown
-bind K                 exchangeup
-bind L                 exchangeright
-bind h                 focusleft
-bind j                 focusdown
-bind k                 focusup
-bind l                 focusright
-definekey top s-Left   focusleft
-definekey top s-Right  focusright
-definekey top s-Up     focusup
-definekey top s-Down   focusdown
-definekey top s-Tab    focusprev
-definekey top s-M-Tab  focuslast
+#< binds: applications
+bind c exec urxvt -name sid -fg white -bg black
+bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
+bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
+bind x exec xterm -name UXTerm
+bind X exec xterm -name XTerm
+bind e exec rp-runorraise firefox
 
-bind C-K               kill
-bind M-k               kill
-bind w                 windows
-bind W                 windows
+#unbind w
+#bind w exec ~/dev/utils/rp-window-menu
+#bind g exec ~/dev/utils/rp-groups-menu
 #>
+#< binds: window management
+bind H exchangeleft
+bind J exchangedown
+bind K exchangeup
+bind L exchangeright
+
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+
+bind C-K kill
+bind M-k kill
+bind w windows
+bind W windows
+
+bind q undo
+bind G gmove
+
 exec rpws init 5 -k
-#< groups / workspaces
-bind s-n               gnext
-bind s-p               gprev
-bind G                 gmove
-bind s-c               gnew
-bind s-g               gnew
-
-bind C-l               rpwsn
-bind C-h               rpwsp
-
-## these equals ISO_Level3_Shift-x on a standard layout
-## my number row is already shifted so effectively this means AltGr+[!'#$%&/()=]
-bind M-asterisk        rpws2
+bind s-n gnext
+bind s-p gprev
+bind s-c gnew
+bind s-g gnew
+#>
+#< binds: workspaces
+bind M-2               rpws2
 bind M-quotedbl        rpws3
 bind M-U26A1           rpws4
 bind M-238E            rpws5
@@ -122,4 +98,13 @@ bind M-i               rpws18
 bind M-o               rpws19
 bind M-p               rpws20
 bind M-slash           gother
+#>
+#< binds: top level
+definekey top C-Return exec firefox -new-tab "`xclip -o`"
+definekey top S-Return getsel
+definekey top M-Return exec x-terminal-emulator
+#definekey top Pause    exec ossmix vmix0.pcm8 -- +2
+#definekey top Print    exec ossmix vmix0.pcm8 -- -2
+#definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
+#definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
 #>
