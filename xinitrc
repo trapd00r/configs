@@ -10,6 +10,8 @@ feh       --bg-center  ~/img/dylan.jpg &
 xmodmap                ${XDG_CONFIG_HOME}/xmodmaprc   &
 motion    -c           ${XDG_CONFIG_HOME}/motion.conf &
 xrdb                   ${XDG_CONFIG_HOME}/Xresources  &
+xset      +fp          /usr/share/fonts
+xset                   fp rehash
 dhcpcd &
 
 ratpoison
