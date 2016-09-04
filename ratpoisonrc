@@ -100,8 +100,8 @@ bind M-p               rpws20
 bind M-slash           gother
 #>
 #< binds: top level
-definekey top C-Return exec firefox -new-tab "`xclip -o`"
-definekey top S-Return getsel
+#definekey top C-Return exec firefox -new-tab "`xclip -o`"
+#definekey top S-Return getsel
 definekey top M-Return exec x-terminal-emulator
 #definekey top Pause    exec ossmix vmix0.pcm8 -- +2
 #definekey top Print    exec ossmix vmix0.pcm8 -- -2
