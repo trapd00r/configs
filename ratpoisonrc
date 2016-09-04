@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #       crafted  2009-04-24
-#         mtime  2016-09-03 11:11:29
+#         mtime  2016-09-04 10:08:10
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -70,34 +70,22 @@ bind W windows
 bind q undo
 bind G gmove
 
-exec rpws init 5 -k
-bind s-n gnext
-bind s-p gprev
-bind s-c gnew
-bind s-g gnew
+#bind s-n gnext
+#bind s-p gprev
+#bind s-c gnew
+#bind s-g gnew
 #>
 #< binds: workspaces
-bind M-2               rpws2
-bind M-quotedbl        rpws3
-bind M-U26A1           rpws4
-bind M-238E            rpws5
-bind M-EuroSign        rpws6
-bind M-yen             rpws7
-bind M-braceleft       rpws8
-bind M-bracketleft     rpws9
-bind M-bracketright    rpws10
-bind M-braceright      rpws1
-bind M-U266B           rpws11
-bind M-U2191           rpws12
-bind M-U2661           rpws13
-bind M-U2690           rpws14
-bind M-t               rpws15
-bind M-y               rpws16
-bind M-u               rpws17
-bind M-i               rpws18
-bind M-o               rpws19
-bind M-p               rpws20
-bind M-slash           gother
+#exec rpws init 5 -k
+gnewbg one
+gnewbg two
+gnewbg three
+gnewbg four
+
+bind 1 gnumber 1
+bind 2 gnumber 2
+bind 3 gnumber 3
+bind 4 gnumber 4
 #>
 #< binds: top level
 #definekey top C-Return exec firefox -new-tab "`xclip -o`"
