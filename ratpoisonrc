@@ -47,9 +47,10 @@ bind x exec xterm -name UXTerm
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 
-#unbind w
-#bind w exec ~/dev/utils/rp-window-menu
-#bind g exec ~/dev/utils/rp-groups-menu
+unbind w
+unbind g
+bind w exec sh ~/dev/ratpoison_scripts/window-menu/window-menu
+bind g exec ~/dev/utils/rp-groups-menu
 #>
 #< binds: window management
 bind H exchangeleft
@@ -64,8 +65,8 @@ bind l focusright
 
 bind C-K kill
 bind M-k kill
-bind w windows
-bind W windows
+#bind w windows
+#bind W windows
 
 bind q undo
 bind G gmove
