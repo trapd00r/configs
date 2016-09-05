@@ -1,4 +1,3 @@
-#!/bin/zsh
 ###< vim: set ft=zsh:fdm=marker:fmr=#<,#>:fdl=0:fen:et:sw=2:fcl=all:
 ###
 #      ${HOME}/etc/zsh/02-exports.zsh

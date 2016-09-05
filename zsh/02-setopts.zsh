@@ -1,5 +1,22 @@
-#!/usr/bin/zsh
+###< vim: set ft=zsh:fdm=marker:fmr=#<,#>:fdl=0:fen:et:sw=2:fcl=all:
+###
+#      ${HOME}/etc/zsh/02-setopts.zsh
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
+#         btime  2009-04-24
+#         mtime  2016-09-05 14:56:04
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  http://github.com/trapd00r/configs/zsh  (up-to-date)
+#           url  http://devel.japh.se/configs/zsh        (sync 1/24h)
+#           irc  japh@freenode #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###>
 
+#< options
 setopt \
      aliases                \
   no_all_export             \
@@ -152,6 +169,7 @@ setopt \
   no_xtrace                 \
      zle                    \
   no_single_command
+#>
 
 autoload -U age compinit relative
 zle -C most-accessed-file menu-complete _generic

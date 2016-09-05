@@ -1,4 +1,20 @@
-#!/usr/bin/zsh
+###< vim: set ft=zsh:fdm=marker:fmr=#<,#>:fdl=0:fen:et:sw=2:fcl=all:
+###
+#      ${HOME}/etc/zsh/02-abbrevations.zsh
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
+#         btime  2009-04-24
+#         mtime  2016-09-05 14:56:04
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  http://github.com/trapd00r/configs/zsh  (up-to-date)
+#           url  http://devel.japh.se/configs/zsh        (sync 1/24h)
+#           irc  japh@freenode #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###>
 
 typeset -Ag abbreviations
 abbreviations=(
@@ -31,6 +47,3 @@ zle -N no-magic-abbrev-expand
 
 bindkey " "   magic-abbrev-expand
 bindkey "^x " no-magic-abbrev-expand
-
-
-# vim: set et sw=2 tw=90:

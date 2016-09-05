@@ -1,8 +1,23 @@
-#!/usr/bin/zsh
-#vim :ft=zsh et sw=2 smc=78 fdm=marker fml=2 fmr=#<,#>:
+###< vim: set ft=zsh:fdm=marker:fmr=#<,#>:fdl=0:fen:et:sw=2:fcl=all:
+###
+#      ${HOME}/etc/zsh/02-bindkeys.zsh
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
+#         btime  2009-04-24
+#         mtime  2016-09-05 15:44:52
+#   permissions  You are free to use things you may find useful here.
+#                Would my tweaks happen to give you a raise or fetch you a
+#                girlfriend, it goes without saying I'm counting on you
+#                to share with me as I've shared with you.
+#           git  http://github.com/trapd00r/configs/zsh  (up-to-date)
+#           url  http://devel.japh.se/configs/zsh        (sync 1/24h)
+#           irc  japh@freenode #zsh #vim #perl
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+###
+###>
 
 #bindkey -v
-# main                                                                       {{{
+bindkey "^N"      most-accessed-file
 #bindkey "^J"    accept-line
 zle -C menu-complete-files menu-complete _generic
 zstyle ':completion:menu-complete-files:*' completer _files
@@ -18,7 +33,14 @@ bindkey -M vicmd   ";" _read_comp
 
 bindkey -M viins "^U" all-matches
 
-#<
+#< screen, tmux
+#if [[ "$TERM" =~ 'screen' ]]; then
+#  bindkey -s '^n' 'tmux next-window\n'
+#  bindkey -s '^p' 'tmux previous-window\n'
+#fi
+#>
+
+#< main
 ##  remove all key bindings starting with ESC
 #bindkey -M vicmd -rp "^["
 #bindkey -M viins -rp "^["
@@ -71,8 +93,8 @@ bindkey "^[[6~" down-line-or-history
 bindkey "^[[B"  down-line-or-history
 bindkey "^[[C"  vi-forward-char
 bindkey "^[[D"  vi-backward-char
-#}}}
-# vicmd                                                                      {{{
+#>
+#< vicmd
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd "^V"     edit-command-line
@@ -170,8 +192,8 @@ bindkey -M vicmd  "<"     vi-unindent
 #bindkey -M vicmd  "-"     vi-up-line-or-history
 bindkey -M vicmd  "y"     vi-yank
 bindkey -M vicmd  "Y"     vi-yank-whole-line
-#}}}
-# viins                                                                      {{{
+#>
+#< viins
 #bindkey -s -M viins "^T"  "\\\top\n"
 bindkey -M viins "^K" up-line-or-history
 bindkey -M viins "^J" down-line-or-history
@@ -241,18 +263,18 @@ bindkey -M viins "^[[C"  vi-forward-char
 bindkey -M viins "^[OC"  vi-forward-char
 bindkey -M viins "^U"    vi-kill-line
 bindkey -M viins "^Q"    vi-quoted-insert
-#}}}
-# command {{{
+#>
+#< command
 #bindkey -M command "^G" send-break
 bindkey -M command "^C" send-break
 #bindkey -M command "^J" send-break
 #bindkey -M command "^M" send-break
-#}}}
-# isearch                                                                    {{{
+#>
+#< isearch
 bindkey -M isearch " " self-insert
 bindkey -M isearch "^J" self-insert
-#}}}
-# menuselect                                                                 {{{
+#>
+#< menuselect
 zmodload zsh/complist
 #bindkey -M menuselect -rp '^'
 #bindkey -M menuselect '^J' down-line-or-search
@@ -263,9 +285,8 @@ bindkey -M menuselect  '^E' accept-and-menu-complete
 #bindkey -M menuselect  '^M' accept-and-infer-next-history
 #bindkey -M menuselect  '^M' accept-line-and-down-history
 bindkey -M menuselect  '^M' magic-space
-#}}}
-
-# emacs                                                                      {{{
+#>
+#< emacs
 bindkey -M emacs "^[a"  accept-and-hold
 bindkey -M emacs "^[A"  accept-and-hold
 #bindkey -M emacs "^J"   accept-line
@@ -382,39 +403,33 @@ bindkey -M emacs "^[y"  yank-pop
 bindkey -R -M emacs " "-"~" self-insert
 bindkey -M emacs "^?" backward-delete-char
 bindkey -R -M emacs "\M-^@"-"\M-^?" self-insert
-#}}}
-# redirection                                                                {{{
+#>
+#< redirection
 bindkey -s "^X0" " &> /dev/null "
 bindkey -s "^X1" "  > /dev/null "
 bindkey -s "^X2" " 2> /dev/null "
 bindkey -s "^X3" " 2>&1 "
-#}}}
-# ranges                                                                     {{{
+#>
+#< ranges
 bindkey -R "!"-"~"         self-insert
 bindkey -R "^Y"-"^Z"       self-insert
 bindkey -R "^\\\\"-"^_"    self-insert
 bindkey -R "\M-^@"-"\M-^?" self-insert
-#}}}
-# applications                                                               {{{
+#>
+#< applications
 #bindkey -s "^T" "top\n"
 #bindkey -s "^V" "^Rvim\n"
 #bindkey -s "^Z" "urxvt -name shiva\n"
-
-#if [[ "$TERM" =~ 'screen' ]]; then
-#  bindkey -s '^n' 'tmux next-window\n'
-#  bindkey -s '^p' 'tmux previous-window\n'
-#fi
-#}}}
-
+#>
+#< escape FAST
 #  remove all key bindings starting with ESC
 bindkey -M vicmd -rp "^["
 bindkey -M viins -rp "^["
 # escape as fast as possible from insert mode
 bindkey -M viins -rp '^['
 bindkey -M viins     '^[' vi-cmd-mode
-
-#bindkey "^N"      most-accessed-file
-
+#>
+#< terminfo madness
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
 #typeset -A key
@@ -450,3 +465,4 @@ bindkey -M viins     '^[' vi-cmd-mode
 #}
 #zle -N zle-line-init
 #zle -N zle-line-finish  
+#>
