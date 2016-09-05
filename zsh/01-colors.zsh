@@ -1,6 +1,6 @@
-export ACK_COLOR_MATCH="cyan bold"
+export    ACK_COLOR_MATCH="cyan bold"
 export ACK_COLOR_FILENAME="cyan bold on_black"
-export ACK_COLOR_LINENO="bold green"
+export   ACK_COLOR_LINENO="bold green"
 
 if [[ -z $LS_COLORS ]]; then
   if [ -f $HOME/dev/LS_COLORS/LS_COLORS ]; then
@@ -17,6 +17,6 @@ if [[ -z $LS_COLORS ]]; then
 fi
 
 if [ "$TERM" != "linux" ]; then
-  [[ "$HOSTNAME" == 'shiva' ]] && export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;4:mc=38;5;85;1;48;5;232:ne"
-  [[ "$HOSTNAME" == 'rambo' ]] && export GREP_COLORS="38;5;230:sl=48;5;233;38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;233:ln=38;5;87;3:bn=38;5;233:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;233;38;5;85;1:mc=38;5;85;1;48;5;233;7:ne"
+  [[ "$HOSTNAME" == 'elite' ]] && export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;4:mc=38;5;85;1;48;5;232:ne"
+  [[ "$HOSTNAME" == 'laleh' ]] && export GREP_COLORS="38;5;230:sl=48;5;233;38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;233:ln=38;5;87;3:bn=38;5;233:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;233;38;5;85;1:mc=38;5;85;1;48;5;233;7:ne"
 fi
