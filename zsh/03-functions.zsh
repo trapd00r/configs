@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 15:46:08
+#         mtime  2016-09-05 16:31:24
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -25,7 +25,7 @@ neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
 scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }
 tcx()       { /usr/bin/tmux attach || /usr/bin/tmux -f $XDG_CONFIG_HOME/etc/tmux.conf }
 mutt()      { TERM=xterm-256color /usr/bin/mutt -F $XDG_CONFIG_HOME/muttrc "$@" }
-tig()       { TERM=xterm-256color /usr/bin/tig }
+tig()       { TERM=xterm-256color /usr/bin/tig "$@"}
 goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
 scx()       { TERM=xterm-256color screen -x }
