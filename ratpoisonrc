@@ -38,7 +38,10 @@ set           fgcolor #d75f00
 set           fwcolor #afd700
 set              font Terminus:weight:bold:size=12
 #>
-
+#< window management
+unmanage tint2
+unmanage dzen2
+#>
 #< binds: applications
 bind c exec urxvt -name sid -fg white -bg black
 bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
