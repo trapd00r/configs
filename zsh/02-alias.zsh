@@ -6,6 +6,7 @@ alias  rm=rmc
 alias vim=wim
 alias prename='prename -v'
 alias grep='grep -I -P --exclude-dir=".git" --color=auto'
+alias pacman='pacman --color=auto'
 
 if [[ $UID != 0 ]]
 then
@@ -164,6 +165,3 @@ alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 alias perlu='perl -Mv5.12 -Mutf8 -Mstrict -Mautodie -Mwarnings -Mwarnings=FATAL,utf8 -CSAD -Mopen=:std,:utf8 -Mcharnames=:full -Mfeature=unicode_strings -MEncode=encode,decode -MUnicode-Normalize=NFD,NFC,NFKD,NFKC'
 #alias     gcc='gcc -ansi -pedantic -Wextra -Wempty-body -Wfloat-equal -Wignored-qualifiers -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wold-style-declaration -Woverride-init -Wsign-compare -Wstrict-prototypes -Wtype-limits -Wuninitialized -fstack-protector-all -D_FORTIFY_SOURCE=2'
 #alias    gccc='gcc -ansi -pedantic -Wall'
-alias k=pacman-color
-alias ko=cower
-alias kor=meat

@@ -11,7 +11,6 @@ apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
 scrot()     { /usr/bin/scrot -q 89 "$@" }
 tcx()       { /usr/bin/tmux attach || /usr/bin/tmux -f $HOME/etc/tmux.conf }
-pacman()    { =pacman-color "$@" }
 mutt()      { TERM=xterm-256color /usr/bin/mutt -F /home/scp1/etc/muttrc "$@" }
 tig()       { TERM=xterm-256color /usr/bin/tig }
 goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
