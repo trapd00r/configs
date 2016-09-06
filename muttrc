@@ -51,7 +51,7 @@ set postponed           = +drafts
 set postponed           = +postponed
 set print_command       = "muttprint -r $HOME/etc/muttprintrc"
 set query_command       = "abook --mutt-query '%s'"
-set quit                = ask-yes
+set quit
 set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
 set quote_regexp        = "^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 set read_inc            = 25
@@ -68,7 +68,7 @@ set smart_wrap
 set smileys             = "^$"
 set sort                = threads
 set sort_aux            = last-date-received
-set sort_browser        = reverse-date
+#set sort_browser        = reverse-date
 set sort_re
 set spoolfile           = +
 set status_on_top
