@@ -1,5 +1,5 @@
 source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
-mailboxes `find /mnt/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
+mailboxes `find /home/scp1/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 
 # options                                                                    {{{
 set abort_nosubject     = no
@@ -18,10 +18,11 @@ set duplicate_threads   = yes
 set edit_headers        = yes
 set editor              = "wim -c \"set spell spl=en | so ~/etc/vim/nancy/009-abbrev.vim\""
 set fast_reply          = yes
-set folder              = /mnt/mail/inbox
+set folder              = /home/scp1/mail/inbox
+#set folder              = /home/scp1/mail/
 set forward_format      = "Fw: %s"
 set from                = "m@japh.se"
-set header_cache        = /mnt/mail/.hcache
+set header_cache        = /home/scp1/mail/.hcache
 set hide_missing        = yes
 set hide_thread_subject = yes
 set hostname            = japh.se
@@ -55,7 +56,7 @@ set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
 set quote_regexp        = "^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 set read_inc            = 25
 set realname            = "Magnus Woldrich"
-set record              = /mnt/mail/.out/sent-`date +"%y%m"`
+set record              = /home/scp1/mail/.out/sent-`date +"%y%m"`
 set reply_regexp        = '^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
 set reply_to            = yes
 set reverse_alias       = yes
