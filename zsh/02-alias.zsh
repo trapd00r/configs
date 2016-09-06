@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 14:56:04
+#         mtime  2016-09-06 14:32:49
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -51,7 +51,7 @@ alias lss='=ls --color=auto -1 | grep "(^\w*[^_-])"'
 #< directories
 alias --  -='builtin cd -'
 alias     b='builtin cd $HOME/bin'
-alias     c='builtin cd $XDG_CONFIG_HOME/etc'
+alias     c='builtin cd $XDG_CONFIG_HOME/'
 alias     d='builtin cd $HOME/dev'
 alias     g='builtin cd $HOME/dev/_upstream'
 alias     h='builtin cd $HOME/http/japh.se'
