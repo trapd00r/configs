@@ -1,37 +1,37 @@
 SHELL=/bin/sh
 VERBOSE=on
-MAILDIR=/mnt/Mail
-LOGFILE=/mnt/Mail/.procmail.log
+MAILDIR=/home/scp1/mail
+LOGFILE=/home/scp1/mail/.procmail.log
 DEFAULT=$MAILDIR/inbox/
 
 # lists                                                                      {{{
 :0:
 * ^TO_arch-general@archlinux.org
-/mnt/Mail/inbox/arch-general/
+/home/scp1/mail/inbox/arch-general/
 
 :0:
 * ^TO_arch-dev-public@archlinux.org
-/mnt/Mail/inbox/arch-dev/
+/home/scp1/mail/inbox/arch-dev/
 
 :0:
 * ^TO_libtorrent-devel@rakshasa.no
-/mnt/Mail/inbox/rtorrent/
+/home/scp1/mail/inbox/rtorrent/
 
 :0:
 * ^TO_full-disclosure@lists.grok.org.uk
-/mnt/Mail/inbox/full-disclosure/
+/home/scp1/mail/inbox/full-disclosure/
 
 :0:
 * ^TO_perldl2jach.hawaii.edu
-/mnt/Mail/inbox/perldl/
+/home/scp1/mail/inbox/perldl/
 
 :0:
 * ^TO_daily-build-reports@perl.org
-/mnt/Mail/inbox/daily-build-reports/
+/home/scp1/mail/inbox/daily-build-reports/
 
 :0:
 * ^TO_smokers-reports@perl.org
-/mnt/Mail/inbox/smokers-reports/
+/home/scp1/mail/inbox/smokers-reports/
 #}}}
 # retards                                                                    {{{
 :0:
