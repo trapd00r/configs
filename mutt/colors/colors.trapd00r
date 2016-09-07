@@ -1,12 +1,12 @@
 color body       color225 color232 "[;:]-[)/(|]"
 
-color normal     color86  color16
+color normal     color255 color232
 color error      color196 color232
 color markers    color88  color232
 color tilde      color142 color232
 color status     color232 color232
 
-color indicator  color250 color235
+color indicator  color250 color232
 color index      color100 color232 ~l
 color index      color106 color232 ~N
 color index      color86  color232 ~O
