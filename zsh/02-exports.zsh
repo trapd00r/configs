@@ -111,9 +111,10 @@ export  FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp125
 export  FONT_I='-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
 #>
 #< mail
-export     MAIL=${HOME}/mail
-export  MAILDIR=${HOME}/mail
-export SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
+export      MAIL=${HOME}/mail
+export   MAILDIR=${HOME}/mail
+export  SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
+export DELIVERED=yes
 #>
 #< mpd
 export MPD_HOST=localhost
