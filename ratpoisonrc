@@ -22,10 +22,17 @@ addhook switchgroup next
 #< catpoison only!
 set virtuals 5
 vinit 
-definekey top F1 vselect 1
-definekey top F2 vselect 2
-definekey top F3 vselect 3
-definekey top F4 vselect 4
+definekey top  F1 vselect 1
+definekey top  F2 vselect 2
+definekey top  F3 vselect 3
+definekey top  F4 vselect 4
+definekey top  F5 vselect 5
+
+definekey top M-1 vselect 1
+definekey top M-2 vselect 2
+definekey top M-3 vselect 3
+definekey top M-4 vselect 4
+definekey top M-5 vselect 5
 
 set barsticky off
 #set gap
@@ -49,6 +56,7 @@ set           bwcolor #0c0c0c
 set           fgcolor #d75f00
 set           fwcolor #afd700
 set              font Terminus:weight:bold:size=12
+set          maxundos 20
 #>
 #< window management
 unmanage tint2
@@ -56,6 +64,7 @@ unmanage dzen2
 unmanage sdlmame
 unmanage mame
 unmanage neverball
+unmanage gcolor2
 #>
 #< binds: applications
 bind c exec urxvt -name sid -fg white -bg black
@@ -84,12 +93,14 @@ bind k focusup
 bind l focusright
 
 bind C-K kill
-bind M-k kill
 #bind w windows
 #bind W windows
 
-bind q undo
+bind u undo
 bind G gmove
+
+bind Tab focuslast
+bind ISO_Left_Tab focus
 
 #bind s-n gnext
 #bind s-p gprev
@@ -107,9 +118,16 @@ bind G gmove
 #< binds: top level
 #definekey top C-Return exec firefox -new-tab "`xclip -o`"
 #definekey top S-Return getsel
-definekey top M-Return exec x-terminal-emulator
 #definekey top Pause    exec ossmix vmix0.pcm8 -- +2
 #definekey top Print    exec ossmix vmix0.pcm8 -- -2
 #definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
 #definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
+#>
+
+# act normal, but prevent firefox from raising itself
+# when links are opened from other applications
+rudeness 12
+
+#< init
+hsplit
 #>
