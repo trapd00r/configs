@@ -2,7 +2,7 @@ SHELL=/bin/sh
 VERBOSE=on
 MAILDIR=/home/scp1/mail
 LOGFILE=/home/scp1/mail/.procmail.log
-DEFAULT=$MAILDIR/inbox/
+DEFAULT=$MAILDIR/
 
 # lists                                                                      {{{
 :0:
