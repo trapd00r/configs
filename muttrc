@@ -1,7 +1,20 @@
+# vim:cc=0:tw=0:fdm=marker:ft=muttrc:
 source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
 mailboxes `find /home/scp1/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 
-# options                                                                    {{{
+#< options
+set include
+set nobeep
+set noconfirmappend
+set nohelp
+set nomark_old
+set nowait_key
+set smart_wrap
+set sort_re
+set status_on_top
+set text_flowed
+set quit
+
 set abort_nosubject     = no
 set abort_unmodified    = no
 set allow_ansi          = yes
@@ -13,13 +26,12 @@ set collapse_unread     = no
 set compose_format      = "--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%>-"
 set date_format         = "%y%m%d %H:%M  "
 set delete              = yes
-#set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
+set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
 set duplicate_threads   = yes
 set edit_headers        = yes
 set editor              = "wim -c \"set spell spl=en | so ~/etc/vim/nancy/009-abbrev.vim\""
 set fast_reply          = yes
-set folder              = /home/scp1/mail/inbox
-#set folder              = /home/scp1/mail/
+set folder              = /home/scp1/mail/
 set forward_format      = "Fw: %s"
 set from                = "m@japh.se"
 set header_cache        = /home/scp1/mail/.hcache
@@ -27,22 +39,13 @@ set hide_missing        = yes
 set hide_thread_subject = yes
 set hostname            = japh.se
 set implicit_autoview   = yes
-set include
 set index_format        = "%[%b %d]▕ %X:%Z ▕ %30.30L▕ %s"
 set mail_check          = 5
 set markers             = no
 set mbox                = =received
 set mbox_type           = Maildir
-#set mbox_type           = mbox
-#set mbox_type           = MMDF
-#set mbox_type           = MH
 set move                = no
 set narrow_tree         = yes
-set nobeep
-set noconfirmappend
-set nohelp
-set nomark_old
-set nowait_key
 set pager_context       = 3
 set pager_format        = "-%S- %-20.20f %s"
 set pager_index_lines   = 0
@@ -51,7 +54,6 @@ set postponed           = +drafts
 set postponed           = +postponed
 set print_command       = "muttprint -r $HOME/etc/muttprintrc"
 set query_command       = "abook --mutt-query '%s'"
-set quit
 set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
 set quote_regexp        = "^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
 set read_inc            = 25
@@ -64,27 +66,23 @@ set send_charset        = "utf-8"
 set sendmail            = /usr/bin/msmtp
 set shell               = /bin/zsh
 set signature           = ~/.signature
-set smart_wrap
 set smileys             = "^$"
 set sort                = threads
+set sort_browser        = reverse-date
 set sort_aux            = last-date-received
-#set sort_browser        = reverse-date
-set sort_re
 set spoolfile           = +
-set status_on_top
-set text_flowed
 set thread_received     = yes
 set tmpdir              = /dev/shm
 set wrapmargin          = 4
-#}}}
-# macros                                                                     {{{
-macro index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
-macro generic,index,pager A "<shell-escape>abook<return>" "launch abook"
-macro index,pager a "<pipe-message>abook --add-email<return>" "add the sender address to abook"
-macro index .. "c=\n" "Go to inbox"
-macro index n "<next-entry><display-message>"
-#}}}
-# binds                                                                      {{{
+#>
+#< macros
+macro generic,index,pager A  "<shell-escape>abook<return>" "launch abook"
+macro               index .. "c=\n" "Go to inbox"
+macro               index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
+macro               index n  "<next-entry><display-message>"
+macro         index,pager a  "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+#>
+#< binds
 # generic alias attach browser editor index compose pager pgp postpone mix
 bind pager k    previous-line
 bind pager <    previous-line
@@ -93,32 +91,27 @@ bind pager >    next-line
 bind pager down next-page
 bind pager up   previous-page
 
-bind index [    previous-line
-bind index ]    next-line
-
-bind index gg   first-entry
-bind index G    last-entry
-
-bind index . display-message
-bind index t display-message
-bind index + next-entry
-bind index j next-entry
-bind index J next-entry
-bind index - previous-entry
-bind index k previous-entry
-bind index K previous-entry
-bind index { top-page
-bind index } bottom-page
-bind index f change-folder
+bind index *   flag-message
+bind index +   next-entry
+bind index -   previous-entry
+bind index .   display-message
+bind index G   last-entry
+bind index J   next-entry
+bind index K   previous-entry
+bind index [   previous-line
 bind index \cu sync-mailbox
-bind index * flag-message
-
-
-
+bind index ]   next-line
+bind index f   change-folder
+bind index gg  first-entry
+bind index j   next-entry
+bind index k   previous-entry
+bind index t   display-message
+bind index {   top-page
+bind index }   bottom-page
 
 bind browser y  exit
-#}}}
-# hooks                                                                      {{{
+#>
+#< hooks
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 
 save-hook @arenabolaget.se                                            =arenabolaget
@@ -146,8 +139,8 @@ save-hook "~C   vim_dev@vim.org"                                      =vim_dev
 save-hook "~f   Bram@Moolenaar.net"                                   =bram
 save-hook "~C   zsh-workers@zsh.org"                                  =zsh-workers
 save-hook "~C   zsh-users@zsh.org"                                    =zsh_users
-#}}}
-# headers                                                                    {{{
+#>
+#< headers
 hdr_order Delivered-To Subject In-Reply-To X-Mailing-List
 
 ignore *
@@ -162,10 +155,8 @@ unignore X-Mailer:
 unignore User-Agent:
 
 my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
-#}}}
-# mime autoview                                                              {{{
+#>
+#< mime autoview
 auto_view text/x-diff
 auto_view text/x-patch
-#}}}
-
-# vim: cc=0 tw=0 fdm=marker:
+#>
