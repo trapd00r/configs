@@ -19,6 +19,18 @@ defresizeunit 80
 
 addhook switchgroup next
 
+#< catpoison only!
+set virtuals 5
+vinit 
+definekey top F1 vselect 1
+definekey top F2 vselect 2
+definekey top F3 vselect 3
+definekey top F4 vselect 4
+
+set barsticky off
+#set gap
+#>
+
 #< options
 set           gravity c
 set        bargravity c
@@ -53,6 +65,7 @@ bind x exec xterm -name UXTerm
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 bind p exec mpc next
+bind o exec mpc pause
 
 unbind w
 unbind g
@@ -85,15 +98,11 @@ bind G gmove
 #>
 #< binds: workspaces
 #exec rpws init 5 -k
-gnewbg one
-gnewbg two
-gnewbg three
-gnewbg four
+#gnewbg one
+#gnewbg two
+#gnewbg three
+#gnewbg four
 
-bind 1 gnumber 1
-bind 2 gnumber 2
-bind 3 gnumber 3
-bind 4 gnumber 4
 #>
 #< binds: top level
 #definekey top C-Return exec firefox -new-tab "`xclip -o`"
