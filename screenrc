@@ -16,7 +16,7 @@ term screen-256color
  nethack on				# default: off
 # Affects the copying of text regions
   crlf off				# default: off
-  multiuser off				
+  multiuser off
   defscrollback 5000			# default: 100
   silencewait 15			# default: 30
 # If begins with a '-' character, the shell will be started as a login shell.
@@ -45,7 +45,7 @@ term screen-256color
 # for 256 color
  attrcolor b ".I"
  termcapinfo rxvt-256-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
- termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' 
+ termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # attrcolor u "-u b"
 # attrcolor b "R"
 
@@ -90,7 +90,7 @@ setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
   register [ "\033:se noai\015a"
   register ] "\033:se ai\015a"
 
-screen -t mutt 
+screen -t mutt
 screen -t $ zsh
 screen -t rtorrent rtorrent
 #screen -t xrestop xrestop
