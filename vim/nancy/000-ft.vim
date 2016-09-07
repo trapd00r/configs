@@ -17,6 +17,7 @@
 "
 
 filetype plugin indent on
+au BufNewFile,BufRead  vidir* set filetype=vidir-ls
 
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:c_comment_strings            = 1
