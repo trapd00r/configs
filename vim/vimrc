@@ -214,7 +214,8 @@ source /home/scp1/etc/vim/nancy/000-functions.vim    " functions
 source /home/scp1/etc/vim/nancy/001-commands.vim     " user-defined commands
 source /home/scp1/etc/vim/nancy/009-abbrev.vim       " my wordlist of abbrevations
 source /home/scp1/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
-color neverland-ansi_bg
+"color neverland-ansi_bg
+color neverland
 source /home/scp1/etc/vim/nancy/090-syntax.vim       " my syntax defs
 source /home/scp1/etc/vim/nancy/099-status.vim       " status, man
 ">
