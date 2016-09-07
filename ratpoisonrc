@@ -41,6 +41,9 @@ set              font Terminus:weight:bold:size=12
 #< window management
 unmanage tint2
 unmanage dzen2
+unmanage sdlmame
+unmanage mame
+unmanage neverball
 #>
 #< binds: applications
 bind c exec urxvt -name sid -fg white -bg black
@@ -49,6 +52,7 @@ bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
 bind x exec xterm -name UXTerm
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
+bind p exec mpc next
 
 unbind w
 unbind g
