@@ -31,6 +31,14 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !!Xft*rgba: vbgr
 !Xft*rgba: rgba
 !}}}
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
+URxvt.keysym.C-u:           perl:url-select:select_next
+URxvt.keysym.C-Up:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
 ! standard global fonts {{{
 #define FONT_NORMAL     xft:Neep Alt:style=SemiCondensed:pixelsize=11,xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=3:autohint=1:hintstyle=3
 #define FONT_BOLD       xft:Neep Alt:style=Bold SemiCondensed:pixelsize=11
