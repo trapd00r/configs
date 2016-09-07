@@ -1,65 +1,64 @@
-/*   vim: ft=xdefaults fdm=marker fen:
-    What: nancy.Xresources
-   Where: $XDG_CONFIG_HOME/Xcolors/nancy.Xresources
-     Who: Magnus Woldrich <m@japh.se>
- Crafted: 2008-04-24
- Updated: 2012-11-18 10:36:33
-     URL: http://github.com/trapd00r/configs/blob/master/Xcolors
-          http://devel.japh.se/nancy/nancy.png
-   Usage: Include this file from your main X resource file:
+!!  vim:ft=xdefaults:fdm=marker:fen:
+!    What: nancy.Xresources
+!   Where: $XDG_CONFIG_HOME/Xcolors/nancy.Xresources
+!     Who: Magnus Woldrich <m@japh.se>
+! Crafted: 2008-04-24
+! Updated: 2016-09-07 11:50:54
+!     URL: http://github.com/trapd00r/configs/blob/master/Xcolors
+!          http://devel.japh.se/nancy/nancy.png
+!   Usage: Include this file from your main X resource file:
+!
+!     #include nancy.Xresources
+!
+!  This X resource file redefines not only the standard ANSI colors but also
+!  some of the extended ones (52, 85-88, 231 as of this writing).
+!  It will work with any xterm-compatible terminal. If you're using xterm,
+!  depending on your setup, you might have to enable one or the other or both
+!  of the following resources:
+!
+!    allowColorOps
+!    dynamicColors
+!
+!  Either way, it'll be a good idea to enable both because it's definitely a
+!  must when you're going to play with the utilities and libraries described
+!  below.
+!
+!  urxvt doesn't support redefining of anything but ANSI colors,  but I have
+!  patched [0] her to allow for modification of the full 256 color table.
+!
+!  If you'd want to create your own colorschemes, or if you need to set colors
+!  for the current terminal session only, thus not making the changes persistent,
+!  take a look at colorcoke [1] and its wiki entry [2].
+!
+!  If you're a developer you'll find Term::ExtendedColor::Xresources [3]
+!  useful.
+!
+!  You can query the terminal for the current color values, see [3] and
+!  rgbterm [4].
+!
+!  For trying out colorschemes quickly, or for inclusion in other scripts, the
+!  xcolor [5] utility might prove useful.
+!  It's basically ttycolor [6] for X, requested by a user.
+!
+!  There's a bunch of example scripts using colorcoke in the scripts/ [7]
+!  directory (matrix!).
+!
+![0]: http://github.com/trapd00r/rxvt-unicode
+![1]: http://github.com/trapd00r/colorcoke
+![2]: http://github.com/trapd00r/colorcoke/wiki
+![3]: http://github.com/trapd00r/Term-ExtendedColor-Xresources
+![4]: http://github.com/trapd00r/rgbterm
+![5]: http://github.com/trapd00r/Term-ExtendedColor-Xresources/blob/master/bin/xcolor
+![6]: http://github.com/trapd00r/ttycolor
+![7]: http://github.com/trapd00r/colorcoke/tree/master/scripts
 
-     #include nancy.Xresources
-
-  This X resource file redefines not only the standard ANSI colors but also
-  some of the extended ones (52, 85-88, 231 as of this writing).
-  It will work with any xterm-compatible terminal. If you're using xterm,
-  depending on your setup, you might have to enable one or the other or both
-  of the following resources:
-
-    allowColorOps
-    dynamicColors
-
-  Either way, it'll be a good idea to enable both because it's definitely a
-  must when you're going to play with the utilities and libraries described
-  below.
-
-  urxvt doesn't support redefining of anything but ANSI colors,  but I have
-  patched [0] her to allow for modification of the full 256 color table.
-
-  If you'd want to create your own colorschemes, or if you need to set colors
-  for the current terminal session only, thus not making the changes persistent,
-  take a look at colorcoke [1] and its wiki entry [2].
-
-  If you're a developer you'll find Term::ExtendedColor::Xresources [3]
-  useful.
-
-  You can query the terminal for the current color values, see [3] and
-  rgbterm [4].
-
-  For trying out colorschemes quickly, or for inclusion in other scripts, the
-  xcolor [5] utility might prove useful.
-  It's basically ttycolor [6] for X, requested by a user.
-
-  There's a bunch of example scripts using colorcoke in the scripts/ [7]
-  directory (matrix!).
-
-[0]: http://github.com/trapd00r/rxvt-unicode
-[1]: http://github.com/trapd00r/colorcoke
-[2]: http://github.com/trapd00r/colorcoke/wiki
-[3]: http://github.com/trapd00r/Term-ExtendedColor-Xresources
-[4]: http://github.com/trapd00r/rgbterm
-[5]: http://github.com/trapd00r/Term-ExtendedColor-Xresources/blob/master/bin/xcolor
-[6]: http://github.com/trapd00r/ttycolor
-[7]: http://github.com/trapd00r/colorcoke/tree/master/scripts
-*/
-
-/*{{{ sid
+!< sid
 sid.background:     #000
 sid.borderColor:    #1b1d1e
 !sid.colorBD:        #7e6449
 !sid.colorIT:        #7c7e49
 !sid.colorRV:        #121212
-!sid.colorUL:        #ff8f00
+sid.colorUL:        #ff5f00
 sid.cursorColor2:   #201526
 sid.cursorColor:    wheat4
 sid.fadeColor:      #000016
@@ -69,7 +68,7 @@ sid.foreground:     #fff
 !sid.foreground:     navajowhite1
 sid.pointerColor2:  deeppink2
 sid.pointerColor:   #ff0000
-sid.underlineColor: wheat4
+sid.underlineColor: #ff5f00
 
 sid.color0:         #1b1d1e
 sid.color1:         #f92672
@@ -328,8 +327,8 @@ sid.color252:       #d0d0d0
 sid.color253:       #dadada
 sid.color254:       #e4e4e4
 sid.color255:       #eeeeee
-/*}}}
-/* vim {{{
+!>
+!< vim
 vim.foreground:     #fff
 vim.background:     #010101
 vim.colorBD:        #7e6449
@@ -599,4 +598,4 @@ vim.color252:       #d0d0d0
 vim.color253:       #dadada
 vim.color254:       #ff42d1
 vim.color255:       #eeeeee
-/*}}}
+!>
