@@ -76,6 +76,9 @@ bind e exec rp-runorraise firefox
 bind p exec mpc next
 bind o exec mpc pause
 
+unbind space
+bind   space exec ratpoison -c "echo `acpi | perl -pe 's/Battery 0: \w+, //'`"
+
 unbind w
 unbind g
 bind w exec sh ~/dev/ratpoison_scripts/window-menu/window-menu
