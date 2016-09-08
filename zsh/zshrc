@@ -63,7 +63,7 @@
 
 
 if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_dsa ]]; then
-  eval `keychain --dir $HOME/etc/keychain -q --eval id_dsa`
+  eval `keychain --dir $HOME/etc/keychain -q --eval id_rsa`
 fi
 
 if [[ $DEBUG > 0 ]]; then
@@ -76,6 +76,8 @@ fi
 for r in $HOME/etc/zsh/[0-5]*.zsh; do
   . $r
 done
+. $HOME/etc/zsh/10-syntax.zsh
+
 
 #if [[ -n ${SSH_CLIENT} ]] ; then
 #  RPROMPT="${Pfg[red]}"'['"${Pfg[cy]}%n${PNC}@${Pfg[cy]}%m${Pfg[red]}"']'"${Pfg[cy]}"
