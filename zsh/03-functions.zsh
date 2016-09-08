@@ -68,10 +68,10 @@ m() {
 ms() {
   /usr/bin/mplayer -shuffle -include ${HOME}/etc/mplayer/config -profile sid "$@"
 }
+#mplayer() {
+#  /usr/bin/mplayer -include ${HOME}/etc/mplayer/config -profile sid "$@"
+#}
 mplayer() {
-  /usr/bin/mplayer -include ${HOME}/etc/mplayer/config -profile sid "$@"
-}
-mplayer_redir() {
   /usr/bin/mplayer \
     -identify \
     -include $XDG_CONFIG_HOME/mplayer/config \
