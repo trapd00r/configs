@@ -5,7 +5,7 @@
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 "         owner  Magnus Woldrich <m@japh.se>
 "         btime  2009-04-24
-"         mtime  2016-09-04 09:03:02
+"         mtime  2016-09-08 19:56:29
 "         perms  You are free to use things you may find useful here.
 "                Would my tweaks happen to give you a raise or fetch you a
 "                girlfriend, it goes without saying I'm counting on you
@@ -44,6 +44,8 @@ set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
 
 if &ft != 'man' || &ft != 'help'
   "set colorcolumn=+1
+  set colorcolumn=81
+  execute "set colorcolumn=" . join(range(81,335), ',')
 endif
 
 set completeopt+=menuone
@@ -252,3 +254,4 @@ let &t_EI = "\<Esc>]12;#ff0000\x7"
 " \      exe 'colors' s:new_colors
 " \   | endif
 " }}}
+syntax on
