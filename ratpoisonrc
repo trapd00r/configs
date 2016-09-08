@@ -1,9 +1,9 @@
-### vim: ft=ratpoison fde fdm=marker fmr=#<,#> fdc=3 fdl=1:
+### vim:ft=ratpoison:fde:fdm=marker:fmr=#<,#>:fdc=3:fdl=0:
 #< ${HOME}/etc/ratpoisonrc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #       crafted  2009-04-24
-#         mtime  2016-09-04 10:08:10
+#         mtime  2016-09-08 09:32:10
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -20,13 +20,16 @@ defresizeunit 80
 addhook switchgroup next
 
 #< catpoison only!
-set virtuals 5
-vinit 
+set virtuals 10
+vinit
 definekey top  F1 vselect 1
 definekey top  F2 vselect 2
 definekey top  F3 vselect 3
 definekey top  F4 vselect 4
 definekey top  F5 vselect 5
+definekey top  F6 vselect 6
+definekey top  F7 vselect 7
+definekey top  F8 vselect 8
 
 definekey top M-1 vselect 1
 definekey top M-2 vselect 2
@@ -70,11 +73,21 @@ unmanage gcolor2
 bind c exec urxvt -name sid -fg white -bg black
 bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
 bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
-bind x exec xterm -name UXTerm
+bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 bind p exec mpc next
 bind o exec mpc pause
+
+#< top level XF86 binds
+definekey top XF86AudioRaiseVolume  exec amixer -c 0 set Master 2dB+
+definekey top XF86AudioLowerVolume  exec amixer -c 0 set Master 2dB-
+definekey top XF86AudioMute         exec amixer -c 0 set Master mute
+definekey top XF86Calculator        exec amixer -c 0 set Master unmute
+definekey top XF86Mail              exec nestopia -dpu ~/emu/nes/castlevania.nes
+definekey top XF86HomePage          exec nestopia -dpu ~/emu/nes/castlevania3.nes
+#definekey top Menu
+#>
 
 unbind space
 bind   space exec ratpoison -c "echo `acpi | perl -pe 's/Battery 0: \w+, //'`"
