@@ -33,7 +33,7 @@ input  = conf=/home/scp1/etc/mplayer/input.conf
 #af                 = extrastereo
 af                 = volnorm
 #af-adv             = force=5
-ao                 = pulse,alsa,
+ao                 = alsa,
 double             = 1
 ffactor            = 10
 #vfm = lavf
@@ -66,7 +66,7 @@ noslices=1
 #vf                 = screenshot
 #afm                = libdca,hwac3,ffmpeg,dshow,vfm,
 #afm                = libdca,hwac3,dvdpcm,libdca,mp3lib,tremor,faad,realaud,ffmpeg,dshow,realaud,pcm,
-vc                 = ffh264vdpau,ffodivxvdpau,ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,
+##vc                 = ffh264vdpau,ffodivxvdpau,ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,
 #fs                 = 1
 mixer              = /dev/mixer
 #msglevel           = all=2
