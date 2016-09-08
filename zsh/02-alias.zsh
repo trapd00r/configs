@@ -20,6 +20,7 @@ alias      cp='cp -v'
 alias      mv='mv -v'
 alias      rm='rmc'
 alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
+alias     cat=$HOME/dev/utils/_v
 
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
 alias  pacman='pacman --color=auto'
