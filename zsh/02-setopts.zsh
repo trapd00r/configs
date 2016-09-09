@@ -177,10 +177,15 @@ zle -C most-accessed-file menu-complete _generic
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-compinit
-autoload -U url-quote-magic
-
 function _url-quote-magic() {
   url-quote-magic;
   _zsh_highlight-zle-buffer
 }
+
+compinit
+autoload -U url-quote-magic
+
+zle -N bracketed-paste bracketed-paste-url-magic
+
+# stop screwing with my clipboard
+unset zle_bracketed_paste
