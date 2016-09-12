@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-06 14:32:49
+#         mtime  2016-09-12 06:16:31
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -27,7 +27,7 @@ alias  pacman='pacman --color=auto'
 alias prename='prename -v'
 alias     vim=wim
 alias    cpan='cpanm'
-alias     top='htop'
+alias     top='xcolor woldrich 2>/dev/null; htop'
 alias     :q!='kill -9 $$'
 alias      :q='exit'
 alias     die='kill -9 $$'
