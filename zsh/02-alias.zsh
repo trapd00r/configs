@@ -97,6 +97,7 @@ alias     bigloo='rlwrap bigloo'
 alias     cclive='cclive --config-file $XDG_CONFIG_HOME/ccliverc -f best'
 alias     gource='gource -1280x720 --max-files 0 --file-idle-time 0 --bloom-multiplier 0.5 --bloom-intensity 0.9 -e 0.7 --background 121212 -o - | ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 gource.mp4'
 alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ffmpeg -y -b 3000K -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -vpre slow -threads 0 logstalgia.mp4'
+alias    ncmpcpp="ncmpcpp -b $HOME/etc/ncmpcpp/keys"
 #>
 #< audio
 alias    love='pimpd2 --love'
