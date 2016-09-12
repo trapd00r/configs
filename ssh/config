@@ -93,4 +93,15 @@ host xfloff.net           #{{{
   port                    22
   compression             no
   ciphers                 blowfish-cbc
+host elite                  #{{{
+  user                    scp1
+  hostname                192.168.0.179
+  port                    19217
+  compression             no
+  ciphers                 arcfour
+  checkhostip             no
+  connecttimeout          3
+  permitlocalcommand      yes
+  localcommand            date;pwc
+  numberofpasswordprompts 10
 #}}}
