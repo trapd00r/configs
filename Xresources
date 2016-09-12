@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Crafted: 2008-04-24
-  Updated: 2016-09-03 08:31:14
+Updated: 2016-09-12 07:44:14
 
 - A lot of different hosts use this file.
 - You will not find any color definitions here.
@@ -175,7 +175,7 @@ sid.iso14755_52:          1
 sid.skipBuiltinGlyphs:    0
 sid.insecure:             1
 
-sid.buffered:             0
+!sid.buffered:             0
 !sid.intensityStyles:      1
 !sid.fading:               12
 sid.internalBorder:       0
@@ -199,8 +199,9 @@ URxvt*font8:                -xos4-terminus-medium-r-normal-*-20-*-*-*-*-*-*-1
 
 sid.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
 sid.boldFont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-sid.italicFont:         -b&h-lucidatypewriter-bold-r-normal-sans-10-100-75-75-m-60-iso10646-1
+sid.italicFont:         xft:Neep Alt:style=SemiCondensed:pixelsize=11
 sid.boldItalicFont:     -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+
 !sid.font:              xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0
 !sid.boldFont:          xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0:embolden=1
 !sid.italicFont:        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
