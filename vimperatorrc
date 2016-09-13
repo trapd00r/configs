@@ -5,7 +5,7 @@
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 "         owner  Magnus Woldrich <m@japh.se>
 "         btime  2009-04-24
-"         mtime  2013-04-30 07:11:09
+"         mtime  2016-09-13 19:17:47
 "         perms  You are free to use things you may find useful here.
 "                Would my tweaks happen to give you a raise or fetch you a
 "                girlfriend, it goes without saying I'm counting on you
@@ -27,7 +27,8 @@ set   activate=addons,downloads,extoptions,help,homepage,quickmark,paste
 set noautocomplete
 "set   cdpath=~/srv/japh.se/,,
 set   complete=b
-set   defsearch=duckduckgo
+"set   defsearch=duckduckgo
+set   defsearch=google
 set   editor="wrxvt -e wim -f -c ':set ft=perl'"
 set   encoding=UTF-8
 "set noerrorbells
@@ -49,7 +50,7 @@ set   newtab=all
 set   online
 set   pageinfo=gfm
 set   popups=tab
-set noprivate
+"set noprivate
 "set   sanitizeitems=downloads,sessions,cookies,formdata,history,cache
 set   sanitizeitems=downloads
 set   sanitizetimespan=1
@@ -109,9 +110,9 @@ nnoremap h     :bprev<cr>
 "silent map )  b9<cr>
 "silent map =  b10<cr>
 
-nnoremap <C-c> :noscript toggletemp<cr>
-nnoremap <C-d> :noscript toggleperm<cr>
-nnoremap <A-c> :noscript toggleperm<cr>
+"nnoremap <C-c> :noscript toggletemp<cr>
+"nnoremap <C-d> :noscript toggleperm<cr>
+"nnoremap <A-c> :noscript toggleperm<cr>
 map <M-space> usermode!
 map <M-1>     tabgroups switch 
 
@@ -176,17 +177,17 @@ set! browser.cache.disk.enable='false'
 set! browser.cache.disk.parent_directory=/dev/shm
 set! layout.css.dpi=0
 " actual DPI/96
-set! layout.css.devPixelsPerPx=0.98
+"set! layout.css.devPixelsPerPx=0.98
 set! network.protocol-handler.expose.magnet=false
-set! browser.cache.memory.enable='true'
-set! browser.cache.memory.max_entry_size=2097152
+"set! browser.cache.memory.enable='true'
+"set! browser.cache.memory.max_entry_size=2097152
 set! browser.ctrlTab.previews='true'
-set! browser.display.auto_quality_min_font_size=0
-set! browser.display.normal_lineheight_calc_control=2
+"set! browser.display.auto_quality_min_font_size=0
+"set! browser.display.normal_lineheight_calc_control=2
 set! browser.display.show_image_placeholders='false'
-set! browser.display.use_document_fonts=0
+"set! browser.display.use_document_fonts=0
 set! browser.display.use_system_colors='true'
-set! browser.download.dir="/mnt/porn0"
+set! browser.download.dir="/home/scp1/Downloads"
 "set! browser.download.useDownloadDir=1
 set! browser.enable_automatic_image_resizing='true'
 set! browser.fullscreen.animateUp=0
@@ -201,9 +202,9 @@ set! browser.tabs.onTop=0
 set! browser.tabs.tabMaxWidth=150
 set! browser.tabs.tabMinWidth=50
 set! extensions.getAddons.showPane=0
-set! font.name.monospace.x-western="MonteCarlo"
-set! font.name.sans-serif.x-western="MonteCarlo"
-set! font.name.serif.x-western="MonteCarlo"
+set! font.name.monospace.x-western="Droid Sans Mono"
+set! font.name.sans-serif.x-western="Droid Sans"
+set! font.name.serif.x-western="Droid Sans"
 "set! network.http.pipelining.maxrequests=8
 "set! network.http.pipelining=1
 set! zoom.minPercent=50
@@ -211,8 +212,9 @@ set! zoom.minPercent=50
 ">
 
 "color  desert_revisited
-so $HOME/etc/vimperator/color/desert_revisited.vimp
-hi ErrorMsg font-family: Profont; font-weight: bold; font-size: 16pt; color: #ff0000; background-color: #121212; padding: 0px 1px; border: none
+color japh
+"so $HOME/etc/vimperator/color/desert_revisited.vimp
+"hi ErrorMsg font-family: Profont; font-weight: bold; font-size: 16pt; color: #ff0000; background-color: #121212; padding: 0px 1px; border: none
 
 "nnoremap <S-s> :call stop_loading()<cr>
 
@@ -258,3 +260,4 @@ hi ErrorMsg font-family: Profont; font-weight: bold; font-size: 16pt; color: #ff
 "   .liberator-sbmcommentsviewer-timestamp { color: #666; }
 "EOM
 ">
+echo ""
