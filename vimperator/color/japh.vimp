@@ -1,0 +1,37 @@
+" vim:ft=vim:
+" ==Vimperator_Color_Scheme==
+" name: japh (for windows)
+" ==japh==
+
+hi Normal    background: #121212; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CmdLine>* background: #121212; color: #FF4500; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CmdLine   background: #121212; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+
+hi CompGroup          background: #121212; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CompTitle          background: #121212; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CompItem           background: #121212; color: #afafaf; padding: 0px 3px; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CompItem[selected] background: #121212; color: #FF4500; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CompDesc           background: #121212; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CompDesc[selected] background: #FF4500; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi CompMsg            background: #121212; color: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+
+"hi Gradient           background: #121212;
+"hi GradientLeft       background: #121212;
+"hi GradientRight      background: #121212;
+
+hi ErrorMsg           background: #ff6565; color: #ffffff;  font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi Filter             color: #FF8B00; font-weight: bold; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+
+hi InfoMsg           background: #121212; color: #ff8000; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+hi StatusLine         color: #606060; background: #121212; font-family: "MonteCarlo Fixed 12"; font-size: 12pt;
+"hi StatusLineBroken   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
+"hi StatusLineSecure   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
+
+hi Hint               font-family: Source Code Pro; font-weight: bold; font-size: 14pt; color: #FF4500; background-color: #000; padding: 0px 1px; border: 1px solid #121212;
+
+hi Title              color: #121212; background: #afafaf; font-family: "MonteCarlo Fixed 12"; font-size: 12pt; 
+
+style -name statusbar chrome://* <<EOM
+#status-bar statusbarpanel { padding: 0 1px !important; }
+statusbarpanel > * { margin: 0 !important; padding: 0 2px 0 0 !important; }
+EOM

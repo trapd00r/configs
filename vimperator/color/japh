@@ -1,9 +1,9 @@
 " ==Vimperator_Color_Scheme==
-" name: Desert Revisited
-" ==Desert_Revisited_Color_Scheme==
+" name: japh
+" ==japh==
 
-hi Normal    background: #121212; color: #afafaf; font-family: terminus;
-hi CmdLine   background: #121212; color: #FF4500; font-family: terminus; font-weight: bold; padding:  0px 3px;
+hi Normal    background: #121212; color: #afafaf; font-size: 9pt; font-family: terminus; 
+hi CmdLine   background: #121212; color: #FF4500; font-size: 10pt; font-family: terminus; font-weight: bold; padding:  0px 3px;
 
 hi CompGroup          background: #121212; color: #afafaf; 
 hi CompTitle          background: #121212; color: #afafaf; font-weight: bold;
@@ -20,7 +20,7 @@ hi CompMsg            background: #121212; color: #afafaf;
 hi ErrorMsg           background: #ff6565; color: #ffffff;
 hi Filter             color: #FF8B00; font-weight: bold; 
 
-"hi StatusLine         font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
+hi StatusLine         font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
 "hi StatusLineBroken   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
 "hi StatusLineSecure   font-family: terminus; font-size: 10pt; font-weight: bold; color: #fff; background: #121212;
 

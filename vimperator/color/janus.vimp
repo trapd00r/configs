@@ -1,0 +1,36 @@
+" base 3 colors
+"   #395475
+"   #e0e0e0
+"   #ffffff
+" accent 3 colors
+"   #ff6600
+"   #ffff66
+"   #ffffff
+
+" general
+hi! Normal font-size: 14pt; color: #ffffff; background-color: #395475;
+hi! URL color: inherit;
+
+" hints
+hi! HintElem color: #ffffff; background-color: #395475;
+hi! HintActive color: #ffffff; background-color: #ff6600;
+hi! -append Hint color: #395475; background-color: #ffff66;
+
+" status bar
+hi! StatusLine font-size: 12pt; font-weight: normal; color: #395475; background-color: #e0e0e0;
+
+" command line
+hi! -append CmdLine font-size: 12pt; color: #395475; background-color: #e0e0e0;
+hi! -append Prompt background-color: #e0e0e0; margin-right: 2px;
+hi! PromptText color: #e0e0e0; background-color: #395475;
+
+" messages
+hi! ErrorMsg font-size: 12pt; font-weight: bold; color: #ffffff; background-color: #ff6600;
+hi! InfoMsg font-size: 12pt; color: #ffff66; background-color: #395475;
+hi! ModeMsg font-size: 12pt; color: #ffffff; background-color: #395475;
+hi! MoreMsg font-size: 12pt; color: #ffff66; background-color: #395475;
+hi! WarningMsg font-size: 12pt; color: #ffffff; background-color: #395475;
+
+" completion list
+hi! CompItem[selected] font-weight: bold; color: #395475 !important; background-color: #ffffff !important;
+hi! Filter border: 1px solid #e0e0e0; border-radius:8px; color: #395475; background-color: #ffffff;

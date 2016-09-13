@@ -2,8 +2,8 @@
 " name: pag
 " author: trapd00r
 
-hi Normal    background: #1C1C1C; color: #afafaf; font-size: 8pt; font-family: terminus; 
-hi CmdLine   background: #1C1C1C; color: #FF4500; font-size: 8pt; font-family: terminus; font-weight: bold; padding:  0px 0px;
+hi Normal    background: #1C1C1C; color: #afafaf; font-size: 9pt; font-family: terminus; 
+hi CmdLine   background: #1C1C1C; color: #FF4500; font-size: 9pt; font-family: terminus; font-weight: bold; padding:  0px 0px;
 
 hi CompGroup          background: #1C1C1C; color: #afafaf; 
 hi CompTitle          background: #1C1C1C; color: #afafaf; font-weight: bold;
