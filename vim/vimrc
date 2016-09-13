@@ -103,7 +103,7 @@ set lazyredraw
 set list
 "set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥sbr=↪:conceal=⌦
 set   listchars=eol:\ 
-"set   listchars+=tab:»
+set   listchars+=tab:»\ 
 set   listchars+=trail:·
 set   listchars+=nbsp: 
 set   listchars+=precedes: 
