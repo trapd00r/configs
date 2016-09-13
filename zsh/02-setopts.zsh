@@ -93,7 +93,7 @@ setopt \
      hist_no_store          \
   no_hist_reduce_blanks     \
      hist_save_by_copy      \
-     hist_save_no_dups      \
+  no_hist_save_no_dups      \
   no_hist_subst_pattern     \
   no_hist_verify            \
   no_hup                    \
