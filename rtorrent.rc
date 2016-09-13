@@ -21,7 +21,7 @@
         check_hash = no
                dht = disable
         directory  = /home/scp1/rtorrent
-     download_rate = 12000
+     download_rate = 0
      encoding_list = utf8
         encryption = allow_incoming,try_outgoing,enable_retry
        http_capath = /etc/ssl/certs
@@ -44,7 +44,7 @@
          scgi_port = localhost:5099
         session    = /home/scp1/var/rtorrent/session/
 #             umask = 0027
-       upload_rate = 1050
+       upload_rate = 0
   use_udp_trackers = no
  xmlrpc_size_limit = 8M
 
