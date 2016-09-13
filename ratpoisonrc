@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #       crafted  2009-04-24
-#         mtime  2016-09-08 09:32:10
+#         mtime  2016-09-13 12:10:22
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -53,6 +53,7 @@ set historycompaction 1
 set       historysize 1000
 set      winliststyle column
 set        barpadding 8 8
+set           padding 0 10 0 0
 set            border 0
 set           bgcolor #080808
 set           bwcolor #0c0c0c
