@@ -1,0 +1,189 @@
+# vim:cc=0:tw=0:et:fdm=marker:ft=muttrc:
+source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
+mailboxes `find /home/scp1/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
+
+#< options
+set include
+set nobeep
+set noconfirmappend
+set nohelp
+set nomark_old
+set nowait_key
+set smart_wrap
+set sort_re
+set status_on_top
+set text_flowed
+set quit
+
+set abort_nosubject     = no
+set abort_unmodified    = no
+set allow_ansi          = yes
+set arrow_cursor        = yes
+set attribution         = "On %[%b %d], %n (%F) wrote:"
+set autoedit            = yes
+set charset             = UTF-8
+set collapse_unread     = no
+set compose_format      = "--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%>-"
+set date_format         = "%y%m%d %H:%M  "
+set delete              = yes
+set display_filter      = "tr '\240\204\223\226' ' \"\"-'"
+set duplicate_threads   = yes
+set edit_headers        = yes
+set editor              = "wim -c \"set spell spl=en | so ~/etc/vim/nancy/009-abbrev.vim\""
+set fast_reply          = yes
+set folder              = /home/scp1/mail/
+set forward_format      = "Fw: %s"
+set from                = "m@japh.se"
+set hide_missing        = yes
+set hide_thread_subject = yes
+set hostname            = japh.se
+set implicit_autoview   = yes
+set index_format        = "%[%b %d]▕ %X:%Z ▕ %30.30L▕ %s"
+set mail_check          = 5
+set markers             = no
+set mbox                = =received
+set mbox_type           = Maildir
+set move                = no
+set narrow_tree         = yes
+set pager_context       = 3
+set pager_format        = "-%S- %-20.20f %s"
+set pager_index_lines   = 0
+set post_indent_string  = '---end quoted text---'
+set postponed           = +drafts
+set postponed           = +postponed
+set print_command       = "muttprint -r $HOME/etc/muttprintrc"
+set query_command       = "abook --mutt-query '%s'"
+set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
+set quote_regexp        = "^([A-Za-z ]+>|[]%>:|}-][]>:|}-]*)"
+set read_inc            = 25
+set realname            = "Magnus Woldrich"
+set record              = /home/scp1/mail/.out/sent-`date +"%y%m"`
+set reply_regexp        = '^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
+set reply_to            = yes
+set reverse_alias       = yes
+set send_charset        = "utf-8"
+set sendmail            = /usr/bin/msmtp
+set shell               = /bin/zsh
+set signature           = ~/.signature
+set smileys             = "^$"
+set sort                = threads
+set sort_browser        = reverse-date
+set sort_aux            = last-date-received
+set spoolfile           = +
+set thread_received     = yes
+set tmpdir              = /dev/shm
+set wrapmargin          = 4
+#>
+#< macros
+macro generic,index,pager A  "<shell-escape>abook<return>" "launch abook"
+macro               index .. "c=\n" "Go to inbox"
+macro               index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
+macro               index n  "<next-entry><display-message>"
+macro         index,pager a  "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+#>
+#< binds
+# generic alias attach browser editor index compose pager pgp postpone mix
+bind pager k    previous-line
+bind pager <    previous-line
+bind pager j    next-line
+bind pager >    next-line
+bind pager down next-page
+bind pager up   previous-page
+
+bind index *   flag-message
+bind index +   next-entry
+bind index -   previous-entry
+bind index .   display-message
+bind index G   last-entry
+bind index J   next-entry
+bind index K   previous-entry
+bind index [   previous-line
+bind index \cu sync-mailbox
+bind index ]   next-line
+bind index f   change-folder
+bind index gg  first-entry
+bind index j   next-entry
+bind index k   previous-entry
+bind index t   display-message
+bind index {   top-page
+bind index }   bottom-page
+
+bind browser y  exit
+#>
+#< hooks
+folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
+
+save-hook @arenabolaget.se                                            =arenabolaget
+save-hook @bokus.com                                                  =bokus
+save-hook @citynetwork.se                                             =citynetwork
+save-hook @gents.se                                                   =gents
+save-hook @ntmdistribution.se                                         =NTM
+save-hook @plus.google.com                                            =google_plus
+save-hook @reply.github.com                                           =github
+save-hook @ticnet.se                                                  =ticnet
+save-hook @webhallen.com                                              =webhallen
+save-hook announce\@archlinux.org                                     =arch-news
+save-hook laredoute.se                                                =laredoute
+save-hook nobody\@archlinux.org                                       =arch-bbs
+save-hook "~C   debbugs.gnu.org"                                      =coreutils
+save-hook "~C   musicpd-dev-team@lists.sourceforge.net"               =mpd_dev
+save-hook "~(~t perl5-porters@perl.org) | ~C perl5-porters@perl.org"  =p5p
+save-hook "~t   perlweekly@perlweekly.org"                            =perlweekly
+save-hook "~t   rockbox@cool.haxx.se"                                 =rockbox
+save-hook "~C   rxvt-unicode@lists.schmorp.de"                        =urxvt
+save-hook "~C   stumpwm-devel@nongnu.org"                             =stumpwm-devel
+save-hook "~C   tmux-users@lists.sourceforge.net"                     =tmux
+save-hook "~t   vim@vim.org | ~C vim_use@googlegroups.com"            =vim_use
+save-hook "~C   vim_dev@vim.org"                                      =vim_dev
+save-hook "~f   Bram@Moolenaar.net"                                   =bram
+save-hook "~C   zsh-workers@zsh.org"                                  =zsh-workers
+save-hook "~C   zsh-users@zsh.org"                                    =zsh_users
+#>
+#< headers
+hdr_order Delivered-To Subject In-Reply-To X-Mailing-List
+
+ignore *
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore BCC:
+unignore X-Mailer:
+unignore User-Agent:
+
+my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
+#>
+#< mime autoview
+auto_view text/x-diff
+auto_view text/x-patch
+#>
+
+#< neomutt settings
+color index           color106 color16 'japh'
+color index           white    color16 '.*'
+color index_author    color16  color220 '~sjaph\.se'
+color index_author    color220 color16 '~flottali|~fOlof\sJohansson|~fGabriel\sForneus'
+color index_author    default  color16 '.*'
+color index_collapsed color16  color220
+color index_date      color137 color16
+color index_flags     color196 color16 '~F'
+color index_flags     color160 color16 '~D'
+color index_label     color220 color16
+color index_number    color240 color16
+color index_size      cyan     color16
+color index_subject   color208 color16 '~sls++|~sls--'
+
+
+set status_format='%f [msgs:%?M?%M/?%m%?n? new:%n?%?o? old:%o?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l? %l?]'
+set  index_format='%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s'
+set     sort=threads
+set sort_aux=last-date-received
+
+color status color232 color160 '(Del):[0-9]+'
+color status color106 color160 '(New):[0-9]+'
+color status color137 color232  '\[([^]]+)\]' 1
+color status color142 color232 '(~/mail/)' 1
+
+#>

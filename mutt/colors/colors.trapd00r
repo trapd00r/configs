@@ -1,41 +1,41 @@
-color body       color225 color232 "[;:]-[)/(|]"
+color body       color225 color16 "[;:]-[)/(|]"
 
-color normal     color255 color232
-color error      color196 color232
-color markers    color88  color232
-color tilde      color142 color232
-color status     color232 color232
+color normal     color255 color16
+color error      color196 color16
+color markers    color88  color16
+color tilde      color142 color16
+color status     color8 color232
 
-color indicator  color250 color232
-color index      color100 color232 ~l
-color index      color106 color232 ~N
-color index      color86  color232 ~O
-color index      color126 color232 "! ~C ."
-color index      color100 color232 ~T
-color index      color225 color232 ~F
-color index      color232 color160 ~D
-color tree       color240 color232
+color indicator  color8   color16
+color index      color100 color16 ~l
+color index      color106 color16 ~N
+color index      color86  color16 ~O
+#color index      color126 color16 "! ~C ."
+color index      color100 color16 ~T
+color index      color225 color16 ~F
+#color index      color16 color160 ~D
+color tree       color8 color16
 
 
-color header     color197 color232 "^Subject"
-color header     color184 color232 "^From"
-color header     color186 color232 "^To"
-color header     color252 color232 "^User-Agent"
-color header     color250 color232 "^X-.+"
-color hdrdefault color242 color232
+color header     color255 color16 "^Subject"
+color header     color184 color16 "^From"
+color header     color186 color16 "^To"
+color header     color240 color16 "^User-Agent"
+color header     color250 color16 "^X-.+"
+color hdrdefault color240 color16
 
-color attachment color85  color232
-color signature  color1   color232
+color attachment color85  color16
+color signature  color1   color16
 
-color quoted     color87  color232
-color quoted1    color95  color232
-color quoted2    color132 color232
-color quoted3    color88  color232
-color quoted4    color88  color232
-color quoted5    color88  color232
-color quoted6    color88  color232
-color quoted7    color88  color232
-color quoted8    color88  color232
-color quoted9    color88  color232
+color quoted     color137 color16
+color quoted1    color95  color16
+color quoted2    color132 color16
+color quoted3    color88  color16
+color quoted4    color88  color16
+color quoted5    color88  color16
+color quoted6    color88  color16
+color quoted7    color88  color16
+color quoted8    color88  color16
+color quoted9    color88  color16
 
-# vim: set ft=muttrc:
+# vim:ft=muttrc:
