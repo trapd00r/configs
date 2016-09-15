@@ -79,6 +79,7 @@ bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 bind p exec mpc next
 bind o exec mpc pause
+bind 0 exec ratpoison -c "echo ´~/bin/knnp´"
 
 #< top level XF86 binds
 definekey top XF86AudioRaiseVolume  exec amixer -c 0 set Master 2dB+
