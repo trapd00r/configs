@@ -1,22 +1,4 @@
-"!/home/scp1/bin/wim --remote-wait-silent vimsy
-" vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
-"
-" ${VIMRUNTIME}/nancy/000-ft.vim
-"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
-"         owner  Magnus Woldrich <m@japh.se>
-"         btime  2009-04-24
-"         mtime  2013-01-14 22:01:26
-"         perms  You are free to use things you may find useful here.
-"                Would my tweaks happen to give you a raise or fetch you a
-"                girlfriend, it goes without saying I'm counting on you
-"                to share with me as I've shared with you.
-"           git  git@github.com:trapd00r/configs.git
-"           url  http://github.com/trapd00r/configs/vim
-"           irc  japh@freenode #vim #zsh #perl
-"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
-"
-
-filetype plugin indent on
+"filetype plugin indent on
 au BufNewFile,BufRead  vidir* set filetype=vidir-ls
 
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
@@ -95,26 +77,32 @@ autocmd InsertLeave   * match wsEOL /\s\+$/
 autocmd BufWinLeave   * call clearmatches()
 ">
 
+au Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
 au Filetype perl
   \   setl makeprg=perl\ -c\ %\ $*
   \ | setl errorformat=%f:%l:%m
   \ | setl keywordprg=perldoc\ -f
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
 au BufNewFile *.pl
   \   silent! 0r $VIMRUNTIME/templates/template.pl
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | call search('APP')
   \ | normal di':startinsert
 au BufNewFile *.PL
   \   silent! 0r ~/etc/vim/templates/template.PL
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | call search('__PACKAGE__')
   \ | exe 'normal dt} '
   \ | startinsert
 au BufNewFile *.pm
   \   silent! 0r $VIMRUNTIME/templates/template.pm
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | call cursor(0, 9)
   \ | exe 'normal d$A '
   \ | startinsert
 au BufNewFile *.t
   \   silent! 0r $VIMRUNTIME/templates/template.t
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | 6
   \ | exe 'normal o'
   \ | startinsert
