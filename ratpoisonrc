@@ -19,6 +19,9 @@ defresizeunit 80
 
 addhook switchgroup next
 
+## the undocumented framefmt takes the same arguments as winfmt.
+# set framefmt %w
+
 #< catpoison only!
 set virtuals 10
 vinit
@@ -77,8 +80,8 @@ bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
 bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
-bind p exec mpc next
-bind o exec mpc pause
+bind p exec knradio -p
+bind o exec knradio -s
 bind 0 exec ratpoison -c "echo ´~/bin/knnp´"
 
 #< top level XF86 binds
