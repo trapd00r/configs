@@ -162,14 +162,15 @@ auto_view text/x-patch
 
 #< neomutt settings
 color index           color106 color16 'japh'
-color index           white    color16 '.*'
+#color index           white    color16 '.*'
+color index           color148    color16 'PATCH|patch|Patch'
 color index_author    color16  color220 '~sjaph\.se'
 color index_author    color220 color16 '~flottali|~fOlof\sJohansson|~fGabriel\sForneus'
 color index_author    default  color16 '.*'
 color index_collapsed color16  color220
 color index_date      color137 color16
-color index_flags     color196 color16 '~F'
-color index_flags     color160 color16 '~D'
+color index_flags     color220 color16 '~F'
+color index_flags     color16 color160 '~D'
 color index_label     color220 color16
 color index_number    color240 color16
 color index_size      cyan     color16
