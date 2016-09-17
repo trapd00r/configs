@@ -19,6 +19,7 @@ xbanish &
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 sh $HOME/dev/dzen-scripts/dzen_elite.sh &
+perl $HOME/perl5/bin/knradio -l         &
 
 catpoison
 #ratpoison
