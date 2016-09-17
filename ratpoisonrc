@@ -1,9 +1,9 @@
 ### vim:ft=ratpoison:fde:fdm=marker:fmr=#<,#>:fdc=3:fdl=0:
 #< ${HOME}/etc/ratpoisonrc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
-#         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
+#         owner  Magnus Woldrich <m@japh.se>
 #       crafted  2009-04-24
-#         mtime  2016-09-13 12:10:22
+#         mtime  2016-09-17 08:08:49
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -23,22 +23,33 @@ addhook switchgroup next
 # set framefmt %w
 
 #< catpoison only!
-set virtuals 10
+set virtuals 24
 vinit
-definekey top  F1 vselect 1
-definekey top  F2 vselect 2
-definekey top  F3 vselect 3
-definekey top  F4 vselect 4
-definekey top  F5 vselect 5
-definekey top  F6 vselect 6
-definekey top  F7 vselect 7
-definekey top  F8 vselect 8
+definekey top   F1  vselect 1
+definekey top   F2  vselect 2
+definekey top   F3  vselect 3
+definekey top   F4  vselect 4
+definekey top   F5  vselect 5
+definekey top   F6  vselect 6
+definekey top   F7  vselect 7
+definekey top   F8  vselect 8
+definekey top   F9  vselect 9
+definekey top   F10 vselect 10
+definekey top   F11 vselect 11
+definekey top   F12 vselect 12
 
-definekey top M-1 vselect 1
-definekey top M-2 vselect 2
-definekey top M-3 vselect 3
-definekey top M-4 vselect 4
-definekey top M-5 vselect 5
+definekey top  M-F1 vselect 13
+definekey top  M-F2 vselect 14
+definekey top  M-F3 vselect 15
+definekey top  M-F4 vselect 16
+definekey top  M-F5 vselect 17
+definekey top  M-F6 vselect 18
+definekey top  M-F7 vselect 19
+definekey top  M-F8 vselect 20
+definekey top  M-F9 vselect 21
+definekey top M-F10 vselect 22
+definekey top M-F11 vselect 23
+definekey top M-F12 vselect 24
 
 set barsticky off
 #set gap
@@ -151,4 +162,8 @@ rudeness 12
 
 #< init
 hsplit
+exec 'urxvt -fg white -bg black -name sid'
+focusright
+exec 'urxvt -fg white -bg black -name sid'
+focusleft
 #>
