@@ -61,7 +61,8 @@ export           LC_TIME=en_US.UTF-8
 #>
 #< path
 unset PATH
-export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games
+export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin
+export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
 export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
