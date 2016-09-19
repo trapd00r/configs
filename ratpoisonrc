@@ -94,6 +94,7 @@ bind e exec rp-runorraise firefox
 bind p exec knradio -p
 bind o exec knradio -s
 bind 0 exec ratpoison -c "echo ´~/bin/knnp´"
+bind 9 exec sconsify -command play_pause
 
 #< top level XF86 binds
 definekey top XF86AudioRaiseVolume  exec amixer -c 0 set Master 2dB+
