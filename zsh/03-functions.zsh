@@ -75,11 +75,12 @@ mplayer() {
   /usr/bin/mplayer \
     -identify \
     -include $XDG_CONFIG_HOME/mplayer/config \
-    -profile sid $(absname "$@") | tee $XDG_CONFIG_HOME/mplayer/log.txt
-    printf "\n\e[38;5;220;1;3m ⚡ \e[m\e[38;5;160;1;4mdeleted\e[m\n\n"
-  /bin/cat $XDG_CONFIG_HOME/mplayer/log.txt
-  echo;echo
-  /bin/rm -v $XDG_CONFIG_HOME/mplayer/log.txt
+    -profile sid $@
+#    -profile sid $(absname "$@") | tee $XDG_CONFIG_HOME/mplayer/log.txt
+#    printf "\n\e[38;5;220;1;3m ⚡ \e[m\e[38;5;160;1;4mdeleted\e[m\n\n"
+#  /bin/cat $XDG_CONFIG_HOME/mplayer/log.txt
+#  echo;echo
+#  /bin/rm -v $XDG_CONFIG_HOME/mplayer/log.txt
 }
 mplayer_pipe() {
   /usr/bin/mplayer \
