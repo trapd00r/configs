@@ -93,5 +93,7 @@ setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
 screen -t mutt
 screen -t $ zsh
 screen -t rtorrent rtorrent
+screen -t spotify sconsify -username trapd00r2 -ui
+screen -t knradio tail -f $HOME/knradio_history.log
 #screen -t xrestop xrestop
 #screen -t root zsh
