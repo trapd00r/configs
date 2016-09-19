@@ -6,7 +6,7 @@ color markers    color88  color16
 color tilde      color142 color16
 color status     color8 color232
 
-color indicator  color8   color16
+color indicator  color196 color196
 color index      color100 color16 ~l
 color index      color106 color16 ~N
 color index      color86  color16 ~O
