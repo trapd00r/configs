@@ -1,7 +1,7 @@
 ## vim:ft=sh:
 # {XDG_CONFIG_HOME}/xinitrc
 # host: elite
-# 2016-09-13 12:19:19
+# 2016-09-20 11:49:31
 
 setxkbmap -option      terminate:ctrl_alt_bksp &
 setxkbmap se -variant  nodeadkeys &
@@ -16,6 +16,8 @@ xset      +fp          /usr/share/fonts
 xset                   fp rehash
 dhcpcd &
 xbanish &
+sshfs laleh:/var/log      ${HOME}/var/log &
+sshfs laleh:http/japh.se  ${HOME}/japh.se &
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 sh $HOME/dev/dzen-scripts/dzen_elite.sh &
