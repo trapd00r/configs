@@ -62,7 +62,7 @@
 #}
 
 
-if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_dsa ]]; then
+if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_rsa ]]; then
   eval `keychain --dir $HOME/etc/keychain -q --eval id_rsa`
 fi
 
