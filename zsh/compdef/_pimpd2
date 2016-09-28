@@ -1,4 +1,5 @@
 #compdef pimpd2
+# vim:ft=zsh:
 # Zsh completion script for pimpd2. Copy this file to your zsh function path
 # ( /usr/share/zsh/site_functions for example).
 #
@@ -71,5 +72,3 @@ _arguments -s $arguments \
 && return 0
 
 return 1 
-
-# vim: ft=zsh:
