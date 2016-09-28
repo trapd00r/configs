@@ -1,5 +1,5 @@
 #regexp          = /(\w|\s)/g
-progressbar     = simple
-update-interval = 0.2
-subst           = s{\s+}{_}g
-agent           = "Mozilla/5.0"
+#progressbar     = simple
+#update-interval = 0.2
+##subst           = s{\s+}{_}g
+#agent           = "Mozilla/5.0"
