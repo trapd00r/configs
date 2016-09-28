@@ -257,3 +257,4 @@ let &t_EI = "\<Esc>]12;#ff0000\x7"
 syntax on
 
 hi perlVarPlain ctermfg=10 cterm=none
+hi perlMethod   ctermfg=10 cterm=bold
