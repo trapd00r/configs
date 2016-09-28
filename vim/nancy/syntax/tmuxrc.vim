@@ -1,0 +1,1 @@
+/home/scp1/dev/vim-syntax-tmuxrc/syntax/tmuxrc.vim
