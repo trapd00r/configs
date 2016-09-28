@@ -25,6 +25,8 @@ get-x-clipboard() {
         clippaste='pbpaste'
     elif which xsel >/dev/null 2>&1; then
         clippaste='xsel --clipboard --output'
+    elif which xclip >/dev/null 2>&1; then
+        clippaste='xclip -o'
     else
         return 1
     fi
