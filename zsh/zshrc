@@ -78,6 +78,7 @@ for r in $HOME/etc/zsh/[0-5]*.zsh; do
 done
 . $HOME/etc/zsh/10-syntax.zsh
 . $HOME/etc/zsh/plugins/k.sh
+. $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
 
 
 #if [[ -n ${SSH_CLIENT} ]] ; then

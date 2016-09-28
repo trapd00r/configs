@@ -97,8 +97,8 @@ bindkey "^[[D"  vi-backward-char
 #< vicmd
 autoload edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd "^V"     edit-command-line
-bindkey -M viins "^V"     edit-command-line
+#bindkey -M vicmd "^V"     edit-command-line
+#bindkey -M viins "^V"     edit-command-line
 
 bindkey -M vicmd "ga"     what-cursor-position
 bindkey -M vicmd "g~"     vi-oper-swap-case
