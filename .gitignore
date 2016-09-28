@@ -35,3 +35,6 @@ qtfm/
 vim/colors/neverland.vim
 spotify/
 vimperator/info
+ncmpcpp/confold
+vim/syntax/ratpoison2.vim
+vimperator/colors
