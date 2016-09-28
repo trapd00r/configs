@@ -6,7 +6,12 @@ add     Control = Super_L Super_R
 add     Control = Control_L
 clear   Lock
 
-keycode 0x42    = Escape
+remove      Lock = Caps_Lock
+!keysym    Escape = Caps_Lock
+keysym Caps_Lock = Escape
+!add         Lock = Caps_Lock
+
+!keycode 0x42    = Escape
 keycode 0x30    = apostrophe
 keycode 0x22    = slash
 
