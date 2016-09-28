@@ -55,6 +55,7 @@ au BufWrite           ~/.irssi/*             %s/changed     => ["'].*/\="changed
 au BufRead            ~/etc/feh/keys         call Filetype_feh()
 au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
 au BufRead,BufNewFile *.overtime             setl ft=overtime
+au BufRead,BufNewFile *.md                   setl ft=md
 au BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
 au BufRead,BufNewFile *.go                   setl ft=go
 au BufRead,BufNewFile *.css                  setl sw=2
