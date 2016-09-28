@@ -61,31 +61,31 @@ fu! Vidir_SmartUC()
 endfu
 "}}}
 "" highlights - hl match under cursor differently from Search                 {{{
-"fu! HL_Search_Cword()
-"  let s:old_cpo = &cpo
-"  set cpo&vim
-"
-"  if ! exists('s:search_cword_cursor_modified')
-"    silent !printf ']12;\#ff0000\a'
-"    let s:search_cword_cursor_modified='red'
-"  endif
-"
-"  if exists('b:search_cword_item')
-"    try
-"      call matchdelete(b:search_cword_item)
-"    catch /^Vim\%((\a\+\)\=:E/ " ignore E802,E803
-"    endtry
-"  endif
-"
-"  " :silent !printf '\e]12;\#242424\a'
-"  hi Search       ctermfg=196 cterm=bold  ctermbg=232
-"  hi search_cword ctermfg=232 ctermbg=196 cterm=underline
-"
-"  let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
-"
-"  let &cpo = s:old_cpo
-"  "let &t_EI = '\]12;#cabdab'
-"endfu
+fu! HL_Search_Cword()
+  let s:old_cpo = &cpo
+  set cpo&vim
+
+  if ! exists('s:search_cword_cursor_modified')
+    silent !printf ']12;\#ff0000\a'
+    let s:search_cword_cursor_modified='red'
+  endif
+
+  if exists('b:search_cword_item')
+    try
+      call matchdelete(b:search_cword_item)
+    catch /^Vim\%((\a\+\)\=:E/ " ignore E802,E803
+    endtry
+  endif
+
+  " :silent !printf '\e]12;\#242424\a'
+  hi Search       ctermfg=196 cterm=bold  ctermbg=232
+  hi search_cword ctermfg=232 ctermbg=196 cterm=underline
+
+  let b:search_cword_item = matchadd('search_cword', (&ic ? '\c' : '') . '\%#' . @/, 1)
+
+  let &cpo = s:old_cpo
+  "let &t_EI = '\]12;#cabdab'
+endfu
 "}}}
 "" highlights - hl every even/odd line                                        {{{
 "fu! OddEvenHL()
