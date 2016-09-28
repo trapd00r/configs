@@ -1,7 +1,7 @@
-" vim: sw=2 cc& smc& fdm=marker fmr="<,"> fdls=1 fdl=0 fml=2 fen et:
+" vim:sw=2:cc&:smc&:fdm=marker:fmr="<,">:fdls=1:fdl=0:fml=2:fen:et:
 "    File: $HOME/etc/vim/nancy/090-syntax.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2013-01-26 12:36:29
+" Updated: 2016-09-16 08:19:13
 
 
 "hi! clear
@@ -301,4 +301,7 @@ hi MineSweeper1      ctermbg=234 ctermfg=022 cterm=none
 hi MineSweeper2      ctermbg=234 ctermfg=160 cterm=none
 hi MineSweeper3      ctermbg=234 ctermfg=197 cterm=bold
 hi MineSweeper4      ctermbg=234 ctermfg=220 cterm=bold
+">
+"< perl
+hi perlVarPlain ctermfg=10 cterm=none
 ">
