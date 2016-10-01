@@ -21,12 +21,10 @@
 bindkey -N vivis
 
 get-x-clipboard() {
-    if which pbpaste >/dev/null 2>&1; then
-        clippaste='pbpaste'
+    if which xclip >/dev/null 2>&1; then
+        clippaste='xclip'
     elif which xsel >/dev/null 2>&1; then
         clippaste='xsel --clipboard --output'
-    elif which xclip >/dev/null 2>&1; then
-        clippaste='xclip -o'
     else
         return 1
     fi
@@ -41,8 +39,8 @@ get-x-clipboard() {
 }
 
 set-x-clipboard() {
-    if which pbcopy >/dev/null 2>&1; then
-        clipcopy='pbcopy'
+    if which xclip >/dev/null 2>&1; then
+        clipcopy='xclip -i'
     elif which xsel >/dev/null 2>&1; then
         clipcopy='xsel --clipboard --input'
     else
