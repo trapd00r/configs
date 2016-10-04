@@ -37,7 +37,7 @@ setopt \
      bare_glob_qual         \
   no_bash_rematch           \
   no_bashautolist           \
-  no_beep                   \
+  nobeep                    \
   no_bg_nice                \
      brace_ccl              \
      brace_expand           \
