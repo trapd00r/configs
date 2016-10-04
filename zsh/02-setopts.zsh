@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 14:56:04
+#         mtime  2016-10-04 12:25:23
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -37,7 +37,7 @@ setopt \
      bare_glob_qual         \
   no_bash_rematch           \
   no_bashautolist           \
-  beep                      \
+  no_beep                   \
   no_bg_nice                \
      brace_ccl              \
      brace_expand           \
