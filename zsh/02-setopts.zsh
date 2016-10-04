@@ -83,7 +83,7 @@ setopt \
      hash_dirs              \
      hash_list_all          \
   no_hist_allow_clobber     \
-  hist_beep                 \
+  nohistbeep                \
   no_hist_expire_dups_first \
      hist_find_no_dups      \
      hist_ignore_all_dups   \
@@ -108,7 +108,6 @@ setopt \
   no_ksh_typeset            \
   no_ksh_zero_subscript     \
      list_ambiguous         \
-  beep                      \
   no_list_packed            \
   no_list_rows_first        \
      list_types             \
