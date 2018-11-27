@@ -61,9 +61,10 @@
 #  fi
 #}
 
-
-if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_rsa ]]; then
-  eval `keychain --dir $HOME/etc/keychain -q --eval id_rsa`
+if [[ -z $(pidof ssh-agent) && -z $(pidof gpg-agent) ]]; then
+  if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_rsa ]]; then
+    eval `keychain --dir $HOME/etc/keychain -q --eval id_rsa`
+  fi
 fi
 
 if [[ $DEBUG > 0 ]]; then
