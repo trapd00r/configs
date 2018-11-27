@@ -15,6 +15,8 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
 ###>
+
+export JEKYLL_ENV='production'
 #< LD_PRELOAD
 # https://github.com/trapd00r/stderred
 [[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
@@ -61,7 +63,7 @@ export           LC_TIME=en_US.UTF-8
 #>
 #< path
 unset PATH
-export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin
+export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
@@ -118,9 +120,9 @@ export  SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
 export DELIVERED=yes
 #>
 #< mpd
-export MPD_HOST=localhost
-export MPD_PORT=6600
-export MPD_USER=scp1
+#export MPD_HOST=0.0.0.0
+#export MPD_PORT=64593
+#export MPD_USER=scp1
 #>
 #< printer, scanner
 #export          PRINTER="Canon_MP150"
@@ -145,6 +147,20 @@ export GDK_NATIVE_WINDOWS=0
 #>
 #< rtorrent
 export RT_HOME=${XDG_DATA_HOME}/var/rtorrent
+#>
+#< various
+export TTC_REPOS=${HOME}/dev
+export TTC_APIKEYS=''
+export TTC_BOTS='tinycarebot,selfcare_bot,magicrealismbot'
+export TTC_WEATHER='Karlstad'
+export TTC_CELSIUS=true
+export TTC_APIKEYS=false
+export TTC_UPDATE_INTERVAL=20
+## Twitter api keys
+#export TTC_CONSUMER_KEY='...'
+#export TTC_CONSUMER_SECRET='...'
+#export TTC_ACCESS_TOKEN='...'
+#export TTC_ACCESS_TOKEN_SECRET='...'
 #>
 #< dmenu
 export       DMENU_FONT=${FONT}
