@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Crafted: 2008-04-24
-Updated: 2016-09-12 07:44:14
+  Updated: 2018-11-27 15:59:29
 
 - A lot of different hosts use this file.
 - You will not find any color definitions here.
@@ -32,18 +32,18 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !Xft*rgba: rgba
 !}}}
 
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+!URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher:  firefox
 URxvt.url-select.underline: true
-URxvt.keysym.C-u:           perl:url-select:select_next
-URxvt.keysym.C-Up:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
+!URxvt.keysym.C-u:           perl:url-select:select_next
+!URxvt.keysym.C-Up:      perl:keyboard-select:activate
+!URxvt.keysym.M-s:           perl:keyboard-select:search
 
 ! standard global fonts {{{
-#define FONT_NORMAL     xft:Neep Alt:style=SemiCondensed:pixelsize=11,xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=3:autohint=1:hintstyle=3
-#define FONT_BOLD       xft:Neep Alt:style=Bold SemiCondensed:pixelsize=11
-#define FONT_ITALIC     -misc-fixed-medium-r-normal--9-90-75-75-c-60-iso8859-1,6x9
-#define FONT_BOLDITALIC -misc-fixed-medium-r-normal--7-70-75-75-c-50-koi8
+!#define FONT_NORMAL     xft:Neep Alt:style=SemiCondensed:pixelsize=11,xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=3:autohint=1:hintstyle=3
+!#define FONT_BOLD       xft:Neep Alt:style=Bold SemiCondensed:pixelsize=11
+!#define FONT_ITALIC     -misc-fixed-medium-r-normal--9-90-75-75-c-60-iso8859-1,6x9
+!#define FONT_BOLDITALIC -misc-fixed-medium-r-normal--7-70-75-75-c-50-koi8
 
 !#define FONT_NORMAL       -misc-fixed-medium-r-normal--14-130-75-75-c-70-koi8-r
 !#define FONT_BOLD         -schumacher-clean-bold-r-normal--14-140-75-75-c-80-iso646.1991-irv
@@ -61,12 +61,18 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 !#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !#define FONT_ITALIC     xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=0:hinting=1:hintstyle=3
-!#define FONT_BOLDITALIC -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+!#define FONT_BOLDITALIC -misc-profontiix-medium-r-normal--0-0-0-0-p-0-iso10646-1
 
 !#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=
 !#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !#define FONT_ITALIC     xft:Anonymous Pro:style=Italic:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !#define FONT_BOLDITALIC xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+
+define FONT_NORMAL        xft:Bok MonteCarlo:style=Sans:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+define FONT_BOLD          xft:Bok MonteCarlo:style=Sans Bold:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+define FONT_ITALIC        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+define FONT_BOLDITALIC    xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+
 
 !#define FONT_NORMAL     6x10
 !#define FONT_BOLD       -fontforge-proggytinysz-bold-r-normal--10-80-96-96-c-60-iso8859-1
@@ -197,10 +203,16 @@ URxvt*font6:                -xos4-terminus-medium-r-normal-*-18-*-*-*-*-*-*-1
 URxvt*font7:                -xos4-terminus-medium-r-normal-*-19-*-*-*-*-*-*-1
 URxvt*font8:                -xos4-terminus-medium-r-normal-*-20-*-*-*-*-*-*-1
 
-sid.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-sid.boldFont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-sid.italicFont:         xft:Neep Alt:style=SemiCondensed:pixelsize=11
-sid.boldItalicFont:     -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+sid.font:              xft:Bok MonteCarlo:style=Sans:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+sid.boldFont:          xft:Bok MonteCarlo:style=Sans Bold:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+sid.italicFont:        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+sid.boldItalicFont:    xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+
+!sid.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+!sid.boldFont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+!sid.italicFont:         xft:Neep Alt:style=SemiCondensed:pixelsize=11
+!sid.boldItalicFont:     -nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1
+
 
 !sid.font:              xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0
 !sid.boldFont:          xft:Fixed:size=9:hinting=0:autohint=0:rgba=0:antialias=0:lcdfilter=0:embolden=1
