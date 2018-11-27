@@ -9,7 +9,6 @@ host wid                  #{{{
   hostname                192.168.0.195
   port                    16813
   compression             no
-  ciphers                 arcfour
   checkhostip             no
   connecttimeout          3
   permitlocalcommand      yes
@@ -21,7 +20,6 @@ host laleh                #{{{
   hostname                192.168.0.199
   port                    19217
   compression             no
-  ciphers                 arcfour
   checkhostip             no
   connecttimeout          3
   permitlocalcommand      yes
@@ -33,7 +31,6 @@ host n900                 #{{{
   hostname                192.168.0.187
   port                    22
   compression             no
-  ciphers                 arcfour
   checkhostip             no
   connecttimeout          10
 #}}}
@@ -42,7 +39,6 @@ host n7                 #{{{
   hostname                192.168.0.192
   port                    2222
   compression             no
-  ciphers                 arcfour
   checkhostip             no
   connecttimeout          10
 #}}}
@@ -51,14 +47,13 @@ host japh.se              #{{{
   hostname                japh.se
   port                    19217
   compression             no
-  ciphers                 blowfish-cbc
 ##}}}
 host n900v2               #{{{
   user                    user
   hostname                192.168.0.180
   port                    22
   compression             yes
-  ciphers                 arcfour
+#  ciphers                 arcfour
   checkhostip             no
   connecttimeout          10
 #}}}
@@ -67,7 +62,7 @@ host n900v3               #{{{
   hostname                192.168.0.180
   port                    22
   compression             yes
-  ciphers                 arcfour
+#  ciphers                 arcfour
   checkhostip             no
   connecttimeout          10
 #}}}
@@ -76,7 +71,7 @@ host n9                   #{{{
   hostname                192.168.0.198
   port                    22
   compression             yes
-  ciphers                 arcfour
+#  ciphers                 arcfour
   checkhostip             no
   connecttimeout          10
 #}}}
@@ -85,23 +80,29 @@ host xfloff.net           #{{{
   hostname                xfloff.net
   port                    43401
   compression             no
-  ciphers                 blowfish-cbc
 #}}}
   host brutus.ethup.se      #{{{
   user                    scp1
   hostname                brutus.ethup.se
   port                    22
   compression             no
-  ciphers                 blowfish-cbc
 host elite                  #{{{
   user                    scp1
   hostname                192.168.0.179
   port                    19217
   compression             no
-  ciphers                 arcfour
   checkhostip             no
   connecttimeout          3
   permitlocalcommand      yes
   localcommand            date;pwc
   numberofpasswordprompts 10
+host pi                  #{{{
+  user                    pi
+  hostname                192.168.10.100
+  port                    22
+  compression             no
+  checkhostip             no
+  connecttimeout          3
+  permitlocalcommand      yes
+  localcommand            date;pwc
 #}}}
