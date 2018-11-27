@@ -1,5 +1,6 @@
 filetype plugin indent on
 au BufNewFile,BufRead  vidir* set filetype=vidir-ls
+au BufNewFile,BufRead  pl set filetype=perl
 
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:c_comment_strings            = 1
@@ -109,7 +110,7 @@ au BufNewFile *.t
   \ | exe 'normal o'
   \ | startinsert
 au BufNewFile *.md,*.markdown
-  \   silent! 0r $VIMRUNTIME/templates/template.md
+  \   silent! 0r $VIMRUNTIME/templates/template.markdown
   \ | 0
   \ | exe 'normal d$A'
   \ | startinsert
