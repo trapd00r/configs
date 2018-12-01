@@ -32,12 +32,21 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !Xft*rgba: rgba
 !}}}
 
-!URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  firefox
+!*bell-command: urxvt
+
+URxvt.perl-lib:             /home/scp1/dev/urxvt-extensions
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher
+URxvt.keysym.C-u:           perl:url-select:select_next
+URxvt.perl-ext:             selection,mark-yank-urls
+URxvt.url-select.launcher:  /usr/lib/firefox/firefox
+URxvt.urlLauncher:          /usr/lib/firefox/firefox
 URxvt.url-select.underline: true
-!URxvt.keysym.C-u:           perl:url-select:select_next
-!URxvt.keysym.C-Up:      perl:keyboard-select:activate
-!URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.C-Up:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+!URxvt.keysym.C-u:           perl:mark-yank-urls:activate_mark_mode
+!URxvt.perl-eval:            $^O
+
+
 
 ! standard global fonts {{{
 !#define FONT_NORMAL     xft:Neep Alt:style=SemiCondensed:pixelsize=11,xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=3:autohint=1:hintstyle=3
@@ -262,12 +271,6 @@ sid.boldItalicFont:    xft:ProFont:style=Regular:pixelsize=10:antialias=0:hintin
 !}}}
 
 
-
-!sid*perl-lib:             /home/scp1/dev/urxvt-extensions
-!sid*keysym.M-u:           perl:mark-yank-urls:activate_mark_mode
-!sid*perl-ext:             selection,mark-yank-urls
-!!sid*perl-eval:            $^O
-!sid*perl-ext-common:      default,matcher
 
 sid*cutchars:             "()*,<>[]{}|'"
 sid*matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
