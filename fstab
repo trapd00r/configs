@@ -11,17 +11,7 @@ UUID=830ae517-f33e-4061-97b0-a9cc73cc246a /mnt/books        ext4        rw,error
 UUID=0ea2b7c1-1b87-466c-ac7c-790a22e5c466 /mnt/games1       ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
 UUID=a3ba13d3-ef05-440e-ab17-0c18bb0fb3d6 /mnt/music4       ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
 UUID=bba48a87-c456-4786-85d3-f608b8fb11b2 /mnt/music6       ext4        ro,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=b5d7f607-2ec4-42cb-8604-9209a180a6e4 /mnt/porn1        ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=1854d9f5-9710-4d43-9280-b030d0e30a74 /mnt/porn2        ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=a073de24-b627-491a-83c6-1ae10b0509b2 /mnt/porn3        ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=2ee72fe5-5972-44a0-bae0-53efeeb69cae /mnt/porn4        ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=244fe090-9377-489c-bb29-332b966a92e3 /mnt/porn5        ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,noatime,user,async 0 0
 # hdparm --please-destroy-my-drive -J 30  /dev/sde
-UUID=4c6804ce-10da-4622-8c99-eaaebdc66d05 /mnt/porn6        ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=807d8a9a-bdea-46fa-bd03-b4499d6d0ee7 /mnt/porn7        ext3        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,user,async         0 0
-UUID=1b26ea5e-e77c-4540-9ad3-f11423e45d57 /mnt/porn8        ext3        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=91edacb3-9036-43a8-897d-ab7458e99867 /mnt/porn9        xfs         rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
-UUID=7539b040-9f49-4c87-9d8b-7a09d18c57bd /mnt/porn0        ext3        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
 UUID=768b4330-ad5d-4116-ac65-826bb0490751 /mnt/ssd          ext2        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
 UUID=375dc6c2-e56a-4072-95c0-33ea19ed0b0a /mnt/tv1          ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
 UUID=826c87cb-e3ec-406e-846d-900cbfa0e0c1 /mnt/tv4          ext4        rw,errors=continue,nosuid,nodev,noexec,auto,nofail,atime,user,async   0 0
@@ -38,6 +28,3 @@ sshfs#user@n900v1:                        /home/scp1/n900v1 fuse        errors=r
 sshfs#user@n900v2:                        /home/scp1/n900v2 fuse        errors=remount,allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
 sshfs#user@n900v3:                        /home/scp1/n900v3 fuse        errors=remount,allow_other,auto,user,uid=1000,gid=1000,reconnect,transform_symlinks,BatchMode=yes 0 0
 
-mhddfs#/mnt/porn2/jav,/mnt/porn7/done,/mnt/tv1/+done,/mnt/porn8/+done,/mnt/porn8/:,/mnt/porn0/:,/mnt/porn0/+done      /home/scp1/jav  fuse ro,allow_other 0 0
-mhddfs#/mnt/porn1,/mnt/porn2,/mnt/porn3,/mnt/porn4,/mnt/porn5/,/mnt/porn6,/mnt/porn7,/mnt/porn8,/mnt/porn9,/mnt/porn0 /mnt/erotica    fuse rw,allow_other 0 0
-mhddfs#/mnt/porn4/pix,/mnt/porn5/pix                                                                                  /home/scp1/pix  fuse ro,allow_other 0 0

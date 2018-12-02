@@ -44,17 +44,6 @@
 
 #PERIOD=5; periodic() { setbg }
 
-#chpwd_functions=(update_mplayer tv_shortcuts)
-#update_mplayer() {
-#  dir=$(pwd)
-#  if [[ $dir == /mnt/porn/* || $dir == /mnt/shiva/mnt/porn* ]]; then
-#    warn 'horny mother fucker'
-#    mplayer() {
-#      /usr/bin/mplayer -shuffle -include $XDG_CONFIG_HOME -profile porn "$@"
-#    }
-#  fi
-#}
-
 #tv_shortcuts() {
 #  if [[ $(pwd) == /mnt/TV_3* ]]; then
 #    hash -d 4=/mnt/TV_4

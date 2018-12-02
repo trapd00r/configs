@@ -111,7 +111,6 @@
 ;(define-key *top-map*  (kbd "KP_Begin")     "exec echo vo_fullscreen > $HOME/.mplayer/fifo")
 ;(define-key *top-map*  (kbd "KP_Right")     "exec echo 'pt_step 1' > $HOME/.mplayer/fifo")
 ;(define-key *top-map*  (kbd "KP_Insert")    "exec echo pause > $HOME/.mplayer/fifo")
-;(define-key *top-map*  (kbd "KP_Up")        "exec mplayer -slave -input file=$HOME/.mplayer/fifo /mnt/Porn/*/* /mnt/Porn/* -shuffle")
 ;;}}}
 ;;
 ;(define-key *top-map* (kbd "<")             "productivity-mode-toggle")

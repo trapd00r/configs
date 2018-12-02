@@ -373,7 +373,6 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 #####  'named-directories:-mine:extra\ directories
 #####  named-directories:-normal:named\ directories *'
 ######zstyle ':completion::complete:cd:*:named-directories-mine' \
-######  fake-always /mnt/porn1 /mnt/porn2 /mnt/porn3
 ######zstyle ':completion::complete:cd:*:named-directories-mine' \
 ######  ignored-patterns '*'
 #####
@@ -423,8 +422,6 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 ######zstyle ':completion:*' menu select=long-list
 #####zstyle ':completion:*' menu auto=15
 #####zstyle ':completion:*'  squeeze-slashes true
-######zstyle ':completion:*' fake-always /mnt/porn[123456]
-######zstyle ':completion:*:(cd|mv|mkdir):*'  fake-always '/mnt/porn5/pix/%models/' /mnt/porn4/pix
 ######
 ######zstyle ':completion:*:*:*'   ignore-line yes
 ######zstyle ':completion:*:*:*:*' file-sort   reverse size

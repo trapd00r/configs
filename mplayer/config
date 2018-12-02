@@ -302,16 +302,6 @@ fstype    = stays_on_top
 #}}}
 
 
-[porn]#{{{
-noborder           = 1
-osd-duration       = 3000
-lavdopts           = threads=2
-volume             = 20
-fixed-vo           = 1
-fs                 = 1
-unrarexec          = /usr/bin/unrar
-#}}}
-
 [hd]
 lavdopts=fast=1:skiploopfilter=all
 vfm=ffmpeg
