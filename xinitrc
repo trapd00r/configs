@@ -10,18 +10,22 @@ xsetroot  -cursor_name left_ptr &
 xsetroot               &
 xmodmap                ${XDG_CONFIG_HOME}/xmodmaprc   &
 setxkbmap se -variant  nodeadkeys &
-motion    -c           ${XDG_CONFIG_HOME}/motion.conf &
+#motion    -c           ${XDG_CONFIG_HOME}/motion.conf &
 xrdb                   ${XDG_CONFIG_HOME}/Xresources  &
-xset      +fp          /usr/share/fonts
-xset                   fp rehash
+#xset      +fp          /usr/share/fonts
+#xset                   fp rehash
 dhcpcd &
 xbanish &
 sshfs laleh:/var/log      ${HOME}/var/log &
 sshfs laleh:http/japh.se  ${HOME}/japh.se &
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
+## desktop
+#xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# laptop
+xmodmap -e 'clear Lock' -e 'keycode 66 = Escape'
 
 sh $HOME/dev/dzen-scripts/dzen_elite.sh &
 perl $HOME/perl5/bin/knradio -l         &
 
-catpoison
-#ratpoison
+#catpoison
+ratpoison
