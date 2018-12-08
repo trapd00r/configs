@@ -125,10 +125,10 @@ nnoremap [2~ :source %<CR>
 nnoremap [29~ :call AddFoldMarkers()<CR>
 
 " jumping to sub definition
-nnoremap <buffer> ]]    :<C-u>call search('^\s*sub .* {$', 'sW')<CR>
-nnoremap <buffer> [[    :<C-u>call search('^\s*sub .* {$', 'bsW')<CR>
-nnoremap <buffer> ][    :<C-u>call search('^}$', 'sW')<CR>
-nnoremap <buffer> []    :<C-u>call search('^}$', 'bsW')<CR>
+"nnoremap <buffer> ]]    :<C-u>call search('^\s*sub .* {$', 'sW')<CR>
+"nnoremap <buffer> [[    :<C-u>call search('^\s*sub .* {$', 'bsW')<CR>
+"nnoremap <buffer> ][    :<C-u>call search('^}$', 'sW')<CR>
+"nnoremap <buffer> []    :<C-u>call search('^}$', 'bsW')<CR>
 " }}}
 " spelling                                                                   {{{
 "map [29~ z=
