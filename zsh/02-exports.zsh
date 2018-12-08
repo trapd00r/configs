@@ -199,21 +199,22 @@ export              IMAGEARGS=' -F -Z -x -d -B black -g 1080x1920 -k -j ~/dump -
 export  LESS=''
 export PAGER=vimpager
 
-if [[ -x =wim ]] # https://github.com/trapd00r/vim
-then
-  export            EDITOR=wim
-  export        GIT_EDITOR="${EDITOR} -X"
-  export      VIDIR_EDITOR=${EDITOR}
-  export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=vidir-ls'
-  export        VIMRUNTIME=${HOME}/etc/vim
-  export    VIMRUNTIME_DEV=${HOME}/dev/vim/runtime
-else
-  perl -e 'print STDERR "wim not found! Resort to vim...\n"'
+#if [[ -x =wim ]] # https://github.com/trapd00r/vim
+#then
+#  export            EDITOR=wim
+#  export        GIT_EDITOR="${EDITOR} -X"
+#  export      VIDIR_EDITOR=${EDITOR}
+#  export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=vidir-ls'
+#  export        VIMRUNTIME=${HOME}/etc/vim
+#  export    VIMRUNTIME_DEV=${HOME}/dev/vim/runtime
+#else
+#  perl -e 'print STDERR "wim not found! Resort to vim...\n"'
   export            EDITOR=vim
   export        GIT_EDITOR="${EDITOR} -X"
   export      VIDIR_EDITOR=${EDITOR}
-  export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=vidir-ls'
+#export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=vidir | so ~/dev/vidir/vidir.vimrc'
+  export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=vidir'
   export        VIMRUNTIME=${HOME}/etc/vim
   export    VIMRUNTIME_DEV=${HOME}/dev/vim/runtime
-fi
+#fi
 #>
