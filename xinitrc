@@ -1,7 +1,7 @@
 ## vim:ft=sh:
 # {XDG_CONFIG_HOME}/xinitrc
 # host: elite
-# 2016-09-20 11:49:31
+# 2018-12-08 09:31:09
 
 setxkbmap -option      terminate:ctrl_alt_bksp &
 setxkbmap se -variant  nodeadkeys &
@@ -16,8 +16,8 @@ xrdb                   ${XDG_CONFIG_HOME}/Xresources  &
 #xset                   fp rehash
 dhcpcd &
 xbanish &
-sshfs laleh:/var/log      ${HOME}/var/log &
-sshfs laleh:http/japh.se  ${HOME}/japh.se &
+#sshfs laleh:/var/log      ${HOME}/var/log &
+#sshfs pi:httpd/japh.se  ${HOME}/japh.se &
 
 ## desktop
 #xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -27,5 +27,5 @@ xmodmap -e 'clear Lock' -e 'keycode 66 = Escape'
 sh $HOME/dev/dzen-scripts/dzen_elite.sh &
 perl $HOME/perl5/bin/knradio -l         &
 
-#catpoison
-ratpoison
+catpoison
+#ratpoison

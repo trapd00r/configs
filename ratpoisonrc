@@ -18,6 +18,13 @@ escape C-f
 defresizeunit 80
 
 addhook switchgroup next
+# banish the mouse with each screenchange
+addhook switchwin banish
+
+
+#    defborder 0
+#   defpadding 0 0 0 0
+#defbarpadding 0 0 
 
 ## the undocumented framefmt takes the same arguments as winfmt.
 # set framefmt %w
@@ -86,7 +93,8 @@ unmanage gcolor2
 #>
 #< binds: applications
 bind c exec urxvt -name sid -fg white -bg black
-bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
+#bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
+bind C exec kitty
 bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
 bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
@@ -146,6 +154,14 @@ bind ISO_Left_Tab focus
 #gnewbg two
 #gnewbg three
 #gnewbg four
+#
+#bind F1 exec rpws 1
+#bind F2 exec rpws 2
+#bind F3 exec rpws 3
+#bind F4 exec rpws 4
+#bind F5 exec rpws 5
+
+
 
 #>
 #< binds: top level
