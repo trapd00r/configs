@@ -21,6 +21,8 @@ set nocp
 set exrc
 filetype plugin indent on
 
+syntax on
+
 "set nors                                  " This might not be needed, but these
 "set t_ti=                                 " has the same effect as disabling
 "set t_te=                                 " the alternate screen buffer.
@@ -254,7 +256,15 @@ let &t_EI = "\<Esc>]12;#ff0000\x7"
 " \      exe 'colors' s:new_colors
 " \   | endif
 " }}}
-syntax on
 
-hi perlVarPlain ctermfg=10 cterm=none
-hi perlMethod   ctermfg=10 cterm=bold
+"hi perlVarPlain ctermfg=10 cterm=none
+"hi perlMethod   ctermfg=10 cterm=bold
+
+
+" vidir
+"autocmd BufRead * normal! gg6|0G"ad
+"
+
+":autocmd BufRead  vidir normal! gg6|0G"ad
+":autocmd BufWrite vidir normal! gg0"aP
+"autocmd BufWrite vidir normal! ggdG
