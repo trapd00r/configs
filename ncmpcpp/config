@@ -17,7 +17,8 @@ visualizer_in_stereo = yes
 visualizer_sample_multiplier = 1
 visualizer_sync_interval = 30
  ## Available values: spectrum, wave, wave_filled, ellipse.
-visualizer_type = wave
+visualizer_type = ellipse
+#visualizer_type = wave
 visualizer_look = ●▮
 visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
 playlist_disable_highlight_delay = 5
