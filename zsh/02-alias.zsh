@@ -25,7 +25,7 @@ alias     cat=$HOME/dev/utils/_v
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
 alias  pacman='pacman --color=auto'
 alias prename='prename -v'
-alias     vim=wim
+#alias     vim=wim
 alias    cpan='cpanm'
 alias     top='xcolor woldrich 2>/dev/null; htop'
 alias     :q!='kill -9 $$'
