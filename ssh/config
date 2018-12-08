@@ -104,5 +104,11 @@ host pi                  #{{{
   checkhostip             no
   connecttimeout          3
   permitlocalcommand      yes
-  localcommand            date;pwc
+host svamp                  #{{{
+  user                    japh
+  hostname                dataswamp.org
+  port                    22
+  compression             no
+  checkhostip             no
+  connecttimeout          3
 #}}}
