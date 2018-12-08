@@ -16,7 +16,7 @@ hi Search            ctermfg=197  ctermbg=053  cterm=none
 hi Visual            ctermfg=197  ctermbg=053  cterm=reverse
 hi IncSearch         ctermfg=053  ctermbg=197  cterm=bolditalic
 hi CursorLine        ctermfg=none ctermbg=234
-hi ColorColumn       ctermfg=197  ctermbg=234  cterm=bolditalicreverse
+hi ColorColumn       ctermfg=231  ctermbg=234  cterm=none
 hi link ColorColumn  CursorLine
 hi CursorColumn      ctermfg=fg   ctermbg=234  cterm=none       term=bold
 hi FoldColumn        ctermfg=031  ctermbg=233   cterm=italicbold term=bold
