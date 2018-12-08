@@ -7,7 +7,6 @@ mplayer/fifo
 fooooo
 vim/autoload/
 vim/doc/
-vim/plugin/
 asciinema/
 gimp/
 mplayer/radiod.log
@@ -40,3 +39,4 @@ vimperator/info
 ncmpcpp/confold
 vim/syntax/ratpoison2.vim
 vimperator/colors
+vifm/
