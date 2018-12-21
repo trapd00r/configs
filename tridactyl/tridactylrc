@@ -1,0 +1,29 @@
+" vim:ft=vim:et:
+" $XDG_CONFIG_DIR/tridactyl/tridactylrc
+
+"sanitise tridactyllocal tridactylsync
+
+
+guiset gui none
+colors dark
+
+bind <BS> back
+" select all in cmdline
+unbind --mode=ex <C-a> 
+
+
+" Sane hinting mode
+set hintfiltermode vimperator-reflow
+set hintnames numeric
+
+" Make Tridactyl work on more sites at the expense of some security
+set csp clobber
+fixamo_quiet
+
+" URL redirects
+
+" New reddit is bad
+autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+
+" set editorcmd to suckless terminal, or use the defaults on other platforms
+js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
