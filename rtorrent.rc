@@ -20,11 +20,11 @@
 # options {{{
         check_hash = no
                dht = disable
-        directory  = /home/scp1/rtorrent
+        directory  = /home/scp1/dl
      download_rate = 0
      encoding_list = utf8
         encryption = allow_incoming,try_outgoing,enable_retry
-       http_capath = /etc/ssl/certs
+#       http_capath = /etc/ssl/certs
         key_layout = qwerty
        log.execute = ~/var/rtorrent/execute.log
   max_memory_usage = 1800M
@@ -37,7 +37,7 @@
 #max_uploads_global = 750
 #         min_peers = 20
 #    min_peers_seed = 30
-     peer_exchange = no
+#     peer_exchange = no
        port_random = no
         port_range = 50000-50001
 #        scgi_local = ~/var/rtorrent/scgi
@@ -45,12 +45,12 @@
         session    = /home/scp1/var/rtorrent/session/
 #             umask = 0027
        upload_rate = 0
-  use_udp_trackers = no
- xmlrpc_size_limit = 8M
+#  use_udp_trackers = no
+# xmlrpc_size_limit = 8M
 
-schedule = mem    ,10, 10, "load_start=/home/scp1/Downloads/*.torrent,   d.set_directory=/home/scp1/n"
+schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.custom1.set=~/dl"
 
-###system.method.set_key = event.download.finished,notify_me,"execute=/home/scp1/dev/utils/rt_notify,$d.get_name="
+###system.method.set_key = event.download.finished,notify_me,"execute2=/home/scp1/dev/utils/rt_notify,$d.get_name="
 ### system.method.insert = pyro.extended, value|const, 1
 #### (this is for curl...)
 ###branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
@@ -62,7 +62,7 @@ schedule = mem    ,10, 10, "load_start=/home/scp1/Downloads/*.torrent,   d.set_d
 ###system.method.set_key = event.download.closed,log,      "print=\"CLOSE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
 ###
 ### system.method.insert = pyro.bin_dir, string|const, ~/bin/
-### system.method.insert = pyro.rc_dialect, string|const|simple, "execute_capture=bash,-c,\"test $1 = 0.8.6 && echo -n 0.8.6 || echo -n 0.8.9\",dialect,$system.client_version="
+### system.method.insert = pyro.rc_dialect, string|const|simple, "execute.capture=bash,-c,\"test $1 = 0.8.6 && echo -n 0.8.6 || echo -n 0.8.9\",dialect,$system.client_version="
 ### system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-japh.rc"
 ###               import = $pyro.rtorrent_rc=
 ####}}}
@@ -78,7 +78,7 @@ schedule = mem    ,10, 10, "load_start=/home/scp1/Downloads/*.torrent,   d.set_d
 ####}}}
 #### schedules {{{
 #### Make SCGI socket group-writable
-###schedule = scgi_permission,0,0,"execute_nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
+###schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 ###
 #### Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
 #### Set the second argument to "-v" or "-q" to change log verbosity.
