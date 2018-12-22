@@ -3,6 +3,11 @@
 
 "sanitise tridactyllocal tridactylsync
 
+set newtab http://japh.se
+
+" fix the annoying yanking issue where yanked data ends up in XA_CLIPBOARD
+set yankto both
+set putfrom selection
 
 guiset gui none
 colors dark
