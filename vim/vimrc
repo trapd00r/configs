@@ -180,10 +180,10 @@ set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
 set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
-set winfixwidth
-set winfixheight
-set winwidth=88
-set winminwidth=88
+"set winfixwidth
+"set winfixheight
+"set winwidth=88
+"set winminwidth=88
 set whichwrap=b,s,h,l,<,>
 
 set nomore
