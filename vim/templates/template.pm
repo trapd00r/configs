@@ -74,7 +74,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2013 B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
+Copyright 2018- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
 
 =head1 LICENSE
 

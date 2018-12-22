@@ -3,7 +3,7 @@
 use strict;
 use warnings FATAL => 'all';
 use vars     qw($VERSION);
-use autodie  qw(:all),
+use autodie  qw(:all);
 
 my $APP  = '';
 $VERSION = '0.001';
@@ -54,7 +54,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2013 B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
+Copyright 2018- B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
 above.
 
 =head1 LICENSE
