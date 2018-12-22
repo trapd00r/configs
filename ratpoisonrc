@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #       crafted  2009-04-24
-#         mtime  2016-09-17 08:08:49
+#         mtime  2018-12-22 07:54:35
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -90,6 +90,9 @@ unmanage sdlmame
 unmanage mame
 unmanage neverball
 unmanage gcolor2
+unmanage steam
+unmanage tallowmere
+unmanage deluge
 #>
 #< binds: applications
 bind c exec urxvt -name sid -fg white -bg black
@@ -99,8 +102,12 @@ bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
 bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
-bind p exec knradio -p
-bind o exec knradio -s
+
+unbind n
+bind n exec ratpoison -c "echo `mpc next | head -1`"
+bind p exec ratpoison -c "echo `mpc prev | head -1`"
+
+bind o exec np
 bind 0 exec ratpoison -c "echo ´~/bin/knnp´"
 bind 9 exec sconsify -command play_pause
 
@@ -115,7 +122,7 @@ definekey top XF86HomePage          exec nestopia -dpu ~/emu/nes/castlevania3.ne
 #>
 
 unbind space
-bind   space exec ratpoison -c "echo `acpi | perl -pe 's/Battery 0: \w+, //'`"
+bind   space exec ratpoison -c "echo `mpc | head -1`"
 
 unbind w
 unbind g
