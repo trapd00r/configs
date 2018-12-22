@@ -218,3 +218,5 @@ export PAGER=vimpager
   export    VIMRUNTIME_DEV=${HOME}/dev/vim/runtime
 #fi
 #>
+
+export GITHUB_USER='trapd00r'
