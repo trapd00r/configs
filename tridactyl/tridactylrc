@@ -8,6 +8,8 @@ guiset gui none
 colors dark
 
 bind <BS> back
+bind h tabprev
+bind l tabnext
 " select all in cmdline
 unbind --mode=ex <C-a> 
 
@@ -19,6 +21,10 @@ set hintnames numeric
 " Make Tridactyl work on more sites at the expense of some security
 set csp clobber
 fixamo_quiet
+
+
+set gimode nextinput
+set externalclipboardcmd xclip
 
 " URL redirects
 
