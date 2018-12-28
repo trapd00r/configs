@@ -10,6 +10,7 @@ set yankto both
 set putfrom selection
 
 guiset gui none
+guiset tabs always
 colors dark
 
 bind <BS> back
@@ -31,10 +32,6 @@ fixamo_quiet
 set gimode nextinput
 set externalclipboardcmd xclip
 
-" URL redirects
-
-" New reddit is bad
-autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
