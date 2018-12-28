@@ -86,6 +86,7 @@ set          maxundos 20
 #< window management
 unmanage tint2
 unmanage dzen2
+unmanage xmobar
 unmanage sdlmame
 unmanage mame
 unmanage neverball
@@ -104,8 +105,8 @@ bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 
 unbind n
-bind n exec ratpoison -c "echo `mpc next | head -1`"
-bind p exec ratpoison -c "echo `mpc prev | head -1`"
+bind n exec ratpoison -c "echo `mpc prev | head -1`"
+bind p exec ratpoison -c "echo `mpc next | head -1`"
 
 bind o exec np
 bind 0 exec ratpoison -c "echo ´~/bin/knnp´"
@@ -178,6 +179,7 @@ bind ISO_Left_Tab focus
 #definekey top Print    exec ossmix vmix0.pcm8 -- -2
 #definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
 #definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
+
 #>
 
 # act normal, but prevent firefox from raising itself
