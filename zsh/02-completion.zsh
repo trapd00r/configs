@@ -24,7 +24,7 @@ zstyle ':completion:*'                          accept-exact      '*(N)'
 zstyle ':completion:*'                          list-dirs-first   true
 zstyle ':completion:*'                          matcher-list      'm:{a-z}={A-Z}'
 zstyle ':completion:*'                          menu select       auto
-zstyle ':completion:*'                          my-accounts       'magnus.woldrich@gmail.com'
+zstyle ':completion:*'                          my-accounts       'm@japh.se'
 zstyle ':completion:*'                          separate-sections yes
 zstyle ':completion:*'                          squeeze-slashes   false
 zstyle ':completion:*'                          use-perl          1
@@ -340,7 +340,7 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 #####zstyle ':completion:*:*:unrarec:*'     '*(-/):directories'
 ######>
 ######< $ perl <anything>
-#####zstyle ':completion:*:*:perl:*'         file-patterns '*'
+zstyle ':completion:*:*:perl:*'         file-patterns '*'
 ######>
 ######< comics and pdfs
 #####zstyle ':completion:*:*:(apvlv|xpdf):*' tag-order     files
