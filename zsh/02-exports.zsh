@@ -143,7 +143,7 @@ export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
 export             QT_XFT=1
 export        GDK_USE_XFT=1
 export DESKTOP_STARTUP_ID=42
-export GDK_NATIVE_WINDOWS=0
+#export GDK_NATIVE_WINDOWS=0
 #>
 #< rtorrent
 export RT_HOME=${XDG_DATA_HOME}/var/rtorrent
@@ -220,3 +220,4 @@ export PAGER=vimpager
 #>
 
 export GITHUB_USER='trapd00r'
+export ACCESS_LOG="$HOME/pi/var/log/access.log"
