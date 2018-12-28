@@ -22,11 +22,14 @@
 #  fi
 
 
-#fpath=($fpath ~/etc/zsh/functions/)
+fpath=($fpath ~/etc/zsh/functions/)
 # load all functions in fpath that has the executable bit set; makes it easy to
 # enable/disable things on the fly.
 #for func in $^fpath/*(N-.x:t); autoload $func
 #freload()  { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
+
+#autoload -U compinit
+#compinit
 
 # command mode thanks
 #zle-line-init() { zle -K vicmd }
