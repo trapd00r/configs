@@ -90,10 +90,10 @@ setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
   register [ "\033:se noai\015a"
   register ] "\033:se ai\015a"
 
-screen -t mutt
+screen -t acc accesstail
 screen -t $ zsh
 screen -t rtorrent rtorrent
-screen -t spotify sconsify -username trapd00r2 -ui
-screen -t knradio tail -f $HOME/knradio_history.log
+#screen -t spotify sconsify -username trapd00r2 -ui
+#screen -t knradio tail -f $HOME/knradio_history.log
 #screen -t xrestop xrestop
 #screen -t root zsh
