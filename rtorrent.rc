@@ -5,14 +5,13 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2012-10-29 17:59:40
+#         mtime  2018-12-29 12:16:01
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
 #                to share with me as I've shared with you.
 #           git  git://github.com/trapd00r/configs (up-to-date)
 #                http://github.com/trapd00r/configs
-#           url  http://devel.japh.se/configs
 #           irc  japh@freenode #rtorrent #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
@@ -48,7 +47,19 @@
 #  use_udp_trackers = no
 # xmlrpc_size_limit = 8M
 
-schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/_torrent/*.torrent,d.custom1.set=~/dl"
+schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=~/dl"
+schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/games/music/_new2019"
+schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
+schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
+
+
+
+
+
+
+
+
+#-------------------
 
 ###system.method.set_key = event.download.finished,notify_me,"execute2=/home/scp1/dev/utils/rt_notify,$d.get_name="
 ### system.method.insert = pyro.extended, value|const, 1
@@ -57,9 +68,9 @@ schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/_torrent/*.torrent,d
 #branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
 #
 #
-#system.method.set_key = event.download.inserted_new,log,"print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
-#system.method.set_key = event.download.finished,log,    "print=\" DONE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
-#system.method.set_key = event.download.closed,log,      "print=\"CLOSE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.inserted_new,log,"print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.finished,log,    "print=\" DONE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.closed,log,      "print=\"CLOSE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
 #
 # system.method.insert = pyro.bin_dir, string|const, ~/bin/
 # system.method.insert = pyro.rc_dialect, string|const|simple, "execute.capture=bash,-c,\"test $1 = 0.8.6 && echo -n 0.8.6 || echo -n 0.8.9\",dialect,$system.client_version="
@@ -70,15 +81,15 @@ schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/_torrent/*.torrent,d
 ## Sort "seeding" by ratio
 #view_sort_current = seeding,greater=d.get_ratio=
 ## Sort incomplete by date added
-#view_sort_current = incomplete,greater=d.get_custom=tm_loaded
-#view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
+view_sort_current = incomplete,greater=d.get_custom=tm_loaded
+view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
 ## Show recently completed top-most in "main"
 #view_sort_current = main,greater=d.get_custom=tm_completed
 #   view_filter_on = main,event.download.finished
 ##}}}
 ## schedules {{{
 ## Make SCGI socket group-writable
-#schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
+schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 #
 ## Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
 ## Set the second argument to "-v" or "-q" to change log verbosity.
@@ -89,8 +100,8 @@ schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/_torrent/*.torrent,d
 ##   Within each group, they're sorted by download and then upload speed.
 #   branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
 #   branch=pyro.extended=,"view_sort_current = active,\"compare=----,d.is_open=,d.get_complete=,d.get_down_rate=,d.get_up_rate=\""
-# schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
-#
+ schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
+
 ##schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
 ##schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
 ##schedule = untied_closing,30,30,close_untied=
@@ -98,27 +109,27 @@ schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/_torrent/*.torrent,d
 #
 ##}}}
 ## ui {{{
-##      ui.color.alarm.set="bold 160"
-##   ui.color.complete.set="bold 106"
-##       ui.color.even.set=""
-##      ui.color.focus.set="bold 161 on 236"
-##     ui.color.footer.set="245 on 232"
-## ui.color.incomplete.set="160"
-##       ui.color.info.set="137"
-##      ui.color.label.set="224"
-##   ui.color.leeching.set="bold 124"
-##        ui.color.odd.set=""
-##  ui.color.progress0.set="245"
-##ui.color.progress100.set="65"
-##ui.color.progress120.set="148"
-## ui.color.progress20.set="247"
-## ui.color.progress40.set="246"
-## ui.color.progress60.set="14"
-## ui.color.progress80.set="250"
-##     ui.color.queued.set="242"
-##    ui.color.seeding.set="100"
-##    ui.color.stopped.set="124"
-##      ui.color.title.set="243 on 232"
+      ui.color.alarm.set="bold 160"
+   ui.color.complete.set="bold 106"
+       ui.color.even.set=""
+      ui.color.focus.set="bold 161 on 236"
+     ui.color.footer.set="245 on 232"
+ ui.color.incomplete.set="160"
+       ui.color.info.set="137"
+      ui.color.label.set="224"
+   ui.color.leeching.set="bold 124"
+        ui.color.odd.set=""
+  ui.color.progress0.set="245"
+ui.color.progress100.set="65"
+ui.color.progress120.set="148"
+ ui.color.progress20.set="247"
+ ui.color.progress40.set="246"
+ ui.color.progress60.set="14"
+ ui.color.progress80.set="250"
+     ui.color.queued.set="242"
+    ui.color.seeding.set="100"
+    ui.color.stopped.set="124"
+      ui.color.title.set="243 on 232"
 #
 #      ui.color.alarm.set="160 on 234"
 #   ui.color.complete.set="106"
@@ -142,4 +153,4 @@ schedule = mem    ,10, 10, "load.start=/home/scp1/Downloads/_torrent/*.torrent,d
 #    ui.color.stopped.set="244"
 #      ui.color.title.set="242 on 232"
 ##}}}
-##view.collapsed.toggle
+#view.collapsed.toggle
