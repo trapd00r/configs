@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 14:56:04
+#         mtime  2019-01-01 13:22:06
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -35,5 +35,6 @@ fi
 
 if [ "$TERM" != "linux" ]; then
   [[ "$HOST" == 'elite' ]] && export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;4:mc=38;5;85;1;48;5;232:ne"
+  [[ "$HOST" == 'sid'   ]] && export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;4:mc=38;5;85;1;48;5;232:ne"
   [[ "$HOST" == 'laleh' ]] && export GREP_COLORS="38;5;230:sl=48;5;233;38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;233:ln=38;5;87;3:bn=38;5;233:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;233;38;5;85;1:mc=38;5;85;1;48;5;233;7:ne"
 fi
