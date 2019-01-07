@@ -57,7 +57,7 @@ zstyle ':completion:*:(mv|cp|file|m|mplayer):*' ignored-patterns '(#i)*.(url|mht
 #< compdefs
 autoload -U age compinit relative
 compinit -u
-compdef     _gnu_generic c256 cc256 ln file vnstat vnstati lscpu lsb_release
+compdef     _gnu_generic c256 cc256 ln file vnstat vnstati lscpu lsb_release rtcontrol mktorrent
 compdef     _feh         f ff
 compdef     _files       mkdir mkdr
 compdef     _mkdir       mkdr
