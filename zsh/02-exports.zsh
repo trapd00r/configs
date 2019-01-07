@@ -47,7 +47,7 @@ export            BROWSER=firefox
 #< locale
 export            LC_ALL=""
 
-export              LANG=en_US
+export              LANG=en_US.UTF-8
 export        LC_ADDRESS=en_US.UTF-8
 export        LC_COLLATE=en_US.UTF-8
 export          LC_CTYPE=en_US.UTF-8
@@ -221,3 +221,4 @@ export PAGER=vimpager
 
 export GITHUB_USER='trapd00r'
 export ACCESS_LOG="$HOME/pi/var/log/access.log"
+export FLEXGET_LOG="$HOME/flexget.log"
