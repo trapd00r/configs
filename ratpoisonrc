@@ -19,7 +19,7 @@ defresizeunit 80
 
 addhook switchgroup next
 # banish the mouse with each screenchange
-addhook switchwin banish
+#addhook switchwin banish
 
 
 #    defborder 0
@@ -74,12 +74,13 @@ set historycompaction 1
 set       historysize 1000
 set      winliststyle column
 set        barpadding 8 8
-set           padding 0 10 0 0
-set            border 0
+set           padding 0 0 0 0
+#set           padding 0 10 0 0
+set            border 1
 set           bgcolor #080808
 set           bwcolor #0c0c0c
 set           fgcolor #d75f00
-set           fwcolor #afd700
+set           fwcolor #303030
 set              font Terminus:weight:bold:size=12
 set          maxundos 20
 #>
