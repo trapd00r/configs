@@ -28,7 +28,11 @@ mutt()      { TERM=xterm-256color muttneo -F $XDG_CONFIG_HOME/muttneorc "$@" }
 tig()       { TERM=xterm-256color /usr/bin/tig "$@"}
 goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
-scx()       { TERM=xterm-256color screen -x }
+scx()       {
+#  xcolor facebook;
+  TERM=rxvt-unicode-256color screen -x
+#  TERM=xterm-256color screen -x
+}
 zman()      { PAGER="less -g -s '+/^       "$1"'" man zshall }
 #>
 #< shell
