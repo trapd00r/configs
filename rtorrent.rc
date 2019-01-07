@@ -1,5 +1,5 @@
 #!/usr/bin/rtorrent -n -o ~/etc/rtorrent.rc
-### vim: tw=0 cc=0 ft=ampl smc=80 fdm=marker fen:
+### vim:                        tw=0 cc=0 ft=ampl smc=80 fdm=marker fen:
 ###
 #      ${HOME}/etc/rtorrent.rc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
@@ -17,43 +17,46 @@
 ###
 ###
 # options {{{
-        check_hash = no
-               dht = disable
-        directory  = /home/scp1/dl
-     download_rate = 0
-     encoding_list = utf8
-        encryption = allow_incoming,try_outgoing,enable_retry
-#       http_capath = /etc/ssl/certs
-        key_layout = qwerty
-       log.execute = ~/var/rtorrent/execute.log
-  max_memory_usage = 1800M
-#    max_open_files = 1600
-#     max_open_http = 99
-#  max_open_sockets = 600
-#         max_peers = 60
-#    max_peers_seed = 80
-#       max_uploads = 250
-#max_uploads_global = 750
-#         min_peers = 20
-#    min_peers_seed = 30
-#     peer_exchange = no
-       port_random = no
-        port_range = 50000-50001
-#        scgi_local = ~/var/rtorrent/scgi
-         scgi_port = localhost:5000
-        session    = /home/scp1/var/rtorrent/session/
-#             umask = 0027
-       upload_rate = 0
-#  use_udp_trackers = no
-# xmlrpc_size_limit = 8M
+        check_hash            = no
+pieces.hash.on_completion.set = no
+               dht            = disable
+        directory             = /home/scp1/dl
+     download_rate            = 0
+     encoding_list            = utf8
+        encryption            = allow_incoming,try_outgoing,enable_retry
+#       http_capath           = /etc/ssl/certs
+        key_layout            = qwerty
+       log.execute            = ~/var/rtorrent/execute.log
+  max_memory_usage            = 3800M
+#    max_open_files           = 1600
+#     max_open_http           = 99
+#  max_open_sockets           = 600
+         max_peers           = 1200
+    max_peers_seed           = 3000
+       max_uploads           = 500
+max_uploads_global           = 1800
+#         min_peers           = 20
+#    min_peers_seed           = 30
+#     peer_exchange           = no
+       port_random            = no
+        port_range            = 50000-50001
+        scgi_local           = ~/var/rtorrent/scgi
+#         scgi_port            = localhost:5000
+        session               = /home/scp1/var/rtorrent/session/
+#             umask           = 0027
+#       upload_rate            = 0
+#  use_udp_trackers           = no
+# xmlrpc_size_limit           = 8M
 
-schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=~/dl"
+schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/games/skit"
 schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/games/music/_new2019"
-schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
-schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
+schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
+schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
 
 
 
+#schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
+#schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
 
 
 
@@ -154,3 +157,110 @@ ui.color.progress120.set="148"
 #      ui.color.title.set="242 on 232"
 ##}}}
 #view.collapsed.toggle
+
+#ui.color.alarm.set       = "bold 250 on 124"
+#ui.color.complete.set    = "41"
+#ui.color.even.set        = "on 234"
+#ui.color.focus.set       = "reverse"
+#ui.color.footer.set      = "bright 123 on 160"
+#ui.color.incomplete.set  = "221"
+#ui.color.info.set        = "white"
+#ui.color.label.set       = "136"
+#ui.color.leeching.set    = "bold bright 220"
+#ui.color.odd.set         = "on 232"
+#ui.color.progress0.set   = "196"
+#ui.color.progress20.set  = "207"
+#ui.color.progress40.set  = "202"
+#ui.color.progress60.set  = "214"
+#ui.color.progress80.set  = "226"
+#ui.color.progress100.set = "34"
+#ui.color.progress120.set = "bold bright 46"
+#ui.color.queued.set      = "133"
+#ui.color.seeding.set     = "bold bright 40"
+#ui.color.stopped.set     = "33"
+#ui.color.title.set       = "bold bright white on 202"
+#ui.color.custom1.set     = ""
+#ui.color.custom2.set     = ""
+#ui.color.custom3.set     = ""
+#ui.color.custom4.set     = ""
+#ui.color.custom5.set     = ""
+#ui.color.custom6.set     = ""
+#ui.color.custom7.set     = ""
+#ui.color.custom8.set     = ""
+#ui.color.custom9.set = "bright blue"
+
+#ui.color.alarm.set       = "bold 254 on 160"
+#ui.color.complete.set    = "33"
+#ui.color.even.set        = "on 234"
+#ui.color.focus.set       = "reverse"
+#ui.color.footer.set      = "bright 254 on 125"
+#ui.color.incomplete.set  = "136"
+#ui.color.info.set        = "245"
+#ui.color.label.set       = "67"
+#ui.color.leeching.set    = "bold bright 166"
+#ui.color.odd.set         = ""
+#ui.color.progress0.set   = "160"
+#ui.color.progress20.set  = "61"
+#ui.color.progress40.set  = "64"
+#ui.color.progress60.set  = "166"
+#ui.color.progress80.set  = "136"
+#ui.color.progress100.set = "27"
+#ui.color.progress120.set = "bold bright 37"
+#ui.color.queued.set      = "125"
+#ui.color.seeding.set     = "bold bright 37"
+#ui.color.stopped.set     = "64"
+#ui.color.title.set       = "bold bright 230 on 61"
+#ui.color.custom1.set     = ""
+#ui.color.custom2.set     = ""
+#ui.color.custom3.set     = ""
+#ui.color.custom4.set     = ""
+#ui.color.custom5.set     = ""
+#ui.color.custom6.set     = ""
+#ui.color.custom7.set     = ""
+#ui.color.custom8.set     = ""
+#ui.color.custom9.set     = "yellow"
+
+method.set_key = event.view.show, ~column_42_toggle, \
+    "branch = \"string.contains=$ui.current_view=, active, leeching\", \
+        ui.column.show=42, ui.column.hide=42"
+ui.column.hide = 100
+ui.column.hide = 110
+ui.column.hide = 120
+ui.column.hide = 130
+ui.column.hide = 400
+ui.column.hide = 410
+ui.column.hide = 420
+ui.column.hide = 500
+ui.column.hide = 510
+ui.column.hide = 520
+ui.column.hide = 530
+ui.column.hide = 900
+ui.column.hide = 910
+#ui.column.hide = 920
+#ui.column.hide = 930
+#ui.column.hide = 970
+#ui.column.hide = 980
+
+
+
+
+#100:3C95/2:❢␣␣
+#110:2C92/2:☢␣
+#120:?2:☍␣
+#130:?2:⌘␣
+#400:?3C23/3:␣↺␣
+#410:?3C24/3:␣⤴␣
+#420:?3C14/3:␣⤵␣
+#500:?2:↕␣
+#510:3C28/3:℞␣␣
+#520:6C96/6:∆⋮␣⟲␣␣
+#530:6C90/6:∇⋮␣◷␣␣
+#900:?5C24/3C21/2:␣Σ⇈␣␣
+#910:2C94/2:⣿␣
+#920:3C93/3:☯␣␣
+#930:5C15/3C21/2:␣⛁␣␣␣
+#970:2C91/2:✰␣
+#980:2C16/2:⚑␣
+#WARNING␣␣Found␣0␣candidate␣versions
+#WARNING␣␣Software␣version␣cannot␣be␣determined!
+
