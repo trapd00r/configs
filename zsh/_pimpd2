@@ -1,0 +1,75 @@
+#compdef pimpd2
+# Zsh completion script for pimpd2. Copy this file to your zsh function path
+# ( /usr/share/zsh/site_functions for example).
+#
+# If you do not want to install i globally, you can copy it somewhere else and
+# add that directory to $fpath. This must be done before compinit is called.
+# If the file is copied to ~/.zsh/compdef, your ~/.zshrc file could look like
+# this:
+#
+# fpath=("$HOME/.zsh/compdef" $fpath)
+# autoload -U compinit
+# compinit
+
+
+
+local arguments curcontext="$curcontext" state line
+typeset -A opt_args
+
+arguments=(
+  {-cp,--copy}'[Copy song]'
+  {-cpa,--copy}'[Copy song]'
+
+  {-np,--now-playing}'[basic song info on a single line]'
+  {-i,--info}'[full song info]'
+  {-cp,--copy}'[copy the current track to destination]'
+  {-cpa,--copy-album}'[copy the current album to destination]'
+  {-sh,--shell}'[spawn the interactive shell]'
+  {-q,--queue}'[queue tracks]'
+
+  {-pls,--playlist}'[show the current playlist]'
+  '--playlists[list all known playlists]'
+  {-af,--add-files}'[add files to playlist]'
+  {-a,--add-playlist}'[add playlist]'
+  {-r,--randomize}'[randomize a new playlist with n tracks]'
+  {-ra,--random-album}'[add n random full albums]'
+  {-rma,--rmalbum}'[remove album matching pattern from playlist]'
+  {-da,--delete-album}'[delete the current album from disk]'
+  {-f,--love}'[love song]'
+  '--loved[check if the current song is loved]'
+  {-u,--unlove}'[unlove songs matching pattern]'
+  {-lsp,--lsplaylist}'[list songs in playlists]'
+  {-spl,--search-playlist}'[search the current playlist for str]'
+
+  {-lsa,--songs}'[list songs on album]'
+  {-l,--albums}'[list albums by artist]'
+  {-sdb,--search-db}'[search database for pattern]'
+  {-sar,--search-artist}'[search database for artist]'
+  {-sal,--search-album}'[search database for album]'
+  {-set,--search-title}'[search database for title]'
+  '--slove[search the database with loved songs for PATTERN]'
+
+  {-n,--next}'[next track in playlist]'
+  {-p,--previous}'[previous track in playlist]'
+  {-cl,--clear}'[clear the playlist]'
+  {-cr,--crop}'[remove all songs but the current one from playlist]'
+  {-x,--xfade}'[set crossfade]'
+  '--pause[toggle playback status]'
+  '--repeat[toggle repeat mode]'
+  '--random[toggle random mode]'
+
+  '--play[start playback (locally and remote)]'
+  {-s,--stop}'[stop playback (locally and remote)]'
+  {-k,--kill}'[stop playback (locally)]'
+  {-h,--help}'[show the help and exit]'
+  {-m,--man}'[show the manual and exit]'
+  {-v,--version}'[show version info and exit]'
+
+)
+
+_arguments -s $arguments \
+&& return 0
+
+return 1 
+
+# vim: ft=zsh:
