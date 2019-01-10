@@ -28,6 +28,8 @@ addhook switchgroup next
 
 ## the undocumented framefmt takes the same arguments as winfmt.
 # set framefmt %w
+# set resizefmt
+# set infofmt
 
 #< catpoison only!
 set virtuals 24
@@ -81,7 +83,7 @@ set           bgcolor #080808
 set           bwcolor #0c0c0c
 set           fgcolor #d75f00
 set           fwcolor #303030
-set              font Terminus:weight:bold:size=12
+set              font Dina
 set          maxundos 20
 #>
 #< window management
@@ -105,11 +107,14 @@ bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 
+bind Tab focuslast
+
 unbind n
 bind n exec ratpoison -c "echo `mpc prev | head -1`"
 bind p exec ratpoison -c "echo `mpc next | head -1`"
+bind o exec mpc toggle
 
-bind o exec np
+#bind o exec np
 bind 0 exec ratpoison -c "echo ´~/bin/knnp´"
 bind 9 exec sconsify -command play_pause
 
