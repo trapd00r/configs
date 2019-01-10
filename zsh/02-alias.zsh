@@ -31,7 +31,7 @@ alias     top='xcolor woldrich 2>/dev/null; htop'
 alias     :q!='kill -9 $$'
 alias      :q='exit'
 alias     die='kill -9 $$'
-alias   dmesg='/home/scp1/dev/Term-ExtendedColor/bin/colored_dmesg|grep -v TCP'
+alias   dmesg='/home/scp1/dev/Term-ExtendedColor/bin/colored_dmesg|grep -viP "TCP|ipv6"'
 alias      gd='GIT_PAGER="" git diff'
 alias     scd='screen -d'
 alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
@@ -72,7 +72,8 @@ alias   mp3='builtin cd $XDG_MUSIC_DIR'
 alias   tec='builtin cd $HOME/dev/Term-ExtendedColor'
 alias   tet='builtin cd $HOME/dev/Term-ExtendedColor-TTY'
 alias   tex='builtin cd $HOME/dev/Term-ExtendedColor-Xresources'
-alias     t='mkdir -p /dev/shm/⚑; builtin cd /dev/shm/⚑'
+alias     t='builtin cd $HOME/tmp'
+#alias     t='mkdir -p /dev/shm/⚑; builtin cd /dev/shm/⚑'
 #>
 #< ssh hosts
 if [[ $UID != 0 ]]
@@ -182,3 +183,6 @@ then
   alias      wit='wminput -c buttons-term&'
 fi
 #>
+
+alias pcsx3='rpcs3'
+alias castnow='castnow --address 192.168.10.160'
