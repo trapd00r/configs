@@ -47,9 +47,12 @@ max_uploads_global           = 1800
 #       upload_rate            = 0
 #  use_udp_trackers           = no
 # xmlrpc_size_limit           = 8M
+network.max_open_sockets.set  = 2000
+network.http.max_open.set     = 300
+network.max_open_files.set    = 900
 
 schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/games/skit"
-schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/games/music/_new2019"
+schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_new"
 schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
 schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
 
@@ -115,12 +118,12 @@ schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorren
       ui.color.alarm.set="bold 160"
    ui.color.complete.set="bold 106"
        ui.color.even.set=""
-      ui.color.focus.set="bold 161 on 236"
+      ui.color.focus.set="bold 2 on 232"
      ui.color.footer.set="245 on 232"
  ui.color.incomplete.set="160"
        ui.color.info.set="137"
       ui.color.label.set="224"
-   ui.color.leeching.set="bold 124"
+   ui.color.leeching.set="italic 124"
         ui.color.odd.set=""
   ui.color.progress0.set="245"
 ui.color.progress100.set="65"
@@ -236,10 +239,11 @@ ui.column.hide = 520
 ui.column.hide = 530
 ui.column.hide = 900
 ui.column.hide = 910
-#ui.column.hide = 920
+
+ui.column.hide = 920
 #ui.column.hide = 930
-#ui.column.hide = 970
-#ui.column.hide = 980
+ui.column.hide = 970
+ui.column.hide = 980
 
 
 
