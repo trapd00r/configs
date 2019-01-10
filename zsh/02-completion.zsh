@@ -57,7 +57,7 @@ zstyle ':completion:*:(mv|cp|file|m|mplayer):*' ignored-patterns '(#i)*.(url|mht
 #< compdefs
 autoload -U age compinit relative
 compinit -u
-compdef     _gnu_generic c256 cc256 ln file vnstat vnstati lscpu lsb_release rtcontrol mktorrent
+compdef     _gnu_generic c256 cc256 ln file vnstat vnstati lscpu lsb_release rtcontrol mktorrent plymouth
 compdef     _feh         f ff
 compdef     _files       mkdir mkdr
 compdef     _mkdir       mkdr
@@ -113,7 +113,7 @@ zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*' tag-order files
 zstyle ':completion:*:*:(vim|rview|vimdiff|xxd):*:*files' \
   ignored-patterns '*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
   file-sort modification
-#zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*' file-sort modification
+zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*' file-sort modification
 #zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
 #>
 #< mplayer
@@ -165,6 +165,8 @@ zstyle ':completion:*:processes-names'    command 'ps -awxho command'
 zstyle ':completion:*:*:perl:*'        file-patterns '*'
 zstyle ':completion:*:*:apvlv:*'       tag-order files
 zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
+zstyle ':completion:*:*:lstor:*'       file-patterns '*.torrent'
+zstyle ':completion:*:*:cpan-upload:*' file-patterns '*.tar.gz'
 #>
 
 #< need to sort this out, one day
@@ -173,16 +175,16 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 ######  '*(-/):directories'\
 ######  '*:all-files'
 #####
-#####zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-######zstyle ':completion:*' completer _expand _complete  _prefix _list
-#####zstyle ':completion:*' completer _expand _complete _prefix _list
-######zstyle ':completion:*' completer _expand _complete _prefix _list _approximate _correct 
-######zstyle ':completion:*' completer _complete _ignored
-#####
-###### completers in order of usefulness
-######zstyle ':completion:*' completer _expand _list _complete _match _ignored _prefix _approximate
-######zstyle ':completion:*' completer _expand _complete _ignored _approximate
-######zstyle ':completion:*' completer _complete _history
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*' completer _expand _complete  _prefix _list
+#zstyle ':completion:*' completer _expand _complete _prefix _list
+#zstyle ':completion:*' completer _expand _complete _prefix _list _approximate _correct 
+#zstyle ':completion:*' completer _complete _ignored
+
+# completers in order of usefulness
+zstyle ':completion:*' completer _expand _list _complete _match _ignored _prefix _approximate
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' completer _complete _history
 #####
 ###### use caching for all completions
 #####zstyle ':completion:*' use-cache on
@@ -192,10 +194,10 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 ######zstyle ':completion:*' special-dirs ..
 #####
 ###### use perl
-#####zstyle ':completion:*' use-perl on
+zstyle ':completion:*' use-perl on
 #####
 ###### XXX _urls setup
-#####zstyle ':completion:*' urls ~/etc/zsh/urls
+zstyle ':completion:*' urls ~/etc/zsh/urls
 #####
 ########zstyle ':completion:*' accept-exact '*(N)'
 #####zstyle ':completion:*' group-name ''
@@ -223,7 +225,7 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 ######zstyle ':completion:*:complete:-command-::commands' ignored-patterns '(aptitude-*|html|*\~|haskell_count)'
 #####
 ######## don't complete lost+found dirs for 'cd'
-#####zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
+zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
 #####
 ######## special completions for (mpg|ogg)123
 #####zstyle ':completion:*:*:mpg123:*'  file-patterns '(#i)*.mp3:files:mp3\ files *(-/):directories:directories'
@@ -235,28 +237,28 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 #####  bin daemon mail ftp http nobody dbus avahi ntp git usbmux mysql uuid kwakd
 ######>
 ######< formats
-#####zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
-#####zstyle ':completion:*:messages'     format "- %{${fg[cyan]}%}%d%{${reset_color}%} -"
-#####zstyle ':completion:*:corrections'  format "- %{${fg[yellow]}%}%d%{${reset_color}%} - (%{${fg[cyan]}%}errors %e%{${reset_color}%})"
-#####zstyle ':completion:*:default'      \
-#####  select-prompt \
-#####  "%{${fg[yellow]}%}Match %{${fg_bold[cyan]}%}%m%{${fg_no_bold[yellow]}%}  Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[red]}%}  %p%{${reset_color}%}"
-#####zstyle ':completion:*:default'      \
-#####  list-prompt   \
-#####  "%{${fg[yellow]}%}Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[yellow]}%}  Continue?%{${reset_color}%}"
-#####zstyle ':completion:*:warnings'     \
-#####  format        \
-#####  "- %{${fg_no_bold[red]}%}no match%{${reset_color}%} - %{${fg_no_bold[yellow]}%}%d%{${reset_color}%}"
-#####zstyle ':completion:*' group-name ''
-#####
-##### zstyle ':completion:*:descriptions' format "- %d -"
-##### zstyle ':completion:*:messages'     format "- %d -"
-##### zstyle ':completion:*:corrections'  format "- %d - (errors %e)"
-##### zstyle ':completion:*:default'      select-prompt "Match %m  Line %l  %p"
-##### zstyle ':completion:*:default'      list-prompt "Line %l  Continue?"
-##### zstyle ':completion:*:warnings'     format "- no match - %d"
-##### zstyle ':completion:*'              group-name ''
-#####
+zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
+zstyle ':completion:*:messages'     format "- %{${fg[cyan]}%}%d%{${reset_color}%} -"
+zstyle ':completion:*:corrections'  format "- %{${fg[yellow]}%}%d%{${reset_color}%} - (%{${fg[cyan]}%}errors %e%{${reset_color}%})"
+#zstyle ':completion:*:default'      \
+#  select-prompt \
+#  "%{${fg[yellow]}%}Match %{${fg_bold[cyan]}%}%m%{${fg_no_bold[yellow]}%}  Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[red]}%}  %p%{${reset_color}%}"
+#zstyle ':completion:*:default'      \
+#  list-prompt   \
+#  "%{${fg[yellow]}%}Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[yellow]}%}  Continue?%{${reset_color}%}"
+#zstyle ':completion:*:warnings'     \
+#  format        \
+#  "- %{${fg_no_bold[red]}%}no match%{${reset_color}%} - %{${fg_no_bold[yellow]}%}%d%{${reset_color}%}"
+zstyle ':completion:*' group-name ''
+
+ zstyle ':completion:*:descriptions' format "- %d -"
+ zstyle ':completion:*:messages'     format "- %d -"
+ zstyle ':completion:*:corrections'  format "- %d - (errors %e)"
+# zstyle ':completion:*:default'      select-prompt "Match %m  Line %l  %p"
+# zstyle ':completion:*:default'      list-prompt "Line %l  Continue?"
+ zstyle ':completion:*:warnings'     format "- no match - %d"
+ zstyle ':completion:*'              group-name ''
+
 ######< list colorization
 ######## use $LS_COLORS for general completion
 ########   Note: (s.:.) splits ${LS_COLORS} into an array
@@ -305,7 +307,7 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 #####zstyle ':completion:*:-command-:*:' verbose no
 #####
 ###### default menu selection for a few commands
-#####zstyle ':completion:*:*:(kill*|man):*' menu yes
+zstyle ':completion:*:*:(kill*|man):*' menu yes
 ######
 #####
 ###### if i have 'rm file0' on the commandline
@@ -317,15 +319,17 @@ zstyle ':completion:*:*:apvlv:*'       file-patterns '*.pdf'
 #####zstyle ':completion:*:(nc|ping|ssh|nmap|*ftp|telnet|finger|mtr):*' hosts laleh n7 n900 n900v2 n950
 #####
 ######## i like kill <tab>, but i want more processes...
-#####zstyle ':completion:*:processes' command 'ps --forest -A -o pid,user,cmd'
-#####zstyle ':completion:*:*:kill:*:processes' sort false
-#####zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+zstyle ':completion:*:processes' command 'ps --forest -A -o pid,user,cmd'
+zstyle ':completion:*:*:kill:*:processes' sort false
+zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
 ######>
 ######< sorting
-#####zstyle ':completion:*:*:(mplayer|m|ms|vim|feh|ls|du|file|cd):*' file-sort time
-######zstyle ':completion:*:*:(mplayer|vim|feh|ls|du|file|cd):*' file-sort time
-######zstyle ':completion:*:*:(mplayer|vim|feh|cd|ls|du|file):*' file-sort name
-######zstyle ':completion:*:*:cd:*' file-sort name
+zstyle ':completion:*:*:(gd):*' file-sort time
+zstyle ':completion:*:*:(mplayer|m|ms|vim|feh|ls|du|file|cd):*' file-sort time
+zstyle ':completion:*:*:(mplayer|vim|feh|ls|du|file|cd):*' file-sort time
+zstyle ':completion:*:*:(mplayer|vim|feh|cd|ls|du|file):*' file-sort name
+#zstyle ':completion:*:*:cd:*' file-sort name
+zstyle ':completion:*:*:cd:*' file-sort time
 ######>
 #####
 ######< init!
