@@ -21,20 +21,20 @@
 pieces.hash.on_completion.set = no
                dht            = disable
         directory             = /home/scp1/dl
-     download_rate            = 0
+     download_rate            = 8000
      encoding_list            = utf8
         encryption            = allow_incoming,try_outgoing,enable_retry
 #       http_capath           = /etc/ssl/certs
         key_layout            = qwerty
        log.execute            = ~/var/rtorrent/execute.log
-  max_memory_usage            = 3800M
+  max_memory_usage            = 1200M 
 #    max_open_files           = 1600
 #     max_open_http           = 99
 #  max_open_sockets           = 600
-         max_peers           = 1200
-    max_peers_seed           = 3000
-       max_uploads           = 500
-max_uploads_global           = 1800
+##         max_peers           = 1200
+##    max_peers_seed           = 3000
+##       max_uploads           = 500
+##max_uploads_global           = 200
 #         min_peers           = 20
 #    min_peers_seed           = 30
 #     peer_exchange           = no
@@ -47,9 +47,9 @@ max_uploads_global           = 1800
 #       upload_rate            = 0
 #  use_udp_trackers           = no
 # xmlrpc_size_limit           = 8M
-network.max_open_sockets.set  = 2000
-network.http.max_open.set     = 300
-network.max_open_files.set    = 900
+#network.max_open_sockets.set  = 2000
+#network.http.max_open.set     = 300
+#network.max_open_files.set    = 512
 
 schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/games/skit"
 schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_new"
@@ -265,6 +265,4 @@ ui.column.hide = 980
 #930:5C15/3C21/2:␣⛁␣␣␣
 #970:2C91/2:✰␣
 #980:2C16/2:⚑␣
-#WARNING␣␣Found␣0␣candidate␣versions
-#WARNING␣␣Software␣version␣cannot␣be␣determined!
 
