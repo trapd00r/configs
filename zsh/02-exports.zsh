@@ -224,3 +224,4 @@ export ACCESS_LOG="$HOME/pi/var/log/access.log"
 export FLEXGET_LOG="$HOME/flexget.log"
 export RELEASE_TESTING=1
 export PERL_HACK_LIB=$HOME/dev/PERL_HACK_LIB
+export COLORFGBG='white:black'
