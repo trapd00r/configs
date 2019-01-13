@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-12 06:16:31
+#         mtime  2019-01-13 09:31:39
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -18,9 +18,9 @@
 #< basics
 alias      cp='cp -v'
 alias      mv='mv -v'
-alias      rm='rmc'
+alias      rm='rmc -v'
 alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
-alias     cat=$HOME/dev/utils/_v
+alias     cat="$HOME/dev/vimcat/vimcat"
 
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
 alias  pacman='pacman --color=auto'
@@ -34,7 +34,7 @@ alias     die='kill -9 $$'
 alias   dmesg='/home/scp1/dev/Term-ExtendedColor/bin/colored_dmesg|grep -viP "TCP|ipv6"'
 alias      gd='GIT_PAGER="" git diff'
 alias     scd='screen -d'
-alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd -root . -port 8080 --verbose'
+alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd --root . --port 8080'
 alias    wget='wget --no-check-certificate -U=Mozilla'
 
 alias       R='rehash'
