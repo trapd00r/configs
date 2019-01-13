@@ -94,6 +94,7 @@ setenv PROMPT_COMMAND 'echo -n -e "\033k\033\134"'
   register ] "\033:se ai\015a"
 
 screen -t acc accesstail
+screen -t dmesg watch -c -n1 /usr/bin/dmesg -L=always
 screen -t $ zsh
 screen -t rtorrent rtorrent
 screen -t clip perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
