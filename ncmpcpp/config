@@ -1,5 +1,5 @@
 ncmpcpp_directory = ~/var/ncmpcpp/
-lyrics_directory =  ~/var/ncmpcpp/lyrics
+lyrics_directory =  ~/dev/lyrics/lyrics/
 mpd_music_dir = ~/mp3
 
 #< mpd
@@ -250,11 +250,11 @@ message_delay_time = 5
 #
 #lines_scrolled = 2
 #
-#follow_now_playing_lyrics = no
+follow_now_playing_lyrics = yes
 #
-#fetch_lyrics_for_current_song_in_background = no
+fetch_lyrics_for_current_song_in_background = yes
 #
-#store_lyrics_in_song_dir = no
+store_lyrics_in_song_dir = no
 #
 #generate_win32_compatible_filenames = yes
 #
