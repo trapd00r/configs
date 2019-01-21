@@ -33,7 +33,7 @@ alias      :q='exit'
 alias     die='kill -9 $$'
 alias   dmesg='/home/scp1/dev/Term-ExtendedColor/bin/colored_dmesg|grep -viP "TCP|ipv6"'
 alias      gd='GIT_PAGER="" git diff'
-alias     scd='screen -d'
+alias     scd='/bin/screen -d'
 alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd --root . --port 8080'
 alias    wget='wget --no-check-certificate -U=Mozilla'
 
@@ -186,3 +186,4 @@ fi
 
 alias pcsx3='rpcs3'
 alias castnow='castnow --address 192.168.10.160'
+alias mpd="mpd $XDG_CONFIG_HOME/mpd.conf"
