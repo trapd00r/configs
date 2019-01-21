@@ -1,7 +1,8 @@
 #!/usr/bin/perl
+# vim:ft=perl:et:
 use strict;
 
-my $maildir = '/mnt/Docs/Mail/inbox/new';
+my $maildir = $ENV{MAILDIR};
 my @mails = glob("$maildir/*");
 
 my $output;
