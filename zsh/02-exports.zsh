@@ -19,7 +19,7 @@
 export JEKYLL_ENV='production'
 #< LD_PRELOAD
 # https://github.com/trapd00r/stderred
-[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
+#[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
 #>
 #< xdg
 export       XDG_DATA_HOME=${HOME}/var
@@ -114,8 +114,8 @@ export  FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp125
 export  FONT_I='-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
 #>
 #< mail
-export      MAIL=${HOME}/mail
-export   MAILDIR=${HOME}/mail
+export      MAIL=${HOME}/mail/personal/INBOX
+export   MAILDIR=${HOME}/mail/personal/INBOX
 export  SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
 export DELIVERED=yes
 #>
@@ -225,3 +225,5 @@ export FLEXGET_LOG="$HOME/flexget.log"
 export RELEASE_TESTING=1
 export PERL_HACK_LIB=$HOME/dev/PERL_HACK_LIB
 export COLORFGBG='white:black'
+export TEXT_VIMCOLOR_ANSI='Normal=225;Boolean=135;Character=143;Number=33;String=179;Conditional=196;Constant=106;Cursor=150;Debug=225;Define=81;Delimiter=241;DiffChange=181;DiffDelete=162;Directory=118;Error=219;ErrorMsg=199;Exception=118;Float=135;FoldColumn=67;Folded=240;Function=118;Identifier=149;Ignore=244;IncSearch=193;Keyword=111;Label=229;Macro=193;MatchParen=196;ModeMsg=215;MoreMsg=215;Operator=148;Pmenu=137;PmenuSel=196;PmenuSbar=000;PmenuThumb=137;PreCondit=118;PreProc=218;Question=81;Repeat=161;Search=234;SignColumn=118;SpecialChar=161;SpecialComment=245;Special=81;SpecialKey=245;SpellBad=196;SpellCap=094;SpellRare=096;SpellLocal=124;Statement=172;StatusLine=234;StatusLineNC=234;StorageClass=208;Structure=81;Tag=161;Title=71;Todo=160;Typedef=81;Type=166;Underlined=106;VertSplit=244;WarningMsg=21;WildMenu=81;Comment=137;CursorLineNr=197;LineNr=241;NonText=233;TabLine=100;TabLineFill=233;TabLineSel=220;'
+
