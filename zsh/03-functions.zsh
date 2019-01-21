@@ -24,14 +24,19 @@ apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
 scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }
 tcx()       { /usr/bin/tmux attach || /usr/bin/tmux -f $XDG_CONFIG_HOME/etc/tmux.conf }
-mutt()      { TERM=xterm-256color muttneo -F $XDG_CONFIG_HOME/muttneorc "$@" }
+mutt()      { TERM=xterm-256color neomutt -F $XDG_CONFIG_HOME/muttneorc -f $HOME/mail/personal/INBOX "$@" }
 tig()       { TERM=xterm-256color /usr/bin/tig "$@"}
 goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
 scx()       {
 #  xcolor facebook;
-  TERM=rxvt-unicode-256color screen -x
-#  TERM=xterm-256color screen -x
+#  TERM=rxvt-unicode-256color screen -x
+#  TERM=xterm-256color-italic screen -x
+  TERM=screen-256color /bin/screen -x
+}
+
+screen() {
+  env TERM=screen-256color /bin/screen
 }
 zman()      { PAGER="less -g -s '+/^       "$1"'" man zshall }
 #>
