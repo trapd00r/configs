@@ -132,6 +132,7 @@ nnoremap [29~ :call AddFoldMarkers()<CR>
 " }}}
 " spelling                                                                   {{{
 "map [29~ z=
+map ? z=
 nnoremap     za zg
 nnoremap     <leader><TAB> :call ToggleSpell()<CR>
 " }}}
