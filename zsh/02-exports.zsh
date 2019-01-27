@@ -185,7 +185,7 @@ export             HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*:gs:gd:calc:du1:l:
 export               HISTSIZE=256000
 export          KEYBOARD_HACK=' '
 export             KEYTIMEOUT=100
-export                LISTMAX=500
+export                LISTMAX=0
 export          LISTROWSFIRST=1
 export               SAVEHIST=250000
 export              WORDCHARS='*?_.[]~&;!#$%^(){}<>'
@@ -209,7 +209,7 @@ export PAGER=vimpager
 #  export    VIMRUNTIME_DEV=${HOME}/dev/vim/runtime
 #else
 #  perl -e 'print STDERR "wim not found! Resort to vim...\n"'
-  export            EDITOR=vim
+  export            EDITOR='vim'
   export        GIT_EDITOR="${EDITOR} -X"
   export      VIDIR_EDITOR=${EDITOR}
 #export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=vidir | so ~/dev/vidir/vidir.vimrc'
