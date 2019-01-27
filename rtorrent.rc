@@ -27,7 +27,7 @@ pieces.hash.on_completion.set = no
 #       http_capath           = /etc/ssl/certs
         key_layout            = qwerty
        log.execute            = ~/var/rtorrent/execute.log
-  max_memory_usage            = 1200M 
+  max_memory_usage            = 2400M 
 #    max_open_files           = 1600
 #     max_open_http           = 99
 #  max_open_sockets           = 600
@@ -51,7 +51,9 @@ pieces.hash.on_completion.set = no
 #network.http.max_open.set     = 300
 #network.max_open_files.set    = 512
 
-schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/games/skit"
+schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music3/_new"
+#schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_freeleech"
+schedule = psy   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_psy/*.torrent,d.set_directory=/mnt/music/_psy"
 schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_new"
 schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
 schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
@@ -62,6 +64,8 @@ schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torr
 #schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
 
 
+trackers.alias.set_key = waffles.ch,    "waffles"
+trackers.alias.set_key = superbits.org, "superbits"
 
 
 
@@ -116,9 +120,9 @@ schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorren
 ##}}}
 ## ui {{{
       ui.color.alarm.set="bold 160"
-   ui.color.complete.set="bold 106"
+   ui.color.complete.set="italic 106"
        ui.color.even.set=""
-      ui.color.focus.set="bold 2 on 232"
+      ui.color.focus.set="bold italic 2 on 232"
      ui.color.footer.set="245 on 232"
  ui.color.incomplete.set="160"
        ui.color.info.set="137"
