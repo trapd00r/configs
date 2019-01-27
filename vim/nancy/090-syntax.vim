@@ -305,3 +305,5 @@ hi MineSweeper4      ctermbg=234 ctermfg=220 cterm=bold
 "< perl
 hi perlVarPlain ctermfg=10 cterm=none
 ">
+
+hi markdownJekyllFrontMatter ctermfg=137
