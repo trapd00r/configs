@@ -12,6 +12,9 @@ bind index .n noop
 bind index g noop
 bind index . noop
 
+bind index d noop
+macro index,pager A  "<save-message>=personal/archive<enter>"  "mark message as Archived"
+macro index,pager d  "<save-message>=personal/archive<enter>"  "mark message as Archived"
 
 #< options
 set include
@@ -86,7 +89,7 @@ set tmpdir              = /dev/shm
 set wrapmargin          = 4
 #>
 #< macros
-macro generic,index,pager A  "<shell-escape>abook<return>" "launch abook"
+#macro generic,index,pager A  "<shell-escape>abook<return>" "launch abook"
 macro               index .. "c=\n" "Go to inbox"
 macro               index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
 macro               index n  "<next-entry><display-message>"
