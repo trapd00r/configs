@@ -9,7 +9,10 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-DEFAULT_SESSION='batpoison'
+DEFAULT_SESSION='catpoison'
+#DEFAULT_SESSION='batpoison-master'
+#DEFAULT_SESSION='batpoison-blame'
+#DEFAULT_SESSION='batpoison'
 #DEFAULT_SESSION='ratpoison'
 #DEFAULT_SESSION='openbox'
 
@@ -69,6 +72,7 @@ get_session(){
 }
 
 
+~/dev/vim-xclipboard/bin/vim_xclipboard
 xrandr --output DVI-D-O --rotate left &
 exec $(get_session)
 
