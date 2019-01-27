@@ -16,6 +16,9 @@ color index      color225 color16 ~F
 #color index      color16 color160 ~D
 color tree       color8 color16
 
+#color index color196 color196 "!~N ~D"
+#color index color196 color196 "~N ~D"
+
 
 color header     color255 color16 "^Subject"
 color header     color184 color16 "^From"
