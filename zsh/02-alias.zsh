@@ -25,7 +25,7 @@ alias     cat="$HOME/dev/vimcat/vimcat"
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
 alias  pacman='pacman --color=auto'
 alias prename='prename -v'
-#alias     vim=wim
+alias     vim='time-spent-in-vim'
 alias    cpan='cpanm'
 alias     top='xcolor woldrich 2>/dev/null; htop'
 alias     :q!='kill -9 $$'
@@ -187,3 +187,4 @@ fi
 alias pcsx3='rpcs3'
 alias castnow='castnow --address 192.168.10.160'
 alias mpd="mpd $XDG_CONFIG_HOME/mpd.conf"
+alias todo="vim ~/dev/private/TODO.todo"
