@@ -1,6 +1,7 @@
 filetype plugin indent on
 au BufNewFile,BufRead  vidir* set filetype=vidir-ls
 au BufNewFile,BufRead  pl set filetype=perl
+au BufNewFile,BufRead  Changes set filetype=changelog
 
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:c_comment_strings            = 1
@@ -136,3 +137,11 @@ func! Filetype_feh()
   hi feh_action ctermfg=202
   hi feh_keys   ctermfg=106
 endfunc
+
+func! LooksLikePerl5 ()
+  if getline(1) =~# '^#!.*/bin/.*perl'
+    set filetype=perl
+  endif
+endfunction
+
+au bufRead * call LooksLikePerl5()
