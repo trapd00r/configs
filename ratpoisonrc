@@ -83,7 +83,8 @@ set           bgcolor #080808
 set           bwcolor #0c0c0c
 set           fgcolor #d75f00
 set           fwcolor #303030
-set              font Dina
+#set              font Dina
+set              font "xft:Anonymous Pro:pixelsize=12"
 set          maxundos 20
 #>
 #< window management
@@ -93,7 +94,7 @@ unmanage xmobar
 unmanage sdlmame
 unmanage mame
 unmanage neverball
-unmanage gcolor2
+#unmanage gcolor2
 unmanage steam
 unmanage tallowmere
 unmanage deluge
