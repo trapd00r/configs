@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 14:56:04
+#         mtime  2019-01-28 07:58:08
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -134,5 +134,5 @@ aliases_suffix_mplayer=(
 local MPLAYER_CONFIG=$XDG_CONFIG_HOME/mplayer/config
 #>
 
-alias -s $^aliases_suffix_vim="${EDITOR} --"
+alias -s $^aliases_suffix_vim="${vim} --"
 alias -s $^aliases_suffix_mplayer='mplayer -msgmodule 1 -msgcolor -include $MPLAYER_CONFIG --'

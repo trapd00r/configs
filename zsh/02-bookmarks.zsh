@@ -21,9 +21,9 @@
 
 #hash -d "♫"=${HOME}/.CD-current
 
-#hash -d     b=${HOME}/bin
-#hash -d     c=${HOME}/etc
-#hash -d     d=${HOME}/dev
+hash -d     b=${HOME}/bin
+hash -d     c=${HOME}/etc
+hash -d     d=${HOME}/dev
 #hash -d     h=${HOME}/http
 #hash -d     u=${HOME}/dev/utils
 #hash -d     v=${HOME}/etc/vim

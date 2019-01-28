@@ -67,7 +67,8 @@ export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
-export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
+export      PERL5LIB=${HOME}/lib/perl5:${HOME}/perl5/lib/perl5/
+#export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
 export PERLBREW_ROOT=${HOME}/usr/share/perl5
 export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
 #>
@@ -80,6 +81,7 @@ export           PERL_CPANM_OPT='-nql~/ --reinstall --prompt --auto-cleanup 365 
 export      PERL_MM_USE_DEFAULT=0
 export  HARNESS_SUMMARY_COL_SUC=green
 export HARNESS_SUMMARY_COL_FAIL=red
+export PERL_LOCAL_LIB_ROOT=${HOME}/perl5
 #>
 #< mplayer
 export    DVDCSS_CACHE=/dev/shm/dvdcss

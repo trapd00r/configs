@@ -104,17 +104,18 @@ alias    ncmpcpp="ncmpcpp -b $HOME/etc/ncmpcpp/keys"
 alias    love='pimpd2 --love'
 alias  unlove='pimpd2 --unlove'
 
-if [ -f '/etc/rc.d/oss' ]; then
-  alias        v+='ossmix vmix0.pcm8   -- +2'
-  alias       v++='ossmix vmix0.pcm9   -- +2'
-  alias      v+++='ossmix vmix0.pcm10  -- +2'
-  alias        v-='ossmix vmix0.pcm8   -- -2'
-  alias       v--='ossmix vmix0.pcm9   -- -2'
-  alias      v---='ossmix vmix0.pcm10 -- -2'
-
-  alias      play='ossmix mplayer 18:18 || pimpd2 --play'
-  alias      stop='ossmix mplayer 0  || pimpd2 --kill'
-fi
+#<open sound system 4
+#if [ -f '/etc/rc.d/oss' ]; then
+#  alias        v+='ossmix vmix0.pcm8   -- +2'
+#  alias       v++='ossmix vmix0.pcm9   -- +2'
+#  alias      v+++='ossmix vmix0.pcm10  -- +2'
+#  alias        v-='ossmix vmix0.pcm8   -- -2'
+#  alias       v--='ossmix vmix0.pcm9   -- -2'
+#  alias      v---='ossmix vmix0.pcm10 -- -2'
+#
+#  alias      play='ossmix mplayer 18:18 || pimpd2 --play'
+#  alias      stop='ossmix mplayer 0  || pimpd2 --kill'
+#fi
 #>
 #< git
 alias      gt='git tag|sort --reverse'
@@ -146,24 +147,24 @@ alias fehtnbr='feh -Tthumb_b_nt --recursive'
 #alias    gccc='gcc -ansi -pedantic -Wall'
 #>
 #< ffmpeg
-case $HOSTNAME in
-  wid)
-    alias rec="ffmpeg -f x11grab -s 5760x1080 -r 25 -i :0.0+840,4 -sameq"
-    ;;
-  elite)
-    alias rec="ffmpeg -f x11grab -s 1600x900 -r 25 -i :0.0 -sameq"
-    ;;
-  n900)
-    alias rec="ffmpeg -f x11grab -s 800x480 -r 25 -i :0.0 -sameq"
-    ;;
-  RM680)
-    alias rec="ffmpeg -f x11grab -s 854x480 -r 25 -i :0.0 -sameq"
-    ;;
-  laleh)
-    ;;
-  *)
-    alias rec="ffmpeg -f x11grab -r 25 -i :0.0+840,4 -sameq"
-esac
+#case $HOSTNAME in
+#  wid)
+#    alias rec="ffmpeg -f x11grab -s 5760x1080 -r 25 -i :0.0+840,4 -sameq"
+#    ;;
+#  elite)
+#    alias rec="ffmpeg -f x11grab -s 1600x900 -r 25 -i :0.0 -sameq"
+#    ;;
+#  n900)
+#    alias rec="ffmpeg -f x11grab -s 800x480 -r 25 -i :0.0 -sameq"
+#    ;;
+#  RM680)
+#    alias rec="ffmpeg -f x11grab -s 854x480 -r 25 -i :0.0 -sameq"
+#    ;;
+#  laleh)
+#    ;;
+#  *)
+#    alias rec="ffmpeg -f x11grab -r 25 -i :0.0+840,4 -sameq"
+#esac
 #>
 #< terminal
 alias reset='printf "\033c\033(K\033[J\033[0m\033[?25h"'
@@ -174,17 +175,16 @@ alias osc3c='printf "\t\033#3\e[38;5;25mt\e[38;5;26mr\e[38;5;27ma\e[38;5;31mp\e[
 alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 #>
 #< wiimote
-if [ $WANNA_PLAY_WITH_WIIMOTE ] 
-then
-  alias      wmp='wminput -c mplayer&'
-  alias      win='wminput -c ir_ptr -w -c neverball&'
-  alias      wir='wminput -c ir_ptr -w -c ir_ptr&'
-  alias      wig='wminput -c gamepad&'
-  alias      wit='wminput -c buttons-term&'
-fi
+#if [ $WANNA_PLAY_WITH_WIIMOTE ] 
+#then
+#  alias      wmp='wminput -c mplayer&'
+#  alias      win='wminput -c ir_ptr -w -c neverball&'
+#  alias      wir='wminput -c ir_ptr -w -c ir_ptr&'
+#  alias      wig='wminput -c gamepad&'
+#  alias      wit='wminput -c buttons-term&'
+#fi
 #>
 
-alias pcsx3='rpcs3'
 alias castnow='castnow --address 192.168.10.160'
 alias mpd="mpd $XDG_CONFIG_HOME/mpd.conf"
 alias todo="vim ~/dev/private/TODO.todo"
