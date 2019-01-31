@@ -52,14 +52,15 @@ pieces.hash.on_completion.set = no
 #network.max_open_files.set    = 512
 
 schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music3/_new"
-#schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_freeleech"
 schedule = psy   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_psy/*.torrent,d.set_directory=/mnt/music/_psy"
-schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_new"
+schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music3/_new"
+
 schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
 schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
 
 
 
+#schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_freeleech"
 #schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
 #schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
 
