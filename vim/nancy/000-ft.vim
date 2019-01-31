@@ -1,4 +1,5 @@
 filetype plugin indent on
+au BufNewFile,BufRead  *.todo set filetype=todo
 au BufNewFile,BufRead  vidir* set filetype=vidir-ls
 au BufNewFile,BufRead  pl set filetype=perl
 au BufNewFile,BufRead  Changes set filetype=changelog
