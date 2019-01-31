@@ -76,8 +76,7 @@ set historycompaction 1
 set       historysize 1000
 set      winliststyle column
 set        barpadding 8 8
-set           padding 0 0 0 0
-#set           padding 0 10 0 0
+set           padding 0 13 0 0
 set            border 1
 set           bgcolor #080808
 set           bwcolor #0c0c0c
