@@ -71,7 +71,7 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
-
+sh ~/dev/dzen-sid/dzen_1080x1920.sh
 ~/dev/vim-xclipboard/bin/vim_xclipboard
 xrandr --output DVI-D-O --rotate left &
 exec $(get_session)
