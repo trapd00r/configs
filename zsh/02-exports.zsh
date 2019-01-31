@@ -82,6 +82,7 @@ export      PERL_MM_USE_DEFAULT=0
 export  HARNESS_SUMMARY_COL_SUC=green
 export HARNESS_SUMMARY_COL_FAIL=red
 export PERL_LOCAL_LIB_ROOT=${HOME}/perl5
+export PERL_CPANM_HOME=${HOME}/tmp/cpanm
 #>
 #< mplayer
 export    DVDCSS_CACHE=/dev/shm/dvdcss
