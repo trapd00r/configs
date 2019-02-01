@@ -8,7 +8,6 @@ use autodie  qw(:all);
 my $APP  = '';
 $VERSION = '0.001';
 
-use Devel::Comments;
 use Data::Dumper;
 
 {
@@ -45,8 +44,8 @@ or directly to L<m@japh.se>
   Magnus Woldrich
   CPAN ID: WOLDRICH
   m@japh.se
-  http://japh.se
-  http://github.com/trapd00r
+  L<~/|http://japh.se>
+  L<git|http://github.com/trapd00r>
 
 =head1 CONTRIBUTORS
 
@@ -54,7 +53,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2018- B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
+Copyright 2019- B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
 above.
 
 =head1 LICENSE

@@ -10,17 +10,32 @@ WriteMakefile1(
     },
   },
 
-  NAME             => q{ },
-  AUTHOR           => q{Magnus Woldrich <m@japh.se>},
-  ABSTRACT         => q{ },
-  VERSION_FROM     => q{ },
-  LICENSE          => q{perl},
-  MIN_PERL_VERSION => 5.010,
-  PL_FILES         => { },
-  PREREQ_PM        => { },
-  MAN1PODS         => { },
-  dist             => { COMPRESS => q{gzip -9f},    SUFFIX => q{gz}, },
-  clean            => { FILES    => q{ },
+  NAME                    => q{ },
+  AUTHOR                  => q{Magnus Woldrich <m@japh.se>},
+  ABSTRACT                => q{ },
+  VERSION_FROM            => q{ },
+  LICENSE                 => q{perl},
+  MIN_PERL_VERSION        => 5.010,
+  PL_FILES                => { },
+  EXE_FILES               => [
+    glob('bin/*'),
+  ],
+  PREREQ_PM               => {
+    'Term::ExtendedColor' => '0',
+  },
+
+  META_ADD  => {
+    provides => {
+      'App::__PACKAGE__' => {
+        file => 'bin/__PACKAGE__',
+      },
+    },
+  },
+    
+
+  MAN1PODS                => { },
+  dist                    => { COMPRESS => q{gzip -9f},    SUFFIX => q{gz}, },
+  clean                   => { FILES    => q{ },
 );
 
 sub WriteMakefile1 {
@@ -54,4 +69,3 @@ sub WriteMakefile1 {
 
   WriteMakefile(%params);
 }
-

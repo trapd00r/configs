@@ -65,8 +65,8 @@ or directly to L<m@japh.se>
   Magnus Woldrich
   CPAN ID: WOLDRICH
   m@japh.se
-  http://japh.se
-  http://github.com/trapd00r
+  L<~/|http://japh.se>
+  L<git|http://github.com/trapd00r>
 
 =head1 CONTRIBUTORS
 
@@ -74,7 +74,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2018- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
+Copyright 2019- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
 
 =head1 LICENSE
 
