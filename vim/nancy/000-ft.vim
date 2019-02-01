@@ -49,6 +49,7 @@ let g:xf86conf_xfree86_versio      = 2
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
+au BufNewFile,BufRead  .gitignore            set filetype=vidir
 au BufNewFile,BufRead  MANIFEST              set filetype=vidir
 au BufNewFile,BufRead  *.todo                set filetype=todo
 au BufNewFile,BufRead  vidir*                set filetype=vidir-ls
