@@ -58,4 +58,8 @@ rpcs3/
 skypeforlinux/
 unity3d/
 vlc/
-
+Slack/
+configstore/
+irssi-bitlbee.conf
+konsolerc
+snes9x/
