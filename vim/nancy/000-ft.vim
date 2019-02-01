@@ -1,8 +1,4 @@
 filetype plugin indent on
-au BufNewFile,BufRead  *.todo set filetype=todo
-au BufNewFile,BufRead  vidir* set filetype=vidir-ls
-au BufNewFile,BufRead  pl set filetype=perl
-au BufNewFile,BufRead  Changes set filetype=changelog
 
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:c_comment_strings            = 1
@@ -53,6 +49,11 @@ let g:xf86conf_xfree86_versio      = 2
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
+au BufNewFile,BufRead  MANIFEST              set filetype=vidir
+au BufNewFile,BufRead  *.todo                set filetype=todo
+au BufNewFile,BufRead  vidir*                set filetype=vidir-ls
+au BufNewFile,BufRead  pl                    set filetype=perl
+au BufNewFile,BufRead  Changes               set filetype=changelog
 au BufWrite           ~/.irssi/scripts/*.pl  %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
 au BufWrite           ~/.irssi/*             %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
 au BufRead            ~/etc/feh/keys         call Filetype_feh()
