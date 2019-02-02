@@ -105,6 +105,8 @@ alias    love='pimpd2 --love'
 alias  unlove='pimpd2 --unlove'
 alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
+alias   slove='pimpd2 --slove|ls_color'
+alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf"
 #>
 
 #<open sound system 4
@@ -189,6 +191,5 @@ alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 #>
 
 alias castnow='castnow --address 192.168.10.160'
-alias mpd="mpd $XDG_CONFIG_HOME/mpd.conf"
 alias todo="vim ~/dev/private/TODO.todo"
 alias pacman=sexpac
