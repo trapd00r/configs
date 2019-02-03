@@ -306,4 +306,6 @@ hi MineSweeper4      ctermbg=234 ctermfg=220 cterm=bold
 hi perlVarPlain ctermfg=10 cterm=none
 ">
 
-hi markdownJekyllFrontMatter ctermfg=137
+hi markdownJekyllFrontMatter    ctermfg=137
+hi markdownJekyllLiquidBlockTag ctermfg=197 cterm=italic
+

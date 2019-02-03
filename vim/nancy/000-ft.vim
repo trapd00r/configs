@@ -45,6 +45,7 @@ let g:vt_email                     = 'm@japh.se'
 let g:vt_template_dir_path         = '~/etc/vim/templates/'
 let g:xclipboard_pipe_path         = '/home/scp1/etc/vim/xclipboard.fifo'
 let g:xf86conf_xfree86_versio      = 2
+let g:rainbow_active               = 1
 
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
@@ -148,3 +149,29 @@ func! LooksLikePerl5 ()
 endfunction
 
 au bufRead * call LooksLikePerl5()
+
+
+
+
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'lisp': {
+	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
