@@ -153,6 +153,7 @@ au bufRead * call LooksLikePerl5()
 
 
 
+" rainbow.vim configuration
 let g:rainbow_conf = {
 	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
 	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
@@ -175,3 +176,11 @@ let g:rainbow_conf = {
 	\		'css': 0,
 	\	}
 	\}
+
+" set rainbow.vim colors and attributes
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p0' 'cterm=bold ctermfg=231'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p1' 'cterm=bold ctermfg=228'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p2' 'cterm=bold ctermfg=202'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p3' 'cterm=bold ctermfg=196'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p4' 'cterm=bold ctermfg=178'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p5' 'cterm=bold ctermfg=172'
