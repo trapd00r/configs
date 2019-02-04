@@ -93,6 +93,11 @@ bindkey "^j" next
 register [ "\033:se noai\015a"
 register ] "\033:se ai\015a"
 
+# erase background with current bg color
+defbce on
+# set color of borders and command-line (cyan background, black foreground)
+rendition so = ck
+
 screen -t acc      accesstail
 screen -t nc       ncmpcpp
 screen -t rtorrent rtorrent
