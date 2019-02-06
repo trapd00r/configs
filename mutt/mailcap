@@ -1,1 +1,2 @@
 text/html; lynx -dump %s; nametemplate=%s.html; copiousoutput
+application/pdf; apvlv %s

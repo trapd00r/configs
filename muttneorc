@@ -175,6 +175,7 @@ my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
 #< mime autoview
 auto_view text/x-diff
 auto_view text/x-patch
+auto_view application/pdf
 auto_view text/html # w3m converts to plain
 # prefer text/plain version if it exists
 alternative_order text/plain text/html
