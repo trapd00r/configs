@@ -193,3 +193,4 @@ alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 alias castnow='castnow --address 192.168.10.160'
 alias todo="vim ~/dev/private/TODO.todo"
 alias pacman=sexpac
+alias nexuiz=xonotic-sdl
