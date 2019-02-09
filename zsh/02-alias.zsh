@@ -106,7 +106,7 @@ alias  unlove='pimpd2 --unlove'
 alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
 alias   slove='pimpd2 --slove|ls_color'
-alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf"
+alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf && mpdas"
 #>
 
 #<open sound system 4
