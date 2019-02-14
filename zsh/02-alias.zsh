@@ -126,7 +126,7 @@ alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf && mpdas"
 alias      gt='git tag|sort --reverse'
 #>
 #< feh
-alias     feh='feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\"
+alias     feh='cd /home/scp1/__/_fav/__fav_feh; feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\"
 alias    fehe='feh -Texif'
 alias    fehf='feh -Tfs'
 alias    fehi='feh .fehindex.jpg'
