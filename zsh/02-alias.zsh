@@ -19,7 +19,8 @@
 alias      cp='cp -v'
 alias      mv='mv -v'
 alias      rm='rmc -v'
-alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
+alias     grep=ack
+#alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
 
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
@@ -126,7 +127,7 @@ alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf && mpdas"
 alias      gt='git tag|sort --reverse'
 #>
 #< feh
-alias     feh='cd /home/scp1/__/_fav/__fav_feh; feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\"
+alias     feh='/usr/bin/feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\" "$@"
 alias    fehe='feh -Texif'
 alias    fehf='feh -Tfs'
 alias    fehi='feh .fehindex.jpg'
