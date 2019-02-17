@@ -4,16 +4,27 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile1(
   META_MERGE => {
-    resources => {
-      repository => q{https://github.com/trapd00r/__PACKAGE__},
-      bugtracker => q{https://github.com/trapd00r/__PACKAGE__/issues},
+      resources => {
+          repository => {
+            type       => 'git',
+            url        => 'https://github.com/trapd00r/__PACKAGE__.git',
+            web        => 'https://github.com/trapd00r/__PACKAGE__',
+            bugtracker => 'https://github.com/trapd00r/__PACKAGE__/issues',
+      },
+    },
+  },
+  META_ADD  => {
+    provides => {
+      'App::__PACKAGE__' => {
+        file => 'bin/__PACKAGE__',
+      },
     },
   },
 
-  NAME                    => q{ },
+  NAME                    => q{__PACKAGE__},
   AUTHOR                  => q{Magnus Woldrich <m@japh.se>},
   ABSTRACT                => q{ },
-  VERSION_FROM            => q{ },
+  VERSION_FROM            => q{bin/__PACKAGE__},
   LICENSE                 => q{perl},
   MIN_PERL_VERSION        => 5.010,
   PL_FILES                => { },
@@ -23,15 +34,6 @@ WriteMakefile1(
   PREREQ_PM               => {
     'Term::ExtendedColor' => '0',
   },
-
-  META_ADD  => {
-    provides => {
-      'App::__PACKAGE__' => {
-        file => 'bin/__PACKAGE__',
-      },
-    },
-  },
-    
 
   MAN1PODS                => { },
   dist                    => { COMPRESS => q{gzip -9f},    SUFFIX => q{gz}, },
