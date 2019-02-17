@@ -15,9 +15,9 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
 ###>
-export    ACK_COLOR_MATCH="cyan bold"
+export    ACK_COLOR_MATCH="232, 197"
 export ACK_COLOR_FILENAME="cyan bold on_black"
-export   ACK_COLOR_LINENO="bold green"
+export   ACK_COLOR_LINENO="32"
 
 if [[ -z $LS_COLORS ]]; then
   if [ -f $HOME/dev/LS_COLORS/LS_COLORS ]; then
