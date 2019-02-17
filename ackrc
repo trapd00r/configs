@@ -27,8 +27,8 @@
 
 --flush
 --follow
---heading
+#--heading
 --nobreak
---smart-case
+#--smart-case
 --sort-files
---column
+#--column
