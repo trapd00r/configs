@@ -46,6 +46,7 @@ let g:vt_template_dir_path         = '~/etc/vim/templates/'
 let g:xclipboard_pipe_path         = '/home/scp1/etc/vim/xclipboard.fifo'
 let g:xf86conf_xfree86_versio      = 2
 let g:rainbow_active               = 1
+let g:gitgutter_override_sign_column_highlight = 0
 
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'

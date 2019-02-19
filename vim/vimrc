@@ -187,6 +187,7 @@ set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
 set whichwrap=b,s,h,l,<,>
 
 set nomore
+set updatetime=100
 
 set term=rxvt-unicode-256color
 " force an update of the statusline
@@ -268,3 +269,4 @@ let &t_EI = "\<Esc>]12;#ff0000\x7"
 ":autocmd BufRead  vidir normal! gg6|0G"ad
 ":autocmd BufWrite vidir normal! gg0"aP
 "autocmd BufWrite vidir normal! ggdG
+

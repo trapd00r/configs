@@ -309,3 +309,6 @@ hi perlVarPlain ctermfg=10 cterm=none
 hi markdownJekyllFrontMatter    ctermfg=137
 hi markdownJekyllLiquidBlockTag ctermfg=197 cterm=italic
 
+highlight GitGutterAdd    ctermfg=34 
+highlight GitGutterChange ctermfg=198
+highlight GitGutterDelete ctermfg=160
