@@ -18,6 +18,16 @@ use Data::Dumper;
 }
 
 
+=begin comment
+
+
+Here goes inline comments that won't show up in pod doc
+
+=end comment
+
+
+=cut
+
 
 
 

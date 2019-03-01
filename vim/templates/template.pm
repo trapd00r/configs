@@ -22,6 +22,15 @@ use Data::Dumper;
   $Quotekeys = 0;
 }
 
+=begin comment
+
+
+Here goes inline comments that won't show up in pod doc
+
+=end comment
+
+
+=cut
 
 
 
