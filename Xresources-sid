@@ -62,7 +62,7 @@ URxvt.keysym.M-s:            perl:keyboard-select:search
 
 ! I want URLs colored differently but I do not want to abuse the underline
 ! property since that will affect everything including printf "\033]4m"
-URxvt.matcher.rend.0:  Italic fg5
+URxvt.matcher.rend.0:  fg5
 
 
 
@@ -99,7 +99,7 @@ sid*boldItalicFont: -*-iris-medium-*-normal-*-10-*-*-*-*-*-*-*,-misc-tamsyn-medi
 
 
 
-URxvt*bell-command:          play /home/scp1/etc/awp.wav
+URxvt*bell-command:          play -v 0.1 /home/scp1/mp3/_sounds/ding.wav
 
 URxvt.insecure:              true
 URxvt.depth:                 32
