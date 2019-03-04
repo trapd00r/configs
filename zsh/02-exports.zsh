@@ -70,6 +70,8 @@ export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
 export      PERL5LIB=${HOME}/lib/perl5:${HOME}/perl5/lib/perl5/
 #export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
 export PERLBREW_ROOT=${HOME}/usr/share/perl5
+# add . back to @INC
+export PERL_USE_UNSAFE_INC=1
 export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
 #>
 #< vifm
