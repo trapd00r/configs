@@ -1,11 +1,11 @@
 #!/usr/bin/rtorrent -n -o ~/etc/rtorrent.rc
-### vim:                        tw=0 cc=0 ft=ampl smc=80 fdm=marker fen:
+### vim:tw=0 cc=0 ft=ampl smc=80 fdm=marker fen:
 ###
 #      ${HOME}/etc/rtorrent.rc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2018-12-29 12:16:01
+#         mtime  2019-03-04 12:24:44
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -13,224 +13,108 @@
 #           git  git://github.com/trapd00r/configs (up-to-date)
 #                http://github.com/trapd00r/configs
 #           irc  japh@freenode #rtorrent #zsh #vim #perl
-#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
-###
-# options {{{
-        check_hash            = no
+
+dht                           = disable
+# 1G by default
+pieces.memory.max             = 2G
+check_hash                    = no
+directory                     = /mnt/music4/_pix
+encryption                    = allow_incoming,try_outgoing,enable_retry
+key_layout                    = qwerty
+port_range                    = 50000-50001
+scgi_local                    = ~/var/rtorrent/scgi
+session                       = /home/scp1/var/rtorrent/session/
+log.execute                   = ~/var/rtorrent/execute.log
+port_random                   = no
+download_rate                 = 8000
+encoding_list                 = utf8
+max_memory_usage              = 2400M
+network.max_open_files.set    = 512
 pieces.hash.on_completion.set = no
-               dht            = disable
-        directory             = /home/scp1/dl
-     download_rate            = 8000
-     encoding_list            = utf8
-        encryption            = allow_incoming,try_outgoing,enable_retry
-#       http_capath           = /etc/ssl/certs
-        key_layout            = qwerty
-       log.execute            = ~/var/rtorrent/execute.log
-  max_memory_usage            = 2400M 
-#    max_open_files           = 1600
-#     max_open_http           = 99
-#  max_open_sockets           = 600
-##         max_peers           = 1200
-##    max_peers_seed           = 3000
-##       max_uploads           = 500
-##max_uploads_global           = 200
-#         min_peers           = 20
-#    min_peers_seed           = 30
-#     peer_exchange           = no
-       port_random            = no
-        port_range            = 50000-50001
-        scgi_local           = ~/var/rtorrent/scgi
-#         scgi_port            = localhost:5000
-        session               = /home/scp1/var/rtorrent/session/
-#             umask           = 0027
-#       upload_rate            = 0
-#  use_udp_trackers           = no
-# xmlrpc_size_limit           = 8M
-#network.max_open_sockets.set  = 2000
-#network.http.max_open.set     = 300
-#network.max_open_files.set    = 512
-
-schedule = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music3/_new"
-schedule = psy   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_psy/*.torrent,d.set_directory=/mnt/music/_psy"
-schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music3/_new"
-
-schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
-schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
-
-
-
-#schedule = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music/_freeleech"
-#schedule = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
-#schedule = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/bob/_bobdl"
 
 
 trackers.alias.set_key = waffles.ch,    "waffles"
 trackers.alias.set_key = superbits.org, "superbits"
 
+## rTorrent saves all the sessions in every 20 minutes by default. With
+## large amount of torrents this can be a disk performance hog (see #180).
+##
+## Increase this interval, e.g. to 12 hours instead, if you think you're
+## system is stable and/or you don't care about the possible loss of resume
+## and local stat in the meantime, with:
+
+schedule2 = session_save, 1200, 43200, ((session.save))
+
+# make scgi socket group-writable
+schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 
 
-#-------------------
+schedule  = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music3/_new"
+schedule  = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music4/_new"
+schedule  = psy     ,10, 10, "load.start=/home/scp1/Downloads/_torrent_psy/*.torrent,d.set_directory=/mnt/music/_psy"
+schedule  = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
+schedule  = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
+schedule  = xxx     ,10, 10, "load.start=/home/scp1/Downloads/_torrent_xxx/*.torrent,d.set_directory=/mnt/music5/_new"
 
-###system.method.set_key = event.download.finished,notify_me,"execute2=/home/scp1/dev/utils/rt_notify,$d.get_name="
-### system.method.insert = pyro.extended, value|const, 1
-#### (this is for curl...)
-#branch=pyro.extended=,"network.http.ssl_verify_peer.set=0"
-#branch=pyro.extended=,"network.http.dns_cache_timeout.set=25"
-#
-#
-system.method.set_key = event.download.inserted_new,log,"print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
-system.method.set_key = event.download.finished,log,    "print=\" DONE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
-system.method.set_key = event.download.closed,log,      "print=\"CLOSE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
-#
-# system.method.insert = pyro.bin_dir, string|const, ~/bin/
-# system.method.insert = pyro.rc_dialect, string|const|simple, "execute.capture=bash,-c,\"test $1 = 0.8.6 && echo -n 0.8.6 || echo -n 0.8.9\",dialect,$system.client_version="
-# system.method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-japh.rc"
-#               import = $pyro.rtorrent_rc=
-##}}}
-## views {{{
-## Sort "seeding" by ratio
-#view_sort_current = seeding,greater=d.get_ratio=
-## Sort incomplete by date added
+
+system.method.set_key = event.download.inserted_new,log, "print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.finished,log,     "print=\" DONE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
+system.method.set_key = event.download.closed,log,       "print=\"CLOSE \",$d.get_name=,\" [R=\",$d.get_ratio=,\", \",$to_date=$system.time=,\"]\""
+
+
+# sort seeding tab by ratio
+view_sort_current = seeding,greater=d.get_ratio=
+
+# sort incomplete tab by date added
 view_sort_current = incomplete,greater=d.get_custom=tm_loaded
 view_sort_new     = incomplete,greater=d.get_custom=tm_loaded
-## Show recently completed top-most in "main"
-#view_sort_current = main,greater=d.get_custom=tm_completed
-#   view_filter_on = main,event.download.finished
-##}}}
-## schedules {{{
-## Make SCGI socket group-writable
-schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
-#
-## Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!
-## Set the second argument to "-v" or "-q" to change log verbosity.
-#schedule = pyro_watchdog,30,300,"pyro.watchdog=~/.pyroscope,"
-#
+
+# Show recently completed top-most in "main"
+view_sort_current = main,greater=d.get_custom=tm_completed
+
+#view_filter_on = main,event.download.finished
+
+
+
 ## Show active and incomplete torrents (in view #0) and update every 10s
 ##   Items are grouped into complete, incomplete, and queued, in that order
 ##   Within each group, they're sorted by download and then upload speed.
-#   branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
-#   branch=pyro.extended=,"view_sort_current = active,\"compare=----,d.is_open=,d.get_complete=,d.get_down_rate=,d.get_up_rate=\""
- schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
 
-##schedule = watch_start_directory,10,10,load_start=RT_HOME/watch/start/*.torrent
-##schedule = watch_load_directory,15,20,load=RT_HOME/watch/load/*.torrent
-##schedule = untied_closing,30,30,close_untied=
-##schedule = low_diskspace,15,60,close_low_diskspace=1000M
-#
-##}}}
-## ui {{{
-      ui.color.alarm.set="bold 160"
-   ui.color.complete.set="italic 106"
-       ui.color.even.set=""
-      ui.color.focus.set="bold italic 2 on 232"
-     ui.color.footer.set="245 on 232"
- ui.color.incomplete.set="160"
-       ui.color.info.set="137"
-      ui.color.label.set="224"
-   ui.color.leeching.set="italic 124"
-        ui.color.odd.set=""
-  ui.color.progress0.set="245"
-ui.color.progress100.set="65"
-ui.color.progress120.set="148"
- ui.color.progress20.set="247"
- ui.color.progress40.set="246"
- ui.color.progress60.set="14"
- ui.color.progress80.set="250"
-     ui.color.queued.set="242"
-    ui.color.seeding.set="100"
-    ui.color.stopped.set="124"
-      ui.color.title.set="243 on 232"
-#
-#      ui.color.alarm.set="160 on 234"
-#   ui.color.complete.set="106"
-#       ui.color.even.set="on 232"
-#      ui.color.focus.set="reverse"
-#     ui.color.footer.set="245 on 232"
-# ui.color.incomplete.set="101"
-#       ui.color.info.set="7"
-#      ui.color.label.set="101"
-#   ui.color.leeching.set="bold 208"
-#        ui.color.odd.set="on 232"
-#  ui.color.progress0.set="196"
-#ui.color.progress100.set="34"
-#ui.color.progress120.set="107"
-# ui.color.progress20.set="178"
-# ui.color.progress40.set="202"
-# ui.color.progress60.set="208"
-# ui.color.progress80.set="214"
-#     ui.color.queued.set="86"
-#    ui.color.seeding.set="71"
-#    ui.color.stopped.set="244"
-#      ui.color.title.set="242 on 232"
-##}}}
+#branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
+#branch=pyro.extended=,"view_sort_current = active,\"compare=----,d.is_open=,d.get_complete=,d.get_down_rate=,d.get_up_rate=\""
+schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
+
+
+ui.color.alarm.set       = "bold 160"
+ui.color.complete.set    = "italic 106"
+ui.color.even.set        = ""
+ui.color.focus.set       = "bold italic 2 on 232"
+ui.color.footer.set      = "245 on 232"
+ui.color.incomplete.set  = "160"
+ui.color.info.set        = "137"
+ui.color.label.set       = "224"
+ui.color.leeching.set    = "italic 124"
+ui.color.odd.set         = ""
+ui.color.progress0.set   = "245"
+ui.color.progress100.set = "65"
+ui.color.progress120.set = "148"
+ui.color.progress20.set  = "247"
+ui.color.progress40.set  = "246"
+ui.color.progress60.set  = "14"
+ui.color.progress80.set  = "250"
+ui.color.queued.set      = "242"
+ui.color.seeding.set     = "100"
+ui.color.stopped.set     = "124"
+ui.color.title.set       = "243 on 232"
+
 #view.collapsed.toggle
-
-#ui.color.alarm.set       = "bold 250 on 124"
-#ui.color.complete.set    = "41"
-#ui.color.even.set        = "on 234"
-#ui.color.focus.set       = "reverse"
-#ui.color.footer.set      = "bright 123 on 160"
-#ui.color.incomplete.set  = "221"
-#ui.color.info.set        = "white"
-#ui.color.label.set       = "136"
-#ui.color.leeching.set    = "bold bright 220"
-#ui.color.odd.set         = "on 232"
-#ui.color.progress0.set   = "196"
-#ui.color.progress20.set  = "207"
-#ui.color.progress40.set  = "202"
-#ui.color.progress60.set  = "214"
-#ui.color.progress80.set  = "226"
-#ui.color.progress100.set = "34"
-#ui.color.progress120.set = "bold bright 46"
-#ui.color.queued.set      = "133"
-#ui.color.seeding.set     = "bold bright 40"
-#ui.color.stopped.set     = "33"
-#ui.color.title.set       = "bold bright white on 202"
-#ui.color.custom1.set     = ""
-#ui.color.custom2.set     = ""
-#ui.color.custom3.set     = ""
-#ui.color.custom4.set     = ""
-#ui.color.custom5.set     = ""
-#ui.color.custom6.set     = ""
-#ui.color.custom7.set     = ""
-#ui.color.custom8.set     = ""
-#ui.color.custom9.set = "bright blue"
-
-#ui.color.alarm.set       = "bold 254 on 160"
-#ui.color.complete.set    = "33"
-#ui.color.even.set        = "on 234"
-#ui.color.focus.set       = "reverse"
-#ui.color.footer.set      = "bright 254 on 125"
-#ui.color.incomplete.set  = "136"
-#ui.color.info.set        = "245"
-#ui.color.label.set       = "67"
-#ui.color.leeching.set    = "bold bright 166"
-#ui.color.odd.set         = ""
-#ui.color.progress0.set   = "160"
-#ui.color.progress20.set  = "61"
-#ui.color.progress40.set  = "64"
-#ui.color.progress60.set  = "166"
-#ui.color.progress80.set  = "136"
-#ui.color.progress100.set = "27"
-#ui.color.progress120.set = "bold bright 37"
-#ui.color.queued.set      = "125"
-#ui.color.seeding.set     = "bold bright 37"
-#ui.color.stopped.set     = "64"
-#ui.color.title.set       = "bold bright 230 on 61"
-#ui.color.custom1.set     = ""
-#ui.color.custom2.set     = ""
-#ui.color.custom3.set     = ""
-#ui.color.custom4.set     = ""
-#ui.color.custom5.set     = ""
-#ui.color.custom6.set     = ""
-#ui.color.custom7.set     = ""
-#ui.color.custom8.set     = ""
-#ui.color.custom9.set     = "yellow"
 
 method.set_key = event.view.show, ~column_42_toggle, \
     "branch = \"string.contains=$ui.current_view=, active, leeching\", \
         ui.column.show=42, ui.column.hide=42"
+
 ui.column.hide = 100
 ui.column.hide = 110
 ui.column.hide = 120
@@ -251,8 +135,6 @@ ui.column.hide = 970
 ui.column.hide = 980
 
 
-
-
 #100:3C95/2:❢␣␣
 #110:2C92/2:☢␣
 #120:?2:☍␣
@@ -270,4 +152,3 @@ ui.column.hide = 980
 #930:5C15/3C21/2:␣⛁␣␣␣
 #970:2C91/2:✰␣
 #980:2C16/2:⚑␣
-
