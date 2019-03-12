@@ -1,5 +1,7 @@
 package Vim::Template;
 use strict;
+use utf8;
+use open qw(:std :utf8);
 
 BEGIN {
   use Exporter;

@@ -5,6 +5,9 @@ use warnings FATAL => 'all';
 use vars     qw($VERSION);
 use autodie  qw(:all);
 
+use utf8;
+use open qw(:std :utf8);
+
 my $APP  = '';
 $VERSION = '0.001';
 
