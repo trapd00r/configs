@@ -20,7 +20,14 @@
 cd()        { builtin cd "$@" && ls }
 l()         { vdir  -h --format=across --color -w 100 --sort=time "$@" }
 df()        {
-  /bin/df -h --output=source,target,used,avail,size --total "$@"
+  /bin/df -h                                     \
+          --output=source,target,used,avail,size \
+          --total "$@"                           \
+          | /bin/grep -vP 'tmpfs|^(dev|run)'     \
+          | perl -pe 's/^(Filesystem.+)$/"\e[1;7m$1\e[m\n" . chr(0x20)x48/e' \
+          | perl -pe 's/\n$/\e[48;5;255m \e[m\n/' \
+          | perl -pe 's/^(total.*)$/\e[7;1;38;5;255;48;5;232m$1 /' \
+          | perl -pe 's/^/\e[48;5;255m \e[m/'
 }
 apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
