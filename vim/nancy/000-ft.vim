@@ -51,6 +51,7 @@ let g:gitgutter_override_sign_column_highlight = 0
 set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
+au BufNewFile,BufRead  .tidningsbud          set filetype=tidningsbud
 au BufNewFile,BufRead  .gitignore            set filetype=vidir
 au BufNewFile,BufRead  MANIFEST              set filetype=vidir
 au BufNewFile,BufRead  *.todo                set filetype=todo
