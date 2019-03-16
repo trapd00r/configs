@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 16:31:24
+#         mtime  2019-03-16 19:58:46
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -19,7 +19,9 @@
 #< basics
 cd()        { builtin cd "$@" && ls }
 l()         { vdir  -h --format=across --color -w 100 --sort=time "$@" }
-df()        { /bin/df -h --total "$@" }
+df()        {
+  /bin/df -h --output=source,target,used,avail,size --total "$@"
+}
 apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
 scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }
