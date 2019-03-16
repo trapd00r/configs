@@ -58,7 +58,7 @@ set display+=lastline,uhex
 set expandtab
 "set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
 "< folding
-set foldcolumn=5
+set foldcolumn=2
 set foldenable
 "set foldclose=all
 set foldlevel=0
