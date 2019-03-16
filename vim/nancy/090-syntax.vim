@@ -1,98 +1,102 @@
 " vim:sw=2:cc&:smc&:fdm=marker:fmr="<,">:fdls=1:fdl=0:fml=2:fen:et:
 "    File: $HOME/etc/vim/nancy/090-syntax.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2016-09-16 08:19:13
+" Updated: 2019-03-16 16:25:29
 
 
 "hi! clear
 "hi Normal ctermfg=fg ctermbg=bg cterm=bolditalic
-"< debsources 
+"< debsources
 hi debsourcesDistrKeyword ctermfg=208
 hi debsourcesUri          ctermfg=032
 ">
 "< vim
+" various settings that can't be included in my neverland.vim
+" colorscheme because of potential abuse of font styles
+
+hi link ColorColumn  CursorLine
+
 hi Error             ctermfg=089  ctermbg=250  cterm=bolditalicreverse
 hi Search            ctermfg=197  ctermbg=053  cterm=none
 hi Visual            ctermfg=197  ctermbg=053  cterm=reverse
 hi IncSearch         ctermfg=053  ctermbg=197  cterm=bolditalic
 hi CursorLine        ctermfg=none ctermbg=234
-hi ColorColumn       ctermfg=231  ctermbg=234  cterm=none
-hi link ColorColumn  CursorLine
-hi CursorColumn      ctermfg=fg   ctermbg=234  cterm=none       term=bold
-hi FoldColumn        ctermfg=031  ctermbg=233   cterm=italicbold term=bold
-hi Folded            ctermfg=248  ctermbg=bg   cterm=italic      term=bold
-hi LineNr            ctermfg=145  ctermbg=234   cterm=italic      term=none
-hi Statement                                  cterm=italic      term=bold
-hi CursorLineNr      ctermfg=232 ctermbg=160   cterm=bolditalic term=bold
-hi vimSet                                     cterm=italic      term=bold
-hi vimSetEqual       ctermfg=015              cterm=none        term=none
-hi vimSetMod         ctermfg=160              cterm=bolditalic  term=none
-hi vimSetSep         ctermfg=161              cterm=none        term=none
-hi vimHiKeyList      ctermfg=fg  ctermbg=bg   cterm=none        term=none
-hi vimFgBgAttrib     ctermfg=fg  ctermbg=bg   cterm=none        term=none
-hi vimFgBg           ctermfg=fg  ctermbg=bg   cterm=none        term=none
-hi vimCmdSep         ctermfg=179 ctermbg=bg   cterm=none        term=none
-"hi vimHiAttrib       ctermfg=220 ctermbg=bg   cterm=none        term=none
-"hi vimHiAttribList   ctermfg=220 ctermbg=bg   cterm=none        term=none
+hi ColorColumn       ctermfg=231  ctermbg=234 cterm=none
+hi CursorColumn      ctermfg=fg   ctermbg=234 cterm=none
+hi FoldColumn        ctermfg=240  ctermbg=bg  cterm=italic
+hi Folded            ctermfg=240  ctermbg=bg  cterm=none
+hi LineNr            ctermfg=240  ctermbg=234 cterm=none
+hi Statement                                  cterm=italic
+hi CursorLineNr      ctermfg=232 ctermbg=196  cterm=none
+hi vimSet                                     cterm=italic
+hi vimSetEqual       ctermfg=015              cterm=none
+hi vimSetMod         ctermfg=160              cterm=bolditalic
+hi vimSetSep         ctermfg=161              cterm=none
+hi vimHiKeyList      ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFgBgAttrib     ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFgBg           ctermfg=fg  ctermbg=bg   cterm=none
+hi vimCmdSep         ctermfg=179 ctermbg=bg   cterm=none
+"hi vimHiAttrib       ctermfg=220 ctermbg=bg   cterm=none
+"hi vimHiAttribList   ctermfg=220 ctermbg=bg   cterm=none
 "hi vimNumber      xxx cterm=bold ctermfg=33
-hi VimSynMtchCchar   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimAuSyntax       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimAugroup        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimAugroupError   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimAutoCmdSfxList ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimAutoCmdSpace   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimAutoEventList  ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimClusterName    ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimCollClass      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimCollection     ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimCommentTitle   ctermfg=218 ctermbg=bg  cterm=bold     term=bold
-hi vimEcho           ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimEscapeBrace    ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimExecute        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimExtCmd         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimFBVar          ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimFiletype       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimFilter         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimFuncBlank      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimFuncBody       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimFunction       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimGroupList      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimGroupName      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimHiBang         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimHiClear        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimHiCtermColor   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimHiFontname     ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimHiGuiFontname  ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimHiLink         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimIf             ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimIsCommand      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMapLhs         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMapRhs         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMapRhsExtend   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMenuBang       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMenuMap        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMenuPriority   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimMenuRhs        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimNormCmds       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimOperParen      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimPatRegion      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimRegion         ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSubstPat       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSubstRange     ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSubstRep       ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSubstRep4      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSynKeyRegion   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSynLine        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSynMatchRegion ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSynPatMod      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSynRegion      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSyncLinebreak  ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSyncLinecont   ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSyncLines      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSyncMatch      ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimSyncRegion     ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimUserCmd        ctermfg=fg  ctermbg=bg  cterm=none     term=none
-hi vimVar            ctermfg=fg  ctermbg=bg  cterm=none     term=none
+hi VimSynMtchCchar   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimAuSyntax       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimAugroup        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimAugroupError   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimAutoCmdSfxList ctermfg=fg  ctermbg=bg  cterm=none
+hi vimAutoCmdSpace   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimAutoEventList  ctermfg=fg  ctermbg=bg  cterm=none
+hi vimClusterName    ctermfg=fg  ctermbg=bg  cterm=none
+hi vimCollClass      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimCollection     ctermfg=fg  ctermbg=bg  cterm=none
+hi vimCommentTitle   ctermfg=218 ctermbg=bg  cterm=bold
+hi vimEcho           ctermfg=fg  ctermbg=bg  cterm=none
+hi vimEscapeBrace    ctermfg=fg  ctermbg=bg  cterm=none
+hi vimExecute        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimExtCmd         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimFBVar          ctermfg=fg  ctermbg=bg  cterm=none
+hi vimFiletype       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimFilter         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimFuncBlank      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimFuncBody       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimFunction       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimGroupList      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimGroupName      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimHiBang         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimHiClear        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimHiCtermColor   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimHiFontname     ctermfg=fg  ctermbg=bg  cterm=none
+hi vimHiGuiFontname  ctermfg=fg  ctermbg=bg  cterm=none
+hi vimHiLink         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimIf             ctermfg=fg  ctermbg=bg  cterm=none
+hi vimIsCommand      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMapLhs         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMapRhs         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMapRhsExtend   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMenuBang       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMenuMap        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMenuPriority   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimMenuRhs        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimNormCmds       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimOperParen      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimPatRegion      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimRegion         ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSubstPat       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSubstRange     ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSubstRep       ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSubstRep4      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSynKeyRegion   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSynLine        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSynMatchRegion ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSynPatMod      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSynRegion      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSyncLinebreak  ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSyncLinecont   ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSyncLines      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSyncMatch      ctermfg=fg  ctermbg=bg  cterm=none
+hi vimSyncRegion     ctermfg=fg  ctermbg=bg  cterm=none
+hi vimUserCmd        ctermfg=fg  ctermbg=bg  cterm=none
+hi vimVar            ctermfg=fg  ctermbg=bg  cterm=none
 "hi vimHiCTerm     xxx ctermfg=1
 "hi vimHiTermcap   xxx cleared
 "hi vimCommentTitleLeader xxx cleared
@@ -309,6 +313,6 @@ hi perlVarPlain ctermfg=10 cterm=none
 hi markdownJekyllFrontMatter    ctermfg=137
 hi markdownJekyllLiquidBlockTag ctermfg=197 cterm=italic
 
-highlight GitGutterAdd    ctermfg=34 
+highlight GitGutterAdd    ctermfg=34
 highlight GitGutterChange ctermfg=198
 highlight GitGutterDelete ctermfg=160
