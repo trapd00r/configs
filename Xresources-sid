@@ -292,3 +292,6 @@ URxvt*chdir:                 /home/scp1/dev
 ! URxvt*tabbar-bg:                  colour
 ! URxvt*tabbar-fg:                  colour
 ! URxvt*url-launcher:               string
+
+sid*cutchars:             "()*,<>[]{}|│'"
+
