@@ -29,6 +29,10 @@ df()        {
           | perl -pe 's/^(total.*)$/\e[7;1;38;5;255;48;5;232m$1 /' \
           | perl -pe 's/^/\e[48;5;255m \e[m/'
 }
+
+hr() { # http://github.com/trapd00r/hr
+  =hr -fg 160 -c ▀ "$@"
+}
 apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
 scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }
