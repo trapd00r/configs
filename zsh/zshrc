@@ -72,6 +72,7 @@ done
 . $HOME/etc/zsh/10-syntax.zsh
 . $HOME/etc/zsh/plugins/k.sh
 . $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
+. $HOME/secret_zshrc
 
 
 #if [[ -n ${SSH_CLIENT} ]] ; then
