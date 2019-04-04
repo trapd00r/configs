@@ -1,0 +1,1 @@
+../../../dev/vim-syntax-tidningsbud/syntax/tidningsbud.vim
