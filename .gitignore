@@ -5,7 +5,6 @@ pm_to_lib
 .zcompdump
 mplayer/fifo
 fooooo
-vim/autoload/
 vim/doc/
 asciinema/
 gimp/
