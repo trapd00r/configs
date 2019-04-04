@@ -15,9 +15,13 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
 ###>
-export    ACK_COLOR_MATCH="232, 197"
-export ACK_COLOR_FILENAME="cyan bold on_black"
-export   ACK_COLOR_LINENO="32"
+export    ACK_COLOR_MATCH_JAPH="232, 197"
+export ACK_COLOR_FILENAME_JAPH="cyan bold on_black"
+export   ACK_COLOR_LINENO_JAPH="32"
+
+export    ACK_COLOR_MATCH=""
+export ACK_COLOR_FILENAME=""
+export   ACK_COLOR_LINENO=""
 
 if [[ -z $LS_COLORS ]]; then
   if [ -f $HOME/dev/LS_COLORS/LS_COLORS ]; then
