@@ -24,6 +24,8 @@ alias     grep=ack
 alias     cat="$HOME/dev/vimcat/vimcat"
 
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
+alias     lss='perl /home/scp1/dev/ls--/ls++ -Sr'
+alias     lst='perl /home/scp1/dev/ls--/ls++ -tr'
 alias  pacman='pacman --color=auto'
 alias prename='prename -v'
 alias     vim='time-spent-in-vim'
@@ -48,7 +50,7 @@ alias lsd='/bin/ls -FAv | grep /$ | column'
 alias lsl='=ls --color=auto   --group-directories-first -Ah'
 alias lso='=ls | pv -qL 10'
 alias lsq='=ls --color=always --time-style=full-iso -AlQ'
-alias lss='=ls --color=auto -1 | grep "(^\w*[^_-])"'
+#alias lss='=ls --color=auto -1 | grep "(^\w*[^_-])"'
 #>
 #< directories
 alias --  -='builtin cd -'
