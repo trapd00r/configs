@@ -1,5 +1,8 @@
 filetype plugin indent on
 
+" https://github.com/trapd00r/vim-how-many-times-do-i-write-a-day
+au BufWritePost * silent  !shortdate  >> ~/vim_writes
+
 let g:VimrexFileDir                = expand("~/") . 'var/vim/'
 let g:c_comment_strings            = 1
 let g:c_gnu                        = 1
@@ -63,6 +66,7 @@ au BufWrite           ~/.irssi/*             %s/changed     => ["'].*/\="changed
 au BufRead            ~/etc/feh/keys         call Filetype_feh()
 au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
 au BufRead,BufNewFile *.overtime             setl ft=overtime
+au BufRead,BufNewFile *.rs                   setl ft=rust
 au BufRead,BufNewFile *.md                   setl ft=md
 au BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
 au BufRead,BufNewFile *.go                   setl ft=go
