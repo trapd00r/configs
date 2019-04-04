@@ -1,5 +1,6 @@
 --type-set=xresources=.Xresources,.Xcolor
 --type-set=stumpwm=.stump,.stumpdump,.dump
+--ls-color
 
 #--cc
 #--clojure
