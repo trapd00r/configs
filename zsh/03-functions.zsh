@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2019-03-16 19:58:46
+#         mtime  2019-04-04 09:16:28
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -31,7 +31,7 @@ df()        {
 }
 
 hr() { # http://github.com/trapd00r/hr
-  =hr -fg 160 -c ▀ "$@"
+  =hr -fg 196 -c ' ' -fg 196 -bui
 }
 apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
@@ -40,7 +40,7 @@ tcx()       { /usr/bin/tmux attach || /usr/bin/tmux -f $XDG_CONFIG_HOME/etc/tmux
 mutt()      { TERM=xterm-256color neomutt -F $XDG_CONFIG_HOME/muttneorc -f $HOME/mail/personal/INBOX "$@" }
 tig()       { TERM=xterm-256color /usr/bin/tig "$@"}
 goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
-du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f; }
+du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f | ls_color -k2 }
 scx()       {
 #  xcolor facebook;
 #  TERM=rxvt-unicode-256color screen -x
