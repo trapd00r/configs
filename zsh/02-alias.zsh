@@ -109,7 +109,7 @@ alias  unlove='pimpd2 --unlove'
 alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
 alias   slove='pimpd2 --slove|ls_color'
-alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf && mpdas"
+alias     mpd="mpd ~/etc/mpd.conf && mpdas"
 #>
 
 #<open sound system 4
@@ -127,6 +127,11 @@ alias     mpd="mpd $XDG_CONFIG_HOME/mpd.conf && mpdas"
 #>
 #< git
 alias      gt='git tag|sort --reverse'
+
+# show modified files in the last commit
+alias     gdd='git diff --name-only HEAD~1..HEAD | ls_color'
+# edit modified files in the last commit
+alias   vimlast='vim $(git diff --name-only HEAD~1..HEAD)'
 #>
 #< feh
 alias     feh='/usr/bin/feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\" "$@"
