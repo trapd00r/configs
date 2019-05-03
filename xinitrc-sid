@@ -71,6 +71,7 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
+xsetroot -mod 4 4 -bg '#181818' -fg '#080808'
 sh ~/dev/dzen-sid/dzen_1080x1920.sh &
 ~/dev/vim-xclipboard/bin/vim_xclipboard
 xrandr --output DVI-D-O --rotate left &
