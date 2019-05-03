@@ -270,3 +270,6 @@ let &t_EI = "\<Esc>]12;#ff0000\x7"
 ":autocmd BufWrite vidir normal! gg0"aP
 "autocmd BufWrite vidir normal! ggdG
 
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+hi SpellBad     gui=undercurl guisp=red term=undercurl cterm=undercurl
