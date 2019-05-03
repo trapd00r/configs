@@ -144,7 +144,7 @@ setopt \
   no_pushd_to_home          \
      rc_expand_param        \
   no_rc_quotes              \
-  no_rec_exact              \
+     rec_exact              \
      rematch_pcre           \
   no_restricted             \
   no_rm_star_silent         \
