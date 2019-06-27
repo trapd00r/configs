@@ -104,7 +104,9 @@ screen -t rtorrent rtorrent
 screen -t clip     perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
 screen -t bitlbee  irssi -c localhost --config=~/etc/irc-irssi-laleh.conf -n japh
 screen -t mutt     neomutt -F $XDG_CONFIG_HOME/muttneorc -f $HOME/mail/personal/INBOX
-screen -t mpd      pimpd2 -sh
+screen -t mpd      mpd ~/etc/mpd.conf && mpdas
+screen -t pimpd    pimpd2 -sh
+screen -t scrob    mpdscrobloc
 screen -t bot      perl ~/dev/url_bot.pl
 
 #screen -t spotify sconsify -username trapd00r2 -ui
