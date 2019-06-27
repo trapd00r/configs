@@ -18,7 +18,7 @@
 
 dht                           = disable
 # 1G by default
-pieces.memory.max             = 2G
+pieces.memory.max             = 1G
 check_hash                    = no
 directory                     = /mnt/music4/_pix
 encryption                    = allow_incoming,try_outgoing,enable_retry
@@ -28,15 +28,19 @@ scgi_local                    = ~/var/rtorrent/scgi
 session                       = /home/scp1/var/rtorrent/session/
 log.execute                   = ~/var/rtorrent/execute.log
 port_random                   = no
-download_rate                 = 8000
+download_rate                 = 0
 encoding_list                 = utf8
 max_memory_usage              = 2400M
 network.max_open_files.set    = 512
 pieces.hash.on_completion.set = no
 
 
-trackers.alias.set_key = waffles.ch,    "waffles"
-trackers.alias.set_key = superbits.org, "superbits"
+trackers.alias.set_key = waffles.ch,            "waffles"
+trackers.alias.set_key = definitely.notwhat.cd, "what.cd"
+trackers.alias.set_key = superbits.org,         "superbits"
+trackers.alias.set_key = tba.psytorrents.info,  "psy"
+trackers.alias.set_key = pussytorrents.org,     "xxx"
+trackers.alias.set_key = funkytorrents.com,     "funky"
 
 ## rTorrent saves all the sessions in every 20 minutes by default. With
 ## large amount of torrents this can be a disk performance hog (see #180).
@@ -57,6 +61,7 @@ schedule  = psy     ,10, 10, "load.start=/home/scp1/Downloads/_torrent_psy/*.tor
 schedule  = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
 schedule  = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
 schedule  = xxx     ,10, 10, "load.start=/home/scp1/Downloads/_torrent_xxx/*.torrent,d.set_directory=/mnt/music5/_new"
+schedule  = nas     ,10, 10, "load.start=/home/scp1/Downloads/__torrent_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
 
 
 system.method.set_key = event.download.inserted_new,log, "print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
@@ -84,7 +89,7 @@ view_sort_current = main,greater=d.get_custom=tm_completed
 
 #branch=pyro.extended=,false=,"view_sort_current = active,greater=d.get_up_rate="
 #branch=pyro.extended=,"view_sort_current = active,\"compare=----,d.is_open=,d.get_complete=,d.get_down_rate=,d.get_up_rate=\""
-schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
+##schedule=filter_active,12,10,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=,not=$d.get_complete=}\" ;view_sort=active"
 
 
 ui.color.alarm.set       = "bold 160"
@@ -152,3 +157,19 @@ ui.column.hide = 980
 #930:5C15/3C21/2:␣⛁␣␣␣
 #970:2C91/2:✰␣
 #980:2C16/2:⚑␣
+
+### UI/VIEW: Uploaded data ##################################################
+#                                                              vim: ft=dosini
+#   All items, sorted by upload amount.
+#   Bound to '°' key (will ONLY work if you use rT-PS)!
+
+#pyro.collapsed_view.add = uploaded
+#pyro.bind_key = uploaded_view, 0260, "view.sort = uploaded ; ui.current_view.set = uploaded"
+#
+#branch = (and, (system.has, "compare="), (system.has, "d.custom.if_z=")), \
+#    "view.sort_new = uploaded, \"compare=--+,d.up.total=,pyro._view_sort_timestamp=,d.name=\"", \
+#    "view.sort_new = uploaded, greater=d.up.total="
+#
+#branch = (and, (system.has, "compare="), (system.has, "d.custom.if_z=")), \
+#    "view.sort_current = uploaded, \"compare=--+,d.up.total=,pyro._view_sort_timestamp=,d.name=\"", \
+#"view.sort_current = uploaded, greater=d.up.total="
