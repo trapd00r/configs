@@ -50,7 +50,7 @@ dzen2.font: -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp125
 
 
 URxvt.perl-lib:              /home/scp1/dev/urxvt-extensions
-URxvt.perl-ext-common:       default,clipboard,url-select,keyboard-select,bell-command,matcher
+URxvt.perl-ext-common:       default,clipboard,url-select,keyboard-select,bell-command,matcher,focus
 URxvt.keysym.C-u:            perl:url-select:select_next
 !URxvt.perl-ext:              selection,mark-yank-urls
 URxvt.url-select.launcher:   /usr/lib/firefox/firefox
@@ -99,7 +99,8 @@ sid*boldItalicFont: -*-iris-medium-*-normal-*-10-*-*-*-*-*-*-*,-misc-tamsyn-medi
 
 
 
-URxvt*bell-command:          play -v 0.1 /home/scp1/mp3/_sounds/ding.wav
+!URxvt*bell-command:          play -v 0.1 /home/scp1/mp3/_sounds/ding.wav && bash -c "printf '\033]708;#ff0000\007'"
+URxvt*bell-command:          /home/scp1/dev/utils/bell
 
 URxvt.insecure:              true
 URxvt.depth:                 32
