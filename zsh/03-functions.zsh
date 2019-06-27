@@ -45,7 +45,7 @@ scx()       {
 #  xcolor facebook;
 #  TERM=rxvt-unicode-256color screen -x
 #  TERM=xterm-256color-italic screen -x
-  TERM=screen-256color /bin/screen -x
+  TERM=screen-256color /bin/screen -x "$@"
 }
 
 screen() {
