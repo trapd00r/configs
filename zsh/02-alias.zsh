@@ -42,6 +42,7 @@ alias    wget='wget --no-check-certificate -U=Mozilla'
 
 alias       R='rehash'
 alias      ss='source $XDG_CONFIG_HOME/zsh/zshrc'
+alias  ranger="ranger -r ~/.config/ranger"
 #>
 #< ls
 alias ls1='=ls -1'
