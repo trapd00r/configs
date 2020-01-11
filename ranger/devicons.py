@@ -216,4 +216,4 @@ file_node_exact_matches = {
 
 def devicon(file):
   if file.is_directory: return dir_node_exact_matches.get(file.relative_path, '')
-  return file_node_exact_matches.get(file.relative_path, file_node_extensions.get(file.extension, ''))
+  return file_node_exact_matches.get(file.relative_path, file_node_extensions.get(file.extension, ''))
