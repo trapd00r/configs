@@ -41,6 +41,7 @@ trackers.alias.set_key = superbits.org,         "superbits"
 trackers.alias.set_key = tba.psytorrents.info,  "psy"
 trackers.alias.set_key = pussytorrents.org,     "xxx"
 trackers.alias.set_key = funkytorrents.com,     "funky"
+trackers.alias.set_key = trackerfix.com,        "PUBLIC"
 
 ## rTorrent saves all the sessions in every 20 minutes by default. With
 ## large amount of torrents this can be a disk performance hog (see #180).
