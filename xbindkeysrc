@@ -40,6 +40,19 @@
 # Examples of commands:
 
 "pimpd2 -love"
+  F9
+
+"mpc prev"
+  F10
+
+"mpc next"
+  F11
+
+"sh -c 'mpd_random_playlist 1000'"
+  F12
+
+
+"pimpd2 -love"
   KP_Add
 
 "mpc next"
