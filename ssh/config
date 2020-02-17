@@ -111,4 +111,8 @@ host svamp                  #{{{
   compression             no
   checkhostip             no
   connecttimeout          3
+host pi
+  user                   root
+  hostname               192.168.1.4
+  port                   22
 #}}}
