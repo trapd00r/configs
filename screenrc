@@ -1,13 +1,13 @@
 # escape ^aa  # default
-# escape ^pp  # suggested binding for emacs users
+# escape ^pp  # suggesmed binding for emacs users
 
 # move window
 # ^a:number 1
 #
 defflow off # Turn off ^s
 
-term xterm-256color-italic
-#term screen-256color
+#term xterm-256color-italic
+term screen-256color
 #term xterm-256color
 
 sessionname sidscreen
@@ -98,16 +98,17 @@ defbce on
 # set color of borders and command-line (cyan background, black foreground)
 rendition so = ck
 
-screen -t acc      accesstail
-screen -t nc       ncmpcpp
+#screen -t acc      accesstail
+#screen -t nc       ncmpcpp
 screen -t rtorrent rtorrent
-screen -t clip     perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
-screen -t bitlbee  irssi -c localhost --config=~/etc/irc-irssi-laleh.conf -n japh
-screen -t mutt     neomutt -F $XDG_CONFIG_HOME/muttneorc -f $HOME/mail/personal/INBOX
-screen -t mpd      mpd ~/etc/mpd.conf && mpdas
-screen -t pimpd    pimpd2 -sh
-screen -t scrob    mpdscrobloc
-screen -t bot      perl ~/dev/url_bot.pl
+screen -t zsh zsh
+#screen -t clip     perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
+#screen -t bitlbee  irssi -c localhost --config=~/etc/irc-irssi-laleh.conf -n japh
+#screen -t mutt     neomutt -F $XDG_CONFIG_HOME/muttneorc -f $HOME/mail/personal/INBOX
+#screen -t mpd      mpd ~/etc/mpd.conf && mpdas
+#screen -t pimpd    pimpd2 -sh
+#screen -t scrob    mpdscrobloc
+#screen -t bot      perl ~/dev/url_bot.pl
 
 #screen -t spotify sconsify -username trapd00r2 -ui
 #screen -t knradio tail -f $HOME/knradio_history.log
