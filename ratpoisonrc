@@ -32,33 +32,33 @@ addhook switchgroup next
 # set infofmt
 
 #< catpoison only!
-set virtuals 24
-vinit
-definekey top   F1  vselect 1
-definekey top   F2  vselect 2
-definekey top   F3  vselect 3
-definekey top   F4  vselect 4
-definekey top   F5  vselect 5
-definekey top   F6  vselect 6
-definekey top   F7  vselect 7
-definekey top   F8  vselect 8
-definekey top   F9  vselect 9
-definekey top   F10 vselect 10
-definekey top   F11 vselect 11
-definekey top   F12 vselect 12
-
-definekey top  M-F1 vselect 13
-definekey top  M-F2 vselect 14
-definekey top  M-F3 vselect 15
-definekey top  M-F4 vselect 16
-definekey top  M-F5 vselect 17
-definekey top  M-F6 vselect 18
-definekey top  M-F7 vselect 19
-definekey top  M-F8 vselect 20
-definekey top  M-F9 vselect 21
-definekey top M-F10 vselect 22
-definekey top M-F11 vselect 23
-definekey top M-F12 vselect 24
+#set virtuals 24
+#vinit
+#definekey top   F1  vselect 1
+#definekey top   F2  vselect 2
+#definekey top   F3  vselect 3
+#definekey top   F4  vselect 4
+#definekey top   F5  vselect 5
+#definekey top   F6  vselect 6
+#definekey top   F7  vselect 7
+#definekey top   F8  vselect 8
+#definekey top   F9  vselect 9
+#definekey top   F10 vselect 10
+#definekey top   F11 vselect 11
+#definekey top   F12 vselect 12
+#
+#definekey top  M-F1 vselect 13
+#definekey top  M-F2 vselect 14
+#definekey top  M-F3 vselect 15
+#definekey top  M-F4 vselect 16
+#definekey top  M-F5 vselect 17
+#definekey top  M-F6 vselect 18
+#definekey top  M-F7 vselect 19
+#definekey top  M-F8 vselect 20
+#definekey top  M-F9 vselect 21
+#definekey top M-F10 vselect 22
+#definekey top M-F11 vselect 23
+#definekey top M-F12 vselect 24
 
 set barsticky off
 #set gap
@@ -99,7 +99,7 @@ unmanage tallowmere
 unmanage deluge
 #>
 #< binds: applications
-bind c exec urxvt -name sid -fg white -bg black
+bind c exec urxvt -name uxterm +sb -fg white -bg black
 #bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
 bind C exec kitty
 bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
@@ -163,17 +163,17 @@ bind ISO_Left_Tab focus
 #bind s-g gnew
 #>
 #< binds: workspaces
-#exec rpws init 5 -k
-#gnewbg one
-#gnewbg two
-#gnewbg three
-#gnewbg four
-#
-#bind F1 exec rpws 1
-#bind F2 exec rpws 2
-#bind F3 exec rpws 3
-#bind F4 exec rpws 4
-#bind F5 exec rpws 5
+exec rpws init 5 -k
+gnewbg one
+gnewbg two
+gnewbg three
+gnewbg four
+
+definekey top F1 exec rpws 1
+definekey top F2 exec rpws 2
+definekey top F3 exec rpws 3
+definekey top F4 exec rpws 4
+definekey top F5 exec rpws 5
 
 
 
