@@ -96,14 +96,6 @@ host elite                  #{{{
   permitlocalcommand      yes
   localcommand            date;pwc
   numberofpasswordprompts 10
-host pi                  #{{{
-  user                    pi
-  hostname                192.168.10.100
-  port                    22
-  compression             no
-  checkhostip             no
-  connecttimeout          3
-  permitlocalcommand      yes
 host svamp                  #{{{
   user                    japh
   hostname                dataswamp.org
