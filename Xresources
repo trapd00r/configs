@@ -67,20 +67,20 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 !#define FONT_ITALIC  xft:Droid Sans Mono Slashed:pixelsize=16:antialias=1:hinting=1:slant=italic
 !#define FONT_BOLDITALIC  -nil-profont-medium-r-normal--15-150-72-72-c-70-iso8859-1
 
-!#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
-!#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
-!#define FONT_ITALIC     xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=0:hinting=1:hintstyle=3
-!#define FONT_BOLDITALIC -misc-profontiix-medium-r-normal--0-0-0-0-p-0-iso10646-1
+#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
+#define FONT_ITALIC     xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=0:hinting=1:hintstyle=3
+#define FONT_BOLDITALIC -misc-profontiix-medium-r-normal--0-0-0-0-p-0-iso10646-1
 
 !#define FONT_NORMAL     xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=
 !#define FONT_BOLD       xft:Anonymous Pro:style=Bold:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !#define FONT_ITALIC     xft:Anonymous Pro:style=Italic:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !#define FONT_BOLDITALIC xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 
-define FONT_NORMAL        xft:Bok MonteCarlo:style=Sans:pixelsize=10:antialias=0:hinting=0:hintstyle=0
-define FONT_BOLD          xft:Bok MonteCarlo:style=Sans Bold:pixelsize=10:antialias=0:hinting=0:hintstyle=0
-define FONT_ITALIC        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
-define FONT_BOLDITALIC    xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+!define FONT_NORMAL        xft:Bok MonteCarlo:style=Sans:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+!define FONT_BOLD          xft:Bok MonteCarlo:style=Sans Bold:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+!define FONT_ITALIC        xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
+!define FONT_BOLDITALIC    xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0
 
 
 !#define FONT_NORMAL     6x10
