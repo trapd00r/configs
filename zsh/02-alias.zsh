@@ -22,13 +22,14 @@ alias      rm='rmc -v'
 alias     grep=ack
 #alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
+alias yaourt='trizen'
 
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
 alias     lss='perl /home/scp1/dev/ls--/ls++ -Sr'
 alias     lst='perl /home/scp1/dev/ls--/ls++ -tr'
 alias  pacman='pacman --color=auto'
 alias prename='prename -v'
-alias     vim='time-spent-in-vim'
+#alias     vim='time-spent-in-vim'
 alias    cpan='cpanm'
 alias     top='xcolor woldrich 2>/dev/null; htop'
 alias     :q!='kill -9 $$'
@@ -201,6 +202,5 @@ alias dev_null='rm /dev/null; mknod /dev/null c 1 3'
 
 alias castnow='castnow --address 192.168.10.160'
 alias todo="vim ~/dev/private/TODO.todo"
-alias pacman=sexpac
 alias nexuiz=xonotic-sdl
 alias jobb='vim ~/dev/private/jobb.tidningsbud'
