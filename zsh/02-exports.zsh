@@ -16,10 +16,13 @@
 ###
 ###>
 
+# qbittorrent ui issues
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export TZ="Europe/Stockholm"
 export JEKYLL_ENV='production'
 #< LD_PRELOAD
 # https://github.com/trapd00r/stderred
-#[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
+[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
 #>
 #< xdg
 export       XDG_DATA_HOME=${HOME}/var
@@ -63,7 +66,7 @@ export           LC_TIME=en_US.UTF-8
 #>
 #< path
 unset PATH
-export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin
+export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
