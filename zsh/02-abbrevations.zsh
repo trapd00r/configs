@@ -28,6 +28,8 @@ abbreviations=(
   "jkk"        "!-4$"
   "kk"         "!-5$"
   "kj"         "!-6$"
+  "aa"         "/mnt/music8/_artists.a-z/"
+  "bb"         "/mnt/music5/dc++_/"
 )
 
 magic-abbrev-expand() {
@@ -35,11 +37,12 @@ magic-abbrev-expand() {
    LBUFFER=${LBUFFER%%(#m)[-:_a-zA-Z0-9]#}
   LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
   zle self-insert
-  #printf "\b"
+#printf "\b"
 }
 
 no-magic-abbrev-expand() {
   LBUFFER+=' '
+#  LBUFFER+=''
 }
 
 zle -N magic-abbrev-expand
