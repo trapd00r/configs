@@ -15,10 +15,14 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
 ###>
+
+
+alias evernote='tusk'
 #< basics
 alias      cp='cp -v'
 alias      mv='mv -v'
-alias      rm='rmc -v'
+#alias      rm='rmc -v'
+alias      rm='/bin/rm -v'
 alias     grep=ack
 #alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
