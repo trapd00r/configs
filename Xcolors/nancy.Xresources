@@ -70,6 +70,28 @@ sid.pointerColor2:  deeppink2
 sid.pointerColor:   #ff0000
 sid.underlineColor: #ff5f00
 
+uxterm.color0:         #1b1d1e
+uxterm.color1:         #f92672
+uxterm.color2:         #82b414
+uxterm.color3:         #fd971f
+uxterm.color4:         #4e82aa
+uxterm.color5:         #8c54fe
+uxterm.color6:         #465457
+uxterm.color7:         #ccccc6
+uxterm.color8:         #505354
+uxterm.color9:         #ff5995
+uxterm.color10:        #b6e354
+uxterm.color11:        #feed6c
+uxterm.color12:        #0c73c2
+uxterm.color13:        #9e6ffe
+uxterm.color14:        #899ca1
+uxterm.color15:        #f8f8f2
+uxterm.color16:        #000000
+
+
+
+
+
 sid.color0:         #1b1d1e
 sid.color1:         #f92672
 sid.color2:         #82b414
