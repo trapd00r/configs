@@ -100,8 +100,9 @@ rendition so = ck
 
 #screen -t acc      accesstail
 #screen -t nc       ncmpcpp
-screen -t rtorrent rtorrent
+#screen -t rtorrent rtorrent
 screen -t zsh zsh
+screen -t ncmpcpp ncmpcpp
 #screen -t clip     perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
 #screen -t bitlbee  irssi -c localhost --config=~/etc/irc-irssi-laleh.conf -n japh
 #screen -t mutt     neomutt -F $XDG_CONFIG_HOME/muttneorc -f $HOME/mail/personal/INBOX
