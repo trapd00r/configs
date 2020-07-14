@@ -32,20 +32,20 @@ addhook switchgroup next
 # set infofmt
 
 #< catpoison only!
-#set virtuals 24
-#vinit
-#definekey top   F1  vselect 1
-#definekey top   F2  vselect 2
-#definekey top   F3  vselect 3
-#definekey top   F4  vselect 4
-#definekey top   F5  vselect 5
-#definekey top   F6  vselect 6
-#definekey top   F7  vselect 7
-#definekey top   F8  vselect 8
-#definekey top   F9  vselect 9
-#definekey top   F10 vselect 10
-#definekey top   F11 vselect 11
-#definekey top   F12 vselect 12
+set virtuals 24
+vinit
+definekey top   F1  vselect 1
+definekey top   F2  vselect 2
+definekey top   F3  vselect 3
+definekey top   F4  vselect 4
+definekey top   F5  vselect 5
+definekey top   F6  vselect 6
+definekey top   F7  vselect 7
+definekey top   F8  vselect 8
+definekey top   F9  vselect 9
+definekey top   F10 vselect 10
+definekey top   F11 vselect 11
+definekey top   F12 vselect 12
 #
 #definekey top  M-F1 vselect 13
 #definekey top  M-F2 vselect 14
@@ -76,8 +76,10 @@ set historycompaction 1
 set       historysize 1000
 set      winliststyle column
 set        barpadding 8 8
-set           padding 0 13 0 0
-set            border 1
+# for dzen2
+#set           padding 0 13 0 0
+set           padding 0 0 0 0
+set            border 0
 set           bgcolor #080808
 set           bwcolor #0c0c0c
 set           fgcolor #d75f00
@@ -137,10 +139,10 @@ bind w exec sh ~/dev/ratpoison_scripts/window-menu/window-menu
 bind g exec ~/dev/utils/rp-groups-menu
 #>
 #< binds: window management
-bind H exchangeleft
+bind H prevscreen
 bind J exchangedown
 bind K exchangeup
-bind L exchangeright
+bind L nextscreen
 
 bind h focusleft
 bind j focusdown
@@ -163,17 +165,17 @@ bind ISO_Left_Tab focus
 #bind s-g gnew
 #>
 #< binds: workspaces
-exec rpws init 5 -k
-gnewbg one
-gnewbg two
-gnewbg three
-gnewbg four
-
-definekey top F1 exec rpws 1
-definekey top F2 exec rpws 2
-definekey top F3 exec rpws 3
-definekey top F4 exec rpws 4
-definekey top F5 exec rpws 5
+#exec rpws init 5 -k
+#gnewbg one
+#gnewbg two
+#gnewbg three
+#gnewbg four
+#
+#definekey top F1 exec rpws 1
+#definekey top F2 exec rpws 2
+#definekey top F3 exec rpws 3
+#definekey top F4 exec rpws 4
+#definekey top F5 exec rpws 5
 
 
 
