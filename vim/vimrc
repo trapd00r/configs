@@ -123,6 +123,7 @@ set   maxfuncdepth=1000
 set   maxmemtot=200000
 set   modeline
 set   modelines=2
+set modelineexpr
 set nobackup
 set nocscopeverbose
 set noequalalways
