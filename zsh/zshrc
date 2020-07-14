@@ -21,6 +21,8 @@
 #  umask 0077
 #  fi
 
+#FIXME
+~/dev/utils/font-10-anonymous-it
 
 fpath=($fpath ~/etc/zsh/functions/)
 # load all functions in fpath that has the executable bit set; makes it easy to
@@ -150,3 +152,4 @@ PATH="/home/scp1/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL_LOCAL_LIB_ROOT="/home/scp1/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/scp1/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/scp1/perl5"; export PERL_MM_OPT;
+
