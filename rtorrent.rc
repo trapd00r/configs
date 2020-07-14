@@ -56,13 +56,8 @@ schedule2 = session_save, 1200, 43200, ((session.save))
 schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 
 
-schedule  = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music3/_new"
-schedule  = music   ,10, 10, "load.start=/home/scp1/Downloads/_torrent_music/*.torrent,d.set_directory=/mnt/music4/_new"
-schedule  = psy     ,10, 10, "load.start=/home/scp1/Downloads/_torrent_psy/*.torrent,d.set_directory=/mnt/music/_psy"
-schedule  = tv      ,10, 10, "load.start=/home/scp1/Downloads/_torrent_tv/*.torrent,d.set_directory=/home/scp1/dl/_tv"
-schedule  = tv_swe  ,10, 10, "load.start=/home/scp1/Downloads/_torrent_swe/*.torrent,d.set_directory=/home/scp1/dl/_swetv"
-schedule  = xxx     ,10, 10, "load.start=/home/scp1/Downloads/_torrent_xxx/*.torrent,d.set_directory=/mnt/music5/_new"
-schedule  = nas     ,10, 10, "load.start=/home/scp1/Downloads/__torrent_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
+schedule  = mem     ,10, 10, "load.start=/home/scp1/dl/_fx/*.torrent,d.set_directory=/mnt/music5/_new"
+schedule  = nas     ,10, 10, "load.start=/home/scp1/dl/_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
 
 
 system.method.set_key = event.download.inserted_new,log, "print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
