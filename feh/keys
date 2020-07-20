@@ -4,6 +4,9 @@ action_2         colon
 action_3         semicolon
 
 
+save_filelist   g
+save_filelist   S
+
 delete           D      C-d
 jump_back        H      Prior
 jump_fwd         L      Next
