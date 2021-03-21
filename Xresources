@@ -193,8 +193,8 @@ sid.insecure:             1
 !sid.buffered:             0
 !sid.intensityStyles:      1
 !sid.fading:               12
-sid.internalBorder:       0
-sid.externalBorder:       0
+!!sid.internalBorder:       0
+!!sid.externalBorder:       0
 !sid.cursorUnderline:      1
 
 ! fonts {{{

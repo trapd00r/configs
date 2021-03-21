@@ -61,7 +61,7 @@ definekey top   F12 vselect 12
 #definekey top M-F12 vselect 24
 
 set barsticky off
-#set gap
+set gap 1
 #>
 
 #< options
@@ -101,8 +101,8 @@ unmanage tallowmere
 unmanage deluge
 #>
 #< binds: applications
-bind c exec urxvt -name uxterm +sb -fg white -bg black
-#bind C exec urxvt -name sid -fg white -bg '#1c1c1c'
+#bind c exec urxvt -name uxterm +sb -fg white -bg black
+bind c exec urxvt -name sid -fg white -bg black
 bind C exec kitty
 bind v exec urxvt -name sid -bg '#121212' -fg '#bbaaaa'
 bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
@@ -197,7 +197,5 @@ rudeness 12
 #< init
 hsplit
 exec 'urxvt -fg white -bg black -name sid'
-focusright
-exec 'urxvt -fg white -bg black -name sid'
-focusleft
+
 #>

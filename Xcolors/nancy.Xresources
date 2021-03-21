@@ -54,7 +54,11 @@
 
 !< sid
 sid.background:     #000
-sid.borderColor:    #1b1d1e
+! ratpoison has some kind of problem with urxvt and borders, where the
+! bottom and right border is 1px larger than the rest. I found a
+! solution for this, by having no border and using the catpoison gap
+! feature (:set gap 1) together with xsetroot -solid '#121212'.
+sid.borderColor:    #000
 !sid.colorBD:        #7e6449
 !sid.colorIT:        #7c7e49
 !sid.colorRV:        #121212
