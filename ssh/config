@@ -4,6 +4,7 @@ host *
   controlpath             ~/.ssh/connections/%r_%h_%p
   controlpersist          yes
   GSSAPIAuthentication    no
+  AddKeysToAgent          yes
 host wid                  #{{{
   user                    scp1
   hostname                192.168.0.195
@@ -103,8 +104,16 @@ host svamp                  #{{{
   compression             no
   checkhostip             no
   connecttimeout          3
-host pi
+host retropie
   user                   root
   hostname               192.168.1.4
   port                   22
+host pi
+  user                   pi
+  hostname               192.168.32.39
+  port                   22
+host laptop
+  user                   scp1
+  
+
 #}}}
