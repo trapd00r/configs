@@ -39,8 +39,14 @@
 
 # Examples of commands:
 
-"pimpd2 -love"
+xbindkeys-mpdlove
   F9
+
+#"pimpd2 --love;mpd_cp_native /mnt/music8/_fav/_2020/"
+#  F9
+
+#"pimpd2 -love"
+#  F9
 
 "mpc prev"
   F10
