@@ -1,31 +1,24 @@
-## vim:ft=sh:
-# {XDG_CONFIG_HOME}/xinitrc
-# host: elite
-# 2018-12-08 09:31:09
+#!/bin/sh
+# vim:ft=sh:
+# $XDG_CONFIG_HOME/xinitrc
+# host: sid 2021-03-21
 
-setxkbmap -option      terminate:ctrl_alt_bksp &
-setxkbmap se -variant  nodeadkeys &
-xsetroot  -cursor_name left_ptr &
-#feh       --bg-center  ~/img/dylan.jpg &
-xsetroot               &
-xmodmap                ${XDG_CONFIG_HOME}/xmodmaprc   &
-setxkbmap se -variant  nodeadkeys &
-#motion    -c           ${XDG_CONFIG_HOME}/motion.conf &
-xrdb                   ${XDG_CONFIG_HOME}/Xresources  &
-#xset      +fp          /usr/share/fonts
-#xset                   fp rehash
-dhcpcd &
-xbanish &
-#sshfs laleh:/var/log      ${HOME}/var/log &
-#sshfs pi:httpd/japh.se  ${HOME}/japh.se &
+xrdb         -merge   $XDG_CONFIG_HOME/Xresources
+xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
+setxkbmap se -variant nodeadkeys
+setxkbmap    -option  terminate:ctrl_alt_bksp
 
-## desktop
-#xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-# laptop
-xmodmap -e 'clear Lock' -e 'keycode 66 = Escape'
+# capslock -> esc
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
-sh $HOME/dev/dzen-scripts/dzen_elite.sh &
-perl $HOME/perl5/bin/knradio -l         &
+# [][ ][] monitor setup
+xrandr --output HDMI-0 --rotate left --output DP-2 --rotate right
 
-catpoison
-#ratpoison
+# https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
+xset s off -dpms &
+# https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
+xsetroot -solid '#1c1c1c'
+
+
+
+exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
