@@ -17,14 +17,15 @@
 ###>
 
 
+alias plexamp='Plexamp.appimage --no-sandbox'
 alias evernote='tusk'
 #< basics
 alias      cp='cp -v'
 alias      mv='mv -v'
 #alias      rm='rmc -v'
 alias      rm='/bin/rm -v'
-alias     grep=ack
-#alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
+#alias     grep=ack
+alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
 alias yaourt='trizen'
 
@@ -140,7 +141,7 @@ alias     gdd='git diff --name-only HEAD~1..HEAD | ls_color'
 alias   vimlast='vim $(git diff --name-only HEAD~1..HEAD)'
 #>
 #< feh
-alias     feh='/usr/bin/feh -FZ --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\" "$@"
+alias     feh='/usr/bin/feh -FZ --cache-size 2048 --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\" "$@"
 alias    fehe='feh -Texif'
 alias    fehf='feh -Tfs'
 alias    fehi='feh .fehindex.jpg'
