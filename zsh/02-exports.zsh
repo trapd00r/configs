@@ -20,18 +20,18 @@
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export TZ="Europe/Stockholm"
 export JEKYLL_ENV='production'
-#< LD_PRELOAD
-# https://github.com/trapd00r/stderred
-[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
-#>
-#< xdg
+##< LD_PRELOAD
+## https://github.com/trapd00r/stderred
+#[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
+##>
+##< xdg
 export       XDG_DATA_HOME=${HOME}/var
 export       XDG_MUSIC_DIR=${HOME}/mp3
 export      XDG_CACHE_HOME=${HOME}/var/cache
 export      XDG_VIDEOS_DIR=${HOME}/vid
 export     XDG_CONFIG_HOME=${HOME}/etc
 export     XDG_DESKTOP_DIR=${HOME}/tmp
-export    XDG_DOWNLOAD_DIR=${HOME}/tmp
+export    XDG_DOWNLOAD_DIR=${HOME}/dl
 export    XDG_PICTURES_DIR=${HOME}/img
 export   XDG_DOCUMENTS_DIR=${HOME}/usr/share/doc
 export   XDG_TEMPLATES_DIR=${HOME}/tmp
@@ -45,7 +45,7 @@ export    GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
 export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
 export           SCREENRC=${XDG_CONFIG_HOME}/screenrc
 export        X_OSD_COLOR='#a8ff00'
-export            BROWSER=firefox
+export            BROWSER=chromium
 #>
 #< locale
 export            LC_ALL=""
@@ -66,7 +66,7 @@ export           LC_TIME=en_US.UTF-8
 #>
 #< path
 unset PATH
-export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin
+export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
