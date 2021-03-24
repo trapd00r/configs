@@ -1,16 +1,21 @@
 # vim:ft=ratpoison:
 set barpadding 20 10
-set gap 22
+set gap 1
 set ignoreresizehints 1
 set onlyborder 0
+
+escape C-f
+
+set font 'xft:Anonymous Pro:style=Regular:pixelsize=12:antialias=1:hinting=1:hintstyle=3'
 
 bind s split
 bind C-s split
 bind S hsplit
 bind C-S hsplit
 
-bind c exec "urxvt -name sid"
+bind c exec wrxvt
 bind C-c exec urxvt
+bind C exec xterm
 
 # lock the screen
 bind L exec pkill -USR1 xidle
@@ -52,6 +57,73 @@ unmanage xmessage
 unmanage xprompt
 unmanage OpenSSH Authentication Passphrase Request
 unmanage dzen title
+
+
+#< binds: window management
+bind H prevscreen
+bind J exchangedown
+bind K exchangeup
+bind L nextscreen
+
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+
+bind C-K kill
+#bind w windows
+#bind W windows
+
+bind G gmove
+
+bind Tab focuslast
+bind ISO_Left_Tab focus
+
+#bind s-n gnext
+#bind s-p gprev
+#bind s-c gnew
+#bind s-g gnew
+#>
+#< binds: workspaces
+#exec rpws init 5 -k
+#gnewbg one
+#gnewbg two
+#gnewbg three
+#gnewbg four
+#
+#definekey top F1 exec rpws 1
+#definekey top F2 exec rpws 2
+#definekey top F3 exec rpws 3
+#definekey top F4 exec rpws 4
+#definekey top F5 exec rpws 5
+
+
+
+#>
+#< binds: top level
+#definekey top C-Return exec firefox -new-tab "`xclip -o`"
+#definekey top S-Return getsel
+#definekey top Pause    exec ossmix vmix0.pcm8 -- +2
+#definekey top Print    exec ossmix vmix0.pcm8 -- -2
+#definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
+#definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
+
+#>
+
+# act normal, but prevent firefox from raising itself
+# when links are opened from other applications
+rudeness 12
+
+#< init
+hsplit
+exec 'urxvt -fg white -bg black -name sid'
+
+#>
+
+
+
+
+
 
 # startup configuration
 #exec ruby ~/code/sdorfehs-bar/sdorfehs-bar.rb
