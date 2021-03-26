@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #       crafted  2009-04-24
-#         mtime  2018-12-22 07:54:35
+#         mtime  2021-03-26 11:18:15
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -27,26 +27,18 @@ addhook switchgroup next
 #defbarpadding 0 0 
 
 ## the undocumented framefmt takes the same arguments as winfmt.
-# set framefmt %w
+ set framefmt %t
 # set resizefmt
 # set infofmt
 
 #< catpoison only!
-set virtuals 24
+set virtuals 4
 vinit
 definekey top   F1  vselect 1
 definekey top   F2  vselect 2
 definekey top   F3  vselect 3
 definekey top   F4  vselect 4
-definekey top   F5  vselect 5
-definekey top   F6  vselect 6
-definekey top   F7  vselect 7
-definekey top   F8  vselect 8
-definekey top   F9  vselect 9
-definekey top   F10 vselect 10
-definekey top   F11 vselect 11
-definekey top   F12 vselect 12
-#
+
 #definekey top  M-F1 vselect 13
 #definekey top  M-F2 vselect 14
 #definekey top  M-F3 vselect 15
@@ -61,6 +53,8 @@ definekey top   F12 vselect 12
 #definekey top M-F12 vselect 24
 
 set barsticky off
+
+# https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
 set gap 1
 #>
 
@@ -195,7 +189,7 @@ bind ISO_Left_Tab focus
 rudeness 12
 
 #< init
+exec 'urxvt -fg white -bg black -name sid'
 hsplit
 exec 'urxvt -fg white -bg black -name sid'
-
 #>
