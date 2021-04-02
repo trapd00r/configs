@@ -12,15 +12,16 @@ setxkbmap    -option  terminate:ctrl_alt_bksp
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # [][ ][] monitor setup
-xrandr --output HDMI-0 --rotate left --output DP-2 --rotate right
+#xrandr --output HDMI-0 --rotate left --output DP-2 --rotate right
+xrandr --output HDMI-0 --rotate left --right-of DP-4 --output DP-2 --rotate right --left-of DP-4
 
 # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
 xset s off -dpms &
 # https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
-xsetroot -solid '#d68d14'
+#xsetroot -solid '#d68d14'
+xsetroot -solid '#292929'
 
 
 
-#exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
-exec sdorfehs -f $XDG_CONFIG_HOME/sdorfehs/sdorfehsrc
-#exec sdorfehs-japh
+exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
+#exec sdorfehs -f $XDG_CONFIG_HOME/sdorfehs/sdorfehsrc
