@@ -56,8 +56,9 @@ set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:2,vertical
 set display+=lastline,uhex
 set expandtab
-"set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
 "< folding
+"set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
+set fillchars+=fold:\ 
 set foldcolumn=2
 set foldenable
 "set foldclose=all
