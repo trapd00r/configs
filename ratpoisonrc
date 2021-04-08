@@ -103,7 +103,7 @@ bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 
-bind Pause exec monitor-toggle
+definekey top Pause exec ~/dev/utils/monitor-toggle
 
 bind Tab focuslast
 
