@@ -22,6 +22,7 @@ xset s off -dpms &
 xsetroot -solid '#292929'
 
 
+xscreensaver -no-splash &
 
 exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
 #exec sdorfehs -f $XDG_CONFIG_HOME/sdorfehs/sdorfehsrc
