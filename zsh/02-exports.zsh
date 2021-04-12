@@ -45,7 +45,7 @@ export    GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
 export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
 export           SCREENRC=${XDG_CONFIG_HOME}/screenrc
 export        X_OSD_COLOR='#a8ff00'
-export            BROWSER=chromium
+export            BROWSER=www
 #>
 #< locale
 export            LC_ALL=""
@@ -70,7 +70,7 @@ export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
-export      PERL5LIB=${HOME}/lib/perl5:${HOME}/perl5/lib/perl5/
+export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5
 #export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
 export PERLBREW_ROOT=${HOME}/usr/share/perl5
 # add . back to @INC
