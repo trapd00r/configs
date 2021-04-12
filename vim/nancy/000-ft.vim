@@ -91,7 +91,7 @@ autocmd BufWinLeave   * call clearmatches()
 ">
 
 au Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
-au Filetype  sh source ~/dev/vim-after-syntax-sh/after/syntax/sh.vim
+"au Filetype  sh source ~/dev/vim-after-syntax-sh/after/syntax/sh.vim
 au Filetype perl
   \   setl makeprg=perl\ -c\ %\ $*
   \ | setl errorformat=%f:%l:%m
