@@ -3,34 +3,36 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #       crafted  2009-04-24
-#         mtime  2021-03-26 11:18:15
-#   permissions  You are free to use things you may find useful here.
-#                Would my tweaks happen to give you a raise or fetch you a
-#                girlfriend, it goes without saying I'm counting on you
-#                to share with me as I've shared with you.
+#         mtime  2021-04-12 13:47:57
 #           git  git://github.com/trapd00r/configs.git
 #           url  http://github.com/trapd00r/configs
 #           irc  japh@freenode #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###>
 startup_message off
-escape C-f
-defresizeunit 80
+         escape C-f
+  defresizeunit 80
+        addhook switchgroup next
 
-addhook switchgroup next
-# banish the mouse with each screenchange
+## banish the mouse with each screenchange
 #addhook switchwin banish
 
 
-#    defborder 0
-#   defpadding 0 0 0 0
-#defbarpadding 0 0 
+#< aliases
+alias reload         exec catpoison -c "source $XDG_CONFIG_HOME/ratpoisonrc"
 
-## the undocumented framefmt takes the same arguments as winfmt.
- set framefmt %t
-# set resizefmt
-# set infofmt
+alias toggle-borders exec if [ "$(catpoison -c 'set border')" -ge 1 ]; then catpoison -c 'set border 0'; else catpoison -c 'set border 1'; fi
+ bind BackSpace  toggle-borders
 
+# move commands (moves window to other frame w/o exchanging)
+# TODO: works badly when moving causes an empty frame ('other' fails)
+alias moveleft  exec ratpoison -c 'exchangeleft'  -c 'focuslast' -c 'other' -c 'focuslast'
+alias movedown  exec ratpoison -c 'exchangedown'  -c 'focuslast' -c 'other' -c 'focuslast'
+alias moveup    exec ratpoison -c 'exchangeup'    -c 'focuslast' -c 'other' -c 'focuslast'
+alias moveright exec ratpoison -c 'exchangeright' -c 'focuslast' -c 'other' -c 'focuslast'
+
+
+#>
 #< catpoison only!
 set virtuals 4
 vinit
@@ -38,19 +40,6 @@ definekey top   F1  vselect 1
 definekey top   F2  vselect 2
 definekey top   F3  vselect 3
 definekey top   F4  vselect 4
-
-#definekey top  M-F1 vselect 13
-#definekey top  M-F2 vselect 14
-#definekey top  M-F3 vselect 15
-#definekey top  M-F4 vselect 16
-#definekey top  M-F5 vselect 17
-#definekey top  M-F6 vselect 18
-#definekey top  M-F7 vselect 19
-#definekey top  M-F8 vselect 20
-#definekey top  M-F9 vselect 21
-#definekey top M-F10 vselect 22
-#definekey top M-F11 vselect 23
-#definekey top M-F12 vselect 24
 
 set barsticky off
 
@@ -70,7 +59,10 @@ set historycompaction 1
 set       historysize 1000
 set      winliststyle column
 set        barpadding 8 8
-# for dzen2
+set            winfmt %n%s%t
+set          framefmt %t
+set           infofmt (%H, %W) %n(%c - %a) -- PID: %p, XWID: %i
+## for dzen2
 #set           padding 0 13 0 0
 set           padding 0 0 0 0
 set            border 0
@@ -78,8 +70,7 @@ set           bgcolor #080808
 set           bwcolor #0c0c0c
 set           fgcolor #d75f00
 set           fwcolor #303030
-#set              font Dina
-set              font "xft:Anonymous Pro:pixelsize=12"
+set              font 'xft:xos4 Terminus:pixelsize=12'
 set          maxundos 20
 #>
 #< window management
@@ -103,7 +94,6 @@ bind x exec urxvt -name sid -fn 'xft:Terminus:pixelsize=14'
 bind X exec xterm -name XTerm
 bind e exec rp-runorraise firefox
 
-definekey top Pause exec ~/dev/utils/monitor-toggle
 
 bind Tab focuslast
 
@@ -146,8 +136,9 @@ bind k focusup
 bind l focusright
 
 bind C-K kill
-#bind w windows
-#bind W windows
+
+bind C-s split 2/3
+bind C-S hsplit 2/3
 
 bind u undo
 bind G gmove
@@ -177,13 +168,8 @@ bind ISO_Left_Tab focus
 
 #>
 #< binds: top level
-#definekey top C-Return exec firefox -new-tab "`xclip -o`"
-#definekey top S-Return getsel
-#definekey top Pause    exec ossmix vmix0.pcm8 -- +2
-#definekey top Print    exec ossmix vmix0.pcm8 -- -2
-#definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
-#definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
-
+definekey top Pause       exec ~/dev/utils/monitor-toggle
+definekey top Scroll_Lock exec xscreensaver-command -lock
 #>
 
 # act normal, but prevent firefox from raising itself
@@ -191,7 +177,10 @@ bind ISO_Left_Tab focus
 rudeness 12
 
 #< init
-exec 'urxvt -fg white -bg black -name sid'
-hsplit
-exec 'urxvt -fg white -bg black -name sid'
+## start spotify unless it's already started
+exec pgrep -l spotify || spotify
+#prevscreen
+#exec urxvt -name sid -fg white -bg black
 #>
+
+echo ratpoisonrc loaded.
