@@ -17,7 +17,7 @@ startup_message off
 ## banish the mouse with each screenchange
 #addhook switchwin banish
 
-
+#setenv ratpoison_version `exec ratpoison -c "echo $(pgrep -l catpoison || 'ratpoison')"`
 #< aliases
 alias reload         exec catpoison -c "source $XDG_CONFIG_HOME/ratpoisonrc"
 
@@ -168,7 +168,7 @@ bind ISO_Left_Tab focus
 
 #>
 #< binds: top level
-definekey top Pause       exec ~/dev/utils/monitor-toggle
+definekey top Pause       exec ~/dev/utils/monitor-toggle && echo 'screensaver disabled'
 definekey top Scroll_Lock exec xscreensaver-command -lock
 #>
 
@@ -178,9 +178,10 @@ rudeness 12
 
 #< init
 ## start spotify unless it's already started
-exec pgrep -l spotify || spotify
+#exec pgrep -l spotify || spotify
+exec pgrep -l cantata || cantata
 #prevscreen
 #exec urxvt -name sid -fg white -bg black
 #>
 
-echo ratpoisonrc loaded.
+#echo ratpoisonrc loaded.
