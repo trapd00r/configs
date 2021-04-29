@@ -34,12 +34,16 @@ alias moveright exec ratpoison -c 'exchangeright' -c 'focuslast' -c 'other' -c '
 
 #>
 #< catpoison only!
-set virtuals 4
+set virtuals 8
 vinit
 definekey top   F1  vselect 1
 definekey top   F2  vselect 2
 definekey top   F3  vselect 3
 definekey top   F4  vselect 4
+definekey top   F5  vselect 5
+definekey top   F6  vselect 6
+definekey top   F7  vselect 7
+definekey top   F8  vselect 8
 
 set barsticky off
 
