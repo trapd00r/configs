@@ -150,6 +150,8 @@ bind G gmove
 bind Tab focuslast
 bind ISO_Left_Tab focus
 
+bind Delete exec catpoison -c 'gmove crap' -c 'next'
+
 #bind s-n gnext
 #bind s-p gprev
 #bind s-c gnew
@@ -187,5 +189,7 @@ exec pgrep -l cantata || cantata
 #prevscreen
 #exec urxvt -name sid -fg white -bg black
 #>
+
+gnewbg crap
 
 #echo ratpoisonrc loaded.
