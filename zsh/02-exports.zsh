@@ -128,9 +128,9 @@ export  SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
 export DELIVERED=yes
 #>
 #< mpd
-#export MPD_HOST=0.0.0.0
-#export MPD_PORT=64593
-#export MPD_USER=scp1
+export MPD_HOST=0.0.0.0
+export MPD_PORT=6600
+export MPD_USER=scp1
 #>
 #< printer, scanner
 #export          PRINTER="Canon_MP150"
