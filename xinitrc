@@ -24,5 +24,10 @@ xsetroot -solid '#292929'
 
 xscreensaver -no-splash &
 
+# start mpd unless it's already started
+[ ! -s ~/var/mpd/pid ] && (mpd ~/etc/mpd.conf && mpdas)&
+
+/usr/lib/kdeconnectd &
+
 exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
 #exec sdorfehs -f $XDG_CONFIG_HOME/sdorfehs/sdorfehsrc
