@@ -20,7 +20,7 @@ dht                           = disable
 # 1G by default
 pieces.memory.max             = 1G
 check_hash                    = no
-directory                     = /mnt/music4/_pix
+directory                     = /home/scp1/dl/
 encryption                    = allow_incoming,try_outgoing,enable_retry
 key_layout                    = qwerty
 port_range                    = 50000-50001
@@ -57,7 +57,8 @@ schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorren
 
 
 schedule  = mem     ,10, 10, "load.start=/home/scp1/dl/_fx/*.torrent,d.set_directory=/mnt/music5/_new"
-schedule  = nas     ,10, 10, "load.start=/home/scp1/dl/_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
+schedule  = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music5/_new"
+#schedule  = nas     ,10, 10, "load.start=/home/scp1/dl/_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
 
 
 system.method.set_key = event.download.inserted_new,log, "print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
