@@ -45,12 +45,14 @@ scx()       {
 #  xcolor facebook;
 #  TERM=rxvt-unicode-256color screen -x
 #  TERM=xterm-256color-italic screen -x
-  TERM=screen-256color /bin/screen -x "$@"
+  pidof screen && \
+    catpoison -c 'echo attaching screen'; /bin/screen -x || \
+    catpoison -c 'echo new screen session'; /bin/screen "$@"
 }
 
-screen() {
-  env TERM=screen-256color /bin/screen
-}
+#screen() {
+#  env TERM=screen-256color /bin/screen
+#}
 zman()      { PAGER="less -g -s '+/^       "$1"'" man zshall }
 #>
 #< shell
