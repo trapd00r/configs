@@ -18,7 +18,8 @@ import:
 
 paths:
 # $missing added by missing plugin
-  default: $albumartist/$albumartist [$year-$month-$day] $album ($format)/$track $title
+  default: $albumartist/$albumartist [$year] $album ($format)/$track $title
+#  default: $albumartist/$albumartist [$year-$month-$day] $album ($format)/$track $title
   singleton: Non-Album/$artist/$artist - $title
   comp: Compilations/$album%aunique{}/$track $title
 
