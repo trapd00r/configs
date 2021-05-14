@@ -2,7 +2,7 @@
 directory: /mnt/music8/+beets_tagged
 library:   ~/var/beets/beets.db
 
-plugins: fetchart lyrics missing
+plugins: fetchart lyrics missing embedart
 
 missing:
   format: "$path"
@@ -11,9 +11,9 @@ missing:
 import:
   default_action: apply
   duplicate_action: keep
-  non_rec_action: ask
+  non_rec_action: skip
   autotag: yes
-  move: no
+  move: yes
 
 
 paths:
@@ -30,11 +30,21 @@ paths:
 #
 # default is 0.04
 match:
-  strong_rec_thresh: 0.20 
+  strong_rec_thresh: 0.10 
   ignored: missing_tracks unmatched_tracks
   ignored_media: ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
                   'VCD', 'SVCD', 'UMD', 'VHS']
 
+lyrics:
+  auto: yes
+#  fallback: ''
+
+fetchart:
+  auto: yes
+  sources: coverart itunes amazon albumart
+
+embedart:
+  auto: yes
 
 ui:
   color: yes
