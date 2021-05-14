@@ -1,8 +1,9 @@
 # this is where the tagged albums will be copied to
-directory: /mnt/music8/+beets_tagged
+directory: /mnt/music8/_artists.top/
+#directory: /mnt/music8/+beets_tagged
 library:   ~/var/beets/beets.db
 
-plugins: fetchart lyrics missing embedart
+plugins: fetchart lyrics missing embedart discogs
 
 missing:
   format: "$path"
@@ -41,7 +42,7 @@ lyrics:
 
 fetchart:
   auto: yes
-  sources: coverart itunes amazon albumart
+  sources: coverart itunes amazon albumart wikipedia google
 
 embedart:
   auto: yes
