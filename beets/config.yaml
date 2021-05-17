@@ -79,7 +79,7 @@ import:
   non_rec_action: asis
   autotag: yes
   move: yes
-  quiet_fallback: asis
+  quiet_fallback: asis # when using the -q flag
 
   #Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -98,12 +98,15 @@ plugins: [
   'fetchart',  'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle', 'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate', 'mpdstats', 'rewrite',      'duplicates', 'missing',
+  'scrub',
 ]
 
 rewrite:
   artist .*1[23]00 mic.*: 1200 Micrograms
   artist elin (ruth)? sigvardsson: Elin Sigvardsson
   artist elin ruth: Elin Sigvardsson
+  artist the game.*: The Game
+  artist ^Game$: The Game
 
 mpd:
   host: localhost
@@ -126,19 +129,29 @@ ftintitle:
   auto: yes # default
 
 
+
 smartplaylist:
 # it's better to set save_absolute_paths_in_playlist option in mpd.conf
 #  relative_to: ~/mp3/
   playlist_dir: ~/mp3/_playlists
   playlists:
-    - name: all.m3u
+    - name: '+all.m3u'
       query: ''
 
-    - name: eminem.m3u
+    - name: 'eminem.m3u'
       query: 'artist:Eminem'
 
-    - name: 'ReleasedIn$year.m3u'
-      query: 'year::200[0-9]'
+#    - name: 'sm %lower{$genre}.m3u'
+#      query: ''
+
+    - name: '$year.m3u'
+      query: 'year::(199[0-9]|200[0-9]|201[0-9])'
+
+    - name: '+decent.m3u'
+      query: 'play_count:1..'
+
+    - name: 'psychedelic'
+      query: 'genre:psychedelic'
 
 musicbrainz:
   searchlimit: 10
@@ -178,8 +191,9 @@ paths:
 #   default: Music/$albumartist %if{$hasyear,$year} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} %title{$title}
 #    default: Music/$albumartist %if{$hasyear,[$year]} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} $title
 #    default: Music/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$multidisc,Disc $disc/}%if{$alt_tracks,$track_alt,$track}. $title
-    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
-    comp: +VA/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %artist - %title{$title}
+#    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$artist - $title
     singleton: %upper{%left{$albumartist,1}}/$albumartist/+tracks/$artist [$year] $album - $title
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
