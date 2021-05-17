@@ -1,40 +1,145 @@
-# this is where the tagged albums will be copied to
-directory: /mnt/music8/_artists.top/
-#directory: /mnt/music8/+beets_tagged
-library:   ~/var/beets/beets.db
+# vim:synmaxcol=300:expandtab:
+#      ${HOME}/etc/beets/config.yaml
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
+#         owner  Magnus Woldrich <m@japh.se>
+#         btime  2021-05-13 10:31:39
+#         mtime  2021-05-17 11:31:26
+#   permissions  You are free to use things you may find useful here.
+#                Please improve and share.
+#           git  http://github.com/trapd00r/configs/  (up-to-date)
+#           url  http://japh.se
+#           irc  japh@freenode #vim #perl #beets
+#   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
-plugins: fetchart lyrics missing embedart discogs
+
+## Alanis Morissette │2020│ Reckoning [Single, WEB, MP3]
+## Alanis Morissette │2020│ Such Pretty Forks in the Road [WEB, FLAC]
+## Anna Ternheim │2003│ My Secret [EP, CD, MP3]
+## Anna Ternheim │2004│ Somebody Outside [CD, MP3]
+## Anna Ternheim │2005│ Shoreline EP [EP, CD, MP3]
+##  ├── 01 Shoreline (radio Version).mp3
+##  ├── 02 Little Lies.mp3
+##  ├── 03 China Girl.mp3
+##  ├── 04 When Tomorrow Comes.mp3
+##  ├── 05 Anywhere I Lay My Head.mp3
+##  └── cover.jpg
+
+## A/Anna Ternheim/Anna Ternheim │2003│ My Secret [EP, CD, MP3]
+#   '- 01 My Secret.mp3
+#   '- 02 All For Me.mp3
+#   '- 03 A Voice To Calm You Down.mp3
+#   '- 04 I Say No (gotland Version).mp3
+#   '- 05 Wedding Song (demo Version).mp3
+#   '- cover.jpg
+
+
+
+#< core options
+# this is where the tagged albums will be copied/moved to
+directory: /mnt/music8/+TAGGED
+library:   ~/var/beets/beets202105.db
+
+# files matching these patterns are deleted from source after import
+clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
+          ".jpg", ".nfo", ".txt", ".log",
+         ]
+
+# files/directories matching one of these patterns are ignored during import
+ignore: [".*", "*~", "System Volume Information", "_tracks", "_live"]
+
+replace:
+    '[\\]': ''
+    '[_]': '-'
+    '[/]': '-'
+    '^\.': ''
+    '[\x00-\x1f]': ''
+    '[<>:"\?\*\|]': ''
+    '\.$': ''
+    '\s+$': ''
+    '^\s+': ''
+    '^-': ''
+
+format_item: $path
+sort_case_insensitive: yes
+
+per_disc_numbering: true
+art_filename: cover # cover.jpg
+threaded: yes
+timeout: 5.0
+verbose: no
+
+# <importer
+import:
+  write: yes
+  default_action: apply
+  duplicate_action: keep
+  non_rec_action: asis
+  autotag: yes
+  move: yes
+  quiet_fallback: asis
+
+  #Either yes or no, controlling whether imported directories are recorded
+  # and whether these recorded directories are skipped. This corresponds to
+  # the -i flag to beet import.
+  incremental: no
+
+  # Either yes or no, controlling whether skipped directories are recorded
+  # in the incremental list. When set to yes, skipped directories will be
+  # recorded, and skipped later. When set to no, skipped directories
+  # won’t be recorded, and beets will try to import them again later.
+  # Defaults to no.
+  incremental_skip_later: no
+#>
+#< plugins
+plugins: [
+  'fetchart',  'discogs',  'fromfilename', 'inline',     'smartplaylist',
+  'ftintitle', 'info',     'lastgenre',    'lastimport', 'thumbnails',
+  'mpdupdate', 'mpdstats', 'rewrite',      'duplicates', 'missing',
+]
+
+rewrite:
+  artist .*1[23]00 mic.*: 1200 Micrograms
+
+mpd:
+  host: localhost
+  port: 6600
+#  music_directory: /mnt/music8
+
+thumbnails:
+  auto: yes # default
+
+lastfm:
+  user: betbot
+
+lastgenre:
+  auto: yes # default
+  canonical: yes
+  force: no
+
+# featuring in title instead of artist
+ftintitle:
+  auto: yes # default
+
+
+smartplaylist:
+# it's better to set save_absolute_paths_in_playlist option in mpd.conf
+#  relative_to: ~/mp3/
+  playlist_dir: ~/mp3/_playlists
+  playlists:
+    - name: all.m3u
+      query: ''
+
+    - name: eminem.m3u
+      query: 'artist:Eminem'
+
+    - name: 'ReleasedIn$year.m3u'
+      query: 'year::200[0-9]'
+
+musicbrainz:
+  searchlimit: 10
 
 missing:
   format: "$path"
-
-
-import:
-  default_action: apply
-  duplicate_action: keep
-  non_rec_action: skip
-  autotag: yes
-  move: yes
-
-
-paths:
-# $missing added by missing plugin
-  default: $albumartist/$albumartist [$year] $album ($format)/$track $title
-#  default: $albumartist/$albumartist [$year-$month-$day] $album ($format)/$track $title
-  singleton: Non-Album/$artist/$artist - $title
-  comp: Compilations/$album%aunique{}/$track $title
-
-# To control how tolerant the autotagger is of differences, use the
-# strong_rec_thresh option, which reflects the distance threshold below
-# which beets will make a “strong recommendation” that the metadata
-# be used.
-#
-# default is 0.04
-match:
-  strong_rec_thresh: 0.10 
-  ignored: missing_tracks unmatched_tracks
-  ignored_media: ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
-                  'VCD', 'SVCD', 'UMD', 'VHS']
 
 lyrics:
   auto: yes
@@ -46,7 +151,119 @@ fetchart:
 
 embedart:
   auto: yes
+#>
+#< path setup
+aunique:
+  disambuguators: media mastering label catalognum albumdisambig releasegroupdisambig
 
+match:
+  preferred:
+    media: ['CD', 'Vinyl', 'Digital Media|File']
+
+# Done in order listed. Default is special and will always go at the end.
+# e.g. If I had an album with the albumtype $soundtrack and $compilation
+# Then the path that matchs first takes precedence.
+paths: 
+    default: %upper{%left{$albumartist,1}}/$albumartist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default: %upper{%left{$albumartist_sort,1}}/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+# Sophie Zelmani │1999│ Time to Kill [CD, FLAC Columbia]
+#    default: Music/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format $label]/${padded_tracknr} %title{$title}
+# Sophie Zelmani │1999│ Time to Kill [CD FLAC]
+#    default: Music/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$alb_status$media_type $format]/${padded_tracknr} %title{$title}
+#   default: Music/$albumartist %if{$hasyear,$year} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} %title{$title}
+#    default: Music/$albumartist %if{$hasyear,[$year]} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} $title
+#    default: Music/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$multidisc,Disc $disc/}%if{$alt_tracks,$track_alt,$track}. $title
+    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+    comp: +VA/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+    singleton: %upper{%left{$albumartist,1}}/$albumartist/+tracks/$artist - $title
+    albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
+    albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+
+# Inline replacements used in path formatting
+#
+# Note: You may need to add a 'u' in-front of text to signify unicode in python 2
+# Unicode is default in python 3 so its not needed
+# TODO:
+# - Note if Reissue/Remaster
+# - Check Beets Padding issue for tracks and multidisc releases https://github.com/beetbox/beets/issues/3352
+# - Borrow ideas from this config https://gist.github.com/RollingStar/86e041338df295afbbf77a9027903068
+# - Split Anime/Game genre soundtracks out of the OST path using genre:game etc
+# - Classic genre which is sorted by composer
+
+item_fields:
+  # pad track number with zero if > 10
+  padded_tracknr: "'{:02n}'.format(track)"
+
+album_fields:
+    alb_status: |
+        # MB returns 4 values describing how "offical" a release is, they are:
+        # Official, Promotional, Bootleg, and Pseudo-Release
+        # We only note the middle two.
+        # https://musicbrainz.org/doc/Release#Status
+        if 'Promo' in albumstatus:
+            return 'Promo'
+        elif 'Bootleg' in albumstatus:
+            return 'Bootleg'
+        else:
+            return None
+    # Check if https://github.com/beetbox/beets/issues/2200 affects below
+    alb_type: |
+        alb_types = ""
+        albumtypes_list = {
+            'ep': 'EP, ',
+            'single': 'Single, ',
+            'live': 'Live, ',
+            'remix': 'Remix, ',
+            'dj-mix': 'DJ-mix, ',
+            'mixtape/street': 'Mixtape, ',
+            'interview': 'Interview, ',
+        }
+        for key, value in albumtypes_list.items():
+            if albumtype == key:
+                alb_types += str(value)
+        if alb_types is not None:
+            return alb_types
+        else:
+            return None
+
+    media_type: |
+        # https://musicbrainz.org/doc/Release/Format
+        # Lets Merge the variations of the same medium into the main medium name (Opinonated)
+        media_list = {
+            '12" Vinyl': 'VINYL, ',
+            '10" Vinyl': 'VINYL, ',
+            '7" Vinyl': 'VINYL, ',
+            'Cassette': 'CASSETTE, ',
+            'Digital Media': 'WEB, ',
+            'CD': 'CD, ',
+            'File': 'WEB, ',
+        }
+        # Lets omit these instead of converging them under a similar label like above (Opinonated)
+        media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'SHM-CD', 'HQCD', '']
+        if items[0].media in media_list:
+            return str(media_list[items[0].media])
+        elif items[0].media in media_types_to_omit:
+            return None
+        else:
+            return str(items[0].media)
+
+    hasyear: 1 if year > 0 else 0
+#>
+#< autotagger
+# To control how tolerant the autotagger is of differences, use the
+# strong_rec_thresh option, which reflects the distance threshold below
+# which beets will make a “strong recommendation” that the metadata
+# be used.
+#
+# default is 0.04
+match:
+  strong_rec_thresh: 0.06
+  medium_rec_thresh: 0.25
+  ignored: missing_tracks unmatched_tracks
+  ignored_media: ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
+                  'VCD', 'SVCD', 'UMD', 'VHS']
+#>
+#< ui
 ui:
   color: yes
   colors:
@@ -57,11 +274,4 @@ ui:
     text_highlight_minor: lightgray
     action_default: turquoise
     action: blue
-
-
-#album_fields:
-#    format: |
-#        formatList = []
-#        for item in items:
-#            formatList.append(item.format)
-#        return formatList
+#>
