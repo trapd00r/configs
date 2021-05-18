@@ -15,6 +15,9 @@ keysym Caps_Lock = Escape
 keycode 0x30    = apostrophe
 keycode 0x22    = slash
 
+! │
+keycode 38 = a A a A U2502 U2502 
+
 !keycode   8 = Mode_switch NoSymbol Mode_switch
 !keycode   9 = Escape NoSymbol Escape
 !keycode  10 = exclam 1 exclam 1 asterisk apostrophe asterisk
