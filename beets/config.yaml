@@ -97,7 +97,7 @@ plugins: [
   'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',
+  'extrafiles', 'edit',     'mpdqueue',
 ]
 
 edit:
