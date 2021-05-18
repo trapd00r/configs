@@ -36,7 +36,7 @@
 # this is where the tagged albums will be copied/moved to
 directory: /mnt/music8/+TAGGED
 library:   ~/var/beets/beets202105.db
-pluginpath: ~/etc/beets/plugins/
+pluginpath: /usr/lib/python3.9/site-packages/beetsplug/
 
 # files matching these patterns are deleted from source after import
 clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
@@ -94,11 +94,15 @@ import:
 #>
 #< plugins
 plugins: [
-  'fetchart',  'discogs',  'fromfilename', 'inline',     'smartplaylist',
-  'ftintitle', 'info',     'lastgenre',    'lastimport', 'thumbnails',
-  'mpdupdate', 'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles',
+  'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
+  'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
+  'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
+  'extrafiles', 'edit',
 ]
+
+edit:
+  itemfields: track title artist album year
+  albumfields: track title artist albumartist album year
 
 extrafiles:
   patterns:
@@ -120,6 +124,7 @@ rewrite:
   artist the game.*: The Game
   artist ^Game$: The Game
   artist .*eminem.*: Eminem
+  artist ^VA$: Various Artists
 
 mpd:
   host: localhost
@@ -206,7 +211,7 @@ paths:
 #   default: Music/$albumartist %if{$hasyear,$year} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} %title{$title}
 #    default: Music/$albumartist %if{$hasyear,[$year]} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} $title
 #    default: Music/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$multidisc,Disc $disc/}%if{$alt_tracks,$track_alt,$track}. $title
-    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %artist - %title{$title}
+    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
 #    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
     comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
     singleton: %upper{%left{$albumartist,1}}/$albumartist/+tracks/$artist [$year] $album - $title
