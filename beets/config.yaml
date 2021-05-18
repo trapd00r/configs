@@ -1,4 +1,4 @@
-# vim:synmaxcol=300:expandtab:
+# vim:synmaxcol=300:expandtab:fdm=marker:fdl=0:
 #      ${HOME}/etc/beets/config.yaml
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
@@ -32,12 +32,11 @@
 #   '- 05 Wedding Song (demo Version).mp3
 #   '- cover.jpg
 
-
-
 #< core options
 # this is where the tagged albums will be copied/moved to
 directory: /mnt/music8/+TAGGED
 library:   ~/var/beets/beets202105.db
+pluginpath: ~/etc/beets/plugins/
 
 # files matching these patterns are deleted from source after import
 clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
@@ -98,8 +97,21 @@ plugins: [
   'fetchart',  'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle', 'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate', 'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'scrub',
+  'extrafiles',
 ]
+
+extrafiles:
+  patterns:
+    single_tracks:
+      - '+tracks/'
+      - '_tracks/'
+    single_live:
+      - '_live'
+      - '+live'
+  paths:
+    single_tracks: $albumpath/+tracks
+    single_live: $albumpath/+tracks
+
 
 rewrite:
   artist .*1[23]00 mic.*: 1200 Micrograms
@@ -107,6 +119,7 @@ rewrite:
   artist elin ruth: Elin Sigvardsson
   artist the game.*: The Game
   artist ^Game$: The Game
+  artist .*eminem.*: Eminem
 
 mpd:
   host: localhost
@@ -183,6 +196,8 @@ match:
 # Then the path that matchs first takes precedence.
 paths: 
     default: %upper{%left{$albumartist,1}}/$albumartist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default: %upper{%left{$albumartist,1}}/$first_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default: %upper{%left{$albumartist,1}}/$primary_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #    default: %upper{%left{$albumartist_sort,1}}/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 # Sophie Zelmani │1999│ Time to Kill [CD, FLAC Columbia]
 #    default: Music/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format $label]/${padded_tracknr} %title{$title}
@@ -193,7 +208,7 @@ paths:
 #    default: Music/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$multidisc,Disc $disc/}%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %artist - %title{$title}
 #    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
-    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$artist - $title
+    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
     singleton: %upper{%left{$albumartist,1}}/$albumartist/+tracks/$artist [$year] $album - $title
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
@@ -212,6 +227,7 @@ paths:
 item_fields:
   # pad track number with zero if > 10
   padded_tracknr: "'{:02n}'.format(track)"
+  first_artist: albumartist.split(', ',1)[0:1][0]
 
 album_fields:
     alb_status: |
