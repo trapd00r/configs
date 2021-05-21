@@ -75,10 +75,11 @@ import:
   default_action: apply
 #  duplicate_action: keep
   duplicate_action: remove
-  non_rec_action: asis
+  non_rec_action: ask
   autotag: yes
   move: yes
-  quiet_fallback: asis # when using the -q flag
+#  quiet_fallback: asis # when using the -q flag
+  quiet_fallback: skip # when using the -q flag
 
   #Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -90,14 +91,14 @@ import:
   # recorded, and skipped later. When set to no, skipped directories
   # won’t be recorded, and beets will try to import them again later.
   # Defaults to no.
-  incremental_skip_later: no
+  incremental_skip_later: yes
 #>
 #< plugins
-plugins: [
+plugins: [ # mosaic
   'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',     'mpdqueue',
+  'extrafiles', 'edit',     'mpdqueue',     'mosaic',
 ]
 
 edit:
@@ -118,6 +119,8 @@ extrafiles:
 
 
 rewrite:
+  artist Sin[eé]ad O.Connor.*: Sinéad O'Connor
+  artist .*Suzanne.*Vega: Suzanne Vega
   artist .*1[23]00 mic.*: 1200 Micrograms
   artist elin (ruth)? sigvardsson: Elin Sigvardsson
   artist elin ruth: Elin Sigvardsson
@@ -125,6 +128,18 @@ rewrite:
   artist ^Game$: The Game
   artist .*eminem.*: Eminem
   artist ^VA$: Various Artists
+  artist ^Ken$: Ken Ring
+  artist ^Ken Ring.*: Ken Ring
+  artist Special D: Special D.
+  artist .*Britt?ney.*Spears.*: Britney Spears
+  artist .*Britney.*vs: Britney Spears
+  artist .*Britney.*vs: Britney Spears
+  artist B.Spears: Britney Spears
+  artist Britney-Spears: Britney Spears
+  artist Groove.Coverage.*: Groove Coverage
+  artist Danne W.*: Sjätte Sinnet
+  artist Sjatte Sinnet: Sjätte Sinnet
+  artist Ante Barazza: Sjätte Sinnet
 
 mpd:
   host: localhost
@@ -200,7 +215,13 @@ match:
 # e.g. If I had an album with the albumtype $soundtrack and $compilation
 # Then the path that matchs first takes precedence.
 paths: 
-    default: %upper{%left{$albumartist,1}}/$albumartist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default: %upper{%left{$albumartist,1}}/$albumartist/$albumartist %if{$hasyear,│${year}│} $album ⎡$alb_type$media_type$format⎦/${padded_tracknr} %title{$title}
+
+
+# great 
+    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+
 #    default: %upper{%left{$albumartist,1}}/$first_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #    default: %upper{%left{$albumartist,1}}/$primary_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #    default: %upper{%left{$albumartist_sort,1}}/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
@@ -213,7 +234,8 @@ paths:
 #    default: Music/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$multidisc,Disc $disc/}%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:soundtrack: +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
 #    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
-    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
+    comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
+#    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
     singleton: %upper{%left{$albumartist,1}}/$albumartist/+tracks/$artist [$year] $album - $title
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
@@ -232,7 +254,6 @@ paths:
 item_fields:
   # pad track number with zero if > 10
   padded_tracknr: "'{:02n}'.format(track)"
-  first_artist: albumartist.split(', ',1)[0:1][0]
 
 album_fields:
     alb_status: |
