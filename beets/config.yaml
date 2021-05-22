@@ -84,7 +84,7 @@ import:
   #Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
   # the -i flag to beet import.
-  incremental: no
+  incremental: yes
 
   # Either yes or no, controlling whether skipped directories are recorded
   # in the incremental list. When set to yes, skipped directories will be
@@ -98,8 +98,12 @@ plugins: [ # mosaic
   'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',     'mpdqueue',     'mosaic',
+  'extrafiles', 'edit',     'mpdqueue',     'lyrics',
 ]
+
+bpd:
+  host: 127.0.0.1
+  port: 6601
 
 edit:
   itemfields: track title artist album year
@@ -156,12 +160,11 @@ lastgenre:
   auto: yes # default
   canonical: yes
   force: no
+  source: artist
 
 # featuring in title instead of artist
 ftintitle:
   auto: yes # default
-
-
 
 smartplaylist:
 # it's better to set save_absolute_paths_in_playlist option in mpd.conf
@@ -219,7 +222,7 @@ paths:
 
 
 # great 
-    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 
 
 #    default: %upper{%left{$albumartist,1}}/$first_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
