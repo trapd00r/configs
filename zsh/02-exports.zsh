@@ -26,7 +26,7 @@ export JEKYLL_ENV='production'
 ##>
 ##< xdg
 export       XDG_DATA_HOME=${HOME}/var
-export       XDG_MUSIC_DIR=${HOME}/mp3
+export       XDG_MUSIC_DIR=${HOME}/mp3/music8/+TAGGED
 export      XDG_CACHE_HOME=${HOME}/var/cache
 export      XDG_VIDEOS_DIR=${HOME}/vid
 export     XDG_CONFIG_HOME=${HOME}/etc
@@ -131,6 +131,8 @@ export DELIVERED=yes
 export MPD_HOST=0.0.0.0
 export MPD_PORT=6600
 export MPD_USER=scp1
+export BPD_HOST=127.0.0.1
+export BPD_PORT=6601
 #>
 #< printer, scanner
 #export          PRINTER="Canon_MP150"
