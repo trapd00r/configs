@@ -74,8 +74,8 @@ for r in $HOME/etc/zsh/[0-5]*.zsh; do
   . $r
 done
 . $HOME/etc/zsh/10-syntax.zsh
-. $HOME/etc/zsh/plugins/k.sh
-. $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
+#. $HOME/etc/zsh/plugins/k.sh
+#. $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
 . $HOME/secret_zshrc
 
 
@@ -154,4 +154,3 @@ PATH="/home/scp1/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL_LOCAL_LIB_ROOT="/home/scp1/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/scp1/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/scp1/perl5"; export PERL_MM_OPT;
-
