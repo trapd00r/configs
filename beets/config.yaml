@@ -123,6 +123,8 @@ extrafiles:
 
 
 rewrite:
+  artist .*Green Lantern.*: DJ Green Lantern
+  artist .ingenting.: Ingenting
   artist Sin[eé]ad O.Connor.*: Sinéad O'Connor
   artist .*Suzanne.*Vega: Suzanne Vega
   artist .*1[23]00 mic.*: 1200 Micrograms
@@ -220,6 +222,7 @@ match:
 paths: 
 #    default: %upper{%left{$albumartist,1}}/$albumartist/$albumartist %if{$hasyear,│${year}│} $album ⎡$alb_type$media_type$format⎦/${padded_tracknr} %title{$title}
 
+    label:8bitpeoples: 8/8bitpeoples/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 
 # great 
     default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
