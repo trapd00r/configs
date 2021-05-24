@@ -11,7 +11,7 @@
 #           irc  japh@freenode #vim #perl #beets
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
-
+#< what does it look like
 ## Alanis Morissette │2020│ Reckoning [Single, WEB, MP3]
 ## Alanis Morissette │2020│ Such Pretty Forks in the Road [WEB, FLAC]
 ## Anna Ternheim │2003│ My Secret [EP, CD, MP3]
@@ -31,6 +31,7 @@
 #   '- 04 I Say No (gotland Version).mp3
 #   '- 05 Wedding Song (demo Version).mp3
 #   '- cover.jpg
+#>
 
 #< core options
 # this is where the tagged albums will be copied/moved to
@@ -40,12 +41,12 @@ pluginpath: /usr/lib/python3.9/site-packages/beetsplug/
 
 # files matching these patterns are deleted from source after import
 clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
-          ".jpg", ".nfo", ".txt", ".log",
+          ".jpg", ".nfo", ".txt", ".log", ".gif",
          ]
 
 # files/directories matching one of these patterns are ignored during import
 ignore: [".*", "*~", "System Volume Information",
-         "_tracks", "+tracks", "_live", "+live",
+#         "_tracks", "+tracks", "_live", "+live",
         ]
 
 replace:
@@ -74,7 +75,9 @@ import:
   write: yes
   default_action: apply
 #  duplicate_action: keep
-  duplicate_action: remove
+#  https://github.com/beetbox/beets/issues/716
+#  https://github.com/beetbox/beets/issues/2537
+  duplicate_action: keep
   non_rec_action: ask
   autotag: yes
   move: yes
@@ -91,7 +94,7 @@ import:
   # recorded, and skipped later. When set to no, skipped directories
   # won’t be recorded, and beets will try to import them again later.
   # Defaults to no.
-  incremental_skip_later: yes
+#  incremental_skip_later: yes
 #>
 #< plugins
 plugins: [ # mosaic
@@ -118,11 +121,12 @@ extrafiles:
       - '_live'
       - '+live'
   paths:
-    single_tracks: $albumpath/+tracks
-    single_live: $albumpath/+tracks
+    single_tracks: $artist/+tracks
+    single_live: $artist/+live
 
 
 rewrite:
+  artist 50 Cent.*: 50 Cent
   artist .*Green Lantern.*: DJ Green Lantern
   artist .ingenting.: Ingenting
   artist Sin[eé]ad O.Connor.*: Sinéad O'Connor
@@ -220,29 +224,14 @@ match:
 # e.g. If I had an album with the albumtype $soundtrack and $compilation
 # Then the path that matchs first takes precedence.
 paths: 
-#    default: %upper{%left{$albumartist,1}}/$albumartist/$albumartist %if{$hasyear,│${year}│} $album ⎡$alb_type$media_type$format⎦/${padded_tracknr} %title{$title}
 
-    label:8bitpeoples: 8/8bitpeoples/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-
-# great 
+# https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
+    label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
     default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-
-
-#    default: %upper{%left{$albumartist,1}}/$first_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#    default: %upper{%left{$albumartist,1}}/$primary_artist/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#    default: %upper{%left{$albumartist_sort,1}}/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-# Sophie Zelmani │1999│ Time to Kill [CD, FLAC Columbia]
-#    default: Music/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$media_type$format $label]/${padded_tracknr} %title{$title}
-# Sophie Zelmani │1999│ Time to Kill [CD FLAC]
-#    default: Music/$albumartist %if{$hasyear,│${year}│} $album [$alb_type$alb_status$media_type $format]/${padded_tracknr} %title{$title}
-#   default: Music/$albumartist %if{$hasyear,$year} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} %title{$title}
-#    default: Music/$albumartist %if{$hasyear,[$year]} $album $alb_type$alb_status$media_type ($format)/${padded_tracknr} $title
-#    default: Music/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$multidisc,Disc $disc/}%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:soundtrack: +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
-#    albumtype:soundtrack: +OST/$album%aunique{} %if{$hasyear,($year)} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
     comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
 #    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
-    singleton: %upper{%left{$albumartist,1}}/$albumartist/+tracks/$artist [$year] $album - $title
+    singleton: %upper{%left{$artist,1}}/$artist/+tracks/$artist - $title
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
 
@@ -258,7 +247,7 @@ paths:
 # - Classic genre which is sorted by composer
 
 item_fields:
-  # pad track number with zero if > 10
+  # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
 
 album_fields:
@@ -324,7 +313,7 @@ album_fields:
 #
 # default is 0.04
 match:
-  strong_rec_thresh: 0.06
+  strong_rec_thresh: 0.10
   medium_rec_thresh: 0.25
   ignored: missing_tracks unmatched_tracks
   ignored_media: ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
