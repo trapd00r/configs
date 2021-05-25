@@ -1,21 +1,56 @@
-# vim:cc=0:tw=0:et:fdm=marker:ft=muttrc:
+# vim:cc=0:tw=0:et:fdm=marker:ft=muttrc:fdl=0:
+
 source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
 #source ~/etc/mutt/colors/colors.neomutt
 #mailboxes `find /home/scp1/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
-mailboxes /home/scp1/mail/personal/INBOX/
 #source ~/etc/muttrc.mailboxes
-#mailboxes /home/scp1/mail/new
 
-bind pager d noop
-bind pager u noop
-bind index .n noop
-bind index g noop
-bind index . noop
+#< core
+set folder      = ~/mail/gmail
+set mbox_type   = Maildir
+set sendmail    = /usr/bin/msmtp
+set mbox        = "+[Gmail]/All Mail"
+set postponed   = "+[Gmail]/Drafts"
+set spoolfile   = "+INBOX"
+#>
+#< binds
+# generic alias attach browser editor index compose pager pgp
+# postpone mix
+#
+bind   index .    noop
+bind   index .    noop
+bind   index .n   noop
+bind   index d    noop
+bind   index g    noop
 
-bind index d noop
-macro index,pager A  "<save-message>=personal/archive<enter>"  "mark message as Archived"
-macro index,pager d  "<save-message>=personal/archive<enter>"  "mark message as Archived"
+bind   pager u    noop
 
+bind   pager k    previous-line
+bind   pager <    previous-line
+bind   pager j    next-line
+bind   pager >    next-line
+bind   pager down next-page
+bind   pager up   previous-page
+
+bind   index *   flag-message
+bind   index +   next-entry
+bind   index -   previous-entry
+bind   index G   last-entry
+bind   index J   next-entry
+bind   index K   previous-entry
+bind   index [   previous-line
+bind   index \cu sync-mailbox
+bind   index ]   next-line
+bind   index f   change-folder
+bind   index gg  first-entry
+bind   index j   next-entry
+bind   index k   previous-entry
+bind   index t   display-message
+bind   index {   top-page
+bind   index }   bottom-page
+
+bind browser y  exit
+#>
 #< options
 set include
 set nobeep
@@ -55,16 +90,12 @@ set implicit_autoview   = no
 set index_format        = "%[%b %d]▕ %X:%Z ▕ %30.30L▕ %s"
 set mail_check          = 5
 set markers             = no
-set mbox                = =received
-set mbox_type           = Maildir
 set move                = no
 set narrow_tree         = yes
 set pager_context       = 3
 set pager_format        = "-%S- %-20.20f %s"
 set pager_index_lines   = 0
 set post_indent_string  = '---end quoted text---'
-set postponed           = +drafts
-set postponed           = +postponed
 set print_command       = "muttprint -r $HOME/etc/muttprintrc"
 set query_command       = "abook --mutt-query '%s'"
 set quote_regexp        = "^ *[a-zA-Z]*[>|][>:|]*"
@@ -76,17 +107,14 @@ set reply_regexp        = '^((re(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*'
 set reply_to            = yes
 set reverse_alias       = yes
 set send_charset        = "utf-8"
-set sendmail            = /usr/bin/msmtp
 set shell               = /bin/zsh
 set signature           = ~/.signature
 set smileys             = "^$"
 set sort                = threads
 set sort_browser        = reverse-date
 set sort_aux            = last-date-received
-set spoolfile           = +
 set thread_received     = yes
-set tmpdir              = /dev/shm
-set wrapmargin          = 4
+set tmpdir              = ~/tmp/
 #>
 #< macros
 #macro generic,index,pager A  "<shell-escape>abook<return>" "launch abook"
@@ -94,53 +122,17 @@ macro               index .. "c=\n" "Go to inbox"
 macro               index .n "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>" "Catchup all new messages"
 macro               index n  "<next-entry><display-message>"
 macro         index,pager a  "<pipe-message>abook --add-email<return>" "add the sender address to abook"
-#>
-#< binds
-# generic alias attach browser editor index compose pager pgp postpone mix
+macro         index,pager d  ":set confirmappend=no delete=yes resolve=no\n<clear-flag>N<tag-prefix><delete-message>:set confirmappend=yes delete=ask-yes resolve=yes\n<next-undeleted>"
+#macro index,pager A  "<save-message>=personal/archive<enter>"  "mark message as Archived"
+#macro index,pager d  "<save-message>=personal/archive<enter>"  "mark message as Archived"
 
-
-
-bind pager k    previous-line
-bind pager <    previous-line
-bind pager j    next-line
-bind pager >    next-line
-bind pager down next-page
-bind pager up   previous-page
-
-bind index *   flag-message
-bind index +   next-entry
-bind index -   previous-entry
-#bind index .   display-message
-bind index G   last-entry
-bind index J   next-entry
-bind index K   previous-entry
-bind index [   previous-line
-bind index \cu sync-mailbox
-bind index ]   next-line
-bind index f   change-folder
-bind index gg  first-entry
-bind index j   next-entry
-bind index k   previous-entry
-bind index t   display-message
-bind index {   top-page
-bind index }   bottom-page
-
-bind browser y  exit
+#macro index S \
+#    "<save-message>+[Gmail]/Spam<enter>" \
+#    "mark message as spam"
 #>
 #< hooks
 folder-hook . "push \"l!(~s 'FOLDER INTERNAL DATA')\n*\""
 
-save-hook @arenabolaget.se                                            =arenabolaget
-save-hook @bokus.com                                                  =bokus
-save-hook @citynetwork.se                                             =citynetwork
-save-hook @gents.se                                                   =gents
-save-hook @ntmdistribution.se                                         =NTM
-save-hook @plus.google.com                                            =google_plus
-save-hook @reply.github.com                                           =github
-save-hook @ticnet.se                                                  =ticnet
-save-hook @webhallen.com                                              =webhallen
-save-hook announce\@archlinux.org                                     =arch-news
-save-hook laredoute.se                                                =laredoute
 save-hook nobody\@archlinux.org                                       =arch-bbs
 save-hook "~C   debbugs.gnu.org"                                      =coreutils
 save-hook "~C   musicpd-dev-team@lists.sourceforge.net"               =mpd_dev
@@ -180,7 +172,6 @@ auto_view text/html # w3m converts to plain
 # prefer text/plain version if it exists
 alternative_order text/plain text/html
 #>
-
 #< neomutt settings
 color index           color106 color16 'japh'
 #color index           white    color16 '.*'
@@ -207,5 +198,4 @@ color status color232 color160 '(Del):[0-9]+'
 color status color106 color160 '(New):[0-9]+'
 color status color137 color232  '\[([^]]+)\]' 1
 color status color142 color232 '(~/mail/)' 1
-
 #>
