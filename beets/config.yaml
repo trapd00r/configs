@@ -3,12 +3,12 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2021-05-13 10:31:39
-#         mtime  2021-05-17 11:31:26
+#         mtime  2021-05-25
 #   permissions  You are free to use things you may find useful here.
 #                Please improve and share.
 #           git  http://github.com/trapd00r/configs/  (up-to-date)
 #           url  http://japh.se
-#           irc  japh@freenode #vim #perl #beets
+#           irc  japh@irc.libera.chat #vim #perl #beets
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
 #< what does it look like
@@ -74,7 +74,7 @@ verbose: no
 import:
   write: yes
   default_action: apply
-#  duplicate_action: keep
+#  duplicate_action: remove
 #  https://github.com/beetbox/beets/issues/716
 #  https://github.com/beetbox/beets/issues/2537
   duplicate_action: keep
@@ -84,7 +84,7 @@ import:
 #  quiet_fallback: asis # when using the -q flag
   quiet_fallback: skip # when using the -q flag
 
-  #Either yes or no, controlling whether imported directories are recorded
+  # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
   # the -i flag to beet import.
   incremental: yes
@@ -101,7 +101,8 @@ plugins: [ # mosaic
   'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',     'mpdqueue',     'lyrics',
+  'extrafiles', 'edit',     'lyrics',
+#  'mpdqueue',
 ]
 
 bpd:
@@ -126,6 +127,8 @@ extrafiles:
 
 
 rewrite:
+  artist .*weird Al.*: Weird Al Yankovic
+  artist Bob Dylan.*: Bob Dylan
   artist 50 Cent.*: 50 Cent
   artist .*Green Lantern.*: DJ Green Lantern
   artist .ingenting.: Ingenting
@@ -227,10 +230,11 @@ paths:
 
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
     label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
-    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
     albumtype:soundtrack: +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
-#    comp: +VA/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
+#    comp: +VA/$album %if{$hasyear,│$year│}/$padded_tracknr $artist - $title
     singleton: %upper{%left{$artist,1}}/$artist/+tracks/$artist - $title
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
