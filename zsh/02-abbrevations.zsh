@@ -29,7 +29,7 @@ abbreviations=(
   "kk"         "!-5$"
   "kj"         "!-6$"
   "aa"         "/mnt/music8/_artists.a-z/"
-  "bb"         "/mnt/music5/dc++_/"
+  "bb"          "/mnt/music8/+TAGGED/"
 )
 
 magic-abbrev-expand() {
