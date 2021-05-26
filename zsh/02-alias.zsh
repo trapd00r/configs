@@ -30,6 +30,8 @@ alias     cat="$HOME/dev/vimcat/vimcat"
 alias yaourt='trizen'
 
 alias      ls='perl /home/scp1/dev/ls--/ls++' 
+alias     lsl='perl /home/scp1/dev/ls--/ls++' 
+alias     lls='perl /home/scp1/dev/ls--/ls++' 
 alias     lss='perl /home/scp1/dev/ls--/ls++ -Sr'
 alias     lst='perl /home/scp1/dev/ls--/ls++ -tr'
 alias  pacman='pacman --color=auto'
