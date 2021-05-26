@@ -29,8 +29,8 @@ bind   pager k    previous-line
 bind   pager <    previous-line
 bind   pager j    next-line
 bind   pager >    next-line
-bind   pager down next-page
-bind   pager up   previous-page
+#bind   pager down next-page
+#bind   pager up   previous-page
 
 bind   index *   flag-message
 bind   index +   next-entry
@@ -48,6 +48,9 @@ bind   index k   previous-entry
 bind   index t   display-message
 bind   index {   top-page
 bind   index }   bottom-page
+
+bind index u noop
+bind index u sync-mailbox
 
 bind browser y  exit
 #>
