@@ -26,7 +26,8 @@ export JEKYLL_ENV='production'
 ##>
 ##< xdg
 export       XDG_DATA_HOME=${HOME}/var
-export       XDG_MUSIC_DIR=${HOME}/mp3/music8/+TAGGED
+#export       XDG_MUSIC_DIR=${HOME}/mp3/music8/+TAGGED
+export       XDG_MUSIC_DIR=${HOME}/mnt/music8/+TAGGED
 export      XDG_CACHE_HOME=${HOME}/var/cache
 export      XDG_VIDEOS_DIR=${HOME}/vid
 export     XDG_CONFIG_HOME=${HOME}/etc
