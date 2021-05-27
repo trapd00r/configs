@@ -101,8 +101,7 @@ plugins: [ # mosaic
   'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
   'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
   'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',     'lyrics',
-#  'mpdqueue',
+  'extrafiles', 'edit',     'lyrics',       'mpdqueue',
 ]
 
 bpd:
@@ -127,6 +126,7 @@ extrafiles:
 
 
 rewrite:
+  artist 2[pP]ac.*: 2pac
   artist .*weird Al.*: Weird Al Yankovic
   artist Bob Dylan.*: Bob Dylan
   artist 50 Cent.*: 50 Cent
@@ -194,6 +194,9 @@ smartplaylist:
 
     - name: '+decent.m3u'
       query: 'play_count:1..'
+
+    - name: '+wow.m3u'
+      query: 'play_count:5..'
 
     - name: 'psychedelic'
       query: 'genre:psychedelic'
