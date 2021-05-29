@@ -83,8 +83,8 @@ import:
   non_rec_action: ask
   autotag: yes
   move: yes
-#  quiet_fallback: asis # when using the -q flag
-  quiet_fallback: skip # when using the -q flag
+  quiet_fallback: asis # when using the -q flag
+#  quiet_fallback: skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -99,12 +99,20 @@ import:
 #  incremental_skip_later: yes
 #>
 #< plugins
+#plugins: [ # mosaic
+#  'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
+#  'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
+#  'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
+#  'extrafiles', 'edit',     'lyrics',       'mpdqueue',
+#]
+
 plugins: [ # mosaic
-  'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
+  'fetchart',   'discogs',  'fromfilename', 'inline',
   'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
-  'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',     'lyrics',       'mpdqueue',
+  'rewrite',      'duplicates', 'missing',
+  'extrafiles', 'edit',
 ]
+
 
 bpd:
   host: 127.0.0.1
@@ -237,6 +245,9 @@ paths:
 
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
     label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
+    label:whoa.nu: W/Whoa.nu/%title{$artist} - %title{$title}
+    label:Norrköping: S/Sjätte Sinnet/+tracks/%title{$artist} - %title{$title}
+    label:"Masters of Hardcore": M/Masters of Hardcore/%if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$title}
 
     default: %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
