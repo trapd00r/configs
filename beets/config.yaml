@@ -45,9 +45,7 @@ clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
          ]
 
 # files/directories matching one of these patterns are ignored during import
-ignore: [".*", "*~", "System Volume Information",
-#         "_tracks", "+tracks", "_live", "+live",
-        ]
+ignore: [".*", "*~", "System Volume Information"]
 
 replace:
     '[\\]': ''
@@ -62,6 +60,10 @@ replace:
     '^-': ''
 
 format_item: $path
+sort_item: path+
+sort_album: path+
+#sort_album: albumartist+ album+
+#sort_item: artist+ album+ disc+ track+
 sort_case_insensitive: yes
 
 per_disc_numbering: true
@@ -126,6 +128,8 @@ extrafiles:
 
 
 rewrite:
+  artist Grandmaster Flash.*: Grandmaster Flash
+  artist Gms.*: GMS
   artist 2[pP]ac.*: 2pac
   artist .*weird Al.*: Weird Al Yankovic
   artist Bob Dylan.*: Bob Dylan
@@ -233,11 +237,11 @@ paths:
 
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
     label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
-    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist} %if{$hasyear,│${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+    default: %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
     albumtype:soundtrack: +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
-#    comp: +VA/$album %if{$hasyear,│$year│}/$padded_tracknr $artist - $title
     singleton: %upper{%left{$artist,1}}/$artist/+tracks/$artist - $title
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
     albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
@@ -256,6 +260,7 @@ paths:
 item_fields:
   # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
+  first_artist: albumartist.split(", ",1)[0:1][0]
 
 album_fields:
     alb_status: |
