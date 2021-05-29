@@ -1,4 +1,4 @@
-# vim:synmaxcol=300:expandtab:fdm=marker:fdl=0:
+# vim:synmaxcol=500:expandtab:fdm=marker:fdl=0:
 #      ${HOME}/etc/beets/config.yaml
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
@@ -136,6 +136,7 @@ extrafiles:
 
 
 rewrite:
+  artist Organismen: Organism 12
   artist Grandmaster Flash.*: Grandmaster Flash
   artist Gms.*: GMS
   artist 2[pP]ac.*: 2pac
@@ -241,12 +242,13 @@ match:
 # Done in order listed. Default is special and will always go at the end.
 # e.g. If I had an album with the albumtype $soundtrack and $compilation
 # Then the path that matchs first takes precedence.
-paths: 
+paths:
 
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
     label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
     label:whoa.nu: W/Whoa.nu/%title{$artist} - %title{$title}
     label:Norrköping: S/Sjätte Sinnet/+tracks/%title{$artist} - %title{$title}
+    label:Rosamannen: +live/+rosamannen/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
 
     default: %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
@@ -255,6 +257,7 @@ paths:
     albumtype:soundtrack: +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
 
+# https://www.japh.se/2021/05/26/how-to-add-singletons-to-artist-dir-correctly-in-beets.html
     singleton: %upper{%left{$artist,1}}/$artist/+tracks/$base_name
 
     albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
@@ -274,8 +277,8 @@ paths:
 item_fields:
   # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
-#  moh_catalog: catalognum.replace(" ", "")
   first_artist: albumartist.split(", ",1)[0:1][0]
+#  moh_catalog: catalognum.replace(" ", "")
 
 # file basename for singletons import - import as is, minus the extension.
   base_name: |
