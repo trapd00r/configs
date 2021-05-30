@@ -83,8 +83,8 @@ import:
   non_rec_action: ask
   autotag: yes
   move: yes
-#  quiet_fallback: asis # when using the -q flag
-  quiet_fallback: skip # when using the -q flag
+  quiet_fallback: asis # when using the -q flag
+#  quiet_fallback: skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -107,8 +107,8 @@ import:
 #]
 
 plugins: [ # mosaic
-  'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
-  'ftintitle',  'info',     'lastgenre',    'lastimport', 'mpdupdate',
+  'fetchart',   'discogs',  'fromfilename', 'inline',
+  'ftintitle',  'info',     'lastgenre',    'lastimport', 
   'rewrite',      'duplicates', 'missing',
   'extrafiles', 'edit',
 ]
@@ -252,6 +252,9 @@ paths:
     label:Rosamannen: +live/+rosamannen/$base_name
     label:frizon.info: F/Frizon.info/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
+    label:ocremix: +game/+ocremix/$base_name
+    label:amigaremix: +game/+amigaremix/$base_name
+    label:game: +game/+mix/$base_name
 
     default: %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
