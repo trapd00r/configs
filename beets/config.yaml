@@ -107,8 +107,8 @@ import:
 #]
 
 plugins: [ # mosaic
-  'fetchart',   'discogs',  'fromfilename', 'inline',
-  'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
+  'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
+  'ftintitle',  'info',     'lastgenre',    'lastimport', 'mpdupdate',
   'rewrite',      'duplicates', 'missing',
   'extrafiles', 'edit',
 ]
@@ -136,6 +136,7 @@ extrafiles:
 
 
 rewrite:
+  artist T.R: Öris
   artist Organismen: Organism 12
   artist Grandmaster Flash.*: Grandmaster Flash
   artist Gms.*: GMS
@@ -246,9 +247,10 @@ paths:
 
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
     label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
-    label:whoa.nu: W/Whoa.nu/%title{$artist} - %title{$title}
-    label:Norrköping: S/Sjätte Sinnet/+tracks/%title{$artist} - %title{$title}
+    label:whoa.nu: W/Whoa.nu/$base_name
+    label:Norrköping: S/Sjätte Sinnet/+tracks/$base_name
     label:Rosamannen: +live/+rosamannen/$base_name
+    label:frizon.info: F/Frizon.info/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
 
     default: %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
