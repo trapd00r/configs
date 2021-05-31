@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2021-05-13 10:31:39
-#         mtime  2021-05-29 20:16:32
+#         mtime  2021-05-31 16:38:07
 #   permissions  You are free to use things you may find useful here.
 #                Please improve and share.
 #           git  http://github.com/trapd00r/configs/  (up-to-date)
@@ -34,18 +34,14 @@
 #>
 
 #< core options
-# this is where the tagged albums will be copied/moved to
-directory: /mnt/music8/+TAGGED
-library:   ~/var/beets/beets202105.db
+directory:  /mnt/music8/+TAGGED
+library:    ~/var/beets/beets202105.db
 pluginpath: /usr/lib/python3.9/site-packages/beetsplug/
 
 # files matching these patterns are deleted from source after import
 clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
           ".jpg", ".nfo", ".txt", ".log", ".gif",
          ]
-
-# files/directories matching one of these patterns are ignored during import
-ignore: [".*", "*~", "System Volume Information"]
 
 replace:
     '[\\]': ''
@@ -59,44 +55,34 @@ replace:
     '^\s+': ''
     '^-': ''
 
-format_item: $path
-sort_item: path+
-sort_album: path+
-#sort_album: albumartist+ album+
-#sort_item: artist+ album+ disc+ track+
-sort_case_insensitive: yes
+ignore: [".*", "*~", "System Volume Information"]
 
-per_disc_numbering: true
-art_filename: cover # cover.jpg
-threaded: yes
-timeout: 5.0
-verbose: no
+art_filename:          cover # cover.jpg
+format_item:           $path
+per_disc_numbering:    true
+sort_album:            path+
+sort_case_insensitive: yes
+sort_item:             path+
+threaded:              yes
+timeout:               5.0
+verbose:               no
 
 # <importer
 import:
-  write: yes
-  default_action: apply
-#  duplicate_action: remove
-#  https://github.com/beetbox/beets/issues/716
-#  https://github.com/beetbox/beets/issues/2537
+  write:            yes
+  default_action:   apply
+#  remove causes a crash: https://github.com/beetbox/beets/issues/716
   duplicate_action: keep
-  non_rec_action: ask
-  autotag: yes
-  move: yes
-#  quiet_fallback: asis # when using the -q flag
-  quiet_fallback: skip # when using the -q flag
+  non_rec_action:   ask
+  autotag:          yes
+  move:             yes
+#  quiet_fallback:   asis # when using the -q flag
+  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
   # the -i flag to beet import.
-  incremental: yes
-
-  # Either yes or no, controlling whether skipped directories are recorded
-  # in the incremental list. When set to yes, skipped directories will be
-  # recorded, and skipped later. When set to no, skipped directories
-  # won’t be recorded, and beets will try to import them again later.
-  # Defaults to no.
-#  incremental_skip_later: yes
+  incremental:      yes
 #>
 #< plugins
 #plugins: [ # mosaic
@@ -268,7 +254,6 @@ match:
 # e.g. If I had an album with the albumtype $soundtrack and $compilation
 # Then the path that matchs first takes precedence.
 paths:
-
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
     label:8bitpeoples:           8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
     label:whoa.nu:               W/Whoa.nu/$base_name
@@ -281,35 +266,20 @@ paths:
     label:amigaremix:            +game/+amigaremix/$base_name
     label:gamealbums:            +game/$albumartist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
     label:game:                  +game/+tracks/$base_name
-#    label:gamesoundtrack:        +game/+ost/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     label:gamesoundtrack:        +game/+ost/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
     label:radio:                 +radio/%title{$artist}/%title{$album}/%title{$title}
     label:mixtape:               +mixtape/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-
-
     default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-
     albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
-#comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
-    comp: +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
 # https://www.japh.se/2021/05/26/how-to-add-singletons-to-artist-dir-correctly-in-beets.html
-    singleton: %upper{%left{$artist,1}}/$artist/+tracks/$base_name
+    singleton:                   %upper{%left{$artist,1}}/$artist/+tracks/$base_name
 
-    albumtype:other:     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#    albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+# I want bootlegs etc in the same setup as default
+    albumtype:other:             %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 
-# Inline replacements used in path formatting
-#
-# Note: You may need to add a 'u' in-front of text to signify unicode in python 2
-# Unicode is default in python 3 so its not needed
-# TODO:
-# - Note if Reissue/Remaster
-# - Check Beets Padding issue for tracks and multidisc releases https://github.com/beetbox/beets/issues/3352
-# - Borrow ideas from this config https://gist.github.com/RollingStar/86e041338df295afbbf77a9027903068
-# - Split Anime/Game genre soundtracks out of the OST path using genre:game etc
-# - Classic genre which is sorted by composer
-
+#< inline fun!
 item_fields:
   # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
@@ -377,6 +347,7 @@ album_fields:
 
     hasyear: 1 if year > 0 else 0
 #>
+
 #< autotagger
 # To control how tolerant the autotagger is of differences, use the
 # strong_rec_thresh option, which reflects the distance threshold below
@@ -387,19 +358,19 @@ album_fields:
 match:
   strong_rec_thresh: 0.10
   medium_rec_thresh: 0.25
-  ignored: missing_tracks unmatched_tracks
-  ignored_media: ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
-                  'VCD', 'SVCD', 'UMD', 'VHS']
+  ignored:           missing_tracks unmatched_tracks
+  ignored_media:     ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
+                      'VCD', 'SVCD', 'UMD', 'VHS']
 #>
 #< ui
 ui:
   color: yes
   colors:
-    text_success: green
-    text_warning: yellow
-    text_error: red
-    text_highlight: blue
+    text_success:         green
+    text_warning:         yellow
+    text_error:           red
+    text_highlight:       blue
     text_highlight_minor: lightgray
-    action_default: turquoise
-    action: blue
+    action_default:       turquoise
+    action:               blue
 #>
