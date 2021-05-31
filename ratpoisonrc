@@ -185,7 +185,8 @@ rudeness 12
 #< init
 ## start spotify unless it's already started
 #exec pgrep -l spotify || spotify
-exec pgrep -l cantata || cantata
+#exec pgrep -l cantata || cantata
+exec pgrep -l nicotine || nicotine
 #prevscreen
 #exec urxvt -name sid -fg white -bg black
 #>
