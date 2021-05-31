@@ -83,8 +83,8 @@ import:
   non_rec_action: ask
   autotag: yes
   move: yes
-  quiet_fallback: asis # when using the -q flag
-#  quiet_fallback: skip # when using the -q flag
+#  quiet_fallback: asis # when using the -q flag
+  quiet_fallback: skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -106,11 +106,26 @@ import:
 #  'extrafiles', 'edit',     'lyrics',       'mpdqueue',
 #]
 
-plugins: [ # mosaic
-  'fetchart',   'discogs',  'fromfilename', 'inline',
-  'ftintitle',  'info',     'lastgenre',    'lastimport', 
-  'rewrite',      'duplicates', 'missing',
-  'extrafiles', 'edit',
+plugins: [
+  'discogs',
+  'duplicates',
+#  'edit',
+  'extrafiles',
+  'fetchart',
+  'fromfilename',
+  'ftintitle',
+  'info',
+  'inline',
+  'lastgenre',
+  'lastimport',
+#  'lyrics', # takes forever
+  'missing',
+#  'mpdqueue',
+#  'mpdstats',
+#  'mpdupdate',
+  'rewrite',
+#  'smartplaylist', # only run it once in a while
+#  'thumbnails',
 ]
 
 
@@ -136,6 +151,15 @@ extrafiles:
 
 
 rewrite:
+  album Söndagsintervjun: P1 Söndagsintervjun
+  album .*Musikguiden i p3: P3 Musikguiden
+  album Jukeboxen i p4: P4 Jukeboxen
+  album Musikspecial i p4: P4 Musikspecial
+  album .*Sommar i P1: P1 Sommar
+  album .*Sommar och Vinter i P1.*: P1 Sommar
+  albumartist Various Artists: VA
+  artist Whoo Kid: DJ Whoo Kid
+  artist Looptroop.*: Looptroop
   artist T.R: Öris
   artist Organismen: Organism 12
   artist Grandmaster Flash.*: Grandmaster Flash
@@ -246,27 +270,34 @@ match:
 paths:
 
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
-    label:8bitpeoples: 8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
-    label:whoa.nu: W/Whoa.nu/$base_name
-    label:Norrköping: S/Sjätte Sinnet/+tracks/$base_name
-    label:Rosamannen: +live/+rosamannen/$base_name
-    label:frizon.info: F/Frizon.info/$base_name
+    label:8bitpeoples:           8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
+    label:whoa.nu:               W/Whoa.nu/$base_name
+    label:Norrköping:            S/Sjätte Sinnet/+tracks/$base_name
+    label:Rosamannen:            +live/+rosamannen/$base_name
+    label:frizon.info:           F/Frizon.info/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
-    label:ocremix: +game/+ocremix/$base_name
-    label:amigaremix: +game/+amigaremix/$base_name
-    label:game: +game/+mix/$base_name
+    label:ocremix:               +game/+ocremix/$base_name
+    label:overlooked:            +game/+overlookedremix/$base_name
+    label:amigaremix:            +game/+amigaremix/$base_name
+    label:gamealbums:            +game/$albumartist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    label:game:                  +game/+tracks/$base_name
+#    label:gamesoundtrack:        +game/+ost/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
+    label:gamesoundtrack:        +game/+ost/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    label:radio:                 +radio/%title{$artist}/%title{$album}/%title{$title}
+    label:mixtape:               +mixtape/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
-    default: %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#    default: %upper{%left{$albumartist,1}}/%title{$albumartist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#
-    albumtype:soundtrack: +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
-    comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
+
+    default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+    albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
+#comp: V/Various Artists/$album %if{$hasyear,│$year│} [$alb_type$media_type$format]/$padded_tracknr $artist - $title
+    comp: +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
 # https://www.japh.se/2021/05/26/how-to-add-singletons-to-artist-dir-correctly-in-beets.html
     singleton: %upper{%left{$artist,1}}/$artist/+tracks/$base_name
 
-    albumtype:audiobook: Audiobooks/$albumartist/$album%aunique{} %if{$hasyear,($year)} $media_type/%if{$alt_tracks,$track_alt,$track}. $title
-    albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
+    albumtype:other:     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    albumtype:other: +other/%upper{%left{$albumartist_sort,1}}/$albumartist/%if{$hasyear,($year)} $album%aunique{} $alb_type$alb_status$media_type/%if{$alt_tracks,$track_alt,$track}. $title
 
 # Inline replacements used in path formatting
 #
