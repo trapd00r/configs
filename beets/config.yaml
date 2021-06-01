@@ -196,7 +196,6 @@ lastgenre:
   force: no
   source: artist
 
-# featuring in title instead of artist
 ftintitle:
   auto: yes # default
 
@@ -285,8 +284,40 @@ paths:
 item_fields:
   # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
-  first_artist: albumartist.split(", ",1)[0:1][0]
-  moh_catalog: catalognum.replace(" ", "")
+#  moh_catalog: catalognum.replace(" ", "")
+
+# capture first artist as primary artist to avoid directories like this:
+# · B/Britney Spears/
+# · B/Britney Spears feat Madonna/
+# · B/Britney Spears vs Metallica/
+# > https://github.com/beetbox/beets/issues/3176
+#
+# handles:
+# · Artist,
+# · Artist &
+# · Artist feat
+# · Artist feat.
+# · Artist featuring
+# · Artist ft.
+# · Artist vs
+# · Artist vs.
+# · Artist &
+#
+# The idea is to use $first_artist in the beginning of the path format
+# like so:
+#
+# %title{$first_artist}/%title{$albumartist}
+#
+# which will put 'Jennifer Lopez feat. Pitbull' inside the main Jennifer
+# Lopez directory, but still keep the feat. part in the directory name
+# inside it.
+#
+# J/Jennifer Lopez Feat. Pitbull/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
+# -> J/Jennifer Lopez/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
+
+  first_artist: |
+    import re
+    return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
 
 # file basename for singletons import - import as is, minus the extension.
   base_name: |
