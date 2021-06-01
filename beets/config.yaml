@@ -137,47 +137,34 @@ extrafiles:
 
 
 rewrite:
-  album Söndagsintervjun: P1 Söndagsintervjun
-  album .*Musikguiden i p3: P3 Musikguiden
-  album Jukeboxen i p4: P4 Jukeboxen
-  album Musikspecial i p4: P4 Musikspecial
-  album .*Sommar i P1: P1 Sommar
-  album .*Sommar och Vinter i P1.*: P1 Sommar
-  albumartist Various Artists: VA
-  artist 江海迦: Aga
-  artist Whoo Kid: DJ Whoo Kid
-  artist Looptroop.*: Looptroop
-  artist T.R: Öris
-  artist Organismen: Organism 12
-  artist Grandmaster Flash.*: Grandmaster Flash
-  artist Gms.*: GMS
-  artist 2[pP]ac.*: 2pac
-  artist .*weird Al.*: Weird Al Yankovic
-  artist Bob Dylan.*: Bob Dylan
-  artist 50 Cent.*: 50 Cent
-  artist .*Green Lantern.*: DJ Green Lantern
-  artist .ingenting.: Ingenting
-  artist Sin[eé]ad O.Connor.*: Sinéad O'Connor
-  artist .*Suzanne.*Vega: Suzanne Vega
-  artist .*1[23]00 mic.*: 1200 Micrograms
-  artist elin (ruth)? sigvardsson: Elin Sigvardsson
-  artist elin ruth: Elin Sigvardsson
-  artist the game.*: The Game
-  artist ^Game$: The Game
-  artist .*eminem.*: Eminem
-  artist ^VA$: Various Artists
-  artist ^Ken$: Ken Ring
-  artist ^Ken Ring.*: Ken Ring
-  artist Special D: Special D.
-  artist .*Britt?ney.*Spears.*: Britney Spears
-  artist .*Britney.*vs: Britney Spears
-  artist .*Britney.*vs: Britney Spears
-  artist B.Spears: Britney Spears
-  artist Britney-Spears: Britney Spears
-  artist Groove.Coverage.*: Groove Coverage
-  artist Danne W.*: Sjätte Sinnet
-  artist Sjatte Sinnet: Sjätte Sinnet
-  artist Ante Barazza: Sjätte Sinnet
+  album .*Sommar i P1:               P1 Sommar
+  album .*Sommar och Vinter i P1.*:  P1 Sommar
+  album Söndagsintervjun:            P1 Söndagsintervjun
+  album .*Musikguiden i p3:          P3 Musikguiden
+  album Jukeboxen i p4:              P4 Jukeboxen
+  album Musikspecial i p4:           P4 Musikspecial
+  albumartist Various Artists:       VA
+  artist 江海迦:                     Aga
+  artist Whoo Kid:                   DJ Whoo Kid
+  artist Looptroop.*:                Looptroop
+  artist T.R:                        Öris
+  artist Organismen:                 Organism 12
+  artist Gms.*:                      GMS
+  artist (tupac|2[pP]ac).*:          2pac
+  artist .*weird Al.*:               Weird Al Yankovic
+  artist .*Green Lantern.*:          DJ Green Lantern
+  artist .ingenting.:                Ingenting
+  artist Sin[eé]ad O.Connor.*:       Sinéad O'Connor
+  artist .*Suzanne.*Vega:            Suzanne Vega
+  artist .*1[23]00 mic.*:            1200 Micrograms
+  artist elin (ruth)? sigvardsson:   Elin Sigvardsson
+  artist elin ruth:                  Elin Sigvardsson
+  artist ^Game$:                     The Game
+  artist ^Ken$:                      Ken Ring
+  artist Special D:                  Special D.
+  artist Danne W.*:                  Sjätte Sinnet
+  artist Sjatte Sinnet:              Sjätte Sinnet
+  artist Ante Barazza:               Sjätte Sinnet
 
 mpd:
   host: localhost
