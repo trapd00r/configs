@@ -144,6 +144,7 @@ rewrite:
   album .*Sommar i P1: P1 Sommar
   album .*Sommar och Vinter i P1.*: P1 Sommar
   albumartist Various Artists: VA
+  artist 江海迦: Aga
   artist Whoo Kid: DJ Whoo Kid
   artist Looptroop.*: Looptroop
   artist T.R: Öris
@@ -269,6 +270,7 @@ paths:
     label:gamesoundtrack:        +game/+ost/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
     label:radio:                 +radio/%title{$artist}/%title{$album}/%title{$title}
     label:mixtape:               +mixtape/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    label:live:                  %upper{%left{$albumartist,1}}/%title{$first_artist}/+live/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
     default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
     albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
@@ -278,13 +280,13 @@ paths:
 
 # I want bootlegs etc in the same setup as default
     albumtype:other:             %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-
+#>
 #< inline fun!
 item_fields:
   # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
   first_artist: albumartist.split(", ",1)[0:1][0]
-#  moh_catalog: catalognum.replace(" ", "")
+  moh_catalog: catalognum.replace(" ", "")
 
 # file basename for singletons import - import as is, minus the extension.
   base_name: |
@@ -347,7 +349,6 @@ album_fields:
 
     hasyear: 1 if year > 0 else 0
 #>
-
 #< autotagger
 # To control how tolerant the autotagger is of differences, use the
 # strong_rec_thresh option, which reflects the distance threshold below
