@@ -58,6 +58,7 @@ replace:
 ignore: [".*", "*~", "System Volume Information"]
 
 art_filename:          cover # cover.jpg
+#asciify_paths:         yes
 format_item:           $path
 per_disc_numbering:    true
 sort_album:            path+
@@ -93,6 +94,7 @@ import:
 #]
 
 plugins: [
+  'bucket',
   'discogs',
   'duplicates',
 #  'edit',
@@ -111,9 +113,43 @@ plugins: [
 #  'mpdupdate',
   'rewrite',
 #  'smartplaylist', # only run it once in a while
-#  'thumbnails',
 ]
 
+
+bucket:
+  bucket_alpha:
+  - '#-!'
+  - '0-9'
+  - 'A'
+  - 'B'
+  - 'C'
+  - 'D'
+  - 'E'
+  - 'F'
+  - 'G'
+  - 'H'
+  - 'I'
+  - 'J'
+  - 'K'
+  - 'L'
+  - 'M'
+  - 'N'
+  - 'O'
+  - 'P'
+  - 'Q'
+  - 'R'
+  - 'S'
+  - 'T'
+  - 'U'
+  - 'V'
+  - 'W'
+  - 'X'
+  - 'Y'
+  - 'Z'
+  bucket_alpha_regex:
+    '#-!': ^[^0-9a-zA-Z]
+  bucket_year: []
+  extrapolate: no
 
 bpd:
   host: 127.0.0.1
@@ -235,13 +271,11 @@ aunique:
 
 match:
   preferred:
-    media: ['CD', 'Vinyl', 'Digital Media|File']
+    media: ['CD', 'Digital Media|File', 'Vinyl']
 
-# Done in order listed. Default is special and will always go at the end.
-# e.g. If I had an album with the albumtype $soundtrack and $compilation
-# Then the path that matchs first takes precedence.
 paths:
 # https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
+#    mb_trackid::^$:              +unmatched/
     label:8bitpeoples:           8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
     label:whoa.nu:               W/Whoa.nu/$base_name
     label:Norrköping:            S/Sjätte Sinnet/+tracks/$base_name
@@ -256,8 +290,10 @@ paths:
     label:gamesoundtrack:        +game/+ost/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
     label:radio:                 +radio/%title{$artist}/%title{$album}/%title{$title}
     label:mixtape:               +mixtape/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-    label:live:                  %upper{%left{$albumartist,1}}/%title{$first_artist}/+live/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-    default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    label:demo:                  %bucket{$albumartist, alpha}/%title{$first_artist}/+demo/$base_name
+    label:live:                  %bucket{$albumartist, alpha}/%title{$first_artist}/+live/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    default:                     %bucket{$albumartist, alpha}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
     albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
@@ -278,6 +314,7 @@ item_fields:
 # · B/Britney Spears feat Madonna/
 # · B/Britney Spears vs Metallica/
 # > https://github.com/beetbox/beets/issues/3176
+# > https://www.japh.se/2021/06/01/capture-primary-artist-as-a-separate-field-in-beets.html
 #
 # handles:
 # · Artist,
