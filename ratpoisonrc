@@ -31,6 +31,11 @@ alias movedown  exec ratpoison -c 'exchangedown'  -c 'focuslast' -c 'other' -c '
 alias moveup    exec ratpoison -c 'exchangeup'    -c 'focuslast' -c 'other' -c 'focuslast'
 alias moveright exec ratpoison -c 'exchangeright' -c 'focuslast' -c 'other' -c 'focuslast'
 
+alias showroot   exec catpoison -c fdump > ~/tmp/rp-frames; catpoison -c 'select -' -c only
+alias unshowroot exec catpoison -c "frestore `cat ~/tmp/rp-frames`"
+bind odiaeresis   showroot
+bind C-odiaeresis unshowroot
+
 
 #>
 #< catpoison only!
@@ -78,6 +83,9 @@ set              font 'xft:xos4 Terminus:pixelsize=12'
 set          maxundos 20
 #>
 #< window management
+unmanage mullvad-gui
+unmanage mullvad-vpn
+unmanage mullvad
 unmanage tint2
 unmanage dzen2
 unmanage xmobar
