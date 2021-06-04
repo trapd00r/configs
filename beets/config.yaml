@@ -147,7 +147,7 @@ bucket:
   - 'Y'
   - 'Z'
   bucket_alpha_regex:
-    '#-!': ^[^0-9a-zA-Z]
+    '#-!': ^[^0-9a-zA-ZåÅäÄöÖ]
   bucket_year: []
   extrapolate: no
 
