@@ -76,6 +76,7 @@ or directly to L<m@japh.se>
   Magnus Woldrich
   CPAN ID: WOLDRICH
   m@japh.se
+  japh@irc.libera.chat #perl
   L<~/|http://japh.se>
   L<git|http://github.com/trapd00r>
 
@@ -85,7 +86,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2019- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
+Copyright 2021- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
 
 =head1 LICENSE
 
