@@ -25,7 +25,8 @@ xsetroot -solid '#292929'
 xscreensaver -no-splash &
 
 # start mpd unless it's already started
-[ ! -s ~/var/mpd/pid ] && (mpd ~/etc/mpd.conf && mpdas && beets mpdstats)&
+#[ ! -s ~/var/mpd/pid ] && (mpd ~/etc/mpd.conf && mpdas && beets mpdstats)&
+[ ! -s ~/var/mpd/pid ] && (mpd ~/etc/mpd.conf && mpdas)&
 #exec pgrep -l cantata || cantata
 
 /usr/lib/kdeconnectd &
