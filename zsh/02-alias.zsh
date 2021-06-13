@@ -114,7 +114,7 @@ alias logstalgia='logstalgia  japh_selected_log -s 5 --output-ppm-stream - |  ff
 alias    ncmpcpp="ncmpcpp -b $HOME/etc/ncmpcpp/keys"
 #>
 #< audio
-alias    love='pimpd2 --love; mpd_cp_native /mnt/music8/_fav/_2021/'
+#alias    love='pimpd2 --love; mpd_cp_native /mnt/music8/_fav/_2021/'
 alias  unlove='pimpd2 --unlove'
 alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
