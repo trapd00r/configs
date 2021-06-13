@@ -98,7 +98,7 @@ plugins: [
   'discogs',
   'duplicates',
 #  'edit',
-  'extrafiles',
+#  'extrafiles',
   'fetchart',
   'fromfilename',
   'ftintitle',
@@ -107,7 +107,7 @@ plugins: [
   'lastgenre',
   'lastimport',
 #  'lyrics', # takes forever
-  'missing',
+#  'missing',
 #  'mpdqueue',
 #  'mpdstats',
 #  'mpdupdate',
@@ -179,7 +179,7 @@ rewrite:
   album .*Musikguiden i p3:          P3 Musikguiden
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
-  albumartist Various Artists:       VA
+#  albumartist Various Artists:       VA
   artist 江海迦:                     Aga
   artist Whoo Kid:                   DJ Whoo Kid
   artist Looptroop.*:                Looptroop
@@ -247,6 +247,8 @@ smartplaylist:
 
     - name: 'psychedelic'
       query: 'genre:psychedelic'
+    - name: 'loved.m3u'
+      query: 'loved:1'
 
 musicbrainz:
   searchlimit: 10
@@ -274,27 +276,37 @@ match:
     media: ['CD', 'Digital Media|File', 'Vinyl']
 
 paths:
-# https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
 #    mb_trackid::^$:              +unmatched/
-    label:8bitpeoples:           8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
+# https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
+#    label:8bitpeoples:           8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
+    tag:8bitpeoples:             0-9/8bitpeoples/%if{$hasyear,${year}} $first_artist - %title{$album}/${padded_tracknr} %title{$title}
     label:whoa.nu:               W/Whoa.nu/$base_name
+    label:rap_swe:               +swe_hiphop/$base_name
+    label:randombastards:        R/Randombastards/$base_name
     label:Norrköping:            S/Sjätte Sinnet/+tracks/$base_name
     label:Rosamannen:            +live/+rosamannen/$base_name
+    tag:Rosamannen:              +live/+rosamannen/$base_name
     label:frizon.info:           F/Frizon.info/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
+    label:gamesoundtrack:        +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
     label:ocremix:               +game/+ocremix/$base_name
-    label:overlooked:            +game/+overlookedremix/$base_name
+    tag:overlooked:              +game/+overlookedremix/$base_name
     label:amigaremix:            +game/+amigaremix/$base_name
-    label:gamealbums:            +game/$albumartist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+#    tag:gamealbums:            +game/$first_artist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    tag:gamealbums:            +game/%title{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+#    label:gamealbums:            +game/$first_artist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
     label:game:                  +game/+tracks/$base_name
-    label:gamesoundtrack:        +game/+ost/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-    label:radio:                 +radio/%title{$artist}/%title{$album}/%title{$title}
-    label:mixtape:               +mixtape/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-    label:demo:                  %bucket{$albumartist, alpha}/%title{$first_artist}/+demo/$base_name
-    label:live:                  %bucket{$albumartist, alpha}/%title{$first_artist}/+live/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    tag:sr:                      +radio/Sveriges Radio/%title{$album}/%title{$title}
+#    label:radio:                 +radio/%title{$first_artist}/%title{$album}/%title{$title}
+    label:demo:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+demo/$base_name
+    label:live:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+live/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    label:test:                  +test/%title{$artist}/%title{$album}/%title{$title}
+#    albumtype:mixtape:           +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    tag:mixtape:                 +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+#    albumtype:mixtape:           +mixtape/$mixtape_album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 #    default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album/${padded_tracknr} $artist - %title{$title}
     default:                     %bucket{$albumartist, alpha}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-    albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album%aunique{} [$alb_type$media_type$format]/${padded_tracknr} $artist - %title{$title}
     comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
 # https://www.japh.se/2021/05/26/how-to-add-singletons-to-artist-dir-correctly-in-beets.html
@@ -305,9 +317,9 @@ paths:
 #>
 #< inline fun!
 item_fields:
-  # pad track number with zero if < 10
+# pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
-#  moh_catalog: catalognum.replace(" ", "")
+  moh_catalog: catalognum.replace(" ", "")
 
 # capture first artist as primary artist to avoid directories like this:
 # · B/Britney Spears/
@@ -339,6 +351,7 @@ item_fields:
 # J/Jennifer Lopez Feat. Pitbull/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
 # -> J/Jennifer Lopez/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
 
+
   first_artist: |
     import re
     return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
@@ -350,59 +363,64 @@ item_fields:
     return os.path.splitext(base)[0]
 
 album_fields:
-    alb_status: |
-        # MB returns 4 values describing how "offical" a release is, they are:
-        # Official, Promotional, Bootleg, and Pseudo-Release
-        # We only note the middle two.
-        # https://musicbrainz.org/doc/Release#Status
-        if 'Promo' in albumstatus:
-            return 'Promo'
-        elif 'Bootleg' in albumstatus:
-            return 'Bootleg'
-        else:
-            return None
-    # Check if https://github.com/beetbox/beets/issues/2200 affects below
-    alb_type: |
-        alb_types = ""
-        albumtypes_list = {
-            'ep': 'EP, ',
-            'single': 'Single, ',
-            'live': 'Live, ',
-            'remix': 'Remix, ',
-            'dj-mix': 'DJ-mix, ',
-            'mixtape/street': 'Mixtape, ',
-            'interview': 'Interview, ',
-        }
-        for key, value in albumtypes_list.items():
-            if albumtype == key:
-                alb_types += str(value)
-        if alb_types is not None:
-            return alb_types
-        else:
-            return None
+  mixtape_album: |
+    import re
+    album_fixed = album
+    return re.sub(r"G.unit Radio,?\s+(Pt|Part)[.]?\s*(.*)", r"G-Unit Radio \2", album_fixed, flags=re.IGNORECASE)
 
-    media_type: |
-        # https://musicbrainz.org/doc/Release/Format
-        # Lets Merge the variations of the same medium into the main medium name (Opinonated)
-        media_list = {
-            '12" Vinyl': 'VINYL, ',
-            '10" Vinyl': 'VINYL, ',
-            '7" Vinyl': 'VINYL, ',
-            'Cassette': 'CASSETTE, ',
-            'Digital Media': 'WEB, ',
-            'CD': 'CD, ',
-            'File': 'WEB, ',
-        }
-        # Lets omit these instead of converging them under a similar label like above (Opinonated)
-        media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'SHM-CD', 'HQCD', '']
-        if items[0].media in media_list:
-            return str(media_list[items[0].media])
-        elif items[0].media in media_types_to_omit:
-            return None
-        else:
-            return str(items[0].media)
+  alb_status: |
+    # MB returns 4 values describing how "offical" a release is, they are:
+    # Official, Promotional, Bootleg, and Pseudo-Release
+    # We only note the middle two.
+    # https://musicbrainz.org/doc/Release#Status
+    if 'Promo' in albumstatus:
+      return 'Promo'
+    elif 'Bootleg' in albumstatus:
+      return 'Bootleg'
+    else:
+      return None
+  # Check if https://github.com/beetbox/beets/issues/2200 affects below
+  alb_type: |
+    alb_types = ""
+    albumtypes_list = {
+      'ep': 'EP, ',
+      'single': 'Single, ',
+      'live': 'Live, ',
+      'remix': 'Remix, ',
+      'dj-mix': 'DJ-mix, ',
+      'mixtape/street': 'Mixtape, ',
+      'interview': 'Interview, ',
+    }
+    for key, value in albumtypes_list.items():
+      if albumtype == key:
+        alb_types += str(value)
+      if alb_types is not None:
+        return alb_types
+      else:
+        return None
 
-    hasyear: 1 if year > 0 else 0
+  media_type: |
+      # https://musicbrainz.org/doc/Release/Format
+      # Lets Merge the variations of the same medium into the main medium name (Opinonated)
+      media_list = {
+       '12" Vinyl': 'VINYL, ',
+       '10" Vinyl': 'VINYL, ',
+       '7" Vinyl': 'VINYL, ',
+       'Cassette': 'CASSETTE, ',
+       'Digital Media': 'WEB, ',
+       'CD': 'CD, ',
+       'File': 'WEB, ',
+      }
+      # Lets omit these instead of converging them under a similar label like above (Opinonated)
+      media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'SHM-CD', 'HQCD', '']
+      if items[0].media in media_list:
+        return str(media_list[items[0].media])
+      elif items[0].media in media_types_to_omit:
+        return None
+      else:
+        return str(items[0].media)
+
+  hasyear: 1 if year > 0 else 0
 #>
 #< autotagger
 # To control how tolerant the autotagger is of differences, use the
