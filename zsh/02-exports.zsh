@@ -20,22 +20,24 @@
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export TZ="Europe/Stockholm"
 export JEKYLL_ENV='production'
+export MULLVAD_USE_GTK=yes
 ##< LD_PRELOAD
 ## https://github.com/trapd00r/stderred
-#[[ -f ${HOME}/lib/stderred.so ]] && export LD_PRELOAD=${HOME}/lib/stderred.so:${LD_PRELOAD}
+[[ -f ${HOME}/dev/stderred/lib64/stderred.so ]] \
+  && export LD_PRELOAD=${HOME}/dev/stderred/lib64/stderred.so:${LD_PRELOAD}
 ##>
 ##< xdg
 export       XDG_DATA_HOME=${HOME}/var
-#export       XDG_MUSIC_DIR=${HOME}/mp3/music8/+TAGGED
-export       XDG_MUSIC_DIR=${HOME}/mnt/music8/+TAGGED
+export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
 export      XDG_CACHE_HOME=${HOME}/var/cache
-export      XDG_VIDEOS_DIR=${HOME}/vid
+export      XDG_VIDEOS_DIR=${HOME}/mnt/mvids2
 export     XDG_CONFIG_HOME=${HOME}/etc
 export     XDG_DESKTOP_DIR=${HOME}/tmp
 export    XDG_DOWNLOAD_DIR=${HOME}/dl
 export    XDG_PICTURES_DIR=${HOME}/img
 export   XDG_DOCUMENTS_DIR=${HOME}/usr/share/doc
 export   XDG_TEMPLATES_DIR=${HOME}/tmp
+export   XDG_DOCUMENTS_DIR=${HOME}/doc
 export XDG_PUBLICSHARE_DIR=${HOME}/usr/share
 #>
 #< various applications
@@ -118,13 +120,14 @@ export NCURSES_NO_MAGIC_COOKIES=1
 #< fonts
 #export FONTCONFIG_PATH=''
 #export FC_DEBUG=1
-export    FONT='-windows-montecarlo-medium-r-normal--0-0-72-72-c-0-microsoft-cp1252'
-export  FONT_B='-windows-montecarlo-bold-r-normal--0-0-72-72-c-0-microsoft-cp1252'
+export    FONT='-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252'
+export  FONT_B='-windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252'
 export  FONT_I='-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1'
 #>
 #< mail
-export      MAIL=${HOME}/mail/personal/INBOX
-export   MAILDIR=${HOME}/mail/personal/INBOX
+export      MAIL=${HOME}/mail/gmail/INBOX
+export   MAILDIR=${HOME}/mail/gmail/INBOX
+
 export  SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
 export DELIVERED=yes
 #>
@@ -185,7 +188,7 @@ export  DMENU_SELECT_FG='#1c78ef'
 export  DZEN_ALIGNMENT='c'
 export         DZEN_BG='#1c1c1c'
 export         DZEN_FG='#ffffff'
-export       DZEN_FONT=${FONT}
+export       DZEN_FONT='-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252'
 export      DZEN_WIDTH=1600
 export      DZEN_X_POS=0
 export      DZEN_Y_POS=900
