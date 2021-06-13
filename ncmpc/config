@@ -86,7 +86,8 @@ scroll = no
 
 ## list-format
 ## The format used to display songs in the main window.
-list-format = "%name%|[[%artist%|%performer%|%composer%]][ │ %album% - ][%title%|%shortfile%]"
+#list-format = "%album%/%title%]"
+#list-format = "%name%|[[%artist%|%performer%|%composer%]][ │ %album% - ][%title%|%shortfile%]"
 
 ## The format used to display songs in the search window.
 #search-format = "%name%|[[%artist%|%performer%|%composer%] - ][%title%|%shortfile%]"
