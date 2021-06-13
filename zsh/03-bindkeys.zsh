@@ -4,7 +4,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <magnus.woldrich@gmail.com>
 #         btime  2009-04-24
-#         mtime  2016-09-05 15:44:52
+#         mtime  2021-06-13 15:04:00
 #   permissions  You are free to use things you may find useful here.
 #                Would my tweaks happen to give you a raise or fetch you a
 #                girlfriend, it goes without saying I'm counting on you
@@ -196,6 +196,15 @@ bindkey -M vicmd  "Y"     vi-yank-whole-line
 #< viins
 #bindkey -s -M viins "^T"  "\\\top\n"
 bindkey -M viins "^K" up-line-or-history
+# remove everything up to the last pipe so I can pipe the previous command to
+# something new
+_up_line_remove_pipe() {
+  [[ -z $BUFFER ]] && zle up-history;
+  BUFFER=${BUFFER%|*}\|\ ;CURSOR=$#BUFFER
+}
+zle -N _up_line_remove_pipe
+bindkey -M viins '^o' _up_line_remove_pipe
+bindkey -M viins '^K' up-line-or-history
 bindkey -M viins "^J" down-line-or-history
 
 bindkey -M viins '^G' xterm-set-bg
