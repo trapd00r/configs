@@ -60,7 +60,7 @@ ignore: [".*", "*~", "System Volume Information"]
 art_filename:          cover # cover.jpg
 #asciify_paths:         yes
 format_item:           $path
-per_disc_numbering:    true
+per_disc_numbering:    false
 sort_album:            path+
 sort_case_insensitive: yes
 sort_item:             path+
@@ -180,6 +180,7 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 #  albumartist Various Artists:       VA
+  artist Magnus Rytterstam.*:        Magnus Rytterstam
   artist 江海迦:                     Aga
   artist Whoo Kid:                   DJ Whoo Kid
   artist Looptroop.*:                Looptroop
