@@ -3,6 +3,7 @@
 # $XDG_CONFIG_HOME/xinitrc
 # host: sid 2021-03-21
 
+xset         +fp      /usr/share/fonts/jmk
 xrdb         -merge   $XDG_CONFIG_HOME/Xresources
 xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
 setxkbmap se -variant nodeadkeys
