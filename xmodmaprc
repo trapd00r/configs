@@ -1,4 +1,7 @@
 ! vim: ft=xmodmap:
+!
+! │
+keycode 38 = a A a A U2502 U2502 
 !clear   Mod4
 add     Control = Super_L Super_R
 !remove  Shift   = Shift_L
@@ -6,24 +9,21 @@ add     Control = Super_L Super_R
 add     Control = Control_L
 clear   Lock
 
-remove      Lock = Caps_Lock
+!remove      Lock = Caps_Lock
 !keysym    Escape = Caps_Lock
-keysym Caps_Lock = Escape
+!keysym Caps_Lock = Escape
 !add         Lock = Caps_Lock
 
 !keycode 0x42    = Escape
 keycode 0x30    = apostrophe
 keycode 0x22    = slash
 
-! │
-keycode 38 = a A a A U2502 U2502 
-
 !keycode   8 = Mode_switch NoSymbol Mode_switch
 !keycode   9 = Escape NoSymbol Escape
 !keycode  10 = exclam 1 exclam 1 asterisk apostrophe asterisk
 !keycode  11 = apostrophe 2 apostrophe 2 quotedbl apostrophe quotedbl
-keycode  12 = numbersign 3 numbersign U26a1 U26a1  U26a1 U26a1
-keycode  13 = dollar     4 dollar     U238e U238e  U238e U238e
+!keycode  12 = numbersign 3 numbersign U26a1 U26a1  U26a1 U26a1
+!keycode  13 = dollar     4 dollar     U238e U238e  U238e U238e
 !keycode  14 = percent 5 U2648 EuroSign cent EuroSign
 !keycode  15 = ampersand 6 ampersand 6 yen NoSymbol yen
 !keycode  16 = slash 7 slash 7 braceleft NoSymbol braceleft
