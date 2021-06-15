@@ -17,6 +17,7 @@
 ###>
 
 
+alias lltag="lltag --config $XDG_CONFIG_HOME/lltag.conf"
 alias plexamp='Plexamp.appimage --no-sandbox'
 alias evernote='tusk'
 #< basics
@@ -89,6 +90,7 @@ alias     t='builtin cd $HOME/tmp'
 #alias     t='mkdir -p /dev/shm/⚑; builtin cd /dev/shm/⚑'
 #>
 #< ssh hosts
+# https://github.com/trapd00r/utils/blob/master/ssh
 if [[ $UID != 0 ]]
 then
   if [ -f "$HOME/.ssh/config" ]
@@ -96,7 +98,7 @@ then
     for host in $(
       perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
       ); do
-      alias $host="ssh $host '$@'"
+      alias $host="ssh $host $@"
     done
   fi
 fi
