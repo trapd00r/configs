@@ -376,6 +376,9 @@
    <value name="ShowTitleInfo">1</value>
    <value name="WindowPosX">1081</value>
    <value name="WindowPosY">1</value>
+   <value name="StartCount">1</value>
+   <value name="ShowTips">0</value>
+   <value name="NextTip">1</value>
   </section>
   <section name="Processing">
    <value name="ProcessingComponents"/>
@@ -395,7 +398,7 @@
   </section>
   <section name="Joblist">
    <value name="Fields">&lt;artist&gt;,&lt;title&gt;,&lt;track&gt;,&lt;time&gt;,&lt;bytes&gt;,&lt;albumartist&gt;</value>
-   <value name="FieldSizes">120,903,50,80,80,120</value>
+   <value name="FieldSizes">120,292,50,80,80,120</value>
   </section>
   <section name="Ripper">
    <value name="ActiveDrive">0</value>
@@ -404,8 +407,8 @@
    <value name="RippingSpeedDrive0">0</value>
    <value name="SpinUpTimeDrive0">-5</value>
    <value name="AutoReadContents">1</value>
-   <value name="AutoRip">0</value>
-   <value name="EjectAfterRipping">0</value>
+   <value name="AutoRip">1</value>
+   <value name="EjectAfterRipping">1</value>
    <value name="ReadCDText">1</value>
    <value name="ReadISRC">0</value>
    <value name="CDParanoia">0</value>
@@ -663,7 +666,7 @@
    <value name="Additional arguments"/>
   </section>
   <section name="Notifier">
-   <value name="EnableNotifications">0</value>
+   <value name="EnableNotifications">1</value>
    <value name="PlaySound">1</value>
    <value name="DisplayMessage">0</value>
    <value name="MinimumDuration">0</value>
@@ -688,6 +691,9 @@
    <value name="CDDBManageSubmitsSizeY">337</value>
    <value name="CDDBManageQueriesSizeX">496</value>
    <value name="CDDBManageQueriesSizeY">227</value>
+  </section>
+  <section name="Donate">
+   <value name="StartCount">1</value>
   </section>
  </configuration>
 </ConfigFile>
