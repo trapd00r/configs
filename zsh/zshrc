@@ -24,7 +24,8 @@
 #FIXME
 #~/dev/utils/font-10-anonymous-it
 #~/dev/utils/font-12-terminus
-~/dev/utils/font-12-anonymous
+#~/dev/utils/font-12-anonymous
+~/dev/utils/font-monte
 
 fpath=($fpath ~/etc/zsh/functions/)
 # load all functions in fpath that has the executable bit set; makes it easy to
