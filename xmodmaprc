@@ -15,8 +15,8 @@ clear   Lock
 !add         Lock = Caps_Lock
 
 !keycode 0x42    = Escape
-keycode 0x30    = apostrophe
-keycode 0x22    = slash
+!keycode 0x30    = apostrophe
+!keycode 0x22    = slash
 
 !keycode   8 = Mode_switch NoSymbol Mode_switch
 !keycode   9 = Escape NoSymbol Escape
