@@ -16,6 +16,8 @@
 ###
 ###>
 
+export GIT_SSH="/bin/ssh"
+
 # qbittorrent ui issues
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export TZ="Europe/Stockholm"
@@ -76,8 +78,6 @@ export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
 export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5
 #export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
 export PERLBREW_ROOT=${HOME}/usr/share/perl5
-# add . back to @INC
-export PERL_USE_UNSAFE_INC=1
 export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
 #>
 #< vifm
@@ -85,6 +85,10 @@ export     VIFM=${XDG_CONFIG_HOME}/vifm
 export MYVIFMRC=${XDG_CONFIG_HOME}/vifm/vifmrc
 #>
 #< perl
+# add . back to @INC
+export             PERL_UNICODE=S
+export            PERL_HACK_LIB=$HOME/dev/PERL_HACK_LIB
+export      PERL_USE_UNSAFE_INC=1
 export           PERL_CPANM_OPT='-nql~/ --reinstall --prompt --auto-cleanup 365 --mirror-only'
 export      PERL_MM_USE_DEFAULT=0
 export  HARNESS_SUMMARY_COL_SUC=green
@@ -237,7 +241,6 @@ export GITHUB_USER='trapd00r'
 export ACCESS_LOG="$HOME/pi/var/log/access.log"
 export FLEXGET_LOG="$HOME/flexget.log"
 export RELEASE_TESTING=1
-export PERL_HACK_LIB=$HOME/dev/PERL_HACK_LIB
 export COLORFGBG='white:black'
 export TEXT_VIMCOLOR_ANSI='Normal=225;Boolean=135;Character=143;Number=33;String=179;Conditional=196;Constant=106;Cursor=150;Debug=225;Define=81;Delimiter=241;DiffChange=181;DiffDelete=162;Directory=118;Error=219;ErrorMsg=199;Exception=118;Float=135;FoldColumn=67;Folded=240;Function=118;Identifier=149;Ignore=244;IncSearch=193;Keyword=111;Label=229;Macro=193;MatchParen=196;ModeMsg=215;MoreMsg=215;Operator=148;Pmenu=137;PmenuSel=196;PmenuSbar=000;PmenuThumb=137;PreCondit=118;PreProc=218;Question=81;Repeat=161;Search=234;SignColumn=118;SpecialChar=161;SpecialComment=245;Special=81;SpecialKey=245;SpellBad=196;SpellCap=094;SpellRare=096;SpellLocal=124;Statement=172;StatusLine=234;StatusLineNC=234;StorageClass=208;Structure=81;Tag=161;Title=71;Todo=160;Typedef=81;Type=166;Underlined=106;VertSplit=244;WarningMsg=21;WildMenu=81;Comment=137;CursorLineNr=197;LineNr=241;NonText=233;TabLine=100;TabLineFill=233;TabLineSel=220;'
 export PAUSE_ID=WOLDRICH
