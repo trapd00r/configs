@@ -6,12 +6,12 @@
 xset         +fp      /usr/share/fonts/jmk
 xrdb         -merge   $XDG_CONFIG_HOME/Xresources
 xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
+xmodmap               ~/etc/xmodmaprc
 setxkbmap se -variant nodeadkeys
 setxkbmap    -option  terminate:ctrl_alt_bksp
 
 # capslock -> esc
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-xmodmap ~/etc/xmodmaprc
 
 # [][ ][] monitor setup
 xrandr --output HDMI-0 --rotate left  --right-of DP-4 \
