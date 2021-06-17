@@ -352,10 +352,10 @@
    <value name="EncoderOutDir">/mnt/music8/KNARKMACKA/</value>
    <value name="LastFilePattern5"/>
    <value name="LastFilePattern4"/>
-   <value name="LastFilePattern3"/>
-   <value name="LastFilePattern2">&lt;albumartist&gt; - &lt;album&gt;/&lt;track&gt; - &lt;artist&gt; - &lt;title&gt;</value>
-   <value name="LastFilePattern1">&lt;albumartist&gt; │&lt;year&gt;│&lt;album&gt;/&lt;track&gt; &lt;title&gt;</value>
-   <value name="EncoderFilenamePattern">&lt;albumartist&gt; │&lt;year&gt;│&lt;album&gt;/&lt;track&gt; &lt;title&gt;</value>
+   <value name="LastFilePattern3">&lt;albumartist&gt; - &lt;album&gt;/&lt;track&gt; - &lt;artist&gt; - &lt;title&gt;</value>
+   <value name="LastFilePattern2">&lt;albumartist&gt; │&lt;year&gt;│&lt;album&gt;/&lt;track&gt; &lt;title&gt;</value>
+   <value name="LastFilePattern1">&lt;albumartist&gt; │&lt;year&gt;│ &lt;album&gt;/&lt;track&gt; &lt;title&gt;</value>
+   <value name="EncoderFilenamePattern">&lt;albumartist&gt; │&lt;year&gt;│ &lt;album&gt;/&lt;track&gt; &lt;title&gt;</value>
    <value name="EncodeToSingleFile">0</value>
    <value name="EncodeOnTheFly">1</value>
    <value name="KeepWaveFiles">0</value>
@@ -369,11 +369,13 @@
    <value name="FilenamesKeepTimeStamps">0</value>
    <value name="Language">internal</value>
    <value name="ShowJobsTab">0</value>
-   <value name="WindowSizeX">701</value>
+   <value name="WindowSizeX">1399</value>
    <value name="WindowSizeY">807</value>
    <value name="WindowMaximized">0</value>
    <value name="NotificationAvailable">1</value>
    <value name="ShowTitleInfo">1</value>
+   <value name="WindowPosX">1081</value>
+   <value name="WindowPosY">1</value>
   </section>
   <section name="Processing">
    <value name="ProcessingComponents"/>
@@ -393,7 +395,7 @@
   </section>
   <section name="Joblist">
    <value name="Fields">&lt;artist&gt;,&lt;title&gt;,&lt;track&gt;,&lt;time&gt;,&lt;bytes&gt;,&lt;albumartist&gt;</value>
-   <value name="FieldSizes">120,1003,50,80,100</value>
+   <value name="FieldSizes">120,903,50,80,80,120</value>
   </section>
   <section name="Ripper">
    <value name="ActiveDrive">0</value>
@@ -421,6 +423,7 @@
    <value name="eMail">cddb@freac.org</value>
    <value name="Mode">0</value>
    <value name="HTTPPort">80</value>
+   <value name="DisplayNotFoundNote">1</value>
   </section>
   <section name="Playlist">
    <value name="CreatePlaylist">0</value>
@@ -677,6 +680,14 @@
    <value name="SaveConversionLogsWithFiles">0</value>
    <value name="SaveRippingLogsOnly">1</value>
    <value name="ConversionLogPattern">&lt;albumartist&gt; - &lt;album&gt;/&lt;albumartist&gt; - &lt;album&gt;</value>
+  </section>
+  <section name="Dialogs">
+   <value name="CDDBMultiMatchSizeX">344</value>
+   <value name="CDDBMultiMatchSizeY">273</value>
+   <value name="CDDBManageSubmitsSizeX">556</value>
+   <value name="CDDBManageSubmitsSizeY">337</value>
+   <value name="CDDBManageQueriesSizeX">496</value>
+   <value name="CDDBManageQueriesSizeY">227</value>
   </section>
  </configuration>
 </ConfigFile>
