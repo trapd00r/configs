@@ -70,6 +70,7 @@ verbose:               no
 
 # <importer
 import:
+  languages:        en
   write:            yes
   default_action:   apply
 #  remove causes a crash: https://github.com/beetbox/beets/issues/716
@@ -110,7 +111,7 @@ plugins: [
 #  'missing',
 #  'mpdqueue',
 #  'mpdstats',
-#  'mpdupdate',
+  'mpdupdate',
   'rewrite',
 #  'smartplaylist', # only run it once in a while
 ]
@@ -180,6 +181,7 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 #  albumartist Various Artists:       VA
+  artist Fronda.*:                   Fronda
   artist Magnus Rytterstam.*:        Magnus Rytterstam
   artist 江海迦:                     Aga
   artist Whoo Kid:                   DJ Whoo Kid
@@ -285,8 +287,8 @@ paths:
     label:rap_swe:               +swe_hiphop/$base_name
     label:randombastards:        R/Randombastards/$base_name
     label:Norrköping:            S/Sjätte Sinnet/+tracks/$base_name
-    label:Rosamannen:            +live/+rosamannen/$base_name
-    tag:Rosamannen:              +live/+rosamannen/$base_name
+    tag:rosamannen:              +live/$artist - $album/$base_name
+#    tag:Rosamannen:              +live/+rosamannen/$base_name
     label:frizon.info:           F/Frizon.info/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
     label:gamesoundtrack:        +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
@@ -311,7 +313,7 @@ paths:
     comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
 # https://www.japh.se/2021/05/26/how-to-add-singletons-to-artist-dir-correctly-in-beets.html
-    singleton:                   %upper{%left{$artist,1}}/$artist/+tracks/$base_name
+    singleton:                   %upper{%left{$artist,1}}/%title{$first_artist_singleton}/+tracks/$base_name
 
 # I want bootlegs etc in the same setup as default
     albumtype:other:             %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
@@ -356,6 +358,10 @@ item_fields:
   first_artist: |
     import re
     return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
+
+  first_artist_singleton: |
+    import re
+    return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
 
 # file basename for singletons import - import as is, minus the extension.
   base_name: |
