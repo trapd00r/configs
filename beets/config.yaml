@@ -97,7 +97,7 @@ import:
 plugins: [
   'bucket',
   'discogs',
-  'duplicates',
+#  'duplicates',
 #  'edit',
 #  'extrafiles',
   'fetchart',
@@ -111,7 +111,7 @@ plugins: [
 #  'missing',
 #  'mpdqueue',
 #  'mpdstats',
-  'mpdupdate',
+#  'mpdupdate',
   'rewrite',
 #  'smartplaylist', # only run it once in a while
 ]
@@ -181,6 +181,10 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 #  albumartist Various Artists:       VA
+  artist DPZ:                        Dead Prez
+  artist Snoop Dogg.*:               Snoop Dogg
+  artist Pst.q:                      Pst-q
+  artist 10,000 Maniacs:             10000 Maniacs
   artist Fronda.*:                   Fronda
   artist Magnus Rytterstam.*:        Magnus Rytterstam
   artist 江海迦:                     Aga
@@ -188,6 +192,7 @@ rewrite:
   artist Looptroop.*:                Looptroop
   artist T.R:                        Öris
   artist Organismen:                 Organism 12
+  artist Retarderat Eleverade:       Organism 12
   artist Gms.*:                      GMS
   artist (tupac|2[pP]ac).*:          2pac
   artist .*weird Al.*:               Weird Al Yankovic
@@ -280,43 +285,52 @@ match:
 
 paths:
 #    mb_trackid::^$:              +unmatched/
-# https://www.japh.se/2021/05/23/custom-beet-path-rules-for-record-labels.html
-#    label:8bitpeoples:           8/8bitpeoples/%if{$hasyear,${year}} %title{$albumartist} - %title{$album}/${padded_tracknr} %title{$title}
-    tag:8bitpeoples:             0-9/8bitpeoples/%if{$hasyear,${year}} $first_artist - %title{$album}/${padded_tracknr} %title{$title}
-    label:whoa.nu:               W/Whoa.nu/$base_name
-    label:rap_swe:               +swe_hiphop/$base_name
-    label:randombastards:        R/Randombastards/$base_name
-    label:Norrköping:            S/Sjätte Sinnet/+tracks/$base_name
-    tag:rosamannen:              +live/$artist - $album/$base_name
-#    tag:Rosamannen:              +live/+rosamannen/$base_name
-    label:frizon.info:           F/Frizon.info/$base_name
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
-    label:gamesoundtrack:        +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-    label:ocremix:               +game/+ocremix/$base_name
+
+    # ./The Gameboy Singles 2002 [Nullsleep] (2002)
+    tag:8bitpeoples:  +game/+8bitpeoples/%title{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+
+    tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
+    tag:frizon:                  +hiphop-swe/frizon.info/$base_name
+    tag:randombastards:          +hiphop-swe/randombastards/$base_name
+    tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
+    tag:demo:                    %bucket{$first_artist, alpha}/%title{$first_artist}/+demo/$base_name
+
+    tag:ocremix:                 +game/+ocremix/$base_name
     tag:overlooked:              +game/+overlookedremix/$base_name
-    label:amigaremix:            +game/+amigaremix/$base_name
-#    tag:gamealbums:            +game/$first_artist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-    tag:gamealbums:            +game/%title{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-#    label:gamealbums:            +game/$first_artist - %title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-    label:game:                  +game/+tracks/$base_name
+    tag:amigaremix:              +game/+amigaremix/$base_name
+
+    # ./Spiderman and the X-Men Arcade's Revenge OST (1992)
+    tag:gamesoundtrack:          +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+
+    # ./The Mighty Pirate Sessions Volume 1 [Dubmood] (2006)
+    tag:game:                    +game/%title{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+
     tag:sr:                      +radio/Sveriges Radio/%title{$album}/%title{$title}
-#    label:radio:                 +radio/%title{$first_artist}/%title{$album}/%title{$title}
-    label:demo:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+demo/$base_name
-    label:live:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+live/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-#    label:test:                  +test/%title{$artist}/%title{$album}/%title{$title}
-#    albumtype:mixtape:           +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    genre:radio:                 +radio/%title{$album}/%title{$title}
+
+    tag:rosamannen:              +live/+rosamannen/$base_name
+
+    # ./+live/Melanie C │2007│ Live At The Mint 06-12-2007 [MP3]
+    genre:live:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+    # ./All Out War (G-Unot Mixtape) [The Game] (2005)
     tag:mixtape:                 +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-#    albumtype:mixtape:           +mixtape/$mixtape_album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
-#    default:                     %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+    # ./│2003│2 Fast 2 Furious Soundtrack [CD, MP3]
     albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album/${padded_tracknr} $artist - %title{$title}
-    default:                     %bucket{$albumartist, alpha}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+    # ./Sophie Zelmani │1998│ Precious Burden [CD, FLAC]
+    default:                     %bucket{$first_artist, alpha}/%title{$first_artist}/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
+    # ./Raja Ram's Stash Bag, Volume 2 (2003)
     comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
-# https://www.japh.se/2021/05/26/how-to-add-singletons-to-artist-dir-correctly-in-beets.html
-    singleton:                   %upper{%left{$artist,1}}/%title{$first_artist_singleton}/+tracks/$base_name
+    # /mnt/music8/+TAGGED/A/Anna ternheim/+tracks/Anna Ternheim - Elegi, Live Linköping.mp3
+    singleton:                   %bucket{$first_artist_singleton, alpha}/%title{$first_artist_singleton}/+tracks/$base_name
 
-# I want bootlegs etc in the same setup as default
-    albumtype:other:             %upper{%left{$albumartist,1}}/%title{$first_artist}/%title{$albumartist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+    # I want bootlegs etc in the same setup as default
+    albumtype:other:             %bucket{$first_artist, alpha}/%title{$first_artist}/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #>
 #< inline fun!
 item_fields:
