@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2021-05-13 10:31:39
-#         mtime  2021-05-31 16:38:07
+#         mtime  2021-06-21 15:15:06
 #   permissions  You are free to use things you may find useful here.
 #                Please improve and share.
 #           git  http://github.com/trapd00r/configs/  (up-to-date)
@@ -116,6 +116,9 @@ plugins: [
 #  'smartplaylist', # only run it once in a while
 ]
 
+# prefer discogs
+discogs:
+  source_weight: 0.0
 
 bucket:
   bucket_alpha:
@@ -181,6 +184,7 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 #  albumartist Various Artists:       VA
+  artist MBMA:                       Mobbade Barn med Automatvapen
   artist DPZ:                        Dead Prez
   artist Snoop Dogg.*:               Snoop Dogg
   artist Pst.q:                      Pst-q
@@ -191,8 +195,10 @@ rewrite:
   artist Whoo Kid:                   DJ Whoo Kid
   artist Looptroop.*:                Looptroop
   artist T.R:                        Öris
+  artist Smuts & Co:                 Organism 12
   artist Organismen:                 Organism 12
   artist Retarderat Eleverade:       Organism 12
+  artist Ungdumshälsan:              Organism 12
   artist Gms.*:                      GMS
   artist (tupac|2[pP]ac).*:          2pac
   artist .*weird Al.*:               Weird Al Yankovic
@@ -293,6 +299,7 @@ paths:
     tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
     tag:randombastards:          +hiphop-swe/randombastards/$base_name
+    tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
     tag:demo:                    %bucket{$first_artist, alpha}/%title{$first_artist}/+demo/$base_name
 
