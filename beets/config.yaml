@@ -71,12 +71,14 @@ verbose:               no
 # <importer
 import:
   languages:        en
-  write:            yes
   default_action:   apply
 #  remove causes a crash: https://github.com/beetbox/beets/issues/716
   duplicate_action: keep
   non_rec_action:   ask
   autotag:          yes
+  write:            yes
+  copy:             no
+  link:             no
   move:             yes
 #  quiet_fallback:   asis # when using the -q flag
   quiet_fallback:   skip # when using the -q flag
@@ -119,6 +121,12 @@ plugins: [
 # prefer discogs
 discogs:
   source_weight: 0.0
+
+# this doesn't exist
+#musicbrainz:
+#  host: localhost:5000
+#  searchlimit: 10
+
 
 bucket:
   bucket_alpha:
@@ -184,6 +192,10 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 #  albumartist Various Artists:       VA
+
+  artist Melanie B[.]?:              Melanie Brown
+  artist Far & Son:                  Far och Son
+  artist Smith & Tell:               Smith and Tell
   artist MBMA:                       Mobbade Barn med Automatvapen
   artist DPZ:                        Dead Prez
   artist Snoop Dogg.*:               Snoop Dogg
@@ -194,7 +206,7 @@ rewrite:
   artist 江海迦:                     Aga
   artist Whoo Kid:                   DJ Whoo Kid
   artist Looptroop.*:                Looptroop
-  artist T.R:                        Öris
+  artist T[.]R:                      Öris
   artist Smuts & Co:                 Organism 12
   artist Organismen:                 Organism 12
   artist Retarderat Eleverade:       Organism 12
@@ -264,8 +276,6 @@ smartplaylist:
     - name: 'loved.m3u'
       query: 'loved:1'
 
-musicbrainz:
-  searchlimit: 10
 
 missing:
   format: "$path"
@@ -295,6 +305,21 @@ paths:
 
     # ./The Gameboy Singles 2002 [Nullsleep] (2002)
     tag:8bitpeoples:  +game/+8bitpeoples/%title{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+
+    # 00-lp/Akon │2006│ Smack That [VINYL, MP3]/01 Akon Feat. Eminem - Smack That (radio Edit).mp3
+    tag:eminem-lp:               E/Eminem/00-lp/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$artist} - %title{$title}
+
+    # 01-live/Dr. Dre │2010│ Live In Europe [CD, Opus]/01 Dr. Dre & Eminem - Intro.opus
+    tag:eminem-live:             E/Eminem/01-live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$artist} - %title{$title}
+
+    # 02-disses/Benzino - Don't Wanna (eminem Diss).mp3
+    tag:eminem-diss:             E/Eminem/02-disses/%title{$artist} - %title{$title}
+
+    # 03-features/2004 Jadakiss - Welcome To D‐block Feat. Sheek Louch, Styles P & Eminem.mp3
+    tag:eminem-feat:             E/Eminem/03-features/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    # 04-interviews/Eminem 1991 Kmart 2 - Lisa Lisa Interview with Bassmint Productions.mp3
+    tag:eminem-interview:        E/Eminem/04-interviews/$base_name
 
     tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
@@ -434,6 +459,8 @@ album_fields:
        '12" Vinyl': 'VINYL, ',
        '10" Vinyl': 'VINYL, ',
        '7" Vinyl': 'VINYL, ',
+       'Vinyl':    'VINYL, ',
+       'CDr':      'CDR, ',
        'Cassette': 'CASSETTE, ',
        'Digital Media': 'WEB, ',
        'CD': 'CD, ',
