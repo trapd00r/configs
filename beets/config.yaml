@@ -321,6 +321,11 @@ paths:
     # 04-interviews/Eminem 1991 Kmart 2 - Lisa Lisa Interview with Bassmint Productions.mp3
     tag:eminem-interview:        E/Eminem/04-interviews/$base_name
 
+    # 
+    tag:eminem-remixes:          E/Eminem/05-remixes/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$artist} - %title{$title}
+#
+    tag:eminem-singles:          E/Eminem/06-singletons/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
     tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
     tag:randombastards:          +hiphop-swe/randombastards/$base_name
@@ -465,6 +470,7 @@ album_fields:
        'Digital Media': 'WEB, ',
        'CD': 'CD, ',
        'File': 'WEB, ',
+       'DVD':  'DVDA, ',
       }
       # Lets omit these instead of converging them under a similar label like above (Opinonated)
       media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'SHM-CD', 'HQCD', '']
