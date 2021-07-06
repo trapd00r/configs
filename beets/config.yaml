@@ -304,13 +304,12 @@ paths:
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %title{$album}/${padded_tracknr} %title{$artist} - %title{$title}
 
     # ./The Gameboy Singles 2002 [Nullsleep] (2002)
-    tag:8bitpeoples:  +game/+8bitpeoples/%title{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    tag:8bitpeoples:     +game/+8bitpeoples/%title{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
-    # 00-lp/Akon │2006│ Smack That [VINYL, MP3]/01 Akon Feat. Eminem - Smack That (radio Edit).mp3
-    tag:eminem-lp:               E/Eminem/00-lp/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$artist} - %title{$title}
-
-    # 01-live/Dr. Dre │2010│ Live In Europe [CD, Opus]/01 Dr. Dre & Eminem - Intro.opus
-    tag:eminem-live:             E/Eminem/01-live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$artist} - %title{$title}
+#< Eminem
+    # I have a rule for mixtapes below, but I want Eminem-related
+    # mixtapes in a special place.
+    tag:eminem-mixtapes: E/Eminem/+mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
     # 02-disses/Benzino - Don't Wanna (eminem Diss).mp3
     tag:eminem-diss:             E/Eminem/02-disses/%title{$artist} - %title{$title}
@@ -321,10 +320,42 @@ paths:
     # 04-interviews/Eminem 1991 Kmart 2 - Lisa Lisa Interview with Bassmint Productions.mp3
     tag:eminem-interview:        E/Eminem/04-interviews/$base_name
 
-    # 
+    # Eminem │2000│ Oops Slim Shady Did It Again (dj Gauffie Remix) [MP3]
     tag:eminem-remixes:          E/Eminem/05-remixes/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$artist} - %title{$title}
-#
+
+    # 1999 Outsidaz - Rush Ya Clique (feat. Eminem) (original).mp3
     tag:eminem-singles:          E/Eminem/06-singletons/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    # 1999 Eminem - Get Buzzed (dj Butter Intro).mp3
+    tag:eminem-skits:            E/Eminem/07-skits/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    # 2001 D12 - Purple Hills (video Version).mp3
+    tag:eminem-video_versions:   E/Eminem/08-video_versions/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    # 0000 Jadakiss Feat. Sheek Louch, Styles P & Eminem - Welcome To D‐block.mp3
+    tag:eminem-produced:         E/Eminem/09-produced/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    # 1998 Eminem - No One's Iller (demo Version) (feat. Swift, Eminem & Fuzz).mp3
+    tag:eminem-leaks:            E/Eminem/10-leaks/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    # 1999 Eminem - Mancow (freestyle).mp3
+    tag:eminem-freestyles:       E/Eminem/12-freestyles/%if{$hasyear, $year} %title{$artist} - %title{$title}
+
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:single:      E/Eminem/00-d12/+singles/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:album:       E/Eminem/00-d12/+lp/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:ep:          E/Eminem/00-d12/+ep/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:promo:       E/Eminem/00-d12/+promo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:bootleg:     E/Eminem/00-d12/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:unofficial:  E/Eminem/00-d12/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:mixtape:     E/Eminem/00-d12/+mixtape/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:live:        E/Eminem/00-d12/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:demo:        E/Eminem/00-d12/+demo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:remix:       E/Eminem/00-d12/+remix/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:soundtrack:  E/Eminem/00-d12/+soundtrack/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:interview:   E/Eminem/00-d12/+interview/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:compilation: E/Eminem/00-d12/+compilation/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis)" albumtype:other:       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+#>
 
     tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
@@ -348,26 +379,43 @@ paths:
 
     tag:rosamannen:              +live/+rosamannen/$base_name
 
-    # ./+live/Melanie C │2007│ Live At The Mint 06-12-2007 [MP3]
-    genre:live:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+#    # ./+live/Melanie C │2007│ Live At The Mint 06-12-2007 [MP3]
+#    genre:live:                  %bucket{$first_artist, alpha}/%title{$first_artist}/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 
-    # ./All Out War (G-Unot Mixtape) [The Game] (2005)
-    tag:mixtape:                 +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+# ./All Out War (G-Unot Mixtape) [The Game] (2005)
+    tag:mixtape:           +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+
+    albumtype:single:      %bucket{$first_artist, alpha}/%title{$first_artist}/+singles/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:album:       %bucket{$first_artist, alpha}/%title{$first_artist}/+lp/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:ep:          %bucket{$first_artist, alpha}/%title{$first_artist}/+ep/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:promo:       %bucket{$first_artist, alpha}/%title{$first_artist}/+promo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:bootleg:     %bucket{$first_artist, alpha}/%title{$first_artist}/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:unofficial:  %bucket{$first_artist, alpha}/%title{$first_artist}/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+
+# ./All Out War (G-Unot Mixtape) [The Game] (2005)
+    albumtype:mixtape:     +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
+    albumtype:live:        %bucket{$first_artist, alpha}/%title{$first_artist}/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:demo:        %bucket{$first_artist, alpha}/%title{$first_artist}/+demo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:remix:       %bucket{$first_artist, alpha}/%title{$first_artist}/+remix/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:interview:   %bucket{$first_artist, alpha}/%title{$first_artist}/+interview/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:other:       %bucket{$first_artist, alpha}/%title{$first_artist}/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+
+# add compilations and soundtrack by artist in artist dir, and other VA
+# compilations as a special case below.
+    albumtype:soundtrack ^albumartist:"Various Artists":  %bucket{$first_artist}, alpha}/%title{$first_artist}/+soundtrack/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumtype:compilation ^albumartist:"Various Artists": %bucket{$first_artist, alpha}/%title{$first_artist}/+compilation/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
 
     # ./│2003│2 Fast 2 Furious Soundtrack [CD, MP3]
     albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album/${padded_tracknr} $artist - %title{$title}
 
-    # ./Sophie Zelmani │1998│ Precious Burden [CD, FLAC]
-    default:                     %bucket{$first_artist, alpha}/%title{$first_artist}/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
-
     # ./Raja Ram's Stash Bag, Volume 2 (2003)
     comp:                        +VA/%title{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
+    # ./Sophie Zelmani │1998│ Precious Burden [CD, FLAC]
+    default:                     %bucket{$first_artist, alpha}/%title{$first_artist}/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
+
     # /mnt/music8/+TAGGED/A/Anna ternheim/+tracks/Anna Ternheim - Elegi, Live Linköping.mp3
     singleton:                   %bucket{$first_artist_singleton, alpha}/%title{$first_artist_singleton}/+tracks/$base_name
-
-    # I want bootlegs etc in the same setup as default
-    albumtype:other:             %bucket{$first_artist, alpha}/%title{$first_artist}/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 #>
 #< inline fun!
 item_fields:
@@ -426,15 +474,26 @@ album_fields:
     album_fixed = album
     return re.sub(r"G.unit Radio,?\s+(Pt|Part)[.]?\s*(.*)", r"G-Unit Radio \2", album_fixed, flags=re.IGNORECASE)
 
+  albumtype_japh: |
+    import re
+    if re.match(r'Unofficial', albumtype):
+      return 'Bootleg'
+    elif re.match('Album', albumtype):
+      return "OFFICIELL SOM FAN"
+
   alb_status: |
     # MB returns 4 values describing how "offical" a release is, they are:
     # Official, Promotional, Bootleg, and Pseudo-Release
     # We only note the middle two.
     # https://musicbrainz.org/doc/Release#Status
     if 'Promo' in albumstatus:
-      return 'Promo'
+      return 'Promo, '
     elif 'Bootleg' in albumstatus:
-      return 'Bootleg'
+      return 'Bootleg, '
+    elif 'Official' in albumstatus:
+      return 'Official, '
+    elif 'Promotion' in albumstatus:
+      return 'Promo, '
     else:
       return None
   # Check if https://github.com/beetbox/beets/issues/2200 affects below
@@ -461,19 +520,20 @@ album_fields:
       # https://musicbrainz.org/doc/Release/Format
       # Lets Merge the variations of the same medium into the main medium name (Opinonated)
       media_list = {
-       '12" Vinyl': 'VINYL, ',
-       '10" Vinyl': 'VINYL, ',
-       '7" Vinyl': 'VINYL, ',
-       'Vinyl':    'VINYL, ',
+       '12" Vinyl': 'Vinyl, ',
+       '10" Vinyl': 'Vinyl, ',
+       '7" Vinyl': 'Vinyl, ',
+       'Vinyl':    'Vinyl, ',
        'CDr':      'CDR, ',
-       'Cassette': 'CASSETTE, ',
-       'Digital Media': 'WEB, ',
+       'CD-R':      'CDR, ',
+       'Cassette': 'Cassette, ',
+       'Digital Media': 'Web, ',
        'CD': 'CD, ',
-       'File': 'WEB, ',
+       'File': 'Web, ',
        'DVD':  'DVDA, ',
       }
       # Lets omit these instead of converging them under a similar label like above (Opinonated)
-      media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'SHM-CD', 'HQCD', '']
+      media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'HQCD', '']
       if items[0].media in media_list:
         return str(media_list[items[0].media])
       elif items[0].media in media_types_to_omit:
