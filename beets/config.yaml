@@ -355,7 +355,7 @@ paths:
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" albumtype:interview:   E/Eminem/00-d12/+interview/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" albumtype:compilation: E/Eminem/00-d12/+compilation/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" albumtype:other:       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)":                       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)":                       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$media_type$format]/${padded_tracknr} %title{$title}
     artist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" singleton:1:                E/Eminem/00-d12/+tracks/%if{$hasyear, $year} %title{$artist} - %title{$title}
 #>
 
