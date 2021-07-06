@@ -356,6 +356,7 @@ paths:
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" albumtype:compilation: E/Eminem/00-d12/+compilation/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" albumtype:other:       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)":                       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    artist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota)" singleton:1:                E/Eminem/00-d12/+tracks/%if{$hasyear, $year} %title{$artist} - %title{$title}
 #>
 
     tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
@@ -416,7 +417,8 @@ paths:
     default:                     %bucket{$first_artist, alpha}/%title{$first_artist}/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$alb_type$media_type$format]/${padded_tracknr} %title{$title}
 
     # /mnt/music8/+TAGGED/A/Anna ternheim/+tracks/Anna Ternheim - Elegi, Live Linköping.mp3
-    singleton:                   %bucket{$first_artist_singleton, alpha}/%title{$first_artist_singleton}/+tracks/$base_name
+#    singleton:                   %bucket{$first_artist_singleton, alpha}/%title{$first_artist_singleton}/+tracks/$base_name
+    singleton:                   %bucket{$first_artist_singleton, alpha}/%if{$hasyear, $year} %title{$artist} - %title{$title}
 #>
 #< inline fun!
 item_fields:
