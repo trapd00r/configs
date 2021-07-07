@@ -36,7 +36,10 @@
 #< core options
 directory:  /mnt/music8/+TAGGED
 library:    ~/var/beets/beets202105.db
-pluginpath: /usr/lib/python3.9/site-packages/beetsplug/
+pluginpath: ['/usr/lib/python3.9/site-packages/beetsplug/',
+             '/home/scp1/dev/beets-titlecase_proper',
+            ]
+
 
 # files matching these patterns are deleted from source after import
 clutter: ["Thumbs.DB", ".DS_Store", ".m3u", ".pls",
@@ -109,6 +112,7 @@ plugins: [
   'inline',
   'lastgenre',
   'lastimport',
+  'titlecase_proper',
 #  'lyrics', # takes forever
 #  'missing',
 #  'mpdqueue',
@@ -311,6 +315,9 @@ paths:
     # mixtapes in a special place.
     tag:eminem-mixtapes: E/Eminem/+mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
+# import bootlegs that have no discog info as-is in +other
+    tag:eminem: E/Eminem/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+
     # 02-disses/Benzino - Don't Wanna (eminem Diss).mp3
     tag:eminem-diss:             E/Eminem/02-disses/%title{$artist} - %title{$title}
 
@@ -341,22 +348,22 @@ paths:
     # 1999 Eminem - Mancow (freestyle).mp3
     tag:eminem-freestyles:       E/Eminem/12-freestyles/%if{$hasyear, $year} %title{$artist} - %title{$title}
 
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:single:      E/Eminem/00-d12/+singles/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:album:       E/Eminem/00-d12/+lp/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:ep:          E/Eminem/00-d12/+ep/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:promo:       E/Eminem/00-d12/+promo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:bootleg:     E/Eminem/00-d12/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:unofficial:  E/Eminem/00-d12/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:mixtape:     E/Eminem/00-d12/+mixtape/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:live:        E/Eminem/00-d12/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:demo:        E/Eminem/00-d12/+demo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:remix:       E/Eminem/00-d12/+remix/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:soundtrack:  E/Eminem/00-d12/+soundtrack/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:interview:   E/Eminem/00-d12/+interview/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:compilation: E/Eminem/00-d12/+compilation/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" albumtype:other:       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
-    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)":                       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$media_type$format]/${padded_tracknr} %title{$title}
-    artist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|L[.]A[.]R[.]S)" singleton:true:             E/Eminem/00-d12/+tracks/%if{$hasyear, $year} %title{$artist} - %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:single:      E/Eminem/00-d12/+singles/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:album:       E/Eminem/00-d12/+lp/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:ep:          E/Eminem/00-d12/+ep/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:promo:       E/Eminem/00-d12/+promo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:bootleg:     E/Eminem/00-d12/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:unofficial:  E/Eminem/00-d12/+bootleg/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:mixtape:     E/Eminem/00-d12/+mixtape/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:live:        E/Eminem/00-d12/+live/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:demo:        E/Eminem/00-d12/+demo/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:remix:       E/Eminem/00-d12/+remix/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:soundtrack:  E/Eminem/00-d12/+soundtrack/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:interview:   E/Eminem/00-d12/+interview/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:compilation: E/Eminem/00-d12/+compilation/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:other:       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [%title{$albumtype}, $media_type$format]/${padded_tracknr} %title{$title}
+    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)":                       E/Eminem/00-d12/+other/%title{$first_artist}%if{$hasyear, │${year}│} %title{$album} [$media_type$format]/${padded_tracknr} %title{$title}
+    artist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" singleton:true:             E/Eminem/00-d12/+tracks/%if{$hasyear, $year} %title{$artist} - %title{$title}
 #>
 
     tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
@@ -377,6 +384,7 @@ paths:
     tag:game:                    +game/%title{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %title{$title}
 
     tag:sr:                      +radio/Sveriges Radio/%title{$album}/%title{$title}
+    tag:test:                    +test/%titlecase_proper{$title}
     genre:radio:                 +radio/%title{$album}/%title{$title}
 
     tag:rosamannen:              +live/+rosamannen/$base_name
@@ -422,6 +430,14 @@ paths:
 #>
 #< inline fun!
 item_fields:
+
+  titlecase_proper: |
+    import re
+    def titlecase(s):
+      return re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
+                    lambda mo: mo.group(0).capitalize(),
+                    s)
+    return s
 # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
   moh_catalog: catalognum.replace(" ", "")
