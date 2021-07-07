@@ -509,30 +509,33 @@ album_fields:
     else:
       return None
 
-  alb_type: |
-    if albumtype:
-      return albumtype + ', '
-    else:
-      return None
-
 #  alb_type: |
-#    alb_types = ""
-#    albumtypes_list = {
-#      'ep': 'EP, ',
-#      'single': 'Single, ',
-#      'live': 'Live, ',
-#      'remix': 'Remix, ',
-#      'dj-mix': 'DJ-mix, ',
-#      'mixtape/street': 'Mixtape, ',
-#      'interview': 'Interview, ',
-#    }
-#    for key, value in albumtypes_list.items():
-#      if albumtype == key:
-#        alb_types += str(value)
-#      if alb_types is not None:
-#        return alb_types
-#      else:
-#        return None
+#    if albumtype:
+#      return albumtype + ', '
+#    else:
+#      return None
+
+  alb_type: |
+    alb_types = ""
+    albumtypes_list = {
+      'ep': 'EP',
+      'lp': 'LP',
+      'single': 'Single',
+      'live': 'Live',
+      'remix': 'Remix',
+      'dj-mix': 'DJ-mix',
+      'mixtape/street': 'Mixtape',
+      'interview': 'Interview',
+    }
+    for key, value in albumtypes_list.items():
+      if albumtype == key:
+        alb_types += str(value)
+
+      if alb_types is not None:
+        if alb_types != '':
+          return alb_types + ', '
+      else:
+        return None
 
   media_type: |
       # https://musicbrainz.org/doc/Release/Format
