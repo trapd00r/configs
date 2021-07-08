@@ -1,9 +1,9 @@
-# vim:synmaxcol=500:expandtab:fdm=marker:fdl=0:
+# vim:synmaxcol=500:expandtab:fdm=marker:fdl=0:ft=perl:
 #      ${HOME}/etc/beets/config.yaml
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2021-05-13 10:31:39
-#         mtime  2021-07-07 10:57:40
+#         mtime  2021-07-08 21:32:35
 #   permissions  You are free to use things you may find useful here.
 #                Please improve and share.
 #           git  http://github.com/trapd00r/configs/  (up-to-date)
@@ -57,6 +57,9 @@ replace:
     '\s+$': ''
     '^\s+': ''
     '^-': ''
+    '’': "'"
+    '′': "'"
+    '″': ''
 
 ignore: [".*", "*~", "System Volume Information"]
 
@@ -303,6 +306,7 @@ match:
   preferred:
     media: ['CD', 'Digital Media|File', 'Vinyl']
 
+# TODO split path setups up with literal \
 paths:
 #    mb_trackid::^$:              +unmatched/
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %titlecase_proper{$album}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
@@ -311,43 +315,77 @@ paths:
     tag:8bitpeoples:     +game/+8bitpeoples/%titlecase_proper{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
 #< Eminem
-    # I have a rule for mixtapes below, but I want Eminem-related
-    # mixtapes in a special place.
-    tag:eminem-mixtapes: E/Eminem/+mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+
+# I have a rule for mixtapes below, but I want Eminem-related
+# mixtapes in a special place.
+# XXX: Not needed anymore since we use the global eminem tag
+#    tag:eminem-mixtapes: E/Eminem/+mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
 # import bootlegs that have no discog info as-is in +other
-    tag:eminem: E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+#    tag:eminem: E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-    # 02-disses/Benzino - Don't Wanna (eminem Diss).mp3
-    tag:eminem-diss:             E/Eminem/02-disses/%titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true tag:eminem-skits:             E/Eminem/+skits/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+# 02-disses/Benzino - Don't Wanna (eminem Diss).mp3
+    singleton:true tag:eminem-diss:             E/Eminem/+disses/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
-    # 03-features/2004 Jadakiss - Welcome To D‐block Feat. Sheek Louch, Styles P & Eminem.mp3
-    tag:eminem-feat:             E/Eminem/03-features/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+# diss albums
+    tag:eminem-diss:                            E/Eminem/+disses/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-    # 04-interviews/Eminem 1991 Kmart 2 - Lisa Lisa Interview with Bassmint Productions.mp3
-    tag:eminem-interview:        E/Eminem/04-interviews/$base_name
+#    # 04-interviews/Eminem 1991 Kmart 2 - Lisa Lisa Interview with Bassmint Productions.mp3
+#    tag:eminem-interview:        E/Eminem/+interviews/$base_name
 
     # Eminem │2000│ Oops Slim Shady Did It Again (dj Gauffie Remix) [MP3]
-    tag:eminem-remixes:          E/Eminem/05-remixes/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
-
-    # 1999 Outsidaz - Rush Ya Clique (feat. Eminem) (original).mp3
-    tag:eminem-singles:          E/Eminem/06-singletons/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem-remixes:          E/Eminem/+remixes/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
     # 1999 Eminem - Get Buzzed (dj Butter Intro).mp3
-    tag:eminem-skits:            E/Eminem/07-skits/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem-skits:            E/Eminem/+skits/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
     # 2001 D12 - Purple Hills (video Version).mp3
-    tag:eminem-video_versions:   E/Eminem/08-video_versions/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem-video_versions:   E/Eminem/+video_versions/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
     # 0000 Jadakiss Feat. Sheek Louch, Styles P & Eminem - Welcome To D‐block.mp3
-    tag:eminem-produced:         E/Eminem/09-produced/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem-produced:         E/Eminem/+produced/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
     # 1998 Eminem - No One's Iller (demo Version) (feat. Swift, Eminem & Fuzz).mp3
-    tag:eminem-leaks:            E/Eminem/10-leaks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem-leaks:            E/Eminem/+leaks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
     # 1999 Eminem - Mancow (freestyle).mp3
-    tag:eminem-freestyles:       E/Eminem/12-freestyles/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem-freestyles:       E/Eminem/+freestyles/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
+# Re-import with:
+# $ beet import -A --set tag=eminem
+# and everything gets placed  where it belong
+#
+# The reason why I am doing like this is because I want various Eminem-related
+# things to go in the main Eminem directory/+albumtype, regardless of
+# albumartist
+
+    tag:eminem albumtype:single:      E/Eminem/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:album:       E/Eminem/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:ep:          E/Eminem/+ep/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:promo:       E/Eminem/+promo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:bootleg:     E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:unofficial:  E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:mixtape:     E/Eminem/+mixtape/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:live:        E/Eminem/+live/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:demo:        E/Eminem/+demo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:remix:       E/Eminem/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:soundtrack:  E/Eminem/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:interview:   E/Eminem/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:compilation: E/Eminem/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:other:       E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+# Various singleton tracks that should go in the Eminem base dir
+# $ beet import -sA --set tag=eminem *(.)
+    tag:eminem singleton:true:        E/Eminem/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+
+# Albums with no albumtype as of yet, TODO
+    albumartist:eminem:               E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+# import bootlegs that have no discog info as-is in +other
+    tag:eminem:                       E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+# TODO: Perhaps better to just use the eminem tag?
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:single:      E/Eminem/00-d12/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:album:       E/Eminem/00-d12/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:ep:          E/Eminem/00-d12/+ep/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
@@ -371,7 +409,6 @@ paths:
     tag:randombastards:          +hiphop-swe/randombastards/$base_name
     tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
-    tag:demo:                    %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+demo/$base_name
 
     tag:ocremix:                 +game/+ocremix/$base_name
     tag:overlooked:              +game/+overlookedremix/$base_name
@@ -394,6 +431,7 @@ paths:
 
 # ./All Out War (G-Unot Mixtape) [The Game] (2005)
     tag:mixtape:           +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+    albumtype:mixtape:     +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
     albumtype:single:      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:album:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
@@ -402,13 +440,19 @@ paths:
     albumtype:bootleg:     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:unofficial:  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-# ./All Out War (G-Unot Mixtape) [The Game] (2005)
-    albumtype:mixtape:     +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
     albumtype:live:        %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+live/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:demo:        %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+demo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:remix:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:interview:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:other:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+# single tracks
+    singleton:true tag:demo:       %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+demo/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true tag:live:       %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true tag:interview:  %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+interview/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true tag:speechtone: %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+speechtone/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true tag:freestyle:  %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true:                %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
 # add compilations and soundtrack by artist in artist dir, and other VA
 # compilations as a special case below.
@@ -426,7 +470,7 @@ paths:
 
     # /mnt/music8/+TAGGED/A/Anna ternheim/+tracks/Anna Ternheim - Elegi, Live Linköping.mp3
 #    singleton:                   %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+tracks/$base_name
-    singleton:                   %bucket{$first_artist_singleton, alpha}/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+#    singleton:                   %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist}/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 #>
 #< inline fun!
 item_fields:
