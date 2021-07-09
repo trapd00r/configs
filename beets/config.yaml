@@ -273,7 +273,7 @@ paths:
 #    mb_trackid::^$:              +unmatched/
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %titlecase_proper{$album}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
-#   The Gameboy Singles 2002 [Nullsleep] (2002)
+#   +game/+8bitpeoples/The Gameboy Singles 2002 [Nullsleep] (2002)
     tag:8bitpeoples:     +game/+8bitpeoples/%titlecase_proper{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
 #< Eminem
@@ -419,17 +419,17 @@ paths:
 ### add compilations and soundtrack by artist in artist dir, and other VA
 ### compilations as a special case below.
 
-#   +soundtrack/Various Artists │2015│ Southpaw (Music From and Inspired by the Motion Picture) [CD, MP3]
-    albumtype:soundtrack  ^albumartist:"Various Artists":  %bucket{$first_artist}, alpha}/%titlecase_proper{$first_artist}/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-
+#   Eminem/+soundtrack/
+#    albumtype:soundtrack  ^albumartist:"Various Artists":  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+#
 #   +compilation/Eminem │2000│ Off The Wall [Compilation, CD, MP3]
     albumtype:compilation ^albumartist:"Various Artists":  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +ost/│2003│2 Fast 2 Furious Soundtrack [CD, MP3]
-    albumtype:soundtrack:        +OST/%if{$hasyear,│${year}│}$album/${padded_tracknr} $artist - %titlecase_proper{$title}
+    albumtype:soundtrack:        +ost/%if{$hasyear,${year} }%titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +VA/Raja Ram's Stash Bag, Volume 2 (2003)
-    comp:                        +VA/%titlecase_proper{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+    comp:                        +va/%titlecase_proper{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
 #   Sophie Zelmani │1998│ Precious Burden [CD, FLAC]
     default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
@@ -439,6 +439,8 @@ item_fields:
 
 # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
+
+# remove spaces from catalognum
   moh_catalog: catalognum.replace(" ", "")
 
 # capture first artist as primary artist to avoid directories like this:
@@ -492,13 +494,6 @@ album_fields:
     album_fixed = album
     return re.sub(r"G.unit Radio,?\s+(Pt|Part)[.]?\s*(.*)", r"G-Unit Radio \2", album_fixed, flags=re.IGNORECASE)
 
-  albumtype_japh: |
-    import re
-    if re.match(r'Unofficial', albumtype):
-      return 'Bootleg'
-    elif re.match('Album', albumtype):
-      return "OFFICIELL SOM FAN"
-
   alb_status: |
     # MB returns 4 values describing how "offical" a release is, they are:
     # Official, Promotional, Bootleg, and Pseudo-Release
@@ -545,19 +540,20 @@ album_fields:
 
   media_type: |
       # https://musicbrainz.org/doc/Release/Format
-      # Lets Merge the variations of the same medium into the main medium name (Opinonated)
+      # Lets Merge the variations of the same medium into the main
+      # medium name (Opinonated)
       media_list = {
-       '12" Vinyl': 'Vinyl, ',
-       '10" Vinyl': 'Vinyl, ',
-       '7" Vinyl': 'Vinyl, ',
-       'Vinyl':    'Vinyl, ',
-       'CDr':      'CDR, ',
-       'CD-R':      'CDR, ',
-       'Cassette': 'Cassette, ',
+       '12" Vinyl':     'Vinyl, ',
+       '10" Vinyl':     'Vinyl, ',
+       '7" Vinyl':      'Vinyl, ',
+       'Vinyl':         'Vinyl, ',
+       'CDr':           'CDR, ',
+       'CD-R':          'CDR, ',
+       'Cassette':      'Cassette, ',
        'Digital Media': 'Web, ',
-       'CD': 'CD, ',
-       'File': 'Web, ',
-       'DVD':  'DVDA, ',
+       'CD':            'CD, ',
+       'File':          'Web, ',
+       'DVD':           'DVDA, ',
       }
       # Lets omit these instead of converging them under a similar label like above (Opinonated)
       media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'HQCD', '']
@@ -575,7 +571,7 @@ album_fields:
 # strong_rec_thresh option, which reflects the distance threshold below
 # which beets will make a “strong recommendation” that the metadata
 # be used.
-#
+
 # default is 0.04
 match:
   strong_rec_thresh: 0.10
