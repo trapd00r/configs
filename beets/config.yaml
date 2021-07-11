@@ -391,6 +391,7 @@ paths:
 #   +remix/Eminem │2003│ Loose Mundin (Promo Vinyl) [Remix, MP3]
     albumtype:remix:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
+    albumtype:audiobook:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+audiobook/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:interview:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +other/Eminem │2012│ Crank Calls [MP3]
