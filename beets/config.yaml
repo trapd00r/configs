@@ -92,8 +92,8 @@ import:
   copy:             no
   link:             no
   move:             yes
-#  quiet_fallback:   asis # when using the -q flag
-  quiet_fallback:   skip # when using the -q flag
+  quiet_fallback:   asis # when using the -q flag
+#  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -290,7 +290,8 @@ paths:
     singleton:false tag:eminem-diss:            E/Eminem/+disses/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +freestyles/1999 Eminem - Mancow (freestyle).mp3
-    singleton:true tag:eminem-freestyles: E/Eminem/+freestyles/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:true  tag:eminem-freestyles: E/Eminem/+freestyles/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:false tag:eminem-freestyles: E/Eminem/+freestyles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 # Re-import with:
 # $ beet import -A --set tag=eminem
@@ -425,10 +426,10 @@ paths:
 #   +compilation/Eminem │2000│ Off The Wall [Compilation, CD, MP3]
     albumtype:compilation ^albumartist:"Various Artists":  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-#   +ost/│2003│2 Fast 2 Furious Soundtrack [CD, MP3]
-    albumtype:soundtrack:        +ost/%if{$hasyear,${year} }%titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+#   +ost/1964 A Hard Day's Night [The Beatles, CD, MP3]
+    albumtype:soundtrack:        +ost/%if{$hasyear,${year} }%titlecase_proper{$album} [$albumartist, $alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-#   +VA/Raja Ram's Stash Bag, Volume 2 (2003)
+#   +va/Raja Ram's Stash Bag, Volume 2 (2003)
     comp:                        +va/%titlecase_proper{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
 #   Sophie Zelmani │1998│ Precious Burden [CD, FLAC]
