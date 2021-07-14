@@ -92,8 +92,8 @@ import:
   copy:             no
   link:             no
   move:             yes
-  quiet_fallback:   asis # when using the -q flag
-#  quiet_fallback:   skip # when using the -q flag
+#  quiet_fallback:   asis # when using the -q flag
+  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -275,6 +275,7 @@ paths:
 
 #   +game/+8bitpeoples/The Gameboy Singles 2002 [Nullsleep] (2002)
     tag:8bitpeoples:     +game/+8bitpeoples/%titlecase_proper{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+    tag:test:            +test/%bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #< Eminem
 #   import bootlegs that have no discog info as-is in +other
@@ -284,14 +285,16 @@ paths:
     singleton:true tag:eminem-skits:             E/Eminem/+skits/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
 #   +disses/+tracks/Benzino - Don't Wanna (eminem Diss).mp3
-    singleton:true tag:eminem-diss:             E/Eminem/+disses/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
-
 #   +disses/Esham │2003│ Boom (D-12 Diss) Promo CDS [MP3]
+    singleton:true tag:eminem-diss:             E/Eminem/+disses/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
     singleton:false tag:eminem-diss:            E/Eminem/+disses/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-#   +freestyles/1999 Eminem - Mancow (freestyle).mp3
-    singleton:true  tag:eminem-freestyles: E/Eminem/+freestyles/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
-    singleton:false tag:eminem-freestyles: E/Eminem/+freestyles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+#   +freestyles/+tracks/1999 Eminem - Mancow (freestyle).mp3
+#   +freestyles/Eminem │2004│ Invasion 3 Freestyle (Without Lloyd Banks) [MP3]
+    singleton:true  tag:eminem-freestyles:      E/Eminem/+freestyles/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    singleton:false tag:eminem-freestyles:      E/Eminem/+freestyles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+    singleton:true tag:eminem-remix:            E/Eminem/+remix/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
 # Re-import with:
 # $ beet import -A --set tag=eminem
@@ -301,23 +304,27 @@ paths:
 # things to go in the main Eminem directory/+albumtype, regardless of
 # albumartist
 
-    tag:eminem albumtype:single:      E/Eminem/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:album:       E/Eminem/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:ep:          E/Eminem/+ep/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:promo:       E/Eminem/+promo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:bootleg:     E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:unofficial:  E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:single:          E/Eminem/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:album:           E/Eminem/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:ep:              E/Eminem/+ep/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:promo:           E/Eminem/+promo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:bootleg:         E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:unofficial:      E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-    tag:eminem albumtype:mixtape:     E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$first_artist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem albumtype:mixtape:         E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$first_artist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    albumartist:eminem albumtype:mixtape: E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$first_artist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
-    tag:eminem albumtype:live:        E/Eminem/+live/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:demo:        E/Eminem/+demo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:remix:       E/Eminem/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:soundtrack:  E/Eminem/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:interview:   E/Eminem/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:compilation: E/Eminem/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:whitelabel:  E/Eminem/+whitelabel/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:other:       E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:live:            E/Eminem/+live/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:demo:            E/Eminem/+demo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+    tag:eminem albumtype:remix:           E/Eminem/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:soundtrack:      E/Eminem/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:interview:       E/Eminem/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:compilation:     E/Eminem/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:whitelabel:      E/Eminem/+whitelabel/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+
+    tag:eminem albumtype:audiobook:       E/Eminem/+audiobook/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:other:           E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 # Various singleton tracks that should go in the Eminem base dir
 # $ beet import -sA --set tag=eminem *(.)
