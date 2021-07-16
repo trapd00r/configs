@@ -11,6 +11,8 @@
 #           irc  japh@irc.libera.chat #vim #perl #beets
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
+# https://www.japh.se/2021/07/14/a_better_titlecase_function_for_beets.html
+
 #< what does it look like
 ## Alanis Morissette │2020│ Reckoning [Single, WEB, MP3]
 ## Alanis Morissette │2020│ Such Pretty Forks in the Road [WEB, FLAC]
@@ -115,6 +117,7 @@ plugins: [
   'fetchart',
   'fromfilename',
   'ftintitle',
+  'hook',
   'info',
   'inline',
   'lastgenre',
@@ -123,6 +126,15 @@ plugins: [
   'smartplaylist',
   'titlecase_proper', # https://github.com/trapd00r/beets-titlecase_proper
 ]
+
+# these articles should be cased exactly as stated
+titlecase_proper:
+  asis: [
+          'PhD',
+          'DJ',
+          'TCP',
+          'YodA',
+  ]
 
 discogs:
   source_weight: 0.0
@@ -175,6 +187,33 @@ fetchart:
 
 ftintitle:
   auto: yes
+
+hook:
+  hooks:
+#    - event: after_write
+#      command: echo "Metadata was written to disk."
+    #############################################
+    - event: album_imported
+      command: printf "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30;1;7m{album}\033[m\n"
+#      command: echo "\"{album}\""
+#    - event: import
+#      command: echo "imported from {paths}."
+    #############################################
+    - event: import_begin
+      command: echo "Import started..."
+    - event: item_copied
+      command: echo "\"{item}\" copied from \"{source}\" to \"{destination}\"."
+    - event: item_moved
+      command: ls_color_beets  "{destination}"
+#      command: echo "Moved \"{item})\" to {destination}"
+    - event: pluginload
+      command: printf "\033[38;5;220;3m%s\033[m\n" "Plugins loaded."
+    - event: trackinfo_received
+      command: echo "Track info received:"
+#    - event: write
+#      command: ls_color_beets --ifs ' ' -k3 "Writing to {path}."
+    - event: cli_exit
+      command: printf "All tasks \033[38;5;220mfinished\033[m!\n"
 
 lastfm:
   user: betbot
