@@ -233,7 +233,7 @@ mpd:
 
 rewrite:
   album .*Sommar i P1:               P1 Sommar
-  album .*Sommar och Vinter i P1.*:  P1 Sommar
+  album .*Sommar (och|[&]) Vinter i P1.*:  P1 Sommar
   album Söndagsintervjun:            P1 Söndagsintervjun
   album .*Musikguiden i p3:          P3 Musikguiden
   album Jukeboxen i p4:              P4 Jukeboxen
