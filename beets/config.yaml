@@ -94,8 +94,8 @@ import:
   copy:             no
   link:             no
   move:             yes
-#  quiet_fallback:   asis # when using the -q flag
-  quiet_fallback:   skip # when using the -q flag
+  quiet_fallback:   asis # when using the -q flag
+#  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -406,8 +406,7 @@ paths:
     tag:amigaremix:              +game/+amigaremix/$base_name
     tag:rosamannen:              +live/+rosamannen/$base_name
 #--
-    tag:sr:                      +radio/Sveriges Radio/%titlecase_proper{$album}/%titlecase_proper{$title}
-
+    tag:sr:                      +radio/Sveriges Radio/%titlecase_proper{$album}/%if{$hasyear, $year} %titlecase_proper{$title}
 #   +game/+ost/Spiderman and the X-Men Arcade's Revenge OST (1992)
     tag:gamesoundtrack:          +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
