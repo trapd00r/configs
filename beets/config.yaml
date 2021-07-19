@@ -552,6 +552,7 @@ item_fields:
     # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
     # to The Cardigans/+singles/Tom Jones & the Cardigans │1999│ Burning Down the House [Single, CD, FLAC]
     # https://github.com/beetbox/beets/discussions/4012#discussioncomment-1021414
+    # beet import --set myartist='The Cardigans'
     if myartist:
       return myartist
     else:
