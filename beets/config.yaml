@@ -134,7 +134,7 @@ titlecase_proper:
   asis: [
           'EP',
           'LP',
-          'feat.',
+          'feat. ',
           'PhD',
           'DJ',
           'TCP',
@@ -562,7 +562,7 @@ paths:
 
 #< Eminem
 #   import bootlegs that have no discog info as-is in +other
-#    tag:eminem: E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+#    tag:eminem: E/Eminem/+other/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +skits/1999 Eminem - I Kissed a Boy (Skit).mp3
     singleton:true tag:eminem-skits:             E/Eminem/+skits/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
@@ -570,12 +570,12 @@ paths:
 #   +disses/+tracks/Benzino - Don't Wanna (eminem Diss).mp3
 #   +disses/Esham │2003│ Boom (D-12 Diss) Promo CDS [MP3]
     singleton:true tag:eminem-diss:             E/Eminem/+disses/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
-    singleton:false tag:eminem-diss:            E/Eminem/+disses/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    singleton:false tag:eminem-diss:            E/Eminem/+disses/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +freestyles/+tracks/1999 Eminem - Mancow (freestyle).mp3
 #   +freestyles/Eminem │2004│ Invasion 3 Freestyle (Without Lloyd Banks) [MP3]
     singleton:true  tag:eminem-freestyles:      E/Eminem/+freestyles/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
-    singleton:false tag:eminem-freestyles:      E/Eminem/+freestyles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    singleton:false tag:eminem-freestyles:      E/Eminem/+freestyles/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
     singleton:true tag:eminem-remix:            E/Eminem/+remix/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
@@ -587,55 +587,37 @@ paths:
 # things to go in the main Eminem directory/+albumtype, regardless of
 # albumartist
 
-    tag:eminem albumtype:single:          E/Eminem/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:album:           E/Eminem/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:ep:              E/Eminem/+ep/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:promo:           E/Eminem/+promo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:bootleg:         E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:unofficial:      E/Eminem/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:single:          E/Eminem/+singles/%titlecase_proper{$albumatist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:album:           E/Eminem/+lp/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:ep:              E/Eminem/+ep/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:promo:           E/Eminem/+promo/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:bootleg:         E/Eminem/+bootleg/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:unofficial:      E/Eminem/+bootleg/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-    tag:eminem albumtype:mixtape:         E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$first_artist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
-    albumartist:eminem albumtype:mixtape: E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$first_artist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem albumtype:mixtape:         E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    albumartist:eminem albumtype:mixtape: E/Eminem/+mixtape/%titlecase_proper{$mixtape_album} [%titlecase_proper{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
-    tag:eminem albumtype:live:            E/Eminem/+live/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:demo:            E/Eminem/+demo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:live:            E/Eminem/+live/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:demo:            E/Eminem/+demo/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-    tag:eminem albumtype:remix:           E/Eminem/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:soundtrack:      E/Eminem/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:interview:       E/Eminem/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:compilation:     E/Eminem/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:whitelabel:      E/Eminem/+whitelabel/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:remix:           E/Eminem/+remix/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:soundtrack:      E/Eminem/+soundtrack/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:interview:       E/Eminem/+interview/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:compilation:     E/Eminem/+compilation/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:whitelabel:      E/Eminem/+whitelabel/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
-    tag:eminem albumtype:audiobook:       E/Eminem/+audiobook/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    tag:eminem albumtype:other:           E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:audiobook:       E/Eminem/+audiobook/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    tag:eminem albumtype:other:           E/Eminem/+other/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 # Various singleton tracks that should go in the Eminem base dir
 # $ beet import -sA --set tag=eminem *(.)
     tag:eminem singleton:true:        E/Eminem/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
 #   albums with no albumtype as of yet
-    albumartist:eminem:               E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumartist:eminem:               E/Eminem/+other/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   import bootlegs that have no discog info as-is in +other for later sorting
-    tag:eminem:                       E/Eminem/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-
-# TODO: Perhaps better to just use the eminem tag?
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:single:      E/Eminem/00-d12/+singles/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:album:       E/Eminem/00-d12/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:ep:          E/Eminem/00-d12/+ep/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:promo:       E/Eminem/00-d12/+promo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:bootleg:     E/Eminem/00-d12/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:unofficial:  E/Eminem/00-d12/+bootleg/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:mixtape:     E/Eminem/00-d12/+mixtape/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:live:        E/Eminem/00-d12/+live/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:demo:        E/Eminem/00-d12/+demo/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:remix:       E/Eminem/00-d12/+remix/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:soundtrack:  E/Eminem/00-d12/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:interview:   E/Eminem/00-d12/+interview/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:compilation: E/Eminem/00-d12/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" albumtype:other:       E/Eminem/00-d12/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    albumartist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)":                       E/Eminem/00-d12/+other/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#    artist::"(D12|Kuniva|Swifty Mc[vV]ay|Proof|Big Proof|Funky Cowboys|Bizarre|Promatic|Bugz|Kon Artis|Fuzz Scoota|^Fuzz$|L[.]A[.]R[.]S)" singleton:true:             E/Eminem/00-d12/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
+    tag:eminem:                       E/Eminem/+other/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 #>
 
 #-- These will be hard to look up and it's ok to use the basename
@@ -664,8 +646,8 @@ paths:
 
 
 #   +mixtape/All Out War (G-Unot Mixtape) [The Game] (2005)
-    tag:mixtape:           +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
-    albumtype:mixtape:     +mixtape/$mixtape_album [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+    tag:mixtape:           +mixtape/$mixtape_album [%titlecase_proper{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+    albumtype:mixtape:     +mixtape/$mixtape_album [%titlecase_proper{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
     albumtype:single:      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+singles/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
     albumtype:album:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+lp/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
