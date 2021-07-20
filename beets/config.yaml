@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2021-05-13 10:31:39
-#         mtime  2021-07-08 21:32:35
+#         mtime  2021-07-20 11:14:12
 #   permissions  You are free to use things you may find useful here.
 #                Please improve and share.
 #           git  http://github.com/trapd00r/configs/  (up-to-date)
@@ -123,6 +123,7 @@ plugins: [
   'inline',
   'lastgenre',
   'lastimport',
+  'missing',
   'rewrite',
 #  'setlister',
   'smartplaylist',
@@ -138,6 +139,7 @@ titlecase_proper:
           'PhD',
           'DJ',
           'TCP',
+          'SOS',
   ]
 
 discogs:
@@ -197,13 +199,13 @@ ftintitle:
 hook:
   hooks:
     - event: album_imported
-      command: printf "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30;1;7m{album}\033[m\n"
-      command: hr -c '┈' -fg 30 -s 72
+      command: printf "\033[38;5;76m √\033[m \033[1m\033[m \033[38;5;30m{album}\033[m\n"
+#      command: hr -c '┈' -fg 30 -s 72
 #    - event: import
 #      command: echo "imported from {paths}."
 #      https://www.japh.se/assets/beets_lscolors_import.png
-    - event: item_moved
-      command: ls_color_beets  "{destination}"
+#    - event: item_moved
+#      command: ls_color_beets  "{destination}"
 #    - event: write
 #      command: ls_color_beets --ifs ' ' -k3 "Writing to {path}."
     - event: before_choose_candidate
@@ -543,7 +545,7 @@ ui:
 #< path setup
 aunique:
   keys: albumartist albumtype year album
-  disambuguators: mastering label catalognum albumdisambig releasegroupdisambig
+  disambuguators: format mastering label catalognum albumdisambig releasegroupdisambig
   bracket: '[]'
 
 match:
@@ -649,28 +651,29 @@ paths:
     tag:mixtape:           +mixtape/$mixtape_album [%titlecase_proper{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
     albumtype:mixtape:     +mixtape/$mixtape_album [%titlecase_proper{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
-    albumtype:single:      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+singles/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:album:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+lp/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:ep:          %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+ep/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:promo:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+promo/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:whitelabel:  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+whitelabel/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:bootleg:     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+bootleg/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:unofficial:  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+bootleg/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:single:      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+singles/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+#    albumtype:single:      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+singles/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:album:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+lp/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:ep:          %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+ep/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:promo:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+promo/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:whitelabel:  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+whitelabel/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:bootleg:     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+bootleg/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:unofficial:  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+bootleg/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +live/Joan Baez │1995│ Ring Them Bells [Live, CD, MP3]
-    albumtype:live:        %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+live/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:live:        %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+live/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +demo/Electric Zoo │2012│ Demo [CD, FLAC]
-    albumtype:demo:        %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+demo/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:demo:        %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+demo/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +remix/Eminem │2003│ Loose Mundin (Promo Vinyl) [Remix, MP3]
-    albumtype:remix:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+remix/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:remix:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+remix/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
-    albumtype:audiobook:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+audiobook/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-    albumtype:interview:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+interview/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:audiobook:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+audiobook/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:interview:   %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+interview/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +other/Eminem │2012│ Crank Calls [MP3]
-    albumtype:other:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+other/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:other:       %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+other/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +demo/1998 Eminem - Kim (Original).mp3
     singleton:true tag:demo:       %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+demo/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
@@ -679,7 +682,7 @@ paths:
     singleton:true tag:live:       %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
 
 #   +live/Dr. Dre │2010│ Live In Europe [CD, MP3]
-    tag:live:                      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+#    tag:live:                      %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #   +interview/2002 Eminem - Interview on Mojo in the Morning.mp3
     singleton:true tag:interview:  %bucket{$first_artist_singleton, alpha}/%titlecase_proper{$first_artist_singleton}/+interview/%if{$hasyear, $year} %titlecase_proper{$artist} - %titlecase_proper{$title}
@@ -700,16 +703,16 @@ paths:
 #    albumtype:soundtrack  ^albumartist:"Various Artists":  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+soundtrack/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 #
 #   +compilation/Eminem │2000│ Off The Wall [Compilation, CD, MP3]
-    albumtype:compilation ^albumartist:"Various Artists":  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:compilation ^albumartist:"Various Artists":  %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+compilation/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +ost/1964 A Hard Day's Night [The Beatles, CD, MP3]
-    albumtype:soundtrack:        +ost/%if{$hasyear,${year} }%titlecase_proper{$album} [$albumartist, $alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
+    albumtype:soundtrack:        +ost/%if{$hasyear,${year} }%titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 
 #   +va/Raja Ram's Stash Bag, Volume 2 (2003)
-    comp:                        +va/%titlecase_proper{$album}%if{$hasyear, (${year})}/${padded_tracknr} $artist - %titlecase_proper{$title}
+    comp:                        +va/%titlecase_proper{$album}%if{$hasyear, (${year})}%aunique{}/${padded_tracknr} $artist - %titlecase_proper{$title}
 
 #   Sophie Zelmani │1998│ Precious Burden [CD, FLAC]
-    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$source]/${padded_tracknr} %titlecase_proper{$title}
+    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$albumartist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%aunique{}/${padded_tracknr} %titlecase_proper{$title}
 #    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%if{$notalbum, %titlecase_proper{$cdtype}, [LP]}/${padded_tracknr} %titlecase_proper{$title}
 #    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album}%if{$notalbum, [$cdtype]}/${padded_tracknr} %titlecase_proper{$title}
 #    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
