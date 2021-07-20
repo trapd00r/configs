@@ -313,6 +313,233 @@ smartplaylist:
     - name:  '+by genre/psychedelic.m3u'
       query: 'genre:psychedelic'
 #>
+#< inline fun!
+item_fields:
+
+# pad track number with zero if < 10
+  padded_tracknr: "'{:02n}'.format(track)"
+
+# remove spaces from catalognum
+  moh_catalog: catalognum.replace(" ", "")
+
+# capture first artist as primary artist to avoid directories like this:
+# · B/Britney Spears/
+# · B/Britney Spears feat Madonna/
+# · B/Britney Spears vs Metallica/
+# > https://github.com/beetbox/beets/issues/3176
+# > https://www.japh.se/2021/06/01/capture-primary-artist-as-a-separate-field-in-beets.html
+#
+# handles:
+# · Artist,
+# · Artist &
+# · Artist feat
+# · Artist feat.
+# · Artist featuring
+# · Artist ft.
+# · Artist vs
+# · Artist vs.
+# · Artist &
+#
+# The idea is to use $first_artist in the beginning of the path format
+# like so:
+#
+# %titlecase_proper{$first_artist}/%titlecase_proper{$albumartist}
+#
+# which will put 'Jennifer Lopez feat. Pitbull' inside the main Jennifer
+# Lopez directory, but still keep the feat. part in the directory name
+# inside it.
+#
+# J/Jennifer Lopez Feat. Pitbull/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
+# -> J/Jennifer Lopez/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
+
+
+  first_artist: |
+    # import an album to another artists directory, like:
+    # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
+    # to The Cardigans/+singles/Tom Jones & the Cardigans │1999│ Burning Down the House [Single, CD, FLAC]
+    # https://github.com/beetbox/beets/discussions/4012#discussioncomment-1021414
+    # beet import --set myartist='The Cardigans'
+    # we must first check to see if myartist is defined, that is, given on
+    # import time, or we raise an NameError exception.
+    try:
+      myartist
+    except NameError:
+      import re
+      return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
+    else:
+      return myartist
+
+  first_artist_singleton: |
+    try:
+      myartist
+    except NameError:
+      import re
+      return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
+    else:
+      return myartist
+
+# file basename for singletons import - import as is, minus the extension.
+  base_name: |
+    import os.path
+    base = os.path.basename(path)
+    return os.path.splitext(base)[0]
+
+album_fields:
+  cdtype: u'[%s]' % (albumtype.lower()) if albumtype else u''
+  notalbum: 0 if albumtype and albumtype.lower() == 'album' else 1
+  source: |
+      media = set([i.media.lower() for i in items])
+      format = set([i.format for i in items])
+      tbr = sum([i.bitrate for i in items])
+      abr = tbr / len(items) / 1000
+      bitdepth = sum([i.bitdepth for i in items]) // len(items)
+
+      # Init output
+      o = [f for f in format] if format else []
+
+      # Handle bitrate categories
+      for f in format:
+          if f == 'FLAC':
+              o.append(str(bitdepth) + 'bit')
+
+      if abr < 480 and abr >= 320:
+          o.append('320')
+      elif abr < 320 and abr >= 220:
+          o.append('V0')
+      elif abr < 215 and abr >= 170 and abr != 192:
+          o.append('V2')
+      elif abr == 192:
+          o.append('192')
+      elif abr < 170:
+          o.append(str(abr))
+
+      # Handle media aliases
+      for m in media:
+          if any(t in m for t in ('digital', 'file')):
+              o.append('WEB')
+          elif 'vinyl' in m:
+              o.append('Vinyl')
+          elif 'cd' in m:
+              o.append('CD')
+          elif m != '':
+              o.append(m)
+
+      return ", ".join(o)
+
+  mixtape_album: |
+    import re
+    album_fixed = album
+    return re.sub(r"G.unit Radio,?\s+(Pt|Part)[.]?\s*(.*)", r"G-Unit Radio \2", album_fixed, flags=re.IGNORECASE)
+
+  alb_status: |
+    # MB returns 4 values describing how "offical" a release is, they are:
+    # Official, Promotional, Bootleg, and Pseudo-Release
+    # We only note the middle two.
+    # https://musicbrainz.org/doc/Release#Status
+    if 'Promo' in albumstatus:
+      return 'Promo, '
+    elif 'Bootleg' in albumstatus:
+      return 'Bootleg, '
+    elif 'Official' in albumstatus:
+      return 'Official, '
+    elif 'Promotion' in albumstatus:
+      return 'Promo, '
+    else:
+      return None
+
+#  alb_type: |
+#    if albumtype:
+#      return albumtype + ', '
+#    else:
+#      return None
+
+  alb_type: |
+    alb_types = ""
+    albumtypes_list = {
+      'ep': 'EP',
+      'lp': 'LP',
+      'single': 'Single',
+      'live': 'Live',
+      'remix': 'Remix',
+      'dj-mix': 'DJ-mix',
+      'mixtape/street': 'Mixtape',
+      'interview': 'Interview',
+    }
+    for key, value in albumtypes_list.items():
+      if albumtype == key:
+        alb_types += str(value)
+
+      if alb_types is not None:
+        if alb_types != '':
+          return alb_types + ', '
+      else:
+        return None
+
+  media_type: |
+      # https://musicbrainz.org/doc/Release/Format
+      # Lets Merge the variations of the same medium into the main
+      # medium name (Opinonated)
+      media_list = {
+       '12" Vinyl':     'Vinyl, ',
+       '10" Vinyl':     'Vinyl, ',
+       '7" Vinyl':      'Vinyl, ',
+       'Vinyl':         'Vinyl, ',
+       'CDr':           'CDR, ',
+       'CD-R':          'CDR, ',
+       'Cassette':      'Cassette, ',
+       'Digital Media': 'Web, ',
+       'CD':            'CD, ',
+       'File':          'Web, ',
+       'DVD':           'DVDA, ',
+      }
+      # Lets omit these instead of converging them under a similar label like above (Opinonated)
+      media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'HQCD', '']
+      if items[0].media in media_list:
+        return str(media_list[items[0].media])
+      elif items[0].media in media_types_to_omit:
+        return None
+      else:
+        return str(items[0].media)
+
+  hasyear: 1 if year > 0 else 0
+#>
+#< autotagger
+# To control how tolerant the autotagger is of differences, use the
+# strong_rec_thresh option, which reflects the distance threshold below
+# which beets will make a “strong recommendation” that the metadata
+# be used.
+
+# default is 0.04
+match:
+  strong_rec_thresh: 0.10
+  medium_rec_thresh: 0.25
+  ignored:           missing_tracks unmatched_tracks
+  ignored_media:     ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
+                      'VCD', 'SVCD', 'UMD', 'VHS']
+#>
+#< ui
+ui:
+  color: yes
+  colors:
+    text_success:         '40'
+    text_warning:         '137'
+    text_error:           '160'
+    text_highlight:       '106'
+    text_highlight_minor: '108'
+    action_default:       '197'
+    action:               '210'
+#ui:
+#  color: yes
+#  colors:
+#    text_success:         green
+#    text_warning:         yellow
+#    text_error:           red
+#    text_highlight:       
+#    text_highlight_minor: lightgray
+#    action_default:       darkyellow
+#    action:               lightgray
+#>
+
 #< path setup
 aunique:
   keys: albumartist albumtype year album
@@ -506,224 +733,4 @@ paths:
 #    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
 
 #    default:                     %bucket{$first_artist, alpha}/%titlecase_proper{$first_artist}/+lp/%titlecase_proper{$first_artist}%if{$hasyear, │${year}│} %titlecase_proper{$album} [$alb_type$media_type$format]/${padded_tracknr} %titlecase_proper{$title}
-#>
-#< inline fun!
-item_fields:
-
-# pad track number with zero if < 10
-  padded_tracknr: "'{:02n}'.format(track)"
-
-# remove spaces from catalognum
-  moh_catalog: catalognum.replace(" ", "")
-
-# capture first artist as primary artist to avoid directories like this:
-# · B/Britney Spears/
-# · B/Britney Spears feat Madonna/
-# · B/Britney Spears vs Metallica/
-# > https://github.com/beetbox/beets/issues/3176
-# > https://www.japh.se/2021/06/01/capture-primary-artist-as-a-separate-field-in-beets.html
-#
-# handles:
-# · Artist,
-# · Artist &
-# · Artist feat
-# · Artist feat.
-# · Artist featuring
-# · Artist ft.
-# · Artist vs
-# · Artist vs.
-# · Artist &
-#
-# The idea is to use $first_artist in the beginning of the path format
-# like so:
-#
-# %titlecase_proper{$first_artist}/%titlecase_proper{$albumartist}
-#
-# which will put 'Jennifer Lopez feat. Pitbull' inside the main Jennifer
-# Lopez directory, but still keep the feat. part in the directory name
-# inside it.
-#
-# J/Jennifer Lopez Feat. Pitbull/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
-# -> J/Jennifer Lopez/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
-
-
-  first_artist: |
-    # import an album to another artists directory, like:
-    # Tom Jones │1999│ Burning Down the House [Single, CD, FLAC]
-    # to The Cardigans/+singles/Tom Jones & the Cardigans │1999│ Burning Down the House [Single, CD, FLAC]
-    # https://github.com/beetbox/beets/discussions/4012#discussioncomment-1021414
-    # beet import --set myartist='The Cardigans'
-    if myartist:
-      return myartist
-    else:
-      import re
-      return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
-
-  first_artist_singleton: |
-    if myartist:
-      return myartist
-    else:
-      import re
-      return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
-
-# file basename for singletons import - import as is, minus the extension.
-  base_name: |
-    import os.path
-    base = os.path.basename(path)
-    return os.path.splitext(base)[0]
-
-album_fields:
-  cdtype: u'[%s]' % (albumtype.lower()) if albumtype else u''
-  notalbum: 0 if albumtype and albumtype.lower() == 'album' else 1
-  source: |
-      media = set([i.media.lower() for i in items])
-      format = set([i.format for i in items])
-      tbr = sum([i.bitrate for i in items])
-      abr = tbr / len(items) / 1000
-      bitdepth = sum([i.bitdepth for i in items]) // len(items)
-
-      # Init output
-      o = [f for f in format] if format else []
-
-      # Handle bitrate categories
-      for f in format:
-          if f == 'FLAC':
-              o.append(str(bitdepth) + 'bit')
-
-      if abr < 480 and abr >= 320:
-          o.append('320')
-      elif abr < 320 and abr >= 220:
-          o.append('V0')
-      elif abr < 215 and abr >= 170 and abr != 192:
-          o.append('V2')
-      elif abr == 192:
-          o.append('192')
-      elif abr < 170:
-          o.append(str(abr))
-
-      # Handle media aliases
-      for m in media:
-          if any(t in m for t in ('digital', 'file')):
-              o.append('WEB')
-          elif 'vinyl' in m:
-              o.append('Vinyl')
-          elif 'cd' in m:
-              o.append('CD')
-          elif m != '':
-              o.append(m)
-
-      return ", ".join(o)
-
-  mixtape_album: |
-    import re
-    album_fixed = album
-    return re.sub(r"G.unit Radio,?\s+(Pt|Part)[.]?\s*(.*)", r"G-Unit Radio \2", album_fixed, flags=re.IGNORECASE)
-
-  alb_status: |
-    # MB returns 4 values describing how "offical" a release is, they are:
-    # Official, Promotional, Bootleg, and Pseudo-Release
-    # We only note the middle two.
-    # https://musicbrainz.org/doc/Release#Status
-    if 'Promo' in albumstatus:
-      return 'Promo, '
-    elif 'Bootleg' in albumstatus:
-      return 'Bootleg, '
-    elif 'Official' in albumstatus:
-      return 'Official, '
-    elif 'Promotion' in albumstatus:
-      return 'Promo, '
-    else:
-      return None
-
-#  alb_type: |
-#    if albumtype:
-#      return albumtype + ', '
-#    else:
-#      return None
-
-  alb_type: |
-    alb_types = ""
-    albumtypes_list = {
-      'ep': 'EP',
-      'lp': 'LP',
-      'single': 'Single',
-      'live': 'Live',
-      'remix': 'Remix',
-      'dj-mix': 'DJ-mix',
-      'mixtape/street': 'Mixtape',
-      'interview': 'Interview',
-    }
-    for key, value in albumtypes_list.items():
-      if albumtype == key:
-        alb_types += str(value)
-
-      if alb_types is not None:
-        if alb_types != '':
-          return alb_types + ', '
-      else:
-        return None
-
-  media_type: |
-      # https://musicbrainz.org/doc/Release/Format
-      # Lets Merge the variations of the same medium into the main
-      # medium name (Opinonated)
-      media_list = {
-       '12" Vinyl':     'Vinyl, ',
-       '10" Vinyl':     'Vinyl, ',
-       '7" Vinyl':      'Vinyl, ',
-       'Vinyl':         'Vinyl, ',
-       'CDr':           'CDR, ',
-       'CD-R':          'CDR, ',
-       'Cassette':      'Cassette, ',
-       'Digital Media': 'Web, ',
-       'CD':            'CD, ',
-       'File':          'Web, ',
-       'DVD':           'DVDA, ',
-      }
-      # Lets omit these instead of converging them under a similar label like above (Opinonated)
-      media_types_to_omit = ['Enhanced CD', 'CDDA', 'Blu-spec CD', 'HQCD', '']
-      if items[0].media in media_list:
-        return str(media_list[items[0].media])
-      elif items[0].media in media_types_to_omit:
-        return None
-      else:
-        return str(items[0].media)
-
-  hasyear: 1 if year > 0 else 0
-#>
-#< autotagger
-# To control how tolerant the autotagger is of differences, use the
-# strong_rec_thresh option, which reflects the distance threshold below
-# which beets will make a “strong recommendation” that the metadata
-# be used.
-
-# default is 0.04
-match:
-  strong_rec_thresh: 0.10
-  medium_rec_thresh: 0.25
-  ignored:           missing_tracks unmatched_tracks
-  ignored_media:     ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
-                      'VCD', 'SVCD', 'UMD', 'VHS']
-#>
-#< ui
-ui:
-  color: yes
-  colors:
-    text_success:         '40'
-    text_warning:         '137'
-    text_error:           '160'
-    text_highlight:       '106'
-    text_highlight_minor: '108'
-    action_default:       '197'
-    action:               '210'
-#ui:
-#  color: yes
-#  colors:
-#    text_success:         green
-#    text_warning:         yellow
-#    text_error:           red
-#    text_highlight:       
-#    text_highlight_minor: lightgray
-#    action_default:       darkyellow
-#    action:               lightgray
 #>
