@@ -39,6 +39,8 @@ set print-completions-horizontally   on
 
 #"\C-h": "helpie\n"
 $if pimpd2
+  "\C-k": history-search-backward
+  "\C-j": history-search-forward
   "\C-h": "help\n"
   "\C-l": "loved?\n"
   "\C-n": "np\n"
