@@ -98,6 +98,7 @@ import:
   copy:             no
   link:             no
   move:             yes
+  log:              '~/BEETS_IMPORTER_LOG'
 #  quiet_fallback:   asis # when using the -q flag
   quiet_fallback:   skip # when using the -q flag
 
@@ -195,7 +196,7 @@ fetchart:
   auto:    yes
   minwidth: 500
   maxwidth: 1200
-  sources: coverart itunes amazon albumart wikipedia google
+  sources: filesystem coverart itunes amazon albumart wikipedia google
 
 ftintitle:
   auto: yes
