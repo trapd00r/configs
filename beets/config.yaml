@@ -65,6 +65,7 @@ replace:
     '’':            "'"
     '′':            "'"
     '″':            ''
+    '‐':            '-'
 
 
 # I wish this didn't asciify explicit unicode characters, i.e │
@@ -145,6 +146,7 @@ tcp:
           'TCP',
           'SOS',
           'DMC',
+          'A$AP',
           'II',
           'III',
           'IV',
