@@ -42,7 +42,8 @@ directory:  '/mnt/music8/+TAGGED'
 library:    '~/var/beets/beets202105.db'
 pluginpath: ['/usr/lib/python3.9/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
-             '/home/scp1/etc/beets/plugins'
+             '/home/scp1/etc/beets/plugins',
+             '/home/scp1/dev/perlinpython3',
             ]
 
 
@@ -74,7 +75,7 @@ replace:
 art_filename:          cover # cover.*
 format_album:          $path
 format_item:           $path
-ignore:                ['.*', '*~', 'System Volume Information']
+ignore:                ['System Volume Information']
 ignore_hidden:         yes
 per_disc_numbering:    no
 sort_album:            path+
@@ -130,6 +131,7 @@ plugins: [
   'lastimport',
   'mbcollection',
   'missing',
+  'japh',
   'rewrite',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
@@ -147,6 +149,7 @@ tcp:
           'SOS',
           'DMC',
           'A$AP',
+          'T.I',
           'II',
           'III',
           'IV',
@@ -598,7 +601,8 @@ paths:
     tag:8bitpeoples:     +game/+8bitpeoples/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 #   for testing stupid things
-    tag:test:            +test/%bucket{$first_artist, alpha}/%tcp{$first_artist}/%tcp{$first_artist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    tag:test:            +test/%bucket{$first_artist, alpha}/%tcp{$first_artist}/%japh{$first_artist}%if{$hasyear, │${year}│} %japh{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+#    tag:test:            +test/%bucket{$first_artist, alpha}/%tcp{$first_artist}/%tcp{$first_artist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
 
 #< Eminem
 #   import bootlegs that have no discog info as-is in +other
