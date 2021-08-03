@@ -67,6 +67,17 @@ replace:
     '′':            "'"
     '″':            ''
     '‐':            '-'
+#    'Season XII':     'Season 12'
+#    'Season XIII':     'Season 13'
+#    'Season XIV':     'Season 14'
+#    'Season XV':     'Season 15'
+#    'Season XVI':     'Season 16'
+#    'Season XVII':     'Season 17'
+#    'Season XVIII':     'Season 18'
+#    'Season XIX':     'Season 19'
+#    'Season XX':     'Season 20'
+#    'Season X':     'Season 10'
+#    'Season XI':     'Season 11'
 
 
 # I wish this didn't asciify explicit unicode characters, i.e │
@@ -101,8 +112,8 @@ import:
   link:             no
   move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
-#  quiet_fallback:   asis # when using the -q flag
-  quiet_fallback:   skip # when using the -q flag
+  quiet_fallback:   asis # when using the -q flag
+#  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -149,6 +160,9 @@ tcp:
           'SOS',
           'DMC',
           'A$AP',
+          'OST',
+          'PAL',
+          'NTSC',
           'T.I',
           'II',
           'III',
@@ -261,6 +275,27 @@ musicbrainz:
               ]
 
 rewrite:
+  album The Simpsons (Season I):     The Simpsons Season 01
+  album The Simpsons (Season II):    The Simpsons Season 02
+  album The Simpsons (Season III):   The Simpsons Season 03
+  album The Simpsons (Season IV):    The Simpsons Season 04
+  album The Simpsons (Season V):     The Simpsons Season 05
+  album The Simpsons (Season VI):    The Simpsons Season 06
+  album The Simpsons (Season VII):   The Simpsons Season 07
+  album The Simpsons (Season VIII):  The Simpsons Season 08
+  album The Simpsons (Season IX):    The Simpsons Season 09
+  album The Simpsons (Season X):     The Simpsons Season 10
+  album The Simpsons (Season XI):    The Simpsons Season 11
+  album The Simpsons (Season XII):   The Simpsons Season 12
+  album The Simpsons (Season XIII):  The Simpsons Season 13
+  album The Simpsons (Season XIV):   The Simpsons Season 14
+  album The Simpsons (Season XV):    The Simpsons Season 15
+  album The Simpsons (Season XVI):   The Simpsons Season 16
+  album The Simpsons (Season XVII):  The Simpsons Season 17
+  album The Simpsons (Season XVIII): The Simpsons Season 18
+  album The Simpsons (Season XIV):   The Simpsons Season 19
+  album The Simpsons (Season XX):    The Simpsons Season 20
+
   album .*Sommar i P1:               P1 Sommar
   album .*Sommar (och|[&]) Vinter i P1.*:  P1 Sommar
   album Söndagsintervjun:            P1 Söndagsintervjun
@@ -696,7 +731,7 @@ paths:
 
     ### add compilations and soundtrack by artist in artist dir, and
     ### other VA compilations as a special case below.
-    albumtype:soundtrack  ^albumartist:"Various Artists": +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
+#    albumtype:soundtrack  ^albumartist:"Various Artists": +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
     albumtype:compilation ^albumartist:"Various Artists": %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
 
     albumartist:"Various Artists" albumtype:compilation: +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
@@ -714,7 +749,7 @@ paths:
     ^albumartist:"Various Artists" albumtype:remix:      %bucket{$first_artist, alpha}/%tcp{$first_artist}/+remixes/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:interview:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+interviews/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:freestyle:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+freestyles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
-    ^albumartist:"Various Artists" albumtype:soundtrack: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+soundtracks/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
+#    ^albumartist:"Various Artists" albumtype:soundtrack: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+soundtracks/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:other:      %bucket{$first_artist, alpha}/%tcp{$first_artist}/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
 
 
@@ -724,6 +759,8 @@ paths:
     singleton:true tag:freestyle:  %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true:                %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
+#    albumtype:soundtrack:          +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
+    albumtype:soundtrack:          +ost/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 #   +va/Raja Ram's Stash Bag, Volume 2 (2003)
     comp: +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
