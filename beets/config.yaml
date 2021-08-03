@@ -67,17 +67,6 @@ replace:
     '′':            "'"
     '″':            ''
     '‐':            '-'
-#    'Season XII':     'Season 12'
-#    'Season XIII':     'Season 13'
-#    'Season XIV':     'Season 14'
-#    'Season XV':     'Season 15'
-#    'Season XVI':     'Season 16'
-#    'Season XVII':     'Season 17'
-#    'Season XVIII':     'Season 18'
-#    'Season XIX':     'Season 19'
-#    'Season XX':     'Season 20'
-#    'Season X':     'Season 10'
-#    'Season XI':     'Season 11'
 
 
 # I wish this didn't asciify explicit unicode characters, i.e │
@@ -275,26 +264,52 @@ musicbrainz:
               ]
 
 rewrite:
-  album The Simpsons .Season I.:     The Simpsons Season 01
-  album The Simpsons .Season II.:    The Simpsons Season 02
-  album The Simpsons .Season III.:   The Simpsons Season 03
-  album The Simpsons .Season IV.:    The Simpsons Season 04
-  album The Simpsons .Season V.:     The Simpsons Season 05
-  album The Simpsons .Season VI.:    The Simpsons Season 06
-  album The Simpsons .Season VII.:   The Simpsons Season 07
-  album The Simpsons .Season VIII.:  The Simpsons Season 08
-  album The Simpsons .Season IX.:    The Simpsons Season 09
-  album The Simpsons .Season X.:     The Simpsons Season 10
-  album The Simpsons .Season XI.:    The Simpsons Season 11
-  album The Simpsons .Season XII.:   The Simpsons Season 12
-  album The Simpsons .Season XIII.:  The Simpsons Season 13
-  album The Simpsons .Season XIV.:   The Simpsons Season 14
-  album The Simpsons .Season XV.:    The Simpsons Season 15
-  album The Simpsons .Season XVI.:   The Simpsons Season 16
-  album The Simpsons .Season XVII.:  The Simpsons Season 17
-  album The Simpsons .Season XVIII.: The Simpsons Season 18
-  album The Simpsons .Season XIV.:   The Simpsons Season 19
-  album The Simpsons .Season XX.:    The Simpsons Season 20
+  album The Simpsons [(]Season I[)]:     The Simpsons Season 01
+  album The Simpsons [(]Season II[)]:    The Simpsons Season 02
+  album The Simpsons [(]Season III[)]:   The Simpsons Season 03
+  album The Simpsons [(]Season IV[)]:    The Simpsons Season 04
+  album The Simpsons [(]Season V[)]:     The Simpsons Season 05
+  album The Simpsons [(]Season VI[)]:    The Simpsons Season 06
+  album The Simpsons [(]Season VII[)]:   The Simpsons Season 07
+  album The Simpsons [(]Season VIII[)]:  The Simpsons Season 08
+  album The Simpsons [(]Season IX[)]:    The Simpsons Season 09
+  album The Simpsons [(]Season X[)]:     The Simpsons Season 10
+  album The Simpsons [(]Season XI[)]:    The Simpsons Season 11
+  album The Simpsons [(]Season XII[)]:   The Simpsons Season 12
+  album The Simpsons [(]Season XIII[)]:  The Simpsons Season 13
+  album The Simpsons [(]Season XIV[)]:   The Simpsons Season 14
+  album The Simpsons [(]Season XV[)]:    The Simpsons Season 15
+  album The Simpsons [(]Season XVI[)]:   The Simpsons Season 16
+  album The Simpsons [(]Season XVII[)]:  The Simpsons Season 17
+  album The Simpsons [(]Season XVIII[)]: The Simpsons Season 18
+  album The Simpsons [(]Season XIX[)]:   The Simpsons Season 19
+  album The Simpsons [(]Season XX[)]:    The Simpsons Season 20
+
+  album Dream Dance, Vol[.] 1:            Dream Dance 01
+  album Dream Dance, Vol[.] 2:            Dream Dance 02
+  album Dream Dance, Vol[.] 3:            Dream Dance 03
+  album Dream Dance, Vol[.] 4:            Dream Dance 04
+  album Dream Dance, Vol[.] 5:            Dream Dance 05
+  album Dream Dance, Vol[.] 6 The Best.+: Dream Dance 06
+  album Dream Dance, Vol[.] 8:            Dream Dance 08
+  album Dream Dance, Vol[.] 9:            Dream Dance 09
+  album Dream Dance, Vol[.] 10:           Dream Dance 10
+  album Dream Dance, Vol[.] 11:           Dream Dance 11
+  album Dream Dance, Vol[.] 13:           Dream Dance 13
+  album Dream Dance, Vol[.] 14:           Dream Dance 14
+  album Dream Dance Vol[.]15:             Dream Dance 15
+  album Dream Dance, Vol[.] 16:           Dream Dance 16
+  album Dream Dance, Vol[.] 17:           Dream Dance 17
+  album Dream Dance, Vol[.] 18:           Dream Dance 18
+  album Dream Dance, Vol[.] 19:           Dream Dance 19
+  album Dream Dance Vol 23:               Dream Dance 23
+  album Dream Dance, Vol[.] 65:           Dream Dance 65
+  album Dream Dance, Vol[.] 66:           Dream Dance 66
+  album Dream Dance, Vol[.] 67:           Dream Dance 67
+  album Dream Dance, Vol[.] 68:           Dream Dance 68
+  album Dream Dance, Vol[.] 69:           Dream Dance 69
+
+
 
   album .*Sommar i P1:               P1 Sommar
   album .*Sommar (och|[&]) Vinter i P1.*:  P1 Sommar
