@@ -275,26 +275,26 @@ musicbrainz:
               ]
 
 rewrite:
-  album The Simpsons (Season I):     The Simpsons Season 01
-  album The Simpsons (Season II):    The Simpsons Season 02
-  album The Simpsons (Season III):   The Simpsons Season 03
-  album The Simpsons (Season IV):    The Simpsons Season 04
-  album The Simpsons (Season V):     The Simpsons Season 05
-  album The Simpsons (Season VI):    The Simpsons Season 06
-  album The Simpsons (Season VII):   The Simpsons Season 07
-  album The Simpsons (Season VIII):  The Simpsons Season 08
-  album The Simpsons (Season IX):    The Simpsons Season 09
-  album The Simpsons (Season X):     The Simpsons Season 10
-  album The Simpsons (Season XI):    The Simpsons Season 11
-  album The Simpsons (Season XII):   The Simpsons Season 12
-  album The Simpsons (Season XIII):  The Simpsons Season 13
-  album The Simpsons (Season XIV):   The Simpsons Season 14
-  album The Simpsons (Season XV):    The Simpsons Season 15
-  album The Simpsons (Season XVI):   The Simpsons Season 16
-  album The Simpsons (Season XVII):  The Simpsons Season 17
-  album The Simpsons (Season XVIII): The Simpsons Season 18
-  album The Simpsons (Season XIV):   The Simpsons Season 19
-  album The Simpsons (Season XX):    The Simpsons Season 20
+  album The Simpsons .Season I.:     The Simpsons Season 01
+  album The Simpsons .Season II.:    The Simpsons Season 02
+  album The Simpsons .Season III.:   The Simpsons Season 03
+  album The Simpsons .Season IV.:    The Simpsons Season 04
+  album The Simpsons .Season V.:     The Simpsons Season 05
+  album The Simpsons .Season VI.:    The Simpsons Season 06
+  album The Simpsons .Season VII.:   The Simpsons Season 07
+  album The Simpsons .Season VIII.:  The Simpsons Season 08
+  album The Simpsons .Season IX.:    The Simpsons Season 09
+  album The Simpsons .Season X.:     The Simpsons Season 10
+  album The Simpsons .Season XI.:    The Simpsons Season 11
+  album The Simpsons .Season XII.:   The Simpsons Season 12
+  album The Simpsons .Season XIII.:  The Simpsons Season 13
+  album The Simpsons .Season XIV.:   The Simpsons Season 14
+  album The Simpsons .Season XV.:    The Simpsons Season 15
+  album The Simpsons .Season XVI.:   The Simpsons Season 16
+  album The Simpsons .Season XVII.:  The Simpsons Season 17
+  album The Simpsons .Season XVIII.: The Simpsons Season 18
+  album The Simpsons .Season XIV.:   The Simpsons Season 19
+  album The Simpsons .Season XX.:    The Simpsons Season 20
 
   album .*Sommar i P1:               P1 Sommar
   album .*Sommar (och|[&]) Vinter i P1.*:  P1 Sommar
