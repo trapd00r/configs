@@ -28,8 +28,9 @@ abbreviations=(
   "jkk"        "!-4$"
   "kk"         "!-5$"
   "kj"         "!-6$"
-  "aa"         "/mnt/music8/_artists.a-z/"
   "bb"          "/mnt/music8/+TAGGED/"
+  "ee"          "/mnt/music8/+TAGGED/E/Eminem"
+  "ss"          "/mnt/music8/_soulseek"
 )
 
 magic-abbrev-expand() {
