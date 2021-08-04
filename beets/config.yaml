@@ -285,29 +285,30 @@ rewrite:
   album The Simpsons [(]Season XIX[)]:   The Simpsons Season 19
   album The Simpsons [(]Season XX[)]:    The Simpsons Season 20
 
-  album Dream Dance, Vol[.] 1:            Dream Dance 01
-  album Dream Dance, Vol[.] 2:            Dream Dance 02
-  album Dream Dance, Vol[.] 3:            Dream Dance 03
-  album Dream Dance, Vol[.] 4:            Dream Dance 04
-  album Dream Dance, Vol[.] 5:            Dream Dance 05
-  album Dream Dance, Vol[.] 6 The Best.+: Dream Dance 06
-  album Dream Dance, Vol[.] 8:            Dream Dance 08
-  album Dream Dance, Vol[.] 9:            Dream Dance 09
-  album Dream Dance, Vol[.] 10:           Dream Dance 10
-  album Dream Dance, Vol[.] 11:           Dream Dance 11
-  album Dream Dance, Vol[.] 13:           Dream Dance 13
-  album Dream Dance, Vol[.] 14:           Dream Dance 14
+  album Dream Dance. Vol[.] 1:            Dream Dance 01
+  album Dream Dance. Vol[.] 2:            Dream Dance 02
+  album Dream Dance. Vol[.] 3:            Dream Dance 03
+  album Dream Dance. Vol[.] 4:            Dream Dance 04
+  album Dream Dance. Vol[.] 5:            Dream Dance 05
+  album Dream Dance. Vol[.] 6 The Best.+: Dream Dance 06
+  album Dream Dance. Vol[.] 8:            Dream Dance 08
+  album Dream Dance. Vol[.] 9:            Dream Dance 09
+  album Dream Dance. Vol[.] 10:           Dream Dance 10
+  album Dream Dance. Vol[.] 11:           Dream Dance 11
+  album Dream Dance. Vol[.] 13:           Dream Dance 13
+  album Dream Dance. Vol[.] 14:           Dream Dance 14
   album Dream Dance Vol[.]15:             Dream Dance 15
-  album Dream Dance, Vol[.] 16:           Dream Dance 16
-  album Dream Dance, Vol[.] 17:           Dream Dance 17
-  album Dream Dance, Vol[.] 18:           Dream Dance 18
-  album Dream Dance, Vol[.] 19:           Dream Dance 19
+  album Dream Dance. Vol[.] 16:           Dream Dance 16
+  album Dream Dance. Vol[.] 17:           Dream Dance 17
+  album Dream Dance. Vol[.] 18:           Dream Dance 18
+  album Dream Dance. Vol[.] 19:           Dream Dance 19
   album Dream Dance Vol 23:               Dream Dance 23
-  album Dream Dance, Vol[.] 65:           Dream Dance 65
-  album Dream Dance, Vol[.] 66:           Dream Dance 66
-  album Dream Dance, Vol[.] 67:           Dream Dance 67
-  album Dream Dance, Vol[.] 68:           Dream Dance 68
-  album Dream Dance, Vol[.] 69:           Dream Dance 69
+  album Dream Dance 47 Maxxx Edition:     Dream Dance 47
+  album Dream Dance. Vol[.] 65:           Dream Dance 65
+  album Dream Dance. Vol[.] 66:           Dream Dance 66
+  album Dream Dance. Vol[.] 67:           Dream Dance 67
+  album Dream Dance. Vol[.] 68:           Dream Dance 68
+  album Dream Dance. Vol[.] 69:           Dream Dance 69
 
 
 
@@ -727,19 +728,13 @@ paths:
     tag:rosamannen:              +live/+rosamannen/$base_name
 #--
     tag:sr:                      +radio/Sveriges Radio/%tcp{$album}/%if{$hasyear, $year} %tcp{$title}
-#   +game/+ost/Spiderman and the X-Men Arcade's Revenge OST (1992)
-    tag:gamesoundtrack:          +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
-#   +game/+tracks/Amiga Music - Z.Out.mp3
-    tag:game singleton:true:       +game/+tracks/%tcp{$artist} - %tcp{$title}
-
-#   +game/The Mighty Pirate Sessions Volume 1 [Dubmood] (2006)
-    tag:game singleton:false:      +game/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:gamesoundtrack:            +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:game albumtype:soundtrack: +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game singleton:true:       +game/+tracks/%tcp{$artist} - %tcp{$title}
+    tag:game singleton:false:      +game/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
-
-#   +mixtape/All Out War (G-Unot Mixtape) [The Game] (2005)
     tag:mixtape:           +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
@@ -747,9 +742,8 @@ paths:
     ### add compilations and soundtrack by artist in artist dir, and
     ### other VA compilations as a special case below.
 #    albumtype:soundtrack  ^albumartist:"Various Artists": +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-    albumtype:compilation ^albumartist:"Various Artists": %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-
-    albumartist:"Various Artists" albumtype:compilation: +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
+    ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
+    albumartist:"Various Artists"  albumtype:compilation: +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
 #"
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
@@ -774,12 +768,9 @@ paths:
     singleton:true tag:freestyle:  %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true:                %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-#    albumtype:soundtrack:          +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
     albumtype:soundtrack:          +ost/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
-#   +va/Raja Ram's Stash Bag, Volume 2 (2003)
-    comp: +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
+    comp:                          +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
-#    default: %bucket{$first_artist, alpha}/%tcp{$first_artist}/%if{$hasyear,${year} }%tcp{$albumartist} - %tcp{$album}$fmt/${padded_tracknr} %tcp{$title}
     default:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+albums/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
 #>
