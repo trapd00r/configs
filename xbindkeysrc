@@ -39,6 +39,10 @@
 
 # Examples of commands:
 
+shift-insert
+  m:0x40 + c:33
+
+
 xbindkeys-mpdlove
   F9
 
