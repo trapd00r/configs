@@ -742,8 +742,8 @@ paths:
     ### add compilations and soundtrack by artist in artist dir, and
     ### other VA compilations as a special case below.
 #    albumtype:soundtrack  ^albumartist:"Various Artists": +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-    ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-    albumartist:"Various Artists"  albumtype:compilation: +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
+#    ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
+    albumtype:compilation:                                +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
 #"
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
