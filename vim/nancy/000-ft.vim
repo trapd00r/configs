@@ -55,7 +55,7 @@ set formatoptions=qro
 set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
 au BufNewFile,BufRead  *.tidningsbud         set nolist ft=tidningsbud
-au BufNewFile,BufRead  .gitignore            set filetype=vidir
+"au BufNewFile,BufRead  .gitignore            set filetype=vidir
 au BufNewFile,BufRead  MANIFEST              set filetype=vidir
 au BufNewFile,BufRead  *.todo                set filetype=todo
 au BufNewFile,BufRead  vidir*                set filetype=vidir-ls
