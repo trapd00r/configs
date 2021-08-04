@@ -16,7 +16,9 @@
 ###
 ###>
 
+alias beet="~/dev/beets/beet"
 
+#alias lltag="lltag --id3v2 --config $XDG_CONFIG_HOME/lltag.conf"
 alias lltag="lltag --config $XDG_CONFIG_HOME/lltag.conf"
 alias plexamp='Plexamp.appimage --no-sandbox'
 alias evernote='tusk'
@@ -26,7 +28,7 @@ alias      mv='mv -v'
 #alias      rm='rmc -v'
 alias      rm='/bin/rm -v'
 #alias     grep=ack
-alias    grep='grep -I -P --exclude-dir=".git" --color=auto'
+alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
 alias yaourt='trizen'
 
