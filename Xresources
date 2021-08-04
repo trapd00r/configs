@@ -185,8 +185,8 @@ UXTerm*termName:            xterm-256color
 !sid.keysym.M-S-q: command:\033]710;10x20\007
 
 !sid.meta8:             1
-sid.iso14755:             1
-sid.iso14755_52:          1
+!sid.iso14755:             1
+!sid.iso14755_52:          1
 sid.skipBuiltinGlyphs:    0
 sid.insecure:             1
 
@@ -369,6 +369,9 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
 .xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
 !}}}
+
+#*keysym.Control-Shift-K: ^[[23^
+sid.keysym.Control-Shift-K: \033[23@
 
 #include "/home/scp1/etc/Xcolors/nancy.Xresources"
 

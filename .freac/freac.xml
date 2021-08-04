@@ -369,12 +369,12 @@
    <value name="FilenamesKeepTimeStamps">0</value>
    <value name="Language">internal</value>
    <value name="ShowJobsTab">0</value>
-   <value name="WindowSizeX">1399</value>
-   <value name="WindowSizeY">807</value>
+   <value name="WindowSizeX">788</value>
+   <value name="WindowSizeY">1418</value>
    <value name="WindowMaximized">0</value>
    <value name="NotificationAvailable">1</value>
    <value name="ShowTitleInfo">1</value>
-   <value name="WindowPosX">1081</value>
+   <value name="WindowPosX">1</value>
    <value name="WindowPosY">1</value>
    <value name="StartCount">1</value>
    <value name="ShowTips">0</value>
@@ -685,8 +685,8 @@
    <value name="ConversionLogPattern">&lt;albumartist&gt; - &lt;album&gt;/&lt;albumartist&gt; - &lt;album&gt;</value>
   </section>
   <section name="Dialogs">
-   <value name="CDDBMultiMatchSizeX">344</value>
-   <value name="CDDBMultiMatchSizeY">273</value>
+   <value name="CDDBMultiMatchSizeX">304</value>
+   <value name="CDDBMultiMatchSizeY">33</value>
    <value name="CDDBManageSubmitsSizeX">556</value>
    <value name="CDDBManageSubmitsSizeY">337</value>
    <value name="CDDBManageQueriesSizeX">496</value>

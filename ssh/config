@@ -112,8 +112,9 @@ host pi
   user                   pi
   hostname               192.168.32.39
   port                   22
-host laptop
+host lid
   user                   scp1
-  
+  hostname               192.168.32.17
+  port                   19217
 
 #}}}

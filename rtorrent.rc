@@ -23,7 +23,7 @@ check_hash                    = no
 directory                     = /home/scp1/dl/
 encryption                    = allow_incoming,try_outgoing,enable_retry
 key_layout                    = qwerty
-port_range                    = 50000-50001
+port_range                    = 60288-60288
 scgi_local                    = ~/var/rtorrent/scgi
 session                       = /home/scp1/var/rtorrent/session/
 log.execute                   = ~/var/rtorrent/execute.log
@@ -56,8 +56,8 @@ schedule2 = session_save, 1200, 43200, ((session.save))
 schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 
 
-schedule  = mem     ,10, 10, "load.start=/home/scp1/dl/_fx/*.torrent,d.set_directory=/mnt/music5/_new"
-schedule  = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music5/_new"
+schedule  = mem     ,10, 10, "load.start=/home/scp1/dl/_fx/*.torrent,d.set_directory=/mnt/music8/_new"
+schedule  = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music8/_new"
 #schedule  = nas     ,10, 10, "load.start=/home/scp1/dl/_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
 
 
