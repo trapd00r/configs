@@ -16,6 +16,13 @@
 ###
 ###>
 
+# enable trace for python segfaults
+export PYTHONFAULTHANDLER=1
+
+# https://github.com/trapd00r/cgrep
+export CGREP_MATCH='38;5;196;1'
+export CGREP_NONMATCH='38;5;240'
+
 export GIT_SSH="/bin/ssh"
 
 # qbittorrent ui issues
@@ -86,14 +93,13 @@ export MYVIFMRC=${XDG_CONFIG_HOME}/vifm/vifmrc
 #>
 #< perl
 # add . back to @INC
-export             PERL_UNICODE=S
-export            PERL_HACK_LIB=$HOME/dev/PERL_HACK_LIB
 export      PERL_USE_UNSAFE_INC=1
+export            PERL_HACK_LIB=$HOME/dev/PERL_HACK_LIB
 export           PERL_CPANM_OPT='-nql~/ --reinstall --prompt --auto-cleanup 365 --mirror-only'
 export      PERL_MM_USE_DEFAULT=0
 export  HARNESS_SUMMARY_COL_SUC=green
 export HARNESS_SUMMARY_COL_FAIL=red
-export PERL_LOCAL_LIB_ROOT=${HOME}/perl5
+export PERL_LOCAL_LIB_ROOT=${HOME}/lib
 export PERL_CPANM_HOME=${HOME}/tmp/cpanm
 #>
 #< mplayer
