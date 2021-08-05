@@ -39,16 +39,12 @@ bind C-odiaeresis unshowroot
 
 #>
 #< catpoison only!
-set virtuals 8
+set virtuals 4
 vinit
-definekey top   F1  vselect 1
-definekey top   F2  vselect 2
-definekey top   F3  vselect 3
-definekey top   F4  vselect 4
-definekey top   F5  vselect 5
-definekey top   F6  vselect 6
-definekey top   F7  vselect 7
-definekey top   F8  vselect 8
+definekey top   C-1  vselect 1
+definekey top   C-2  vselect 2
+definekey top   C-3  vselect 3
+definekey top   C-4  vselect 4
 
 set barsticky off
 
@@ -79,7 +75,7 @@ set           bgcolor #080808
 set           bwcolor #0c0c0c
 set           fgcolor #d75f00
 set           fwcolor #303030
-set              font 'xft:xos4 Terminus:pixelsize=12'
+set              font 'xft:Terminus:style=Regular:pixelsize=24'
 set          maxundos 20
 #>
 #< window management
@@ -137,10 +133,10 @@ bind w exec sh ~/dev/ratpoison_scripts/window-menu/window-menu
 bind g exec ~/dev/utils/rp-groups-menu
 #>
 #< binds: window management
-bind H prevscreen
+bind H exchangeleft
 bind J exchangedown
 bind K exchangeup
-bind L nextscreen
+bind L exchangeright
 
 bind h focusleft
 bind j focusdown
@@ -153,7 +149,7 @@ bind C-s split 2/3
 bind C-S hsplit 2/3
 
 bind u undo
-bind G gmove
+bind G vmove
 
 bind Tab focuslast
 bind ISO_Left_Tab focus
@@ -184,6 +180,8 @@ bind Delete exec catpoison -c 'gmove crap' -c 'next'
 #< binds: top level
 definekey top Pause       exec ~/dev/utils/monitor-toggle && echo 'screensaver disabled'
 definekey top Scroll_Lock exec xscreensaver-command -lock
+definekey top M-Return    nextscreen
+definekey top s-Return    prevscreen
 #>
 
 # act normal, but prevent firefox from raising itself
