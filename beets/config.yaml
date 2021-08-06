@@ -101,8 +101,8 @@ import:
   link:             no
   move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
-  quiet_fallback:   asis # when using the -q flag
-#  quiet_fallback:   skip # when using the -q flag
+#  quiet_fallback:   asis # when using the -q flag
+  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -723,6 +723,7 @@ paths:
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
 
     tag:ocremix:                 +game/+ocremix/$base_name
+    tag:8bitcollective:          +game/+8bitcollective/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     tag:overlooked:              +game/+overlookedremix/$base_name
     tag:amigaremix:              +game/+amigaremix/$base_name
     tag:rosamannen:              +live/+rosamannen/$base_name
@@ -739,11 +740,8 @@ paths:
     albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
-    ### add compilations and soundtrack by artist in artist dir, and
-    ### other VA compilations as a special case below.
 #    albumtype:soundtrack  ^albumartist:"Various Artists": +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
 #    ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-    albumtype:compilation:                                +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
 #"
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
@@ -761,6 +759,10 @@ paths:
 #    ^albumartist:"Various Artists" albumtype:soundtrack: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+soundtracks/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:other:      %bucket{$first_artist, alpha}/%tcp{$first_artist}/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
 
+    ### add compilations and soundtrack by artist in artist dir, and
+    ### other VA compilations as a special case below.
+    ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilations/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumtype:compilation:                                +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
     singleton:true tag:demo:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+demo/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true tag:live:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
@@ -770,7 +772,7 @@ paths:
 
     albumtype:soundtrack:          +ost/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
-    comp:                          +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
+#    comp:                          +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
     default:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+albums/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
 #>
