@@ -1,19 +1,18 @@
 # vim:ft=ratpoison:
 escape C-f
 
-set barpadding 20 10
-set barsticky 0
+set barpadding 10 5
+set barsticky 1
 set gap 1
 set ignoreresizehints 1
 set onlyborder 0
 
 # focused window
-set fwcolor #c25f04
+set fwcolor #242424
 # unfocused window
 set bwcolor #121212
 set bgcolor #121212
-set fgcolor #ff9c00
-
+set fgcolor #af875f
 
 set font "Anonymous Pro:style=Regular:pixelsize=10:antialias=1:hinting=1:hintstyle=3"
 
@@ -23,7 +22,6 @@ bind S hsplit
 bind C-S hsplit
 
 bind c exec urxvt -name sid -fg white -bg black
-bind C-c exec urxvt
 bind C exec xterm
 
 unbind n
@@ -37,7 +35,7 @@ bind o exec mpc toggle
 # prevent accidental closes
 unbind k
 
-# swap workspaces, but define it in 'top' to avoid having to prefix with C-a
+# swap workspaces, but define it in top
 # "win-n"
 definekey top s-1 vselect 0
 definekey top s-2 vselect 1
@@ -93,37 +91,6 @@ bind G gmove
 
 bind Tab focuslast
 bind ISO_Left_Tab focus
-
-#bind s-n gnext
-#bind s-p gprev
-#bind s-c gnew
-#bind s-g gnew
-#>
-#< binds: workspaces
-#exec rpws init 5 -k
-#gnewbg one
-#gnewbg two
-#gnewbg three
-#gnewbg four
-#
-#definekey top F1 exec rpws 1
-#definekey top F2 exec rpws 2
-#definekey top F3 exec rpws 3
-#definekey top F4 exec rpws 4
-#definekey top F5 exec rpws 5
-
-
-
-#>
-#< binds: top level
-#definekey top C-Return exec firefox -new-tab "`xclip -o`"
-#definekey top S-Return getsel
-#definekey top Pause    exec ossmix vmix0.pcm8 -- +2
-#definekey top Print    exec ossmix vmix0.pcm8 -- -2
-#definekey top C-Break  exec ossmix vmix0.pcm9 -- +2
-#definekey top C-Print  exec ossmix vmix0.pcm9 -- -2
-
-#>
 
 # act normal, but prevent firefox from raising itself
 # when links are opened from other applications
