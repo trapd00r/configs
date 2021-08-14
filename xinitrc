@@ -24,6 +24,7 @@ xset s off -dpms &
 
 xset r rate 280 30
 xkbset bouncekeys 50
+xbanish &
 
 # https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
 xsetroot -solid '#292929'
