@@ -6,12 +6,11 @@
 xset         +fp      /usr/share/fonts/jmk
 xrdb         -merge   $XDG_CONFIG_HOME/Xresources
 #xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
-setxkbmap se -variant nodeadkeys
-setxkbmap    -option  terminate:ctrl_alt_bksp
+setxkbmap se -variant nodeadkeys \
+             -option  terminate:ctrl_alt_bksp
 xbindkeys &
-# capslock -> esc
-xmodmap               ~/etc/xmodmaprc
 
+xmodmap               ~/etc/xmodmaprc
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # [][ ][] monitor setup
@@ -25,21 +24,19 @@ xset s off -dpms &
 xset r rate 280 30
 xkbset bouncekeys 50
 xbanish &
+$HOME/dev/sdorfehs-config/sdorfehs-feedbar &
 
 # https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
 xsetroot -solid '#292929'
 
 xscreensaver -no-splash &
 dunst &
-mullvad connect &
+#mullvad connect &
 
 # start mpd unless it's already started
 [ ! -s ~/var/mpd/pid ] && (mpd ~/etc/mpd.conf && mpdas)&
 
 /usr/lib/kdeconnectd &
 
-#exec xterm
-#exec sdorfehsdebug -f $XDG_CONFIG_HOME/sdorfehs/sdorfehsrc
-exec sdorfehs -f $XDG_CONFIG_HOME/sdorfehs/sdorfehsrc
-#exec sdorfehs
+exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
