@@ -5,6 +5,7 @@
 let mapleader = ';'
 
 map <C-s> :call RemoveTrailingCrap()<cr>
+map <C-s> :call ShowFuncName()<cr>
 nnoremap b! :b1<cr>
 nnoremap b' :b2<cr>
 nnoremap b# :b3<cr>
@@ -32,7 +33,7 @@ nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nnoremap <silent> n n:call HL_Search_Cword()<CR>
 "  :silent !printf '\e]12;\#030407
 " user interface                                                             {{{
-nnoremap <CR>   za
+"nnoremap <CR>   za
 "nnoremap '      `        " switch ' and ` ...
 nnoremap `      '        " ... and do the right thing
 cmap     qq     qa!<CR>  " quit really, really fast
