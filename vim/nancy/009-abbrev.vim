@@ -30,7 +30,13 @@ ia sxc set_xterm_color(<CR>{<CR>000 => 'ff0000',<CR>},<CR>);<CR>
 
 ia dD Data::Dumper
 
-ia <expr> DD   InsertDataDumper()
+ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
+ia wd warn Dumper();<left><left>
+
+" comment block!
+ia CC  ########################################################################<cr>#<cr>#<cr>#<cr>#######################################################################<up><up><BackSpace>
+
+
 
 ia dumper Dumper
 ia prinnt print
