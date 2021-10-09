@@ -1,0 +1,70 @@
+# vim:ft=config:
+# scalar options
+show_tainted      = 1
+show_unicode      = 1
+show_lvalue       = 1
+print_escapes     = 1
+scalar_quotes     = "
+# "
+escape_chars      = none
+string_max        = 4096
+string_preserve   = begin
+string_overflow   = '(...skipping __SKIPPED__ chars...)'
+unicode_charnames = 1
+
+ # array options
+array_max      = 100
+array_preserve = begin
+array_overflow = '(...skipping __SKIPPED__ items...)'
+index          = 1
+
+ # hash options
+hash_max       = 100
+hash_preserve  = begin
+hash_overflow  = '(...skipping __SKIPPED__ keys...)'
+hash_separator = '   '
+align_hash     = 1
+sort_keys      = 1
+quote_keys     = auto
+
+ # general options
+name           = var
+return_value   = pass
+output         = stderr
+use_prototypes = 1
+indent         = 4
+show_readonly  = 1
+show_tied      = 1
+show_dualvar   = lax
+show_weak      = 1
+show_refcount  = 0
+show_memsize   = 0
+memsize_unit   = auto
+separator      = ,
+end_separator  = 0
+caller_info    = 0
+caller_message = 'Printing in line __LINE__ of __FILENAME__'
+max_depth      = 0
+deparse        = 0
+alias          = p
+warnings       = 1
+
+# colorization (see Colors & Themes below)
+colored = auto
+theme   = Material
+
+# object output
+class_method             = _data_printer
+class.parents            = 1
+class.linear_isa         = auto
+class.universal          = 1
+class.expand             = 1
+class.stringify          = 1
+class.show_reftype       = 0
+class.show_overloads     = 1
+class.show_methods       = all
+class.sort_methods       = 1
+class.inherited          = none
+class.format_inheritance = string
+class.parent_filters     = 1
+class.internals          = 1
