@@ -28,6 +28,9 @@ syntax on
 "set t_te=                                 " the alternate screen buffer.
 
 
+set path+='/home/scp1/dev/air8/cgi-bin/core/lib/'
+set path+='/home/scp1/dev/air8/'
+
 set autoread
 set autochdir
 set autoindent
@@ -56,6 +59,7 @@ set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:2,vertical
 set display+=lastline,uhex
 set expandtab
+set fileencodings=utf-8,latin1
 "< folding
 "set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
 set fillchars+=fold:\ 
@@ -107,6 +111,7 @@ set list
 "set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥sbr=↪:conceal=⌦
 set   listchars=eol:\ 
 set   listchars+=tab:»\ 
+set   listchars+=tab:\ \ 
 set   listchars+=trail:·
 set   listchars+=nbsp: 
 set   listchars+=precedes: 
@@ -115,7 +120,7 @@ set   listchars+=conceal:⌦
 set   showbreak=↪
 
 set   magic
-set   makeprg=mymake
+"set   makeprg=mymake
 set   maxmapdepth=500
 set   matchpairs+==:;
 set   matchpairs+=<:>
@@ -278,3 +283,54 @@ hi SpellBad     gui=undercurl guisp=red term=undercurl cterm=undercurl
 if &ft == 'python'
   hi link pythonFunction Keyword
 endif
+
+
+"""""""       """""""""
+""""""" Askås """""""""
+"""""""       """""""""
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+
+set cc&
+
+set encoding=utf-8
+au BufRead,BufNewFile /home/scp1/dev/askas/air8/* setlocal fileencodings=iso-8859-1
+au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal cc&
+au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol=500
+
+let g:fullpath=expand('%:p')
+au BufEnter * let fullpath=expand('%:p')
+au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
+au BufRead,BufNewFile *.md set ft=markdown nospell
+
+nmap <C-b> :make<CR>
+
+set noexpandtab
+set guifont=Source\ Code\ Pro\ 12
+
+hi markdownXmlElement      ctermfg=12
+hi markdownXmlEmptyElement ctermfg=37
+hi comma                   ctermfg=87 cterm=bolditalic
+
+
+"fun! ShowFuncName()
+"  let lnum = line(".")
+"  let col = col(".")
+"  echohl ModeMsg
+"  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+"  echohl None
+"  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+"endfun
+"nnoremap <C-s> :call ShowFuncName()<CR>
+
+
+syn match commentblock /\v[#]{80}/
+hi commentblock ctermfg=220
+
+
+set showtabline=0

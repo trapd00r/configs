@@ -316,3 +316,9 @@ hi markdownJekyllLiquidBlockTag ctermfg=197 cterm=italic
 highlight GitGutterAdd    ctermfg=34
 highlight GitGutterChange ctermfg=198
 highlight GitGutterDelete ctermfg=160
+
+hi markdownXmlElement ctermfg=197
+
+hi qfFileName ctermfg=208
+hi qfLineNr ctermfg=33 cterm=italicbold
+hi qfSeparator ctermfg=232

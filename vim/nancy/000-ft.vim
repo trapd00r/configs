@@ -34,6 +34,7 @@ let g:perl_sync_dist               = 1000
 let g:perl_want_scope_in_variables = 1
 let g:perlhelp_prog                = '/usr/bin/perldoc'
 let g:readline_has_bash            = 1
+let g:rg_highlight                 = 1
 let g:sh_fold_enabled              = 4
 let g:sh_is_posix                  = 1
 let g:sh_maxlines                  = 200
@@ -52,7 +53,8 @@ let g:rainbow_active               = 1
 let g:gitgutter_override_sign_column_highlight = 0
 
 set formatoptions=qro
-set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
+set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'
+"set formatprg=perl\ -MText::Autoformat\ -e'autoformat'
 
 au BufNewFile,BufRead  *.tidningsbud         set nolist ft=tidningsbud
 "au BufNewFile,BufRead  .gitignore            set filetype=vidir
@@ -67,7 +69,7 @@ au BufRead            ~/etc/feh/keys         call Filetype_feh()
 au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
 au BufRead,BufNewFile *.overtime             setl ft=overtime
 au BufRead,BufNewFile *.rs                   setl ft=rust
-au BufRead,BufNewFile *.md                   setl ft=md
+au BufRead,BufNewFile *.md                   setl ft=markdown
 au BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
 au BufRead,BufNewFile *.go                   setl ft=go
 au BufRead,BufNewFile *.css                  setl sw=2
@@ -190,3 +192,4 @@ au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p2' 'cterm=bold ctermfg=202'
 au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p3' 'cterm=bold ctermfg=196'
 au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p4' 'cterm=bold ctermfg=178'
 au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p5' 'cterm=bold ctermfg=172'
+

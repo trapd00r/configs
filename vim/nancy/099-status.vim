@@ -23,6 +23,7 @@ hi User9 ctermfg=094 ctermbg=234 cterm=bolditalic
 "exe 'let &statusline=" %1*♡%8* ' . b:changedtick . '%3* changes to %2*%F%3*[%4*%02n' . b:current_syntax . ',' . v:register 
 let fakereg = '"'
 let fakereg = substitute(v:register, '\v"', 'unnamed', 'g')
+"let function_name = ShowFuncName()
 exe 'let &statusline=" %8*' . b:changedtick . '%3* changes to %2*%F %3*[%7*%02n%3*,%7*' . fakereg . '%3*,%1*♡%3*]"'
 "'af %8*%F%*%4⌈53⌋'
 let g:NCstatusline='%9*%t'
