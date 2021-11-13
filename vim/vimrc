@@ -334,3 +334,33 @@ hi commentblock ctermfg=220
 
 
 set showtabline=0
+
+
+" highlight filetypes like my LS_COLORS
+hi clear NERDTreeExecFile
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, attr)
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' cterm='. a:attr
+endfunction
+
+call NERDTreeHighlightFile('pm',    '203', 'none')
+call NERDTreeHighlightFile('pl',    '208', 'none')
+call NERDTreeHighlightFile('css',   '125', 'bold')
+call NERDTreeHighlightFile('js',    '74',  'bold')
+call NERDTreeHighlightFile('txt',   '188', 'bolditalic')
+call NERDTreeHighlightFile('png',   '197', 'none')
+call NERDTreeHighlightFile('jpg',   '123', 'none')
+call NERDTreeHighlightFile('php',   '81',  'none')
+call NERDTreeHighlightFile('md',    '220', 'bold')
+call NERDTreeHighlightFile('html',  '125', 'italic')
+call NERDTreeHighlightFile('shtml', '125', 'italic')
+
+hi NERDTreeDir      ctermfg=30 cterm=none
+hi NERDTreeDirSlash ctermfg=30 cterm=none
+hi NERDTreeOpenable ctermfg=30 cterm=none
+hi NERDTreeClosable ctermfg=30 cterm=italic
+hi NERDTreeUp       ctermfg=30 cterm=none
+hi NERDTreeCWD      ctermfg=220 cterm=bold
+"hi NERDTreeBookmarkName ctermfg=
+hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
