@@ -301,7 +301,7 @@ set cc&
 set encoding=utf-8
 au BufRead,BufNewFile /home/scp1/dev/askas/air8/* setlocal fileencodings=iso-8859-1
 au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal cc&
-au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol=500
+au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol&
 
 let g:fullpath=expand('%:p')
 au BufEnter * let fullpath=expand('%:p')
@@ -336,6 +336,46 @@ hi commentblock ctermfg=220
 set showtabline=0
 
 
+"" highlight filetypes like my LS_COLORS
+"hi clear NERDTreeExecFile
+"" NERDTress File highlighting
+"function! NERDTreeHighlightFile(extension, fg, attr)
+" exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+" exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' cterm='. a:attr
+"endfunction
+"
+"call NERDTreeHighlightFile('pm',    '203', 'none')
+"call NERDTreeHighlightFile('pl',    '208', 'none')
+"call NERDTreeHighlightFile('css',   '125', 'bold')
+"call NERDTreeHighlightFile('js',    '74',  'bold')
+"call NERDTreeHighlightFile('txt',   '188', 'bolditalic')
+"call NERDTreeHighlightFile('png',   '197', 'none')
+"call NERDTreeHighlightFile('jpg',   '123', 'none')
+"call NERDTreeHighlightFile('php',   '81',  'none')
+"call NERDTreeHighlightFile('md',    '220', 'bold')
+"call NERDTreeHighlightFile('html',  '125', 'italic')
+"call NERDTreeHighlightFile('shtml', '125', 'italic')
+"
+"hi NERDTreeDir      ctermfg=30 cterm=none
+"hi NERDTreeDirSlash ctermfg=30 cterm=none
+"hi NERDTreeOpenable ctermfg=30 cterm=none
+"hi NERDTreeClosable ctermfg=30 cterm=italic
+"hi NERDTreeUp       ctermfg=30 cterm=none
+"hi NERDTreeCWD      ctermfg=220 cterm=bold
+""hi NERDTreeBookmarkName ctermfg=
+"hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
+"
+"nnoremap <C-m> :NERDTreeToggle<CR>
+"￼
+"" Start NERDTree when Vim starts with a directory argument.
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+"  \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+"
+"
+"let g:NERDTreeDirArrowExpandable = ''
+"let g:NERDTreeDirArrowCollapsible = ''
+
 " highlight filetypes like my LS_COLORS
 hi clear NERDTreeExecFile
 " NERDTress File highlighting
@@ -364,3 +404,45 @@ hi NERDTreeUp       ctermfg=30 cterm=none
 hi NERDTreeCWD      ctermfg=220 cterm=bold
 "hi NERDTreeBookmarkName ctermfg=
 hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
+
+nnoremap <C-m> :NERDTreeToggle<CR>
+"
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
+
+
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[.]git$|test[/]|_VERKTYG|docs[/]',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+	\ }
+
+"let g:ctrlp_user_command = 'find %s -type f | grep -vP "test[/]|_VERKTYG|docs[/]"'
+
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+else
+  let g:ctrlp_clear_cache_on_exit = 0
+endif
+
+let g:ctrlp_cmd = 'CtrlPMixed'
+
+hi CtrlPMatch ctermfg=196 cterm=bold
+
+" Press <F5> to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
+" Press <c-f> and <c-b> to cycle between modes.
+" Press <c-d> to switch to filename only search instead of full path.
+" Press <c-r> to switch to regexp mode.
+" Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+" Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
+" Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+" Use <c-y> to create a new file and its parent directories.
+" Use <c-z> to mark/unmark multiple files and <c-o> to open them.
