@@ -306,11 +306,12 @@ au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol&
 let g:fullpath=expand('%:p')
 au BufEnter * let fullpath=expand('%:p')
 au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
+au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/air8 setlocal noexpandtab
 au BufRead,BufNewFile *.md set ft=markdown nospell
 
 nmap <C-b> :make<CR>
 
-set noexpandtab
+"set noexpandtab
 set guifont=Source\ Code\ Pro\ 12
 
 hi markdownXmlElement      ctermfg=12
@@ -335,46 +336,6 @@ hi commentblock ctermfg=220
 
 set showtabline=0
 
-
-"" highlight filetypes like my LS_COLORS
-"hi clear NERDTreeExecFile
-"" NERDTress File highlighting
-"function! NERDTreeHighlightFile(extension, fg, attr)
-" exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-" exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' cterm='. a:attr
-"endfunction
-"
-"call NERDTreeHighlightFile('pm',    '203', 'none')
-"call NERDTreeHighlightFile('pl',    '208', 'none')
-"call NERDTreeHighlightFile('css',   '125', 'bold')
-"call NERDTreeHighlightFile('js',    '74',  'bold')
-"call NERDTreeHighlightFile('txt',   '188', 'bolditalic')
-"call NERDTreeHighlightFile('png',   '197', 'none')
-"call NERDTreeHighlightFile('jpg',   '123', 'none')
-"call NERDTreeHighlightFile('php',   '81',  'none')
-"call NERDTreeHighlightFile('md',    '220', 'bold')
-"call NERDTreeHighlightFile('html',  '125', 'italic')
-"call NERDTreeHighlightFile('shtml', '125', 'italic')
-"
-"hi NERDTreeDir      ctermfg=30 cterm=none
-"hi NERDTreeDirSlash ctermfg=30 cterm=none
-"hi NERDTreeOpenable ctermfg=30 cterm=none
-"hi NERDTreeClosable ctermfg=30 cterm=italic
-"hi NERDTreeUp       ctermfg=30 cterm=none
-"hi NERDTreeCWD      ctermfg=220 cterm=bold
-""hi NERDTreeBookmarkName ctermfg=
-"hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
-"
-"nnoremap <C-m> :NERDTreeToggle<CR>
-"￼
-"" Start NERDTree when Vim starts with a directory argument.
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-"  \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-"
-"
-"let g:NERDTreeDirArrowExpandable = ''
-"let g:NERDTreeDirArrowCollapsible = ''
 
 " highlight filetypes like my LS_COLORS
 hi clear NERDTreeExecFile
@@ -405,7 +366,7 @@ hi NERDTreeCWD      ctermfg=220 cterm=bold
 "hi NERDTreeBookmarkName ctermfg=
 hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
 
-nnoremap <C-m> :NERDTreeToggle<CR>
+"nnoremap <C-m> :NERDTreeToggle<CR>
 "
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -434,15 +395,26 @@ else
 endif
 
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_by_filename = 1
+
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+
+
+nnoremap <C-o> :CtrlPFunky<cr>
+
 
 hi CtrlPMatch ctermfg=196 cterm=bold
 
-" Press <F5> to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
-" Press <c-f> and <c-b> to cycle between modes.
-" Press <c-d> to switch to filename only search instead of full path.
-" Press <c-r> to switch to regexp mode.
-" Use <c-j>, <c-k> or the arrow keys to navigate the result list.
-" Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
-" Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
-" Use <c-y> to create a new file and its parent directories.
-" Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+set   listchars+=tab:»\ 
+
+
+"let g:rg_command = 'rg --vimgrep  '
+"nnoremap <C-g> :exe ":Rg " . escape(expand("<cWORD>"), ";")
+
+" add : to iskeyword to modify vims concept of a word.
+" that way we can grab entire perl module declarations for example:
+" use Foo::Bar::Baz::Laleh;
+set iskeyword+=:
+nnoremap  <silent> <C-g> :Rg <C-R><C-W><CR>
+
