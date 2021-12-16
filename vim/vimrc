@@ -299,7 +299,7 @@ autocmd BufReadPost *
 set cc&
 
 set encoding=utf-8
-au BufRead,BufNewFile /home/scp1/dev/askas/air8/* setlocal fileencodings=iso-8859-1
+au BufRead,BufNewFile /home/scp1/dev/askas/air8/* setlocal fileencodings=iso-8859-1 fileencoding=iso-8859-1
 au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal cc&
 au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol&
 
