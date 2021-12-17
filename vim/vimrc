@@ -416,5 +416,9 @@ set   listchars+=tab:»\
 " that way we can grab entire perl module declarations for example:
 " use Foo::Bar::Baz::Laleh;
 set iskeyword+=:
-nnoremap  <silent> <C-g> :Rg <C-R><C-W><CR>
+nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<CR>
 
+" make the quickfix window modifiable so we can do things like
+" :g/sql/d
+"au! FileType    qf       set ma hidden
+"au! BufReadPost quickfix set ma
