@@ -16,6 +16,9 @@
 ###
 ###>
 
+# enable DEBUG in various places
+#export DEBUG=1
+
 # enable trace for python segfaults
 export PYTHONFAULTHANDLER=1
 
@@ -57,7 +60,7 @@ export    GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
 export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
 export           SCREENRC=${XDG_CONFIG_HOME}/screenrc
 export        X_OSD_COLOR='#a8ff00'
-export            BROWSER=www
+export            BROWSER=chrome
 #>
 #< locale
 export            LC_ALL=""
@@ -78,7 +81,7 @@ export           LC_TIME=en_US.UTF-8
 #>
 #< path
 unset PATH
-export          PATH=${HOME}/dev/utils:${HOME}/bin:/bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:
+export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas/:${HOME}/.local/bin:bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
@@ -101,6 +104,7 @@ export  HARNESS_SUMMARY_COL_SUC=green
 export HARNESS_SUMMARY_COL_FAIL=red
 export PERL_LOCAL_LIB_ROOT=${HOME}/lib
 export PERL_CPANM_HOME=${HOME}/tmp/cpanm
+export DATAPRINTERRC=${XDG_CONFIG_HOME}/dataprinterrc
 #>
 #< mplayer
 export    DVDCSS_CACHE=/dev/shm/dvdcss
@@ -252,3 +256,8 @@ export TEXT_VIMCOLOR_ANSI='Normal=225;Boolean=135;Character=143;Number=33;String
 export PAUSE_ID=WOLDRICH
 #export GREP_OPTIONS='--exclude .git --color=auto'
 
+####
+# Askås
+####
+
+export ASKAS_BUTIK=magnusw1
