@@ -74,7 +74,8 @@ fun! Foldtext()
   let sub  = substitute(line, '\v^["#!][<]\s+', '', 'g')
   "let v:folddashes="➤〚◘⭔➳❋✘ ➳   ↴⤵⇵⤵⬎჻"
   "let v:folddashes="➤⇵〚◘⭔❋✘   ⇲ ⬎ ⇲ ↴➳➳⤵⇵⤵჻"
-  let v:folddashes="▌⇆ "
+"  let v:folddashes="▌⇆ "
+  let v:folddashes="║ ↓ "
 
 "  return v:folddashes . sub . ' ' . v:foldstart . ', ' . v:foldend
 "  return v:folddashes . sub . ' ' . v:foldend
