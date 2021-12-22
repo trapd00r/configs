@@ -5,11 +5,7 @@
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 "         owner  Magnus Woldrich <m@japh.se>
 "         btime  2009-04-24
-"         mtime  2016-09-14 12:37:43
-"         perms  You are free to use things you may find useful here.
-"                Would my tweaks happen to give you a raise or fetch you a
-"                girlfriend, it goes without saying I'm counting on you
-"                to share with me as I've shared with you.
+"         mtime  2021-12-22 09:18:51
 "           git  http://github.com/trapd00r/configs/vim  (up-to-date)
 "           url  http://devel.japh.se/configs/vim        (sync 1/24h)
 "           irc  japh@freenode #vim #zsh #perl
@@ -66,7 +62,7 @@ set fillchars+=fold:\
 set foldcolumn=2
 set foldenable
 "set foldclose=all
-set foldlevel=0
+"set foldlevel=0
 set foldlevelstart=1
 set foldmarker=#<,#>
 set foldmethod=marker
@@ -299,14 +295,14 @@ autocmd BufReadPost *
 set cc&
 
 set encoding=utf-8
-au BufRead,BufNewFile /home/scp1/dev/askas/air8/* setlocal fileencodings=iso-8859-1 fileencoding=iso-8859-1
+au BufRead,BufNewFile /home/scp1/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
 au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal cc&
 au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol&
 
 let g:fullpath=expand('%:p')
 au BufEnter * let fullpath=expand('%:p')
 au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/air8 setlocal noexpandtab
+au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/air8 silent setlocal noexpandtab
 au BufRead,BufNewFile *.md set ft=markdown nospell
 
 nmap <C-b> :make<CR>
@@ -369,9 +365,9 @@ hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
 "nnoremap <C-m> :NERDTreeToggle<CR>
 "
 " Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+"    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
 
 
 let g:NERDTreeDirArrowExpandable = ''
@@ -422,3 +418,15 @@ nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<CR>
 " :g/sql/d
 "au! FileType    qf       set ma hidden
 "au! BufReadPost quickfix set ma
+
+
+au BufRead,BufNewFile *.tt setf tt2html
+
+"autocmd Filetype * AnyFoldActivate
+
+
+set foldmarker={,}
+set foldlevel=99
+set foldlevelstart=99
+" toggle folds with Enter
+nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<CR>
