@@ -13,10 +13,11 @@ xbindkeys &
 xmodmap               ~/etc/xmodmaprc
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
-# [][ ][] monitor setup
+#[ ] [][ ][] monitor setup
 xrandr --output DP-4 --primary \
        --output HDMI-0 --rotate left  --right-of DP-4 \
-       --output DP-2   --rotate right --left-of DP-4
+       --output DP-2   --rotate right --left-of DP-4  \
+       --output DVI-D-0 --left-of DP-2 # TV
 
 # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
 xset s off -dpms &
@@ -40,3 +41,4 @@ dunst &
 
 exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
+#exec openbox
