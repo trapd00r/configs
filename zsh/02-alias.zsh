@@ -16,7 +16,9 @@
 ###
 ###>
 
+alias rg="rg -T sql -T css -T html --colors 'match:bg:255' --colors 'match:fg:196' --colors 'line:fg:32' --colors 'path:fg:208'"
 alias beet="~/dev/beets/beet"
+#alias beet="~/dev/_upstream/beets-ui/beet"
 
 #alias lltag="lltag --id3v2 --config $XDG_CONFIG_HOME/lltag.conf"
 alias lltag="lltag --config $XDG_CONFIG_HOME/lltag.conf"
@@ -25,8 +27,8 @@ alias evernote='tusk'
 #< basics
 alias      cp='cp -v'
 alias      mv='mv -v'
-#alias      rm='rmc -v'
-alias      rm='/bin/rm -v'
+alias      rm='rmc -v'
+#alias      rm='/bin/rm -v'
 #alias     grep=ack
 alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
@@ -216,3 +218,4 @@ alias castnow='castnow --address 192.168.10.160'
 alias todo="vim ~/dev/private/TODO.todo"
 alias nexuiz=xonotic-sdl
 alias jobb='vim ~/dev/private/jobb.tidningsbud'
+alias psp="cd ${HOME}/dev/askas/air8/cgi-bin/core/lib/AIR/PSP2"
