@@ -76,7 +76,8 @@ fun! Foldtext()
   "let v:folddashes="➤⇵〚◘⭔❋✘   ⇲ ⬎ ⇲ ↴➳➳⤵⇵⤵჻"
 "  let v:folddashes="▌⇆ "
 "  let v:folddashes="║ ↓ "
-    let v:folddashes="└>"
+"    let v:folddashes="└>"
+    let v:folddashes=""
 
 "  return v:folddashes . sub . ' ' . v:foldstart . ', ' . v:foldend
 "  return v:folddashes . sub . ' ' . v:foldend
@@ -433,6 +434,6 @@ set foldlevelstart=99
 " toggle folds with Enter
 nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
-hi Folded ctermfg=220 cterm=bold
+hi Folded ctermfg=234 ctermbg=240 cterm=reverse
 
 set number norelativenumber
