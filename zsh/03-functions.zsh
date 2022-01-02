@@ -35,7 +35,7 @@ hr() { # http://github.com/trapd00r/hr
 }
 apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
-scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }
+#scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }
 tcx()       { /usr/bin/tmux attach || /usr/bin/tmux -f $XDG_CONFIG_HOME/etc/tmux.conf }
 mutt()      { TERM=xterm-256color neomutt -F $XDG_CONFIG_HOME/muttneorc "$@" }
 tig()       { TERM=xterm-256color /usr/bin/tig "$@"}
