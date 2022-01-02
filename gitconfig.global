@@ -41,7 +41,7 @@
 [receive]
   denyCurrentBranch = ignore
 [core]
-  excludesfile = /etc/gitignore
+  excludesfile = ~/etc/gitignore.global
 [gui]
   fontui   = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
   fontdiff = -family MonteCarlo -size -12 -weight normal -slant roman -underline 0 -overstrike 0
@@ -69,3 +69,14 @@
   user  = trapd00r
 [init]
 	defaultBranch = master
+[guitool "Rebase onto..."]
+    cmd = git rebase $REVISION
+    revprompt = yes
+[guitool "Rebase/Continue"]
+    cmd = git rebase --continue
+[guitool "Rebase/Skip"]
+    cmd = git rebase --skip
+[guitool "Rebase/Abort"]
+    cmd = git rebase --abort
+[guitool "Pull with Rebase"]
+    cmd = git pull --rebase
