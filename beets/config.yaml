@@ -42,8 +42,8 @@ directory:  '/mnt/music8/+TAGGED'
 library:    '~/var/beets/beets202105.db'
 pluginpath: ['/usr/lib/python3.9/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
-             '/home/scp1/etc/beets/plugins',
-             '/home/scp1/dev/perlinpython3',
+             '/home/scp1/etc/beets/plugins/beetsplug/',
+#             '/home/scp1/dev/perlinpython3',
             ]
 
 
@@ -75,7 +75,7 @@ replace:
 art_filename:          cover # cover.*
 format_album:          $path
 format_item:           $path
-ignore:                ['System Volume Information']
+ignore:                ['System Volume Information', '+tracks']
 ignore_hidden:         yes
 per_disc_numbering:    no
 sort_album:            path+
@@ -118,6 +118,7 @@ import:
 #]
 
 plugins: [
+#  'autosingleton',
   'bucket',
   'discogs',
   'edit',
@@ -131,7 +132,7 @@ plugins: [
   'lastimport',
   'mbcollection',
   'missing',
-  'japh',
+#  'japh',
   'rewrite',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
@@ -165,6 +166,11 @@ tcp:
           'XIII',
           'XIV',
           'XV',
+          'XVI',
+          'XVII',
+          'XVIII',
+          'XIX',
+          'XX',
   ]
 
 discogs:
@@ -614,6 +620,7 @@ match:
                       'VCD', 'SVCD', 'UMD', 'VHS',
                      ]
 #>
+#"
 #< ui
 ui:
   color: yes
@@ -625,16 +632,6 @@ ui:
     text_highlight_minor: '108'
     action_default:       '197'
     action:               '210'
-#ui:
-#  color: yes
-#  colors:
-#    text_success:         green
-#    text_warning:         yellow
-#    text_error:           red
-#    text_highlight:       
-#    text_highlight_minor: lightgray
-#    action_default:       darkyellow
-#    action:               lightgray
 #>
 
 #< path setup
