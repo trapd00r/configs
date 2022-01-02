@@ -51,7 +51,7 @@ warnings       = 1
 
 # colorization (see Colors & Themes below)
 colored = auto
-theme   = Material
+theme   = Neverland
 
 # object output
 class_method             = _data_printer
