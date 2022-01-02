@@ -437,3 +437,6 @@ nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<CR>
 hi Folded ctermfg=234 ctermbg=240 cterm=reverse
 
 set number norelativenumber
+
+" -- INSERT --
+hi ModeMsg cterm=bolditalic
