@@ -261,3 +261,5 @@ export PAUSE_ID=WOLDRICH
 ####
 
 export ASKAS_BUTIK=magnusw1
+# Selenium
+export HOST_WEB_URL=${ASKAS_BUTIK}
