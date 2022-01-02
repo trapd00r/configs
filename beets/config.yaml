@@ -713,7 +713,7 @@ paths:
 #>
 
 #-- These will be hard to look up and it's ok to use the basename
-    tag:whoa:                    +hiphop-swe/whoa.nu/$base_name
+    tag:whoa singleton:true:     +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
     tag:randombastards:          +hiphop-swe/randombastards/$base_name
     tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
