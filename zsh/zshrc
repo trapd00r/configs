@@ -21,8 +21,6 @@
 #  umask 0077
 #  fi
 
-cd $HOME/dev/askas/air8
-
 #FIXME
 #~/dev/utils/font-10-anonymous-it
 #~/dev/utils/font-12-terminus
@@ -77,6 +75,7 @@ for r in $HOME/etc/zsh/[0-5]*.zsh; do
   . $r
 done
 . $HOME/etc/zsh/10-syntax.zsh
+. $HOME/etc/zsh/10-z.zsh
 #. $HOME/etc/zsh/plugins/k.sh
 #. $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
 . $HOME/.secret_zshrc
