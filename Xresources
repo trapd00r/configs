@@ -2,7 +2,7 @@
      File: Xresources
    Author: Magnus Woldrich <m@japh.se>
   Crafted: 2008-04-24
-  Updated: 2018-11-27 15:59:29
+  Updated: 2022-01-02
 
 - A lot of different hosts use this file.
 - You will not find any color definitions here.
@@ -35,17 +35,15 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !*bell-command: urxvt
 
 URxvt.perl-lib:             /home/scp1/dev/urxvt-extensions
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher
+URxvt*perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher
 URxvt.keysym.C-u:           perl:url-select:select_next
 URxvt.perl-ext:             selection,mark-yank-urls
-URxvt.url-select.launcher:  /home/scp1/bin/www
-URxvt.urlLauncher:          /home/scp1/bin/www
-URxvt.url-select.underline: true
-URxvt.keysym.C-Up:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
-!URxvt.keysym.C-u:           perl:mark-yank-urls:activate_mark_mode
-!URxvt.perl-eval:            $^O
+URxvt.url-select.launcher:  /home/scp1/dev/utils/www
+URxvt.urlLauncher:          /home/scp1/dev/utils/www
 
+! color index + 2
+! https://www.japh.se/2019/01/23/color-urls-in-urxvt-without-abusing-underline-property.html
+URxvt.matcher.rend.0:       fg:5
 
 
 ! standard global fonts {{{
@@ -88,29 +86,7 @@ URxvt.keysym.M-s:           perl:keyboard-select:search
 !#define FONT_ITALIC     -b&h-lucidatypewriter-bold-r-normal-sans-10-100-75-75-m-60-iso10646-1
 !#define FONT_BOLDITALIC xft:DejaVu Sans Mono:style=Book:pixelsize=10:antialias=1:hinting=1:hintstyle=3
 !}}}
-! vte {{{
-  vte*font:       FONT_NORMAL
-  vte*boldFont:   FONT_BOLD
-  vte*italicFont: FONT_ITALIC
-  vte*background: #121212
-  vte*foreground: #d6d6d6
-  vte*scrollBar:  false
-!}}}
-! vim                                                                        {{{
-vim*font:                         FONT_NORMAL
-vim*boldFont:                     FONT_BOLD
-vim*italicFont:                   FONT_ITALIC
-vim*boldItalicFont:               FONT_BOLDITALIC
-vim*background:                   #080808
-vim*foreground:                   #ebebeb
-vim*scrollBar:                    false
-vim.iso14755:             1
-vim.iso14755_52:          1
 
-vim.skipBuiltinGlyphs:    1
-vim.insecure:             1
-
-!}}}
 ! XTerm                                                                      {{{
 XTerm*renderFont:          false
 XTerm*allowColorOps:       1
@@ -370,7 +346,7 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.MenuButton.shapeStyle:    rectangle
 !}}}
 
-#*keysym.Control-Shift-K: ^[[23^
+!*keysym.Control-Shift-K: ^[[23^
 sid.keysym.Control-Shift-K: \033[23@
 
 #include "/home/scp1/etc/Xcolors/nancy.Xresources"
