@@ -28,7 +28,7 @@ xbanish &
 $HOME/dev/sdorfehs-config/sdorfehs-feedbar &
 
 # https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
-xsetroot -solid '#292929'
+xsetroot -solid '#121212'
 
 xscreensaver -no-splash &
 dunst &
@@ -39,6 +39,7 @@ dunst &
 
 /usr/lib/kdeconnectd &
 
-exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+#exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
 #exec openbox
