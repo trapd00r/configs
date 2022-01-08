@@ -1,33 +1,93 @@
-"    File: $HOME/etc/vim/after/plugin/statusline.vim
+"    File: $HOME/etc/vim/nancy/099-status.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2011-07-02 17:48:48
+" Updated: 2022-01-08 15:34:51
 
 
 hi StatusLine   ctermfg=233 ctermbg=234  cterm=none
 hi StatusLineNC ctermfg=233 ctermbg=234 cterm=none
-set statusline=​
-"set statusline&
 
-hi User1 ctermfg=196 ctermbg=234 cterm=italic
-hi User2 ctermfg=106 ctermbg=234 cterm=boldunderline
-hi User3 ctermfg=238 ctermbg=234 cterm=italic
-hi User4 ctermfg=032 ctermbg=234 cterm=italic
-hi User5 ctermfg=044 ctermbg=234 cterm=italic
-hi User6 ctermfg=058 ctermbg=234 cterm=italic
-hi User7 ctermfg=240 ctermbg=234 cterm=italic
-hi User8 ctermfg=234 ctermbg=fg  cterm=italicreversebold
-hi User9 ctermfg=094 ctermbg=234 cterm=bolditalic
+hi User1 ctermfg=137 ctermbg=234 cterm=none
+hi User2 ctermfg=106 ctermbg=234 cterm=none
+hi User3 ctermfg=250 ctermbg=234 cterm=none
+" User4 is set to the calculated LS_COLORS for the current file below
+hi User4 ctermfg=032 ctermbg=234 cterm=none
+hi User5 ctermfg=245 ctermbg=234 cterm=none
+hi User6 ctermfg=058 ctermbg=234 cterm=none
+hi User7 ctermfg=240 ctermbg=234 cterm=none
+hi User8 ctermfg=234 ctermbg=fg  cterm=none
+hi User9 ctermfg=094 ctermbg=234 cterm=none
 
-" active
-"exe 'let &statusline="[%8*' . b:changedtick . '%1*%F%9*[%8*%02n%9*]"'
-"exe 'let &statusline=" %1*♡%8* ' . b:changedtick . '%3* changes to %2*%F%3*[%4*%02n' . b:current_syntax . ',' . v:register 
-let fakereg = '"'
-let fakereg = substitute(v:register, '\v"', 'unnamed', 'g')
-"let function_name = ShowFuncName()
-exe 'let &statusline=" %8*' . b:changedtick . '%3* changes to %2*%F %3*[%7*%02n%3*,%7*' . fakereg . '%3*,%1*♡%3*]"'
-"'af %8*%F%*%4⌈53⌋'
-let g:NCstatusline='%9*%t'
-let g:Active_statusline = &g:statusline
+" Now, these regexes are obviously bad, but this function will only be used for
+" this only purpose so it doesn't matter.
+" Here's an aid for generating this:
+" curl -s https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS | grep -Pv '^(?:[#*]|TERM)|^$' | perl -pe 's{^\.?(\S+)\s+(?:[34]8;5;(\d+))}{elsif(a:filename =~ "\v.+\.$1")\n  hi User4 ctermfg=$2 ctermbg=234 cterm=none};s{;\d+$}{}' | perl -pe "s/\"/'/g"
 
-au WinEnter * let &l:statusline = g:Active_statusline
-au WinLeave * let &l:statusline = g:NCstatusline
+function! LsColorForStatusLine(filename)
+  if(a:filename =~ '\v.+\.sh')
+    hi User4 ctermfg=172 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.vim')
+    hi User4 ctermfg=106 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.txt')
+    hi User4 ctermfg=188 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.(css|sass)')
+    hi User4 ctermfg=125 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.csv')
+    hi User4 ctermfg=078 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.js[mp]?')
+    hi User4 ctermfg=074 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.json')
+    hi User4 ctermfg=178 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.log')
+    hi User4 ctermfg=190 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.(markdown|md)')
+    hi User4 ctermfg=190 ctermbg=234 cterm=bold
+
+  elseif(a:filename =~ '\vREADME|CHANGES')
+    hi User4 ctermfg=190 ctermbg=234 cterm=bold
+
+  elseif(a:filename =~ '\v.+\.php')
+    hi User4 ctermfg=081 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\vMakefile([.]PL)?')
+    hi User4 ctermfg=196 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.pl')
+    hi User4 ctermfg=208 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.pm')
+    hi User4 ctermfg=203 ctermbg=234 cterm=none
+
+
+  elseif(a:filename =~ '\v.+\.(sql|sqlite)')
+    hi User4 ctermfg=222 ctermbg=234 cterm=none
+    
+  elseif(a:filename =~ '\v.+\.t$')
+    hi User4 ctermfg=114 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.tt$')
+    hi User4 ctermfg=173 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.html?$')
+    hi User4 ctermfg=132 ctermbg=234 cterm=none
+  endif
+endfun
+
+au BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
+set statusline=
+set statusline +=%1*\ %n\ %*            "buffer number
+set statusline +=%5*%{&ff}%*            "file format
+set statusline +=%3*%y%*                "file type
+set statusline +=%4*\ %<%F%*            "full path
+set statusline +=%2*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%1*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+set statusline +=%2*0x%04B\ %*          "character under cursor
