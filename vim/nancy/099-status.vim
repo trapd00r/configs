@@ -77,6 +77,9 @@ function! LsColorForStatusLine(filename)
 
   elseif(a:filename =~ '\v.+\.html?$')
     hi User4 ctermfg=132 ctermbg=234 cterm=none
+
+  else
+    hi User4 ctermfg=137 ctermbg=234 cterm=none
   endif
 endfun
 
