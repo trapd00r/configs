@@ -1,4 +1,4 @@
-"!/home/scp1/bin/wim --remote-wait-silent vimsy
+"!$HOME/bin/wim --remote-wait-silent vimsy
 " vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
 "
 " ${VIMRUNTIME}/vimrc
@@ -21,7 +21,7 @@ filetype plugin indent on
 syntax on
 runtime macros/matchit.vim " % on if/else
 
-set path+='/home/scp1/dev/air8/cgi-bin/core/lib/,/home/scp1/dev/air8' " For commands like gf
+set path+='$HOME/dev/air8/cgi-bin/core/lib/,/home/scp1/dev/air8' " For commands like gf
 
 set autoread                    " Read file again if changed outside of vim.
 "set autochdir                   " Change cwd on buffer change etc.
@@ -82,7 +82,7 @@ set grepprg=internal
 "set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
-set helpfile=/home/scp1/dev/vim/runtime/doc/help.txt
+set helpfile=$HOME/dev/vim/runtime/doc/help.txt
 set helpheight=5
 set helplang=en,sv,de
 set hidden
@@ -210,16 +210,16 @@ endif
 " I want to keep &rtp as short as I can, so I'm no longer loading these files
 " dynamicly.
 hi Normal ctermfg=225 ctermbg=232
-source /home/scp1/etc/vim/nancy/000-ft.vim           " ftdetect
-source /home/scp1/etc/vim/nancy/000-functions.vim    " functions
-source /home/scp1/etc/vim/nancy/001-commands.vim     " user-defined commands
-source /home/scp1/etc/vim/nancy/009-abbrev.vim       " my wordlist of abbrevations
-source /home/scp1/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
+source $HOME/etc/vim/nancy/000-ft.vim           " ftdetect
+source $HOME/etc/vim/nancy/000-functions.vim    " functions
+source $HOME/etc/vim/nancy/001-commands.vim     " user-defined commands
+source $HOME/etc/vim/nancy/009-abbrev.vim       " my wordlist of abbrevations
+source $HOME/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
 
 color neverland
 
-source /home/scp1/etc/vim/nancy/090-syntax.vim       " my syntax defs
-source /home/scp1/etc/vim/nancy/099-status.vim       " status, man
+source $HOME/etc/vim/nancy/090-syntax.vim       " my syntax defs
+source $HOME/etc/vim/nancy/099-status.vim       " status, man
 ">
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
 let &t_EI = "\<Esc>]12;#ff0000\x7"
@@ -247,14 +247,14 @@ autocmd BufReadPost *
 "set cc&
 
 set encoding=utf-8
-au BufRead,BufNewFile /home/scp1/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
-au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal cc&
-au BufRead,BufNewFile /home/scp1/dev/askas/* setlocal synmaxcol&
+au BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
+au BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
+au BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
 
 let g:fullpath=expand('%:p')
 au BufEnter * let fullpath=expand('%:p')
-au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-au BufRead,BufNewFile,BufEnter /home/scp1/dev/askas/air8 silent setlocal noexpandtab
+au BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
+au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8 silent setlocal noexpandtab
 au BufRead,BufNewFile *.md set ft=markdown nospell
 
 nmap <C-b> :make<CR>
