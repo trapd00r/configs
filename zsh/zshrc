@@ -28,7 +28,7 @@
 
 if [[ $(hostname) = "sid" ]]; then
   ~/dev/utils/font-monte
-else if [[ $(hostname) = "tp" ]]; then
+elif [[ $(hostname) = "tp" ]]; then
   ~/dev/utils/font-askas
 fi
 
