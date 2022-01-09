@@ -12,42 +12,32 @@
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 "
 
-set all&
-set nocp
-set exrc
+
+set all&               " Turn everything off, in case of evil vendor vimrcs
+let &rtp = $VIMRUNTIME " I prefer control
+set exrc               " Enables the reading of vimrc in ./
+
 filetype plugin indent on
-
 syntax on
+runtime macros/matchit.vim " % on if/else
 
-"set nors                                  " This might not be needed, but these
-"set t_ti=                                 " has the same effect as disabling
-"set t_te=                                 " the alternate screen buffer.
+set path+='/home/scp1/dev/air8/cgi-bin/core/lib/,/home/scp1/dev/air8' " For commands like gf
 
+set autoread                    " Read file again if changed outside of vim.
+"set autochdir                   " Change cwd on buffer change etc.
+set autoindent                  " Copy indent from previous line.
+set wildmenu                    " Command-line completion, enhanced mode.
+let &termencoding = &encoding   " Should be utf-8. Exceptions below.
+set fileencodings=utf-8,latin1  " List of fileencodings to try
 
-set path+='/home/scp1/dev/air8/cgi-bin/core/lib/'
-set path+='/home/scp1/dev/air8/'
-
-set autoread
-set autochdir
-set autoindent
-
-let &rtp = $VIMRUNTIME
-
-let &termencoding = &encoding
-
-set backspace=start,indent,eol
-set cmdheight=2 " try to avoid 'Press ENTER to continue' prompts
-set clipboard=unnamedplus,autoselect
-set complete=.,w,b,u,t,i,d,k,kspell
-set cindent
-set cinoptions=:0,l1,t0,g0,(0
-set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
-
-if &ft != 'man' || &ft != 'help'
-  "set colorcolumn=+1
-  set colorcolumn=81
-  execute "set colorcolumn=" . join(range(81,335), ',')
-endif
+set backspace=start,indent,eol  " What backspace, ^w etc will operate on.
+set cmdheight=2                 " Avoid 'Press ENTER to continue' prompts.
+set clipboard=unnamedplus,autoselect " Define clipboard registers to use.
+set complete=.,w,b,u,t,i,d,k,kspell  " Insert mode completion for ^n, ^p.
+set cindent                          " C program indenting.
+"set cinoptions=:0,l1,t0,g0,(0        " Options for cindent.
+"set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
+set colorcolumn&                     " Colorcolumn.
 
 set completeopt+=menuone
 set cursorline
@@ -55,7 +45,6 @@ set define=[^A-Za-z_]
 set diffopt=filler,iwhite,context:2,vertical
 set display+=lastline,uhex
 set expandtab
-set fileencodings=utf-8,latin1
 "< folding
 "set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
 set fillchars+=fold:\ 
@@ -180,7 +169,8 @@ set undofile
 set undolevels=1024
 set undodir=~/var/vim/undo
 set visualbell t_vb=
-set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
+set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo
+"set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
 "set viminfo='100,<50,s10,h,%
 set virtualedit=block
 set wildchar=<Tab>
@@ -196,10 +186,10 @@ set nomore
 set updatetime=100
 
 set term=rxvt-unicode-256color
+
 " force an update of the statusline
 let &ro =&ro
 
-syntax on
 setlocal nospell spelllang=en_us
 
 """ are we in a VC?
@@ -225,68 +215,27 @@ source /home/scp1/etc/vim/nancy/000-functions.vim    " functions
 source /home/scp1/etc/vim/nancy/001-commands.vim     " user-defined commands
 source /home/scp1/etc/vim/nancy/009-abbrev.vim       " my wordlist of abbrevations
 source /home/scp1/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
-"color neverland-ansi_bg
+
 color neverland
+
 source /home/scp1/etc/vim/nancy/090-syntax.vim       " my syntax defs
 source /home/scp1/etc/vim/nancy/099-status.vim       " status, man
 ">
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
 let &t_EI = "\<Esc>]12;#ff0000\x7"
 
-
-"filetype plugin indent on
-
-
-"syn match visualLast /\%V.*\%V/
-"hi visualLast ctermbg=100 cterm=bolditalic
-" XXX NOTE TODO PLEASEFIX {{{
-" command! -nargs=1 -complete=color colorbuffer
-"   \   color <args>
-"   \ | let b:colors_name = g:colors_name
-"
-" command! -nargs=1 -complete=color colordefault
-"   \ let s:colors_name = <q-args>
-"   \ | if !exists('b:colors_name')
-"     \ | colors <args>
-"     \ | endif
-" if !exists('g:colors_name')
-"   let g:colors_name = 'default'
-" endif
-"
-" let s:colors_name = g:colors_name
-" au BufEnter *
-" \ let s:new_colors =
-" \   (exists('b:colors_name')
-" \     ? (b:colors_name)
-" \     : (s:colors_name))
-" \   | if s:new_colors != g:colors_name |
-" \      exe 'colors' s:new_colors
-" \   | endif
-" }}}
-
-"hi perlVarPlain ctermfg=10 cterm=none
-"hi perlMethod   ctermfg=10 cterm=bold
-
-
-" vidir
-"autocmd BufRead * normal! gg6|0G"ad
-"
-
-":autocmd BufRead  vidir normal! gg6|0G"ad
-":autocmd BufWrite vidir normal! gg0"aP
-"autocmd BufWrite vidir normal! ggdG
-
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
-hi SpellBad     gui=undercurl guisp=red term=undercurl cterm=undercurl
+
 if &ft == 'python'
   hi link pythonFunction Keyword
 endif
 
 
-"""""""       """""""""
-""""""" Askås """""""""
-"""""""       """""""""
+"""""""""""""""""""""""
+""""""  Askås  """"""""
+""""""         """"""""
+"""""""""""""""""""""""
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -295,7 +244,7 @@ autocmd BufReadPost *
      \ endif
 
 
-set cc&
+"set cc&
 
 set encoding=utf-8
 au BufRead,BufNewFile /home/scp1/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
@@ -440,3 +389,15 @@ set number norelativenumber
 
 " -- INSERT --
 hi ModeMsg cterm=bolditalic
+
+let g:SignatureMarkTextHLDynamic = 1
+
+set cursorline
+let comment = split(&commentstring, '%s')[0]
+
+" evaluate the comment char for the current buffer
+au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
+
+hi LineNr ctermbg=233 cterm=italicbold
+
+let g:airline_theme='neverland'
