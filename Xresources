@@ -45,6 +45,10 @@ URxvt.urlLauncher:          /home/scp1/dev/utils/www
 ! https://www.japh.se/2019/01/23/color-urls-in-urxvt-without-abusing-underline-property.html
 URxvt.matcher.rend.0:       fg:5
 
+! control the internal border:
+! printf '\033]708;#990000\007'
+
+!sid.internalBorder:       1
 
 ! standard global fonts {{{
 !#define FONT_NORMAL     xft:Neep Alt:style=SemiCondensed:pixelsize=11,xft:Anonymous Pro:style=Regular:pixelsize=10:antialias=3:autohint=1:hintstyle=3
@@ -169,7 +173,6 @@ sid.insecure:             1
 !sid.buffered:             0
 !sid.intensityStyles:      1
 !sid.fading:               12
-!!sid.internalBorder:       0
 !!sid.externalBorder:       0
 !sid.cursorUnderline:      1
 
@@ -350,5 +353,22 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 sid.keysym.Control-Shift-K: \033[23@
 
 #include "/home/scp1/etc/Xcolors/nancy.Xresources"
+
+*.color0:         #1b1d1e
+*.color1:         #f92672
+*.color2:         #82b414
+*.color3:         #fd971f
+*.color4:         #4e82aa
+*.color5:         #8c54fe
+*.color6:         #465457
+*.color7:         #ccccc6
+*.color8:         #505354
+*.color9:         #ff5995
+*.color10:        #b6e354
+*.color11:        #feed6c
+*.color12:        #0c73c2
+*.color13:        #9e6ffe
+*.color14:        #899ca1
+*.color15:        #f8f8f2
 
 ! vim: fdm=marker et sw=2 tw=0:
