@@ -75,7 +75,7 @@ commands() {
 
 f() {
   =feh -D2.1 -rZxd -B black -g 1080x1920 -r \
-       --action "cp -v '%f' /home/scp1/img/_; cp -v '%f'" \
+       --action "cp -v '%f' $HOME/img/_; cp -v '%f'" \
        --action2 "rm -v '%f'"  "$@"
 }
 vimhelp() {
