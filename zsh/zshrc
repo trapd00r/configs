@@ -25,7 +25,12 @@
 #~/dev/utils/font-10-anonymous-it
 #~/dev/utils/font-12-terminus
 #~/dev/utils/font-12-anonymous
-~/dev/utils/font-monte
+
+if [[ $(hostname) = "sid" ]]; then
+  ~/dev/utils/font-monte
+else if [[ $(hostname) = "tp" ]]; then
+  ~/dev/utils/font-askas
+fi
 
 fpath=($fpath ~/etc/zsh/functions/)
 # load all functions in fpath that has the executable bit set; makes it easy to
