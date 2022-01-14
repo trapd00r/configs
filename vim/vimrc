@@ -72,7 +72,7 @@ fun! Foldtext()
 "  return v:folddashes . sub . ' ' . v:foldend
   return v:folddashes . sub . ' '
 endfun
-set foldtext=Foldtext()
+"set foldtext=Foldtext()
 ">
 set formatoptions=tcrqln1
 set guiheadroom=0
