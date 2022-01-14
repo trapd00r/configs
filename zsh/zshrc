@@ -20,6 +20,8 @@
 #if [[  $UID -ne 0 ]]; then
 #  umask 0077
 #  fi
+chdir /home/scp1/dev/askas/air8
+
 
 #FIXME
 #~/dev/utils/font-10-anonymous-it
@@ -122,16 +124,8 @@ precmd() {
   #LAST_DIR=$PWD
 }
 
-prompt_japh_setup
+#prompt_japh_setup
 #source $HOME/etc/zsh/prompt_japh_setup
-zstyle ':vcs_info:*'              actionformats \
-  " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f "
-zstyle ':vcs_info:*'              formats       \
-  " %s%F{ma}%F{ye}%F{240}⸢%F{148}%b%F{240}｣%f"
-zstyle ':vcs_info:cvs:*'          formats       \
-  " %s%F{ma}%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f"
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
-  "%b%F{red}:%F{ye}%r"
 
 #zstyle ':vcs_info:*'     actionformats " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f-"
 #zstyle ':vcs_info:*'     formats       " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ma}]%f-"
@@ -162,6 +156,41 @@ PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
+precmd() {
+  vcs_info
+  askas_butik_prompt_update
+}
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+
+zstyle ':vcs_info:*' stagedstr 'M' 
+zstyle ':vcs_info:*' unstagedstr 'M' 
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+#zstyle ':vcs_info:*' formats \
+#  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' enable git 
++vi-git-untracked() {
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+  [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
+  hook_com[unstaged]+='%F{1}??%f'
+fi
+}
+
+zstyle ':vcs_info:*'              actionformats \
+  " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f "
+# use %%u to stop underline
+zstyle ':vcs_info:*'              formats       \
+  "%F{240}, %F{131}%b%f%F{240}%F{220} %m%c%u"
+zstyle ':vcs_info:cvs:*'          formats       \
+  " %s%F{ma}%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f"
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
+  "%b%F{red}:%F{ye}%r"
 
 
+#PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
+
+source ~/etc/zsh/099-prompt_japh_2022.zsh
 
