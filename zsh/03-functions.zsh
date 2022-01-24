@@ -40,6 +40,8 @@ tcx()       { /usr/bin/tmux attach || /usr/bin/tmux -f $XDG_CONFIG_HOME/etc/tmux
 mutt()      { TERM=xterm-256color neomutt -F $XDG_CONFIG_HOME/muttneorc "$@" }
 tig()       { TERM=xterm-256color /usr/bin/tig "$@"}
 goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
+#du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f | ls_color -k2 }
+#du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f | ls_color -k2 }
 du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f | ls_color -k2 }
 du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f | ls_color -k2 }
 scx()       {
