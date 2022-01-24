@@ -42,7 +42,7 @@ export MULLVAD_USE_GTK=yes
 export       XDG_DATA_HOME=${HOME}/var
 export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
 export      XDG_CACHE_HOME=${HOME}/var/cache
-export      XDG_VIDEOS_DIR=${HOME}/mnt/mvids2
+export      XDG_VIDEOS_DIR=/mnt/mvids
 export     XDG_CONFIG_HOME=${HOME}/etc
 export     XDG_DESKTOP_DIR=${HOME}/tmp
 export    XDG_DOWNLOAD_DIR=${HOME}/dl
@@ -60,7 +60,7 @@ export    GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
 export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
 export           SCREENRC=${XDG_CONFIG_HOME}/screenrc
 export        X_OSD_COLOR='#a8ff00'
-export            BROWSER=chrome
+export            BROWSER=${HOME}/dev/utils/www
 #>
 #< locale
 export            LC_ALL=""
