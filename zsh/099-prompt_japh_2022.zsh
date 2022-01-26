@@ -21,11 +21,13 @@ askas_butik_prompt_update() {
 	if [[ $ASKAS_BUTIK = 'magnusw1' ]]; then
 	  ASKAS_BUTIK_PROMPT="%F{107}${ASKAS_BUTIK}%f%k"
 	else
-	  ASKAS_BUTIK_PROMPT="%F{107}${ASKAS_BUTIK}%F{196}(VAR VAKSAM!)%f%k"
+	  ASKAS_BUTIK_PROMPT="%F{196}${ASKAS_BUTIK}%f%k"
 	fi
-  PROMPT=$'%F{240}┌[${ASKAS_BUTIK_PROMPT}%F{220}${vcs_info_msg_0_}%F{240}]%f
-%F{240}└[%F{30}%}%~%F{208}>%F{255} '
+#  PROMPT=$'%F{240}┌[${ASKAS_BUTIK_PROMPT}%F{220}${vcs_info_msg_0_}%F{240}]%f
+#%F{240}└[%F{30}%}%~%F{208}>%F{255} '
+  PROMPT=$'%F{240}┌[%F{30}%}%~%F{220}${vcs_info_msg_0_}%F{240}]%f
+%F{240}└[${ASKAS_BUTIK_PROMPT}%F{240}]%F{208}>%F{255} '
 }
-
+#
 
 #PS2=$' %F{196}%}|>%{$reset_color%} '

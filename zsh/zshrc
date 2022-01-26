@@ -175,7 +175,7 @@ zstyle ':vcs_info:*' enable git
 +vi-git-untracked() {
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
   [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
-  hook_com[unstaged]+='%F{1}??%f'
+  hook_com[unstaged]+='%F{245}??%f'
 fi
 }
 
@@ -183,7 +183,7 @@ zstyle ':vcs_info:*'              actionformats \
   " %s%F{ma}%F{ye}%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f "
 # use %%u to stop underline
 zstyle ':vcs_info:*'              formats       \
-  "%F{240}, %F{131}%b%f%F{240}%F{220} %m%c%u"
+  "%F{240} %F{131}%b%f%F{240}%F{220} %m%c%u"
 zstyle ':vcs_info:cvs:*'          formats       \
   " %s%F{ma}%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f"
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
