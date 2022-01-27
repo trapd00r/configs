@@ -20,7 +20,7 @@
 #if [[  $UID -ne 0 ]]; then
 #  umask 0077
 #  fi
-chdir ${HOME}/dev/askas/air8
+#chdir ${HOME}/dev/askas/air8
 
 
 #FIXME
