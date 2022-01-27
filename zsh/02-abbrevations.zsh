@@ -31,6 +31,8 @@ abbreviations=(
   "bb"          "/mnt/music8/+TAGGED/"
   "ee"          "/mnt/music8/+TAGGED/E/Eminem"
   "ss"          "/mnt/music8/_soulseek"
+  "sqlk"        "${HOME}/dev/askas/air8/cgi-bin/ibutik/_DATABAS/_Nytt_SQLkoder.sql"
+
 )
 
 magic-abbrev-expand() {
