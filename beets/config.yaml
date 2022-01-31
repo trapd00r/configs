@@ -337,6 +337,7 @@ rewrite:
   artist 10,000 Maniacs:             10000 Maniacs
   artist Fronda.*:                   Fronda
   artist Magnus Rytterstam.*:        Magnus Rytterstam
+  artist Markus Krunegård med.*:     Markus Krunegård
   artist 江海迦:                     Aga
   artist Whoo Kid:                   DJ Whoo Kid
   artist Looptroop.*:                Looptroop
