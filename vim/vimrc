@@ -96,10 +96,9 @@ set isfname+=:
 set laststatus=2
 set lazyredraw
 set list
-"set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥sbr=↪:conceal=⌦
+"set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥,conceal:⌦
 set   listchars=eol:\ 
 set   listchars+=tab:»\ 
-set   listchars+=tab:\ \ 
 set   listchars+=trail:·
 set   listchars+=nbsp: 
 set   listchars+=precedes: 
@@ -254,7 +253,7 @@ au BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
 let g:fullpath=expand('%:p')
 au BufEnter * let fullpath=expand('%:p')
 au BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8 silent setlocal noexpandtab
+au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
 au BufRead,BufNewFile *.md set ft=markdown nospell
 
 nmap <C-b> :make<CR>
@@ -354,7 +353,7 @@ nnoremap <C-o> :CtrlPFunky<cr>
 
 hi CtrlPMatch ctermfg=196 cterm=bold
 
-set   listchars+=tab:»\ 
+"set   listchars+=tab:»\ 
 
 
 "let g:rg_command = 'rg --vimgrep  '
@@ -400,4 +399,32 @@ au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
 
 hi LineNr ctermbg=233 cterm=italicbold
 
-let g:airline_theme='neverland'
+" listchars
+hi SpecialKey ctermfg=239
+
+"set   listchars+=tab:»\ 
+
+"set signcolumn=number
+
+" orgmode
+"packloadall
+"silent! helptags ALL
+
+" distractionfree
+nnoremap <C-t> <Esc>:DistractionsToggle<CR>
+
+let g:distraction_free#toggle_options = [
+  \ 'cursorline',
+  \ 'colorcolumn',
+  \ 'cursorcolumn',
+  \ 'number',
+  \ 'relativenumber',
+  \ 'list',
+  \ 'ruler',
+  \ 'showtabline',
+  \ 'laststatus',
+  \ 'foldcolumn',
+\]
+
+
+
