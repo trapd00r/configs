@@ -166,6 +166,7 @@ export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
 export CLIPBORED_DMENU_NORMAL_FG='#484848'
 export CLIPBORED_DMENU_SELECT_BG='#292929'
 export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
+export CLIPBORED_X_SELECTION='clipboard'
 #>
 #< gui
 export             QT_XFT=1
