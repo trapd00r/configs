@@ -16,6 +16,9 @@
 ###
 ###>
 
+alias ·='cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf --info=hidden)"'
+alias mm='builtin cd /mnt/music8/+TAGGED && cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf)"'
+
 alias rg="rg -T sql -T css -T html --colors 'match:bg:255' --colors 'match:fg:196' --colors 'line:fg:32' --colors 'path:fg:208'"
 alias beet="~/dev/beets/beet"
 #alias beet="~/dev/_upstream/beets-ui/beet"
