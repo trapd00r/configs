@@ -765,6 +765,7 @@ paths:
 
     singleton:true  tag:demo:      %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+demo/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true  tag:live:      %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:remix:     %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+remixes/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
     singleton:true  tag:radio:     %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+radio/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:false tag:radio:     %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+radio/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
