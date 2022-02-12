@@ -48,6 +48,6 @@ dunst &
 /usr/lib/kdeconnectd &
 
 #exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
-exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
+exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 #exec openbox
