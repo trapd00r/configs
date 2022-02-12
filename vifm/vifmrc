@@ -42,6 +42,7 @@ set   wildmenu
 set   wrap
 set   wrapscan
 
+colorscheme Default-256
 " :mark mark /full/directory/path [filename]
 
 mark b ~/bin/
@@ -70,11 +71,15 @@ filetype *.pdf zathura %f,apvlv %f,xpdf %f
 fileview *.pdf pdftotext -nopgbrk %c -
 filextype *.ps,*.ps.gz gv %c %i &
 filextype *.djvu apvlv %f
+
 filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
        \ {Play using ffplay}
        \ ffplay %c,
        \ {Play using MPlayer}
        \ play_music %f,
+       \ {Play in MPD}
+       \ mpc play %f,
+
 fileviewer *.mp3 mp3info
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
         \ {View using ffplay}

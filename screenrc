@@ -102,9 +102,11 @@ rendition so = ck
 #screen -t acc      accesstail
 #screen -t nc       ncmpcpp
 #screen -t rtorrent rtorrent
-screen -t ncmpcpp ncmpcpp
+screen -t feedbar sh ~/dev/sdorfehs-config/sdorfehs-feedbar
 screen -t journal journalctl -f | grep -Pvi 'network|wlp8'
 screen -t irc irssi
+screen -t clipboard clipbored -n
+screen -t ncmpcpp ncmpcpp 
 #screen -t mutt TERM=xterm-256color neomutt -F $XDG_CONFIG_HOME/muttneorc
 #screen -t clip     perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
 #screen -t bitlbee  irssi -c localhost --config=~/etc/irc-irssi-laleh.conf -n japh
