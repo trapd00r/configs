@@ -99,7 +99,7 @@ set listchars+=nbsp: 
 set listchars+=precedes: 
 set listchars+=extends: 
 set listchars+=conceal:⌦
-set showbreak=↪
+set showbreak=↳
 
 set magic
 set maxmapdepth=500
@@ -410,3 +410,6 @@ nnoremap <leader>M :Maps<cr>
 
 " quickly change ft
 nnoremap <leader>ft :Filetypes<cr>
+
+command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
+nnoremap <leader>air :AIR8files<cr>
