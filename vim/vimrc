@@ -384,6 +384,9 @@ nnoremap <leader>gs :GFiles?<cr>
 nnoremap <leader>gc :BCommits<cr>
 vnoremap <leader>gc :BCommits<cr>
 
+" display commit history for the current line
+nnoremap ? V:BCommits<cr>
+
 " commits for the entire project
 nnoremap <leader>Gc :Commits<cr>
 

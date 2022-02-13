@@ -2,7 +2,7 @@
 "  Author: Magnus Woldrich <m@japh.se>
 " Updated: 2012-02-04 13:51:07
 
-let mapleader = ';'
+let mapleader = ','
 
 map <C-s> :call RemoveTrailingCrap()<cr>
 map <C-s> :call ShowFuncName()<cr>
@@ -133,7 +133,7 @@ nnoremap [29~ :call AddFoldMarkers()<CR>
 " }}}
 " spelling                                                                   {{{
 "map [29~ z=
-map ? z=
+"map ? z=
 nnoremap     za zg
 nnoremap     <leader><TAB> :call ToggleSpell()<CR>
 " }}}
