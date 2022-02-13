@@ -367,7 +367,45 @@ let g:distraction_free#toggle_options = [
 \]
 
 
+let mapleader=','
+
 " git clone https://github.com/junegunn/fzf.vim ~/etc/vim/pack/plugins/start/
 " git clone https://github.com/AlexVKO/fzf-to-functions.vim  ~/etc/vim/pack/plugins/start/
-nnoremap <C-p> :FZF<cr>
 source ~/etc/vim/plugin/fzf.vim
+nnoremap <C-p> :FZF<cr>
+
+" buffers
+nnoremap <leader>b  :Buffers<cr>
+
+" git status
+nnoremap <leader>gs :GFiles?<cr>
+
+" commits for the current buffer, vselect a line to track changes for it
+nnoremap <leader>gc :BCommits<cr>
+
+" commits for the entire project
+nnoremap <leader>Gc :Commits<cr>
+
+" most recent files
+nnoremap <leader>h :History<cr>
+
+" commandline history
+nnoremap <leader>H :History:<cr>
+
+" search history
+nnoremap <leader>s :History/<cr>
+
+" lines, in entire project
+nnoremap <leader>l :Lines<cr>
+
+" buffer lines
+nnoremap <leader>L :BLines<cr>
+
+" all the marks
+nnoremap <leader>m :Marks<cr>
+
+" all the mappings
+nnoremap <leader>M :Maps<cr>
+
+" quickly change ft
+nnoremap <leader>ft :Filetypes<cr>
