@@ -19,7 +19,10 @@
 # enable DEBUG in various places
 #export DEBUG=1
 
-export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
+#export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
+export FZF_DEFAULT_OPTS='--bind "ctrl-w:backward-kill-word" --height 80% --layout=reverse --border'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd.ignorefile"
+
 
 # enable trace for python segfaults
 export PYTHONFAULTHANDLER=1
