@@ -1,14 +1,14 @@
 " vim:sw=2:cc&:smc&:fdm=marker:fmr="<,">:fdls=1:fdl=0:fml=2:fen:et:
 "    File: $HOME/etc/vim/nancy/090-syntax.vim
 "  Author: Magnus Woldrich <m@japh.se>
-" Updated: 2019-03-16 16:25:29
+" Updated: 2022-02-13 11:23:17
 
 
 "hi! clear
 "hi Normal ctermfg=fg ctermbg=bg cterm=bolditalic
 "< debsources
-hi debsourcesDistrKeyword ctermfg=208
-hi debsourcesUri          ctermfg=032
+"hi debsourcesDistrKeyword ctermfg=208
+"hi debsourcesUri          ctermfg=032
 ">
 "< vim
 " various settings that can't be included in my neverland.vim
@@ -251,7 +251,7 @@ hi vimVar            ctermfg=fg  ctermbg=bg  cterm=none
 "hi wsEOL      ctermfg=196 ctermbg=none cterm=bold
 ">
 "< vimperator
-hi vimperatorSet ctermfg=102 ctermbg=bg cterm=none
+"hi vimperatorSet ctermfg=102 ctermbg=bg cterm=none
 "syn match wsEOL display '\v[ ]+$' conceal cchar=O
 "hi wsEOL      ctermfg=196 ctermbg=none cterm=bold
 ">
@@ -295,16 +295,16 @@ hi makeCommands ctermfg=246
 "hi link ncmpcppComment Comment
 ">
 "< minesweeper
-hi MineSweeperBomb   ctermbg=124 ctermfg=234 cterm=bold
-hi MineSweeperField  ctermbg=234 ctermfg=234 cterm=italic
-hi MineSweeperFlag   ctermbg=234 ctermfg=092 cterm=bold
-hi MineSweeperStatus ctermbg=234 ctermfg=064 cterm=bold
-hi MineSweeperHatena ctermbg=234 ctermfg=085 cterm=bold
-hi MineSweeper0      ctermbg=236 ctermfg=242 cterm=none
-hi MineSweeper1      ctermbg=234 ctermfg=022 cterm=none
-hi MineSweeper2      ctermbg=234 ctermfg=160 cterm=none
-hi MineSweeper3      ctermbg=234 ctermfg=197 cterm=bold
-hi MineSweeper4      ctermbg=234 ctermfg=220 cterm=bold
+"hi MineSweeperBomb   ctermbg=124 ctermfg=234 cterm=bold
+"hi MineSweeperField  ctermbg=234 ctermfg=234 cterm=italic
+"hi MineSweeperFlag   ctermbg=234 ctermfg=092 cterm=bold
+"hi MineSweeperStatus ctermbg=234 ctermfg=064 cterm=bold
+"hi MineSweeperHatena ctermbg=234 ctermfg=085 cterm=bold
+"hi MineSweeper0      ctermbg=236 ctermfg=242 cterm=none
+"hi MineSweeper1      ctermbg=234 ctermfg=022 cterm=none
+"hi MineSweeper2      ctermbg=234 ctermfg=160 cterm=none
+"hi MineSweeper3      ctermbg=234 ctermfg=197 cterm=bold
+"hi MineSweeper4      ctermbg=234 ctermfg=220 cterm=bold
 ">
 "< perl
 hi perlVarPlain ctermfg=10 cterm=none
@@ -313,9 +313,9 @@ hi perlVarPlain ctermfg=10 cterm=none
 hi markdownJekyllFrontMatter    ctermfg=137
 hi markdownJekyllLiquidBlockTag ctermfg=197 cterm=italic
 
-highlight GitGutterAdd    ctermfg=34
-highlight GitGutterChange ctermfg=198
-highlight GitGutterDelete ctermfg=160
+hi GitGutterAdd    ctermfg=34
+hi GitGutterChange ctermfg=198
+hi GitGutterDelete ctermfg=160
 
 hi markdownXmlElement ctermfg=197
 
