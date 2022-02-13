@@ -9,4 +9,4 @@ pm_to_blib
 */publish.pm
 test/
 _VERKTYG/
-docs/
+#docs/
