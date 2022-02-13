@@ -382,6 +382,7 @@ nnoremap <leader>gs :GFiles?<cr>
 
 " commits for the current buffer, vselect a line to track changes for it
 nnoremap <leader>gc :BCommits<cr>
+vnoremap <leader>gc :BCommits<cr>
 
 " commits for the entire project
 nnoremap <leader>Gc :Commits<cr>
