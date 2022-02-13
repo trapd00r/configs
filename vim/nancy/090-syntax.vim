@@ -308,17 +308,55 @@ hi makeCommands ctermfg=246
 ">
 "< perl
 hi perlVarPlain ctermfg=10 cterm=none
+hi comma                   ctermfg=87 cterm=bolditalic
 ">
-
-hi markdownJekyllFrontMatter    ctermfg=137
-hi markdownJekyllLiquidBlockTag ctermfg=197 cterm=italic
-
+"<gitgutter
 hi GitGutterAdd    ctermfg=34
 hi GitGutterChange ctermfg=198
 hi GitGutterDelete ctermfg=160
+">
 
-hi markdownXmlElement ctermfg=197
 
 hi qfFileName ctermfg=208
 hi qfLineNr ctermfg=33 cterm=italicbold
 hi qfSeparator ctermfg=232
+
+hi LineNr ctermbg=233 cterm=italicbold
+" -- INSERT --
+hi ModeMsg cterm=bolditalic
+hi Folded ctermfg=234 ctermbg=240 cterm=reverse
+"<markdown
+hi markdownXmlElement      ctermfg=12
+hi markdownXmlEmptyElement ctermfg=37
+hi markdownXmlElement ctermfg=197
+">
+
+
+
+"< fzf
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+">
+"< ctrlp
+hi CtrlPMatch ctermfg=196 cterm=bold
+">
+
+"< override colorscheme
+" listchars
+hi SpecialKey ctermfg=239
+hi VertSplit  ctermfg=234 ctermbg=233 cterm=none
+">

@@ -63,28 +63,24 @@ fun! Foldtext()
   let sub  = substitute(line, '\v^["#!][<]\s+', '', 'g')
   "let v:folddashes="➤〚◘⭔➳❋✘ ➳   ↴⤵⇵⤵⬎჻"
   "let v:folddashes="➤⇵〚◘⭔❋✘   ⇲ ⬎ ⇲ ↴➳➳⤵⇵⤵჻"
-"  let v:folddashes="▌⇆ "
-"  let v:folddashes="║ ↓ "
-"    let v:folddashes="└>"
-    let v:folddashes=""
+  "let v:folddashes="▌⇆ "
+  "let v:folddashes="║ ↓ "
+  "let v:folddashes="└>"
+  let v:folddashes=""
 
-"  return v:folddashes . sub . ' ' . v:foldstart . ', ' . v:foldend
-"  return v:folddashes . sub . ' ' . v:foldend
   return v:folddashes . sub . ' '
 endfun
 "set foldtext=Foldtext()
 ">
 set formatoptions=tcrqln1
 set guiheadroom=0
+set guifont=Source\ Code\ Pro\ 12
 set grepprg=internal
-"set grepprg='grep\ -Im400\ --line-buffered\ -P | argdo try | grepadd! mplayer % | catch /E480:/ | endtry'
-
-"set grepprg=ack\ -a
 set guioptions-=m
 set guioptions-=T
 set helpfile=$HOME/dev/vim/runtime/doc/help.txt
 set helpheight=5
-set helplang=en,sv,de
+set helplang=en
 set hidden
 set history=50
 set hlsearch
@@ -96,26 +92,24 @@ set isfname+=:
 set laststatus=2
 set lazyredraw
 set list
-"set   listchars=eol:↵,tab:➤,trail:⬚,nbsp:Ɀ,precedes:↞,extends:⇥,conceal:⌦
-set   listchars=eol:\ 
-set   listchars+=tab:»\ 
-set   listchars+=trail:·
-set   listchars+=nbsp: 
-set   listchars+=precedes: 
-set   listchars+=extends: 
-set   listchars+=conceal:⌦
-set   showbreak=↪
+set listchars=eol:\ 
+set listchars+=tab:»\ 
+set listchars+=trail:·
+set listchars+=nbsp: 
+set listchars+=precedes: 
+set listchars+=extends: 
+set listchars+=conceal:⌦
+set showbreak=↪
 
-set   magic
-"set   makeprg=mymake
-set   maxmapdepth=500
-set   matchpairs+==:;
-set   matchpairs+=<:>
-set   matchtime=20
-set   maxfuncdepth=1000
-set   maxmemtot=200000
-set   modeline
-set   modelines=2
+set magic
+set maxmapdepth=500
+set matchpairs+==:;
+set matchpairs+=<:>
+set matchtime=20
+set maxfuncdepth=1000
+set maxmemtot=200000
+set modeline
+set modelines=2
 set modelineexpr
 set nobackup
 set nocscopeverbose
@@ -170,8 +164,6 @@ set undolevels=1024
 set undodir=~/var/vim/undo
 set visualbell t_vb=
 set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo
-"set viminfo=h,'100,\"100,:20,%,n~/var/vim/viminfo
-"set viminfo='100,<50,s10,h,%
 set virtualedit=block
 set wildchar=<Tab>
 set wildmode=list:longest,full
@@ -227,10 +219,6 @@ let &t_EI = "\<Esc>]12;#ff0000\x7"
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
 
-if &ft == 'python'
-  hi link pythonFunction Keyword
-endif
-
 
 """""""""""""""""""""""
 """"""  Askås  """"""""
@@ -260,11 +248,7 @@ au BufRead,BufNewFile *.md set ft=markdown nospell
 nmap <C-b> :make<CR>
 
 "set noexpandtab
-set guifont=Source\ Code\ Pro\ 12
 
-hi markdownXmlElement      ctermfg=12
-hi markdownXmlEmptyElement ctermfg=37
-hi comma                   ctermfg=87 cterm=bolditalic
 
 
 "fun! ShowFuncName()
@@ -278,41 +262,12 @@ hi comma                   ctermfg=87 cterm=bolditalic
 "nnoremap <C-s> :call ShowFuncName()<CR>
 
 
-syn match commentblock /\v[#]{80}/
-hi commentblock ctermfg=220
+"syn match commentblock /\v[#]{80}/
+"hi commentblock ctermfg=220
 
 
 set showtabline=0
 
-
-" highlight filetypes like my LS_COLORS
-hi clear NERDTreeExecFile
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, attr)
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermfg='. a:fg .' cterm='. a:attr
-endfunction
-
-call NERDTreeHighlightFile('pm',    '203', 'none')
-call NERDTreeHighlightFile('pl',    '208', 'none')
-call NERDTreeHighlightFile('css',   '125', 'bold')
-call NERDTreeHighlightFile('js',    '74',  'bold')
-call NERDTreeHighlightFile('txt',   '188', 'bolditalic')
-call NERDTreeHighlightFile('png',   '197', 'none')
-call NERDTreeHighlightFile('jpg',   '123', 'none')
-call NERDTreeHighlightFile('php',   '81',  'none')
-call NERDTreeHighlightFile('md',    '220', 'bold')
-call NERDTreeHighlightFile('html',  '125', 'italic')
-call NERDTreeHighlightFile('shtml', '125', 'italic')
-
-hi NERDTreeDir      ctermfg=30 cterm=none
-hi NERDTreeDirSlash ctermfg=30 cterm=none
-hi NERDTreeOpenable ctermfg=30 cterm=none
-hi NERDTreeClosable ctermfg=30 cterm=italic
-hi NERDTreeUp       ctermfg=30 cterm=none
-hi NERDTreeCWD      ctermfg=220 cterm=bold
-"hi NERDTreeBookmarkName ctermfg=
-hi VertSplit        ctermfg=234 ctermbg=233 cterm=none
 
 "nnoremap <C-m> :NERDTreeToggle<CR>
 "
@@ -352,7 +307,6 @@ nnoremap <C-o> :CtrlPFunky<cr>
 let g:ctrlp_map = ''
 
 
-hi CtrlPMatch ctermfg=196 cterm=bold
 
 "set   listchars+=tab:»\ 
 
@@ -364,6 +318,11 @@ hi CtrlPMatch ctermfg=196 cterm=bold
 " that way we can grab entire perl module declarations for example:
 " use Foo::Bar::Baz::Laleh;
 set iskeyword+=:
+set foldmarker={,}
+set foldlevel=99
+set foldlevelstart=99
+set number norelativenumber
+set cursorline
 nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<CR>
 
 " make the quickfix window modifiable so we can do things like
@@ -377,31 +336,18 @@ au BufRead,BufNewFile *.tt setf tt2html
 "autocmd Filetype * AnyFoldActivate
 
 
-set foldmarker={,}
-set foldlevel=99
-set foldlevelstart=99
+
 " toggle folds with Enter
 nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<CR>
 
-hi Folded ctermfg=234 ctermbg=240 cterm=reverse
 
-set number norelativenumber
-
-" -- INSERT --
-hi ModeMsg cterm=bolditalic
 
 let g:SignatureMarkTextHLDynamic = 1
 
-set cursorline
 let comment = split(&commentstring, '%s')[0]
 
 " evaluate the comment char for the current buffer
 au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
-
-hi LineNr ctermbg=233 cterm=italicbold
-
-" listchars
-hi SpecialKey ctermfg=239
 
 
 " distractionfree
@@ -424,22 +370,4 @@ let g:distraction_free#toggle_options = [
 " git clone https://github.com/junegunn/fzf.vim ~/etc/vim/pack/plugins/start/
 " git clone https://github.com/AlexVKO/fzf-to-functions.vim  ~/etc/vim/pack/plugins/start/
 nnoremap <C-p> :FZF<cr>
-"nnoremap <C-p> :Files <C-R>=expand('%:p:h')<cr><cr>
 source ~/etc/vim/plugin/fzf.vim
-
-" Customize fzf colors to match your color scheme
-" - fzf#wrap translates this to a set of `--color` options
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
