@@ -1,2 +1,2 @@
-[record]
-command = /usr/bin/zsh -l
+#[record]
+#command = /usr/bin/zsh -l
