@@ -194,3 +194,8 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
 
 source ~/etc/zsh/099-prompt_japh_2022.zsh
 
+# not sure if I want this or not, trying for a while
+source ~/etc/zsh/11-fzf-completion.zsh
+source ~/etc/zsh/11-fzf-keybindings.zsh
+
+

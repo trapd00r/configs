@@ -144,6 +144,7 @@ set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 
 set scrolloff=40
+"set signcolumn=number
 set ssop=buffers,folds,globals,help,localoptions,options,resize
 set shiftwidth=2
 set shortmess=aIoOT
@@ -329,9 +330,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[.]git$|test[/]|_VERKTYG|docs[/]',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
-	\ }
-
-"let g:ctrlp_user_command = 'find %s -type f | grep -vP "test[/]|_VERKTYG|docs[/]"'
+  \ }
 
 if executable('rg')
   set grepprg=rg\ --color=never
@@ -349,6 +348,8 @@ let g:ctrlp_funky_syntax_highlight = 1
 
 
 nnoremap <C-o> :CtrlPFunky<cr>
+"nnoremap <silent> <C-o> :FzfMethods <cr>
+let g:ctrlp_map = ''
 
 
 hi CtrlPMatch ctermfg=196 cterm=bold
@@ -402,13 +403,6 @@ hi LineNr ctermbg=233 cterm=italicbold
 " listchars
 hi SpecialKey ctermfg=239
 
-"set   listchars+=tab:»\ 
-
-"set signcolumn=number
-
-" orgmode
-"packloadall
-"silent! helptags ALL
 
 " distractionfree
 nnoremap <C-t> <Esc>:DistractionsToggle<CR>
@@ -427,4 +421,7 @@ let g:distraction_free#toggle_options = [
 \]
 
 
-
+" git clone https://github.com/junegunn/fzf.vim ~/etc/vim/pack/plugins/start/
+" git clone https://github.com/AlexVKO/fzf-to-functions.vim  ~/etc/vim/pack/plugins/start/
+nnoremap <C-p> :FZF<cr>
+source ~/etc/vim/plugin/fzf.vim

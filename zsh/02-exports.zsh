@@ -19,6 +19,8 @@
 # enable DEBUG in various places
 #export DEBUG=1
 
+export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
+
 # enable trace for python segfaults
 export PYTHONFAULTHANDLER=1
 
