@@ -406,3 +406,6 @@ zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|
 #####zle -C my-all-prev-comp complete-word _my-prev-result
 #####bindkey '^E' my-all-prev-comp
 #>
+#< completion for environment variable values
+_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter'
+#>
