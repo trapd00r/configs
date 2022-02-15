@@ -416,3 +416,5 @@ nnoremap <leader>ft :Filetypes<cr>
 
 command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
 nnoremap <leader>air :AIR8files<cr>
+
+nnoremap <leader>n :GitGutterNextHunk<cr>
