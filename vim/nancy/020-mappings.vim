@@ -436,3 +436,33 @@ map! <Esc>= <A-=>
 "no T 8<Up>
 "no D <C-w><C-r>
 " }}}
+
+" Oalders Open::This::ot
+" Thanks to D. Ben Knoble for getting histadd() to work:
+" https://vi.stackexchange.com/questions/34818/how-to-use-histadd-with-a-custom-function/34819#34819
+nnoremap <leader>ot :call OTcword(input("ot: ", "", "file"))<cr>
+
+" trim() requires vim 8
+" https://github.com/vim/vim/commit/295ac5ab5e840af6051bed5ec9d9acc3c73445de
+function! OT(fname)
+    let res = system("ot --editor vim --print " . shellescape(trim(a:fname)))
+    if v:shell_error
+        echo "\n" . res
+    else
+        execute "e " res
+    endif
+    call histadd(':', printf('call OT("%s")', escape(a:fname, '"\')))
+endfunction
+
+" TODO: fix so we don't need to hit <cr>
+" https://github.com/oalders/open-this
+function! OTcword(cword)
+    let res = system("ot --editor vim --print " . expand("<cword>"))
+    echo "\n"
+    if v:shell_error
+        echo "\n" . res
+    else
+        execute "e " res
+    endif
+"    call histadd(':', printf('call OT("%s")', escape(a:fname, '"\')))
+endfunction

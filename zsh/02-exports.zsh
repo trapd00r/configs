@@ -45,6 +45,8 @@ export MULLVAD_USE_GTK=yes
 ##>
 ##< xdg
 export       XDG_DATA_HOME=${HOME}/var
+export      XDG_STATE_HOME=${XDG_DATA_HOME}
+export     XDG_RUNTIME_DIR=${HOME}/run
 export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
 export      XDG_CACHE_HOME=${HOME}/var/cache
 export      XDG_VIDEOS_DIR=/mnt/mvids
@@ -269,3 +271,5 @@ export PAUSE_ID=WOLDRICH
 export ASKAS_BUTIK=magnusw1
 # Selenium
 export HOST_WEB_URL=${ASKAS_BUTIK}
+# https://github.com/oalders/open-this
+export OPEN_THIS_LIBS="lib/,tlib/,${HOME}/dev/askas/air8/cgi-bin/ibutik/,${HOME}/dev/askas/air8/cgi-bin/core/lib/"
