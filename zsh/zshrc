@@ -198,4 +198,5 @@ source ~/etc/zsh/099-prompt_japh_2022.zsh
 source ~/etc/zsh/11-fzf-completion.zsh
 source ~/etc/zsh/11-fzf-keybindings.zsh
 
-
+#< completion for environment variable values
+_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter'
