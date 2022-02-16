@@ -32,7 +32,8 @@ set fileencodings=utf-8,latin1  " List of fileencodings to try
 
 set backspace=start,indent,eol  " What backspace, ^w etc will operate on.
 set cmdheight=2                 " Avoid 'Press ENTER to continue' prompts.
-set clipboard=unnamedplus,autoselect " Define clipboard registers to use.
+set clipboard=unnamed           " Define clipboard registers to use.
+"set clipboard=unnamed,autoselect " Define clipboard registers to use.
 set complete=.,w,b,u,t,i,d,k,kspell  " Insert mode completion for ^n, ^p.
 set cindent                          " C program indenting.
 "set cinoptions=:0,l1,t0,g0,(0        " Options for cindent.
