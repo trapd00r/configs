@@ -40,8 +40,9 @@ fpath=($fpath ~/etc/zsh/functions/)
 #for func in $^fpath/*(N-.x:t); autoload $func
 #freload()  { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
 
-#autoload -U compinit
-#compinit
+autoload -U compinit
+compinit
+
 
 # command mode thanks
 #zle-line-init() { zle -K vicmd }
@@ -82,7 +83,7 @@ for r in $HOME/etc/zsh/[0-5]*.zsh; do
   . $r
 done
 . $HOME/etc/zsh/10-syntax.zsh
-. $HOME/etc/zsh/10-z.zsh
+#. $HOME/etc/zsh/10-z.zsh
 #. $HOME/etc/zsh/plugins/k.sh
 #. $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
 . $HOME/.secret_zshrc
@@ -150,7 +151,7 @@ eval $(dircolors -b $HOME/dev/LS_COLORS/LS_COLORS)
 
 compdef     _gnu_generic ln file vnstati lscpu lsb_release
 
-PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PATH="$HOME/dev/sdorfehs-config/bin:$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
@@ -200,3 +201,7 @@ source ~/etc/zsh/11-fzf-keybindings.zsh
 
 #< completion for environment variable values
 _comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter'
+
+# why completion doesn't work if script is +x
+compdef _perl_modules vafan
+compdef _perl_modules ot
