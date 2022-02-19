@@ -16,6 +16,7 @@
 ###
 ###>
 
+alias sql='vim ./cgi-bin/ibutik/_DATABAS/_Nytt_SQLkoder.sql'
 alias ·='cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf --info=hidden)"'
 alias mm='builtin cd /mnt/music8/+TAGGED && cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf)"'
 
