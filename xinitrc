@@ -16,14 +16,25 @@ xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 # monitors
 #  [][ ][]
 #   [   ]
+#if [[ $(hostname) = 'sid' ]]; then
+#  xrandr --output DP-4 --primary \
+#         --output HDMI-0 --rotate left  --right-of DP-4 \
+#         --output DP-2   --rotate right --left-of DP-4  \
+#         --output DVI-D-0 --left-of DP-2 # TV
+#elif [[ $(hostname) = 'tp' ]]; then
+#  kbdlight&
+
+# monitors
+# [][][ ][]
 if [[ $(hostname) = 'sid' ]]; then
   xrandr --output DP-4 --primary \
          --output HDMI-0 --rotate left  --right-of DP-4 \
          --output DP-2   --rotate right --left-of DP-4  \
-         --output DVI-D-0 --left-of DP-2 # TV
+         --output DVI-D-0 --left-of DP-2 --rotate left
 elif [[ $(hostname) = 'tp' ]]; then
   kbdlight&
 fi
+#fi
 
 
 # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
