@@ -419,3 +419,8 @@ command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
 nnoremap <leader>air :AIR8files<cr>
 
 nnoremap <leader>n :GitGutterNextHunk<cr>
+
+"command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+nnoremap <C-g> :RgFzf*<cr>
+
