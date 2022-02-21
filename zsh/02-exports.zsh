@@ -1,4 +1,4 @@
-###< vim: set ft=zsh:fdm=marker:fmr=#<,#>:fdl=0:fen:et:sw=2:fcl=all:
+###< vim:ft=zsh:fdm=marker:fmr=#<,#>:fdl=0:fen:et:sw=2:fcl=all:synmaxcol&:
 ###
 #      ${HOME}/etc/zsh/02-exports.zsh
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
@@ -19,8 +19,9 @@
 # enable DEBUG in various places
 #export DEBUG=1
 
-#export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
-export FZF_DEFAULT_OPTS='--bind "ctrl-w:backward-kill-word" --height 80% --layout=reverse --border'
+export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+#export FZF_DEFAULT_OPTS='--bind "ctrl-w:backward-kill-word" --height 80% --layout=reverse --border --color=bg+:53,fg+:197,gutter:-1,hl:197,hl+:-1,border:234,query:197'
+
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd.ignorefile"
 
 
