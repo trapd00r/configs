@@ -377,6 +377,9 @@ nnoremap <C-p> :FZF<cr>
 
 " buffers
 nnoremap <leader>b  :Buffers<cr>
+" muscle memory, replace standard :ls with fzf-powered one.
+cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Buffers' : 'ls')<CR>
+
 
 " git status
 nnoremap <leader>gs :GFiles?<cr>
@@ -398,7 +401,9 @@ nnoremap <leader>h :History<cr>
 nnoremap <leader>H :History:<cr>
 
 " search history
-nnoremap <leader>s :History/<cr>
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap <leader>s :QHist<cr>
+
 
 " lines, in entire project
 nnoremap <leader>l :Lines<cr>
