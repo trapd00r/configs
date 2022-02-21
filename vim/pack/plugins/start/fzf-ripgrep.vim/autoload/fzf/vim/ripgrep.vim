@@ -195,8 +195,9 @@ function! fzf#vim#ripgrep#rgdef_fzf(query, ...) abort
   let l:fullscreen = get(l:opts, 'fullscreen', 0)
   let l:path = get(l:opts, 'path', '')  " TODO can we just pass through opts dict?
   " TODO: currently, only python is supported.
-  let rgdef_type = '--type "py"'
-  let rgdef_prefix = '^\s*(def|class)'
+  " TODO: Python no longer supported, but perl is :)
+  let rgdef_type = '--type "perl"'
+  let rgdef_prefix = '^\s*(sub)'
   let rgdef_pattern = rgdef_prefix.' \w*'.a:query.'\w*'
 
   " if the query itself starts with prefix patterns, let itself be the regex pattern
