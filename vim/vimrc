@@ -407,10 +407,10 @@ nnoremap <leader>l :Lines<cr>
 nnoremap <leader>L :BLines<cr>
 
 " all the marks
-nnoremap <leader>m :Marks<cr>
+nnoremap <leader>M :Marks<cr>
 
 " all the mappings
-nnoremap <leader>M :Maps<cr>
+nnoremap <leader>m :Maps<cr>
 
 " quickly change ft
 nnoremap <leader>ft :Filetypes<cr>
