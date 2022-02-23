@@ -372,6 +372,10 @@ let mapleader=','
 
 " git clone https://github.com/junegunn/fzf.vim ~/etc/vim/pack/plugins/start/
 " git clone https://github.com/AlexVKO/fzf-to-functions.vim  ~/etc/vim/pack/plugins/start/
+" use this to avoid situations where cwd is ~/ and I do a 
+" vim ~/etc/zshrc
+" causing fzf to use my ~/ with all junk directories etc
+" git clone https://github.com/airblade/vim-rooter ~/etc/vim/pack/plugins/start/
 source ~/etc/vim/plugin/fzf.vim
 nnoremap <C-p> :FZF<cr>
 
@@ -424,6 +428,7 @@ command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
 nnoremap <leader>air :AIR8files<cr>
 
 nnoremap <leader>n :GitGutterNextHunk<cr>
+"nnoremap <leader>u :GitGutterRevertHunk<cr>
 
 nnoremap <leader>r :RgFzf 
 
@@ -432,3 +437,5 @@ nnoremap <C-g> :RgFzf*<cr>
 
 " go to function def
 nnoremap <C-S-G> :RgDefFzf*<cr>
+
+command! -range Aligncommas <line1>,<line2> s /,/§,/g | <line1>,<line2> !column -s § -t
