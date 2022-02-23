@@ -405,6 +405,7 @@ nnoremap <leader>h :History<cr>
 nnoremap <leader>H :History:<cr>
 
 " search history
+" `
 command! QHist call fzf#vim#search_history({'right': '40'})
 nnoremap <leader>s :QHist<cr>
 
@@ -439,3 +440,30 @@ nnoremap <C-g> :RgFzf*<cr>
 nnoremap <C-S-G> :RgDefFzf*<cr>
 
 command! -range Aligncommas <line1>,<line2> s /,/§,/g | <line1>,<line2> !column -s § -t
+
+
+" Prefix a line with warn and restore the cursor position
+function PrefixPerlWarn()
+  " current cursor position
+  let cursor_pos = getpos(".")
+
+  " length of 'warn '
+  let cursor_pos[2] += 5
+  normal ^iwarn 
+  call setpos('.', cursor_pos)
+endfunction
+
+" Remove the warn and restore cursor position
+" TODO: Toggleable
+function PrefixPerlRemoveWarn()
+  " current cursor position
+  let cursor_pos = getpos(".")
+
+  " length of 'warn '
+  let cursor_pos[2] -= 5
+  normal ^dw
+  call setpos('.', cursor_pos)
+endfunction
+
+nnoremap <leader>w :call PrefixPerlWarn()<cr>
+nnoremap <leader>W :call PrefixPerlRemoveWarn()<cr>
