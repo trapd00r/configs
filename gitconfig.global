@@ -13,9 +13,9 @@
   ui         = auto
 
 [color "status"]
-  added     = 2 bold
+  added     = 166 bold
   branch    = 100
-  changed   = 085 bold
+  changed   = 178 bold
   header    = 086
   nobranch  = 197
   untracked = 240
