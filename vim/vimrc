@@ -467,3 +467,6 @@ endfunction
 
 nnoremap <leader>w :call PrefixPerlWarn()<cr>
 nnoremap <leader>W :call PrefixPerlRemoveWarn()<cr>
+
+" close all folds
+nnoremap <leader>fc zM
