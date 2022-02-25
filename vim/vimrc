@@ -429,9 +429,9 @@ command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
 nnoremap <leader>air :AIR8files<cr>
 
 nnoremap <leader>n :GitGutterNextHunk<cr>
-"nnoremap <leader>u :GitGutterRevertHunk<cr>
 
-nnoremap <leader>r :RgFzf 
+
+nnoremap <leader>f :RgFzf 
 
 " Rg word under cursor, and filter results with fzf
 nnoremap <C-g> :RgFzf*<cr>
@@ -470,3 +470,8 @@ nnoremap <leader>W :call PrefixPerlRemoveWarn()<cr>
 
 " close all folds
 nnoremap <leader>fc zM
+
+" undo/redo entire git hunk
+" U undos an entire line
+nnoremap <leader>u :GitGutterUndoHunk<cr>
+"nnoremap <leader>r :GitGutterRedoHunk<cr>
