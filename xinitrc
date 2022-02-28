@@ -32,6 +32,7 @@ if [[ $(hostname) = 'sid' ]]; then
          --output DP-2   --rotate right --left-of DP-4  \
          --output DVI-D-0 --left-of DP-2 --rotate left
 elif [[ $(hostname) = 'tp' ]]; then
+  xrandr --output DP-3 --primary
   kbdlight&
 fi
 #fi
