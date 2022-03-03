@@ -475,3 +475,7 @@ nnoremap <leader>fc zM
 " U undos an entire line
 nnoremap <leader>u :GitGutterUndoHunk<cr>
 "nnoremap <leader>r :GitGutterRedoHunk<cr>
+
+" replace 2 space with \t, takes range
+" s/\(^\s*\)\@<=  /\t/g
+
