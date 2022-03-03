@@ -205,3 +205,10 @@ _comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter
 # why completion doesn't work if script is +x
 compdef _perl_modules vafan
 compdef _perl_modules ot
+
+batdiff() {
+  OLDPAGER=$PAGER
+  export PAGER=""
+  git diff --name-only --diff-filter=d | xargs bat --diff
+  export PAGER=$OLDPAGER
+}
