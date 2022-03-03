@@ -13,3 +13,4 @@ _VERKTYG/
 CLEAN/
 # minified js...
 *min.js
+*.min.map
