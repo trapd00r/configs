@@ -19,7 +19,9 @@
 # enable DEBUG in various places
 #export DEBUG=1
 
+# set these if profile for st
 export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+export FZMP_FZF_OPTIONS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
 #export FZF_DEFAULT_OPTS='--bind "ctrl-w:backward-kill-word" --height 80% --layout=reverse --border --color=bg+:53,fg+:197,gutter:-1,hl:197,hl+:-1,border:234,query:197'
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd.ignorefile"
@@ -93,7 +95,7 @@ export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
-export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5
+export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/objects
 #export      PERL5LIB=${HOME}/lib/perl5:${HOME}/lib/perl/5.14.2/auto:${HOME}/lib/perl/5.14/auto:${HOME}/lib/perl5/:${HOME}/lib:/usr/share/perl5/site_perl:/usr/share/perl5/core_perl:/usr/share/perl5/vendor_perl:/usr/share/perl5/site_perl:/usr/lib/perl5/core_perl/auto:/usr/lib/perl5/vendor_perl/auto:/usr/lib/perl5/site_perl/auto
 export PERLBREW_ROOT=${HOME}/usr/share/perl5
 export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
@@ -270,6 +272,7 @@ export PAUSE_ID=WOLDRICH
 ####
 
 export ASKAS_BUTIK=magnusw1
+export ASKAS_CGIDIR=${HOME}/dev/askas/air8/cgi-bin/ibutik
 # Selenium
 export HOST_WEB_URL=${ASKAS_BUTIK}
 # https://github.com/oalders/open-this
