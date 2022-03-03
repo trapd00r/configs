@@ -17,6 +17,14 @@ nnoremap b( :b8<cr>
 nnoremap b) :b9<cr>
 nnoremap b= :b10<cr>
 
+" emacs-style in :
+cnoremap        <C-A> <Home>
+cnoremap        <C-B> <Left>
+cnoremap        <M-b> <S-Left>
+cnoremap        <M-f> <S-Right>
+silent! exe "set <S-Left>=\<Esc>b"
+silent! exe "set <S-Right>=\<Esc>f"
+
 nnoremap <silent> <leader>å :%s/\v\d+/\=submatch(0) + 1/g<CR>  :normal gg<CR>
 "nmap <leader>O :%w >> ~/vim_output<CR>
 "nmap <leader>o :exec ':.w >> ' . eval(string( xclipboard_pipe_path ))<CR>
