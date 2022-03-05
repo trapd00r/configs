@@ -41,6 +41,6 @@ header_layout=three_25_50_25
 column_meters_0=LoadAverage Blank Tasks Systemd
 column_meter_modes_0=2 2 2 2
 column_meters_1=CPU Memory DiskIO NetworkIO
-column_meter_modes_1=1 1 1 1
+column_meter_modes_1=2 2 2 2
 column_meters_2=AllCPUs2
 column_meter_modes_2=1
