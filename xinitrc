@@ -59,6 +59,17 @@ dunst &
 
 /usr/lib/kdeconnectd &
 
+# gtk applications startup very slow
+# https://bbs.archlinux.org/viewtopic.php?id=224787
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+## perhaps do this?
+# for f in /etc/X11/xinit/xinitrc.d/*.sh; do
+#   source "$f"
+# done
+
+lxsession &
+
 #exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
 exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
