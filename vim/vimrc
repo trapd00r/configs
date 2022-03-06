@@ -479,3 +479,10 @@ nnoremap <leader>u :GitGutterUndoHunk<cr>
 " replace 2 space with \t, takes range
 " s/\(^\s*\)\@<=  /\t/g
 
+" template for oneshot quick scripts using entire air stack
+au BufNewFile *.air
+  \   silent! 0r ~/dev/askas/utils-askas/vim/templates/air_oneshot.air
+  \ | 0
+  \ | exe 'normal Go'
+"  \ | startinsert
+
