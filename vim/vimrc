@@ -150,7 +150,7 @@ set smartcase
 set smarttab
 set splitbelow
 set suffixes=~,.swp,swo,o,gz
-set synmaxcol=120
+set synmaxcol=300
 set tabpagemax=4
 set tabstop=2
 set t_Co=256
