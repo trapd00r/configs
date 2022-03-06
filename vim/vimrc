@@ -486,3 +486,14 @@ au BufNewFile *.air
   \ | exe 'normal Go'
 "  \ | startinsert
 
+" scratch window for temp things
+function! Scratch()
+  split
+  noswapfile hide enew
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal ft=perl
+  "setlocal nobuflisted
+  "lcd ~
+  file scratch
+endfunction
