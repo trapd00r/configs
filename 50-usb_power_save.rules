@@ -1,0 +1,4 @@
+#  /etc/udev/rules.d/50-usb_power_save.rules
+# disable autosuspend for deltaco usb-c hub
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2109", ATTR{idProduct}=="0817", GOTO="power_usb_rules_end"
+
