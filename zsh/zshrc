@@ -151,7 +151,7 @@ eval $(dircolors -b $HOME/dev/LS_COLORS/LS_COLORS)
 
 compdef     _gnu_generic ln file vnstati lscpu lsb_release
 
-PATH="$HOME/dev/sdorfehs-config/bin:$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils_askas/bin:${HOME}/dev/askas/utils_askas/bin/selenium:$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
