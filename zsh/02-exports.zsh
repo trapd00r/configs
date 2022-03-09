@@ -91,7 +91,7 @@ export           LC_TIME=en_US.UTF-8
 #>
 #< path
 unset PATH
-export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas/:${HOME}/.local/bin:bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:
+export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas/:${HOME}/.local/bin:bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:/home/scp1/dev/askas/utils-askas/bin
 export        GOPATH=${HOME}/lib/go
 export       AWKPATH=${HOME}/dev/lib/awk/
 export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
@@ -274,6 +274,11 @@ export PAUSE_ID=WOLDRICH
 export ASKAS_BUTIK=magnusw1
 export ASKAS_CGIDIR=${HOME}/dev/askas/air8/cgi-bin/ibutik
 # Selenium
-export HOST_WEB_URL=${ASKAS_BUTIK}
+export HOST_WEB_URL=${ASKAS_BUTIK}.cdsuperstore.se
+export HOST_WEB_PROTOCOL=https
+export TEST_JSON=
+export TEST_SKIP_RETRY=
 # https://github.com/oalders/open-this
 export OPEN_THIS_LIBS="lib/,tlib/,${HOME}/dev/askas/air8/cgi-bin/ibutik/,${HOME}/dev/askas/air8/cgi-bin/core/lib/"
+
+
