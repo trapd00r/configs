@@ -497,3 +497,16 @@ function! Scratch()
   "lcd ~
   file scratch
 endfunction
+
+" our, my, local
+hi perlStatementStorage ctermfg=172 cterm=none
+
+" hash key
+hi perlVarSimpleMemberName ctermfg=137
+
+" warn
+hi perlStatementMisc ctermfg=172 cterm=none
+
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
