@@ -232,9 +232,12 @@ fun! ShowFuncName()
   let lnum = line(".")
   let col = col(".")
   echohl ModeMsg
-  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+"  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  let g:current_function = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+"  echo g:current_function
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
+  return g:current_function
 endfun
 
 "autocmd CursorMoved * :call ShowFuncName()

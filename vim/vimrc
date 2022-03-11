@@ -517,3 +517,6 @@ set complete-=i   " disable scanning included files
 set complete-=t   " disable searching tags
 
 set nocursorline
+
+hi FoldColumn cterm=none
+hi LineNr     cterm=none
