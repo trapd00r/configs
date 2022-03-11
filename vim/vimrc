@@ -11,6 +11,8 @@
 "           irc  japh@freenode #vim #zsh #perl
 "   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 "
+" profile startup time:
+" rm /tmp/startup.log; =vim --startuptime /tmp/startup.log +q && =vim /tmp/startup.log
 
 
 set all&               " Turn everything off, in case of evil vendor vimrcs
@@ -400,6 +402,7 @@ nnoremap <leader>Gc :Commits<cr>
 
 " most recent files
 nnoremap <leader>h :History<cr>
+nnoremap <space> :History<cr>
 
 " commandline history
 nnoremap <leader>H :History:<cr>
@@ -507,6 +510,10 @@ hi perlVarSimpleMemberName ctermfg=137
 " warn
 hi perlStatementMisc ctermfg=172 cterm=none
 
-autocmd InsertLeave,WinEnter * set cursorline
-autocmd InsertEnter,WinLeave * set nocursorline
+" autocmd InsertLeave,WinEnter * set cursorline
+" autocmd InsertEnter,WinLeave * set nocursorline
 
+set complete-=i   " disable scanning included files
+set complete-=t   " disable searching tags
+
+set nocursorline
