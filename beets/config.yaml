@@ -764,18 +764,22 @@ paths:
     ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilations/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     albumtype:compilation:                                +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
-    singleton:true  tag:demo:      %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+demo/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-    singleton:true  tag:live:      %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-    singleton:true  tag:remix:     %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+remixes/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:demo:        %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+demo/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:live:        %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:remix:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+remixes/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-    singleton:true  tag:radio:     %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+radio/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-    singleton:false tag:radio:     %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+radio/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    singleton:true  tag:dylan-cover: B/Bob Dylan/+covers/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:cover:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+covers/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:false tag:cover:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+covers/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-    singleton:true  tag:interview: %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+interview/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-    singleton:true  tag:freestyle: %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-    singleton:true:                %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:radio:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+radio/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:false tag:radio:       %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+radio/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
 
-    albumtype:soundtrack:          +ost/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    singleton:true  tag:interview:   %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+interview/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true  tag:freestyle:   %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+    singleton:true:                  %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+
+    albumtype:soundtrack:            +ost/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 #    comp:                          +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
