@@ -520,3 +520,14 @@ set nocursorline
 
 hi FoldColumn cterm=none
 hi LineNr     cterm=none
+
+function! ToggleListChars()
+  if &list
+    set nolist
+  else
+    set list
+  endif
+endfunction
+
+nnoremap <C-q> :call ToggleListChars()<cr>
+
