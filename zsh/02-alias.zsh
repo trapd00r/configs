@@ -147,6 +147,8 @@ alias     mpd="mpd ~/etc/mpd.conf && mpdas"
 #>
 #< git
 alias      gt='git tag|sort --reverse'
+alias      ga='git ls-files -m --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add'
+
 
 # show modified files in the last commit
 alias     gdd='git diff --name-only HEAD~1..HEAD | ls_color'
