@@ -531,3 +531,5 @@ endfunction
 
 nnoremap <C-q> :call ToggleListChars()<cr>
 
+hi ErrorMsg ctermfg=137 ctermbg=bg cterm=bolditalic
+
