@@ -6,7 +6,7 @@
 hi StatusLine   ctermfg=233 ctermbg=234  cterm=none
 hi StatusLineNC ctermfg=233 ctermbg=234 cterm=none
 
-hi User1 ctermfg=137 ctermbg=234 cterm=none
+hi link User1 ModeMsg
 hi User2 ctermfg=106 ctermbg=234 cterm=none
 hi User3 ctermfg=250 ctermbg=234 cterm=none
 " User4 is set to the calculated LS_COLORS for the current file below
@@ -90,17 +90,17 @@ endfun
 
 au BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
 set statusline=
-"set statusline +=%1*\ %n\ %*                      " buffer number
-set statusline +=\ %5*%{&ff}%*\                    " file format
-set statusline +=%3*%y%*\                          " file type
-set statusline +=\%7*¦%9*\                         " askås butik
-set statusline +=%{SetStatusLineAskasButik()}      " askås butik
-set statusline +=\ \%7*¦%4*\ %<%F%*                " full path
-set statusline +=%2*%m%*                           " modified flag
-set statusline +=\%7*\ ¦\ %6*%{fugitive#head()}    " git branch
-set statusline +=\%7*\ ¦\ \%2*%{ShowFuncName()}    " current function
-"set statusline +=%1*%=%5l%*                        " current line
-"set statusline +=%1*/%L%*                          " total lines
-"set statusline +=%1*%4v\ %*                        " virtual column number
-"set statusline +=%1*0x%04B\ %*                     " character under cursor
+"set statusline +=%1*\ %n\ %*                         " buffer number
+set statusline +=\ %5*%{&ff}%*\                       " file format
+set statusline +=%3*%y%*\                             " file type
+set statusline +=\%7*¦%9*\                            " askås butik
+set statusline +=%{SetStatusLineAskasButik()}         " askås butik
+set statusline +=\ \%7*¦%4*\ %<%F%*                   " full path
+set statusline +=%2*%m%*                              " modified flag
+set statusline +=\%7*\ ¦\ \%6*%{fugitive#head()}      " git branch
+set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()} " current function or block
+"set statusline +=%1*%=%5l%*                          " current line
+"set statusline +=%1*/%L%*                            " total lines
+"set statusline +=%1*%4v\ %*                          " virtual column number
+"set statusline +=%1*0x%04B\ %*                       " character under cursor
 

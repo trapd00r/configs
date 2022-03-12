@@ -228,7 +228,7 @@ fu! FileSize()
 endfu
 "}}}
 
-fun! ShowFuncName()
+fun! ContextInStatusbar()
   let lnum = line(".")
   let col = col(".")
   echohl ModeMsg
@@ -237,8 +237,30 @@ fun! ShowFuncName()
 "  echo g:current_function
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
-  return g:current_function
+  "" matches and returns a str only if the lines matches any of the following:
+  "  viml: fu!, fun!, function!
+  "    js: function
+  "  perl: sub
+  "     c: grab_key(KeySym keysym, unsigned int modifiers, Window grab_window)
+  "   css: .store_more_info_wrapper .store_name (a little broken..)
+  " shell: pastebin() {
+  " shell: if/elif:
+  if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
+    return g:current_function
+  endif
+  return ''
 endfun
+
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
+
+
 
 "autocmd CursorMoved * :call ShowFuncName()
 
