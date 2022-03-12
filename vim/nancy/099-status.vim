@@ -6,7 +6,8 @@
 hi StatusLine   ctermfg=233 ctermbg=234  cterm=none
 hi StatusLineNC ctermfg=233 ctermbg=234 cterm=none
 
-hi link User1 ModeMsg
+"hi link User1 ModeMsg
+hi User1 ctermfg=215 ctermbg=234 cterm=bolditalic
 hi User2 ctermfg=106 ctermbg=234 cterm=none
 hi User3 ctermfg=250 ctermbg=234 cterm=none
 " User4 is set to the calculated LS_COLORS for the current file below
