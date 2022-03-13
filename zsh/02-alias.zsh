@@ -38,7 +38,7 @@ alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias     cat="$HOME/dev/vimcat/vimcat"
 alias yaourt='trizen'
 
-alias      ls='perl $HOME/dev/ls--/ls++' 
+alias      ls='perl $HOME/dev/ls--/ls++ --dereference-command-line-symlink-to-dir' 
 alias     lsl='perl $HOME/dev/ls--/ls++' 
 alias     lls='perl $HOME/dev/ls--/ls++' 
 alias     lss='perl $HOME/dev/ls--/ls++ -Sr'
