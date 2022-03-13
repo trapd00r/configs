@@ -206,9 +206,21 @@ _comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter
 compdef _perl_modules vafan
 compdef _perl_modules ot
 
+# the included zsh completion script in the beets dist is broken
+# this makes it easier to import:
+# Directories first, audio files later.
+compdef _files beet
+zstyle ':completion:*:*:beet*' list-dirs-first true
+zstyle ':completion:*:*:beet*' file-patterns '
+  *(D-/):local-directories:"local directory"
+  (#i)*.(mp3|flac|ogg|opus)(D-^/):media-files:"media file"
+'
+
 batdiff() {
   OLDPAGER=$PAGER
   export PAGER=""
   git diff --name-only --diff-filter=d | xargs bat --diff
   export PAGER=$OLDPAGER
 }
+
+export ASKAS_BUTIK=magnusw1
