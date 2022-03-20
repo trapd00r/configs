@@ -44,15 +44,6 @@ goto()      { [ -d "$1" ] && cd "$1" || cd "$(dirname "$1")"; }
 #du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f | ls_color -k2 }
 du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f | ls_color -k2 }
 du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f | ls_color -k2 }
-scx()       {
-  screen -x "$@"
-#  xcolor facebook;
-#  TERM=rxvt-unicode-256color screen -x
-#  TERM=xterm-256color-italic screen -x
-#  pidof screen && \
-#    catpoison -c 'echo attaching screen'; /bin/screen -x || \
-#    catpoison -c 'echo new screen session'; /bin/screen "$@"
-}
 
 #screen() {
 #  env TERM=screen-256color /bin/screen
