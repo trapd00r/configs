@@ -224,3 +224,25 @@ batdiff() {
 }
 
 export ASKAS_BUTIK=magnusw1
+
+for x in ${HOME}/dev/askas/utils-askas/zsh/*.zsh; do
+  . $x; 
+done
+
+_fzf_complete_git() {
+    ARGS="$@"
+    export FZF_COMPLETION_TRIGGER=''
+    local branches
+    branches=$(git branch -vv)
+    if [[ $ARGS == 'git checkout'* ]]; then
+        _fzf_complete --reverse --multi -- "$@" < <(
+            echo $branches
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_git_post() {
+    awk '{print $1}'
+}
