@@ -334,7 +334,7 @@ nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<CR>
 "au! BufReadPost quickfix set ma
 
 
-au BufRead,BufNewFile *.tt setf tt2html
+au BufRead,BufNewFile *.tt setf javascript
 
 "autocmd Filetype * AnyFoldActivate
 
@@ -487,7 +487,6 @@ au BufNewFile *.air
   \   silent! 0r ~/dev/askas/utils-askas/vim/templates/air_oneshot.air
   \ | 0
   \ | exe 'normal Go'
-"  \ | startinsert
 
 " scratch window for temp things
 function! Scratch()
@@ -533,3 +532,5 @@ nnoremap <C-q> :call ToggleListChars()<cr>
 
 hi ErrorMsg ctermfg=137 ctermbg=bg cterm=bolditalic
 
+" delete block
+nnoremap db da{
