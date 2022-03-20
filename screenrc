@@ -60,7 +60,8 @@ hardstatus alwayslastline "%{b kw}%H %{r}%1` %{w}| %{g}%c %{w}| %{y}%d.%m.%Y %{w
 #hardstatus alwayslastline '%{= M}%{+b} %H%{= g}-%{= G}>%{= g} %l %= %{= g}%-w%{= yk}%n*%t%{dd}%{-b Y}%{g}%+w %= %{c} %{kG}%1`'
 #hardstatus alwayslastline "%?%{kK}%-Lw%?%{yK}%n*%f %t%?(%u)%?%?%{kK}%+Lw%?%{wK} |%{CK} %1`"
 #hardstatus alwayslastline "%?%{gk}%-Lw%?%{mk}%n*%f %t%?(%u)%?%?%{gk}%+Lw%?%{Yk} | %{yk}RPD: %{Bk}%1`"
-backtick 1 10 5 $HOME/dev/utils/screen_status
+#
+# backtick 1 10 5 $HOME/dev/utils/screen_status
 #backtick 1 10 5 $HOME/configs/screen/mail_status
 #backtick 40 5 5 $HOME/bin/screenrc/np.screenrc
 #caption always '%{= R} %200` %= %100` %='
@@ -102,11 +103,11 @@ rendition so = ck
 #screen -t acc      accesstail
 #screen -t nc       ncmpcpp
 #screen -t rtorrent rtorrent
-screen -t feedbar sh ~/dev/sdorfehs-config/sdorfehs-feedbar
+screen -t feedbar perl ~/dev/sdorfehs-config/sdorfehs-bar.pl
 screen -t journal journalctl -f | grep -Pvi 'network|wlp8'
-screen -t irc irssi
 screen -t clipboard clipbored -n
-screen -t ncmpcpp ncmpcpp 
+screen -t ncmpcpp ncmpcpp
+screen -t irc irssi
 #screen -t mutt TERM=xterm-256color neomutt -F $XDG_CONFIG_HOME/muttneorc
 #screen -t clip     perl /home/scp1/dev/clipboard_to_primary/bin/clipboard_to_primary
 #screen -t bitlbee  irssi -c localhost --config=~/etc/irc-irssi-laleh.conf -n japh
