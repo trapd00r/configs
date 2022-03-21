@@ -534,3 +534,22 @@ hi ErrorMsg ctermfg=137 ctermbg=bg cterm=bolditalic
 
 " delete block
 nnoremap db da{
+
+" highlight custom text objects
+" ,k$
+"^v3j$,k
+hi HL cterm=bolditalic ctermbg=fg ctermfg=bg
+"hi HL ctermbg=fg ctermfg=bg
+nnoremap <silent><expr> <leader>k hl#mark()
+xnoremap <silent><expr> <leader>k hl#mark()
+nnoremap <silent><expr> <leader>kk hl#mark() .. '_'
+nnoremap <silent><expr> <leader>u hl#unmark()
+xnoremap <silent><expr> <leader>u hl#unmark()
+nnoremap <silent><expr> <leader>uu hl#unmark() .. '_'
+
+" recursive mapping :)
+map <leader>$ ,k$
+nnoremap <leader>u :call hl#unmark('line')<cr><cr>
+
+
+
