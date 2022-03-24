@@ -538,18 +538,33 @@ nnoremap db da{
 " highlight custom text objects
 " ,k$
 "^v3j$,k
+"hi HL cterm=bolditalic ctermfg=233 ctermbg=137
 hi HL cterm=bolditalic ctermbg=fg ctermfg=bg
 "hi HL ctermbg=fg ctermfg=bg
-nnoremap <silent><expr> <leader>k hl#mark()
-xnoremap <silent><expr> <leader>k hl#mark()
-nnoremap <silent><expr> <leader>kk hl#mark() .. '_'
-nnoremap <silent><expr> <leader>u hl#unmark()
-xnoremap <silent><expr> <leader>u hl#unmark()
-nnoremap <silent><expr> <leader>uu hl#unmark() .. '_'
+nnoremap <silent><expr> <backspace> hl#mark()
+nnoremap <silent><expr> <tab> hl#unmark('line')
+vnoremap <silent><expr> <tab> hl#unmark('block')
+
+"xnoremap <silent><expr> <backspace> hl#mark()
+"nnoremap <silent><expr> <backspace>v hl#mark() .. '_'
+""nnoremap <silent><expr> <C-backspace> hl#unmark()
+"xnoremap <silent><expr> <C-backspace> hl#unmark()
+"nnoremap <silent><expr> <C-backspace> hl#unmark() .. '_'
 
 " recursive mapping :)
-map <leader>$ ,k$
-nnoremap <leader>u :call hl#unmark('line')<cr><cr>
+"map <backspace> :call MarkToggle()<cr>
+"map <backspace> :call hl#unmark('line')"  ,k$
+"nnoremap <leader>u :call hl#unmark('line')<cr><cr>
 
 
+function! MarkToggle()
+  :call hl#unmark('line')
+endfunction
 
+
+function AskasCleanUpHtmlQuouting()
+  exe ":s;\\\";';g"
+endfunction
+
+
+" ga => char info
