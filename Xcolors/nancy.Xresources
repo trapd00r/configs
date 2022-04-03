@@ -1,3 +1,4 @@
+/*
 !!  vim:ft=xdefaults:fdm=marker:fen:
 !    What: nancy.Xresources
 !   Where: $XDG_CONFIG_HOME/Xcolors/nancy.Xresources
@@ -51,6 +52,7 @@
 ![5]: http://github.com/trapd00r/Term-ExtendedColor-Xresources/blob/master/bin/xcolor
 ![6]: http://github.com/trapd00r/ttycolor
 ![7]: http://github.com/trapd00r/colorcoke/tree/master/scripts
+*/
 
 !< sid
 sid.background:     #000
