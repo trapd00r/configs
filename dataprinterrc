@@ -13,13 +13,13 @@ string_overflow   = '(...skipping __SKIPPED__ chars...)'
 unicode_charnames = 1
 
  # array options
-array_max      = 100
+array_max      = 1000
 array_preserve = begin
 array_overflow = '(...skipping __SKIPPED__ items...)'
 index          = 1
 
  # hash options
-hash_max       = 100
+hash_max       = 1000
 hash_preserve  = begin
 hash_overflow  = '(...skipping __SKIPPED__ keys...)'
 hash_separator = '   '
@@ -30,7 +30,7 @@ quote_keys     = auto
  # general options
 name           = var
 return_value   = pass
-output         = stderr
+output         = stdout
 use_prototypes = 1
 indent         = 4
 show_readonly  = 1
