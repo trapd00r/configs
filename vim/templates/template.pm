@@ -15,25 +15,7 @@ BEGIN {
 }
 
 use Carp ();
-use Data::Dumper;
-
-{
-  package Data::Dumper;
-  no strict 'vars';
-  $Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;
-  $Quotekeys = 0;
-}
-
-=begin comment
-
-
-Here goes inline comments that won't show up in pod doc
-
-=end comment
-
-
-=cut
-
+use DDP;
 
 
 
@@ -86,7 +68,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2021- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
+Copyright 2022- B<THIS MODULE>s L</AUTHOR> and L</CONTRIBUTORS> as listed above.
 
 =head1 LICENSE
 

@@ -11,28 +11,8 @@ use open qw(:std :utf8);
 my $APP  = '';
 $VERSION = '0.001';
 
-use Data::Dumper;
-
-{
-  package Data::Dumper;
-  no strict 'vars';
-  $Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;
-  $Quotekeys = 0;
-}
-
 use DDP;
 use v5.30;
-
-
-=begin comment
-
-
-Here goes inline comments that won't show up in pod doc
-
-=end comment
-
-
-=cut
 
 
 
@@ -70,7 +50,7 @@ None required yet.
 
 =head1 COPYRIGHT
 
-Copyright 2021- B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
+Copyright 2022- B<THIS APPLICATION>s L</AUTHOR> and L</CONTRIBUTORS> as listed
 above.
 
 =head1 LICENSE
