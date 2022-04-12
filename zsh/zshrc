@@ -200,7 +200,7 @@ source ~/etc/zsh/11-fzf-completion.zsh
 source ~/etc/zsh/11-fzf-keybindings.zsh
 
 #< completion for environment variable values
-_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter'
+_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter test1 test2 test3 test4 test5'
 
 # why completion doesn't work if script is +x
 compdef _perl_modules vafan
@@ -216,6 +216,9 @@ zstyle ':completion:*:*:beet*' file-patterns '
   (#i)*.(mp3|flac|ogg|opus)(D-^/):media-files:"media file"
 '
 
+# git completion for another command
+# compdef g="git"
+
 batdiff() {
   OLDPAGER=$PAGER
   export PAGER=""
@@ -223,7 +226,6 @@ batdiff() {
   export PAGER=$OLDPAGER
 }
 
-export ASKAS_BUTIK=magnusw1
 
 for x in ${HOME}/dev/askas/utils-askas/zsh/*.zsh; do
   . $x; 
@@ -246,3 +248,14 @@ _fzf_complete_git() {
 _fzf_complete_git_post() {
     awk '{print $1}'
 }
+
+export ASKAS_BUTIK=magnusw2
+
+
+
+export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
+
+# tabcomplete git diff to modifed files
+compdef _git gd=git-add
+
+
