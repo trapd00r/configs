@@ -566,5 +566,11 @@ function AskasCleanUpHtmlQuouting()
   exe ":s;\\\";';g"
 endfunction
 
+" markdownjekyll
+hi markdownJekyllFrontMatter ctermfg=137
+
 
 " ga => char info
+
+" double <cr> to supress "Press enter to continue"
+nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
