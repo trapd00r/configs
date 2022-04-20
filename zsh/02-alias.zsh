@@ -16,6 +16,9 @@
 ###
 ###>
 
+alias nmap='nmap -sV'
+
+alias mtree='=mtree -d'
 alias scx='screen-start-or-attach'
 
 alias sql='vim ./cgi-bin/ibutik/_DATABAS/_Nytt_SQLkoder.sql'
