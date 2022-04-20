@@ -1,3 +1,6 @@
 " exrc for wasavi
 set theme=charcoal
-map! jj <esc>
+map [noremap] J 10j
+map [noremap] K 10k
+
+
