@@ -1,289 +1,383 @@
-"!$HOME/bin/wim --remote-wait-silent vimsy
-" vim: fdm=marker:fmr="<,">:fen:et:sw=2:smc=80:
-"
+" vim: set foldmarker=START,END ==:
 " ${VIMRUNTIME}/vimrc
-"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
-"         owner  Magnus Woldrich <m@japh.se>
-"         btime  2009-04-24
-"         mtime  2021-12-22 09:18:51
-"           git  http://github.com/trapd00r/configs/vim  (up-to-date)
-"           url  http://devel.japh.se/configs/vim        (sync 1/24h)
-"           irc  japh@freenode #vim #zsh #perl
-"   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
-"
-" profile startup time:
-" rm /tmp/startup.log; =vim --startuptime /tmp/startup.log +q && =vim /tmp/startup.log
+"       owner  Magnus Woldrich <m@japh.se>
+"       btime  2009-04-24
+"       mtime  2022-04-24
+"         git  http://github.com/trapd00r/configs/
+"         irc  japh@irc.libera.chat #vim #zsh #perl
+" ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
 
-set all&               " Turn everything off, in case of evil vendor vimrcs
-let &rtp = $VIMRUNTIME " I prefer control
-set exrc               " Enables the reading of vimrc in ./
-
+" ========== INIT START =================================
 filetype plugin indent on
 syntax on
-runtime macros/matchit.vim " % on if/else
 
-set path+='$HOME/dev/air8/cgi-bin/core/lib/,/home/scp1/dev/air8' " For commands like gf
+runtime macros/matchit.vim                                                 " % on if/else
+set all&                                                                   " Turn everything off, in case of evil vendor vimrcs
+let &runtimepath  = $VIMRUNTIME                                            " I prefer control over my things.
+set helpfile=$HOME/dev/vim/runtime/doc/help.txt                            " Hlep
+set exrc                                                                   " Enables the reading of vimrc in ./
+set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " For gf etc
+set path+='$HOME/dev/air8'
+" ========== INIT END ===================================
 
-set autoread                    " Read file again if changed outside of vim.
-"set autochdir                   " Change cwd on buffer change etc.
-set autoindent                  " Copy indent from previous line.
-set wildmenu                    " Command-line completion, enhanced mode.
-let &termencoding = &encoding   " Should be utf-8. Exceptions below.
-set fileencodings=utf-8,latin1  " List of fileencodings to try
-
-set backspace=start,indent,eol  " What backspace, ^w etc will operate on.
-set cmdheight=2                 " Avoid 'Press ENTER to continue' prompts.
-set clipboard=unnamed           " Define clipboard registers to use.
-"set clipboard=unnamed,autoselect " Define clipboard registers to use.
-set complete=.,w,b,u,t,i,d,k,kspell  " Insert mode completion for ^n, ^p.
-set cindent                          " C program indenting.
-"set cinoptions=:0,l1,t0,g0,(0        " Options for cindent.
-"set cinwords=if,else,elsif,while,do,for,foreach,given,when,switch,case
-set colorcolumn&                     " Colorcolumn.
-
-set completeopt+=menuone
-set cursorline
-set define=[^A-Za-z_]
-set diffopt=filler,iwhite,context:2,vertical
-set display+=lastline,uhex
-set expandtab
-"< folding
-"set fillchars=num:\ ,fold:\ ,stl:\ ,stlnc:\ ,diff:\ ,vert:▌
-set fillchars+=fold:\ 
-set foldcolumn=2
-set foldenable
-"set foldclose=all
-"set foldlevel=0
-set foldlevelstart=1
-set foldmarker=#<,#>
-set foldmethod=marker
-set foldminlines=2
-set foldnestmax=4
-set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo
-fun! Foldtext()
-  let line = getline(v:foldstart)
-  let sub  = substitute(line, '\v^["#!][<]\s+', '', 'g')
-  "let v:folddashes="➤〚◘⭔➳❋✘ ➳   ↴⤵⇵⤵⬎჻"
-  "let v:folddashes="➤⇵〚◘⭔❋✘   ⇲ ⬎ ⇲ ↴➳➳⤵⇵⤵჻"
-  "let v:folddashes="▌⇆ "
-  "let v:folddashes="║ ↓ "
-  "let v:folddashes="└>"
-  let v:folddashes=""
-
-  return v:folddashes . sub . ' '
-endfun
-"set foldtext=Foldtext()
-">
-set formatoptions=tcrqln1
-set guiheadroom=0
-set guifont=Source\ Code\ Pro\ 12
-set grepprg=internal
-set guioptions-=m
-set guioptions-=T
-set helpfile=$HOME/dev/vim/runtime/doc/help.txt
-set helpheight=5
-set helplang=en
-set hidden
-set history=50
-set hlsearch
-set ignorecase
-set include=\\<\\(use\\\|require\\)\\>
-set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')
-set incsearch
-set isfname+=:
-set laststatus=2
-set lazyredraw
-set list
-set listchars=eol:\ 
-set listchars+=tab:»\ 
-set listchars+=trail:·
-set listchars+=nbsp: 
-set listchars+=precedes: 
-set listchars+=extends: 
-set listchars+=conceal:⌦
-set showbreak=↳
-
-set magic
-set maxmapdepth=500
-set matchpairs+==:;
-set matchpairs+=<:>
-set matchtime=20
-set maxfuncdepth=1000
-set maxmemtot=200000
-set modeline
-set modelines=2
-set modelineexpr
-set nobackup
-set nocscopeverbose
-set noequalalways
-set noerrorbells
-set nostartofline
-set noswapfile
-set nowritebackup
-set nowrap
-set nrformats=alpha,hex
-set numberwidth=2
-set pastetoggle=<F42>
-set preserveindent
-
-set printoptions=paper:A4,syntax:n,wrap:y,header:0,number:n,duplex:off
-set printoptions+=left:2,right:2,top:2,bottom:2
-set printfont=-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-set printmbfont=r:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-set printmbfont+=b:-windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
-set printmbfont+=i:-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
-
-set pumheight=10
-set relativenumber number
-set report=0
-set ruler
-set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-
-set scrolloff=40
-"set signcolumn=number
-set ssop=buffers,folds,globals,help,localoptions,options,resize
-set shiftwidth=2
-set shortmess=aIoOT
-set showcmd
-set showmatch
-"set showmode
-set smartcase
-set smarttab
-set splitbelow
-set suffixes=~,.swp,swo,o,gz
-set synmaxcol=300
-set tabpagemax=4
-set tabstop=2
-set t_Co=256
-set timeout
-set timeoutlen=3000
-set ttimeoutlen=50
-set textwidth=80
-set title
-set ttyfast
-set undofile
-set undolevels=1024
-set undodir=~/var/vim/undo
-set visualbell t_vb=
-set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo
-set virtualedit=block
-set wildchar=<Tab>
-set wildmode=list:longest,full
-set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg
-"set winfixwidth
-"set winfixheight
-"set winwidth=88
-"set winminwidth=88
-set whichwrap=b,s,h,l,<,>
-
-set nomore
-set updatetime=100
-
-set term=rxvt-unicode-256color
+" ========== OPTIONS START ==============================
+let &termencoding = &encoding                                              " should be utf-8; exceptions below
+set autoindent                                                             " copy indent from previous line
+set autoread                                                               " read file again if changed outside of vim
+set backspace=start,indent,eol                                             " what backspace, ^w etc will operate on
+set cindent                                                                " c program indenting
+set clipboard=unnamed                                                      " define clipboard registers to use
+set cmdheight=2                                                            " avoid 'Press ENTER to continue' prompts
+set colorcolumn&                                                           " useful at times but disabled by default
+set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
+set completeopt+=menuone                                                   " use popup menu for completion even if only one match
+set cursorline                                                             " easier to see where one's at in the buffer
+set define=[^A-Za-z_]                                                      " for macro definition
+set diffopt=filler,iwhite,context:2,vertical                               " settings for vimdiff
+set display+=lastline,uhex                                                 " changes the way text is displayed
+set expandtab                                                              " use spaces instead of tabs
+set fileencodings=utf-8,latin1                                             " list of fileencodings to try
+set fillchars+=fold:\                                                      " chars used for filling the folded line when folded
+set foldcolumn=2                                                           " width of foldcolumn
+set foldenable                                                             " when off, all folds are open
+set foldlevelstart=1                                                       " keep most folds closed upon editing a new buffer
+set foldmarker=#<,#>                                                       " and these can be adjusted anywhere of course
+set foldmethod=marker                                                      " fold on defined markers
+set foldminlines=2                                                         " close folds with n lines minimum
+set foldnestmax=4                                                          " maximum nesting when using syntax or indent foldmethods
+set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo          " actions that will open a fold
+set formatoptions=qro                                                      " options for formatting; like gq
+set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'        " much better formatting
+set grepprg=internal                                                       " what grep to use
+set helpheight=5                                                           " height of help window
+set helplang=en                                                            " language of help
+set hidden                                                                 " better buffer handling
+set history=50                                                             " ex command history, q:
+set hlsearch                                                               " highlight searches
+set ignorecase                                                             " ignore case, but also uses smartmatch
+set include=\\<\\(use\\\|require\\)\\>                                     " perl module to...
+set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')  " ... perl module in filesystem
+set incsearch                                                              " show matches while typing
+set isfname+=:                                                             " add : to filename pattern
+set laststatus=2                                                           " always how statusline
+set lazyredraw                                                             " do not redraw screen while executing macros etc
+set list                                                                   " visualize non-visual characters
+set listchars&                                                             "  '- set it to empty first
+set listchars+=conceal:⌦                                                   "  '- what to show when concealing something
+set listchars+=eol:\                                                       "  '- end of line
+set listchars+=extends:\                                                   "  '- last column when wrap is off
+set listchars+=nbsp:                                                       "  '- non-breaking space
+set listchars+=precedes:\                                                  "  '- first column when wrap is off
+set listchars+=tab:»\                                                      "  '- tab
+set listchars+=trail:·                                                     "  '- trailing whitespace
+set magic                                                                  " set magic on for regex but I use \v anyway
+set matchpairs+=<:>                                                        " match < and > with %
+set matchpairs+==:;                                                        " match : with %
+set matchtime=20                                                           " time to show the match with %
+set maxfuncdepth=1000                                                      " avoid recursive functions
+set maxmapdepth=500                                                        " avoid recursive mappings
+set maxmemtot=200000                                                       " max memory for all buffers together
+set modeline                                                               " yes I want to use modelines
+set modelines=2                                                            " number of lines to check for a modeline
+set nobackup                                                               " no backups, I have persistent undo
+set noequalalways                                                          " do not auto-equalize size of windows
+set noerrorbells                                                           " bells are for double-o 7
+set nomore                                                                 " disable the more-prompt
+set nospell spelllang=en_us                                                " no spell on, but set spelllang so I can use it if I want to
+set nostartofline                                                          " modifies some movement commands
+set noswapfile                                                             " no swaps please
+set nowrap                                                                 " no wrapping since it changes the appearance of the data
+set nowritebackup                                                          " no backups please
+set nrformats=alpha,hex                                                    " defines what a number is for increasing/decreasing with ^a,^x
+set number                                                                 " show line numbers
+set numberwidth=2                                                          " width of number column
+set preserveindent                                                         " preserve indent when using <<, >> etc
+set pumheight=10                                                           " height and number of suggestions to show in completion popup
+set report=0                                                               " always show how many lines have been modified
+set ruler                                                                  " show line and column number
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)                         " format for the above
+set scrolloff=40                                                           " context above and below cursor; 999 = exactly in the middle
+set shiftwidth=2                                                           " number of spaces to use for a tab
+set shortmess=aIoOT                                                        " avoid as many hit-enter prompts as possible
+set showbreak=↳                                                            " start of lines when wrap is on
+set showcmd                                                                " show (partial) cmd in last line of screen
+set showmatch                                                              " briefly display match when jumping to a bracket
+set showtabline=0                                                          " hide tablines, don't use
+set signcolumn=number                                                      " use numbers column for signs, too
+set smartcase                                                              " case ignored unless uppercase used anywhere
+set smarttab                                                               " insert blanks according to shiftwidth, tabstop, expandtab
+set splitbelow                                                             " preferably split below
+set ssop=buffers,folds,globals,help,localoptions,options,resize            " session options for mksession
+set synmaxcol=300                                                          " maximum column to highlight
+set t_Co=256                                                               " terminal supports 256 colors
+set tabpagemax=4                                                           " max tab pages when using -p flag
+set tabstop=2                                                              " shouldn't modify this the help states..?
+set term=rxvt-unicode-256color                                             " set terminal
+set textwidth=80                                                           " maximum width of text
+set timeout                                                                " time out on mappings
+set timeoutlen=3000                                                        " how long to wait prior to timeout
+set title                                                                  " send a title string to the terminal
+set ttimeoutlen=50                                                         " the same for terminal keycodes
+set ttyfast                                                                " my terminal is very fast
+set undodir=~/var/vim/undo                                                 " where to keep the undos
+set undofile                                                               " undo file for all the undos
+set undolevels=1024                                                        " persisent undo for 1024 actions
+set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
+set virtualedit=block                                                      " virtualedit for visual block mode
+set visualbell t_vb=                                                       " disable visual bells
+set wildchar=<Tab>                                                         " completion char in cmdline
+set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg    " completion should ignore
+set wildmenu                                                               " command-line completion, enhanced mode
+set wildmode=list:longest,full                                             " completion mode
 
 " force an update of the statusline
 let &ro =&ro
-
-setlocal nospell spelllang=en_us
-
-""" are we in a VC?
-if $TERM == 'linux'
-  let &t_Co = 8
-  color peachpuff
-  set nolist
-  set colorcolumn+=81
-
-  hi CursorLine term=none  cterm=bold ctermbg=0
-  hi! link CursorColumn CursorLine
-  hi! link ColorColumn  CursorLine
-else
-"  color neverland-ansi-two
-endif
-
-"< That was some of the options, now we can start with the rest of the vimrc.
-" I want to keep &rtp as short as I can, so I'm no longer loading these files
-" dynamicly.
-hi Normal ctermfg=225 ctermbg=232
-source $HOME/etc/vim/nancy/000-ft.vim           " ftdetect
-source $HOME/etc/vim/nancy/000-functions.vim    " functions
-source $HOME/etc/vim/nancy/001-commands.vim     " user-defined commands
-source $HOME/etc/vim/nancy/009-abbrev.vim       " my wordlist of abbrevations
-source $HOME/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mupp
-
-color neverland
-
-source $HOME/etc/vim/nancy/090-syntax.vim       " my syntax defs
-source $HOME/etc/vim/nancy/091-conway-perl.vim  " damian conway perl things
-source $HOME/etc/vim/nancy/099-status.vim       " status, man
-">
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
 let &t_EI = "\<Esc>]12;#ff0000\x7"
 
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
+" ========== OPTIONS END ================================
+
+color neverland
+
+source $HOME/etc/vim/nancy/091-conway-perl.vim
+
+" ========== MAPPINGS START =============================
+let mapleader=','
+
+" close all folds
+nnoremap <leader>fc zM
+
+" undoentire git hunk
+nnoremap <leader>u :GitGutterUndoHunk<cr>
+
+" go to next git changed hunk
+nnoremap <leader>n :GitGutterNextHunk<cr>
+
+" distractionfree
+nnoremap <C-t> <Esc>:DistractionsToggle<cr>
+
+" delete block
+nnoremap db da{
+
+" clear trailing whitespace
+map <C-s> :call RemoveTrailingCrap()<cr>
+
+" use quickfix list to go to func definition
+nnoremap <C-o> :CtrlPFunky<cr>
+
+" a double <cr> to supress "Press enter to continue"
+nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
+
+" next buffer
+nnoremap <C-n>     :bnext<cr>
+
+nnoremap <leader>b :Buffers<cr>
+
+" replace standard :ls with fzf-powered one.
+cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Buffers' : 'ls')<cr>
+
+" Moving around
+nnoremap J  10j
+nnoremap K  10k
+
+vnoremap J  10j
+vnoremap K  10k
+
+" highlight custom text objects
+nnoremap <silent><expr> <backspace> hl#mark()
+nnoremap <silent><expr> <tab> hl#unmark('line')
+vnoremap <silent><expr> <tab> hl#unmark('block')
+hi HL cterm=bolditalic ctermbg=fg ctermfg=bg
+
+" Return to the previous cursor position
+" --------------------------------------
+"   '' returns to the previous line
+"   `` returns to the previous line and position
+" --------------------------------------
+" I never want #1 so I make it a nop and map #2 to #1
+
+map '' <nop>
+map '' ``
+
+" Move visual blocks around or dupe them
+vmap <unique> <C-h> <Plug>SchleppLeft
+vmap <unique> <C-j> <Plug>SchleppDown
+vmap <unique> <C-k> <Plug>SchleppUp
+vmap <unique> <C-l> <Plug>SchleppRight
+vmap <unique> <C-d> <Plug>SchleppDup
+
+let g:Schlepp#dupTrimWS = 0
+
+" resize windows like in sdorfehs
+nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
+nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
+
+" remove hlsearch matches and redraw screen
+nnoremap <silent> <C-l> :noh<cr><C-l>
+
+" resize windows like in sdorfehs
+nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
+nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
 
-"""""""""""""""""""""""
-""""""  Askås  """"""""
-""""""         """"""""
-"""""""""""""""""""""""
+" sort and operate on visual block selections
+vnoremap S :SortByBlock<cr>
+vnoremap B :Blockwise<cr>
 
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+" toggle folds with Enter
+nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
 
-
-"set cc&
-
-set encoding=utf-8
-au BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
-au BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
-au BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
-
-let g:fullpath=expand('%:p')
-au BufEnter * let fullpath=expand('%:p')
-au BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
-au BufRead,BufNewFile *.md set ft=markdown nospell
-
-nmap <C-b> :make<CR>
-
-"set noexpandtab
+" search for word under cursor
+nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<cr>
 
 
+" better movement in ex mode
+cnoremap  <C-*> <c-a>
+cnoremap  <C-_> <c-f>
+cnoremap  <C-a> <home>
+cnoremap  <C-b> <left>
+cnoremap  <C-d> <del>
+cnoremap  <C-e> <end>
+cnoremap  <C-f> <right>
+cnoremap  <C-h> <S-Left>
+cnoremap  <C-j> <down>
+cnoremap  <C-k> <up>
+cnoremap  <C-l> <S-Right>
+cnoremap  <C-n> <down>
+cnoremap  <C-p> <up>
+cnoremap  <M-b> <S-Left>
+cnoremap  <M-f> <S-Right>
 
-"fun! ShowFuncName()
-"  let lnum = line(".")
-"  let col = col(".")
-"  echohl ModeMsg
-"  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
-"  echohl None
-"  call search("\\%" . lnum . "l" . "\\%" . col . "c")
-"endfun
-"nnoremap <C-s> :call ShowFuncName()<CR>
+" ========== FZF START ==================================
+source ~/etc/vim/plugin/fzf.vim
+nnoremap <C-p> :FZF<cr>
+
+" git status
+nnoremap <leader>gs :GFiles?<cr>
+
+" commits for the current buffer, vselect a line to track changes for it
+nnoremap <leader>gc :BCommits<cr>
+vnoremap <leader>gc :BCommits<cr>
+
+" display commit history for the current line
+nnoremap ? V:BCommits<cr>
+
+" commits for the entire project
+nnoremap <leader>Gc :Commits<cr>
+
+" most recent files
+nnoremap <space> :History<cr>
+
+" commandline history
+nnoremap <leader>H :History:<cr>
+
+" search history, `
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap <leader>s :QHist<cr>
+
+" lines, in entire project
+nnoremap <leader>l :Lines<cr>
+
+" buffer lines
+nnoremap <leader>L :BLines<cr>
+
+" all the marks
+nnoremap <leader>M :Marks<cr>
+
+" all the mappings
+nnoremap <leader>m :Maps<cr>
+
+" quickly change ft
+nnoremap <leader>ft :Filetypes<cr>
+
+command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
+nnoremap <leader>air :AIR8files<cr>
 
 
-"syn match commentblock /\v[#]{80}/
-"hi commentblock ctermfg=220
+
+nnoremap <leader>f :RgFzf
+
+" Rg word under cursor, and filter results with fzf
+nnoremap <C-g> :RgFzf*<cr>
+
+" go to function def
+nnoremap <C-S-G> :RgDefFzf*<cr>
+
+" ========== FZF END ====================================
+
+"command! -range Aligncommas <line1>,<line2> s /,/§,/g | <line1>,<line2> !column -s § -t
 
 
-set showtabline=0
+" ========== MAPPINGS END ===============================
+" ========== PLUGIN SETTINGS START ======================
+
+" use git diff colors for signs set with ma
+let g:SignatureMarkTextHLDynamic               = 1
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_max_signs                      = 1500
+let g:extradite_width                          = 40
+
+" list of things to disable when turning distractions off
+let g:distraction_free#toggle_options = [
+  \ 'cursorline',
+  \ 'colorcolumn',
+  \ 'cursorcolumn',
+  \ 'number',
+  \ 'relativenumber',
+  \ 'list',
+  \ 'ruler',
+  \ 'showtabline',
+  \ 'laststatus',
+  \ 'foldcolumn',
+\]
+
+let g:rainbow_active = 1
+
+" rainbow.vim configuration
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'lisp': {
+	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+">
 
 
-"nnoremap <C-m> :NERDTreeToggle<CR>
-"
-" Start NERDTree when Vim starts with a directory argument.
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-"    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd w | endif
-
-
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-
+" ========== CTRLP START ================================
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[.]git$|test[/]|_VERKTYG|docs[/]',
@@ -305,146 +399,64 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
 
-
-nnoremap <C-o> :CtrlPFunky<cr>
-"nnoremap <silent> <C-o> :FzfMethods <cr>
 let g:ctrlp_map = ''
+" ========== CTRLP END ==================================
+" ========== PLUGIN SETTINGS END ========================
+" ========== FUNCTIONS START ============================
 
+" scratch window for temp things
+" bound in my window manager like this:
+" bind Return exec urxvt -fg white -bg black -sbg +sb -e vim -c 'call Scratch()'
+function! Scratch()
+  noswapfile hide enew
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal ft=perl
+  file scratch
+endfunction
 
+" show syntax group for item under cursor
+nmap <C-e> :call SynStack()<CR>
+fu! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfu
 
-"set   listchars+=tab:»\ 
+" context in statusbar; function, scope or block
+fun! ContextInStatusbar()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+"  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  let g:current_function = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+"  echo g:current_function
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+  "" matches and returns a str only if the lines matches any of the following:
+  "  viml: fu!, fun!, function!
+  "    js: function
+  "  perl: sub
+  "     c: grab_key(KeySym keysym, unsigned int modifiers, Window grab_window)
+  "   css: .store_more_info_wrapper .store_name (a little broken..)
+  " shell: pastebin() {
+  " shell: if/elif:
+  if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
+    return g:current_function
+  endif
+  return ''
+endfun
 
-
-"let g:rg_command = 'rg --vimgrep  '
-"nnoremap <C-g> :exe ":Rg " . escape(expand("<cWORD>"), ";")
-
-" add : to iskeyword to modify vims concept of a word.
-" that way we can grab entire perl module declarations for example:
-" use Foo::Bar::Baz::Laleh;
-set iskeyword+=:
-set foldmarker={,}
-set foldlevel=99
-set foldlevelstart=99
-set number norelativenumber
-set cursorline
-nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<CR>
-
-" make the quickfix window modifiable so we can do things like
-" :g/sql/d
-"au! FileType    qf       set ma hidden
-"au! BufReadPost quickfix set ma
-
-
-au BufRead,BufNewFile *.tt setf javascript
-
-"autocmd Filetype * AnyFoldActivate
-
-
-
-" toggle folds with Enter
-nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<CR>
-
-
-
-let g:SignatureMarkTextHLDynamic = 1
-
-let comment = split(&commentstring, '%s')[0]
-
-" evaluate the comment char for the current buffer
-au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
-
-
-" distractionfree
-nnoremap <C-t> <Esc>:DistractionsToggle<CR>
-
-let g:distraction_free#toggle_options = [
-  \ 'cursorline',
-  \ 'colorcolumn',
-  \ 'cursorcolumn',
-  \ 'number',
-  \ 'relativenumber',
-  \ 'list',
-  \ 'ruler',
-  \ 'showtabline',
-  \ 'laststatus',
-  \ 'foldcolumn',
-\]
-
-
-let mapleader=','
-
-" git clone https://github.com/junegunn/fzf.vim ~/etc/vim/pack/plugins/start/
-" git clone https://github.com/AlexVKO/fzf-to-functions.vim  ~/etc/vim/pack/plugins/start/
-" use this to avoid situations where cwd is ~/ and I do a 
-" vim ~/etc/zshrc
-" causing fzf to use my ~/ with all junk directories etc
-" git clone https://github.com/airblade/vim-rooter ~/etc/vim/pack/plugins/start/
-source ~/etc/vim/plugin/fzf.vim
-nnoremap <C-p> :FZF<cr>
-
-" buffers
-nnoremap <leader>b  :Buffers<cr>
-" muscle memory, replace standard :ls with fzf-powered one.
-cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Buffers' : 'ls')<CR>
-
-
-" git status
-nnoremap <leader>gs :GFiles?<cr>
-
-" commits for the current buffer, vselect a line to track changes for it
-nnoremap <leader>gc :BCommits<cr>
-vnoremap <leader>gc :BCommits<cr>
-
-" display commit history for the current line
-nnoremap ? V:BCommits<cr>
-
-" commits for the entire project
-nnoremap <leader>Gc :Commits<cr>
-
-" most recent files
-nnoremap <leader>h :History<cr>
-nnoremap <space> :History<cr>
-
-" commandline history
-nnoremap <leader>H :History:<cr>
-
-" search history
-" `
-command! QHist call fzf#vim#search_history({'right': '40'})
-nnoremap <leader>s :QHist<cr>
-
-
-" lines, in entire project
-nnoremap <leader>l :Lines<cr>
-
-" buffer lines
-nnoremap <leader>L :BLines<cr>
-
-" all the marks
-nnoremap <leader>M :Marks<cr>
-
-" all the mappings
-nnoremap <leader>m :Maps<cr>
-
-" quickly change ft
-nnoremap <leader>ft :Filetypes<cr>
-
-command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
-nnoremap <leader>air :AIR8files<cr>
-
-nnoremap <leader>n :GitGutterNextHunk<cr>
-
-
-nnoremap <leader>f :RgFzf 
-
-" Rg word under cursor, and filter results with fzf
-nnoremap <C-g> :RgFzf*<cr>
-
-" go to function def
-nnoremap <C-S-G> :RgDefFzf*<cr>
-
-command! -range Aligncommas <line1>,<line2> s /,/§,/g | <line1>,<line2> !column -s § -t
-
+" show function name
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
 
 " Prefix a line with warn and restore the cursor position
 function PrefixPerlWarn()
@@ -453,7 +465,7 @@ function PrefixPerlWarn()
 
   " length of 'warn '
   let cursor_pos[2] += 5
-  normal ^iwarn 
+  normal ^iwarn
   call setpos('.', cursor_pos)
 endfunction
 
@@ -469,37 +481,465 @@ function PrefixPerlRemoveWarn()
   call setpos('.', cursor_pos)
 endfunction
 
-nnoremap <leader>w :call PrefixPerlWarn()<cr>
-nnoremap <leader>W :call PrefixPerlRemoveWarn()<cr>
+" vidir - sanitize filenames (based on x)
+fu! Vidir_Sanitize(content)
+  mark z
 
-" close all folds
-nnoremap <leader>fc zM
+  "silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
+  "%s/\(\_^\s*\|\_^\s\+\d\+\)\@<!\s/_/g
 
-" undo/redo entire git hunk
-" U undos an entire line
-nnoremap <leader>u :GitGutterUndoHunk<cr>
-"nnoremap <leader>r :GitGutterRedoHunk<cr>
+  silent! %s/\v[åä]/a/g
+  silent! %s/\v[ö]/o/g
+  silent! %s/\v[ÅÄ]/A/g
+  silent! %s/\v[Ö]/O/g
+  silent! %s/,/./g
+  silent! %s/\v[;<>*|'&!#)([\]{}]//g
+  silent! %s/\v_+\ze[.]|\zs[.]\ze_+//g
+  silent! %s/[$]/S/g
+  silent! %s/\v-{2,}/-/g
+  silent! %s/\v_-_/-/g
+  silent! %s/\v[_]{2,}/_/g
+  silent! %s/\v[/_-]@<\=[a-z]/\U&/g
+  silent! %s/\v_(Feat|The|It|Of|At)_/\L&/ig
+  silent! %s/\v_(Och|N[åa]n)_/\L&/g
 
-" replace 2 space with \t, takes range
-" s/\(^\s*\)\@<=  /\t/g
+  if (a:content == 'music') || (a:content == 'mvid')
+    "silent! %s/\v./\L&/g
+    silent! %s/\v^\s*[0-9]+\s+\zs\s+/_/g
+    silent! %s/\(\_^[ ]*\)\@<![ ]\+/_/g
+    :silent! %s/\v[&]/feat/g
+    :silent! %s/\v(_[el]p[_]?)/\U\1/ig
+    :silent! %s/\v([_-]?cd[sm][_-]?|flac|[_-]demo|vinyl|[_-](web|pcb|osv))/\U\1/ig
+  elseif (a:content == 'tv')
+    :silent! %s/\v^\s*[0-9]+\s+\zs\s+/./g
+    silent! %s/\(\_^[ ]*\)\@<![ ]\+/./g
+    silent! %s/\v[.]-[.]/./g
+  else
+    :silent! %s/\v[&]/and/g
+  endif
+
+  'z
+  delmark z
+endfu
+
+" vidir - sort of title-case helper
+fu! Vidir_SmartUC()
+  :s/\w\@<=\ze\u/_/g
+  :s/\v_+/_/g
+  ":s/\<\@<![A-Z]/_&/g
+endfu
+
+" remove trailing whitespace
+fu! RemoveTrailingCrap()
+  if search('\s\+$', 'n')
+    :%s/\s\+$//
+  endif
+  if search( nr2char(182) . '$' )
+    :execute ":%s/" . nr2char(182) . "//"
+  endif
+endfu
+" ========== FUNCTIONS END ==============================
+" ========== AUTOCOMMANDS START =========================
+
+" evaluate the comment char for the current buffer
+" now, the variable b:comment will always hold the correct
+" char used for comments in that specific filetype
+au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
+
+
+" return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" set rainbow.vim colors and attributes
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p0' 'cterm=bold ctermfg=231'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p1' 'cterm=bold ctermfg=228'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p2' 'cterm=bold ctermfg=202'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p3' 'cterm=bold ctermfg=196'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p4' 'cterm=bold ctermfg=178'
+au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p5' 'cterm=bold ctermfg=172'
+
+" escape faster!
+augroup FastEscape
+  autocmd!
+  set notimeout
+  set ttimeout
+  set timeoutlen=10
+  au InsertEnter * set timeout
+  au InsertLeave * set notimeout
+augroup \\END
+" ========== FILETYPES START ============================
+
+" sadly there is no tt2 + html + js syntax file that works
+au BufRead,BufNewFile *.tt setf javascript
+
+" more goodies for viml
+au Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
+
+au BufNewFile,BufRead  MANIFEST              set filetype=vidir
+au BufNewFile,BufRead  vidir*                set filetype=vidir-ls
+au BufNewFile,BufRead  Changes               set filetype=changelog
+
+au BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
+au BufNewFile         *.txt                  setl cc=
+
+au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
+
+" update modification time
+au BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+au BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+
+" ========== FILETYPES END ==============================
+" ========== TEMPLATES START ============================
+au BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
+au BufNewFile *.c   silent! 0r $VIMRUNTIME/templates/template.c
+
+au Filetype perl
+  \   setl makeprg=perl\ -c\ %\ $*
+  \ | setl errorformat=%f:%l:%m
+  \ | setl keywordprg=perldoc\ -f
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
+
+au BufNewFile *.pl
+  \   silent! 0r $VIMRUNTIME/templates/template.pl
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
+  \ | call search('APP')
+  \ | normal di':startinsert
+
+au BufNewFile *.PL
+  \   silent! 0r ~/etc/vim/templates/template.PL
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
+  \ | call search('__PACKAGE__')
+  \ | exe 'normal dt} '
+  \ | startinsert
+
+au BufNewFile *.pm
+  \   silent! 0r $VIMRUNTIME/templates/template.pm
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
+  \ | call cursor(0, 9)
+  \ | exe 'normal d$A '
+  \ | startinsert
+
+au BufNewFile *.t
+  \   silent! 0r $VIMRUNTIME/templates/template.t
+  \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
+  \ | 6
+  \ | exe 'normal o'
+  \ | startinsert
+
+au BufNewFile *.md,*.markdown
+  \   silent! 0r $VIMRUNTIME/templates/template.markdown
+  \ | 0
+  \ | exe 'normal d$A'
+  \ | startinsert
 
 " template for oneshot quick scripts using entire air stack
 au BufNewFile *.air
   \   silent! 0r ~/dev/askas/utils-askas/vim/templates/air_oneshot.air
   \ | 0
   \ | exe 'normal Go'
+" ========== TEMPLATES END ==============================
+" ========== EX COMMANDS START ==========================
+" you'll need my vim fork: http://github.com/trapd00r/wim
+if v:progname == 'wim'
+  comclear
+  try
+    " this one is especially annoying
+    command! tohtml  TOhtml
+    command! vresize vert resize 80
+    command! hresize resize 60
+    command! Write   write
+    command! Command command
+  catch /^Vim\%((\a\+)\)\=:E183/
+  endtry
+endif
+" ========== EX COMMANDS END ============================
+" ========== ABBREVATIONS START =========================
 
-" scratch window for temp things
-function! Scratch()
-  split
-  noswapfile hide enew
-  setlocal buftype=nofile
-  setlocal bufhidden=hide
-  setlocal ft=perl
-  "setlocal nobuflisted
-  "lcd ~
-  file scratch
-endfunction
+" 2022-04-24 16:36:25
+iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+
+" Data::Dumper with options
+ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
+
+" input $var
+ia wd warn Dumper();<left><left>
+
+" comment block
+ia CC ################################################################################<cr>#<cr>###############################################################################<up><backspace>
+" ========== ABBREVATIONS END ===========================
+" ========== STATUSLINE START ===========================
+hi StatusLine   ctermfg=233 ctermbg=234  cterm=none
+hi StatusLineNC ctermfg=233 ctermbg=234 cterm=none
+
+"hi link User1 ModeMsg
+hi User1 ctermfg=215 ctermbg=234 cterm=bolditalic
+hi User2 ctermfg=106 ctermbg=234 cterm=none
+hi User3 ctermfg=250 ctermbg=234 cterm=none
+" User4 is set to the calculated LS_COLORS for the current file below
+hi User4 ctermfg=032 ctermbg=234 cterm=none
+hi User5 ctermfg=245 ctermbg=234 cterm=none
+hi User6 ctermfg=220 ctermbg=234 cterm=none
+hi User7 ctermfg=240 ctermbg=234 cterm=none
+hi User8 ctermfg=234 ctermbg=fg  cterm=none
+hi User9 ctermfg=197 ctermbg=234 cterm=none
+
+" Now, these regexes are obviously bad, but this function will only be used for
+" this only purpose so it doesn't matter.
+" Here's an aid for generating this:
+" curl -s https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS | grep -Pv '^(?:[#*]|TERM)|^$' | perl -pe 's{^\.?(\S+)\s+(?:[34]8;5;(\d+))}{elsif(a:filename =~ "\v.+\.$1")\n  hi User4 ctermfg=$2 ctermbg=234 cterm=none};s{;\d+$}{}' | perl -pe "s/\"/'/g"
+
+function! LsColorForStatusLine(filename)
+  if(a:filename =~ '\v.+\.sh')
+    hi User4 ctermfg=172 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.vim')
+    hi User4 ctermfg=106 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.txt')
+    hi User4 ctermfg=188 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.(css|sass)')
+    hi User4 ctermfg=125 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.csv')
+    hi User4 ctermfg=078 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.js[mp]?')
+    hi User4 ctermfg=074 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.json')
+    hi User4 ctermfg=178 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.log')
+    hi User4 ctermfg=190 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.(markdown|md)')
+    hi User4 ctermfg=190 ctermbg=234 cterm=bold
+
+  elseif(a:filename =~ '\vREADME|CHANGES')
+    hi User4 ctermfg=190 ctermbg=234 cterm=bold
+
+  elseif(a:filename =~ '\v.+\.php')
+    hi User4 ctermfg=081 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\vMakefile([.]PL)?')
+    hi User4 ctermfg=196 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.pl')
+    hi User4 ctermfg=208 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.pm')
+    hi User4 ctermfg=203 ctermbg=234 cterm=none
+
+
+  elseif(a:filename =~ '\v.+\.(sql|sqlite)')
+    hi User4 ctermfg=222 ctermbg=234 cterm=none
+    
+  elseif(a:filename =~ '\v.+\.t$')
+    hi User4 ctermfg=114 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.tt$')
+    hi User4 ctermfg=173 ctermbg=234 cterm=none
+
+  elseif(a:filename =~ '\v.+\.html?$')
+    hi User4 ctermfg=132 ctermbg=234 cterm=none
+
+  else
+    hi User4 ctermfg=137 ctermbg=234 cterm=none
+  endif
+endfun
+
+fun! SetStatusLineAskasButik()
+  return expand("$ASKAS_BUTIK")
+endfun
+
+
+au BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
+set statusline=
+"set statusline +=%1*\ %n\ %*                         " buffer number
+set statusline +=\ %5*%{&ff}%*\                       " file format
+set statusline +=%3*%y%*\                             " file type
+set statusline +=\%7*¦%9*\                            " askås butik
+set statusline +=%{SetStatusLineAskasButik()}         " askås butik
+set statusline +=\ \%7*¦%4*\ %<%F%*                   " full path
+set statusline +=%2*%m%*                              " modified flag
+set statusline +=\%7*\ ¦\ \%6*%{fugitive#head()}      " git branch
+set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()} " current function or block
+"set statusline +=%1*%=%5l%*                          " current line
+"set statusline +=%1*/%L%*                            " total lines
+"set statusline +=%1*%4v\ %*                          " virtual column number
+"set statusline +=%1*0x%04B\ %*                       " character under cursor
+" ========== STATUSLINE END =============================
+" ========== SYNTAX SETTINGS START ======================
+
+let g:c_comment_strings            = 1
+let g:c_gnu                        = 1
+let g:c_space_errors               = 1
+let g:c_syntax_for_h               = 1
+let g:dircolors_is_slackware       = 1
+let g:highlight_sedtabs            = 1
+let g:indent_guides_auto           = 0
+let g:lua_subversion               = 0
+let g:lua_version                  = 5
+let g:mpc_lyrics_use_cache         = 1
+let g:netrw_http_cmd               = 'wget'
+let g:netrw_http_xcmd              = '-q -O'
+let g:perl_compiler_force_warnings = 0
+let g:perl_extended_vars           = 1
+let g:perl_include_pod             = 1
+let g:perl_moose_stuff             = 1
+let g:perl_no_scope_in_variables   = 1
+let g:perl_no_sync_on_global_var   = 1
+let g:perl_no_sync_on_sub          = 1
+let g:perl_nofold_packages         = 1
+let g:perl_pod_formatting          = 1
+let g:perl_pod_spellcheck_headings = 1
+let g:perl_string_as_statement     = 1
+let g:perl_sync_dist               = 1000
+let g:perl_want_scope_in_variables = 1
+let g:perlhelp_prog                = '/usr/bin/perldoc'
+let g:readline_has_bash            = 1
+let g:rg_highlight                 = 1
+let g:sh_fold_enabled              = 4
+let g:sh_is_posix                  = 1
+let g:sh_maxlines                  = 200
+let g:sh_minlines                  = 100
+let g:space_no_jump                = 1
+let g:tex_conceal                  = 1
+let g:vim_indent_cont              = 2
+let g:vimsyn_embed                 = 'p'
+let g:vimsyn_folding               = 'afp'
+let g:vt_author                    = 'Magnus Woldrich'
+let g:vt_email                     = 'm@japh.se'
+let g:vt_template_dir_path         = '~/etc/vim/templates/'
+let g:xf86conf_xfree86_versio      = 2
+" ========== SYNTAX SETTINGS END ========================
+" ========== HIGHLIGHTS START ===========================
+
+
+hi link ColorColumn  CursorLine
+
+hi CtrlPMatch              ctermfg=196              cterm=bold
+hi CursorColumn            ctermfg=fg   ctermbg=234 cterm=none
+hi CursorLine              ctermfg=none ctermbg=234
+hi CursorLineNr            ctermfg=232  ctermbg=196 cterm=none
+hi Error                   ctermfg=089  ctermbg=250 cterm=bolditalicreverse
+hi ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
+hi Folded                  ctermfg=236  ctermbg=233 cterm=none
+hi FoldColumn              ctermfg=236  ctermbg=233 cterm=none
+hi GitGutterAdd            ctermfg=034
+hi GitGutterChange         ctermfg=198
+hi GitGutterDelete         ctermfg=160
+hi IncSearch               ctermfg=053 ctermbg=197  cterm=bolditalic
+"hi LineNr                  ctermfg=240 ctermbg=234  cterm=none
+hi clear LineNr
+hi link LineNr FoldColumn
+hi ModeMsg                                          cterm=bolditalic
+hi Search                  ctermfg=197 ctermbg=053  cterm=none
+hi SpecialKey              ctermfg=239
+hi Statement                                        cterm=italic
+hi VertSplit               ctermfg=234 ctermbg=233  cterm=none
+hi VimSynMtchCchar         ctermfg=fg  ctermbg=bg   cterm=none
+hi Visual                  ctermfg=197 ctermbg=053  cterm=reverse
+hi comma                   ctermfg=087              cterm=bolditalic
+hi makeCommands            ctermfg=246
+hi makeTarget              ctermfg=166              cterm=bold
+hi markdownXmlElement      ctermfg=197
+hi markdownXmlEmptyElement ctermfg=037
+hi perlVarPlain            ctermfg=010              cterm=none
+hi qfFileName              ctermfg=208
+hi qfLineNr                ctermfg=033              cterm=italicbold
+hi qfSeparator             ctermfg=232
+hi shCommandSub            ctermfg=181 ctermbg=none cterm=none
+hi shDoubleQuote           ctermfg=022 ctermbg=none cterm=bold
+hi shExprRegion            ctermfg=214 ctermbg=none cterm=bolditalic
+hi shFunctionOne           ctermfg=230 ctermbg=bg   cterm=italic
+hi shOperator              ctermfg=085 ctermbg=none cterm=bold
+hi shOption                ctermfg=208 ctermbg=bg   cterm=none
+hi shSingleQuote           ctermfg=131 ctermbg=234  cterm=none
+hi shString                ctermfg=137 ctermbg=234  cterm=none
+hi shVariable              ctermfg=208 ctermbg=bg   cterm=none
+hi vimAuSyntax             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimAugroup              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimAugroupError         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimAutoCmdSfxList       ctermfg=fg  ctermbg=bg   cterm=none
+hi vimAutoCmdSpace         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimAutoEventList        ctermfg=fg  ctermbg=bg   cterm=none
+hi vimClusterName          ctermfg=fg  ctermbg=bg   cterm=none
+hi vimCmdSep               ctermfg=179 ctermbg=bg   cterm=none
+hi vimCollClass            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimCollection           ctermfg=fg  ctermbg=bg   cterm=none
+hi vimCommentTitle         ctermfg=218 ctermbg=bg   cterm=bold
+hi vimEcho                 ctermfg=fg  ctermbg=bg   cterm=none
+hi vimEscapeBrace          ctermfg=fg  ctermbg=bg   cterm=none
+hi vimExecute              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimExtCmd               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFBVar                ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFgBg                 ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFgBgAttrib           ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFiletype             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFilter               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFuncBlank            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFuncBody             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimFunction             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimGroupList            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimGroupName            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiBang               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiClear              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiCtermColor         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiFontname           ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiGuiFontname        ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiKeyList            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimHiLink               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimIf                   ctermfg=fg  ctermbg=bg   cterm=none
+hi vimIsCommand            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMapLhs               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMapRhs               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMapRhsExtend         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMenuBang             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMenuMap              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMenuPriority         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimMenuRhs              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimNormCmds             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimOperParen            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimPatRegion            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimRegion               ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSet                                           cterm=italic
+hi vimSetEqual             ctermfg=015              cterm=none
+hi vimSetMod               ctermfg=160              cterm=bolditalic
+hi vimSetSep               ctermfg=161              cterm=none
+hi vimSubstPat             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSubstRange           ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSubstRep             ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSubstRep4            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSynKeyRegion         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSynLine              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSynMatchRegion       ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSynPatMod            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSynRegion            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSyncLinebreak        ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSyncLinecont         ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSyncLines            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSyncMatch            ctermfg=fg  ctermbg=bg   cterm=none
+hi vimSyncRegion           ctermfg=fg  ctermbg=bg   cterm=none
+hi vimUserCmd              ctermfg=fg  ctermbg=bg   cterm=none
+hi vimVar                  ctermfg=fg  ctermbg=bg   cterm=none
+hi zshNumber               ctermfg=033 ctermbg=none cterm=italicbold
+hi zshRedir                ctermfg=051 ctermbg=none cterm=bold
+hi zshStringDelimiter      ctermfg=202 ctermbg=none cterm=italic
+hi zshSubst                ctermfg=137 ctermbg=none cterm=italic
+hi zshSubstDelim           ctermfg=125 ctermbg=none cterm=italicbold
+
+syn match shLogicalAnd '[&]\{2}'
+
+hi link shLogicalAnd shConditional
+
+hi link shShellVariables Identifier
+hi link zshVariableDef   Identifier
+hi link zshOperator      Operator
 
 " our, my, local
 hi perlStatementStorage ctermfg=172 cterm=none
@@ -510,93 +950,44 @@ hi perlVarSimpleMemberName ctermfg=137
 " warn
 hi perlStatementMisc ctermfg=172 cterm=none
 
-" autocmd InsertLeave,WinEnter * set cursorline
-" autocmd InsertEnter,WinLeave * set nocursorline
+" <silent>, <expr>
+hi vimMapModKey ctermfg=208
 
-set complete-=i   " disable scanning included files
-set complete-=t   " disable searching tags
-
-set nocursorline
-
-hi FoldColumn cterm=none
-hi LineNr     cterm=none
-
-function! ToggleListChars()
-  if &list
-    set nolist
-  else
-    set list
-  endif
-endfunction
-
-nnoremap <C-q> :call ToggleListChars()<cr>
-
-hi ErrorMsg ctermfg=137 ctermbg=bg cterm=bolditalic
-
-" delete block
-nnoremap db da{
-
-" highlight custom text objects
-" ,k$
-"^v3j$,k
-"hi HL cterm=bolditalic ctermfg=233 ctermbg=137
-hi HL cterm=bolditalic ctermbg=fg ctermfg=bg
-"hi HL ctermbg=fg ctermfg=bg
-nnoremap <silent><expr> <backspace> hl#mark()
-nnoremap <silent><expr> <tab> hl#unmark('line')
-vnoremap <silent><expr> <tab> hl#unmark('block')
-
-"xnoremap <silent><expr> <backspace> hl#mark()
-"nnoremap <silent><expr> <backspace>v hl#mark() .. '_'
-""nnoremap <silent><expr> <C-backspace> hl#unmark()
-"xnoremap <silent><expr> <C-backspace> hl#unmark()
-"nnoremap <silent><expr> <C-backspace> hl#unmark() .. '_'
-
-" recursive mapping :)
-"map <backspace> :call MarkToggle()<cr>
-"map <backspace> :call hl#unmark('line')"  ,k$
-"nnoremap <leader>u :call hl#unmark('line')<cr><cr>
-
-
-function! MarkToggle()
-  :call hl#unmark('line')
-endfunction
-
-
-function AskasCleanUpHtmlQuouting()
-  exe ":s;\\\";';g"
-endfunction
-
-" markdownjekyll
 hi markdownJekyllFrontMatter ctermfg=137
+" ========== HIGHLIGHTS END =============================
+" ========== ASKÅS START ===============================
+set encoding=utf-8
+au BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
+au BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
+au BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
 
+let g:fullpath=expand('%:p')
+au BufEnter * let fullpath=expand('%:p')
+au BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
+au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
+au BufRead,BufNewFile *.md set ft=markdown nospell
 
-" ga => char info
+nmap <C-b> :make<cr>
 
-" double <cr> to supress "Press enter to continue"
-nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
+set iskeyword+=:
+set foldmarker={,}
+set foldlevel=99
+set foldlevelstart=99
+set number norelativenumber
+set cursorline
 
-
-
-" perl things:
+" ========== ASKåS END =================================
+" ========== NOTES START ================================
 " zz Fold around searches
 " zu Fold around use statements
 "
-" ym - yank matches
-" yM - yank non matches
+" <leader>ym - yank matches
+" <leader>yM - yank non matches
 "
-" dm - delete matches
-" dM - delete non matches
+" <leader>dm - delete matches
+" <leader>dM - delete non matches
 "
 " ^vB - blockwise : operations
-hi Folded ctermbg=233 cterm=none ctermfg=238 cterm=bolditalic
-
-" move visual blocks around, inspired by damian conways dragvisuals.vim
-vmap <unique> <C-h> <Plug>SchleppLeft
-vmap <unique> <C-j> <Plug>SchleppDown
-vmap <unique> <C-k> <Plug>SchleppUp
-vmap <unique> <C-l> <Plug>SchleppRight
-
-vmap <unique> <C-d> <Plug>SchleppDup
-
-let g:Schlepp#dupTrimWS = 1
+"
+" ga => char info
+" ========== NOTES END ==================================
