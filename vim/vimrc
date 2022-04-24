@@ -590,3 +590,12 @@ nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
 "
 hi Folded ctermbg=233 cterm=none ctermfg=238 cterm=bolditalic
 
+" move visual blocks around, inspired by damian conways dragvisuals.vim
+vmap <unique> <C-h> <Plug>SchleppLeft
+vmap <unique> <C-j> <Plug>SchleppDown
+vmap <unique> <C-k> <Plug>SchleppUp
+vmap <unique> <C-l> <Plug>SchleppRight
+
+vmap <unique> <C-d> <Plug>SchleppDup
+
+let g:Schlepp#dupTrimWS = 1

@@ -58,28 +58,13 @@ map      ö      <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 map      Ö      <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 " }}}
 " syntax                                                                     {{{
-if &filetype == 'perl'
-  nnoremap <C-h> :!perl -MVi::QuickFix='/mnt/Docs/Backup/vim_quickfix_err/%.err' -c %<CR>:cf<CR>
-  nnoremap <silent> _t :%!perltidy -q<Enter>
-  vnoremap <silent> _t :!perltidy -q<Enter>
 
-  nnoremap <silent> _p :%!perlcritic -q<Enter>
-  vnoremap <silent> _p :!perlcritic -q<Enter>
-endif
-
-nmap <silent> <leader>sp  :set syn=perl   <CR> :syntax sync fromstart <CR>
-nmap <silent> <leader>ss  :set syn=sh     <CR> :syntax sync fromstart <CR>
-nmap <silent> <leader>sv  :set syn=vim    <CR> :syntax sync fromstart <CR>
-nmap <silent> <leader>sz  :set syn=zsh    <CR> :syntax sync fromstart <CR>
-nmap <silent> <leader>sc  :set syn=config <CR> :syntax sync fromstart <CR>
-nmap <silent> <leader>sf  :set syn=conf   <CR> :syntax sync fromstart <CR>
-" }}}
 " window management                                                          {{{
-map <C-J> <C-W>j<C-W>_
-map <C-h> <C-w><Left>
-map <C-h> <C-w><Left>
-map <C-h> <C-w><Left>
-map <C-j> <C-w><Down>
+" map <C-J> <C-W>j<C-W>_
+" map <C-h> <C-w><Left>
+" map <C-h> <C-w><Left>
+" map <C-h> <C-w><Left>
+" map <C-j> <C-w><Down>
 
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<CR>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<CR>
@@ -113,8 +98,16 @@ nnoremap <TAB> %
 " movement                                                                   {{{
 nnoremap J  10j
 nnoremap K  10k
+
 vnoremap J  10j
 vnoremap K  10k
+
+"" move visual blocks around!
+"vnoremap H xhPgvhoho
+"vnoremap L xpgvlolo
+"vnoremap J xjPgvjojo
+"vnoremap K xkPgvkoko
+
 
 inoremap jj <ESC>
 inoremap jk <ESC>
