@@ -214,6 +214,7 @@ source $HOME/etc/vim/nancy/020-mappings.vim     " o de e mapity mupp, mappity mu
 color neverland
 
 source $HOME/etc/vim/nancy/090-syntax.vim       " my syntax defs
+source $HOME/etc/vim/nancy/091-conway-perl.vim  " damian conway perl things
 source $HOME/etc/vim/nancy/099-status.vim       " status, man
 ">
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
@@ -574,3 +575,12 @@ hi markdownJekyllFrontMatter ctermfg=137
 
 " double <cr> to supress "Press enter to continue"
 nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
+
+
+
+" perl things:
+" zz Fold around searches
+" zu Fold around use statements
+"
+hi Folded ctermbg=233 cterm=none ctermfg=238 cterm=bolditalic
+
