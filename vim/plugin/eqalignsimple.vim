@@ -91,7 +91,7 @@ function EQAS_Align (mode, ...) range
     endif
 
     "Locate block of code to be considered (same indentation, no blanks)
-    if a:mode == 'xmap'
+    if a:mode == 'vmap'
         let firstline = a:firstline
         let lastline  = a:lastline
 
@@ -147,12 +147,12 @@ function EQAS_Align (mode, ...) range
 endfunction
 
 
-nmap <silent> å     :call EQAS_Align('nmap')<CR>
-nmap <silent> åå    :call EQAS_Align('nmap', {'paragraph':1} )<CR>
-nmap <silent> ¨     :call EQAS_Align('nmap', {'cursor':1} )<CR>:%s/\s\+$//<CR>``
-nmap <silent> ¨¨    :call EQAS_Align('nmap', {'cursor':1, 'paragraph':1} )<CR>:%s/\s\+$//<CR>``
-xmap <silent> å     :call EQAS_Align('xmap')<CR>
-xmap <silent> ¨     :call EQAS_Align('xmap', {'cursor':1} )<CR>
+nmap <silent> =     :call EQAS_Align('nmap')<CR>
+nmap <silent> ==    :call EQAS_Align('nmap', {'paragraph':1} )<CR>
+nmap <silent> +     :call EQAS_Align('nmap', {'cursor':1} )<CR>:%s/\s\+$//<CR>``
+nmap <silent> ++    :call EQAS_Align('nmap', {'cursor':1, 'paragraph':1} )<CR>:%s/\s\+$//<CR>``
+vmap <silent> =     :call EQAS_Align('vmap')<CR>
+vmap <silent> +     :call EQAS_Align('vmap', {'cursor':1} )<CR>
 
 " Restore previous external compatibility options
 let &cpo = s:save_cpo

@@ -582,5 +582,11 @@ nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
 " zz Fold around searches
 " zu Fold around use statements
 "
+" ym - yank matches
+" yM - yank non matches
+"
+" dm - delete matches
+" dM - delete non matches
+"
 hi Folded ctermbg=233 cterm=none ctermfg=238 cterm=bolditalic
 
