@@ -588,6 +588,7 @@ nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
 " dm - delete matches
 " dM - delete non matches
 "
+" ^vB - blockwise : operations
 hi Folded ctermbg=233 cterm=none ctermfg=238 cterm=bolditalic
 
 " move visual blocks around, inspired by damian conways dragvisuals.vim

@@ -2,6 +2,9 @@
 " Last change:  Sat Apr 19 21:55:26 EST 2008
 " Maintainer:	Damian Conway
 " License:	This file is placed in the public domain.
+"
+" japh 2022-04-24
+" Modifications: Don't map <TAB> but rather <C-n>
 
 " If already loaded, we're done...
 if exists("loaded_smartcom")
@@ -15,8 +18,8 @@ set cpo&vim
 
 "=====[ Interface ]=====================================================
 
-" Remap <TAB> for smart completion on various characters...
-inoremap <silent> <TAB>      <c-r>=<SID>Complete()<CR>
+" Remap <C-n> for smart completion on various characters...
+inoremap <silent> <C-n>      <c-r>=<SID>Complete()<CR>
 
 " Remap single <S-TAB> for smart completion on padding...
 " That is: search the previous line for repeated punctuation and repeat it
