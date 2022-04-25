@@ -415,6 +415,12 @@ function! Scratch()
   file scratch
 endfunction
 
+function! LooksLikePerl5 ()
+  if getline(1) =~# '^#!.*/bin/.*perl'
+    set filetype=perl
+  endif
+endfunction
+
 " show syntax group for item under cursor
 nmap <C-e> :call SynStack()<CR>
 fu! SynStack()
@@ -574,6 +580,9 @@ augroup \\END
 
 " sadly there is no tt2 + html + js syntax file that works
 au BufRead,BufNewFile *.tt setf javascript
+
+" should we highlight the buffer as perl?
+au BufRead * call LooksLikePerl5()
 
 " more goodies for viml
 au Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
