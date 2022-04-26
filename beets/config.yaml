@@ -719,6 +719,7 @@ paths:
     tag:whoa singleton:true:     +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
     tag:randombastards:          +hiphop-swe/randombastards/$base_name
+    tag:rimslakt:                +hiphop-swe/rimslakt/$base_name
     tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
 
