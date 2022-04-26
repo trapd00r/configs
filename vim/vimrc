@@ -1,4 +1,3 @@
-" vim: set foldmarker=START,END ==:
 " ${VIMRUNTIME}/vimrc
 "       owner  Magnus Woldrich <m@japh.se>
 "       btime  2009-04-24
@@ -41,8 +40,10 @@ set fileencodings=utf-8,latin1                                             " lis
 set fillchars+=fold:\                                                      " chars used for filling the folded line when folded
 set foldcolumn=2                                                           " width of foldcolumn
 set foldenable                                                             " when off, all folds are open
-set foldlevelstart=1                                                       " keep most folds closed upon editing a new buffer
-set foldmarker=#<,#>                                                       " and these can be adjusted anywhere of course
+"set foldignore=#                                                           " lines starting with char will get their fold level from surrounding lines
+set foldlevel=99                                                           " folds with a higher level will be closed
+set foldlevelstart=99                                                      " do not fold by default
+set foldmarker={,}                                                         " and these can be adjusted anywhere of course
 set foldmethod=marker                                                      " fold on defined markers
 set foldminlines=2                                                         " close folds with n lines minimum
 set foldnestmax=4                                                          " maximum nesting when using syntax or indent foldmethods
@@ -60,6 +61,11 @@ set include=\\<\\(use\\\|require\\)\\>                                     " per
 set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')  " ... perl module in filesystem
 set incsearch                                                              " show matches while typing
 set isfname+=:                                                             " add : to filename pattern
+set iskeyword+=$                                                           " perl scalar
+set iskeyword+=%                                                           " perl hash
+set iskeyword+=@-@                                                         " perl array
+set iskeyword+=:                                                           " perl colon
+set iskeyword-=,                                                           " remove , from keyword
 set laststatus=2                                                           " always how statusline
 set lazyredraw                                                             " do not redraw screen while executing macros etc
 set list                                                                   " visualize non-visual characters
@@ -72,8 +78,8 @@ set listchars+=precedes:\                                                  "  '-
 set listchars+=tab:»\                                                      "  '- tab
 set listchars+=trail:·                                                     "  '- trailing whitespace
 set magic                                                                  " set magic on for regex but I use \v anyway
-set matchpairs+=<:>                                                        " match < and > with %
-set matchpairs+==:;                                                        " match : with %
+set matchpairs+=<:>,«:»,｢:｣                                                " match more things with %
+"set matchpairs+==:;                                                        " match : with %
 set matchtime=20                                                           " time to show the match with %
 set maxfuncdepth=1000                                                      " avoid recursive functions
 set maxmapdepth=500                                                        " avoid recursive mappings
@@ -142,10 +148,12 @@ let &t_Ce = "\e[4:0m"
 
 color neverland
 
-source $HOME/etc/vim/nancy/091-conway-perl.vim
-
 " ========== MAPPINGS START =============================
 let mapleader=','
+
+" toggle comments
+nmap     <silent> # :call ToggleComment()<CR>j0
+vnoremap <silent> # :call ToggleBlock()<CR>
 
 " close all folds
 nnoremap <leader>fc zM
@@ -162,8 +170,14 @@ nnoremap <C-t> <Esc>:DistractionsToggle<cr>
 " delete block
 nnoremap db da{
 
-" clear trailing whitespace
-map <C-s> :call RemoveTrailingCrap()<cr>
+" folding around searches
+nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
+
+" folding around use statements
+nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
+
+" show the current function name
+map <C-s> :call ShowFuncName()
 
 " use quickfix list to go to func definition
 nnoremap <C-o> :CtrlPFunky<cr>
@@ -209,7 +223,7 @@ vmap <unique> <C-k> <Plug>SchleppUp
 vmap <unique> <C-l> <Plug>SchleppRight
 vmap <unique> <C-d> <Plug>SchleppDup
 
-let g:Schlepp#dupTrimWS = 0
+let g:Schlepp#dupTrimWS = 1
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
@@ -251,7 +265,7 @@ cnoremap  <C-p> <up>
 cnoremap  <M-b> <S-Left>
 cnoremap  <M-f> <S-Right>
 
-" ========== FZF START ==================================
+" ========== FZF  ==================================
 source ~/etc/vim/plugin/fzf.vim
 nnoremap <C-p> :FZF<cr>
 
@@ -306,13 +320,27 @@ nnoremap <C-g> :RgFzf*<cr>
 " go to function def
 nnoremap <C-S-G> :RgDefFzf*<cr>
 
-" ========== FZF END ====================================
+" ========== FZF ==================================
 
 "command! -range Aligncommas <line1>,<line2> s /,/§,/g | <line1>,<line2> !column -s § -t
 
 
 " ========== MAPPINGS END ===============================
-" ========== PLUGIN SETTINGS START ======================
+" ========== PLUGIN OPTIONS START =======================
+" highlights quickfix errors
+let g:hier_highlight_group_qf   = 'HierError'
+let g:hier_highlight_group_qfw  = 'HierWarning'
+let g:hier_highlight_group_loc  = 'Normal'
+let g:hier_highlight_group_locw = 'HierWarning'
+let g:hier_highlight_group_loci = 'Normal'
+
+" ale linter for perl
+let g:ale_set_loclist          = 0
+let g:ale_set_quickfix         = 1
+let g:ale_set_signs            = 0
+"let g:ale_linters              =  'perl': ['perl']
+let g:ale_perl_perl_executable = 'perl'
+let g:ale_perl_perl_options    = '-cw -Ilib'
 
 " use git diff colors for signs set with ma
 let g:SignatureMarkTextHLDynamic               = 1
@@ -378,7 +406,7 @@ let g:fzf_colors =
 
 
 " ========== CTRLP START ================================
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[.]git$|test[/]|_VERKTYG|docs[/]',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -401,7 +429,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 
 let g:ctrlp_map = ''
 " ========== CTRLP END ==================================
-" ========== PLUGIN SETTINGS END ========================
+" ========== PLUGIN OPTIONS END =========================
 " ========== FUNCTIONS START ============================
 
 " scratch window for temp things
@@ -415,9 +443,85 @@ function! Scratch()
   file scratch
 endfunction
 
-function! LooksLikePerl5 ()
-  if getline(1) =~# '^#!.*/bin/.*perl'
+function! ToggleComment ()
+  let comment_char = exists('b:comment') ? b:comment: '#'
+
+  " Grab the line and work out whether it's commented...
+  let currline = getline(".")
+
+  " If so, remove it and rewrite the line...
+  if currline =~ '^' . comment_char
+    let repline = substitute(currline, '^' . comment_char, "", "")
+    call setline(".", repline)
+
+  " Otherwise, insert it...
+  else
+    let repline = substitute(currline, '^', comment_char, "")
+    call setline(".", repline)
+  endif
+endfunction
+
+" Toggle comments down an entire visual selection of lines...
+function! ToggleBlock () range
+  let comment_char = exists('b:comment') ? b:comment: '#'
+
+  " Start at the first line...
+  let linenum = a:firstline
+
+  " Get all the lines, and decide their comment state by examining the first...
+  let currline = getline(a:firstline, a:lastline)
+  if currline[0] =~ '^' . comment_char
+    " If the first line is commented, decomment all...
+    for line in currline
+      let repline = substitute(line, '^' . comment_char, "", "")
+      call setline(linenum, repline)
+      let linenum += 1
+    endfor
+  else
+    " Otherwise, encomment all...
+    for line in currline
+      let repline = substitute(line, '^\('. comment_char . '\)\?', comment_char, "")
+      call setline(linenum, repline)
+      let linenum += 1
+    endfor
+  endif
+endfunction
+
+" ale linter
+function! Start_ALE ()
+    ALEEnable
+    HierStart
+endfunction
+
+function! Stop_ALE ()
+    ALEDisable
+    HierStop
+    call setqflist([])
+    redraw!
+endfunction
+
+function! Toggle_ALE ()
+    if g:ale_enabled
+        call Stop_ALE()
+    else
+        call Start_ALE()
+    endif
+    echo 'Error highlighting ' . (g:ale_enabled ? 'on' : 'off')
+endfunction
+
+" try to figure out the filetype when there's no extension
+function! s:infer_filetype()
+  let firstline = getline(1)
+
+  " perl5
+  if firstline  =~# '^#!.*/bin/perl'
     set filetype=perl
+    return
+
+  " shell script
+  elseif firstline =~# '\v^#!/bin/(ba|z)?sh'
+    set filetype=zsh
+    return
   endif
 endfunction
 
@@ -431,7 +535,7 @@ fu! SynStack()
 endfu
 
 " context in statusbar; function, scope or block
-fun! ContextInStatusbar()
+function! ContextInStatusbar()
   let lnum = line(".")
   let col = col(".")
   echohl ModeMsg
@@ -441,7 +545,7 @@ fun! ContextInStatusbar()
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
   "" matches and returns a str only if the lines matches any of the following:
-  "  viml: fu!, fun!, function!
+  "  viml: fu!, function!, function!
   "    js: function
   "  perl: sub
   "     c: grab_key(KeySym keysym, unsigned int modifiers, Window grab_window)
@@ -455,7 +559,7 @@ fun! ContextInStatusbar()
 endfun
 
 " show function name
-fun! ShowFuncName()
+function! ShowFuncName()
   let lnum = line(".")
   let col = col(".")
   echohl ModeMsg
@@ -463,29 +567,6 @@ fun! ShowFuncName()
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
-
-" Prefix a line with warn and restore the cursor position
-function PrefixPerlWarn()
-  " current cursor position
-  let cursor_pos = getpos(".")
-
-  " length of 'warn '
-  let cursor_pos[2] += 5
-  normal ^iwarn
-  call setpos('.', cursor_pos)
-endfunction
-
-" Remove the warn and restore cursor position
-" TODO: Toggleable
-function PrefixPerlRemoveWarn()
-  " current cursor position
-  let cursor_pos = getpos(".")
-
-  " length of 'warn '
-  let cursor_pos[2] -= 5
-  normal ^dw
-  call setpos('.', cursor_pos)
-endfunction
 
 " vidir - sanitize filenames (based on x)
 fu! Vidir_Sanitize(content)
@@ -547,9 +628,18 @@ endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
 
+" fold this file in a nice way
+" autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | set foldmarker=START,END\ ==
+"
+" try to figure out the filetype when there's no extension
+" often the case in my bin (~/dev/utils/) directory
+autocmd BufNewFile,BufRead  *        call s:infer_filetype()
+
 " evaluate the comment char for the current buffer
 " now, the variable b:comment will always hold the correct
 " char used for comments in that specific filetype
+" this is used for ToggleComment() among other things, mapped
+" to #
 au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
 
 
@@ -558,6 +648,27 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
+augroup ALE_Autoconfig
+    au!
+    autocmd User GVI_Start  silent call Stop_ALE()
+    autocmd User PV_Start   silent call Stop_ALE()
+    autocmd User PV_End     silent call Start_ALE()
+    autocmd User ALELint    silent HierUpdate
+augroup END
+
+" show only sub defns (and maybe comments)...
+let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
+let vim_sub_pat  = '^\s*fu\%[nction!]\s\+\k\+'
+augroup FoldSub
+    autocmd!
+    autocmd BufEnter * nmap <silent> <expr>  zp  FS_FoldAroundTarget(perl_sub_pat,'context':1)
+    autocmd BufEnter * nmap <silent> <expr>  za  FS_FoldAroundTarget(perl_sub_pat.'\zs\\|^\s*#.*','context':0, 'folds':'invisible')
+    autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  zp  FS_FoldAroundTarget(vim_sub_pat,'context':1)
+    autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*','context':0, 'folds':'invisible')
+    autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*','context':0, 'folds':'invisible')
+augroup END
+
 
 " set rainbow.vim colors and attributes
 au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p0' 'cterm=bold ctermfg=231'
@@ -575,8 +686,8 @@ augroup FastEscape
   set timeoutlen=10
   au InsertEnter * set timeout
   au InsertLeave * set notimeout
-augroup \\END
-" ========== FILETYPES START ============================
+augroup END
+" ========== AUTOCOMMANDS END ===========================
 
 " sadly there is no tt2 + html + js syntax file that works
 au BufRead,BufNewFile *.tt setf javascript
@@ -599,8 +710,8 @@ au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg
 " update modification time
 au BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
 au BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+" ========== AUTOCOMMANDS END ===========================
 
-" ========== FILETYPES END ==============================
 " ========== TEMPLATES START ============================
 au BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
 au BufNewFile *.c   silent! 0r $VIMRUNTIME/templates/template.c
@@ -650,7 +761,7 @@ au BufNewFile *.air
   \ | 0
   \ | exe 'normal Go'
 " ========== TEMPLATES END ==============================
-" ========== EX COMMANDS START ==========================
+" ========== COMMANDS START =============================
 " you'll need my vim fork: http://github.com/trapd00r/wim
 if v:progname == 'wim'
   comclear
@@ -664,7 +775,7 @@ if v:progname == 'wim'
   catch /^Vim\%((\a\+)\)\=:E183/
   endtry
 endif
-" ========== EX COMMANDS END ============================
+" ========== COMMANDS END ===============================
 " ========== ABBREVATIONS START =========================
 
 " 2022-04-24 16:36:25
@@ -746,7 +857,7 @@ function! LsColorForStatusLine(filename)
 
   elseif(a:filename =~ '\v.+\.(sql|sqlite)')
     hi User4 ctermfg=222 ctermbg=234 cterm=none
-    
+
   elseif(a:filename =~ '\v.+\.t$')
     hi User4 ctermfg=114 ctermbg=234 cterm=none
 
@@ -761,7 +872,7 @@ function! LsColorForStatusLine(filename)
   endif
 endfun
 
-fun! SetStatusLineAskasButik()
+function! SetStatusLineAskasButik()
   return expand("$ASKAS_BUTIK")
 endfun
 
@@ -782,7 +893,7 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()} " current function or blo
 "set statusline +=%1*%4v\ %*                          " virtual column number
 "set statusline +=%1*0x%04B\ %*                       " character under cursor
 " ========== STATUSLINE END =============================
-" ========== SYNTAX SETTINGS START ======================
+" ========== SYNTAX OPTIONS START =======================
 
 let g:c_comment_strings            = 1
 let g:c_gnu                        = 1
@@ -825,9 +936,32 @@ let g:vt_author                    = 'Magnus Woldrich'
 let g:vt_email                     = 'm@japh.se'
 let g:vt_template_dir_path         = '~/etc/vim/templates/'
 let g:xf86conf_xfree86_versio      = 2
-" ========== SYNTAX SETTINGS END ========================
-" ========== HIGHLIGHTS START ===========================
+" ========== SYNTAX OPTIONS END =========================
+" ========== HIGHLIGHTING START =========================
 
+highlight HierError   ctermfg=196 ctermbg=bg cterm=none
+highlight HierWarning ctermfg=137 ctermbg=bg cterm=bolditalic
+highlight AleError    ctermfg=196 ctermbg=bg cterm=none
+highlight AleWarning  ctermfg=137 ctermbg=bg cterm=bolditalic
+
+highlight ALEStyleError               ctermfg=196 ctermbg=bg cterm=none
+highlight ALEStyleWarning             ctermfg=137 ctermbg=bg cterm=bolditalic
+highlight ALEInfo                     ctermfg=196 ctermbg=bg cterm=none
+highlight ALEVirtualTextError         ctermfg=137 ctermbg=bg cterm=bolditalic
+highlight ALEVirtualTextStyleError    ctermfg=196 ctermbg=bg cterm=none
+highlight ALEVirtualTextWarning       ctermfg=137 ctermbg=bg cterm=bolditalic
+highlight ALEVirtualTextStyleWarning  ctermfg=196 ctermbg=bg cterm=none
+highlight ALEVirtualTextInfo          ctermfg=137 ctermbg=bg cterm=bolditalic
+
+" trackperlvars
+highlight default      TRACK_PERL_VAR             ctermfg=fg  cterm=none
+highlight default      TRACK_PERL_VAR_QUESTION    ctermfg=white                cterm=bold
+highlight default      TRACK_PERL_VAR_LOCKED      ctermfg=cyan   ctermbg=blue  cterm=bold
+highlight default      TRACK_PERL_VAR_UNDECLARED  ctermfg=red                  cterm=bold
+highlight default      TRACK_PERL_VAR_UNUSED      ctermfg=cyan                 cterm=bold
+highlight default      TRACK_PERL_VAR_BUILTIN     ctermfg=magenta              cterm=bold
+"highlight default link TRACK_PERL_VAR_ACTIVE      TRACK_PERL_VAR
+highlight default      TRACK_PERL_VAR_ACTIVE      ctermfg=196
 
 hi link ColorColumn  CursorLine
 
@@ -963,8 +1097,8 @@ hi perlStatementMisc ctermfg=172 cterm=none
 hi vimMapModKey ctermfg=208
 
 hi markdownJekyllFrontMatter ctermfg=137
-" ========== HIGHLIGHTS END =============================
-" ========== ASKÅS START ===============================
+" ========== HIGHLIGHTING END ===========================
+" ========== ASKåS START ===============================
 set encoding=utf-8
 au BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
 au BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
@@ -977,15 +1111,93 @@ au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandta
 au BufRead,BufNewFile *.md set ft=markdown nospell
 
 nmap <C-b> :make<cr>
-
-set iskeyword+=:
-set foldmarker={,}
-set foldlevel=99
-set foldlevelstart=99
-set number norelativenumber
-set cursorline
-
 " ========== ASKåS END =================================
+
+
+
+" ========== COMPLETION START ===========================
+runtime plugin/smartcom.vim
+
+" add extra completions (mainly for Perl programming)...
+
+let ANYTHING = ""
+let NOTHING  = ""
+let EOL      = '\s*$'
+
+                " Left     Right      Insert                             Reset cursor
+                " =====    =====      ===============================    ============
+call SmartcomAdd( '<<',    ANYTHING,  "\<BS>\<BS>«"                                    )
+call SmartcomAdd( '>>',    ANYTHING,  "\<BS>\<BS>»"                                    )
+call SmartcomAdd( '?',     ANYTHING,  '?',                               {'restore':1} )
+call SmartcomAdd( '?',     '?',       "\<CR>\<ESC>O\<TAB>"                             )
+call SmartcomAdd( '{{',    ANYTHING,  '}}',                              {'restore':1} )
+call SmartcomAdd( '{{',    '}}',      NOTHING,                                         )
+call SmartcomAdd( 'qr{',   ANYTHING,  '}xms',                            {'restore':1} )
+call SmartcomAdd( 'qr{',   '}xms',    "\<CR>\<C-D>\<ESC>O\<C-D>\<TAB>"                 )
+call SmartcomAdd( 'm{',    ANYTHING,  '}xms',                            {'restore':1} )
+call SmartcomAdd( 'm{',    '}xms',    "\<CR>\<C-D>\<ESC>O\<C-D>\<TAB>",                )
+call SmartcomAdd( 's{',    ANYTHING,  '}{}xms',                          {'restore':1} )
+call SmartcomAdd( 's{',    '}{}xms',  "\<CR>\<C-D>\<ESC>O\<C-D>\<TAB>",                )
+call SmartcomAdd( '\*\*',  ANYTHING,  '**',                              {'restore':1} )
+call SmartcomAdd( '\*\*',  '\*\*',    NOTHING,                                         )
+
+" Handle single : correctly...
+call SmartcomAdd( '^:\|[^:]:',  EOL,  "\<TAB>" )
+
+" In the middle of a keyword: delete the rest of the keyword before completing...
+                " Left     Right                    Insert
+                " =====    =====                    =======================
+"call SmartcomAdd( '\k',    '\k\+\%(\k\|\n\)\@!',    "\<C-O>cw\<C-X>\<C-N>",           )
+"call SmartcomAdd( '\k',    '\k\+\_$',               "\<C-O>cw\<C-X>\<C-N>",           )
+
+" after an alignable, align
+function! AlignOnPat (pat)
+    return "\<ESC>:call EQAS_Align('nmap',{'pattern':'" . a:pat . "'})\<CR>A"
+endfunction
+
+                " Left         Right        Insert
+                " ==========   =====        =============================
+call SmartcomAdd( '=',         ANYTHING,    "\<ESC>:call EQAS_Align('nmap')\<CR>A")
+call SmartcomAdd( '=>',        ANYTHING,    AlignOnPat('=>') )
+call SmartcomAdd( '\s#',       ANYTHING,    AlignOnPat('\%(\S\s*\)\@<= #') )
+call SmartcomAdd( '[''"]\s*:', ANYTHING,    AlignOnPat(':'),                   {'filetype':'vim'} )
+call SmartcomAdd( ':',         ANYTHING,    "\<TAB>",                          {'filetype':'vim'} )
+
+
+                " Left         Right   Insert                                  Where
+                " ==========   =====   =============================           ===================
+" perl keywords
+call SmartcomAdd( '^\s*for',   EOL,    " my $___ (___) {\n___\n}\n___",        {'filetype':'perl'} )
+call SmartcomAdd( '^\s*if',    EOL,    " (___) {\n___\n}\n___",                {'filetype':'perl'} )
+call SmartcomAdd( '^\s*while', EOL,    " (___) {\n___\n}\n___",                {'filetype':'perl'} )
+call SmartcomAdd( '^\s*given', EOL,    " (___) {\n___\n}\n___",                {'filetype':'perl'} )
+call SmartcomAdd( '^\s*when',  EOL,    " (___) {\n___\n}\n___",                {'filetype':'perl'} )
+call SmartcomAdd( '^\s*sub',   EOL,    " ___ (___) {\n___\n}\n___",            {'filetype':'perl'} )
+
+
+" convert between single- and double-quoted string endings
+call SmartcomAdd(      '''[^"]*"',  NOTHING,  "\<ESC>?'\<CR>:nohlsearch\<CR>r\"a",        {'restore':1+1} )
+call SmartcomAdd( 'q\@<!q{[^"]*"',  NOTHING,  "\<BS>}\<ESC>?q{\<CR>:nohlsearch\<CR>sqq",  {'restore':1+2} )
+call SmartcomAdd(     '"[^'']*''',  NOTHING,  "\<ESC>?\"\<CR>:nohlsearch\<CR>r'a",        {'restore':1+1} )
+call SmartcomAdd(   'qq{[^'']*''',  NOTHING,  "\<BS>}\<ESC>?qq{\<CR>:nohlsearch\<CR>2sq", {'restore':1+1} )
+
+
+" when autocompleting within an identifier, prevent duplications
+augroup Undouble_Completions
+    autocmd!
+    autocmd CompleteDone *  call Undouble_Completions()
+augroup END
+
+" when completing inside an identifer, it's doubled
+" that's bad, fix this
+function! Undouble_Completions ()
+    let col  = getpos('.')[2]
+    let line = getline('.')
+    call setline('.', substitute(line, '\(\.\?\k\+\)\%'.col.'c\zs\1', '', ''))
+endfunction
+
+" ========== COMPLETION END =============================
+nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 " ========== NOTES START ================================
 " zz Fold around searches
 " zu Fold around use statements

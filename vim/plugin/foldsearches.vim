@@ -4,8 +4,9 @@
 " License:	This file is placed in the public domain.
 "
 " japh 2022-04-24
-" Modifications: added setlocal hlsearch because I want to still see the matches
-" highlighted even after folding
+" Modifications:
+" - added setlocal hlsearch because I want to still see the matches highlighted even after folding
+" - adjusted foldtext
 
 " If already loaded, we're done...
 if exists("loaded_foldsearch")
@@ -26,14 +27,22 @@ let s:DEFFOLDLEVEL  = 1000
 " This is what the options are changed to...
 let s:FOLDEXPR = 'FS_FoldSearchLevel()'
 let s:FOLDTEXT = {
-\   'visible'   : "'___/ line ' . (v:foldend+1) . ' \\' . repeat('_',200) ",
-\   'invisible' : "repeat(' ',200)",
+\   'visible'   : "'___/ line ' . (v:foldend+1) . ' \\' . repeat('_',80) ",
+\   'invisible' : "repeat(' ',80)",
 \}
 
+" folding around searches
+"nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch('context':1)
+
+" folding around use statements
+"nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;','context':1)
 
 
 " Turn the mechanism on and off...
 function! FS_ToggleFoldAroundSearch (opts)
+    for k in keys(a:)
+      echo k
+    endfor
     " How much context to show...
     let b:FOLDCONTEXT = get(a:opts, 'context', 1)
     let &foldminlines = b:FOLDCONTEXT
