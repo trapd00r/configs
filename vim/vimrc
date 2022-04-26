@@ -586,9 +586,6 @@ augroup END
 " sadly there is no tt2 + html + js syntax file that works
 au BufRead,BufNewFile *.tt setf javascript
 
-" should we highlight the buffer as perl?
-au BufRead * call LooksLikePerl5()
-
 " more goodies for viml
 au Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
 
