@@ -349,7 +349,7 @@ function! ColorColumnAtCursorPositionToggle()
   if exists(&colorcolumn) || column == 1 || column == &colorcolumn
     set colorcolumn&
   else
-    let &colorcolumn = col('.')
+    let &colorcolumn = column
   endif
 endfunction
 
