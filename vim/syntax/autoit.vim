@@ -5,6 +5,16 @@
 " Authored By:	Riccardo Casini <ric@libero.it>
 " Script URL:	http://www.vim.org/scripts/script.php?script_id=1239
 " ChangeLog:	Please visit the script URL for detailed change information
+" 		Included change from #970.
+
+" Quit when a syntax file was already loaded.
+if exists("b:current_syntax")
+  finish
+endif
+let s:keepcpo= &cpo
+set cpo&vim
+
+let b:current_syntax = "autoit"
 
 " AutoIt is not case dependent
 syn case ignore
@@ -923,7 +933,7 @@ syn match autoitConst "\$SD_POWERDOWN"
 " constants - string
 syn match autoitConst "\$STR_NOCASESENSE"
 syn match autoitConst "\$STR_CASESENSE"
-syn match autoitConst "\STR_STRIPLEADING"
+syn match autoitConst "\$STR_STRIPLEADING"
 syn match autoitConst "\$STR_STRIPTRAILING"
 syn match autoitConst "\$STR_STRIPSPACES"
 syn match autoitConst "\$STR_STRIPALL"
@@ -1108,4 +1118,8 @@ hi def link autoitOption Type
 hi def link autoitStyle Type
 hi def link autoitConst Type
 hi def link autoitSend Type
+
 syn sync minlines=50
+
+let &cpo = s:keepcpo
+unlet s:keepcpo

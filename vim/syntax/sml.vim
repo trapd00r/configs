@@ -1,20 +1,20 @@
 " Vim syntax file
 " Language:     SML
 " Filenames:    *.sml *.sig
-" Maintainers:  Markus Mottl            <markus.mottl@gmail.com>
-"               Fabrizio Zeno Cornelli  <zeno@filibusta.crema.unimi.it>
-" URL:          http://www.ocaml.info/vim/syntax/sml.vim
-" Last Change:  2006 Oct 23 - Fixed character highlighting bug (MM)
-"               2002 Jun 02 - Fixed small typo  (MM)
-"               2001 Nov 20 - Fixed small highlighting bug with modules (MM)
+" Maintainer:   Markus Mottl <markus.mottl@gmail.com>
+" Previous Maintainer: Fabrizio Zeno Cornelli
+"				<zeno@filibusta.crema.unimi.it> (invalid)
+" Last Change:  2022 Apr 01
+"               2015 Aug 31 - Fixed opening of modules (Ramana Kumar)
+"               2006 Oct 23 - Fixed character highlighting bug (MM)
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
+
+" Disable spell checking of syntax.
+syn spell notoplevel
 
 " SML is case sensitive.
 syn case match
@@ -55,7 +55,7 @@ syn region   smlEncl transparent matchgroup=smlKeyword start="#\[" matchgroup=sm
 
 
 " Comments
-syn region   smlComment start="(\*" end="\*)" contains=smlComment,smlTodo
+syn region   smlComment start="(\*" end="\*)" contains=smlComment,smlTodo,@Spell
 syn keyword  smlTodo contained TODO FIXME XXX
 
 
@@ -85,7 +85,7 @@ syn region   smlSig matchgroup=smlModule start="\<sig\>" matchgroup=smlModule en
 syn region   smlModSpec matchgroup=smlKeyword start="\<structure\>" matchgroup=smlModule end="\<\u\(\w\|'\)*\>" contained contains=@smlAllErrs,smlComment skipwhite skipempty nextgroup=smlModTRWith,smlMPRestr
 
 " "open"
-syn region   smlNone matchgroup=smlKeyword start="\<open\>" matchgroup=smlModule end="\<\u\(\w\|'\)*\(\.\u\(\w\|'\)*\)*\>" contains=@smlAllErrs,smlComment
+syn region   smlNone matchgroup=smlKeyword start="\<open\>" matchgroup=smlModule end="\<\w\(\w\|'\)*\(\.\w\(\w\|'\)*\)*\>" contains=@smlAllErrs,smlComment
 
 " "structure" - somewhat complicated stuff ;-)
 syn region   smlModule matchgroup=smlKeyword start="\<\(structure\|functor\)\>" matchgroup=smlModule end="\<\u\(\w\|'\)*\>" contains=@smlAllErrs,smlComment skipwhite skipempty nextgroup=smlPreDef
@@ -139,7 +139,7 @@ syn match    smlModPath      "\u\(\w\|'\)*\."he=e-1
 
 syn match    smlCharacter    +#"\\""\|#"."\|#"\\\d\d\d"+
 syn match    smlCharErr      +#"\\\d\d"\|#"\\\d"+
-syn region   smlString       start=+"+ skip=+\\\\\|\\"+ end=+"+
+syn region   smlString       start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell
 
 syn match    smlFunDef       "=>"
 syn match    smlRefAssign    ":="
@@ -152,9 +152,9 @@ syn match    smlKeyChar      ";"
 syn match    smlKeyChar      "\*"
 syn match    smlKeyChar      "="
 
-syn match    smlNumber	      "\<-\=\d\+\>"
-syn match    smlNumber	      "\<-\=0[x|X]\x\+\>"
-syn match    smlReal	      "\<-\=\d\+\.\d*\([eE][-+]\=\d\+\)\=[fl]\=\>"
+syn match    smlNumber        "\<-\=\d\+\>"
+syn match    smlNumber        "\<-\=0[x|X]\x\+\>"
+syn match    smlReal          "\<-\=\d\+\.\d*\([eE][-+]\=\d\+\)\=[fl]\=\>"
 
 " Synchronization
 syn sync minlines=20
@@ -168,62 +168,52 @@ syn sync match smlSigSync     grouphere  smlSig     "\<sig\>"
 syn sync match smlSigSync     groupthere smlSig     "\<end\>"
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_sml_syntax_inits")
-  if version < 508
-    let did_sml_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink smlBraceErr	 Error
-  HiLink smlBrackErr	 Error
-  HiLink smlParenErr	 Error
+hi def link smlBraceErr     Error
+hi def link smlBrackErr     Error
+hi def link smlParenErr     Error
 
-  HiLink smlCommentErr	 Error
+hi def link smlCommentErr   Error
 
-  HiLink smlEndErr	 Error
-  HiLink smlThenErr	 Error
+hi def link smlEndErr       Error
+hi def link smlThenErr      Error
 
-  HiLink smlCharErr	 Error
+hi def link smlCharErr      Error
 
-  HiLink smlComment	 Comment
+hi def link smlComment      Comment
 
-  HiLink smlModPath	 Include
-  HiLink smlModule	 Include
-  HiLink smlModParam1	 Include
-  HiLink smlModType	 Include
-  HiLink smlMPRestr3	 Include
-  HiLink smlFullMod	 Include
-  HiLink smlModTypeRestr Include
-  HiLink smlWith	 Include
-  HiLink smlMTDef	 Include
+hi def link smlModPath      Include
+hi def link smlModule       Include
+hi def link smlModParam1    Include
+hi def link smlModType      Include
+hi def link smlMPRestr3     Include
+hi def link smlFullMod      Include
+hi def link smlModTypeRestr Include
+hi def link smlWith         Include
+hi def link smlMTDef        Include
 
-  HiLink smlConstructor  Constant
+hi def link smlConstructor  Constant
 
-  HiLink smlModPreRHS	 Keyword
-  HiLink smlMPRestr2	 Keyword
-  HiLink smlKeyword	 Keyword
-  HiLink smlFunDef	 Keyword
-  HiLink smlRefAssign	 Keyword
-  HiLink smlKeyChar	 Keyword
-  HiLink smlAnyVar	 Keyword
-  HiLink smlTopStop	 Keyword
-  HiLink smlOperator	 Keyword
+hi def link smlModPreRHS    Keyword
+hi def link smlMPRestr2     Keyword
+hi def link smlKeyword      Keyword
+hi def link smlFunDef       Keyword
+hi def link smlRefAssign    Keyword
+hi def link smlKeyChar      Keyword
+hi def link smlAnyVar       Keyword
+hi def link smlTopStop      Keyword
+hi def link smlOperator     Keyword
 
-  HiLink smlBoolean	 Boolean
-  HiLink smlCharacter	 Character
-  HiLink smlNumber	 Number
-  HiLink smlReal	 Float
-  HiLink smlString	 String
-  HiLink smlType	 Type
-  HiLink smlTodo	 Todo
-  HiLink smlEncl	 Keyword
+hi def link smlBoolean      Boolean
+hi def link smlCharacter    Character
+hi def link smlNumber       Number
+hi def link smlReal         Float
+hi def link smlString       String
+hi def link smlType         Type
+hi def link smlTodo         Todo
+hi def link smlEncl         Keyword
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "sml"
 

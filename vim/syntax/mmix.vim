@@ -1,16 +1,16 @@
 " Vim syntax file
 " Language:	MMIX
-" Maintainer:	Dirk Hüsken, <huesken@informatik.uni-tuebingen.de>
-" Last Change:	Wed Apr 24 01:18:52 CEST 2002
+" Maintainer:	Dirk HÃ¼sken, <huesken@informatik.uni-tuebingen.de>
+" Last Change:	2012 Jun 01
+" 		(Dominique Pelle added @Spell)
 " Filenames:	*.mms
 " URL: http://homepages.uni-tuebingen.de/student/dirk.huesken/vim/syntax/mmix.vim
 
 " Limitations:	Comments must start with either % or //
-"		(preferrably %, Knuth-Style)
+"		(preferably %, Knuth-Style)
 
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
@@ -23,7 +23,7 @@ syn keyword mmixType	byte wyde tetra octa
 syn match decNumber		"[0-9]*"
 syn match octNumber		"0[0-7][0-7]\+"
 syn match hexNumber		"#[0-9a-fA-F]\+"
-syn region mmixString		start=+"+ skip=+\\"+ end=+"+
+syn region mmixString		start=+"+ skip=+\\"+ end=+"+ contains=@Spell
 syn match mmixChar		"'.'"
 
 " ...and more special MMIX stuff
@@ -40,9 +40,9 @@ syn match mmixLabel		"[0-9][HBF]"
 syn keyword mmixPseudo		is loc greg
 
 " comments
-syn match mmixComment		"%.*"
-syn match mmixComment		"//.*"
-syn match mmixComment		"^\*.*"
+syn match mmixComment		"%.*" contains=@Spell
+syn match mmixComment		"//.*" contains=@Spell
+syn match mmixComment		"^\*.*" contains=@Spell
 
 
 syn keyword mmixOpcode	trap fcmp fun feql fadd fix fsub fixu
@@ -118,44 +118,34 @@ syn match mmixRegister		"r[A-Z]"
 syn keyword mmixRegister	rBB rTT rWW rXX rYY rZZ
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_mmix_syntax_inits")
-  if version < 508
-    let did_mmix_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  " The default methods for highlighting.  Can be overridden later
-  HiLink mmixAt		Type
-  HiLink mmixPseudo	Type
-  HiLink mmixRegister	Special
-  HiLink mmixSegments	Type
+" The default methods for highlighting.  Can be overridden later
+hi def link mmixAt		Type
+hi def link mmixPseudo	Type
+hi def link mmixRegister	Special
+hi def link mmixSegments	Type
 
-  HiLink mmixLabel	Special
-  HiLink mmixComment	Comment
-  HiLink mmixOpcode	Keyword
+hi def link mmixLabel	Special
+hi def link mmixComment	Comment
+hi def link mmixOpcode	Keyword
 
-  HiLink hexNumber	Number
-  HiLink decNumber	Number
-  HiLink octNumber	Number
+hi def link hexNumber	Number
+hi def link decNumber	Number
+hi def link octNumber	Number
 
-  HiLink mmixString	String
-  HiLink mmixChar	String
+hi def link mmixString	String
+hi def link mmixChar	String
 
-  HiLink mmixType	Type
-  HiLink mmixIdentifier	Normal
-  HiLink mmixSpecialComment Comment
+hi def link mmixType	Type
+hi def link mmixIdentifier	Normal
+hi def link mmixSpecialComment Comment
 
-  " My default color overrides:
-  " hi mmixSpecialComment ctermfg=red
-  "hi mmixLabel ctermfg=lightcyan
-  " hi mmixType ctermbg=black ctermfg=brown
+" My default color overrides:
+" hi mmixSpecialComment ctermfg=red
+"hi mmixLabel ctermfg=lightcyan
+" hi mmixType ctermbg=black ctermfg=brown
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "mmix"
 

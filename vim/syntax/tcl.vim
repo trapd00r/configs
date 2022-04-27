@@ -6,55 +6,48 @@
 "		(previously Matt Neumann <mattneu@purpleturtle.com>)
 "		(previously Allan Kelly <allan@fruitloaf.co.uk>)
 " Original:	Robin Becker <robin@jessikat.demon.co.uk>
-" Last Change:	2009/04/06 02:38:36
-" Version:	1.13
-" URL:		http://real.metasyntax.net:2357/cvs/cvsweb.cgi/Config/vim/syntax/tcl.vim
-"
-" Keywords TODO: click anchor
+" Last Change:	2021 Nov 16
+" Version:	1.14 plus improvements from PR #8948
+" URL:		(removed, no longer worked)
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
-" Basic Tcl commands: http://www.tcl.tk/man/tcl8.5/TclCmd/contents.htm
-syn keyword tclCommand		after append apply array bgerror binary catch cd chan clock
-syn keyword tclCommand		close concat dde dict encoding eof error eval exec exit
-syn keyword tclCommand		expr fblocked fconfigure fcopy file fileevent filename flush
-syn keyword tclCommand		format gets glob global history incr info interp join
-syn keyword tclCommand		lappend lassign lindex linsert list llength load lrange lrepeat
-syn keyword tclCommand		lreplace lreverse lsearch lset lsort memory namespace open package
-syn keyword tclCommand		pid proc puts pwd read regexp registry regsub rename return
-syn keyword tclCommand		scan seek set socket source split string subst tell time
-syn keyword tclCommand		trace unknown unload unset update uplevel upvar variable vwait
+" Basic Tcl commands: http://www.tcl.tk/man/tcl8.6/TclCmd/contents.htm
+syn keyword tclCommand		after append array bgerror binary cd chan clock close concat
+syn keyword tclCommand		dde dict encoding eof error eval exec exit expr fblocked
+syn keyword tclCommand		fconfigure fcopy file fileevent flush format gets glob
+syn keyword tclCommand		global history http incr info interp join lappend lassign
+syn keyword tclCommand		lindex linsert list llength lmap load lrange lrepeat
+syn keyword tclCommand		lreplace lreverse lsearch lset lsort memory my namespace
+syn keyword tclCommand		next nextto open package pid puts pwd read refchan regexp
+syn keyword tclCommand		registry regsub rename scan seek self set socket source
+syn keyword tclCommand		split string subst tell time trace unknown unload unset
+syn keyword tclCommand		update uplevel upvar variable vwait
 
-" The 'Tcl Standard Library' commands: http://www.tcl.tk/man/tcl8.5/TclCmd/library.htm
-syn keyword tclCommand		auto_execok auto_import auto_load auto_mkindex auto_mkindex_old
-syn keyword tclCommand		auto_qualify auto_reset parray tcl_endOfWord tcl_findLibrary
-syn keyword tclCommand		tcl_startOfNextWord tcl_startOfPreviousWord tcl_wordBreakAfter
-syn keyword tclCommand		tcl_wordBreakBefore
+" The 'Tcl Standard Library' commands: http://www.tcl.tk/man/tcl8.6/TclCmd/library.htm
+syn keyword tclCommand		auto_execok auto_import auto_load auto_mkindex auto_reset
+syn keyword tclCommand		auto_qualify tcl_findLibrary parray tcl_endOfWord
+syn keyword tclCommand		tcl_startOfNextWord tcl_startOfPreviousWord
+syn keyword tclCommand		tcl_wordBreakAfter tcl_wordBreakBefore
 
-" Commands that were added in Tcl 8.6
-
-syn keyword tclCommand		my oo::copy oo::define oo::objdefine self
-syn keyword tclCommand		coroutine tailcall throw yield
-
-" Global variables used by Tcl: http://www.tcl.tk/man/tcl8.5/TclCmd/tclvars.htm
-syn keyword tclVars		env errorCode errorInfo tcl_library tcl_patchLevel tcl_pkgPath
-syn keyword tclVars		tcl_platform tcl_precision tcl_rcFileName tcl_traceCompile
-syn keyword tclVars		tcl_traceExec tcl_wordchars tcl_nonwordchars tcl_version argc argv
-syn keyword tclVars		argv0 tcl_interactive geometry
+" Global variables used by Tcl: http://www.tcl.tk/man/tcl8.6/TclCmd/tclvars.htm
+syn keyword tclVars		auto_path env errorCode errorInfo tcl_library tcl_patchLevel
+syn keyword tclVars		tcl_pkgPath tcl_platform tcl_precision tcl_rcFileName
+syn keyword tclVars		tcl_traceCompile tcl_traceExec tcl_wordchars
+syn keyword tclVars		tcl_nonwordchars tcl_version argc argv argv0 tcl_interactive
 
 " Strings which expr accepts as boolean values, aside from zero / non-zero.
 syn keyword tclBoolean		true false on off yes no
 
-syn keyword tclLabel		case default
+syn keyword tclProcCommand	apply coroutine proc return tailcall yield yieldto
 syn keyword tclConditional	if then else elseif switch
-syn keyword tclConditional	try finally
+syn keyword tclConditional	catch try throw finally
+syn keyword tclLabel		default
 syn keyword tclRepeat		while for foreach break continue
+
 syn keyword tcltkSwitch	contained	insert create polygon fill outline tag
 
 " WIDGETS
@@ -90,6 +83,11 @@ syn keyword tcltkWidgetSwitch contained delete names types create
 syn match tclVarRef "$\(\(::\)\?\([[:alnum:]_]*::\)*\)\a[[:alnum:]_]*"
 	" ${...} may contain any character except '}'
 syn match tclVarRef "${[^}]*}"
+
+" Used to facilitate hack to utilize string background for certain color
+" schemes, e.g. inkpot and lettuce.
+syn cluster tclVarRefC add=tclVarRef
+syn cluster tclSpecialC add=tclSpecial
 
 " The syntactic unquote-splicing replacement for [expand].
 syn match tclExpand '\s{\*}'
@@ -170,7 +168,7 @@ syn region tcltkCommand matchgroup=tcltkCommandColor start="\<format\>" matchgro
 
 " PACK
 " commands associated with pack
-syn keyword tcltkPackSwitch	contained	forget info propogate slaves
+syn keyword tcltkPackSwitch	contained	forget info propagate slaves
 syn keyword tcltkPackConfSwitch	contained	after anchor before expand fill in ipadx ipady padx pady side
 syn region tcltkCommand matchgroup=tcltkCommandColor start="\<pack\>" matchgroup=NONE skip="^\s*$" end="]\|[^\\]*\s*$"he=e-1  contains=tclLineContinue,tcltkPackSwitch,tcltkPackConf,tcltkPackConfSwitch,tclNumber,tclVarRef,tclString,tcltkCommand keepend
 
@@ -194,18 +192,18 @@ syn region tcltkCommand matchgroup=tcltkCommandColor start="\<lsort\>" matchgrou
 syn keyword tclTodo contained	TODO
 
 " Sequences which are backslash-escaped: http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm#M16
-" Octal, hexadecimal, unicode codepoints, and the classics.
+" Octal, hexadecimal, Unicode codepoints, and the classics.
 " Tcl takes as many valid characters in a row as it can, so \xAZ in a string is newline followed by 'Z'.
-syn match   tclSpecial contained '\\\([0-7]\{1,3}\|x\x\{1,2}\|u\x\{1,4}\|[abfnrtv]\)'
+syn match   tclSpecial contained '\\\(\o\{1,3}\|x\x\{1,2}\|u\x\{1,4}\|[abfnrtv]\)'
 syn match   tclSpecial contained '\\[\[\]\{\}\"\$]'
 
 " Command appearing inside another command or inside a string.
 syn region tclEmbeddedStatement	start='\[' end='\]' contained contains=tclCommand,tclNumber,tclLineContinue,tclString,tclVarRef,tclEmbeddedStatement
 " A string needs the skip argument as it may legitimately contain \".
 " Match at start of line
-syn region  tclString		  start=+^"+ end=+"+ contains=tclSpecial skip=+\\\\\|\\"+
+syn region  tclString		  start=+^"+ end=+"+ contains=@tclSpecialC,@Spell skip=+\\\\\|\\"+
 "Match all other legal strings.
-syn region  tclString		  start=+[^\\]"+ms=s+1  end=+"+ contains=tclSpecial,tclVarRef,tclEmbeddedStatement skip=+\\\\\|\\"+
+syn region  tclString		  start=+[^\\]"+ms=s+1  end=+"+ contains=@tclSpecialC,@tclVarRefC,tclEmbeddedStatement,@Spell skip=+\\\\\|\\"+
 
 " Line continuation is backslash immediately followed by newline.
 syn match tclLineContinue '\\$'
@@ -224,59 +222,53 @@ syn match  tclNumber		"\.\d\+\(e[-+]\=\d\+\)\=[fl]\=\>"
 "floating point number, without dot, with exponent
 syn match  tclNumber		"\<\d\+e[-+]\=\d\+[fl]\=\>"
 "hex number
-syn match  tclNumber		"0x[0-9a-f]\+\(u\=l\=\|lu\)\>"
-"syn match  tclIdentifier	"\<[a-z_][a-z0-9_]*\>"
+syn match  tclNumber		"0x\x\+\(u\=l\=\|lu\)\>"
+"syn match  tclIdentifier	"\<\h\w*\>"
 syn case match
 
-syn region  tclComment		start="^\s*\#" skip="\\$" end="$" contains=tclTodo
-syn region  tclComment		start=/;\s*\#/hs=s+1 skip="\\$" end="$" contains=tclTodo
+syn region  tclComment		start="^\s*\#" skip="\\$" end="$" contains=tclTodo,@Spell
+syn region  tclComment		start=/;\s*\#/hs=s+1 skip="\\$" end="$" contains=tclTodo,@Spell
+
+"syn match tclComment /^\s*\#.*$/
+"syn match tclComment /;\s*\#.*$/hs=s+1
 
 "syn sync ccomment tclComment
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_tcl_syntax_inits")
-  if version < 508
-    let did_tcl_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink tcltkSwitch		Special
-  HiLink tclExpand		Special
-  HiLink tclLabel		Label
-  HiLink tclConditional		Conditional
-  HiLink tclRepeat		Repeat
-  HiLink tclNumber		Number
-  HiLink tclError		Error
-  HiLink tclCommand		Statement
-  HiLink tclString		String
-  HiLink tclComment		Comment
-  HiLink tclSpecial		Special
-  HiLink tclTodo		Todo
-  " Below here are the commands and their options.
-  HiLink tcltkCommandColor	Statement
-  HiLink tcltkWidgetColor	Structure
-  HiLink tclLineContinue	WarningMsg
+hi def link tcltkSwitch		Special
+hi def link tclExpand		Special
+hi def link tclLabel		Label
+hi def link tclConditional		Conditional
+hi def link tclRepeat		Repeat
+hi def link tclNumber		Number
+hi def link tclError		Error
+hi def link tclCommand		Statement
+hi def link tclProcCommand		Type
+hi def link tclString		String
+hi def link tclComment		Comment
+hi def link tclSpecial		Special
+hi def link tclTodo		Todo
+" Below here are the commands and their options.
+hi def link tcltkCommandColor	Statement
+hi def link tcltkWidgetColor	Structure
+hi def link tclLineContinue	WarningMsg
 if exists('g:tcl_warn_continuation')
-  HiLink tclNotLineContinue	ErrorMsg
+hi def link tclNotLineContinue	ErrorMsg
 endif
-  HiLink tcltkStringSwitch	Special
-  HiLink tcltkArraySwitch	Special
-  HiLink tcltkLsortSwitch	Special
-  HiLink tcltkPackSwitch	Special
-  HiLink tcltkPackConfSwitch	Special
-  HiLink tcltkMaths		Special
-  HiLink tcltkNamespaceSwitch	Special
-  HiLink tcltkWidgetSwitch	Special
-  HiLink tcltkPackConfColor	Identifier
-  HiLink tclVarRef		Identifier
+hi def link tcltkStringSwitch	Special
+hi def link tcltkArraySwitch	Special
+hi def link tcltkLsortSwitch	Special
+hi def link tcltkPackSwitch	Special
+hi def link tcltkPackConfSwitch	Special
+hi def link tcltkMaths		Special
+hi def link tcltkNamespaceSwitch	Special
+hi def link tcltkWidgetSwitch	Special
+hi def link tcltkPackConfColor	Identifier
+hi def link tclVarRef		Identifier
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "tcl"
 
-" vim: ts=8 noet
+" vim: ts=8 noet nolist

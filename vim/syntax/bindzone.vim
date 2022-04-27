@@ -1,19 +1,16 @@
 " Vim syntax file
-" Language:     BIND zone files (RFC1035)
+" Language:     BIND zone files (RFC 1035)
 " Maintainer:   Julian Mehnle <julian@mehnle.net>
 " URL:          http://www.mehnle.net/source/odds+ends/vim/syntax/
-" Last Change:  Thu 2006-04-20 12:30:45 UTC
+" Last Change:  Thu 2011-07-16 20:42:00 UTC
 " 
 " Based on an earlier version by Вячеслав Горбанев (Slava Gorbanev), with
 " heavy modifications.
 " 
-" $Id: bindzone.vim,v 1.2 2006/04/20 22:06:21 vimboss Exp $
+" $Id: bindzone.vim 12 2011-07-16 21:09:57Z julian $
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
@@ -23,7 +20,7 @@ syn case match
 syn region      zoneRRecord     start=/^/ end=/$/ contains=zoneOwnerName,zoneSpecial,zoneTTL,zoneClass,zoneRRType,zoneComment,zoneUnknown
 
 syn match       zoneDirective   /^\$ORIGIN\s\+/   nextgroup=zoneOrigin,zoneUnknown
-syn match       zoneDirective   /^\$TTL\s\+/      nextgroup=zoneNumber,zoneUnknown
+syn match       zoneDirective   /^\$TTL\s\+/      nextgroup=zoneTTL,zoneUnknown
 syn match       zoneDirective   /^\$INCLUDE\s\+/  nextgroup=zoneText,zoneUnknown
 syn match       zoneDirective   /^\$GENERATE\s/
 
@@ -34,9 +31,9 @@ syn match       zoneOrigin      contained  /[^[:space:]!"#$%&'()*+,\/:;<=>?@[\]\
 syn match       zoneDomain      contained  /[^[:space:]!"#$%&'()*+,\/:;<=>?@[\]\^`{|}~]\+\(\s\|;\|$\)\@=/
 
 syn match       zoneSpecial     contained /^[@*.]\s/
-syn match       zoneTTL         contained /\<\d[0-9HhWwDd]*\>/  nextgroup=zoneClass,zoneRRType skipwhite
-syn keyword     zoneClass       contained IN CHAOS              nextgroup=zoneRRType,zoneTTL   skipwhite
-syn keyword     zoneRRType      contained A AAAA CNAME HINFO MX NS PTR SOA SRV TXT nextgroup=zoneRData skipwhite
+syn match       zoneTTL         contained /\s\@<=\d[0-9WwDdHhMmSs]*\(\s\|$\)\@=/ nextgroup=zoneClass,zoneRRType skipwhite
+syn keyword     zoneClass       contained IN CHAOS CH HS HESIOD nextgroup=zoneRRType,zoneTTL skipwhite
+syn keyword     zoneRRType      contained A AAAA CERT CNAME DNAME DNSKEY DS HINFO LOC MX NAPTR NS NSEC NSEC3 NSEC3PARAM PTR RP RRSIG SSHFP SOA SPF SRV TLSA TXT nextgroup=zoneRData skipwhite
 syn match       zoneRData       contained /[^;]*/ contains=zoneDomain,zoneIPAddr,zoneIP6Addr,zoneText,zoneNumber,zoneParen,zoneUnknown
 
 syn match       zoneIPAddr      contained /\<[0-9]\{1,3}\(\.[0-9]\{1,3}\)\{,3}\>/
@@ -66,44 +63,34 @@ syn match       zoneNumber      contained /\<[0-9]\+\(\s\|;\|$\)\@=/
 syn match       zoneSerial      contained /\<[0-9]\{9,10}\(\s\|;\|$\)\@=/
 
 syn match       zoneErrParen    /)/
-syn region      zoneParen       contained start="(" end=")" contains=zoneSerial,zoneNumber,zoneComment
+syn region      zoneParen       contained start="(" end=")" contains=zoneSerial,zoneTTL,zoneNumber,zoneComment
 syn match       zoneComment     /;.*/
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_bind_zone_syn_inits")
-  if version < 508
-    let did_bind_zone_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink zoneDirective    Macro
-  
-  HiLink zoneUnknown      Error
-  
-  HiLink zoneOrigin       Statement
-  HiLink zoneOwnerName    Statement
-  HiLink zoneDomain       Identifier
-  
-  HiLink zoneSpecial      Special
-  HiLink zoneTTL          Constant
-  HiLink zoneClass        Include
-  HiLink zoneRRType       Type
-  
-  HiLink zoneIPAddr       Number
-  HiLink zoneIP6Addr      Number
-  HiLink zoneText         String
-  HiLink zoneNumber       Number
-  HiLink zoneSerial       Special
-  
-  HiLink zoneErrParen     Error
-  HiLink zoneComment      Comment
+hi def link zoneDirective    Macro
 
-  delcommand HiLink
-endif
+hi def link zoneUnknown      Error
+
+hi def link zoneOrigin       Statement
+hi def link zoneOwnerName    Statement
+hi def link zoneDomain       Identifier
+
+hi def link zoneSpecial      Special
+hi def link zoneTTL          Constant
+hi def link zoneClass        Include
+hi def link zoneRRType       Type
+
+hi def link zoneIPAddr       Number
+hi def link zoneIP6Addr      Number
+hi def link zoneText         String
+hi def link zoneNumber       Number
+hi def link zoneSerial       Special
+
+hi def link zoneErrParen     Error
+hi def link zoneComment      Comment
+
 
 let b:current_syntax = "bindzone"
 

@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:     Speedup, plant simulator from AspenTech
 " Maintainer:   Stefan.Schwarzer <s.schwarzer@ndh.net>
-" URL:			http://www.ndh.net/home/sschwarzer/download/spup.vim
-" Last Change:  2003 May 11
+" URL:		http://www.ndh.net/home/sschwarzer/download/spup.vim
+" Last Change:  2012 Feb 03 by Thilo Six
 " Filename:     spup.vim
 
 " Bugs
@@ -17,15 +17,15 @@
 " If you encounter problems or have questions or suggestions, mail me
 
 " Remove old syntax stuff
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-    syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
     finish
 endif
 
-" don't hightlight several keywords like subsections
+let s:cpo_save = &cpo
+set cpo&vim
+
+" don't highlight several keywords like subsections
 "let strict_subsections = 1
 
 " highlight types usually found in DECLARE section
@@ -35,7 +35,7 @@ endif
 
 " one line comment syntax (# comments)
 " 1. allow appended code after comment, do not complain
-" 2. show code beginnig with the second # as an error
+" 2. show code beginning with the second # as an error
 " 3. show whole lines with more than one # as an error
 if !exists("oneline_comments")
     let oneline_comments = 2
@@ -43,7 +43,7 @@ endif
 
 " Speedup SECTION regions
 syn case ignore
-syn region spupCdi		  matchgroup=spupSection start="^CDI"		 end="^\*\*\*\*" contains=spupCdiSubs,@spupOrdinary
+syn region spupCdi	  matchgroup=spupSection start="^CDI"	     end="^\*\*\*\*" contains=spupCdiSubs,@spupOrdinary
 syn region spupConditions matchgroup=spupSection start="^CONDITIONS" end="^\*\*\*\*" contains=spupConditionsSubs,@spupOrdinary,spupConditional,spupOperator,spupCode
 syn region spupDeclare    matchgroup=spupSection start="^DECLARE"    end="^\*\*\*\*" contains=spupDeclareSubs,@spupOrdinary,spupTypes,spupCode
 syn region spupEstimation matchgroup=spupSection start="^ESTIMATION" end="^\*\*\*\*" contains=spupEstimationSubs,@spupOrdinary
@@ -63,7 +63,7 @@ syn region spupTitle      matchgroup=spupSection start="^TITLE"      end="^\*\*\
 syn region spupUnit       matchgroup=spupSection start="^UNIT"       end="^\*\*\*\*" contains=spupUnitSubs,@spupOrdinary
 
 " Subsections
-syn keyword spupCdiSubs		   INPUT FREE OUTPUT LINEARTIME MINNONZERO CALCULATE FILES SCALING contained
+syn keyword spupCdiSubs	       INPUT FREE OUTPUT LINEARTIME MINNONZERO CALCULATE FILES SCALING contained
 syn keyword spupDeclareSubs    TYPE STREAM contained
 syn keyword spupEstimationSubs ESTIMATE SSEXP DYNEXP RESULT contained
 syn keyword spupExternalSubs   TRANSMIT RECEIVE contained
@@ -177,13 +177,13 @@ syn cluster spupOrdinary  contains=spupNumber,spupIdentifier,spupSymbol
 syn cluster spupOrdinary  add=spupError,spupString,spupComment
 syn cluster spupTextproc  contains=spupTextprocGeneric,spupTextprocError
 
-" define syncronizing; especially OPERATION sections can become very large
+" define synchronizing; especially OPERATION sections can become very large
 syn sync clear
 syn sync minlines=100
 syn sync maxlines=500
 
 syn sync match spupSyncOperation  grouphere spupOperation  "^OPERATION"
-syn sync match spupSyncCdi		  grouphere spupCdi		   "^CDI"
+syn sync match spupSyncCdi	  grouphere spupCdi	   "^CDI"
 syn sync match spupSyncConditions grouphere spupConditions "^CONDITIONS"
 syn sync match spupSyncDeclare    grouphere spupDeclare    "^DECLARE"
 syn sync match spupSyncEstimation grouphere spupEstimation "^ESTIMATION"
@@ -203,75 +203,67 @@ syn sync match spupSyncTitle      grouphere spupTitle      "^TITLE"
 syn sync match spupSyncUnit       grouphere spupUnit       "^UNIT"
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_spup_syn_inits")
-    if version < 508
-		let did_spup_syn_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-    endif
+" Only when an item doesn't have highlighting yet
 
-	HiLink spupCdi			spupSection
-	HiLink spupConditions	spupSection
-	HiLink spupDeclare		spupSection
-	HiLink spupEstimation	spupSection
-	HiLink spupExternal		spupSection
-	HiLink spupFlowsheet	spupSection
-	HiLink spupFunction		spupSection
-	HiLink spupGlobal		spupSection
-	HiLink spupHomotopy		spupSection
-	HiLink spupMacro		spupSection
-	HiLink spupModel		spupSection
-	HiLink spupOperation	spupSection
-	HiLink spupOptions		spupSection
-	HiLink spupProcedure	spupSection
-	HiLink spupProfiles		spupSection
-	HiLink spupReport		spupSection
-	HiLink spupTitle		spupConstant  " this is correct, truly ;)
-	HiLink spupUnit			spupSection
+hi def link spupCdi	    spupSection
+hi def link spupConditions   spupSection
+hi def link spupDeclare	    spupSection
+hi def link spupEstimation   spupSection
+hi def link spupExternal	    spupSection
+hi def link spupFlowsheet    spupSection
+hi def link spupFunction	    spupSection
+hi def link spupGlobal	    spupSection
+hi def link spupHomotopy	    spupSection
+hi def link spupMacro	    spupSection
+hi def link spupModel	    spupSection
+hi def link spupOperation    spupSection
+hi def link spupOptions	    spupSection
+hi def link spupProcedure    spupSection
+hi def link spupProfiles	    spupSection
+hi def link spupReport	    spupSection
+hi def link spupTitle	    spupConstant  " this is correct, truly ;)
+hi def link spupUnit	    spupSection
 
-	HiLink spupCdiSubs		  spupSubs
-	HiLink spupConditionsSubs spupSubs
-	HiLink spupDeclareSubs	  spupSubs
-	HiLink spupEstimationSubs spupSubs
-	HiLink spupExternalSubs   spupSubs
-	HiLink spupFlowsheetSubs  spupSubs
-	HiLink spupFunctionSubs   spupSubs
-	HiLink spupHomotopySubs   spupSubs
-	HiLink spupMacroSubs	  spupSubs
-	HiLink spupModelSubs	  spupSubs
-	HiLink spupOperationSubs  spupSubs
-	HiLink spupOptionsSubs	  spupSubs
-	HiLink spupProcedureSubs  spupSubs
-	HiLink spupReportSubs	  spupSubs
-	HiLink spupUnitSubs		  spupSubs
+hi def link spupCdiSubs	      spupSubs
+hi def link spupConditionsSubs spupSubs
+hi def link spupDeclareSubs    spupSubs
+hi def link spupEstimationSubs spupSubs
+hi def link spupExternalSubs   spupSubs
+hi def link spupFlowsheetSubs  spupSubs
+hi def link spupFunctionSubs   spupSubs
+hi def link spupHomotopySubs   spupSubs
+hi def link spupMacroSubs      spupSubs
+hi def link spupModelSubs      spupSubs
+hi def link spupOperationSubs  spupSubs
+hi def link spupOptionsSubs    spupSubs
+hi def link spupProcedureSubs  spupSubs
+hi def link spupReportSubs     spupSubs
+hi def link spupUnitSubs	      spupSubs
 
-	HiLink spupCode			   Normal
-	HiLink spupComment		   Comment
-	HiLink spupComment2		   spupComment
-	HiLink spupConditional	   Statement
-	HiLink spupConstant		   Constant
-	HiLink spupError		   Error
-	HiLink spupHelp			   Normal
-	HiLink spupIdentifier	   Identifier
-	HiLink spupNumber		   Constant
-	HiLink spupOperator		   Special
-	HiLink spupOpenBrace	   spupError
-	HiLink spupSection		   Statement
-	HiLink spupSpecial		   spupTextprocGeneric
-	HiLink spupStreams		   Type
-	HiLink spupString		   Constant
-	HiLink spupSubs			   Statement
-	HiLink spupSymbol		   Special
-	HiLink spupTextprocError   Normal
-	HiLink spupTextprocGeneric PreProc
-	HiLink spupTypes		   Type
+hi def link spupCode	       Normal
+hi def link spupComment	       Comment
+hi def link spupComment2	       spupComment
+hi def link spupConditional     Statement
+hi def link spupConstant	       Constant
+hi def link spupError	       Error
+hi def link spupHelp	       Normal
+hi def link spupIdentifier      Identifier
+hi def link spupNumber	       Constant
+hi def link spupOperator	       Special
+hi def link spupOpenBrace       spupError
+hi def link spupSection	       Statement
+hi def link spupSpecial	       spupTextprocGeneric
+hi def link spupStreams	       Type
+hi def link spupString	       Constant
+hi def link spupSubs	       Statement
+hi def link spupSymbol	       Special
+hi def link spupTextprocError   Normal
+hi def link spupTextprocGeneric PreProc
+hi def link spupTypes	       Type
 
-    delcommand HiLink
-endif
 
 let b:current_syntax = "spup"
 
-" vim:ts=4
+let &cpo = s:cpo_save
+unlet s:cpo_save
+" vim:ts=8

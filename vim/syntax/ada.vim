@@ -32,6 +32,8 @@
 if exists("b:current_syntax") || version < 700
     finish
 endif
+let s:keepcpo= &cpo
+set cpo&vim
 
 let b:current_syntax = "ada"
 
@@ -157,7 +159,7 @@ endif
 
 " Section: end {{{1
 " Unless special ("end loop", "end if", etc.), "end" marks the end of a
-" begin, package, task etc. Assiging it to adaEnd.
+" begin, package, task etc. Assigning it to adaEnd.
 syntax match    adaEnd	/\<end\>/
 
 syntax keyword  adaPreproc		 pragma
@@ -351,6 +353,9 @@ endif
 " We don't need to look backwards to highlight correctly;
 " this speeds things up greatly.
 syntax sync minlines=1 maxlines=1
+
+let &cpo = s:keepcpo
+unlet s:keepcpo
 
 finish " 1}}}
 

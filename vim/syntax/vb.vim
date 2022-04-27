@@ -1,9 +1,11 @@
 " Vim syntax file
-" Language:	Visual Basic
-" Maintainer:	Tim Chase <vb.vim@tim.thechases.com>
-" Former Maintainer:	Robert M. Cortopassi <cortopar@mindspring.com>
-"	(tried multiple times to contact, but email bounced)
+" Language:     Visual Basic
+" Maintainer:   Doug Kearns <dougkearns@gmail.com>
+" Former Maintainer:    Tim Chase <vb.vim@tim.thechases.com>
+" Former Maintainer:    Robert M. Cortopassi <cortopar@mindspring.com>
+"       (tried multiple times to contact, but email bounced)
 " Last Change:
+"   2021 Nov 26  Incorporated additions from Doug Kearns
 "   2005 May 25  Synched with work by Thomas Barthel
 "   2004 May 30  Added a few keywords
 
@@ -11,12 +13,9 @@
 " VIM and VIM-DEV mailing lists.  It is by no means complete.
 " Send comments, suggestions and requests to the maintainer.
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-	syntax clear
-elseif exists("b:current_syntax")
-	finish
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
+        finish
 endif
 
 " VB is case insensitive
@@ -223,7 +222,7 @@ syn keyword vbStatement Explicit FileCopy For ForEach Function Get GoSub
 syn keyword vbStatement GoTo Gosub Implements Kill LSet Let Lib LineInput
 syn keyword vbStatement Load Lock Loop Mid MkDir Name Next On OnError Open
 syn keyword vbStatement Option Preserve Private Property Public Put RSet
-syn keyword vbStatement RaiseEvent Randomize ReDim Redim Rem Reset Resume
+syn keyword vbStatement RaiseEvent Randomize ReDim Redim Reset Resume
 syn keyword vbStatement Return RmDir SavePicture SaveSetting Seek SendKeys
 syn keyword vbStatement Sendkeys Set SetAttr Static Step Stop Sub Time
 syn keyword vbStatement Type Unload Unlock Until Wend While Width With
@@ -236,7 +235,7 @@ syn keyword vbKeyword Public PublicNotCreateable OnNewProcessSingleUse
 syn keyword vbKeyword InSameProcessMultiUse GlobalMultiUse Resume Seek
 syn keyword vbKeyword Set Static Step String Time WithEvents
 
-syn keyword vbTodo contained	TODO
+syn keyword vbTodo contained    TODO
 
 "Datatypes
 syn keyword vbTypes Boolean Byte Currency Date Decimal Double Empty
@@ -322,56 +321,54 @@ syn match vbNumber "\<\d\+\>"
 syn match vbNumber "\<\d\+\.\d*\>"
 "floating point number, starting with a dot
 syn match vbNumber "\.\d\+\>"
-"syn match  vbNumber		"{[[:xdigit:]-]\+}\|&[hH][[:xdigit:]]\+&"
-"syn match  vbNumber		":[[:xdigit:]]\+"
-"syn match  vbNumber		"[-+]\=\<\d\+\>"
-syn match  vbFloat		"[-+]\=\<\d\+[eE][\-+]\=\d\+"
-syn match  vbFloat		"[-+]\=\<\d\+\.\d*\([eE][\-+]\=\d\+\)\="
-syn match  vbFloat		"[-+]\=\<\.\d\+\([eE][\-+]\=\d\+\)\="
+"syn match  vbNumber            "{[[:xdigit:]-]\+}\|&[hH][[:xdigit:]]\+&"
+"syn match  vbNumber            ":[[:xdigit:]]\+"
+"syn match  vbNumber            "[-+]\=\<\d\+\>"
+syn match  vbFloat              "[-+]\=\<\d\+[eE][\-+]\=\d\+"
+syn match  vbFloat              "[-+]\=\<\d\+\.\d*\([eE][\-+]\=\d\+\)\="
+syn match  vbFloat              "[-+]\=\<\.\d\+\([eE][\-+]\=\d\+\)\="
 
-" String and Character contstants
+" String and Character constants
 syn region  vbString		start=+"+  end=+"\|$+
 syn region  vbComment		start="\(^\|\s\)REM\s" end="$" contains=vbTodo
 syn region  vbComment		start="\(^\|\s\)\'"   end="$" contains=vbTodo
-syn match   vbLineNumber	"^\d\+\(\s\|$\)"
-syn match   vbTypeSpecifier  "[a-zA-Z0-9][\$%&!#]"ms=s+1
+syn match   vbLineLabel		"^\h\w\+:"
+syn match   vbLineNumber	"^\d\+\(:\|\s\|$\)"
+syn match   vbTypeSpecifier  "\<\a\w*[@\$%&!#]"ms=s+1
 syn match   vbTypeSpecifier  "#[a-zA-Z0-9]"me=e-1
+" Conditional Compilation
+syn match  vbPreProc "^#const\>"
+syn region vbPreProc matchgroup=PreProc start="^#if\>"     end="\<then\>" transparent contains=TOP
+syn region vbPreProc matchgroup=PreProc start="^#elseif\>" end="\<then\>" transparent contains=TOP
+syn match  vbPreProc "^#else\>"
+syn match  vbPreProc "^#end\s*if\>"
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_vb_syntax_inits")
-	if version < 508
-		let did_vb_syntax_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-	endif
+" Only when an item doesn't have highlighting yet
 
-	HiLink vbBoolean		Boolean
-	HiLink vbLineNumber		Comment
-	HiLink vbComment		Comment
-	HiLink vbConditional	Conditional
-	HiLink vbConst			Constant
-	HiLink vbDefine			Constant
-	HiLink vbError			Error
-	HiLink vbFunction		Identifier
-	HiLink vbIdentifier		Identifier
-	HiLink vbNumber			Number
-	HiLink vbFloat			Float
-	HiLink vbMethods		PreProc
-	HiLink vbOperator		Operator
-	HiLink vbRepeat			Repeat
-	HiLink vbString			String
-	HiLink vbStatement		Statement
-	HiLink vbKeyword		Statement
-	HiLink vbEvents			Special
-	HiLink vbTodo			Todo
-	HiLink vbTypes			Type
-	HiLink vbTypeSpecifier	Type
-
-	delcommand HiLink
-endif
+hi def link vbBoolean           Boolean
+hi def link vbLineNumber        Comment
+hi def link vbLineLabel         Comment
+hi def link vbComment           Comment
+hi def link vbConditional       Conditional
+hi def link vbConst             Constant
+hi def link vbDefine            Constant
+hi def link vbError             Error
+hi def link vbFunction          Identifier
+hi def link vbIdentifier        Identifier
+hi def link vbNumber            Number
+hi def link vbFloat             Float
+hi def link vbMethods           PreProc
+hi def link vbOperator          Operator
+hi def link vbRepeat            Repeat
+hi def link vbString            String
+hi def link vbStatement         Statement
+hi def link vbKeyword           Statement
+hi def link vbEvents            Special
+hi def link vbTodo              Todo
+hi def link vbTypes             Type
+hi def link vbTypeSpecifier     Type
+hi def link vbPreProc           PreProc
 
 let b:current_syntax = "vb"
 

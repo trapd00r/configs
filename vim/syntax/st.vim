@@ -1,15 +1,15 @@
 " Vim syntax file
 " Language:	Smalltalk
 " Maintainer:	Arndt Hesse <hesse@self.de>
-" Last Change:	2001 May 09
+" Last Change:	2012 Feb 12 by Thilo Six
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " some Smalltalk keywords and standard methods
 syn keyword	stKeyword	super self class true false new not
@@ -44,7 +44,7 @@ syn match  stCharacter	"$."
 
 syn case ignore
 
-" the symols prefixed by a '#'
+" the symbols prefixed by a '#'
 syn match  stSymbol	"\(#\<[a-z_][a-z0-9_]*\>\)"
 syn match  stSymbol	"\(#'[^']*'\)"
 
@@ -58,7 +58,7 @@ syn match  stFloat	"\<\d\+e[-+]\=\d\+[fl]\=\>"
 
 syn case match
 
-" a try to higlight paren mismatches
+" a try to highlight paren mismatches
 syn region stParen	transparent start='(' end=')' contains=ALLBUT,stParenError
 syn match  stParenError	")"
 syn region stBlock	transparent start='\[' end='\]' contains=ALLBUT,stBlockError
@@ -74,29 +74,22 @@ hi link stBlockError stError
 syn sync minlines=50
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_st_syntax_inits")
-  if version < 508
-    let did_st_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink stKeyword		Statement
-  HiLink stMethod		Statement
-  HiLink stComment		Comment
-  HiLink stCharacter		Constant
-  HiLink stString		Constant
-  HiLink stSymbol		Special
-  HiLink stNumber		Type
-  HiLink stFloat		Type
-  HiLink stError		Error
-  HiLink stLocalVariables	Identifier
-  HiLink stBlockVariable	Identifier
+hi def link stKeyword		Statement
+hi def link stMethod		Statement
+hi def link stComment		Comment
+hi def link stCharacter		Constant
+hi def link stString		Constant
+hi def link stSymbol		Special
+hi def link stNumber		Type
+hi def link stFloat		Type
+hi def link stError		Error
+hi def link stLocalVariables	Identifier
+hi def link stBlockVariable	Identifier
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "st"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save

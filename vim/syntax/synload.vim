@@ -1,6 +1,6 @@
 " Vim syntax support file
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2010 Aug 08
+" Last Change:	2022 Apr 12
 
 " This file sets up for syntax highlighting.
 " It is loaded from "syntax.vim" and "manual.vim".
@@ -37,7 +37,7 @@ fun! s:SynSet()
     unlet b:current_syntax
   endif
 
-  let s = expand("<amatch>")
+  0verbose let s = expand("<amatch>")
   if s == "ON"
     " :set syntax=ON
     if &filetype == ""
@@ -46,20 +46,24 @@ fun! s:SynSet()
       echohl None
     endif
     let s = &filetype
+  elseif s == "OFF"
+    let s = ""
   endif
 
   if s != ""
     " Load the syntax file(s).  When there are several, separated by dots,
-    " load each in sequence.
+    " load each in sequence.  Skip empty entries.
     for name in split(s, '\.')
-      exe "runtime! syntax/" . name . ".vim syntax/" . name . "/*.vim"
+      if !empty(name)
+	exe "runtime! syntax/" . name . ".vim syntax/" . name . "/*.vim"
+      endif
     endfor
   endif
 endfun
 
 
-" Handle adding doxygen to other languages (C, C++, C#, IDL)
-au Syntax c,cpp,cs,idl
+" Handle adding doxygen to other languages (C, C++, C#, IDL, java, php, DataScript)
+au Syntax c,cpp,cs,idl,java,php,datascript
 	\ if (exists('b:load_doxygen_syntax') && b:load_doxygen_syntax)
 	\	|| (exists('g:load_doxygen_syntax') && g:load_doxygen_syntax)
 	\   | runtime! syntax/doxygen.vim
@@ -67,8 +71,11 @@ au Syntax c,cpp,cs,idl
 
 
 " Source the user-specified syntax highlighting file
-if exists("mysyntaxfile") && filereadable(expand(mysyntaxfile))
-  execute "source " . mysyntaxfile
+if exists("mysyntaxfile")
+  let s:fname = expand(mysyntaxfile)
+  if filereadable(s:fname)
+    execute "source " . fnameescape(s:fname)
+  endif
 endif
 
 " Restore 'cpoptions'

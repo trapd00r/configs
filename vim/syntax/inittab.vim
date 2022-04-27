@@ -1,17 +1,13 @@
 " Vim syntax file
-" This is a GENERATED FILE. Please always refer to source file at the URI below.
 " Language: SysV-compatible init process control file `inittab'
-" Maintainer: David Ne\v{c}as (Yeti) <yeti@physics.muni.cz>
-" Last Change: 2002-09-13
-" URL: http://physics.muni.cz/~yeti/download/syntax/inittab.vim
+" Maintainer: Donovan Keohane <donovan.keohane@gmail.com>
+" Previous Maintainer: David Ne\v{c}as (Yeti) <yeti@physics.muni.cz>
+" Last Change: 2019-11-19
 
 " Setup
-if version >= 600
-  if exists("b:current_syntax")
-    finish
-  endif
-else
-  syntax clear
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
+  finish
 endif
 
 syn case match
@@ -28,7 +24,7 @@ syn region inittabShString start=+"+ end=+"+ skip=+\\\\\|\\\"+ contained
 syn region inittabShString start=+'+ end=+'+ contained
 syn match inittabShOption "\s[-+][[:alnum:]]\+"ms=s+1 contained
 syn match inittabShOption "\s--[:alnum:][-[:alnum:]]*"ms=s+1 contained
-syn match inittabShCommand "/\S\+" contained
+syn match inittabShCommand "\S\+" contained
 syn cluster inittabSh add=inittabShOption,inittabShString,inittabShCommand
 
 " Keywords
@@ -42,34 +38,25 @@ syn match inittabColonAction ":" contained nextgroup=inittabAction,inittabError
 syn match inittabAction "\w\+" contained nextgroup=inittabColonProcess,inittabError contains=inittabActionName
 syn match inittabColonProcess ":" contained nextgroup=inittabProcessPlus,inittabProcess,inittabError
 syn match inittabProcessPlus "+" contained nextgroup=inittabProcess,inittabError
-syn region inittabProcess start="/" end="$" transparent oneline contained contains=@inittabSh,inittabComment
+syn region inittabProcess start="\S" end="$" transparent oneline contained contains=@inittabSh,inittabComment
 
 " Define the default highlighting
-if version >= 508 || !exists("did_inittab_syntax_inits")
-  if version < 508
-    let did_inittab_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
 
-  HiLink inittabComment Comment
-  HiLink inittabFixme Todo
-  HiLink inittabActionName Type
-  HiLink inittabError Error
-  HiLink inittabId Identifier
-  HiLink inittabRunLevels Special
+hi def link inittabComment Comment
+hi def link inittabFixme Todo
+hi def link inittabActionName Type
+hi def link inittabError Error
+hi def link inittabId Identifier
+hi def link inittabRunLevels Special
 
-  HiLink inittabColonProcess inittabColon
-  HiLink inittabColonAction inittabColon
-  HiLink inittabColonRunLevels inittabColon
-  HiLink inittabColon PreProc
+hi def link inittabColonProcess inittabColon
+hi def link inittabColonAction inittabColon
+hi def link inittabColonRunLevels inittabColon
+hi def link inittabColon PreProc
 
-  HiLink inittabShString String
-  HiLink inittabShOption Special
-  HiLink inittabShCommand Statement
+hi def link inittabShString String
+hi def link inittabShOption Special
+hi def link inittabShCommand Statement
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "inittab"

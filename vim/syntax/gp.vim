@@ -1,30 +1,38 @@
 " Vim syntax file
-" Language:	gp (version 2.4)
+" Language:	gp (version 2.5)
 " Maintainer:	Karim Belabas <Karim.Belabas@math.u-bordeaux.fr>
-" Last change:	2007 Oct 1
+" Last change:	2012 Jan 08
 " URL:		http://pari.math.u-bordeaux.fr
 
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " control statements
 syntax keyword gpStatement	break return next
 syntax keyword gpConditional	if
-syntax keyword gpRepeat		until while for fordiv forprime forstep forvec
+syntax keyword gpRepeat		until while for fordiv forell forprime 
+syntax keyword gpRepeat		forsubgroup forstep forvec
 " storage class
 syntax keyword gpScope		my local global
 " defaults
-syntax keyword gpInterfaceKey	colors compatible datadir debug debugfiles
-syntax keyword gpInterfaceKey	debugmem echo factor_add_primes format help
-syntax keyword gpInterfaceKey	histsize lines log logfile new_galois_format
+syntax keyword gpInterfaceKey	breakloop colors compatible
+syntax keyword gpInterfaceKey	datadir debug debugfiles debugmem 
+syntax keyword gpInterfaceKey	echo factor_add_primes factor_proven format 
+syntax keyword gpInterfaceKey	graphcolormap graphcolors
+syntax keyword gpInterfaceKey	help histfile histsize 
+syntax keyword gpInterfaceKey	lines linewrap log logfile new_galois_format
 syntax keyword gpInterfaceKey	output parisize path prettyprinter primelimit
-syntax keyword gpInterfaceKey	prompt prompt_cont psfile realprecision secure
-syntax keyword gpInterfaceKey	seriesprecision simplify strictmatch TeXstyle timer
+syntax keyword gpInterfaceKey	prompt prompt_cont psfile 
+syntax keyword gpInterfaceKey	readline realprecision recover 
+syntax keyword gpInterfaceKey	secure seriesprecision simplify strictmatch
+syntax keyword gpInterfaceKey	TeXstyle timer
 
-syntax match   gpInterface	"^\s*\\[a-z].*"
+syntax match gpInterface	"^\s*\\[a-z].*"
 syntax keyword gpInterface	default
 syntax keyword gpInput		read input
 
@@ -50,33 +58,26 @@ syntax region gpParen		transparent start='(' end=')' contains=ALLBUT,gpParenErro
 syntax match gpParenError	")"
 syntax match gpInParen contained "[{}]"
 
-if version >= 508 || !exists("did_gp_syn_inits")
-  if version < 508
-    let did_gp_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
 
-  HiLink gpConditional		Conditional
-  HiLink gpRepeat		Repeat
-  HiLink gpError		Error
-  HiLink gpParenError		gpError
-  HiLink gpInParen		gpError
-  HiLink gpStatement		Statement
-  HiLink gpString		String
-  HiLink gpComment		Comment
-  HiLink gpInterface		Type
-  HiLink gpInput		Type
-  HiLink gpInterfaceKey		Statement
-  HiLink gpFunction		Function
-  HiLink gpScope		Type
-  " contained ones
-  HiLink gpSpecial		Special
-  HiLink gpTodo			Todo
-  HiLink gpArgs			Type
-  delcommand HiLink
-endif
+hi def link gpConditional		Conditional
+hi def link gpRepeat		Repeat
+hi def link gpError		Error
+hi def link gpParenError		gpError
+hi def link gpInParen		gpError
+hi def link gpStatement		Statement
+hi def link gpString		String
+hi def link gpComment		Comment
+hi def link gpInterface		Type
+hi def link gpInput		Type
+hi def link gpInterfaceKey		Statement
+hi def link gpFunction		Function
+hi def link gpScope		Type
+" contained ones
+hi def link gpSpecial		Special
+hi def link gpTodo			Todo
+hi def link gpArgs			Type
 
 let b:current_syntax = "gp"
+let &cpo = s:cpo_save
+unlet s:cpo_save
 " vim: ts=8

@@ -1,20 +1,20 @@
 " Vim syntax file
 " Language:     Mathematica
 " Maintainer:   steve layland <layland@wolfram.com>
-" Last Change:  Thu May 19 21:36:04 CDT 2005
+" Last Change:  2012 Feb 03 by Thilo Six
 " Source:       http://members.wri.com/layland/vim/syntax/mma.vim
 "               http://vim.sourceforge.net/scripts/script.php?script_id=1273
 " Id:           $Id: mma.vim,v 1.4 2006/04/14 20:40:38 vimboss Exp $
 " NOTE:
-" 
+"
 " Empty .m files will automatically be presumed as Matlab files
 " unless you have the following in your .vimrc:
 "
 "       let filetype_m="mma"
 "
-" I also recommend setting the default 'Comment' hilighting to something
+" I also recommend setting the default 'Comment' highlighting to something
 " other than the color used for 'Function', since both are plentiful in
-" most mathematica files, and they are often the same color (when using 
+" most mathematica files, and they are often the same color (when using
 " background=dark).
 "
 " Credits:
@@ -24,22 +24,24 @@
 "    from the Java vim syntax file by Claudio Fleiner.  Thanks!
 " o  Everything else written by steve <layland@wolfram.com>
 "
-" Bugs: 
-" o  Vim 6.1 didn't really have support for character classes 
+" Bugs:
+" o  Vim 6.1 didn't really have support for character classes
 "    of other named character classes.  For example, [\a\d]
 "    didn't work.  Therefore, a lot of this code uses explicit
-"    character classes instead: [0-9a-zA-Z] 
+"    character classes instead: [0-9a-zA-Z]
 "
 " TODO:
 "   folding
 "   fix nesting
 "   finish populating popular symbols
 
-if version < 600
-	syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
     finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " Group Definitions:
 syntax cluster mmaNotes contains=mmaTodo,mmaFixme
@@ -58,7 +60,7 @@ syntax cluster mmaTop contains=mmaOperator,mmaGenericFunction,mmaPureFunction,mm
 syntax keyword mmaVariable True False None Automatic All Null C General
 
 " mathematical constants:
-syntax keyword mmaVariable Pi I E Infinity ComplexInfinity Indeterminate GoldenRatio EulerGamma Degree Catalan Khinchin Glaisher 
+syntax keyword mmaVariable Pi I E Infinity ComplexInfinity Indeterminate GoldenRatio EulerGamma Degree Catalan Khinchin Glaisher
 
 " stream data / atomic heads:
 syntax keyword mmaVariable Byte Character Expression Number Real String Word EndOfFile Integer Symbol
@@ -80,7 +82,7 @@ syntax keyword mmaVariable Above Below Left Right
 syntax keyword mmaVariable Black Blue Brown Cyan Gray Green Magenta Orange Pink Purple Red White Yellow
 
 " function attributes
-syntax keyword mmaVariable Protected Listable OneIdentity Orderless Flat Constant NumericFunction Locked ReadProtected HoldFirst HoldRest HoldAll HoldAllComplete SequenceHold NHoldFirst NHoldRest NHoldAll Temporary Stub 
+syntax keyword mmaVariable Protected Listable OneIdentity Orderless Flat Constant NumericFunction Locked ReadProtected HoldFirst HoldRest HoldAll HoldAllComplete SequenceHold NHoldFirst NHoldRest NHoldAll Temporary Stub
 
 " Comment Sections:
 "   this:
@@ -107,7 +109,7 @@ syntax match mmaemPHAsis "\%(^\|\s\)(\@<!\*[a-zA-Z0-9]\+\%([- \t':]\+[a-zA-Z0-9]
 syntax region mmaComment start=+(\*+ end=+\*)+ skipempty contains=@mmaNotes,mmaItem,@mmaCommentStrings,mmaemPHAsis,mmaComment
 
 " Function Comments:
-"   just like a normal comment except the first sentance is Special ala Java
+"   just like a normal comment except the first sentence is Special ala Java
 "   (** *)
 "   TODO - fix this for nesting, or not...
 syntax region mmaFunctionComment start="(\*\*\+" end="\*\+)" contains=@mmaNotes,mmaItem,mmaFunctionTitle,@mmaCommentStrings,mmaemPHAsis,mmaComment
@@ -135,25 +137,25 @@ syntax region mmaCommentString oneline start=+\\\@<!"+ skip=+\\\@<!\\\%(\\\\\)*"
 
 " Patterns:
 "   Each pattern marker below can be Blank[] (_), BlankSequence[] (__)
-"   or BlankNullSequence[] (___).  Most examples below can also be 
+"   or BlankNullSequence[] (___).  Most examples below can also be
 "   combined, for example Pattern tests with Default values.
-"   
+"
 "   _Head                   Anonymous patterns
-"   name_Head 
+"   name_Head
 "   name:(_Head|_Head2)     Named patterns
-"    
+"
 "   _Head : val
 "   name:_Head:val          Default values
 "
-"   _Head?testQ, 
+"   _Head?testQ,
 "   _Head?(test[#]&)        Pattern tests
 "
 "   name_Head/;test[name]   Conditionals
-"   
+"
 "   _Head:.                 Predefined Default
 "
 "   .. ...                  Pattern Repeat
-   
+
 syntax match mmaPatternError "\%(_\{4,}\|)\s*&\s*)\@!\)" contained
 
 "pattern name:
@@ -172,7 +174,7 @@ syntax match mmaPattern "[A-Za-z0-9`]*_\+\%(\a\+\)\=\%(?([^)]\+)\|?[^\]},]\+\)\=
 "   >= <= < >
 "   += -= *=
 "   /= ++ --    Math
-"   ^* 
+"   ^*
 "   -> :>       Rules
 "   @@ @@@      Apply
 "   /@ //@      Map
@@ -200,7 +202,7 @@ syntax match mmaPureFunction "#\%(#\|\d\+\)\="
 syntax match mmaPureFunction "&"
 
 " Named Functions:
-" Since everything is pretty much a function, get this straight 
+" Since everything is pretty much a function, get this straight
 " from context
 syntax match mmaGenericFunction "[A-Za-z0-9`]\+\s*\%([@[]\|/:\|/\=/@\)\@=" contains=mmaOperator
 syntax match mmaGenericFunction "\~\s*[^~]\+\s*\~"hs=s+1,he=e-1 contains=mmaOperator,mmaBoring
@@ -223,7 +225,7 @@ syntax match mmaError "\*)" containedin=ALLBUT,@mmaComments,@mmaStrings
 syntax match mmaError "\%([/]{3,}\|[&:|+*?~-]\{3,}\|[.=]\{4,}\|_\@<=\.\{2,}\|`\{2,}\)" containedin=ALLBUT,@mmaComments,@mmaStrings
 
 " Punctuation:
-" things that shouldn't really be highlighted, or highlighted 
+" things that shouldn't really be highlighted, or highlighted
 " in they're own group if you _really_ want. :)
 "  ( ) { }
 " TODO - use Delimiter group?
@@ -251,9 +253,9 @@ set commentstring='(*%s*)'
 
 "function MmaFoldText()
 "    let line = getline(v:foldstart)
-"    
+"
 "    let lines = v:foldend-v:foldstart+1
-"    
+"
 "    let sub = substitute(line, '(\*\+|\*\+)|[-*_]\+', '', 'g')
 "
 "    if match(line, '(\*') != -1
@@ -264,7 +266,7 @@ set commentstring='(*%s*)'
 "
 "    return v:folddashes.' '.lines.' '.sub
 "endf
-    
+
 "this is slow for computing folds, but it does so accurately
 syntax sync fromstart
 
@@ -280,46 +282,40 @@ syntax sync fromstart
 "set foldnestmax=1
 "set foldminlines=15
 
-if version >= 508 || !exists("did_mma_syn_inits")
-	if version < 508
-		let did_mma_syn_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-	endif
 
-    " NOTE - the following links are not guaranteed to 
-    " look good under all colorschemes.  You might need to 
-    " :so $VIMRUNTIME/syntax/hitest.vim and tweak these to
-    " look good in yours
+" NOTE - the following links are not guaranteed to
+" look good under all colorschemes.  You might need to
+" :so $VIMRUNTIME/syntax/hitest.vim and tweak these to
+" look good in yours
 
 
-    HiLink mmaComment           Comment
-    HiLink mmaCommentStar       Comment
-    HiLink mmaFunctionComment   Comment
-    HiLink mmaLooseQuote        Comment
-	HiLink mmaGenericFunction   Function
-	HiLink mmaVariable          Identifier
-"    HiLink mmaSymbol            Identifier
-	HiLink mmaOperator          Operator
-    HiLink mmaPatternOp         Operator
-	HiLink mmaPureFunction      Operator
-	HiLink mmaString            String
-    HiLink mmaCommentString     String
-	HiLink mmaUnicode           String
-	HiLink mmaMessage           Type
-    HiLink mmaNumber            Type
-	HiLink mmaPattern           Type
-	HiLink mmaError             Error
-	HiLink mmaFixme             Error
-    HiLink mmaPatternError      Error
-    HiLink mmaTodo              Todo
-    HiLink mmaemPHAsis          Special
-    HiLink mmaFunctionTitle     Special
-    HiLink mmaMessageType       Special
-    HiLink mmaItem              Preproc
+hi def link mmaComment           Comment
+hi def link mmaCommentStar       Comment
+hi def link mmaFunctionComment   Comment
+hi def link mmaLooseQuote        Comment
+hi def link mmaGenericFunction   Function
+hi def link mmaVariable          Identifier
+"    hi def link mmaSymbol            Identifier
+hi def link mmaOperator          Operator
+hi def link mmaPatternOp         Operator
+hi def link mmaPureFunction      Operator
+hi def link mmaString            String
+hi def link mmaCommentString     String
+hi def link mmaUnicode           String
+hi def link mmaMessage           Type
+hi def link mmaNumber            Type
+hi def link mmaPattern           Type
+hi def link mmaError             Error
+hi def link mmaFixme             Error
+hi def link mmaPatternError      Error
+hi def link mmaTodo              Todo
+hi def link mmaemPHAsis          Special
+hi def link mmaFunctionTitle     Special
+hi def link mmaMessageType       Special
+hi def link mmaItem              Preproc
 
-	delcommand HiLink
-endif
 
 let b:current_syntax = "mma"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save

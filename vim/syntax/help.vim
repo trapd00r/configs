@@ -1,17 +1,24 @@
 " Vim syntax file
 " Language:	Vim help file
 " Maintainer:	Bram Moolenaar (Bram@vim.org)
-" Last Change:	2010 Nov 03
+" Last Change:	2021 Jun 13
 
 " Quit when a (custom) syntax file was already loaded
 if exists("b:current_syntax")
   finish
 endif
 
-syn match helpHeadline		"^[-A-Z .][-A-Z0-9 .()]*[ \t]\+\*"me=e-1
-syn match helpSectionDelim	"^=\{3,}.*===$"
-syn match helpSectionDelim	"^-\{3,}.*--$"
-syn region helpExample		matchgroup=helpIgnore start=" >$" start="^>$" end="^[^ \t]"me=e-1 end="^<"
+let s:cpo_save = &cpo
+set cpo&vim
+
+syn match helpHeadline		"^[-A-Z .][-A-Z0-9 .()_]*\ze\(\s\+\*\|$\)"
+syn match helpSectionDelim	"^===.*===$"
+syn match helpSectionDelim	"^---.*--$"
+if has("conceal")
+  syn region helpExample	matchgroup=helpIgnore start=" >$" start="^>$" end="^[^ \t]"me=e-1 end="^<" concealends
+else
+  syn region helpExample	matchgroup=helpIgnore start=" >$" start="^>$" end="^[^ \t]"me=e-1 end="^<"
+endif
 if has("ebcdic")
   syn match helpHyperTextJump	"\\\@<!|[^"*|]\+|" contains=helpBar
   syn match helpHyperTextEntry	"\*[^"*|]\+\*\s"he=e-1 contains=helpStar
@@ -21,28 +28,44 @@ else
   syn match helpHyperTextEntry	"\*[#-)!+-~]\+\*\s"he=e-1 contains=helpStar
   syn match helpHyperTextEntry	"\*[#-)!+-~]\+\*$" contains=helpStar
 endif
-syn match helpBar		contained "|" conceal
-syn match helpStar		contained "\*" conceal
+if has("conceal")
+  syn match helpBar		contained "|" conceal
+  syn match helpBacktick	contained "`" conceal
+  syn match helpStar		contained "\*" conceal
+else
+  syn match helpBar		contained "|"
+  syn match helpBacktick	contained "`"
+  syn match helpStar		contained "\*"
+endif
 syn match helpNormal		"|.*====*|"
+syn match helpNormal		"|||"
 syn match helpNormal		":|vim:|"	" for :help modeline
-syn match helpVim		"Vim version [0-9.a-z]\+"
+syn match helpVim		"\<Vim version [0-9][0-9.a-z]*"
 syn match helpVim		"VIM REFERENCE.*"
 syn match helpOption		"'[a-z]\{2,\}'"
 syn match helpOption		"'t_..'"
+syn match helpCommand		"`[^` \t]\+`"hs=s+1,he=e-1 contains=helpBacktick
+syn match helpCommand		"\(^\|[^a-z"[]\)\zs`[^`]\+`\ze\([^a-z\t."']\|$\)"hs=s+1,he=e-1 contains=helpBacktick
 syn match helpHeader		"\s*\zs.\{-}\ze\s\=\~$" nextgroup=helpIgnore
 syn match helpGraphic		".* \ze`$" nextgroup=helpIgnore
-syn match helpIgnore		"." contained conceal
+if has("conceal")
+  syn match helpIgnore		"." contained conceal
+else
+  syn match helpIgnore		"." contained
+endif
 syn keyword helpNote		note Note NOTE note: Note: NOTE: Notes Notes:
+syn keyword helpWarning		WARNING WARNING: Warning:
+syn keyword helpDeprecated	DEPRECATED DEPRECATED: Deprecated:
 syn match helpSpecial		"\<N\>"
 syn match helpSpecial		"\<N\.$"me=e-1
 syn match helpSpecial		"\<N\.\s"me=e-2
 syn match helpSpecial		"(N\>"ms=s+1
+
 syn match helpSpecial		"\[N]"
 " avoid highlighting N  N in help.txt
 syn match helpSpecial		"N  N"he=s+1
 syn match helpSpecial		"Nth"me=e-2
 syn match helpSpecial		"N-1"me=e-2
-syn match helpSpecial		"{[-a-zA-Z0-9'":%#=[\]<>.,]\+}"
 syn match helpSpecial		"{[-a-zA-Z0-9'"*+/:%#=[\]<>.,]\+}"
 syn match helpSpecial		"\s\[[-a-z^A-Z0-9_]\{2,}]"ms=s+1
 syn match helpSpecial		"<[-a-zA-Z0-9_]\+>"
@@ -53,6 +76,7 @@ syn match helpSpecial		"\[line]"
 syn match helpSpecial		"\[count]"
 syn match helpSpecial		"\[offset]"
 syn match helpSpecial		"\[cmd]"
+syn match helpNormal		"vim9\[cmd]"
 syn match helpSpecial		"\[num]"
 syn match helpSpecial		"\[+num]"
 syn match helpSpecial		"\[-num]"
@@ -63,7 +87,11 @@ syn match helpSpecial		"\[arguments]"
 syn match helpSpecial		"\[ident]"
 syn match helpSpecial		"\[addr]"
 syn match helpSpecial		"\[group]"
+" Don't highlight [converted] and others that do not have a tag
+syn match helpNormal		"\[\(readonly\|fifo\|socket\|converted\|crypted\)]"
+
 syn match helpSpecial		"CTRL-."
+syn match helpSpecial		"CTRL-SHIFT-."
 syn match helpSpecial		"CTRL-Break"
 syn match helpSpecial		"CTRL-PageUp"
 syn match helpSpecial		"CTRL-PageDown"
@@ -134,20 +162,23 @@ syn sync minlines=40
 " Define the default highlighting.
 " Only used when an item doesn't have highlighting yet
 hi def link helpIgnore		Ignore
-hi def link helpHyperTextJump	Subtitle
+hi def link helpHyperTextJump	Identifier
 hi def link helpBar		Ignore
+hi def link helpBacktick	Ignore
 hi def link helpStar		Ignore
 hi def link helpHyperTextEntry	String
 hi def link helpHeadline	Statement
 hi def link helpHeader		PreProc
 hi def link helpSectionDelim	PreProc
 hi def link helpVim		Identifier
+hi def link helpCommand		Comment
 hi def link helpExample		Comment
 hi def link helpOption		Type
 hi def link helpNotVi		Special
 hi def link helpSpecial		Special
 hi def link helpNote		Todo
-hi def link Subtitle		Identifier
+hi def link helpWarning		Todo
+hi def link helpDeprecated	Todo
 
 hi def link helpComment		Comment
 hi def link helpConstant	Constant
@@ -186,4 +217,6 @@ hi def link helpURL		String
 
 let b:current_syntax = "help"
 
+let &cpo = s:cpo_save
+unlet s:cpo_save
 " vim: ts=8 sw=2

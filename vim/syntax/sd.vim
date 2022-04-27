@@ -3,13 +3,15 @@
 " License: This file can be redistribued and/or modified under the same terms
 "   as Vim itself.
 " URL: http://netstudent.polito.it/vim_syntax/
-" Last Change: 2006-09-27
+" Last Change: 2012 Feb 03 by Thilo Six
 
-if version < 600
-        syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
         finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " Always ignore case
 syn case ignore
@@ -24,13 +26,13 @@ syn match sdIPSpecial /\%(127\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\)/ contained
 syn match sdIP contained /\%(\d\{1,4}\.\)\{3}\d\{1,4}/ contains=@sdIPCluster
 
 " Statements
-syn keyword sdStatement AGGREGATE AUDIO_CHANNELS 
+syn keyword sdStatement AGGREGATE AUDIO_CHANNELS
 syn keyword sdStatement BYTE_PER_PCKT BIT_PER_SAMPLE BITRATE
 syn keyword sdStatement CLOCK_RATE CODING_TYPE CREATOR
 syn match sdStatement /^\s*CODING_TYPE\>/ nextgroup=sdCoding skipwhite
 syn match sdStatement /^\s*ENCODING_NAME\>/ nextgroup=sdEncoding skipwhite
 syn keyword sdStatement FILE_NAME FRAME_LEN FRAME_RATE FORCE_FRAME_RATE
-syn keyword sdStatement LICENSE 
+syn keyword sdStatement LICENSE
 syn match sdStatement /^\s*MEDIA_SOURCE\>/ nextgroup=sdSource skipwhite
 syn match sdStatement /^\s*MULTICAST\>/ nextgroup=sdIP skipwhite
 syn keyword sdStatement PAYLOAD_TYPE PKT_LEN PRIORITY
@@ -48,28 +50,22 @@ syn keyword sdSpecial TRUE FALSE NULL
 syn keyword sdDelimiter STREAM STREAM_END
 syn match sdError /^search .\{257,}/
 
-if version >= 508 || !exists("did_config_syntax_inits")
-        if version < 508
-                let did_config_syntax_inits = 1
-                command! -nargs=+ HiLink hi link <args>
-        else
-                command! -nargs=+ HiLink hi def link <args>
-        endif
 
-        HiLink sdIP Number
-		  HiLink sdHostname Type
-        HiLink sdEncoding Identifier
-        HiLink sdCoding Identifier
-        HiLink sdSource Identifier
-        HiLink sdComment Comment
-        HiLink sdIPError Error
-        HiLink sdError Error
-        HiLink sdStatement Statement
-        HiLink sdIPSpecial Special
-        HiLink sdSpecial Special
-		  HiLink sdDelimiter Delimiter
+hi def link sdIP Number
+hi def link sdHostname Type
+hi def link sdEncoding Identifier
+hi def link sdCoding Identifier
+hi def link sdSource Identifier
+hi def link sdComment Comment
+hi def link sdIPError Error
+hi def link sdError Error
+hi def link sdStatement Statement
+hi def link sdIPSpecial Special
+hi def link sdSpecial Special
+hi def link sdDelimiter Delimiter
 
-        delcommand HiLink
-endif
 
 let b:current_syntax = "sd"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save

@@ -2,16 +2,13 @@
 " This is a GENERATED FILE. Please always refer to source file at the URI below.
 " Language: XKB (X Keyboard Extension) components
 " Maintainer: David Ne\v{c}as (Yeti) <yeti@physics.muni.cz>
-" Last Change: 2003-04-13
+" Last Change: 2020 Oct 18
 " URL: http://trific.ath.cx/Ftp/vim/syntax/xkb.vim
 
 " Setup
-if version >= 600
-	if exists("b:current_syntax")
-		finish
-	endif
-else
-	syntax clear
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
+	finish
 endif
 
 syn case match
@@ -44,48 +41,39 @@ syn match xkbPhysicalKey "<\w\+>"
 syn keyword xkbPreproc augment include replace
 syn keyword xkbConstant False True
 syn keyword xkbModif override replace
-syn keyword xkbIdentifier action affect alias allowExplicit approx baseColor button clearLocks color controls cornerRadius count ctrls description driveskbd font fontSize gap group groups height indicator indicatorDrivesKeyboard interpret key keys labelColor latchToLock latchMods left level_name map maximum minimum modifier_map modifiers name offColor onColor outline preserve priority repeat row section section setMods shape slant solid symbols text top type useModMapMods virtualModifier virtualMods virtual_modifiers weight whichModState width
+syn keyword xkbIdentifier action affect alias allowExplicit approx baseColor button clearLocks color controls cornerRadius count ctrls description driveskbd font fontSize gap group groups height indicator indicatorDrivesKeyboard interpret key keys labelColor latchToLock latchMods left level_name map maximum minimum modifier_map modifiers name offColor onColor outline preserve priority repeat row section setMods shape slant solid symbols text top type useModMapMods virtualModifier virtualMods virtual_modifiers weight whichModState width
 syn keyword xkbFunction AnyOf ISOLock LatchGroup LatchMods LockControls LockGroup LockMods LockPointerButton MovePtr NoAction PointerButton SetControls SetGroup SetMods SetPtrDflt Terminate
 syn keyword xkbTModif default hidden partial virtual
 syn keyword xkbSect alphanumeric_keys alternate_group function_keys keypad_keys modifier_keys xkb_compatibility xkb_geometry xkb_keycodes xkb_keymap xkb_semantics xkb_symbols xkb_types
 
 " Define the default highlighting
-if version >= 508 || !exists("did_xkb_syntax_inits")
-	if version < 508
-		let did_xkb_syntax_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-	endif
 
-	HiLink xkbModif xkbPreproc
-	HiLink xkbTModif xkbPreproc
-	HiLink xkbPreproc Preproc
+hi def link xkbModif xkbPreproc
+hi def link xkbTModif xkbPreproc
+hi def link xkbPreproc Preproc
 
-	HiLink xkbIdentifier Keyword
-	HiLink xkbFunction Function
-	HiLink xkbSect Type
-	HiLink xkbPhysicalKey Identifier
-	HiLink xkbKeyword Keyword
+hi def link xkbIdentifier Keyword
+hi def link xkbFunction Function
+hi def link xkbSect Type
+hi def link xkbPhysicalKey Identifier
+hi def link xkbKeyword Keyword
 
-	HiLink xkbComment Comment
-	HiLink xkbTodo Todo
+hi def link xkbComment Comment
+hi def link xkbTodo Todo
 
-	HiLink xkbConstant Constant
-	HiLink xkbString String
+hi def link xkbConstant Constant
+hi def link xkbString String
 
-	HiLink xkbSpecialChar xkbSpecial
-	HiLink xkbSpecial Special
+hi def link xkbSpecialChar xkbSpecial
+hi def link xkbSpecial Special
 
-	HiLink xkbParenError xkbBalancingError
-	HiLink xkbBraceError xkbBalancingError
-	HiLink xkbBraketError xkbBalancingError
-	HiLink xkbBalancingError xkbError
-	HiLink xkbCommentStartError xkbCommentError
-	HiLink xkbCommentError xkbError
-	HiLink xkbError Error
+hi def link xkbParenError xkbBalancingError
+hi def link xkbBraceError xkbBalancingError
+hi def link xkbBraketError xkbBalancingError
+hi def link xkbBalancingError xkbError
+hi def link xkbCommentStartError xkbCommentError
+hi def link xkbCommentError xkbError
+hi def link xkbError Error
 
-	delcommand HiLink
-endif
 
 let b:current_syntax = "xkb"

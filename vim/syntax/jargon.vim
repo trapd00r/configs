@@ -1,36 +1,24 @@
 " Vim syntax file
 " Language:	Jargon File
-" Maintainer:	<rms@poczta.onet.pl>
-" Last Change:	2001 May 26
+" Maintainer:	Dan Church (https://github.com/h3xx)
+" Last Change:	2020 Mar 16
 "
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-	syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
 	finish
 endif
 
-syn match jargonChaptTitle	/:[^:]*:/
-syn match jargonEmailAddr	/[^<@ ^I]*@[^ ^I>]*/
-syn match jargonUrl	 +\(http\|ftp\)://[^\t )"]*+
-syn match jargonMark	/{[^}]*}/
+syn region jargonHeader start="^:" end="$" contains=jargonChaptTitle
+syn match jargonChaptTitle /:[^:]*:/ contained
+syn match jargonEmailAddr /[+._A-Za-z0-9-]\+@[+._A-Za-z0-9-]\+/
+syn match jargonUrl +\(https\?\|ftp\)://[^\t )"]*+
+syn region jargonMark start="{[^\t {}]" end="}"
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_jargon_syntax_inits")
-	if version < 508
-		let did_jargon_syntax_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-	endif
-	HiLink jargonChaptTitle	Title
-	HiLink jargonEmailAddr	 Comment
-	HiLink jargonUrl	 Comment
-	HiLink jargonMark	Label
-	delcommand HiLink
-endif
+" Only when an item doesn't have highlighting yet
+hi def link jargonChaptTitle Title
+hi def link jargonEmailAddr Comment
+hi def link jargonUrl Comment
+hi def link jargonMark Label
 
 let b:current_syntax = "jargon"

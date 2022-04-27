@@ -1,15 +1,15 @@
 " Vim syntax file
 " Language:	CUPL
-" Maintainer:	John Cook <john.cook@kla-tencor.com>
-" Last Change:	2001 Apr 25
+" Maintainer:	John Cook <johncook3@gmail.com>
+" Last Change:	2011 Dec 27
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " this language is oblivious to case.
 syn case ignore
@@ -23,7 +23,7 @@ syn keyword cuplTodo contained TODO XXX FIXME
 " cuplHeaderContents uses default highlighting except for numbers
 syn match cuplHeaderContents ".\+;"me=e-1 contains=cuplNumber contained
 
-" String contstants
+" String constants
 syn region cuplString start=+'+ end=+'+
 syn region cuplString start=+"+ end=+"+
 
@@ -92,39 +92,33 @@ syn region cuplComment start=+/\*+ end=+\*/+ contains=cuplNumber,cuplTodo
 syn sync minlines=1
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_cupl_syn_inits")
-  if version < 508
-    let did_cupl_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  " The default highlighting.
-  HiLink cuplHeader	cuplStatement
-  HiLink cuplLogicalOperator	 cuplOperator
-  HiLink cuplRangeOperator	 cuplOperator
-  HiLink cuplArithmeticOperator cuplOperator
-  HiLink cuplAssignmentOperator cuplOperator
-  HiLink cuplEqualityOperator	 cuplOperator
-  HiLink cuplTruthTableOperator cuplOperator
-  HiLink cuplOperator	cuplStatement
-  HiLink cuplFunction	cuplStatement
-  HiLink cuplStatement Statement
-  HiLink cuplNumberRange cuplNumber
-  HiLink cuplNumber	  cuplString
-  HiLink cuplString	String
-  HiLink cuplComment	Comment
-  HiLink cuplExtension   cuplSpecial
-  HiLink cuplSpecialChar cuplSpecial
-  HiLink cuplSpecial	Special
-  HiLink cuplDirective PreProc
-  HiLink cuplTodo	Todo
+" The default highlighting.
+hi def link cuplHeader	cuplStatement
+hi def link cuplLogicalOperator	 cuplOperator
+hi def link cuplRangeOperator	 cuplOperator
+hi def link cuplArithmeticOperator cuplOperator
+hi def link cuplAssignmentOperator cuplOperator
+hi def link cuplEqualityOperator	 cuplOperator
+hi def link cuplTruthTableOperator cuplOperator
+hi def link cuplOperator	cuplStatement
+hi def link cuplFunction	cuplStatement
+hi def link cuplStatement Statement
+hi def link cuplNumberRange cuplNumber
+hi def link cuplNumber	  cuplString
+hi def link cuplString	String
+hi def link cuplComment	Comment
+hi def link cuplExtension   cuplSpecial
+hi def link cuplSpecialChar cuplSpecial
+hi def link cuplSpecial	Special
+hi def link cuplDirective PreProc
+hi def link cuplTodo	Todo
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "cupl"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
+
 " vim:ts=8

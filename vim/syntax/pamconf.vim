@@ -1,7 +1,8 @@
 " Vim syntax file
-" Language:         pam(8) configuration file
-" Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2006-04-19
+" Language:             pam(8) configuration file
+" Previous Maintainer:  Nikolai Weibull <now@bitwi.se>
+" Latest Revision:      2020/08/04
+" Changes By:		Haochen Tong
 
 
 if exists("b:current_syntax")
@@ -11,29 +12,38 @@ endif
 let s:cpo_save = &cpo
 set cpo&vim
 
-syn match   pamconfService          '^[[:graph:]]\+'
-                                    \ nextgroup=pamconfType,
-                                    \ pamconfServiceLineCont skipwhite
+let s:has_service_field = exists("b:pamconf_has_service_field")
+      \ ? b:pamconf_has_service_field
+      \ : expand('%:t') == 'pam.conf' ? 1 : 0
+
+syn match   pamconfType             '-\?[[:alpha:]]\+'
+                                    \ contains=pamconfTypeKeyword
+                                    \ nextgroup=pamconfControl,
+                                    \ pamconfTypeLineCont skipwhite
+
+syn keyword pamconfTypeKeyword      contained account auth password session
+
+if s:has_service_field
+    syn match   pamconfService          '^[[:graph:]]\+'
+                                        \ nextgroup=pamconfType,
+                                        \ pamconfServiceLineCont skipwhite
+
+    syn match   pamconfServiceLineCont  contained '\\$'
+                                        \ nextgroup=pamconfType,
+                                        \ pamconfServiceLineCont skipwhite skipnl
+endif
 
 syn keyword pamconfTodo             contained TODO FIXME XXX NOTE
 
 syn region  pamconfComment          display oneline start='#' end='$'
                                     \ contains=pamconfTodo,@Spell
 
-syn match   pamconfServiceLineCont  contained '\\$'
-                                    \ nextgroup=pamconfType,
-                                    \ pamconfServiceLineCont skipwhite skipnl
-
-syn keyword pamconfType             account auth password session
-                                    \ nextgroup=pamconfControl,
-                                    \ pamconfTypeLineCont skipwhite
-
 syn match   pamconfTypeLineCont     contained '\\$'
                                     \ nextgroup=pamconfControl,
                                     \ pamconfTypeLineCont skipwhite skipnl
 
 syn keyword pamconfControl          contained requisite required sufficient
-                                    \ optional
+                                    \ optional include substack
                                     \ nextgroup=pamconfMPath,
                                     \ pamconfControlLineContH skipwhite
 
@@ -57,7 +67,9 @@ syn keyword pamconfControlValues    contained success open_err symbol_err
                                     \ bad_item and default
                                     \ nextgroup=pamconfControlValueEq
 
-syn match   pamconfControlValueEq   contained '=' nextgroup=pamconfControlAction
+syn match   pamconfControlValueEq   contained '='
+                                    \ nextgroup=pamconfControlActionN,
+                                    \           pamconfControlAction
 
 syn match   pamconfControlActionN   contained '\d\+\>'
                                     \ nextgroup=pamconfControlValues,
@@ -96,7 +108,8 @@ hi def link pamconfTodo             Todo
 hi def link pamconfComment          Comment
 hi def link pamconfService          Statement
 hi def link pamconfServiceLineCont  Special
-hi def link pamconfType             Type
+hi def link pamconfType             Special
+hi def link pamconfTypeKeyword      Type
 hi def link pamconfTypeLineCont     pamconfServiceLineCont
 hi def link pamconfControl          Macro
 hi def link pamconfControlBegin     Delimiter

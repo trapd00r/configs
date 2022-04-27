@@ -1,11 +1,11 @@
-" DoxyGen syntax hilighting extension for c/c++/idl/java
+" DoxyGen syntax highlighting extension for c/c++/idl/java
 " Language:     doxygen on top of c, cpp, idl, java, php
 " Maintainer:   Michael Geddes <vimmer@frog.wheelycreek.net>
 " Author:       Michael Geddes
-" Last Change:  Jan 2009
-" Version:      1.23
+" Last Change: December 2020
+" Version:      1.30
 "
-" Copyright 2004-2008 Michael Geddes
+" Copyright 2004-2020 Michael Geddes
 " Please feel free to use, modify & distribute all or part of this script,
 " providing this copyright message remains.
 " I would appreciate being acknowledged in any derived scripts, and would
@@ -54,56 +54,80 @@ let s:cpo_save = &cpo
 try
   set cpo&vim
 
-  " Start of Doxygen syntax hilighting:
+  " Start of Doxygen syntax highlighting:
   "
 
   " C/C++ Style line comments
-  syn region doxygenComment start=+/\*\(\*/\)\@![*!]+  end=+\*/+ contains=doxygenSyncStart,doxygenStart,doxygenTODO keepend fold containedin=phpRegion
-  syn region doxygenCommentL start=+//[/!]<\@!+me=e-1 end=+$+ contains=doxygenStartL,@Spell keepend skipwhite skipnl nextgroup=doxygenComment2 fold containedin=phpRegion
+  syn match doxygenCommentWhite +\s*\ze/\*\(\*/\)\@![*!]+ containedin=phpRegion
+  syn match doxygenCommentWhite +\s*\ze//[/!]+ containedin=phpRegion
+  syn match doxygenCommentWhite +\s*\ze/\*\(\*/\)\@![*!]+
+  syn match doxygenCommentWhite +\s*\ze//[/!]+ containedin=phpRegion
+
+  syn region doxygenComment start=+/\*\(\*/\)\@![*!]+  end=+\*/+ contains=doxygenSyncStart,doxygenStart,doxygenTODO,doxygenLeadingWhite  keepend fold containedin=phpRegion
+  syn region doxygenCommentL start=+//[/!]<\@!+me=e-1 end=+$+ contains=doxygenLeadingLWhite,doxygenStartL,@Spell keepend skipwhite skipnl nextgroup=doxygenCommentWhite2 fold containedin=phpRegion
   syn region doxygenCommentL start=+//[/!]<+me=e-2 end=+$+ contains=doxygenStartL,@Spell keepend skipwhite skipnl fold containedin=phpRegion
   syn region doxygenCommentL start=+//@\ze[{}]+ end=+$+ contains=doxygenGroupDefine,doxygenGroupDefineSpecial,@Spell fold containedin=phpRegion
+  syn region doxygenComment start=+/\*@\ze[{}]+ end=+\*/+ contains=doxygenGroupDefine,doxygenGroupDefineSpecial,@Spell fold containedin=phpRegion
 
   " Single line brief followed by multiline comment.
+  syn match doxygenCommentWhite2 +\_s*\ze/\*\(\*/\)\@![*!]+ contained nextgroup=doxygenComment2
   syn region doxygenComment2 start=+/\*\(\*/\)\@![*!]+ end=+\*/+ contained contains=doxygenSyncStart2,doxygenStart2,doxygenTODO keepend fold
   " This helps with sync-ing as for some reason, syncing behaves differently to a normal region, and the start pattern does not get matched.
   syn match doxygenSyncStart2 +[^*/]+ contained nextgroup=doxygenBody,doxygenPrev,doxygenStartSpecial,doxygenSkipComment,doxygenStartSkip2 skipwhite skipnl
 
   " Skip empty lines at the start for when comments start on the 2nd/3rd line.
-  syn match doxygenStartSkip2 +^\s*\*[^/]+me=e-1 contained nextgroup=doxygenBody,doxygenStartSpecial,doxygenStartSkip skipwhite skipnl
-  syn match doxygenStartSkip2 +^\s*\*$+ contained nextgroup=doxygenBody,doxygenStartSpecial,,doxygenStartSkip skipwhite skipnl
+  syn match doxygenStartSkip2 +^\s*\*[^/]+me=e-1 contained nextgroup=doxygenBody,doxygenStartSpecial,doxygenStartSkipWhite skipwhite skipnl
+  syn match doxygenStartSkip2 +^\s*\*$+ contained nextgroup=doxygenBody,doxygenStartSpecial,doxygenStartSkipWhite skipwhite skipnl
   syn match doxygenStart2 +/\*[*!]+ contained nextgroup=doxygenBody,doxygenPrev,doxygenStartSpecial,doxygenStartSkip2 skipwhite skipnl
 
 
   " Match the Starting pattern (effectively creating the start of a BNF)
   if !exists('g:doxygen_javadoc_autobrief') || g:doxygen_javadoc_autobrief
-    syn match doxygenStart +/\*[*!]+ contained nextgroup=doxygenBrief,doxygenPrev,doxygenFindBriefSpecial,doxygenStartSpecial,doxygenStartSkip,doxygenPage skipwhite skipnl
-    syn match doxygenStartL +//[/!]+ contained nextgroup=doxygenPrevL,doxygenBriefL,doxygenSpecial skipwhite
+    syn match doxygenStart +/\*[*!]+ contained nextgroup=doxygenBrief,doxygenPrev,doxygenFindBriefSpecial,doxygenStartSpecial,doxygenStartSkipWhite,doxygenPage skipwhite skipnl
+    syn match doxygenLeadingLWhite +\s\++ contained nextgroup=doxygenPrevL,doxygenBriefL,doxygenSpecial
+    syn match doxygenStartL +//[/!]+ contained nextgroup=doxygenLeaingLWhite,doxygenPrevL,doxygenBriefL,doxygenSpecial
     " Match the first sentence as a brief comment
     if ! exists('g:doxygen_end_punctuation')
       let g:doxygen_end_punctuation='[.]'
     endif
 
-    exe 'syn region doxygenBrief contained start=+[\\@]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]+ start=+\(^\s*\)\@<!\*/\@!+ start=+\<\k+ skip=+'.doxygen_end_punctuation.'\S\@=+ end=+'.doxygen_end_punctuation.'+ end=+\(\s*\(\n\s*\*\=\s*\)[@\\]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\@!\)\@=+ contains=doxygenSmallSpecial,doxygenContinueComment,doxygenBriefEndComment,doxygenFindBriefSpecial,doxygenSmallSpecial,@doxygenHtmlGroup,doxygenTODO,doxygenHyperLink,doxygenHashLink,@Spell  skipnl nextgroup=doxygenBody'
+    exe 'syn region doxygenBrief contained start=+[\\@]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]+ start=+\(^\s*\)\@<!\*/\@!+ start=+\<\k+ skip=+'.doxygen_end_punctuation.'\S\@=+ end=+'.doxygen_end_punctuation.'+ end=+\(\s*\(\n\s*\*\=\s*\)[@\\]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\@!\)\@=+ contains=doxygenSmallSpecial,doxygenContinueCommentWhite,doxygenLeadingWhite,doxygenBriefEndComment,doxygenFindBriefSpecial,doxygenSmallSpecial,@doxygenHtmlGroup,doxygenTODO,doxygenHyperLink,doxygenHashLink,@Spell  skipnl nextgroup=doxygenBody'
 
     syn match doxygenBriefEndComment +\*/+ contained
 
     exe 'syn region doxygenBriefL start=+@\k\@!\|[\\@]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@]+ start=+\<+ skip=+'.doxygen_end_punctuation.'\S+ end=+'.doxygen_end_punctuation.'\|$+ contained contains=doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell keepend'
     syn match doxygenPrevL +<+ contained  nextgroup=doxygenBriefL,doxygenSpecial skipwhite
   else
-    syn match doxygenStart +/\*[*!]+ contained nextgroup=doxygenBody,doxygenPrev,doxygenFindBriefSpecial,doxygenStartSpecial,doxygenStartSkip,doxygenPage skipwhite skipnl
-    syn match doxygenStartL +//[/!]+ contained nextgroup=doxygenPrevL,doxygenLine,doxygenSpecial skipwhite
+    syn match doxygenStart +/\*[*!]+ contained nextgroup=doxygenBody,doxygenPrev,doxygenFindBriefSpecial,doxygenStartSpecial,doxygenStartSkipWhite,doxygenPage skipwhite skipnl
+    syn match doxygenStartL +//[/!]+ contained nextgroup=doxygenLeadingLWhite,doxygenPrevL,doxygenLine,doxygenSpecial
+    syn match doxygenLeadingLWhite +\s\++ contained nextgroup=doxygenPrevL,doxygenLine,doxygenSpecial
     syn region doxygenLine start=+@\k\@!\|[\\@]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@<]+ start=+\<+ end='$' contained contains=doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell keepend
     syn match doxygenPrevL +<+ contained  nextgroup=doxygenLine,doxygenSpecial skipwhite
 
   endif
 
   " This helps with sync-ing as for some reason, syncing behaves differently to a normal region, and the start pattern does not get matched.
-  syn match doxygenSyncStart +\ze[^*/]+ contained nextgroup=doxygenBrief,doxygenPrev,doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkip,doxygenPage skipwhite skipnl
+  syn match doxygenSyncStart +\ze[^*/]+ contained nextgroup=doxygenBrief,doxygenPrev,doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkipWhite,doxygenPage skipwhite skipnl
+  " Match an [@\]brief so that it moves to body-mode.
+  "
+  "
+  " syn match doxygenBriefLine  contained
+  syn match doxygenBriefSpecial contained +[@\\]+ nextgroup=doxygenBriefWord skipwhite
+  " syn region doxygenFindBriefSpecial start=+[@\\]brief\>+ end=+\(\n\s*\*\=\s*\([@\\]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\@!\)\|\s*$\)\@=+ keepend contains=doxygenBriefSpecial nextgroup=doxygenBody keepend skipwhite skipnl contained
+  syn region doxygenFindBriefSpecial start=+[@\\]brief\>+ skip=+^\s*\(\*/\@!\s*\)\=\(\<\|[@\\]\<\([npcbea]\>\|em\>\|ref\|link\>\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]\)+ end=+^+ keepend contains=doxygenBriefSpecial nextgroup=doxygenBody keepend skipwhite skipnl contained
 
-  syn region doxygenBriefLine contained start=+\<\k+ end=+\(\n\s*\*\=\s*\([@\\]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\@!\)\|\s*$\)\@=+ contains=doxygenContinueComment,doxygenFindBriefSpecial,doxygenSmallSpecial,@doxygenHtmlGroup,doxygenTODO,doxygenHyperLink,doxygenHashLink,@Spell  skipwhite keepend
+
+
+" end=+\(\n\s*\*\=\s*\([@\\]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\@!\)\|\s*$\)\@=+
+"syn region doxygenBriefLine contained start=+\<\k+ skip=+^\s*\(\*/\@!\s*\)\=\(\<\|[@\\]\<\([npcbea]\>\|em\>\|ref\|link\>\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]\)+ end=+^+ contains=doxygenContinueCommentWhite,doxygenSmallSpecial,@doxygenHtmlGroup,doxygenTODO,doxygenHyperLink,doxygenHashLink,@Spell  skipwhite keepend matchgroup=xxx
+syn region doxygenBriefLine contained start=+\<\k+ skip=+^\s*\(\*/\@!\s*\)\=\(\<\|[@\\]\<\([npcbea]\>\|em\>\|ref\|link\>\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]\)+ end=+^+  skipwhite keepend matchgroup=xxx
+" syn region doxygenBriefLine matchgroup=xxxy contained start=+\<\k.\++ skip=+^\s*\k+ end=+end+  skipwhite keepend
+"doxygenFindBriefSpecial,
+  "" syn region doxygenSpecialMultilineDesc  start=+.\++ contained contains=doxygenSpecialContinueCommentWhite,doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell  skipwhite keepend
+
 
   " Match a '<' for applying a comment to the previous element.
-  syn match doxygenPrev +<+ contained nextgroup=doxygenBrief,doxygenBody,doxygenSpecial,doxygenStartSkip skipwhite
+  syn match doxygenPrev +<+ contained nextgroup=doxygenBrief,doxygenBody,doxygenSpecial,doxygenStartSkipWhite skipwhite
 
 if exists("c_comment_strings")
   " These are anti-Doxygen comments.  If there are more than two asterisks or 3 '/'s
@@ -122,10 +146,11 @@ endif
   "syn region doxygenBodyBit contained start=+$+
 
   " The main body of a doxygen comment.
-  syn region doxygenBody contained start=+\(/\*[*!]\)\@<!<\|[^<]\|$+ matchgroup=doxygenEndComment end=+\*/+re=e-2,me=e-2 contains=doxygenContinueComment,doxygenTODO,doxygenSpecial,doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell
+  syn region doxygenBody contained start=+\(/\*[*!]\)\@<!<\|[^<]\|$+ matchgroup=doxygenEndComment end=+\*/+re=e-2,me=e-2 contains=doxygenContinueCommentWhite,doxygenTODO,doxygenSpecial,doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell
 
   " These allow the skipping of comment continuation '*' characters.
-  syn match doxygenContinueComment contained +^\s*\*/\@!\s*+
+  syn match doxygenContinueCommentWhite contained +^\s*\ze\*+ nextgroup=doxygenContinueComment
+  syn match doxygenContinueComment contained +\*/\@!+
 
   " Catch a Brief comment without punctuation - flag it as an error but
   " make sure the end comment is picked up also.
@@ -134,27 +159,19 @@ endif
 
   " Skip empty lines at the start for when comments start on the 2nd/3rd line.
   if !exists('g:doxygen_javadoc_autobrief') || g:doxygen_javadoc_autobrief
-    syn match doxygenStartSkip +^\s*\*[^/]+me=e-1 contained nextgroup=doxygenBrief,doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkip,doxygenPage skipwhite skipnl
-    syn match doxygenStartSkip +^\s*\*$+ contained nextgroup=doxygenBrief,doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkip,doxygenPage skipwhite skipnl
+    syn match doxygenStartSkipWhite +^\s*\ze\*/\@!+ contained nextgroup=doxygenBrief,doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkipWhite,doxygenPage skipwhite skipnl
+    "syn match doxygenStartSkipWhite +^\s*\ze\*$+ contained nextgroup=doxygenBrief,doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkipWhite,doxygenPage skipwhite skipnl
   else
-    syn match doxygenStartSkip +^\s*\*[^/]+me=e-1 contained nextgroup=doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkip,doxygenPage,doxygenBody skipwhite skipnl
-    syn match doxygenStartSkip +^\s*\*$+ contained nextgroup=doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkip,doxygenPage,doxygenBody skipwhite skipnl
+    syn match doxygenStartSkipWhite +^\s*\*[^/]+me=e-1 contained nextgroup=doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkipWhite,doxygenPage,doxygenBody skipwhite skipnl
+    syn match doxygenStartSkipWhite +^\s*\*$+ contained nextgroup=doxygenStartSpecial,doxygenFindBriefSpecial,doxygenStartSkipWhite,doxygenPage,doxygenBody skipwhite skipnl
   endif
-
-  " Match an [@\]brief so that it moves to body-mode.
-  "
-  "
-  " syn match doxygenBriefLine  contained
-  syn match doxygenBriefSpecial contained +[@\\]+ nextgroup=doxygenBriefWord skipwhite
-  syn region doxygenFindBriefSpecial start=+[@\\]brief\>+ end=+\(\n\s*\*\=\s*\([@\\]\([npcbea]\>\|em\>\|ref\>\|link\>\|f\$\|[$\\&<>#]\)\@!\)\|\s*$\)\@=+ keepend contains=doxygenBriefSpecial nextgroup=doxygenBody keepend skipwhite skipnl contained
-
 
   " Create the single word matching special identifiers.
 
   fun! s:DxyCreateSmallSpecial( kword, name )
 
-    let mx='[-:0-9A-Za-z_%=&+*/!~>|]\@<!\([-0-9A-Za-z_%=+*/!~>|#]\+[-0-9A-Za-z_%=+*/!~>|]\@!\|\\[\\<>&.]@\|[.,][0-9a-zA-Z_]\@=\|::\|([^)]*)\|&[0-9a-zA-Z]\{2,7};\)\+'
-    exe 'syn region doxygenSpecial'.a:name.'Word contained start=+'.a:kword.'+ end=+\(\_s\+'.mx.'\)\@<=[-a-zA-Z_0-9+*/^%|~!=&\\]\@!+ skipwhite contains=doxygenContinueComment,doxygen'.a:name.'Word'
+    let mx='[-:0-9A-Za-z_%=&+*/!~>|]\@<!\([-0-9A-Za-z_%=+*/!~>|#]\+[-0-9A-Za-z_%=+*/!~>|]\@!\|\\[\\<>&.]@\|[.,]\w\@=\|::\|([^)]*)\|&[0-9a-zA-Z]\{2,7};\)\+'
+    exe 'syn region doxygenSpecial'.a:name.'Word contained start=+'.a:kword.'+ end=+\(\_s\+'.mx.'\)\@<=[-a-zA-Z_0-9+*/^%|~!=&\\]\@!+ skipwhite contains=doxygenContinueCommentWhite,doxygen'.a:name.'Word'
     exe 'syn match doxygen'.a:name.'Word contained "\_s\@<='.mx.'" contains=doxygenHtmlSpecial,@Spell keepend'
   endfun
   call s:DxyCreateSmallSpecial('p', 'Code')
@@ -169,7 +186,7 @@ endif
   syn match doxygenSmallSpecial contained +[@\\]\(\<[npcbea]\>\|\<em\>\|\<ref\>\|\<link\>\|f\$\|[$\\&<>#]\)\@=+ nextgroup=doxygenOtherLink,doxygenHyperLink,doxygenHashLink,doxygenFormula,doxygenSymbol,doxygenSpecial.*Word
 
   " Now for special characters
-  syn match doxygenSpecial contained +[@\\]\(\<[npcbea]\>\|\<em\>\|\<ref\|\<link\>\>\|\<f\$\|[$\\&<>#]\)\@!+ nextgroup=doxygenParam,doxygenRetval,doxygenBriefWord,doxygenBold,doxygenBOther,doxygenOther,doxygenOtherTODO,doxygenOtherWARN,doxygenOtherBUG,doxygenPage,doxygenGroupDefine,doxygenCodeRegion,doxygenVerbatimRegion,doxygenDotRegion
+  syn match doxygenSpecial contained +[@\\]\(\<[npcbea]\>\|\<em\>\|\<ref\|\<link\>\>\|\<f\$\|[$\\&<>#]\)\@!+ nextgroup=doxygenParam,doxygenTParam,doxygenRetval,doxygenBriefWord,doxygenBold,doxygenBOther,doxygenOther,doxygenOtherTODO,doxygenOtherWARN,doxygenOtherBUG,doxygenPage,doxygenGroupDefine,doxygenCodeRegion,doxygenVerbatimRegion,doxygenDotRegion
   " doxygenOtherLink,doxygenSymbol,doxygenFormula,doxygenErrorSpecial,doxygenSpecial.*Word
   "
   syn match doxygenGroupDefine contained +@\@<=[{}]+
@@ -180,39 +197,42 @@ endif
   " Match parameters and retvals (highlighting the first word as special).
   syn match doxygenParamDirection contained "\v\[(\s*in>((]\s*\[|\s*,\s*)out>)=|out>((]\s*\[|\s*,\s*)in>)=)\]" nextgroup=doxygenParamName skipwhite
   syn keyword doxygenParam contained param nextgroup=doxygenParamName,doxygenParamDirection skipwhite
+  syn keyword doxygenTParam contained tparam nextgroup=doxygenParamName skipwhite
   syn match doxygenParamName contained +[A-Za-z0-9_:]\++ nextgroup=doxygenSpecialMultilineDesc skipwhite
-  syn keyword doxygenRetval contained retval throw exception nextgroup=doxygenParamName skipwhite
+  syn keyword doxygenRetval contained retval throw throws exception nextgroup=doxygenReturnValue skipwhite
+  syn match doxygenReturnValue contained +\S\++ nextgroup=doxygenSpecialMultilineDesc skipwhite
 
   " Match one line identifiers.
   syn keyword doxygenOther contained addindex anchor
   \ dontinclude endhtmlonly endlatexonly showinitializer hideinitializer
-  \ example htmlonly image include ingroup internal latexonly line
-  \ overload relates relatesalso sa skip skipline
+  \ example htmlonly image include includelineno ingroup latexonly line
+  \ overload relates related relatesalso relatedalso sa skip skipline
   \ until verbinclude version addtogroup htmlinclude copydoc dotfile
   \ xmlonly endxmlonly
-  \ nextgroup=doxygenSpecialOnelineDesc
+  \ nextgroup=doxygenSpecialOnelineDesc copybrief copydetails copyright dir extends
+  \ implements
 
-  syn region doxygenCodeRegion contained matchgroup=doxygenOther start=+\<code\>+ matchgroup=doxygenOther end=+[\\@]\@<=\<endcode\>+ contains=doxygenCodeRegionSpecial,doxygenContinueComment,doxygenErrorComment,@NoSpell
+  syn region doxygenCodeRegion contained matchgroup=doxygenOther start=+\<code\>+ matchgroup=doxygenOther end=+[\\@]\@<=\<endcode\>+ contains=doxygenCodeRegionSpecial,doxygenContinueCommentWhite,doxygenErrorComment,@NoSpell
   syn match doxygenCodeRegionSpecial contained +[\\@]\(endcode\>\)\@=+
 
-  syn region doxygenVerbatimRegion contained matchgroup=doxygenOther start=+\<verbatim\>+ matchgroup=doxygenOther end=+[\\@]\@<=\<endverbatim\>+ contains=doxygenVerbatimRegionSpecial,doxygenContinueComment,doxygenErrorComment,@NoSpell
+  syn region doxygenVerbatimRegion contained matchgroup=doxygenOther start=+\<verbatim\>+ matchgroup=doxygenOther end=+[\\@]\@<=\<endverbatim\>+ contains=doxygenVerbatimRegionSpecial,doxygenContinueCommentWhite,doxygenErrorComment,@NoSpell
   syn match doxygenVerbatimRegionSpecial contained +[\\@]\(endverbatim\>\)\@=+
 
-  if exists('b:current_syntax') 
+  if exists('b:current_syntax')
     let b:doxygen_syntax_save=b:current_syntax
     unlet b:current_syntax
   endif
 
   syn include @Dotx syntax/dot.vim
 
-  if exists('b:doxygen_syntax_save') 
+  if exists('b:doxygen_syntax_save')
     let b:current_syntax=b:doxygen_syntax_save
     unlet b:doxygen_syntax_save
   else
     unlet b:current_syntax
   endif
 
-  syn region doxygenDotRegion contained matchgroup=doxygenOther start=+\<dot\>+ matchgroup=doxygenOther end=+[\\@]\@<=\<enddot\>+ contains=doxygenDotRegionSpecial,doxygenErrorComment,doxygenContinueComment,@NoSpell,@Dotx
+  syn region doxygenDotRegion contained matchgroup=doxygenOther start=+\<dot\>+ matchgroup=doxygenOther end=+[\\@]\@<=\<enddot\>+ contains=doxygenDotRegionSpecial,doxygenErrorComment,doxygenContinueCommentWhite,@NoSpell,@Dotx
   syn match doxygenDotRegionSpecial contained +[\\@]\(enddot\>\)\@=+
 
   " Match single line identifiers.
@@ -222,22 +242,22 @@ endif
 
   syn keyword doxygenOther contained par nextgroup=doxygenHeaderLine
   syn region doxygenHeaderLine start=+.+ end=+^+ contained skipwhite nextgroup=doxygenSpecialMultilineDesc
-
-  syn keyword doxygenOther contained arg author date deprecated li return returns see invariant note post pre remarks since test nextgroup=doxygenSpecialMultilineDesc
+  " Match the start of other multiline comments.
+  syn keyword doxygenOther contained arg author authors date deprecated li return returns result see invariant note post pre remarks since test internal nextgroup=doxygenSpecialMultilineDesc
   syn keyword doxygenOtherTODO contained todo attention nextgroup=doxygenSpecialMultilineDesc
   syn keyword doxygenOtherWARN contained warning nextgroup=doxygenSpecialMultilineDesc
   syn keyword doxygenOtherBUG contained bug nextgroup=doxygenSpecialMultilineDesc
 
   " Handle \link, \endlink, highlighting the link-to and the link text bits separately.
-  syn region doxygenOtherLink matchgroup=doxygenOther start=+\<link\>+ end=+[\@]\@<=endlink\>+ contained contains=doxygenLinkWord,doxygenContinueComment,doxygenLinkError,doxygenEndlinkSpecial
+  syn region doxygenOtherLink matchgroup=doxygenOther start=+\<link\>+ end=+[\@]\@<=endlink\>+ contained contains=doxygenLinkWord,doxygenContinueCommentWhite,doxygenLinkError,doxygenEndlinkSpecial
   syn match doxygenEndlinkSpecial contained +[\\@]\zeendlink\>+
 
   syn match doxygenLinkWord "[_a-zA-Z:#()][_a-z0-9A-Z:#()]*\>" contained skipnl nextgroup=doxygenLinkRest,doxygenContinueLinkComment
   syn match doxygenLinkRest +[^*@\\]\|\*/\@!\|[@\\]\(endlink\>\)\@!+ contained skipnl nextgroup=doxygenLinkRest,doxygenContinueLinkComment
   syn match doxygenContinueLinkComment contained +^\s*\*\=[^/]+me=e-1 nextgroup=doxygenLinkRest
   syn match doxygenLinkError "\*/" contained
-  " #Link hilighting.
-  syn match doxygenHashLink /\([a-zA-Z_][0-9a-zA-Z_]*\)\?#\(\.[0-9a-zA-Z_]\@=\|[a-zA-Z0-9_]\+\|::\|()\)\+/ contained contains=doxygenHashSpecial
+  " #Link highlighting.
+  syn match doxygenHashLink /\(\h\w*\)\?#\(\.\w\@=\|\w\+\|::\|()\)\+/ contained contains=doxygenHashSpecial
   syn match doxygenHashSpecial /#/ contained
   syn match doxygenHyperLink /\(\s\|^\s*\*\?\)\@<=\(http\|https\|ftp\):\/\/[-0-9a-zA-Z_?&=+#%/.!':;@~]\+/ contained
 
@@ -245,12 +265,12 @@ endif
   syn match doxygenPage "[\\@]page\>"me=s+1 contained skipwhite nextgroup=doxygenPagePage
   syn keyword doxygenPagePage page contained skipwhite nextgroup=doxygenPageIdent
   syn region doxygenPageDesc  start=+.\++ end=+$+ contained skipwhite contains=doxygenSmallSpecial,@doxygenHtmlGroup keepend skipwhite skipnl nextgroup=doxygenBody
-  syn match doxygenPageIdent "\<[a-zA-Z_0-9]\+\>" contained nextgroup=doxygenPageDesc
+  syn match doxygenPageIdent "\<\w\+\>" contained nextgroup=doxygenPageDesc
 
   " Handle section
   syn keyword doxygenOther defgroup section subsection subsubsection weakgroup contained skipwhite nextgroup=doxygenSpecialIdent
-  syn region doxygenSpecialSectionDesc  start=+.\++ end=+$+ contained skipwhite contains=doxygenSmallSpecial,@doxygenHtmlGroup keepend skipwhite skipnl nextgroup=doxygenContinueComment
-  syn match doxygenSpecialIdent "\<[a-zA-Z_0-9]\+\>" contained nextgroup=doxygenSpecialSectionDesc
+  syn region doxygenSpecialSectionDesc  start=+.\++ end=+$+ contained skipwhite contains=doxygenSmallSpecial,@doxygenHtmlGroup keepend skipwhite skipnl nextgroup=doxygenContinueCommentWhite
+  syn match doxygenSpecialIdent "\<\w\+\>" contained nextgroup=doxygenSpecialSectionDesc
 
   " Does the one-line description for the one-line type identifiers.
   syn region doxygenSpecialTypeOnelineDesc  start=+.\++ end=+$+ contained skipwhite contains=doxygenSmallSpecial,@doxygenHtmlGroup keepend
@@ -259,8 +279,12 @@ endif
   " Handle the multiline description for the multiline type identifiers.
   " Continue until an 'empty' line (can contain a '*' continuation) or until the
   " next whole-line @ command \ command.
-  syn region doxygenSpecialMultilineDesc  start=+.\++ skip=+^\s*\(\*/\@!\s*\)\=\(\<\|[@\\]\<\([npcbea]\>\|em\>\|ref\|link\>\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]\)+ end=+^+ contained contains=doxygenSpecialContinueComment,doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell  skipwhite keepend
-  syn match doxygenSpecialContinueComment contained +^\s*\*/\@!\s*+ nextgroup=doxygenSpecial skipwhite
+  syn region doxygenSpecialMultilineDesc  start=+.\++ skip=+^\s*\(\*/\@!\s*\)\=\(\<\|[@\\]\<\([npcbea]\>\|em\>\|ref\|link\>\>\|f\$\|[$\\&<>#]\)\|[^ \t\\@*]\)+ end=+^+ contained contains=doxygenSpecialContinueCommentWhite,doxygenSmallSpecial,doxygenHyperLink,doxygenHashLink,@doxygenHtmlGroup,@Spell  skipwhite keepend
+
+"  syn match doxygenSpecialContinueComment contained +^\s*\*/\@!\s*+ nextgroup=doxygenSpecial skipwhite
+  syn match doxygenSpecialContinueCommentWhite contained +^\s*\ze\*+ nextgroup=doxygenSpecialContinueComment
+  syn match doxygenSpecialContinueComment contained +\*/\@!+
+
 
   " Handle special cases  'bold' and 'group'
   syn keyword doxygenBold contained bold nextgroup=doxygenSpecialHeading
@@ -282,12 +306,12 @@ endif
   syn region doxygenFormula contained matchgroup=doxygenFormulaEnds start=+f\[+ end=+[@\\]f]+ contains=doxygenFormulaSpecial,doxygenFormulaOperator,doxygenAtom
   syn region doxygenAtom contained transparent matchgroup=doxygenFormulaOperator start=+{+ end=+}+ contains=doxygenAtom,doxygenFormulaSpecial,doxygenFormulaOperator
 
-  " Add TODO hilighting.
+  " Add TODO highlighting.
   syn keyword doxygenTODO contained TODO README XXX FIXME
 
   " Supported HTML subset.  Not perfect, but okay.
   syn case ignore
-  syn region doxygenHtmlTag contained matchgroup=doxygenHtmlCh start=+\v\</=\ze([biuap]|em|strong|img|br|center|code|dfn|d[ldt]|hr|h[0-3]|li|[ou]l|pre|small|sub|sup|table|tt|var|caption|src|alt|longdesc|name|height|width|usemap|ismap|href|type)>+ skip=+\\<\|\<\k\+=\("[^"]*"\|'[^']*\)+ end=+>+ contains=doxygenHtmlCmd,doxygenContinueComment,doxygenHtmlVar
+  syn region doxygenHtmlTag contained matchgroup=doxygenHtmlCh start=+\v\</=\ze([biuap]|em|strong|img|br|center|code|dfn|d[ldt]|hr|h[0-3]|li|[ou]l|pre|small|sub|sup|table|tt|var|caption|src|alt|longdesc|name|height|width|usemap|ismap|href|type)>+ skip=+\\<\|\<\k\+=\("[^"]*"\|'[^']*\)+ end=+>+ contains=doxygenHtmlCmd,doxygenContinueCommentWhite,doxygenHtmlVar
   syn keyword doxygenHtmlCmd contained b i em strong u img a br p center code dfn dl dd dt hr h1 h2 h3 li ol ul pre small sub sup table tt var caption nextgroup=doxygenHtmlVar skipwhite
   syn keyword doxygenHtmlVar contained src alt longdesc name height width usemap ismap href type nextgroup=doxygenHtmlEqu skipwhite
   syn match doxygenHtmlEqu contained +=+ nextgroup=doxygenHtmlExpr skipwhite
@@ -297,7 +321,7 @@ endif
 
   syn cluster doxygenHtmlGroup contains=doxygenHtmlCode,doxygenHtmlBold,doxygenHtmlUnderline,doxygenHtmlItalic,doxygenHtmlSpecial,doxygenHtmlTag,doxygenHtmlLink
 
-  syn cluster doxygenHtmlTop contains=@Spell,doxygenHtmlSpecial,doxygenHtmlTag,doxygenContinueComment
+  syn cluster doxygenHtmlTop contains=@Spell,doxygenHtmlSpecial,doxygenHtmlTag,doxygenContinueCommentWhite
   " Html Support
   syn region doxygenHtmlLink contained start=+<[aA]\>\s*\(\n\s*\*\s*\)\=\(\(name\|href\)=\("[^"]*"\|'[^']*'\)\)\=\s*>+ end=+</[aA]>+me=e-4 contains=@doxygenHtmlTop
   hi link doxygenHtmlLink Underlined
@@ -342,7 +366,7 @@ endif
   syn cluster rcGroup add=doxygen.*
 
   let s:my_syncolor=0
-  if !exists(':SynColor') 
+  if !exists(':SynColor')
     command -nargs=+ SynColor hi def <args>
     let s:my_syncolor=1
   endif
@@ -398,7 +422,7 @@ endif
             if &guifont == ''
               let font="font='FreeSerif 12'"
             else
-              let font="font='".substitute(&guifont, '^.\{-}\([0-9]\+\)$', 'FreeSerif \1','')."'"
+              let font="font='".substitute(&guifont, '^.\{-}\(\d\+\)$', 'FreeSerif \1','')."'"
             endif
 
           elseif has('gui_win32') || has('gui_win16') || has('gui_win95')
@@ -452,6 +476,7 @@ endif
           SynColor doxygenSpecialHeading cterm=bold ctermfg=LightBlue guifg=LightBlue gui=bold
           SynColor doxygenPrev ctermfg=LightGreen guifg=LightGreen
         endif
+        SynLink  doxygenValue doxygenParamName
       else
         SynLink doxygenComment SpecialComment
         SynLink doxygenBrief Statement
@@ -463,10 +488,15 @@ endif
         SynLink doxygenSpecialOnelineDesc Statement
         SynLink doxygenSpecialHeading Statement
         SynLink doxygenPrev SpecialComment
+        SynLink doxygenValue Constant
       endif
+      SynLink doxygenTParam doxygenParam
+
     endfun
 
     call s:Doxygen_Hilights()
+
+    syn match doxygenLeadingWhite +\(^\s*\*\)\@<=\s*+ contained
 
     " This is still a proposal, but won't do any harm.
     aug doxygengroup
@@ -482,6 +512,7 @@ endif
     SynLink doxygenOtherTODO              Todo
     SynLink doxygenOtherWARN              Todo
     SynLink doxygenOtherBUG               Todo
+    SynLink doxygenLeadingLWhite          doxygenBody
 
     SynLink doxygenErrorSpecial           Error
     SynLink doxygenErrorEnd               Error
@@ -516,11 +547,15 @@ endif
     SynLink doxygenBriefL                 doxygenBrief
     SynLink doxygenBriefLine              doxygenBrief
     SynLink doxygenHeaderLine             doxygenSpecialHeading
-    SynLink doxygenStartSkip              doxygenContinueComment
+    SynLink doxygenCommentWhite           Normal
+    SynLink doxygenCommentWhite2          doxygenCommentWhite
+    SynLink doxygenContinueCommentWhite   doxygenCommentWhite
+    SynLink doxygenStartSkipWhite         doxygenContinueCommentWhite
     SynLink doxygenLinkWord               doxygenParamName
     SynLink doxygenLinkRest               doxygenSpecialMultilineDesc
     SynLink doxygenHyperLink              doxygenLinkWord
     SynLink doxygenHashLink               doxygenLinkWord
+    SynLink doxygenReturnValue            doxygenValue
 
     SynLink doxygenPage                   doxygenSpecial
     SynLink doxygenPagePage               doxygenBOther
@@ -590,5 +625,5 @@ finally
   let &cpo = s:cpo_save
   unlet s:cpo_save
 endtry
-
+let suppress_doxygen=1
 " vim:et sw=2 sts=2

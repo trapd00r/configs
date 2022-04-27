@@ -1,10 +1,10 @@
 " Vim syntax file
 " Language:      Perl POD format
-" Maintainer:    Andy Lester <andy@petdance.com>
+" Maintainer:    vim-perl <vim-perl@googlegroups.com>
 " Previously:    Scott Bigham <dsb@killerbunnies.org>
-" Homepage:      http://github.com/petdance/vim-perl
-" Bugs/requests: http://github.com/petdance/vim-perl/issues
-" Last Change:   2009-08-14
+" Homepage:      http://github.com/vim-perl/vim-perl
+" Bugs/requests: http://github.com/vim-perl/vim-perl/issues
+" Last Change:   2017-09-12
 
 " To add embedded POD documentation highlighting to your syntax file, add
 " the commands:
@@ -19,15 +19,16 @@
 
 " Remove any old syntax stuff hanging around (this is suppressed
 " automatically by ":syn include" if necessary).
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
+let s:cpo_save = &cpo
+set cpo&vim
+
 " POD commands
+syn match podCommand    "^=encoding"  nextgroup=podCmdText contains=@NoSpell
 syn match podCommand    "^=head[1234]"  nextgroup=podCmdText contains=@NoSpell
 syn match podCommand    "^=item"        nextgroup=podCmdText contains=@NoSpell
 syn match podCommand    "^=over"        nextgroup=podOverIndent skipwhite contains=@NoSpell
@@ -63,28 +64,17 @@ syn match  podEscape	"\I\i*>"me=e-1 contained contains=@NoSpell
 syn match  podEscape2	"\d\+>"me=e-1 contained contains=@NoSpell
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_pod_syntax_inits")
-  if version < 508
-    let did_pod_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink podCommand		Statement
-  HiLink podCmdText		String
-  HiLink podOverIndent		Number
-  HiLink podForKeywd		Identifier
-  HiLink podFormat		Identifier
-  HiLink podVerbatimLine	PreProc
-  HiLink podSpecial		Identifier
-  HiLink podEscape		String
-  HiLink podEscape2		Number
-
-  delcommand HiLink
-endif
+hi def link podCommand		Statement
+hi def link podCmdText		String
+hi def link podOverIndent	Number
+hi def link podForKeywd		Identifier
+hi def link podFormat		Identifier
+hi def link podVerbatimLine	PreProc
+hi def link podSpecial		Identifier
+hi def link podEscape		String
+hi def link podEscape2		Number
 
 if exists("perl_pod_spellcheck_headings")
   " Spell-check headings
@@ -178,5 +168,8 @@ if exists("perl_pod_formatting")
 endif
 
 let b:current_syntax = "pod"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
 
 " vim: ts=8

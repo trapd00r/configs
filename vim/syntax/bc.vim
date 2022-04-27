@@ -1,14 +1,12 @@
 " Vim syntax file
 " Language:	bc - An arbitrary precision calculator language
 " Maintainer:	Vladimir Scholtz <vlado@gjh.sk>
-" Last change:	2001 Sep 02
+" Last change:	2012 Jun 01
+" 		(Dominique Pelle added @Spell)
 " Available on:	www.gjh.sk/~vlado/bc.vim
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
@@ -31,14 +29,14 @@ syn keyword bcConstant BC_ENV_ARGS BC_LINE_LENGTH
 syn match bcIdentifier		"[a-z_][a-z0-9_]*"
 
 " String
- syn match bcString		"\"[^"]*\""
+ syn match bcString		"\"[^"]*\"" contains=@Spell
 
 " Number
 syn match bcNumber		"[0-9]\+"
 
 " Comment
-syn match bcComment		"\#.*"
-syn region bcComment		start="/\*" end="\*/"
+syn match bcComment		"\#.*" contains=@Spell
+syn region bcComment		start="/\*" end="\*/" contains=@Spell
 
 " Parent ()
 syn cluster bcAll contains=bcList,bcIdentifier,bcNumber,bcKeyword,bcType,bcConstant,bcString,bcParentError
@@ -52,27 +50,17 @@ syn match bcParenError			")"
 syn case match
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_bc_syntax_inits")
-  if version < 508
-    let did_bc_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink bcKeyword		Statement
-  HiLink bcType		Type
-  HiLink bcConstant		Constant
-  HiLink bcNumber		Number
-  HiLink bcComment		Comment
-  HiLink bcString		String
-  HiLink bcSpecialChar		SpecialChar
-  HiLink bcParenError		Error
+hi def link bcKeyword		Statement
+hi def link bcType		Type
+hi def link bcConstant		Constant
+hi def link bcNumber		Number
+hi def link bcComment		Comment
+hi def link bcString		String
+hi def link bcSpecialChar		SpecialChar
+hi def link bcParenError		Error
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "bc"
 " vim: ts=8

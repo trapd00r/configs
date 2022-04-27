@@ -6,18 +6,15 @@
 " URL:          http://www.eandem.co.uk/mrw/vim
 "
 " Options Flags:
-" postscr_level                 - language level to use for highligting (1, 2, or 3)
+" postscr_level                 - language level to use for highlighting (1, 2, or 3)
 " postscr_display               - include display PS operators
 " postscr_ghostscript           - include GS extensions
 " postscr_fonts                 - highlight standard font names (a lot for PS 3)
 " postscr_encodings             - highlight encoding names (there are a lot)
 " postscr_andornot_binary       - highlight and, or, and not as binary operators (not logical)
 "
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
@@ -25,11 +22,7 @@ endif
 syn case match
 
 " Keyword characters - all 7-bit ASCII bar PS delimiters and ws
-if version >= 600
-  setlocal iskeyword=33-127,^(,^),^<,^>,^[,^],^{,^},^/,^%
-else
-  set iskeyword=33-127,^(,^),^<,^>,^[,^],^{,^},^/,^%
-endif
+setlocal iskeyword=33-127,^(,^),^<,^>,^[,^],^{,^},^/,^%
 
 " Yer trusty old TODO highlghter!
 syn keyword postscrTodo contained  TODO
@@ -476,12 +469,12 @@ if postscr_level == 2 || postscr_level == 3
   syn keyword postscrConstant   contained SubsVector UnderlineThickness FamilyName FontBBox CurMID
   syn keyword postscrConstant   contained Weight
 
-" PS2 User paramters
+" PS2 User parameters
   syn keyword postscrConstant   contained MaxFontItem MinFontCompress MaxUPathItem MaxFormItem MaxPatternItem
   syn keyword postscrConstant   contained MaxScreenItem MaxOpStack MaxDictStack MaxExecStack MaxLocalVM
   syn keyword postscrConstant   contained VMReclaim VMThreshold
 
-" PS2 System paramters
+" PS2 System parameters
   syn keyword postscrConstant   contained SystemParamsPassword StartJobPassword BuildTime ByteOrder RealFormat
   syn keyword postscrConstant   contained MaxFontCache CurFontCache MaxOutlineCache CurOutlineCache
   syn keyword postscrConstant   contained MaxUPathCache CurUPathCache MaxFormCache CurFormCache
@@ -503,15 +496,15 @@ if postscr_level == 2 || postscr_level == 3
 " Page duplexing operators
   syn keyword postscrL2Operator   duplexmode firstside newsheet setduplexmode settumble tumble
 
-" Device compatability operators
+" Device compatibility operators
   syn keyword postscrL2Operator   devdismount devformat devmount devstatus
   syn keyword postscrL2Repeat     devforall
 
-" Imagesetter compatability operators
+" Imagesetter compatibility operators
   syn keyword postscrL2Operator   accuratescreens checkscreen pagemargin pageparams setaccuratescreens setpage
   syn keyword postscrL2Operator   setpagemargin setpageparams
 
-" Misc compatability operators
+" Misc compatibility operators
   syn keyword postscrL2Operator   appletalktype buildtime byteorder checkpassword defaulttimeouts diskonline
   syn keyword postscrL2Operator   diskstatus manualfeed manualfeedtimeout margins mirrorprint pagecount
   syn keyword postscrL2Operator   pagestackorder printername processcolors sethardwareiomode setjobtimeout
@@ -730,67 +723,57 @@ if exists("postscr_ghostscript")
 endif " GhostScript highlighting
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_postscr_syntax_inits")
-  if version < 508
-    let did_postscr_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink postscrComment         Comment
+hi def link postscrComment         Comment
 
-  HiLink postscrConstant        Constant
-  HiLink postscrString          String
-  HiLink postscrASCIIString     postscrString
-  HiLink postscrHexString       postscrString
-  HiLink postscrASCII85String   postscrString
-  HiLink postscrNumber          Number
-  HiLink postscrInteger         postscrNumber
-  HiLink postscrHex             postscrNumber
-  HiLink postscrRadix           postscrNumber
-  HiLink postscrFloat           Float
-  HiLink postscrBoolean         Boolean
+hi def link postscrConstant        Constant
+hi def link postscrString          String
+hi def link postscrASCIIString     postscrString
+hi def link postscrHexString       postscrString
+hi def link postscrASCII85String   postscrString
+hi def link postscrNumber          Number
+hi def link postscrInteger         postscrNumber
+hi def link postscrHex             postscrNumber
+hi def link postscrRadix           postscrNumber
+hi def link postscrFloat           Float
+hi def link postscrBoolean         Boolean
 
-  HiLink postscrIdentifier      Identifier
-  HiLink postscrProcedure       Function
+hi def link postscrIdentifier      Identifier
+hi def link postscrProcedure       Function
 
-  HiLink postscrName            Statement
-  HiLink postscrConditional     Conditional
-  HiLink postscrRepeat          Repeat
-  HiLink postscrL2Repeat        postscrRepeat
-  HiLink postscrOperator        Operator
-  HiLink postscrL1Operator      postscrOperator
-  HiLink postscrL2Operator      postscrOperator
-  HiLink postscrL3Operator      postscrOperator
-  HiLink postscrMathOperator    postscrOperator
-  HiLink postscrLogicalOperator postscrOperator
-  HiLink postscrBinaryOperator  postscrOperator
+hi def link postscrName            Statement
+hi def link postscrConditional     Conditional
+hi def link postscrRepeat          Repeat
+hi def link postscrL2Repeat        postscrRepeat
+hi def link postscrOperator        Operator
+hi def link postscrL1Operator      postscrOperator
+hi def link postscrL2Operator      postscrOperator
+hi def link postscrL3Operator      postscrOperator
+hi def link postscrMathOperator    postscrOperator
+hi def link postscrLogicalOperator postscrOperator
+hi def link postscrBinaryOperator  postscrOperator
 
-  HiLink postscrDSCComment      SpecialComment
-  HiLink postscrSpecialChar     SpecialChar
+hi def link postscrDSCComment      SpecialComment
+hi def link postscrSpecialChar     SpecialChar
 
-  HiLink postscrTodo            Todo
+hi def link postscrTodo            Todo
 
-  HiLink postscrError           Error
-  HiLink postscrSpecialCharError postscrError
-  HiLink postscrASCII85CharError postscrError
-  HiLink postscrHexCharError    postscrError
-  HiLink postscrASCIIStringError postscrError
-  HiLink postscrIdentifierError postscrError
+hi def link postscrError           Error
+hi def link postscrSpecialCharError postscrError
+hi def link postscrASCII85CharError postscrError
+hi def link postscrHexCharError    postscrError
+hi def link postscrASCIIStringError postscrError
+hi def link postscrIdentifierError postscrError
 
-  if exists("postscr_ghostscript")
-    HiLink postscrGSOperator      postscrOperator
-    HiLink postscrGSMathOperator  postscrMathOperator
-  else
-    HiLink postscrGSOperator      postscrError
-    HiLink postscrGSMathOperator  postscrError
-  endif
-
-  delcommand HiLink
+if exists("postscr_ghostscript")
+hi def link postscrGSOperator      postscrOperator
+hi def link postscrGSMathOperator  postscrMathOperator
+else
+hi def link postscrGSOperator      postscrError
+hi def link postscrGSMathOperator  postscrError
 endif
+
 
 let b:current_syntax = "postscr"
 

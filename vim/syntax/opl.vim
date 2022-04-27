@@ -1,17 +1,18 @@
 " Vim syntax file
 " Language:	OPL
 " Maintainer:	Czo <Olivier.Sirol@lip6.fr>
+" Last Change:	2012 Feb 03 by Thilo Six
 " $Id: opl.vim,v 1.1 2004/06/13 17:34:11 vimboss Exp $
 
 " Open Psion Language... (EPOC16/EPOC32)
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " case is not significant
 syn case ignore
@@ -71,26 +72,18 @@ syn region  OPLComment		start="REM[\t ]" end="$"
 syn match   OPLMathsOperator    "-\|=\|[:<>+\*^/\\]"
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_OPL_syntax_inits")
-  if version < 508
-    let did_OPL_syntax_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  HiLink OPLStatement		Statement
-  HiLink OPLNumber		Number
-  HiLink OPLString		String
-  HiLink OPLComment		Comment
-  HiLink OPLMathsOperator	Conditional
-"  HiLink OPLError		Error
+hi def link OPLStatement		Statement
+hi def link OPLNumber		Number
+hi def link OPLString		String
+hi def link OPLComment		Comment
+hi def link OPLMathsOperator	Conditional
+"  hi def link OPLError		Error
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "opl"
 
+let &cpo = s:cpo_save
+unlet s:cpo_save
 " vim: ts=8

@@ -1,17 +1,17 @@
 " Vim syntax file
 " Language: FreeBSD send-pr file
 " Maintainer: Hendrik Scholz <hendrik@scholz.net>
-" Last Change: 2002 Mar 21
+" Last Change: 2012 Feb 03
 "
 " http://raisdorf.net/files/misc/send-pr.vim
 
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 syn match sendprComment /^SEND-PR:/
 " email address
@@ -30,3 +30,6 @@ hi def link sendprComment   Comment
 hi def link sendprType      Type
 hi def link sendprString    String
 hi def link sendprLabel     Label
+
+let &cpo = s:cpo_save
+unlet s:cpo_save

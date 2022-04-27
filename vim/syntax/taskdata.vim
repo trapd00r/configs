@@ -4,13 +4,12 @@
 " Updated:	Wed Jul  8 19:46:20 EDT 2009
 
 
-" For version 5.x: Clear all syntax items.
-" For version 6.x: Quit when a syntax file was already loaded.
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded.
+if exists("b:current_syntax")
   finish
 endif
+let s:keepcpo= &cpo
+set cpo&vim
 
 " Key Names for values.
 syn keyword taskdataKey		description due end entry imask mask parent
@@ -39,5 +38,8 @@ hi def link taskdataUUID 	Special
 hi def link taskdataUndo 	Type
 
 let b:current_syntax = "taskdata"
+
+let &cpo = s:keepcpo
+unlet s:keepcpo
 
 " vim:noexpandtab

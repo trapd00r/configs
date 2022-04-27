@@ -1,23 +1,17 @@
 " Vim syntax file
-" This is a GENERATED FILE. Please always refer to source file at the URI below.
 " Language: Apache configuration (httpd.conf, srm.conf, access.conf, .htaccess)
-" Maintainer: David Ne\v{c}as (Yeti) <yeti@physics.muni.cz>
+" Maintainer: David Necas (Yeti) <yeti@physics.muni.cz>
 " License: This file can be redistribued and/or modified under the same terms
 "		as Vim itself.
-" Last Change: 2006-12-13
-" URL: http://trific.ath.cx/Ftp/vim/syntax/apache.vim
+" Last Change: 2020 Oct 07
 " Notes: Last synced with apache-2.2.3, version 1.x is no longer supported
 " TODO: see particular FIXME's scattered through the file
 "		make it really linewise?
 "		+ add `display' where appropriate
 
-" Setup
-if version >= 600
-	if exists("b:current_syntax")
-		finish
-	endif
-else
-	syntax clear
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
+	finish
 endif
 
 syn case ignore
@@ -30,7 +24,10 @@ syn keyword apacheFixme FIXME TODO XXX NOT
 syn case ignore
 syn match apacheAnything "\s[^>]*" contained
 syn match apacheError "\w\+" contained
-syn region apacheString start=+"+ end=+"+ skip=+\\\\\|\\\"+
+syn region apacheString start=+"+ end=+"+ skip=+\\\\\|\\\"+ oneline
+
+" Following is to prevent escaped quotes from being parsed as strings.
+syn match apacheSkipQuote +\\"+
 
 " Core and mpm
 syn keyword apacheDeclaration AccessFileName AddDefaultCharset AllowOverride AuthName AuthType ContentDigest DefaultType DocumentRoot ErrorDocument ErrorLog HostNameLookups IdentityCheck Include KeepAlive KeepAliveTimeout LimitRequestBody LimitRequestFields LimitRequestFieldsize LimitRequestLine LogLevel MaxKeepAliveRequests NameVirtualHost Options Require RLimitCPU RLimitMEM RLimitNPROC Satisfy ScriptInterpreterSource ServerAdmin ServerAlias ServerName ServerPath ServerRoot ServerSignature ServerTokens TimeOut UseCanonicalName
@@ -45,6 +42,8 @@ syn keyword apacheOption user group
 syn match apacheOption "\<valid-user\>"
 syn case match
 syn keyword apacheMethodOption GET POST PUT DELETE CONNECT OPTIONS TRACE PATCH PROPFIND PROPPATCH MKCOL COPY MOVE LOCK UNLOCK contained
+" Added as suggested by Mikko Koivunalho
+syn keyword apacheMethodOption BASELINE-CONTROL CHECKIN CHECKOUT LABEL MERGE MKACTIVITY MKWORKSPACE REPORT UNCHECKOUT UPDATE VERSION-CONTROL contained
 syn case ignore
 syn match apacheSection "<\/\=\(Directory\|DirectoryMatch\|Files\|FilesMatch\|IfModule\|IfDefine\|Location\|LocationMatch\|VirtualHost\)[^>]*>" contains=apacheAnything
 syn match apacheLimitSection "<\/\=\(Limit\|LimitExcept\)[^>]*>" contains=apacheLimitSectionKeyword,apacheMethodOption,apacheError
@@ -156,13 +155,13 @@ syn keyword apacheDeclaration PerlRestartHandler PerlDispatchHandler
 syn keyword apacheDeclaration PerlFreshRestart PerlSendHeader
 syn keyword apacheDeclaration php_value php_flag php_admin_value php_admin_flag
 syn match apacheSection "<\/\=\(Proxy\|ProxyMatch\)[^>]*>" contains=apacheAnything
-syn keyword apacheDeclaration AllowCONNECT NoProxy ProxyBadHeader ProxyBlock ProxyDomain ProxyErrorOverride ProxyIOBufferSize ProxyMaxForwards ProxyPass ProxyPassReverse ProxyPassReverseCookieDomain ProxyPassReverseCookiePath ProxyPreserveHost ProxyReceiveBufferSize ProxyRemote ProxyRemoteMatch ProxyRequests ProxyTimeout ProxyVia
+syn keyword apacheDeclaration AllowCONNECT NoProxy ProxyBadHeader ProxyBlock ProxyDomain ProxyErrorOverride ProxyIOBufferSize ProxyMaxForwards ProxyPass ProxyPassMatch ProxyPassReverse ProxyPassReverseCookieDomain ProxyPassReverseCookiePath ProxyPreserveHost ProxyReceiveBufferSize ProxyRemote ProxyRemoteMatch ProxyRequests ProxyTimeout ProxyVia
 syn keyword apacheDeclaration RewriteBase RewriteCond RewriteEngine RewriteLock RewriteLog RewriteLogLevel RewriteMap RewriteOptions RewriteRule
 syn keyword apacheOption inherit
 syn keyword apacheDeclaration BrowserMatch BrowserMatchNoCase SetEnvIf SetEnvIfNoCase
 syn keyword apacheDeclaration LoadFile LoadModule
 syn keyword apacheDeclaration CheckSpelling CheckCaseOnly
-syn keyword apacheDeclaration SSLCACertificateFile SSLCACertificatePath SSLCADNRequestFile SSLCADNRequestPath SSLCARevocationFile SSLCARevocationPath SSLCertificateChainFile SSLCertificateFile SSLCertificateKeyFile SSLCipherSuite SSLCryptoDevice SSLEngine SSLHonorCipherOrder SSLMutex SSLOptions SSLPassPhraseDialog SSLProtocol SSLProxyCACertificateFile SSLProxyCACertificatePath SSLProxyCARevocationFile SSLProxyCARevocationPath SSLProxyCipherSuite SSLProxyEngine SSLProxyMachineCertificateFile SSLProxyMachineCertificatePath SSLProxyProtocol SSLProxyVerify SSLProxyVerifyDepth SSLRandomSeed SSLRequire SSLRequireSSL SSLSessionCache SSLSessionCacheTimeout SSLUserName SSLVerifyClient SSLVerifyDepth
+syn keyword apacheDeclaration SSLCACertificateFile SSLCACertificatePath SSLCADNRequestFile SSLCADNRequestPath SSLCARevocationFile SSLCARevocationPath SSLCertificateChainFile SSLCertificateFile SSLCertificateKeyFile SSLCipherSuite SSLCompression SSLCryptoDevice SSLEngine SSLFIPS SSLHonorCipherOrder SSLInsecureRenegotiation SSLMutex SSLOptions SSLPassPhraseDialog SSLProtocol SSLProxyCACertificateFile SSLProxyCACertificatePath SSLProxyCARevocationFile SSLProxyCARevocationPath SSLProxyCheckPeerCN SSLProxyCheckPeerExpire SSLProxyCipherSuite SSLProxyEngine SSLProxyMachineCertificateChainFile SSLProxyMachineCertificateFile SSLProxyMachineCertificatePath SSLProxyProtocol SSLProxyVerify SSLProxyVerifyDepth SSLRandomSeed SSLRenegBufferSize SSLRequire SSLRequireSSL SSLSessionCache SSLSessionCacheTimeout SSLSessionTicketKeyFile SSLSessionTickets SSLStrictSNIVHostCheck SSLUserName SSLVerifyClient SSLVerifyDepth
 syn match apacheOption "[+-]\?\<\(StdEnvVars\|CompatEnvVars\|ExportCertData\|FakeBasicAuth\|StrictRequire\|OptRenegotiate\)\>"
 syn keyword apacheOption builtin sem
 syn match apacheOption "\(file\|exec\|egd\|dbm\|shm\):"
@@ -177,37 +176,28 @@ syn match apacheSection "<\/\=\(<IfVersion\)[^>]*>" contains=apacheAnything
 syn keyword apacheDeclaration VirtualDocumentRoot VirtualDocumentRootIP VirtualScriptAlias VirtualScriptAliasIP
 
 " Define the default highlighting
-if version >= 508 || !exists("did_apache_syntax_inits")
-	if version < 508
-		let did_apache_syntax_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-	endif
 
-	HiLink apacheAllowOverride apacheDeclaration
-	HiLink apacheAllowOverrideValue apacheOption
-	HiLink apacheAuthType apacheDeclaration
-	HiLink apacheAuthTypeValue apacheOption
-	HiLink apacheOptionOption apacheOption
-	HiLink apacheDeclaration Function
-	HiLink apacheAnything apacheOption
-	HiLink apacheOption Number
-	HiLink apacheComment Comment
-	HiLink apacheFixme Todo
-	HiLink apacheLimitSectionKeyword apacheLimitSection
-	HiLink apacheLimitSection apacheSection
-	HiLink apacheSection Label
-	HiLink apacheMethodOption Type
-	HiLink apacheAllowDeny Include
-	HiLink apacheAllowDenyValue Identifier
-	HiLink apacheOrder Special
-	HiLink apacheOrderValue String
-	HiLink apacheString String
-	HiLink apacheError Error
-	HiLink apacheUserID Number
+hi def link apacheAllowOverride apacheDeclaration
+hi def link apacheAllowOverrideValue apacheOption
+hi def link apacheAuthType apacheDeclaration
+hi def link apacheAuthTypeValue apacheOption
+hi def link apacheOptionOption apacheOption
+hi def link apacheDeclaration Function
+hi def link apacheAnything apacheOption
+hi def link apacheOption Number
+hi def link apacheComment Comment
+hi def link apacheFixme Todo
+hi def link apacheLimitSectionKeyword apacheLimitSection
+hi def link apacheLimitSection apacheSection
+hi def link apacheSection Label
+hi def link apacheMethodOption Type
+hi def link apacheAllowDeny Include
+hi def link apacheAllowDenyValue Identifier
+hi def link apacheOrder Special
+hi def link apacheOrderValue String
+hi def link apacheString String
+hi def link apacheError Error
+hi def link apacheUserID Number
 
-	delcommand HiLink
-endif
 
 let b:current_syntax = "apache"

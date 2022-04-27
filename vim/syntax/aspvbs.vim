@@ -11,10 +11,8 @@
 " Thanks to Dean Hall <hall@apt7.com> for testing the use of classes in
 " VBScripts which I've been too scared to do.
 
-" Quit when a syntax file was already loaded
-if version < 600
-  syn clear
-elseif exists("b:current_syntax")
+" quit when a syntax file was already loaded
+if exists("b:current_syntax")
   finish
 endif
 
@@ -22,11 +20,7 @@ if !exists("main_syntax")
   let main_syntax = 'aspvbs'
 endif
 
-if version < 600
-  source <sfile>:p:h/html.vim
-else
-  runtime! syntax/html.vim
-endif
+runtime! syntax/html.vim
 unlet b:current_syntax
 
 syn cluster htmlPreProc add=AspVBScriptInsideHtmlTags
@@ -40,7 +34,7 @@ syn match AspVBSVariableComplex contained "\<\(arr\|ary\|obj\)\u\w*"
 
 
 " Functions and methods that are in VB but will cause errors in an ASP page
-" This is helpfull if your porting VB code to ASP
+" This is helpful if your porting VB code to ASP
 " I removed (Count, Item) because these are common variable names in AspVBScript
 syn keyword AspVBSError contained Val Str CVar CVDate DoEvents GoSub Return GoTo
 syn keyword AspVBSError contained Stop LinkExecute Add Type LinkPoke
@@ -62,7 +56,7 @@ syn match AspVBSError contained "\<Option\s\+\(Base\|Compare\|Private\s\+Module\
 syn match AspVBSError contained "Respon\?ce\.\S*"
 syn match AspVBSError contained "Respose\.\S*"
 " When I looked up the VBScript syntax it mentioned that Property Get/Set/Let
-" statements are illegal, however, I have recived reports that they do work.
+" statements are illegal, however, I have received reports that they do work.
 " So I commented it out for now.
 " syn match AspVBSError contained "\<Property\s\+\(Get\|Let\|Set\)\>"
 
@@ -114,7 +108,7 @@ syn match AspVBSMethods contained "Response\.\w*"
 " Colorize boolean constants:
 syn keyword AspVBSMethods contained true false
 
-" AspVBScript Number Contstants
+" AspVBScript Number Constants
 " Integer number, or floating point number without a dot.
 syn match  AspVBSNumber	contained	"\<\d\+\>"
 " Floating point number, with dot
@@ -122,7 +116,7 @@ syn match  AspVBSNumber	contained	"\<\d\+\.\d*\>"
 " Floating point number, starting with a dot
 syn match  AspVBSNumber	contained	"\.\d\+\>"
 
-" String and Character Contstants
+" String and Character Constants
 " removed (skip=+\\\\\|\\"+) because VB doesn't have backslash escaping in
 " strings (or does it?)
 syn region  AspVBSString	contained	  start=+"+  end=+"+ keepend
@@ -149,7 +143,7 @@ syn cluster AspVBScriptTop contains=AspVBSStatement,AspVBSFunction,AspVBSMethods
 syn region AspVBSFold start="^\s*\(class\)\s\+.*$" end="^\s*end\s\+\(class\)\>.*$" fold contained transparent keepend
 syn region AspVBSFold start="^\s*\(private\|public\)\=\(\s\+default\)\=\s\+\(sub\|function\)\s\+.*$" end="^\s*end\s\+\(function\|sub\)\>.*$" fold contained transparent keepend
 
-" Define AspVBScript delimeters
+" Define AspVBScript delimiters
 " <%= func("string_with_%>_in_it") %> This is illegal in ASP syntax.
 syn region  AspVBScriptInsideHtmlTags keepend matchgroup=Delimiter start=+<%=\=+ end=+%>+ contains=@AspVBScriptTop, AspVBSFold
 syn region  AspVBScriptInsideHtmlTags keepend matchgroup=Delimiter start=+<script\s\+language="\=vbscript"\=[^>]*\s\+runatserver[^>]*>+ end=+</script>+ contains=@AspVBScriptTop
@@ -163,31 +157,21 @@ syn sync match htmlHighlight grouphere htmlTag "%>"
 
 
 " Define the default highlighting.
-" For version 5.7 and earlier: only when not done already
-" For version 5.8 and later: only when an item doesn't have highlighting yet
-if version >= 508 || !exists("did_aspvbs_syn_inits")
-  if version < 508
-    let did_aspvbs_syn_inits = 1
-    command -nargs=+ HiLink hi link <args>
-  else
-    command -nargs=+ HiLink hi def link <args>
-  endif
+" Only when an item doesn't have highlighting yet
 
-  "HiLink AspVBScript		Special
-  HiLink AspVBSLineNumber	Comment
-  HiLink AspVBSNumber		Number
-  HiLink AspVBSError		Error
-  HiLink AspVBSStatement	Statement
-  HiLink AspVBSString		String
-  HiLink AspVBSComment		Comment
-  HiLink AspVBSTodo		Todo
-  HiLink AspVBSFunction		Identifier
-  HiLink AspVBSMethods		PreProc
-  HiLink AspVBSEvents		Special
-  HiLink AspVBSTypeSpecifier	Type
+"hi def link AspVBScript		Special
+hi def link AspVBSLineNumber	Comment
+hi def link AspVBSNumber		Number
+hi def link AspVBSError		Error
+hi def link AspVBSStatement	Statement
+hi def link AspVBSString		String
+hi def link AspVBSComment		Comment
+hi def link AspVBSTodo		Todo
+hi def link AspVBSFunction		Identifier
+hi def link AspVBSMethods		PreProc
+hi def link AspVBSEvents		Special
+hi def link AspVBSTypeSpecifier	Type
 
-  delcommand HiLink
-endif
 
 let b:current_syntax = "aspvbs"
 
