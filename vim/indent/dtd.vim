@@ -1,18 +1,21 @@
 " Vim indent file
-" Language:	    DTD (Document Type Definition for XML)
-" Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2010-09-21
-
-let s:cpo_save = &cpo
-set cpo&vim
+" Language:		DTD (Document Type Definition for XML)
+" Maintainer:		Doug Kearns <dougkearns@gmail.com>
+" Previous Maintainer:	Nikolai Weibull <now@bitwi.se>
+" Last Change:		24 Sep 2021
 
 setlocal indentexpr=GetDTDIndent()
 setlocal indentkeys=!^F,o,O,>
 setlocal nosmartindent
 
+let b:undo_indent = "setl inde< indk< si<"
+
 if exists("*GetDTDIndent")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 " TODO: Needs to be adjusted to stop at [, <, and ].
 let s:token_pattern = '^[^[:space:]]\+'
@@ -52,7 +55,7 @@ function s:indent_to_innermost_parentheses(line, end)
   let end = a:end
   let parentheses = [end - 1]
   while token != ""
-    let [token, end] = s:lex(a:line, end, '^\%([(),|]\|[A-Za-z0-9_-]\+\|#PCDATA\|%[A-Za-z0-9_-]\+;\)[?*+]\=')
+    let [token, end] = s:lex(a:line, end, '^\%([(),|]\|[A-Za-z0-9_-]\+\|#P\=CDATA\|%[A-Za-z0-9_-]\+;\)[?*+]\=')
     if token[0] == '('
       call add(parentheses, end - 1)
     elseif token[0] == ')'
@@ -84,7 +87,7 @@ function GetDTDIndent()
 
   let [declaration, end] = s:lex1(line, col)
   if declaration == ""
-    return indent + &sw
+    return indent + shiftwidth()
   elseif declaration == '--'
     " We’re looking at a comment.  Now, simply determine if the comment is
     " terminated or not.  If it isn’t, let Vim take care of that using
@@ -100,7 +103,7 @@ function GetDTDIndent()
     " Check for element name.  If none exists, indent one level.
     let [name, end] = s:lex(line, end)
     if name == ""
-      return indent + &sw
+      return indent + shiftwidth()
     endif
 
     " Check for token following element name.  This can be a specification of
@@ -113,22 +116,22 @@ function GetDTDIndent()
       let n += 1
     endwhile
     if token == ""
-      return indent + &sw
+      return indent + shiftwidth()
     endif
 
     " Next comes the content model.  If the token we’ve found isn’t a
     " parenthesis it must be either ANY, EMPTY or some random junk.  Either
     " way, we’re done indenting this element, so set it to that of the first
-    " line so that the terminating “>” winds up having the same indention.
+    " line so that the terminating “>” winds up having the same indentation.
     if token != '('
       return indent
     endif
 
     " Now go through the content model.  We need to keep track of the nesting
     " of parentheses.  As soon as we hit 0 we’re done.  If that happens we must
-    " have a complete content model.  Thus set indention to be the same as that
+    " have a complete content model.  Thus set indentation to be the same as that
     " of the first line so that the terminating “>” winds up having the same
-    " indention.  Otherwise, we’ll indent to the innermost parentheses not yet
+    " indentation.  Otherwise, we’ll indent to the innermost parentheses not yet
     " matched.
     let [indent_of_innermost, end] = s:indent_to_innermost_parentheses(line, end)
     if indent_of_innermost != -1
@@ -148,7 +151,7 @@ function GetDTDIndent()
           return indent
         endif
         " TODO: Should use s:lex here on getline(v:lnum) and check for >.
-        return getline(v:lnum) =~ '^\s*>' || count(values(seen), 0) == 0 ? indent : (indent + &sw)
+        return getline(v:lnum) =~ '^\s*>' || count(values(seen), 0) == 0 ? indent : (indent + shiftwidth())
       endif
 
       " If we’ve seen an addition or exception already and this is of the same
@@ -167,7 +170,7 @@ function GetDTDIndent()
     " Check for element name.  If none exists, indent one level.
     let [name, end] = s:lex(line, end)
     if name == ""
-      return indent + &sw
+      return indent + shiftwidth()
     endif
 
     " Check for any number of attributes.
@@ -180,7 +183,7 @@ function GetDTDIndent()
       let [name, end] = s:lex(line, end)
       if name == ""
         " TODO: Should use s:lex here on getline(v:lnum) and check for >.
-        return getline(v:lnum) =~ '^\s*>' ? indent : (indent + &sw)
+        return getline(v:lnum) =~ '^\s*>' ? indent : (indent + shiftwidth())
       elseif name == ">"
         return indent
       endif
@@ -194,14 +197,14 @@ function GetDTDIndent()
       " (CDATA|NMTOKEN|NMTOKENS|ID|IDREF|IDREFS|ENTITY|ENTITIES)?
       let [value, end] = s:lex(line, end, '^\%((\|[^[:space:]]\+\)')
       if value == ""
-        return indent + &sw * 2
+        return indent + shiftwidth() * 2
       elseif value == 'NOTATION'
         " If this is a enumerated value based on notations, read another token
         " for the actual value.  If it doesn’t exist, indent three levels.
         " TODO: If validating according to above, value must be equal to '('.
         let [value, end] = s:lex(line, end, '^\%((\|[^[:space:]]\+\)')
         if value == ""
-          return indent + &sw * 3
+          return indent + shiftwidth() * 3
         endif
       endif
 
@@ -216,13 +219,13 @@ function GetDTDIndent()
       " two levels.
       let [default, end] = s:lex(line, end, '^\%("\_[^"]*"\|#\(REQUIRED\|IMPLIED\|FIXED\)\)')
       if default == ""
-        return indent + &sw * 2
+        return indent + shiftwidth() * 2
       elseif default == '#FIXED'
         " We need to look for the fixed value.  If non exists, indent three
         " levels.
         let [default, end] = s:lex(line, end, '^"\_[^"]*"')
         if default == ""
-          return indent + &sw * 3
+          return indent + shiftwidth() * 3
         endif
       endif
     endwhile
@@ -233,11 +236,11 @@ function GetDTDIndent()
     " again, if none exists, indent one level.
     let [name, end] = s:lex(line, end)
     if name == ""
-      return indent + &sw
+      return indent + shiftwidth()
     elseif name == '%'
       let [name, end] = s:lex(line, end)
       if name == ""
-        return indent + &sw
+        return indent + shiftwidth()
       endif
     endif
 
@@ -256,27 +259,27 @@ function GetDTDIndent()
     " we’re now done with this entity.
     let [value, end] = s:lex(line, end)
     if value == ""
-      return indent + &sw
+      return indent + shiftwidth()
     elseif value == 'SYSTEM' || value == 'PUBLIC'
       let [quoted_string, end] = s:lex(line, end, '\%("[^"]\+"\|''[^'']\+''\)')
       if quoted_string == ""
-        return indent + &sw * 2
+        return indent + shiftwidth() * 2
       endif
 
       if value == 'PUBLIC'
         let [quoted_string, end] = s:lex(line, end, '\%("[^"]\+"\|''[^'']\+''\)')
         if quoted_string == ""
-          return indent + &sw * 2
+          return indent + shiftwidth() * 2
         endif
       endif
 
       let [ndata, end] = s:lex(line, end)
       if ndata == ""
-        return indent + &sw
+        return indent + shiftwidth()
       endif
 
       let [name, end] = s:lex(line, end)
-      return name == "" ? (indent + &sw * 2) : indent
+      return name == "" ? (indent + shiftwidth() * 2) : indent
     else
       return indent
     endif
@@ -284,24 +287,24 @@ function GetDTDIndent()
     " Check for notation name.  If none exists, indent one level.
     let [name, end] = s:lex(line, end)
     if name == ""
-      return indent + &sw
+      return indent + shiftwidth()
     endif
 
     " Now check for the external ID.  If none exists, indent one level.
     let [id, end] = s:lex(line, end)
     if id == ""
-      return indent + &sw
+      return indent + shiftwidth()
     elseif id == 'SYSTEM' || id == 'PUBLIC'
       let [quoted_string, end] = s:lex(line, end, '\%("[^"]\+"\|''[^'']\+''\)')
       if quoted_string == ""
-        return indent + &sw * 2
+        return indent + shiftwidth() * 2
       endif
 
       if id == 'PUBLIC'
         let [quoted_string, end] = s:lex(line, end, '\%("[^"]\+"\|''[^'']\+''\|>\)')
         if quoted_string == ""
           " TODO: Should use s:lex here on getline(v:lnum) and check for >.
-          return getline(v:lnum) =~ '^\s*>' ? indent : (indent + &sw * 2)
+          return getline(v:lnum) =~ '^\s*>' ? indent : (indent + shiftwidth() * 2)
         elseif quoted_string == '>'
           return indent
         endif
@@ -322,3 +325,4 @@ function GetDTDIndent()
 endfunction
 
 let &cpo = s:cpo_save
+unlet s:cpo_save

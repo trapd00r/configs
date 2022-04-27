@@ -1,7 +1,8 @@
 " IDL (Interactive Data Language) indent file.
-" Language: IDL (ft=idlang)
-" Last change:	2002 Sep 23
-" Maintainer: Aleksandar Jelenak <ajelenak AT yahoo.com>
+" Language:	IDL (ft=idlang)
+" Maintainer:	Aleksandar Jelenak <ajelenak AT yahoo.com> (Invalid email address)
+" 		Doug Kearns <dougkearns@gmail.com>
+" Last change:	2022 Apr 06
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -9,10 +10,11 @@ if exists("b:did_indent")
 endif
 let b:did_indent = 1
 
-setlocal indentkeys=o,O,0=endif,0=ENDIF,0=endelse,0=ENDELSE,0=endwhile,
-		    \0=ENDWHILE,0=endfor,0=ENDFOR,0=endrep,0=ENDREP
+setlocal indentkeys=o,O,0=endif,0=ENDIF,0=endelse,0=ENDELSE,0=endwhile,0=ENDWHILE,0=endfor,0=ENDFOR,0=endrep,0=ENDREP
 
 setlocal indentexpr=GetIdlangIndent(v:lnum)
+
+let b:undo_indent = "setl inde< indk<"
 
 " Only define the function once.
 if exists("*GetIdlangIndent")
@@ -35,25 +37,25 @@ function GetIdlangIndent(lnum)
    " Indenting of continued lines.
    if getline(pnum) =~ '\$\s*\(;.*\)\=$'
       if getline(pnum2) !~ '\$\s*\(;.*\)\=$'
-	 let curind = curind+&sw
+	 let curind = curind+shiftwidth()
       endif
    else
       if getline(pnum2) =~ '\$\s*\(;.*\)\=$'
-	 let curind = curind-&sw
+	 let curind = curind-shiftwidth()
       endif
    endif
 
    " Indenting blocks of statements.
    if getline(v:lnum) =~? '^\s*\(endif\|endelse\|endwhile\|endfor\|endrep\)\>'
       if getline(pnum) =~? 'begin\>'
-      elseif indent(v:lnum) > curind-&sw
-	 let curind = curind-&sw
+      elseif indent(v:lnum) > curind-shiftwidth()
+	 let curind = curind-shiftwidth()
       else
 	 return -1
       endif
    elseif getline(pnum) =~? 'begin\>'
-      if indent(v:lnum) < curind+&sw
-	 let curind = curind+&sw
+      if indent(v:lnum) < curind+shiftwidth()
+	 let curind = curind+shiftwidth()
       else
 	 return -1
       endif

@@ -1,8 +1,9 @@
 " PostScript indent file
-" Language:    PostScript
-" Maintainer:  Mike Williams <mrw@netcomuk.co.uk>
-" Last Change: 2nd July 2001
-"
+" Language:	PostScript
+" Maintainer:	Mike Williams <mrw@netcomuk.co.uk> (Invalid email address)
+" 		Doug Kearns <dougkearns@gmail.com>
+" Last Change:	2022 Apr 06
+
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -12,6 +13,8 @@ let b:did_indent = 1
 
 setlocal indentexpr=PostscrIndentGet(v:lnum)
 setlocal indentkeys+=0],0=>>,0=%%,0=end,0=restore,0=grestore indentkeys-=:,0#,e
+
+let b:undo_indent = "setl inde< indk<"
 
 " Catch multiple instantiations
 if exists("*PostscrIndentGet")
@@ -41,16 +44,16 @@ function! PostscrIndentGet(lnum)
 
   " Indent for dicts, arrays, and saves with possible trailing comment
   if pline =~ '\(begin\|<<\|g\=save\|{\|[\)\s*\(%.*\)\=$'
-    let ind = ind + &sw
+    let ind = ind + shiftwidth()
   endif
 
   " Remove indent for popped dicts, and restores.
   if pline =~ '\(end\|g\=restore\)\s*$'
-    let ind = ind - &sw
+    let ind = ind - shiftwidth()
 
   " Else handle immediate dedents of dicts, restores, and arrays.
   elseif getline(a:lnum) =~ '\(end\|>>\|g\=restore\|}\|]\)'
-    let ind = ind - &sw
+    let ind = ind - shiftwidth()
 
   " Else handle DSC comments - always start of line.
   elseif getline(a:lnum) =~ '^\s*%%'

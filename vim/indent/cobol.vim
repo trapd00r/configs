@@ -1,7 +1,13 @@
 " Vim indent file
 " Language:	cobol
-" Author:	Tim Pope <vimNOSPAM@tpope.info>
+" Maintainer: Ankit Jain <ajatkj@yahoo.co.in>
+"     (formerly Tim Pope <vimNOSPAM@tpope.info>)
 " $Id: cobol.vim,v 1.1 2007/05/05 18:08:19 vimboss Exp $
+" Last Update:	By Ankit Jain on 22.03.2019
+" Ankit Jain      22.03.2019     Changes & fixes:
+"                                Allow chars in 1st 6 columns
+"                                #C22032019
+" Ankit Jain      24.09.2021     add b:undo_indent (request by tpope)
 
 if exists("b:did_indent")
     finish
@@ -12,6 +18,8 @@ setlocal expandtab
 setlocal indentexpr=GetCobolIndent(v:lnum)
 setlocal indentkeys&
 setlocal indentkeys+=0<*>,0/,0$,0=01,=~division,=~section,0=~end,0=~then,0=~else,0=~when,*<Return>,.
+
+let b:undo_indent = "setlocal expandtab< indentexpr< indentkeys<"
 
 " Only define the function once.
 if exists("*GetCobolIndent")
@@ -52,11 +60,11 @@ function! s:optionalblock(lnum,ind,blocks,clauses)
         if getline(lastclause) =~? clauses && s:stripped(lastclause) !~? '^'.begin
             let ind = indent(lastclause)
         elseif lastclause > 0
-            let ind = indent(lastclause) + &sw
-            "let ind = ind + &sw
+            let ind = indent(lastclause) + shiftwidth()
+            "let ind = ind + shiftwidth()
         endif
     elseif line =~? clauses && cline !~? end
-        let ind = ind + &sw
+        let ind = ind + shiftwidth()
     endif
     return ind
 endfunction
@@ -66,7 +74,9 @@ function! GetCobolIndent(lnum) abort
     let ashft = minshft + 1
     let bshft = ashft + 4
     " (Obsolete) numbered lines
-    if getline(a:lnum) =~? '^\s*\d\{6\}\%($\|[ */$CD-]\)'
+    " #C22032019: Columns 1-6 could have alphabets as well as numbers
+    "if getline(a:lnum) =~? '^\s*\d\{6\}\%($\|[ */$CD-]\)'
+    if getline(a:lnum) =~? '^\s*[a-zA-Z0-9]\{6\}\%($\|[ */$CD-]\)'
         return 0
     endif
     let cline = s:stripped(a:lnum)
@@ -98,8 +108,8 @@ function! GetCobolIndent(lnum) abort
                 let num = matchstr(line,'^\s*\zs\d\+\>')
                 if 0+cnum == num
                     return lindent
-                elseif 0+cnum > num && default < lindent + &sw
-                    let default = lindent + &sw
+                elseif 0+cnum > num && default < lindent + shiftwidth()
+                    let default = lindent + shiftwidth()
                 endif
             elseif lindent < bshft && lindent >= ashft
                 break
@@ -135,13 +145,13 @@ function! GetCobolIndent(lnum) abort
     if line =~? '^PERFORM\>'
         let perfline = substitute(line, '\c^PERFORM\s*', "", "")
         if perfline =~? '^\%(\k\+\s\+TIMES\)\=\s*$'
-            let ind = ind + &sw
+            let ind = ind + shiftwidth()
         elseif perfline =~? '^\%(WITH\s\+TEST\|VARYING\|UNTIL\)\>.*[^.]$'
-            let ind = ind + &sw
+            let ind = ind + shiftwidth()
         endif
     endif
     if line =~? '^\%(IF\|THEN\|ELSE\|READ\|EVALUATE\|SEARCH\|SELECT\)\>'
-        let ind = ind + &sw
+        let ind = ind + shiftwidth()
     endif
     let ind = s:optionalblock(a:lnum,ind,'ADD\|COMPUTE\|DIVIDE\|MULTIPLY\|SUBTRACT','ON\s\+SIZE\s\+ERROR')
     let ind = s:optionalblock(a:lnum,ind,'STRING\|UNSTRING\|ACCEPT\|DISPLAY\|CALL','ON\s\+OVERFLOW\|ON\s\+EXCEPTION')
@@ -157,10 +167,10 @@ function! GetCobolIndent(lnum) abort
             "&& s:stripped(lastclause) !~? '^\%(SEARCH\|EVALUATE\|READ\)\>'
             let ind = indent(lastclause)
         elseif lastclause > 0
-            let ind = indent(lastclause) + &sw
+            let ind = indent(lastclause) + shiftwidth()
         endif
     elseif line =~? '^WHEN\>'
-        let ind = ind + &sw
+        let ind = ind + shiftwidth()
     endif
     "I'm not sure why I had this
     "if line =~? '^ELSE\>-\@!' && line !~? '\.$'
@@ -168,7 +178,7 @@ function! GetCobolIndent(lnum) abort
     "endif
     if cline =~? '^\(END\)\>-\@!'
         " On lines with just END, 'guess' a simple shift left
-        let ind = ind - &sw
+        let ind = ind - shiftwidth()
     elseif cline =~? '^\(END-IF\|THEN\|ELSE\)\>-\@!'
         call cursor(a:lnum,indent(a:lnum))
         let match = searchpair('\c-\@<!\<IF\>','\c-\@<!\%(THEN\|ELSE\)\>','\c-\@<!\<END-IF\>\zs','bnW',s:skip)
@@ -209,7 +219,7 @@ function! GetCobolIndent(lnum) abort
         if match > 0
             let ind = indent(match)
         elseif cline =~? '^\(END-\(READ\|EVALUATE\|SEARCH\|PERFORM\)\)\>'
-            let ind = ind - &sw
+            let ind = ind - shiftwidth()
         endif
     endif
     return ind < bshft ? bshft : ind

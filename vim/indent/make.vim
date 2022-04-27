@@ -1,7 +1,8 @@
 " Vim indent file
-" Language:         Makefile
-" Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2007-05-07
+" Language:		Makefile
+" Maintainer:		Doug Kearns <dougkearns@gmail.com>
+" Previous Maintainer:	Nikolai Weibull <now@bitwi.se>
+" Last Change:		2022 Apr 06
 
 if exists("b:did_indent")
   finish
@@ -12,6 +13,8 @@ setlocal indentexpr=GetMakeIndent()
 setlocal indentkeys=!^F,o,O,<:>,=else,=endif
 setlocal nosmartindent
 
+let b:undo_indent = "setl inde< indk< si<"
+
 if exists("*GetMakeIndent")
   finish
 endif
@@ -20,8 +23,8 @@ let s:comment_rx = '^\s*#'
 let s:rule_rx = '^[^ \t#:][^#:]*:\{1,2}\%([^=:]\|$\)'
 let s:continued_rule_rx = '^[^#:]*:\{1,2}\%([^=:]\|$\)'
 let s:continuation_rx = '\\$'
-let s:assignment_rx = '^\s*\h\w*\s*[+?]\==\s*\zs.*\\$'
-let s:folded_assignment_rx = '^\s*\h\w*\s*[+?]\=='
+let s:assignment_rx = '^\s*\h\w*\s*[+:?]\==\s*\zs.*\\$'
+let s:folded_assignment_rx = '^\s*\h\w*\s*[+:?]\=='
 " TODO: This needs to be a lot more restrictive in what it matches.
 let s:just_inserted_rule_rx = '^\s*[^#:]\+:\{1,2}$'
 let s:conditional_directive_rx = '^ *\%(ifn\=\%(eq\|def\)\|else\)\>'
@@ -48,14 +51,14 @@ function GetMakeIndent()
     if prev_prev_line =~ s:continuation_rx
       return indent(prev_lnum)
     elseif prev_line =~ s:rule_rx
-      return &sw
+      return shiftwidth()
     elseif prev_line =~ s:assignment_rx
       call cursor(prev_lnum, 1)
       if search(s:assignment_rx, 'W') != 0
         return virtcol('.') - 1
       else
         " TODO: ?
-        return &sw
+        return shiftwidth()
       endif
     else
       " TODO: OK, this might be a continued shell command, so perhaps indent
@@ -66,7 +69,7 @@ function GetMakeIndent()
       "    return indent(prev_lnum) + 2
       "  endif
       "endif
-      return indent(prev_lnum) + &sw
+      return indent(prev_lnum) + shiftwidth()
     endif
   elseif prev_prev_line =~ s:continuation_rx
     let folded_line = s:remove_continuation(prev_prev_line) . ' ' . s:remove_continuation(prev_line)
@@ -102,13 +105,13 @@ function GetMakeIndent()
       return &ts
     endif
   elseif prev_line =~ s:conditional_directive_rx
-    return &sw
+    return shiftwidth()
   else
     let line = getline(v:lnum)
     if line =~ s:just_inserted_rule_rx
       return 0
     elseif line =~ s:end_conditional_directive_rx
-      return v:lnum - 1 == 0 ? 0 : indent(v:lnum - 1) - &sw
+      return v:lnum - 1 == 0 ? 0 : indent(v:lnum - 1) - shiftwidth()
     else
       return v:lnum - 1 == 0 ? 0 : indent(v:lnum - 1)
     endif

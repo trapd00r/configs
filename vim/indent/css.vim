@@ -1,7 +1,10 @@
 " Vim indent file
-" Language:	    CSS
-" Maintainer:	    Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2010-12-22
+" Language:		CSS
+" Maintainer:		Doug Kearns <dougkearns@gmail.com>
+" Previous Maintainer:	Nikolai Weibull <now@bitwi.se>
+" Last Change:		24 Sep 2021
+
+" Use of shiftwidth() added by Oleg Zubchenko.
 
 if exists("b:did_indent")
   finish
@@ -12,9 +15,13 @@ setlocal indentexpr=GetCSSIndent()
 setlocal indentkeys=0{,0},!^F,o,O
 setlocal nosmartindent
 
+let b:undo_indent = "setl inde< indk< si<"
+
 if exists("*GetCSSIndent")
   finish
 endif
+let s:keepcpo= &cpo
+set cpo&vim
 
 function s:prevnonblanknoncomment(lnum)
   let lnum = a:lnum
@@ -71,6 +78,9 @@ function GetCSSIndent()
     return 0
   endif
 
-  return indent(pnum) + s:count_braces(pnum, 1) * &sw
-        \ - s:count_braces(v:lnum, 0) * &sw
+  return indent(pnum) + s:count_braces(pnum, 1) * shiftwidth()
+        \ - s:count_braces(v:lnum, 0) * shiftwidth()
 endfunction
+
+let &cpo = s:keepcpo
+unlet s:keepcpo

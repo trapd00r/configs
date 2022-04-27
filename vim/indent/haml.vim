@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:	Haml
 " Maintainer:	Tim Pope <vimNOSPAM@tpope.org>
-" Last Change:	2010 May 21
+" Last Change:	2022 Mar 15
 
 if exists("b:did_indent")
   finish
@@ -10,9 +10,11 @@ runtime! indent/ruby.vim
 unlet! b:did_indent
 let b:did_indent = 1
 
-setlocal autoindent sw=2 et
+setlocal autoindent
 setlocal indentexpr=GetHamlIndent()
 setlocal indentkeys=o,O,*<Return>,},],0),!^F,=end,=else,=elsif,=rescue,=ensure,=when
+
+let b:undo_indent = "setl ai< inde< indk<"
 
 " Only define the function once.
 if exists("*GetHamlIndent")
@@ -23,7 +25,7 @@ let s:attributes = '\%({.\{-\}}\|\[.\{-\}\]\)'
 let s:tag = '\%([%.#][[:alnum:]_-]\+\|'.s:attributes.'\)*[<>]*'
 
 if !exists('g:haml_self_closing_tags')
-  let g:haml_self_closing_tags = 'meta|link|img|hr|br'
+  let g:haml_self_closing_tags = 'base|link|meta|br|hr|img|input'
 endif
 
 function! GetHamlIndent()
@@ -37,10 +39,11 @@ function! GetHamlIndent()
   let line = substitute(line,'^\s\+','','')
   let indent = indent(lnum)
   let cindent = indent(v:lnum)
+  let sw = shiftwidth()
   if cline =~# '\v^-\s*%(elsif|else|when)>'
-    let indent = cindent < indent ? cindent : indent - &sw
+    let indent = cindent < indent ? cindent : indent - sw
   endif
-  let increase = indent + &sw
+  let increase = indent + sw
   if indent == indent(lnum)
     let indent = cindent <= indent ? -1 : increase
   endif

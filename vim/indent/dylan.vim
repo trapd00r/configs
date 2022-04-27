@@ -1,8 +1,9 @@
 " Vim indent file
 " Language:	Dylan
+" Maintainer:	Brent A. Fulgham <bfulgham@debian.org> (Invalid email address)
+" 		Doug Kearns <dougkearns@gmail.com>
 " Version:	0.01
-" Last Change:	2003 Feb 04
-" Maintainer:	Brent A. Fulgham <bfulgham@debian.org>
+" Last Change:	2022 Apr 06
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -14,6 +15,9 @@ setlocal indentkeys+==~begin,=~block,=~case,=~cleanup,=~define,=~end,=~else,=~el
 
 " Define the appropriate indent function but only once
 setlocal indentexpr=DylanGetIndent()
+
+let b:undo_indent = "setl inde< indk<"
+
 if exists("*DylanGetIndent")
   finish
 endif
@@ -45,13 +49,13 @@ function DylanGetIndent()
 
   " If previous line was a 'define', indent
   if prevline =~? '\(^\s*\(begin\|block\|case\|define\|else\|elseif\|for\|finally\|if\|select\|unless\|while\)\|\s*\S*\s*=>$\)'
-    let chg = &sw
+    let chg = shiftwidth()
   " local methods indent the shift-width, plus 6 for the 'local'
   elseif prevline =~? '^\s*local'
-    let chg = &sw + 6
+    let chg = shiftwidth() + 6
   " If previous line was a let with no closing semicolon, indent
   elseif prevline =~? '^\s*let.*[^;]\s*$'
-    let chg = &sw
+    let chg = shiftwidth()
   " If previous line opened a parenthesis, and did not close it, indent
   elseif prevline =~ '^.*(\s*[^)]*\((.*)\)*[^)]*$'
     return = match( prevline, '(.*\((.*)\|[^)]\)*.*$') + 1
@@ -75,13 +79,13 @@ function DylanGetIndent()
     " line doesn't start with an indentable command:
     let curr_str = getline(curr_line)
     if curr_str =~? '^\s*\(begin\|block\|case\|define\|else\|elseif\|for\|finally\|if\|select\|unless\|while\)'
-      let chg = &sw
+      let chg = shiftwidth()
     endif
   endif
 
   " If a line starts with end, un-indent (even if we just indented!)
   if cline =~? '^\s*\(cleanup\|end\|else\|elseif\|exception\|finally\|otherwise\)'
-    let chg = chg - &sw
+    let chg = chg - shiftwidth()
   endif
 
   return ind + chg

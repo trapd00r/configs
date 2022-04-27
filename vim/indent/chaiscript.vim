@@ -1,6 +1,7 @@
 " Vim indent file
 " Language:     ChaiScript
 " Maintainer:	Jason Turner <lefticus 'at' gmail com>
+" Last Change: 	2022 Apr 06
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -10,6 +11,8 @@ let b:did_indent = 1
 
 setlocal indentexpr=GetChaiScriptIndent()
 setlocal autoindent
+
+let b:undo_indent = "setl ai< inde<"
 
 " Only define the function once.
 if exists("*GetChaiScriptIndent")
@@ -31,19 +34,19 @@ function! GetChaiScriptIndent()
   let flag = 0
   let prevline = getline(lnum)
   if prevline =~ '^.*{.*'
-    let ind = ind + &shiftwidth
+    let ind = ind + shiftwidth()
     let flag = 1
   endif
 
   " Subtract a 'shiftwidth' after lines containing a { followed by a }
   " to keep it balanced
   if flag == 1 && prevline =~ '.*{.*}.*'
-    let ind = ind - &shiftwidth
+    let ind = ind - shiftwidth()
   endif
 
   " Subtract a 'shiftwidth' on lines ending with }
   if getline(v:lnum) =~ '^\s*\%(}\)'
-    let ind = ind - &shiftwidth
+    let ind = ind - shiftwidth()
   endif
 
   return ind

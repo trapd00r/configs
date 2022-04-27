@@ -1,9 +1,11 @@
 " Vim indent file
-" Language:     Mathematica
-" Author:       steve layland <layland@wolfram.com>
-" Last Change:  Sat May  10 18:56:22 CDT 2005
-" Source:       http://vim.sourceforge.net/scripts/script.php?script_id=1274
-"               http://members.wolfram.com/layland/vim/indent/mma.vim
+" Language:	Mathematica
+" Maintainer:	Steve Layland <layland@wolfram.com> (Invalid email address)
+" 		Doug Kearns <dougkearns@gmail.com>
+" Last Change:	Sat May  10 18:56:22 CDT 2005
+"		2022 April: b:undo_indent added by Doug Kearns
+" Source:	http://vim.sourceforge.net/scripts/script.php?script_id=1274
+" 		http://members.wolfram.com/layland/vim/indent/mma.vim
 "
 " NOTE:
 " Empty .m files will automatically be presumed to be Matlab files
@@ -24,6 +26,8 @@ let b:did_indent = 1
 setlocal indentexpr=GetMmaIndent()
 setlocal indentkeys+=0[,0],0(,0)
 setlocal nosi "turn off smart indent so we don't over analyze } blocks
+
+let b:undo_indent = "setl inde< indk< si<"
 
 if exists("*GetMmaIndent")
     finish
@@ -49,7 +53,7 @@ function GetMmaIndent()
     " also, indent only if this line if this line isn't starting a new
     " block... TODO - fix this with indentkeys?
     if getline(v:lnum-1) =~ '\\\@<!\%(\[[^\]]*\|([^)]*\|{[^}]*\)$' && getline(v:lnum) !~ '\s\+[\[({]'
-        let ind = ind+&sw
+        let ind = ind+shiftwidth()
     endif
 
     " if this line had unmatched closing block,
@@ -57,7 +61,7 @@ function GetMmaIndent()
     if getline(v:lnum) =~ '[^[]*]\s*$'
         " move to the closing bracket
         call search(']','bW')
-        " and find it's partner's indent
+        " and find its partner's indent
         let ind = indent(searchpair('\[','',']','bWn'))
     " same for ( blocks
     elseif getline(v:lnum) =~ '[^(]*)$'

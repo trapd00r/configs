@@ -1,12 +1,16 @@
 " Vim indent file
 " Language:     OCaml
-" Maintainers:	Jean-Francois Yuen   <jfyuen@happycoders.org>
-"		Mike Leary	     <leary@nwlink.com>
-"		Markus Mottl	     <markus.mottl@gmail.com>
-" URL:		http://www.ocaml.info/vim/indent/ocaml.vim
-" Last Change:  2005 Jun 25 - Fixed multiple bugs due to 'else\nreturn ind' working
-"		2005 May 09 - Added an option to not indent OCaml-indents specially (MM)
-"		2005 Apr 11 - Fixed an indentation bug concerning "let" (MM)
+" Maintainers:  Jean-Francois Yuen   <jfyuen@happycoders.org>
+"               Mike Leary           <leary@nwlink.com>
+"               Markus Mottl         <markus.mottl@gmail.com>
+" URL:          https://github.com/ocaml/vim-ocaml
+" Last Change:  2017 Jun 13
+"               2005 Jun 25 - Fixed multiple bugs due to 'else\nreturn ind' working
+"               2005 May 09 - Added an option to not indent OCaml-indents specially (MM)
+"               2013 June   - commented textwidth (Marc Weber)
+"
+" Marc Weber's comment: This file may contain a lot of (very custom) stuff
+" which eventually should be moved somewhere else ..
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -19,12 +23,15 @@ setlocal indentexpr=GetOCamlIndent()
 setlocal indentkeys+=0=and,0=class,0=constraint,0=done,0=else,0=end,0=exception,0=external,0=if,0=in,0=include,0=inherit,0=initializer,0=let,0=method,0=open,0=then,0=type,0=val,0=with,0;;,0>\],0\|\],0>},0\|,0},0\],0)
 setlocal nolisp
 setlocal nosmartindent
-setlocal textwidth=80
+
+" At least Marc Weber and Markus Mottl do not like this:
+" setlocal textwidth=80
 
 " Comment formatting
 if !exists("no_ocaml_comments")
  if (has("comments"))
-   setlocal comments=sr:(*,mb:*,ex:*)
+   setlocal comments=sr:(*\ ,mb:\ ,ex:*)
+   setlocal comments^=sr:(**,mb:\ \ ,ex:*)
    setlocal fo=cqort
  endif
 endif
@@ -44,7 +51,7 @@ let s:obj = '^\s*\(constraint\|inherit\|initializer\|method\|val\)\>\|\<\(object
 let s:type = '^\s*\%(class\|let\|type\)\>.*='
 
 " Skipping pattern, for comments
-function s:GetLineWithoutFullComment(lnum)
+function! s:GetLineWithoutFullComment(lnum)
  let lnum = prevnonblank(a:lnum - 1)
  let lline = substitute(getline(lnum), '(\*.*\*)\s*$', '', '')
  while lline =~ '^\s*$' && lnum > 0
@@ -55,7 +62,7 @@ function s:GetLineWithoutFullComment(lnum)
 endfunction
 
 " Indent for ';;' to match multiple 'let'
-function s:GetInd(lnum, pat, lim)
+function! s:GetInd(lnum, pat, lim)
  let llet = search(a:pat, 'bW')
  let old = indent(a:lnum)
  while llet > 0
@@ -70,18 +77,18 @@ function s:GetInd(lnum, pat, lim)
 endfunction
 
 " Indent pairs
-function s:FindPair(pstart, pmid, pend)
+function! s:FindPair(pstart, pmid, pend)
  call search(a:pend, 'bW')
  return indent(searchpair(a:pstart, a:pmid, a:pend, 'bWn', 'synIDattr(synID(line("."), col("."), 0), "name") =~? "string\\|comment"'))
 endfunction
 
 " Indent 'let'
-function s:FindLet(pstart, pmid, pend)
+function! s:FindLet(pstart, pmid, pend)
  call search(a:pend, 'bW')
  return indent(searchpair(a:pstart, a:pmid, a:pend, 'bWn', 'synIDattr(synID(line("."), col("."), 0), "name") =~? "string\\|comment" || getline(".") =~ "^\\s*let\\>.*=.*\\<in\\s*$" || getline(prevnonblank(".") - 1) =~ s:beflet'))
 endfunction
 
-function GetOCamlIndent()
+function! GetOCamlIndent()
  " Find a non-commented line above the current line.
  let lnum = s:GetLineWithoutFullComment(v:lnum)
 
@@ -95,7 +102,7 @@ function GetOCamlIndent()
 
  " Return double 'shiftwidth' after lines matching:
  if lline =~ '^\s*|.*->\s*$'
-   return ind + &sw + &sw
+   return ind + 2 * shiftwidth()
  endif
 
  let line = getline(v:lnum)
@@ -166,7 +173,7 @@ function GetOCamlIndent()
  " Indent if current line begins with 'and':
  elseif line =~ '^\s*and\>'
    if lline !~ '^\s*\(and\|let\|type\)\>\|\<end\s*$'
-     return ind - &sw
+     return ind - shiftwidth()
    endif
 
  " Indent if current line begins with 'with':
@@ -193,14 +200,14 @@ function GetOCamlIndent()
  " or 'method':
  elseif line =~ '^\s*\(constraint\|inherit\|initializer\|method\)\>'
    if lline !~ s:obj
-     return indent(search('\<\(object\|object\s*(.*)\)\s*$', 'bW')) + &sw
+     return indent(search('\<\(object\|object\s*(.*)\)\s*$', 'bW')) + shiftwidth()
    endif
 
  endif
 
  " Add a 'shiftwidth' after lines ending with:
  if lline =~ '\(:\|=\|->\|<-\|(\|\[\|{\|{<\|\[|\|\[<\|\<\(begin\|do\|else\|fun\|function\|functor\|if\|initializer\|object\|parser\|private\|sig\|struct\|then\|try\)\|\<object\s*(.*)\)\s*$'
-   let ind = ind + &sw
+   let ind = ind + shiftwidth()
 
  " Back to normal indent after lines ending with ';;':
  elseif lline =~ ';;\s*$' && lline !~ '^\s*;;'
@@ -239,11 +246,25 @@ function GetOCamlIndent()
  elseif lline =~ '^\s*(\*' && line =~ '^\s*\*'
    let ind = ind + 1
 
+ else
+ " Don't change indentation of this line
+ " for new lines (indent==0) use indentation of previous line
+
+ " This is for preventing removing indentation of these args:
+ "   let f x =
+ "     let y = x + 1 in
+ "     Printf.printf
+ "       "o"           << here
+ "       "oeuth"       << don't touch indentation
+
+   let i = indent(v:lnum)
+   return i == 0 ? ind : i
+
  endif
 
  " Subtract a 'shiftwidth' after lines matching 'match ... with parser':
  if lline =~ '\<match\>.*\<with\>\s*\<parser\s*$'
-   let ind = ind - &sw
+   let ind = ind - shiftwidth()
  endif
 
  return ind

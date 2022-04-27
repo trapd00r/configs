@@ -1,7 +1,8 @@
 " Vim indent file
 " Language:	occam
-" Maintainer:	Mario Schweigler <ms44@kent.ac.uk>
-" Last Change:	23 April 2003
+" Maintainer:	Mario Schweigler <ms44@kent.ac.uk> (Invalid email address)
+" 		Doug Kearns <dougkearns@gmail.com>
+" Last Change:	2022 Apr 06
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -16,10 +17,14 @@ setlocal indentexpr=GetOccamIndent()
 setlocal indentkeys=o,O,0=:
 "}}}
 
+let b:undo_indent = "setl inde< indk<"
+
 " Only define the function once
 if exists("*GetOccamIndent")
   finish
 endif
+let s:keepcpo= &cpo
+set cpo&vim
 
 "{{{  Indent definitions
 " Define carriage return indent
@@ -129,7 +134,7 @@ function GetOccamIndent()
   if line =~ s:FirstLevelIndent || (line =~ s:FirstLevelNonColonEndIndent && line !~ s:ColonEnd)
 	\ || (line !~ s:ColonStart && (prevline =~ s:SecondLevelIndent
 	\ || (prevline =~ s:SecondLevelNonColonEndIndent && prevline !~ s:ColonEnd)))
-    let curindent = curindent + &shiftwidth
+    let curindent = curindent + shiftwidth()
 
     " Restore magic
     if !save_magic|setlocal nomagic|endif
@@ -151,7 +156,7 @@ function GetOccamIndent()
 
   while !found
 
-    if indent(prevlinenum) == curindent - &shiftwidth
+    if indent(prevlinenum) == curindent - shiftwidth()
       let found = 1
     endif
 
@@ -169,7 +174,7 @@ function GetOccamIndent()
 
   if prevlinenum > 0
     if getline(prevlinenum) =~ s:SecondLevelIndent
-      let curindent = curindent + &shiftwidth
+      let curindent = curindent + shiftwidth()
     endif
   endif
 
@@ -180,3 +185,6 @@ function GetOccamIndent()
 
 endfunction
 "}}}
+
+let &cpo = s:keepcpo
+unlet s:keepcpo

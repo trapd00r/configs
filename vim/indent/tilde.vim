@@ -1,5 +1,5 @@
 "Description: Indent scheme for the tilde weblanguage
-"Author: Tobias Rundström <tobi@tobi.nu>
+"Author: Tobias RundstrÃ¶m <tobi@tobi.nu>
 "URL: http://tilde.tildesoftware.net
 "Last Change: May  8 09:15:09 CEST 2002
 
@@ -25,11 +25,11 @@ function GetTildeIndent(lnum)
 	endif
 
 	if getline(v:lnum) =~ '^\s*\~\(endif\|else\|elseif\|end\)\>'
-		return indent(v:lnum) - &sw
+		return indent(v:lnum) - shiftwidth()
 	endif
 
 	if getline(plnum) =~ '^\s*\~\(if\|foreach\|foreach_row\|xml_loop\|file_loop\|file_write\|file_append\|imap_loopsections\|imap_index\|imap_list\|ldap_search\|post_loopall\|post_loop\|file_loop\|sql_loop_num\|sql_dbmsselect\|search\|sql_loop\|post\|for\|function_define\|silent\|while\|setvalbig\|mail_create\|systempipe\|mail_send\|dual\|elseif\|else\)\>'
-		return indent(plnum) + &sw
+		return indent(plnum) + shiftwidth()
 	else
 		return -1
 	endif

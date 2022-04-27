@@ -1,7 +1,8 @@
 " Vim indent file
 " Language:		C-shell (tcsh)
-" Maintainer:		Gautam Iyer <gautam@math.uchicago.edu>
-" Last Modified:	Sat 16 Jun 2007 04:27:45 PM PDT
+" Maintainer:		Doug Kearns <dougkearns@gmail.com>
+" Previous Maintainer:	Gautam Iyer <gi1242+vim@NoSpam.com> where NoSpam=gmail (Original Author)
+" Last Change:		2021 Oct 15
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -11,14 +12,15 @@ endif
 let b:did_indent = 1
 
 setlocal indentexpr=TcshGetIndent()
-setlocal indentkeys+=e,0=end,0=endsw indentkeys-=0{,0},0),:,0#
+setlocal indentkeys+=e,0=end
+setlocal indentkeys-=0{,0},0),:,0#
+
+let b:undo_indent = "setl inde< indk<"
 
 " Only define the function once.
 if exists("*TcshGetIndent")
     finish
 endif
-
-set cpoptions-=C
 
 function TcshGetIndent()
     " Find a non-blank line above the current line.
@@ -34,17 +36,17 @@ function TcshGetIndent()
     let ind = indent(lnum)
     let line = getline(lnum)
     if line =~ '\v^\s*%(while|foreach)>|^\s*%(case\s.*:|default:|else)\s*$|%(<then|\\)$'
-	let ind = ind + &sw
+	let ind = ind + shiftwidth()
     endif
 
     if line =~ '\v^\s*breaksw>'
-	let ind = ind - &sw
+	let ind = ind - shiftwidth()
     endif
 
-    " Subtract indent if current line has on end, endif, case commands
+    " Subtract indent if current line has on end, endif, endsw, case commands
     let line = getline(v:lnum)
-    if line =~ '\v^\s*%(else|end|endif)\s*$'
-	let ind = ind - &sw
+    if line =~ '\v^\s*%(else|end|endif|endsw)\s*$'
+	let ind = ind - shiftwidth()
     endif
 
     return ind

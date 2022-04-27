@@ -1,7 +1,7 @@
 " Vim indent file
 " Language:	SDL
-" Maintainer:	Michael Piefel <piefel@informatik.hu-berlin.de>
-" Last Change:	2001 Sep 17
+" Maintainer:	Michael Piefel <entwurf@piefel.de>
+" Last Change:	2021 Oct 03
 
 " Shamelessly stolen from the Vim-Script indent file
 
@@ -14,12 +14,15 @@ let b:did_indent = 1
 setlocal indentexpr=GetSDLIndent()
 setlocal indentkeys+==~end,=~state,*<Return>
 
+let b:undo_indent = "setl inde< indk<"
+
 " Only define the function once.
 if exists("*GetSDLIndent")
 "  finish
 endif
 
-set cpo-=C
+let s:cpo_save = &cpo
+set cpo&vim
 
 function! GetSDLIndent()
   " Find a non-blank line above the current line.
@@ -45,17 +48,17 @@ function! GetSDLIndent()
   if (getline(lnum) =~? '^\s*\(start\|state\|system\|package\|connection\|channel\|alternative\|macro\|operator\|newtype\|select\|substructure\|decision\|generator\|refinement\|service\|method\|exceptionhandler\|asntype\|syntype\|value\|(.*):\|\(priority\s\+\)\=input\|provided\)'
     \ || getline(lnum) =~? virtuality . '\(process\|procedure\|block\|object\)')
     \ && getline(lnum) !~? 'end[[:alpha:]]\+;$'
-    let ind = ind + &sw
+    let ind = ind + shiftwidth()
   endif
 
   " Subtract a 'shiftwidth' after states
   if getline(lnum) =~? '^\s*\(stop\|return\>\|nextstate\)'
-    let ind = ind - &sw
+    let ind = ind - shiftwidth()
   endif
 
   " Subtract a 'shiftwidth' on on end (uncompleted line)
   if getline(v:lnum) =~? '^\s*end\>'
-    let ind = ind - &sw
+    let ind = ind - shiftwidth()
   endif
 
   " Put each alternatives where the corresponding decision was
@@ -72,7 +75,7 @@ function! GetSDLIndent()
 
   " Systems and packages are always in column 0
   if getline(v:lnum) =~? '^\s*\(\(end\)\=system\|\(end\)\=package\)'
-    return 0;
+    return 0
   endif
 
   " Put each end* where the corresponding begin was
@@ -85,5 +88,8 @@ function! GetSDLIndent()
 
   return ind
 endfunction
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
 
 " vim:sw=2

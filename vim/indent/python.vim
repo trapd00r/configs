@@ -2,7 +2,7 @@
 " Language:		Python
 " Maintainer:		Bram Moolenaar <Bram@vim.org>
 " Original Author:	David Bustos <bustos@caltech.edu>
-" Last Change:		2006 Jun 18
+" Last Change:		2021 Sep 26
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -17,14 +17,23 @@ setlocal autoindent	" indentexpr isn't much help otherwise
 setlocal indentexpr=GetPythonIndent(v:lnum)
 setlocal indentkeys+=<:>,=elif,=except
 
+let b:undo_indent = "setl ai< inde< indk< lisp<"
+
 " Only define the function once.
 if exists("*GetPythonIndent")
   finish
 endif
+let s:keepcpo= &cpo
+set cpo&vim
 
 " Come here when loading the script the first time.
 
 let s:maxoff = 50	" maximum number of lines to look backwards for ()
+
+" See if the specified line is already user-dedented from the expected value.
+function s:Dedented(lnum, expected)
+  return indent(a:lnum) <= a:expected - shiftwidth()
+endfunction
 
 function GetPythonIndent(lnum)
 
@@ -34,7 +43,7 @@ function GetPythonIndent(lnum)
     if a:lnum > 1 && getline(a:lnum - 2) =~ '\\$'
       return indent(a:lnum - 1)
     endif
-    return indent(a:lnum - 1) + (exists("g:pyindent_continue") ? eval(g:pyindent_continue) : (&sw * 2))
+    return indent(a:lnum - 1) + (exists("g:pyindent_continue") ? eval(g:pyindent_continue) : (shiftwidth() * 2))
   endif
 
   " If the start of the line is in a string don't change the indent.
@@ -51,50 +60,68 @@ function GetPythonIndent(lnum)
     return 0
   endif
 
-  " If the previous line is inside parenthesis, use the indent of the starting
-  " line.
-  " Trick: use the non-existing "dummy" variable to break out of the loop when
-  " going too far back.
   call cursor(plnum, 1)
-  let parlnum = searchpair('(\|{\|\[', '', ')\|}\|\]', 'nbW',
-	  \ "line('.') < " . (plnum - s:maxoff) . " ? dummy :"
-	  \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-	  \ . " =~ '\\(Comment\\|String\\)$'")
-  if parlnum > 0
-    let plindent = indent(parlnum)
-    let plnumstart = parlnum
-  else
+
+  " Identing inside parentheses can be very slow, regardless of the searchpair()
+  " timeout, so let the user disable this feature if he doesn't need it
+  let disable_parentheses_indenting = get(g:, "pyindent_disable_parentheses_indenting", 0)
+
+  if disable_parentheses_indenting == 1
     let plindent = indent(plnum)
     let plnumstart = plnum
-  endif
+  else
+    " searchpair() can be slow sometimes, limit the time to 150 msec or what is
+    " put in g:pyindent_searchpair_timeout
+    let searchpair_stopline = 0
+    let searchpair_timeout = get(g:, 'pyindent_searchpair_timeout', 150)
 
+    " If the previous line is inside parenthesis, use the indent of the starting
+    " line.
+    " Trick: use the non-existing "dummy" variable to break out of the loop when
+    " going too far back.
+    let parlnum = searchpair('(\|{\|\[', '', ')\|}\|\]', 'nbW',
+            \ "line('.') < " . (plnum - s:maxoff) . " ? dummy :"
+            \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+            \ . " =~ '\\(Comment\\|Todo\\|String\\)$'",
+            \ searchpair_stopline, searchpair_timeout)
+    if parlnum > 0
+      let plindent = indent(parlnum)
+      let plnumstart = parlnum
+    else
+      let plindent = indent(plnum)
+      let plnumstart = plnum
+    endif
 
-  " When inside parenthesis: If at the first line below the parenthesis add
-  " two 'shiftwidth', otherwise same as previous line.
-  " i = (a
-  "       + b
-  "       + c)
-  call cursor(a:lnum, 1)
-  let p = searchpair('(\|{\|\[', '', ')\|}\|\]', 'bW',
-	  \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-	  \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-	  \ . " =~ '\\(Comment\\|String\\)$'")
-  if p > 0
-    if p == plnum
-      " When the start is inside parenthesis, only indent one 'shiftwidth'.
-      let pp = searchpair('(\|{\|\[', '', ')\|}\|\]', 'bW',
-	  \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-	  \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-	  \ . " =~ '\\(Comment\\|String\\)$'")
-      if pp > 0
-	return indent(plnum) + (exists("g:pyindent_nested_paren") ? eval(g:pyindent_nested_paren) : &sw)
+    " When inside parenthesis: If at the first line below the parenthesis add
+    " two 'shiftwidth', otherwise same as previous line.
+    " i = (a
+    "       + b
+    "       + c)
+    call cursor(a:lnum, 1)
+    let p = searchpair('(\|{\|\[', '', ')\|}\|\]', 'bW',
+            \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+            \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+            \ . " =~ '\\(Comment\\|Todo\\|String\\)$'",
+            \ searchpair_stopline, searchpair_timeout)
+    if p > 0
+      if p == plnum
+        " When the start is inside parenthesis, only indent one 'shiftwidth'.
+        let pp = searchpair('(\|{\|\[', '', ')\|}\|\]', 'bW',
+            \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
+            \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
+            \ . " =~ '\\(Comment\\|Todo\\|String\\)$'",
+            \ searchpair_stopline, searchpair_timeout)
+        if pp > 0
+          return indent(plnum) + (exists("g:pyindent_nested_paren") ? eval(g:pyindent_nested_paren) : shiftwidth())
+        endif
+        return indent(plnum) + (exists("g:pyindent_open_paren") ? eval(g:pyindent_open_paren) : (shiftwidth() * 2))
       endif
-      return indent(plnum) + (exists("g:pyindent_open_paren") ? eval(g:pyindent_open_paren) : (&sw * 2))
+      if plnumstart == p
+        return indent(plnum)
+      endif
+      return plindent
     endif
-    if plnumstart == p
-      return indent(plnum)
-    endif
-    return plindent
+
   endif
 
 
@@ -106,12 +133,12 @@ function GetPythonIndent(lnum)
     " If the last character in the line is a comment, do a binary search for
     " the start of the comment.  synID() is slow, a linear search would take
     " too long on a long line.
-    if synIDattr(synID(plnum, pline_len, 1), "name") =~ "Comment$"
+    if synIDattr(synID(plnum, pline_len, 1), "name") =~ "\\(Comment\\|Todo\\)$"
       let min = 1
       let max = pline_len
       while min < max
 	let col = (min + max) / 2
-	if synIDattr(synID(plnum, col, 1), "name") =~ "Comment$"
+	if synIDattr(synID(plnum, col, 1), "name") =~ "\\(Comment\\|Todo\\)$"
 	  let max = col
 	else
 	  let min = col + 1
@@ -132,18 +159,18 @@ function GetPythonIndent(lnum)
 
   " If the previous line ended with a colon, indent this line
   if pline =~ ':\s*$'
-    return plindent + &sw
+    return plindent + shiftwidth()
   endif
 
   " If the previous line was a stop-execution statement...
   if getline(plnum) =~ '^\s*\(break\|continue\|raise\|return\|pass\)\>'
     " See if the user has already dedented
-    if indent(a:lnum) > indent(plnum) - &sw
-      " If not, recommend one dedent
-      return indent(plnum) - &sw
+    if s:Dedented(a:lnum, indent(plnum))
+      " If so, trust the user
+      return -1
     endif
-    " Otherwise, trust the user
-    return -1
+    " If not, recommend one dedent
+    return indent(plnum) - shiftwidth()
   endif
 
   " If the current line begins with a keyword that lines up with "try"
@@ -166,16 +193,16 @@ function GetPythonIndent(lnum)
   if getline(a:lnum) =~ '^\s*\(elif\|else\)\>'
 
     " Unless the previous line was a one-liner
-    if getline(plnumstart) =~ '^\s*\(for\|if\|try\)\>'
+    if getline(plnumstart) =~ '^\s*\(for\|if\|elif\|try\)\>'
       return plindent
     endif
 
     " Or the user has already dedented
-    if indent(a:lnum) <= plindent - &sw
+    if s:Dedented(a:lnum, plindent)
       return -1
     endif
 
-    return plindent - &sw
+    return plindent - shiftwidth()
   endif
 
   " When after a () construct we probably want to go back to the start line.
@@ -183,11 +210,19 @@ function GetPythonIndent(lnum)
   "       + c)
   " here
   if parlnum > 0
-    return plindent
+    " ...unless the user has already dedented
+    if s:Dedented(a:lnum, plindent)
+        return -1
+    else
+        return plindent
+    endif
   endif
 
   return -1
 
 endfunction
+
+let &cpo = s:keepcpo
+unlet s:keepcpo
 
 " vim:sw=2

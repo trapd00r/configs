@@ -7,10 +7,11 @@
 "               Mike Leary          <leary@nwlink.com>
 "               Markus Mottl        <markus@oefai.at>
 " OCaml URL:    http://www.oefai.at/~markus/vim/indent/ocaml.vim
-" Last Change:  2003 Jan 04	- Adapted to SML
+" Last Change:  2022 Apr 06
 " 				2002 Nov 06 - Some fixes (JY)
 "               2002 Oct 28 - Fixed bug with indentation of ']' (MM)
 "               2002 Oct 22 - Major rewrite (JY)
+"		2022 April: b:undo_indent added by Doug Kearns
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -25,6 +26,8 @@ setlocal nolisp
 setlocal nosmartindent
 setlocal textwidth=80
 setlocal shiftwidth=2
+
+let b:undo_indent = "setl et< inde< indk< lisp< si< sw< tw<"
 
 " Comment formatting
 if (has("comments"))
@@ -115,9 +118,9 @@ function! GetSMLIndent()
 
 	" Return double 'shiftwidth' after lines matching:
 	if lline =~ '^\s*|.*=>\s*$'
-		return ind + &sw + &sw
+		return ind + 2 *shiftwidth()
 	elseif lline =~ '^\s*val\>.*=\s*$'
-		return ind + &sw
+		return ind + shiftwidth()
 	endif
 
   let line = getline(v:lnum)
@@ -157,7 +160,7 @@ function! GetSMLIndent()
 		if lastModule == -1
 			return 0
 		else
-			return lastModule + &sw
+			return lastModule + shiftwidth()
 		endif
 
 	" Indent lines starting with '|' from matching 'case', 'handle'
@@ -172,7 +175,7 @@ function! GetSMLIndent()
 		if switchLine =~ '\<case\>'
 			return col(".") + 2
 		elseif switchLine =~ '\<handle\>'
-			return switchLineIndent + &sw
+			return switchLineIndent + shiftwidth()
 		elseif switchLine =~ '\<datatype\>'
 			call search('=')
 			return col(".") - 1
@@ -184,7 +187,7 @@ function! GetSMLIndent()
   " Indent if last line ends with 'sig', 'struct', 'let', 'then', 'else',
   " 'in'
   elseif lline =~ '\<\(sig\|struct\|let\|in\|then\|else\)\s*$'
-		let ind = ind + &sw
+		let ind = ind + shiftwidth()
 
   " Indent if last line ends with 'of', align from 'case'
   elseif lline =~ '\<\(of\)\s*$'
@@ -199,14 +202,14 @@ function! GetSMLIndent()
 
 	" Indent if last line starts with 'fun', 'case', 'fn'
 	elseif lline =~ '^\s*\(fun\|fn\|case\)\>'
-		let ind = ind + &sw
+		let ind = ind + shiftwidth()
 
 	endif
 
 	" Don't indent 'let' if last line started with 'fun', 'fn'
 	if line =~ '^\s*let\>'
 		if lline =~ '^\s*\(fun\|fn\)'
-			let ind = ind - &sw
+			let ind = ind - shiftwidth()
 		endif
   endif
 

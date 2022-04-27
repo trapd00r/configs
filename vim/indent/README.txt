@@ -31,7 +31,7 @@ Always use ":setlocal" to set 'indentexpr'.  This avoids it being carried over
 to other buffers.
 
 To trigger the indenting after typing a word like "endif", add the word to the
-'cinkeys' option with "+=".
+'indentkeys' option with "+=".
 
 You normally set 'indentexpr' to evaluate a function and then define that
 function.  That function only needs to be defined once for as long as Vim is
@@ -43,3 +43,5 @@ running.  Add a test if the function exists and use ":finish", like this:
 The user may have several options set unlike you, try to write the file such
 that it works with any option settings.  Also be aware of certain features not
 being compiled in.
+
+To test the indent file, see testdir/README.txt.

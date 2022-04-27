@@ -1,7 +1,8 @@
 " Vim indent file
-" Language:         ld(1) script
-" Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2006-12-20
+" Language:		ld(1) script
+" Maintainer:		Doug Kearns <dougkearns@gmail.com>
+" Previous Maintainer:	Nikolai Weibull <now@bitwi.se>
+" Last Change:		24 Sep 2021
 
 if exists("b:did_indent")
   finish
@@ -11,6 +12,8 @@ let b:did_indent = 1
 setlocal indentexpr=GetLDIndent()
 setlocal indentkeys=0{,0},!^F,o,O
 setlocal nosmartindent
+
+let b:undo_indent = "setl inde< indk< si<"
 
 if exists("*GetLDIndent")
   finish
@@ -65,7 +68,7 @@ function GetLDIndent()
   if line =~ '^\s*\*'
     return cindent(v:lnum)
   elseif line =~ '^\s*}'
-    return indent(v:lnum) - &sw
+    return indent(v:lnum) - shiftwidth()
   endif
 
   let pnum = s:prevnonblanknoncomment(v:lnum - 1)
@@ -73,11 +76,11 @@ function GetLDIndent()
     return 0
   endif
 
-  let ind = indent(pnum) + s:count_braces(pnum, 1) * &sw
+  let ind = indent(pnum) + s:count_braces(pnum, 1) * shiftwidth()
 
   let pline = getline(pnum)
   if pline =~ '}\s*$'
-    let ind -= (s:count_braces(pnum, 0) - (pline =~ '^\s*}' ? 1 : 0)) * &sw
+    let ind -= (s:count_braces(pnum, 0) - (pline =~ '^\s*}' ? 1 : 0)) * shiftwidth()
   endif
 
   return ind

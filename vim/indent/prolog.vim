@@ -1,7 +1,10 @@
 "  vim: set sw=4 sts=4:
-"  Maintainer	: Gergely Kontra <kgergely@mcl.hu>
-"  Revised on	: 2002.02.18. 23:34:05
-"  Language	: Prolog
+"  Language:	Prolog
+"  Maintainer:	Gergely Kontra <kgergely@mcl.hu> (Invalid email address)
+" 		Doug Kearns <dougkearns@gmail.com>
+"  Revised on:	2002.02.18. 23:34:05
+"  Last change by: Takuya Fujiwara, 2018 Sep 23
+"		2022 April: b:undo_indent added by Doug Kearns
 
 " TODO:
 "   checking with respect to syntax highlighting
@@ -18,6 +21,8 @@ let b:did_indent = 1
 setlocal indentexpr=GetPrologIndent()
 setlocal indentkeys-=:,0#
 setlocal indentkeys+=0%,-,0;,>,0)
+
+let b:undo_indent = "setl inde< indk<"
 
 " Only define the function once.
 "if exists("*GetPrologIndent")
@@ -37,22 +42,30 @@ function! GetPrologIndent()
     let ind = indent(pnum)
     " Previous line was comment -> use previous line's indent
     if pline =~ '^\s*%'
-	retu ind
+	return ind
+    endif
+    " Previous line was the start of block comment -> +1 after '/*' comment
+    if pline =~ '^\s*/\*'
+	return ind + 1
+    endif
+    " Previous line was the end of block comment -> -1 after '*/' comment
+    if pline =~ '^\s*\*/'
+	return ind - 1
     endif
     " Check for clause head on previous line
-    if pline =~ ':-\s*\(%.*\)\?$'
-	let ind = ind + &sw
+    if pline =~ '\%(:-\|-->\)\s*\(%.*\)\?$'
+	let ind = ind + shiftwidth()
     " Check for end of clause on previous line
     elseif pline =~ '\.\s*\(%.*\)\?$'
-	let ind = ind - &sw
+	let ind = ind - shiftwidth()
     endif
     " Check for opening conditional on previous line
     if pline =~ '^\s*\([(;]\|->\)'
-	let ind = ind + &sw
+	let ind = ind + shiftwidth()
     endif
     " Check for closing an unclosed paren, or middle ; or ->
     if line =~ '^\s*\([);]\|->\)'
-	let ind = ind - &sw
+	let ind = ind - shiftwidth()
     endif
     return ind
 endfunction
