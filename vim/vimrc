@@ -30,7 +30,7 @@ set cmdheight=2                                                            " avo
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
 set completeopt+=menuone                                                   " use popup menu for completion even if only one match
-set cursorline                                                             " easier to see where one's at in the buffer
+"set cursorline                                                             " easier to see where one's at in the buffer
 set define=[^A-Za-z_]                                                      " for macro definition
 set diffopt=filler,iwhite,context:2,vertical                               " settings for vimdiff
 set display+=lastline,uhex                                                 " changes the way text is displayed
@@ -66,9 +66,7 @@ set iskeyword+=%                                                           " per
 set iskeyword+=@-@                                                         " perl array
 set iskeyword+=:                                                           " perl colon
 set iskeyword-=,                                                           " remove , from keyword
-
 set laststatus=2                                                           " always how statusline
-"
 set lazyredraw                                                             " do not redraw screen while executing macros etc
 set list                                                                   " visualize non-visual characters
 set listchars&                                                             "  '- set it to empty first
@@ -251,8 +249,12 @@ nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
 
 " sort and operate on visual block selections
-vnoremap S :SortByBlock<cr>
+" press enter or add flags to sort, i.e -n
+" this will sort _only_ what's selected and not the entire
+" lines as is default vim behaviour
+vnoremap S :Blockwise !sort<space>
 vnoremap B :Blockwise<cr>
+"vnoremap S :SortByBlock<cr>
 
 " toggle folds with Enter
 nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
@@ -348,6 +350,7 @@ function! Scratch()
   setlocal bufhidden=hide
   setlocal ft=perl
   file scratch
+  startinsert
 endfunction
 
 function! ToggleComment ()
