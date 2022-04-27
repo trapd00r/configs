@@ -1,7 +1,7 @@
 " Vim filetype plugin
-" Language:		Haml
-" Maintainer:		Tim Pope <vimNOSPAM@tpope.org>
-" Last Change:		2010 May 21
+" Language:	Haml
+" Maintainer:	Tim Pope <vimNOSPAM@tpope.org>
+" Last Change:	2019 Dec 05
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
@@ -18,6 +18,7 @@ let s:match_words = ""
 
 runtime! ftplugin/html.vim ftplugin/html_*.vim ftplugin/html/*.vim
 unlet! b:did_ftplugin
+set matchpairs-=<:>
 
 " Override our defaults if these were set by an included ftplugin.
 if exists("b:undo_ftplugin")
@@ -35,6 +36,8 @@ endif
 
 runtime! ftplugin/ruby.vim ftplugin/ruby_*.vim ftplugin/ruby/*.vim
 let b:did_ftplugin = 1
+
+let &l:define .= empty(&l:define ? '' : '\|') . '^\s*\%(%\w*\)\=\%(\.[[:alnum:]_-]\+\)*#'
 
 " Combine the new set of values with those previously included.
 if exists("b:undo_ftplugin")
@@ -59,9 +62,10 @@ endif
 
 setlocal comments= commentstring=-#\ %s
 
-let b:undo_ftplugin = "setl cms< com< "
+let b:undo_ftplugin = "setl def< cms< com< "
       \ " | unlet! b:browsefilter b:match_words | " . s:undo_ftplugin
 
 let &cpo = s:save_cpo
+unlet s:save_cpo
 
 " vim:set sw=2:

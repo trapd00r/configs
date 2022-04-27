@@ -1,7 +1,8 @@
 " Vim filetype plugin file
 " Language:	cobol
-" Author:	Tim Pope <vimNOSPAM@tpope.info>
-" $Id: cobol.vim,v 1.1 2007/05/05 17:24:38 vimboss Exp $
+" Maintainer: Ankit Jain <ajatkj@yahoo.co.in>
+"     (formerly Tim Pope <vimNOSPAM@tpope.info>)
+" Last Update:	By Ankit Jain (add gtk support) on 15.08.2020
 
 " Insert mode mappings: <C-T> <C-D> <Tab>
 " Normal mode mappings: < > << >> [[ ]] [] ][
@@ -36,7 +37,8 @@ if exists("loaded_matchit")
     \ '-\@<!\<\%(delete\|rewrite\|start\|write\|read\)\>\%(.*\(\%$\|\%(\n\%(\%(\s*\|.\{6\}\)[*/].*\n\)*\)\=\s*\%(invalid\s\+key\|at\s\+end\|no\s\+data\|at\s\+end-of-page\)\>\)\)\@=:\%(\<not\s\+\)\@<!\<\%(not\s\+\)\=\%(invalid\s\+key\|at\s\+end\|no\s\+data\|at\s\+end-of-page\)\>:\<end-\%(delete\|rewrite\|start\|write\|read\)\>' .s:ordot
 endif
 
-if has("gui_win32") && !exists("b:browsefilter")
+" add gtk support
+if (has("gui_win32") || has("gui_gtk")) && !exists("b:browsefilter")
   let b:browsefilter = "COBOL Source Files (*.cbl, *.cob)\t*.cbl;*.cob;*.lib\n".
 		     \ "All Files (*.*)\t*.*\n"
 endif
@@ -113,7 +115,7 @@ endfunction
 
 function! s:increase(...)
     let lnum = '.'
-    let sw = &shiftwidth
+    let sw = shiftwidth()
     let i = a:0 ? a:1 : indent(lnum)
     if i >= 11
         return sw - (i - 11) % sw
@@ -128,7 +130,7 @@ endfunction
 
 function! s:decrease(...)
     let lnum = '.'
-    let sw = &shiftwidth
+    let sw = shiftwidth()
     let i = indent(a:0 ? a:1 : lnum)
     if i >= 11 + sw
         return 1 + (i + 12) % sw
@@ -147,7 +149,7 @@ function! CobolIndentBlock(shift)
     let head = strpart(getline('.'),0,7)
     let tail = strpart(getline('.'),7)
     let indent = match(tail,'[^ ]')
-    let sw = &shiftwidth
+    let sw = shiftwidth()
     let shift = a:shift
     if shift > 0
         if indent < 4
@@ -221,7 +223,8 @@ endfunction
 function! s:Tab()
     if (strpart(getline('.'),0,col('.')-1) =~ '^\s*$' && &sta)
         return s:IncreaseIndent()
-    elseif &sts == &sw && &sts != 8 && &et
+    " &softtabstop < 0: &softtabstop follows &shiftwidth
+    elseif (&sts < 0 || &sts == shiftwidth()) && &sts != 8 && &et
         return s:repeat(" ",s:increase(col('.')-1))
     else
         return "\<Tab>"

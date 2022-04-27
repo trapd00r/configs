@@ -1,15 +1,15 @@
 " Vim ftplugin file
-" Language:         FrameScript
-" Maintainer:       Nikolai Weibull <now@bitwi.se>
-" Latest Revision:  2008-07-19
-
-let s:cpo_save = &cpo
-set cpo&vim
+" Language:             FrameScript
+" Previous Maintainer:  Nikolai Weibull <now@bitwi.se>
+" Latest Revision:      2008-07-19
 
 if exists("b:did_ftplugin")
   finish
 endif
 let b:did_ftplugin = 1
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 let b:undo_ftplugin = "setl com< cms< fo< inc< | unlet! b:matchwords"
 

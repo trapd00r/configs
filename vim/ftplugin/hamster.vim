@@ -1,8 +1,8 @@
 " Vim filetype plugin
 " Language:    Hamster Script
 " Version:     2.0.6.0
-" Maintainer:  David Fishburn <fishburn@ianywhere.com>
-" Last Change: Wed Nov 08 2006 12:03:09 PM
+" Maintainer:  David Fishburn <dfishburn dot vim at gmail dot com>
+" Last Change: 2021 Jan 19
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
@@ -12,8 +12,8 @@ endif
 " Don't load another plugin for this buffer
 let b:did_ftplugin = 1
 
-let cpo_save = &cpo
-set cpo-=C
+let s:cpo_save = &cpo
+set cpo&vim
 
 let b:undo_ftplugin = "setl fo< com< tw< commentstring<"
 	\ . "| unlet! b:match_ignorecase b:match_words b:match_skip"
@@ -57,5 +57,9 @@ if exists("loaded_matchit")
 endif
 
 setlocal ignorecase
-let &cpo = cpo_save
-setlocal cpo+=M		" makes \%( match \)
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
+
+" Disabled, 'cpo' is a global option.
+" setlocal cpo+=M		" makes \%( match \)

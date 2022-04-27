@@ -1,8 +1,10 @@
 " Vim filetype plugin file
 " Language:	dtd
-" Maintainer:	Dan Sharp <dwsharp at users dot sourceforge dot net>
+"
+" This runtime file is looking for a new maintainer.
+"
+" Former maintainer:	Dan Sharp
 " Last Changed: 20 Jan 2009
-" URL:		http://dwsharp.users.sourceforge.net/vim/ftplugin
 
 if exists("b:did_ftplugin") | finish | endif
 let b:did_ftplugin = 1
@@ -37,3 +39,4 @@ let b:undo_ftplugin = "setlocal commentstring< comments< formatoptions<" .
 
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo
+unlet s:save_cpo
