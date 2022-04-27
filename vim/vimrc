@@ -38,8 +38,9 @@ set expandtab                                                              " use
 set fileencodings=utf-8,latin1                                             " list of fileencodings to try
 set fillchars+=fold:\                                                      " chars used for filling the folded line when folded
 set foldcolumn=2                                                           " width of foldcolumn
+"set foldclose=all                                                          " autoclose fold when jumping out of it
 set foldenable                                                             " when off, all folds are open
-"set foldignore=#                                                           " lines starting with char will get their fold level from surrounding lines
+set foldignore=#                                                           " lines starting with char will get their fold level from surrounding lines
 set foldlevel=99                                                           " folds with a higher level will be closed
 set foldlevelstart=99                                                      " do not fold by default
 set foldmarker={,}                                                         " and these can be adjusted anywhere of course
@@ -65,7 +66,9 @@ set iskeyword+=%                                                           " per
 set iskeyword+=@-@                                                         " perl array
 set iskeyword+=:                                                           " perl colon
 set iskeyword-=,                                                           " remove , from keyword
+
 set laststatus=2                                                           " always how statusline
+"
 set lazyredraw                                                             " do not redraw screen while executing macros etc
 set list                                                                   " visualize non-visual characters
 set listchars&                                                             "  '- set it to empty first
@@ -138,7 +141,7 @@ set wildmenu                                                               " com
 set wildmode=list:longest,full                                             " completion mode
 
 " force an update of the statusline
-let &ro =&ro
+"let &ro =&ro
 
 " cursor color in insert mode
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
@@ -187,7 +190,7 @@ nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
 
 " show the current function name
-map <C-s> :call ShowFuncName()
+map <C-s> :call ShowFuncName()<cr>
 
 " use quickfix list to go to func definition
 nnoremap <C-o> :CtrlPFunky<cr>
@@ -443,11 +446,9 @@ function! ContextInStatusbar()
   let lnum = line(".")
   let col = col(".")
   echohl ModeMsg
-"  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
-  let g:current_function = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
-"  echo g:current_function
+  let g:current_function = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
   echohl None
-  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+
   "" matches and returns a str only if the lines matches any of the following:
   "  viml: fu!, function!, function!
   "    js: function
@@ -456,8 +457,14 @@ function! ContextInStatusbar()
   "   css: .store_more_info_wrapper .store_name (a little broken..)
   " shell: pastebin() {
   " shell: if/elif:
+"  if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
   if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
-    return g:current_function
+    " remove sub or function keyword
+    let funcname = substitute(g:current_function, '\v(sub|fu[!]?n?(ction)?[!]?)\s*', '', '')
+    return funcname
+
+    " can also include scopes or blocks
+    " return g:current_function
   endif
   return ''
 endfun
@@ -627,7 +634,7 @@ if v:progname == 'wim'
 endif
 " ========== COMMANDS END ===============================
 " ========== STATUSLINE START ===========================
-highlight StatusLine   ctermfg=233 ctermbg=234  cterm=none
+highlight StatusLine   ctermfg=233 ctermbg=234 cterm=none
 highlight StatusLineNC ctermfg=233 ctermbg=234 cterm=none
 
 "highlight link User1 ModeMsg
@@ -724,10 +731,10 @@ set statusline +=\ \%7*¦%4*\ %<%F%*                   " full path
 set statusline +=%2*%m%*                              " modified flag
 set statusline +=\%7*\ ¦\ \%6*%{fugitive#head()}      " git branch
 set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()} " current function or block
-"set statusline +=%1*%=%5l%*                          " current line
-"set statusline +=%1*/%L%*                            " total lines
-"set statusline +=%1*%4v\ %*                          " virtual column number
-"set statusline +=%1*0x%04B\ %*                       " character under cursor
+set statusline +=%1*%=%5l%*                           " current line
+set statusline +=%1*/%L%*                             " total lines
+set statusline +=%1*%4v\ %*                           " virtual column number
+set statusline +=%1*0x%04B\ %*                        " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
 " highlights quickfix errors
