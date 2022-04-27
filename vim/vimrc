@@ -266,7 +266,6 @@ nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
 " search for word under cursor
 nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<cr>
 
-
 " better movement in ex mode
 cnoremap  <C-*> <c-a>
 cnoremap  <C-_> <c-f>
@@ -284,7 +283,7 @@ cnoremap  <C-p> <up>
 cnoremap  <M-b> <S-Left>
 cnoremap  <M-f> <S-Right>
 
-" ========== FZF  ==================================
+" ========== FZF START ==================================
 source ~/etc/vim/plugin/fzf.vim
 nnoremap <C-p> :FZF<cr>
 
@@ -337,7 +336,7 @@ nnoremap <C-g> :RgFzf*<cr>
 " go to function def
 nnoremap <C-S-G> :RgDefFzf*<cr>
 
-" ========== FZF ==================================
+" ========== FZF END ====================================
 
 "command! -range Aligncommas <line1>,<line2> s /,/§,/g | <line1>,<line2> !column -s § -t
 
@@ -1243,4 +1242,3 @@ endfunction
 "
 " ga => char info
 " ========== NOTES END ==================================
-
