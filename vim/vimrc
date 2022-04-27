@@ -12,11 +12,11 @@ filetype plugin indent on
 syntax on
 
 runtime macros/matchit.vim                                                 " % on if/else
-set all&                                                                   " Turn everything off, in case of evil vendor vimrcs
-let &runtimepath  = $VIMRUNTIME                                            " I prefer control over my things.
-set helpfile=$HOME/dev/vim/runtime/doc/help.txt                            " Hlep
-set exrc                                                                   " Enables the reading of vimrc in ./
-set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " For gf etc
+set all&                                                                   " turn everything off, in case of evil vendor vimrcs
+let &runtimepath  = $VIMRUNTIME                                            " prefer control over my things
+set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
+set exrc                                                                   " enables the reading of vimrc in ./
+set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " for gf etc
 set path+='$HOME/dev/air8'
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
@@ -161,6 +161,10 @@ color neverland
 
 " ========== MAPPINGS START =============================
 let mapleader=','
+
+" toggle colorcolum at cursor positions
+" unless cursor position is 1, then disable it
+nnoremap <leader>cc :call ColorColumnAtCursorPositionToggle()<cr>
 
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
@@ -340,6 +344,16 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
+
+" display a visual aid when lining long things up
+" disable colorcolumn entirely if cursor is in the first column
+function! ColorColumnAtCursorPositionToggle()
+  if exists(&colorcolumn) || col('.') == 1
+    set colorcolumn&
+  else
+    let &colorcolumn = col('.')
+  endif
+endfunction
 
 " scratch window for temp things
 " bound in my window manager like this:
@@ -758,7 +772,7 @@ let g:ale_perl_perl_options    = '-cw -Ilib'
 " use git diff colors for signs set with ma
 let g:SignatureMarkTextHLDynamic               = 1
 let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_max_signs                      = 1500
+let g:gitgutter_max_signs                      = 8500
 let g:extradite_width                          = 40
 
 " list of things to disable when turning distractions off
@@ -888,6 +902,8 @@ let g:vt_template_dir_path         = '~/etc/vim/templates/'
 let g:xf86conf_xfree86_versio      = 2
 " ========== SYNTAX OPTIONS END =========================
 " ========== HIGHLIGHTING START =========================
+
+highlight Normal ctermfg=white ctermbg=bg cterm=italicbold
 
 " CurSearch highlighting group added so might be able to remove HLNext
 " https://github.com/vim/vim/commit/a43993897aa372159f682df37562f159994dc85c
@@ -1056,6 +1072,7 @@ highlight markdownJekyllFrontMatter ctermfg=137
 " ========== ASKåS START ===============================
 set encoding=utf-8
 autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
+autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
 
