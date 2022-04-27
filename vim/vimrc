@@ -345,9 +345,13 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== FUNCTIONS START ============================
 
 " display a visual aid when lining long things up
-" disable colorcolumn entirely if cursor is in the first column
+" disable colorcolumn entirely if
+" - cursor is in the first column
+" - cursor is in the same column that &colorcolumn is set to
 function! ColorColumnAtCursorPositionToggle()
-  if exists(&colorcolumn) || col('.') == 1
+  let column = col('.')
+
+  if exists(&colorcolumn) || column == 1 || column == &colorcolumn
     set colorcolumn&
   else
     let &colorcolumn = col('.')
