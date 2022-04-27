@@ -886,14 +886,14 @@ highlight ALEVirtualTextStyleWarning  ctermfg=196 ctermbg=bg cterm=none
 highlight ALEVirtualTextInfo          ctermfg=137 ctermbg=bg cterm=bolditalic
 
 " trackperlvars
-highlight default      TRACK_PERL_VAR             ctermfg=fg  cterm=none
-highlight default      TRACK_PERL_VAR_QUESTION    ctermfg=white                cterm=bold
-highlight default      TRACK_PERL_VAR_LOCKED      ctermfg=cyan   ctermbg=blue  cterm=bold
-highlight default      TRACK_PERL_VAR_UNDECLARED  ctermfg=red                  cterm=bold
-highlight default      TRACK_PERL_VAR_UNUSED      ctermfg=cyan                 cterm=bold
-highlight default      TRACK_PERL_VAR_BUILTIN     ctermfg=magenta              cterm=bold
+highlight default      TRACK_PERL_VAR             ctermfg=none   ctermbg=bg    cterm=underlinebolditalic
+highlight default      TRACK_PERL_VAR_QUESTION    ctermfg=white  ctermbg=bg    cterm=bold
+highlight default      TRACK_PERL_VAR_LOCKED      ctermfg=none   ctermbg=none  cterm=reverse
+highlight default      TRACK_PERL_VAR_UNDECLARED  ctermfg=196    ctermbg=bg    cterm=none
+highlight default      TRACK_PERL_VAR_UNUSED      ctermfg=116    ctermbg=bg    cterm=none
+highlight default      TRACK_PERL_VAR_BUILTIN     ctermfg=190    ctermbg=bg    cterm=none
 "highlight default link TRACK_PERL_VAR_ACTIVE      TRACK_PERL_VAR
-highlight default      TRACK_PERL_VAR_ACTIVE      ctermfg=196
+highlight default      TRACK_PERL_VAR_ACTIVE      ctermfg=196    ctermbg=bg    cterm=italicbold
 
 hi link ColorColumn  CursorLine
 
@@ -1206,3 +1206,4 @@ endfunction
 "
 " ga => char info
 " ========== NOTES END ==================================
+
