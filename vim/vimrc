@@ -139,11 +139,21 @@ set wildmode=list:longest,full                                             " com
 
 " force an update of the statusline
 let &ro =&ro
+
+" cursor color in insert mode
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
-let &t_EI = "\<Esc>]12;#ff0000\x7"
+
+" cursor color elsewhere
+let &t_EI = "\<Esc>]12;#ffffff\x7"
 
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
+
+" cursor solid block
+let &t_EI .= "\<Esc>[2 q"
+
+" reset cursor when we leave vim
+autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== OPTIONS END ================================
 
 color neverland
@@ -229,8 +239,8 @@ let g:Schlepp#dupTrimWS = 1
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
-" remove hlsearch matches and redraw screen
-nnoremap <silent> <C-l> :noh<cr><C-l>
+" remove hlsearch, hlnext, matches and redraw screen
+nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch<cr>
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
@@ -309,8 +319,6 @@ nnoremap <leader>ft :Filetypes<cr>
 
 command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
 nnoremap <leader>air :AIR8files<cr>
-
-
 
 nnoremap <leader>f :RgFzf
 
@@ -870,6 +878,8 @@ let g:vt_template_dir_path         = '~/etc/vim/templates/'
 let g:xf86conf_xfree86_versio      = 2
 " ========== SYNTAX OPTIONS END =========================
 " ========== HIGHLIGHTING START =========================
+
+highlight HLNext      ctermfg=bg ctermbg=fg cterm=underline
 
 highlight HierError   ctermfg=196 ctermbg=bg cterm=none
 highlight HierWarning ctermfg=137 ctermbg=bg cterm=bolditalic
