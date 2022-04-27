@@ -214,7 +214,7 @@ vnoremap K  10k
 nnoremap <silent><expr> <backspace> hl#mark()
 nnoremap <silent><expr> <tab> hl#unmark('line')
 vnoremap <silent><expr> <tab> hl#unmark('block')
-hi HL cterm=bolditalic ctermbg=fg ctermfg=bg
+highlight HL cterm=bolditalic ctermbg=fg ctermfg=bg
 
 " Return to the previous cursor position
 " --------------------------------------
@@ -533,7 +533,7 @@ endfu
 " ========== AUTOCOMMANDS START =========================
 
 " fold this file in a nice way
- autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | let &foldmarker='START =====,END ====='
+autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | let &foldmarker='START =====,END ====='
 
 " try to figure out the filetype when there's no extension
 " often the case in my bin (~/dev/utils/) directory
@@ -544,7 +544,7 @@ autocmd BufNewFile,BufRead  *        call s:infer_filetype()
 " char used for comments in that specific filetype
 " this is used for ToggleComment() among other things, mapped
 " to #
-au BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
+autocmd BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
 
 
 " return to last edit position when opening files
@@ -575,12 +575,12 @@ augroup END
 
 
 " set rainbow.vim colors and attributes
-au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p0' 'cterm=bold ctermfg=231'
-au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p1' 'cterm=bold ctermfg=228'
-au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p2' 'cterm=bold ctermfg=202'
-au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p3' 'cterm=bold ctermfg=196'
-au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p4' 'cterm=bold ctermfg=178'
-au BufNewFile,BufRead  * exe 'hi ' &ft . 'Rainbow_p5' 'cterm=bold ctermfg=172'
+autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p0' 'cterm=bold ctermfg=231'
+autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p1' 'cterm=bold ctermfg=228'
+autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p2' 'cterm=bold ctermfg=202'
+autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p3' 'cterm=bold ctermfg=196'
+autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p4' 'cterm=bold ctermfg=178'
+autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p5' 'cterm=bold ctermfg=172'
 
 " escape faster!
 augroup FastEscape
@@ -588,28 +588,28 @@ augroup FastEscape
   set notimeout
   set ttimeout
   set timeoutlen=10
-  au InsertEnter * set timeout
-  au InsertLeave * set notimeout
+  autocmd InsertEnter * set timeout
+  autocmd InsertLeave * set notimeout
 augroup END
 
 " sadly there is no tt2 + html + js syntax file that works
-au BufRead,BufNewFile *.tt setf javascript
+autocmd BufRead,BufNewFile *.tt setf javascript
 
 " more goodies for viml
-au Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
+autocmd Filetype vim source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
 
-au BufNewFile,BufRead  MANIFEST              set filetype=vidir
-au BufNewFile,BufRead  vidir*                set filetype=vidir-ls
-au BufNewFile,BufRead  Changes               set filetype=changelog
+autocmd BufNewFile,BufRead  MANIFEST              set filetype=vidir
+autocmd BufNewFile,BufRead  vidir*                set filetype=vidir-ls
+autocmd BufNewFile,BufRead  Changes               set filetype=changelog
 
-au BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
-au BufNewFile         *.txt                  setl cc=
+autocmd BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
+autocmd BufNewFile         *.txt                  setl cc=
 
-au BufRead            /etc/fstab,~/etc/fstab hi fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
+autocmd BufRead            /etc/fstab,~/etc/fstab highlight fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
 
 " update modification time
-au BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
-au BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+autocmd BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+autocmd BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
 " ========== AUTOCOMMANDS END ===========================
 " ========== COMMANDS START =============================
 " you'll need my vim fork: http://github.com/trapd00r/wim
@@ -627,84 +627,84 @@ if v:progname == 'wim'
 endif
 " ========== COMMANDS END ===============================
 " ========== STATUSLINE START ===========================
-hi StatusLine   ctermfg=233 ctermbg=234  cterm=none
-hi StatusLineNC ctermfg=233 ctermbg=234 cterm=none
+highlight StatusLine   ctermfg=233 ctermbg=234  cterm=none
+highlight StatusLineNC ctermfg=233 ctermbg=234 cterm=none
 
-"hi link User1 ModeMsg
-hi User1 ctermfg=215 ctermbg=234 cterm=bolditalic
-hi User2 ctermfg=106 ctermbg=234 cterm=none
-hi User3 ctermfg=250 ctermbg=234 cterm=none
+"highlight link User1 ModeMsg
+highlight User1 ctermfg=215 ctermbg=234 cterm=bolditalic
+highlight User2 ctermfg=106 ctermbg=234 cterm=none
+highlight User3 ctermfg=250 ctermbg=234 cterm=none
 " User4 is set to the calculated LS_COLORS for the current file below
-hi User4 ctermfg=032 ctermbg=234 cterm=none
-hi User5 ctermfg=245 ctermbg=234 cterm=none
-hi User6 ctermfg=220 ctermbg=234 cterm=none
-hi User7 ctermfg=240 ctermbg=234 cterm=none
-hi User8 ctermfg=234 ctermbg=fg  cterm=none
-hi User9 ctermfg=197 ctermbg=234 cterm=none
+highlight User4 ctermfg=032 ctermbg=234 cterm=none
+highlight User5 ctermfg=245 ctermbg=234 cterm=none
+highlight User6 ctermfg=220 ctermbg=234 cterm=none
+highlight User7 ctermfg=240 ctermbg=234 cterm=none
+highlight User8 ctermfg=234 ctermbg=fg  cterm=none
+highlight User9 ctermfg=197 ctermbg=234 cterm=none
 
 " Now, these regexes are obviously bad, but this function will only be used for
 " this only purpose so it doesn't matter.
 " Here's an aid for generating this:
-" curl -s https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS | grep -Pv '^(?:[#*]|TERM)|^$' | perl -pe 's{^\.?(\S+)\s+(?:[34]8;5;(\d+))}{elsif(a:filename =~ "\v.+\.$1")\n  hi User4 ctermfg=$2 ctermbg=234 cterm=none};s{;\d+$}{}' | perl -pe "s/\"/'/g"
+" curl -s https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS | grep -Pv '^(?:[#*]|TERM)|^$' | perl -pe 's{^\.?(\S+)\s+(?:[34]8;5;(\d+))}{elsif(a:filename =~ "\v.+\.$1")\n  highlight User4 ctermfg=$2 ctermbg=234 cterm=none};s{;\d+$}{}' | perl -pe "s/\"/'/g"
 
 function! LsColorForStatusLine(filename)
   if(a:filename =~ '\v.+\.sh')
-    hi User4 ctermfg=172 ctermbg=234 cterm=none
+    highlight User4 ctermfg=172 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.vim')
-    hi User4 ctermfg=106 ctermbg=234 cterm=none
+    highlight User4 ctermfg=106 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.txt')
-    hi User4 ctermfg=188 ctermbg=234 cterm=none
+    highlight User4 ctermfg=188 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.(css|sass)')
-    hi User4 ctermfg=125 ctermbg=234 cterm=none
+    highlight User4 ctermfg=125 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.csv')
-    hi User4 ctermfg=078 ctermbg=234 cterm=none
+    highlight User4 ctermfg=078 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.js[mp]?')
-    hi User4 ctermfg=074 ctermbg=234 cterm=none
+    highlight User4 ctermfg=074 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.json')
-    hi User4 ctermfg=178 ctermbg=234 cterm=none
+    highlight User4 ctermfg=178 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.log')
-    hi User4 ctermfg=190 ctermbg=234 cterm=none
+    highlight User4 ctermfg=190 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.(markdown|md)')
-    hi User4 ctermfg=190 ctermbg=234 cterm=bold
+    highlight User4 ctermfg=190 ctermbg=234 cterm=bold
 
   elseif(a:filename =~ '\vREADME|CHANGES')
-    hi User4 ctermfg=190 ctermbg=234 cterm=bold
+    highlight User4 ctermfg=190 ctermbg=234 cterm=bold
 
   elseif(a:filename =~ '\v.+\.php')
-    hi User4 ctermfg=081 ctermbg=234 cterm=none
+    highlight User4 ctermfg=081 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\vMakefile([.]PL)?')
-    hi User4 ctermfg=196 ctermbg=234 cterm=none
+    highlight User4 ctermfg=196 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.pl')
-    hi User4 ctermfg=208 ctermbg=234 cterm=none
+    highlight User4 ctermfg=208 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.pm')
-    hi User4 ctermfg=203 ctermbg=234 cterm=none
+    highlight User4 ctermfg=203 ctermbg=234 cterm=none
 
 
   elseif(a:filename =~ '\v.+\.(sql|sqlite)')
-    hi User4 ctermfg=222 ctermbg=234 cterm=none
+    highlight User4 ctermfg=222 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.t$')
-    hi User4 ctermfg=114 ctermbg=234 cterm=none
+    highlight User4 ctermfg=114 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.tt$')
-    hi User4 ctermfg=173 ctermbg=234 cterm=none
+    highlight User4 ctermfg=173 ctermbg=234 cterm=none
 
   elseif(a:filename =~ '\v.+\.html?$')
-    hi User4 ctermfg=132 ctermbg=234 cterm=none
+    highlight User4 ctermfg=132 ctermbg=234 cterm=none
 
   else
-    hi User4 ctermfg=137 ctermbg=234 cterm=none
+    highlight User4 ctermfg=137 ctermbg=234 cterm=none
   endif
 endfun
 
@@ -713,7 +713,7 @@ function! SetStatusLineAskasButik()
 endfun
 
 
-au BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
+autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
 set statusline=
 "set statusline +=%1*\ %n\ %*                         " buffer number
 set statusline +=\ %5*%{&ff}%*\                       " file format
@@ -879,12 +879,14 @@ let g:xf86conf_xfree86_versio      = 2
 " ========== SYNTAX OPTIONS END =========================
 " ========== HIGHLIGHTING START =========================
 
-highlight HLNext      ctermfg=bg ctermbg=fg cterm=underline
+" CurSearch highlighting group added so might be able to remove HLNext
+" https://github.com/vim/vim/commit/a43993897aa372159f682df37562f159994dc85c
+highlight HLNext                      ctermfg=bg  ctermbg=white cterm=underline
 
-highlight HierError   ctermfg=196 ctermbg=bg cterm=none
-highlight HierWarning ctermfg=137 ctermbg=bg cterm=bolditalic
-highlight AleError    ctermfg=196 ctermbg=bg cterm=none
-highlight AleWarning  ctermfg=137 ctermbg=bg cterm=bolditalic
+highlight HierError                   ctermfg=196 ctermbg=bg cterm=none
+highlight HierWarning                 ctermfg=137 ctermbg=bg cterm=bolditalic
+highlight AleError                    ctermfg=196 ctermbg=bg cterm=none
+highlight AleWarning                  ctermfg=137 ctermbg=bg cterm=bolditalic
 
 highlight ALEStyleError               ctermfg=196 ctermbg=bg cterm=none
 highlight ALEStyleWarning             ctermfg=137 ctermbg=bg cterm=bolditalic
@@ -905,200 +907,201 @@ highlight default      TRACK_PERL_VAR_BUILTIN     ctermfg=190    ctermbg=bg    c
 "highlight default link TRACK_PERL_VAR_ACTIVE      TRACK_PERL_VAR
 highlight default      TRACK_PERL_VAR_ACTIVE      ctermfg=196    ctermbg=bg    cterm=italicbold
 
-hi link ColorColumn  CursorLine
+highlight link ColorColumn  CursorLine
 
-hi CtrlPMatch              ctermfg=196              cterm=bold
-hi CursorColumn            ctermfg=fg   ctermbg=234 cterm=none
-hi CursorLine              ctermfg=none ctermbg=234
-hi CursorLineNr            ctermfg=232  ctermbg=196 cterm=none
-hi Error                   ctermfg=089  ctermbg=250 cterm=bolditalicreverse
-hi ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
-hi Folded                  ctermfg=236  ctermbg=233 cterm=none
-hi FoldColumn              ctermfg=236  ctermbg=233 cterm=none
-hi GitGutterAdd            ctermfg=034
-hi GitGutterChange         ctermfg=198
-hi GitGutterDelete         ctermfg=160
-hi IncSearch               ctermfg=053 ctermbg=197  cterm=bolditalic
-"hi LineNr                  ctermfg=240 ctermbg=234  cterm=none
-hi clear LineNr
-hi link LineNr FoldColumn
-hi ModeMsg                                          cterm=bolditalic
-hi Search                  ctermfg=197 ctermbg=053  cterm=none
-hi SpecialKey              ctermfg=239
-hi Statement                                        cterm=italic
-hi VertSplit               ctermfg=234 ctermbg=233  cterm=none
-hi VimSynMtchCchar         ctermfg=fg  ctermbg=bg   cterm=none
-hi Visual                  ctermfg=197 ctermbg=053  cterm=reverse
-hi comma                   ctermfg=087              cterm=bolditalic
-hi makeCommands            ctermfg=246
-hi makeTarget              ctermfg=166              cterm=bold
-hi markdownXmlElement      ctermfg=197
-hi markdownXmlEmptyElement ctermfg=037
-hi perlVarPlain            ctermfg=010              cterm=none
-hi qfFileName              ctermfg=208
-hi qfLineNr                ctermfg=033              cterm=italicbold
-hi qfSeparator             ctermfg=232
-hi shCommandSub            ctermfg=181 ctermbg=none cterm=none
-hi shDoubleQuote           ctermfg=022 ctermbg=none cterm=bold
-hi shExprRegion            ctermfg=214 ctermbg=none cterm=bolditalic
-hi shFunctionOne           ctermfg=230 ctermbg=bg   cterm=italic
-hi shOperator              ctermfg=085 ctermbg=none cterm=bold
-hi shOption                ctermfg=208 ctermbg=bg   cterm=none
-hi shSingleQuote           ctermfg=131 ctermbg=234  cterm=none
-hi shString                ctermfg=137 ctermbg=234  cterm=none
-hi shVariable              ctermfg=208 ctermbg=bg   cterm=none
-hi vimAuSyntax             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimAugroup              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimAugroupError         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimAutoCmdSfxList       ctermfg=fg  ctermbg=bg   cterm=none
-hi vimAutoCmdSpace         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimAutoEventList        ctermfg=fg  ctermbg=bg   cterm=none
-hi vimClusterName          ctermfg=fg  ctermbg=bg   cterm=none
-hi vimCmdSep               ctermfg=179 ctermbg=bg   cterm=none
-hi vimCollClass            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimCollection           ctermfg=fg  ctermbg=bg   cterm=none
-hi vimCommentTitle         ctermfg=218 ctermbg=bg   cterm=bold
-hi vimEcho                 ctermfg=fg  ctermbg=bg   cterm=none
-hi vimEscapeBrace          ctermfg=fg  ctermbg=bg   cterm=none
-hi vimExecute              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimExtCmd               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFBVar                ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFgBg                 ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFgBgAttrib           ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFiletype             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFilter               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFuncBlank            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFuncBody             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimFunction             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimGroupList            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimGroupName            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiBang               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiClear              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiCtermColor         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiFontname           ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiGuiFontname        ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiKeyList            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimHiLink               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimIf                   ctermfg=fg  ctermbg=bg   cterm=none
-hi vimIsCommand            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMapLhs               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMapRhs               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMapRhsExtend         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMenuBang             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMenuMap              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMenuPriority         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimMenuRhs              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimNormCmds             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimOperParen            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimPatRegion            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimRegion               ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSet                                           cterm=italic
-hi vimSetEqual             ctermfg=015              cterm=none
-hi vimSetMod               ctermfg=160              cterm=bolditalic
-hi vimSetSep               ctermfg=161              cterm=none
-hi vimSubstPat             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSubstRange           ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSubstRep             ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSubstRep4            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSynKeyRegion         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSynLine              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSynMatchRegion       ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSynPatMod            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSynRegion            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSyncLinebreak        ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSyncLinecont         ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSyncLines            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSyncMatch            ctermfg=fg  ctermbg=bg   cterm=none
-hi vimSyncRegion           ctermfg=fg  ctermbg=bg   cterm=none
-hi vimUserCmd              ctermfg=fg  ctermbg=bg   cterm=none
-hi vimVar                  ctermfg=fg  ctermbg=bg   cterm=none
-hi zshNumber               ctermfg=033 ctermbg=none cterm=italicbold
-hi zshRedir                ctermfg=051 ctermbg=none cterm=bold
-hi zshStringDelimiter      ctermfg=202 ctermbg=none cterm=italic
-hi zshSubst                ctermfg=137 ctermbg=none cterm=italic
-hi zshSubstDelim           ctermfg=125 ctermbg=none cterm=italicbold
+highlight CtrlPMatch              ctermfg=196              cterm=bold
+highlight CursorColumn            ctermfg=fg   ctermbg=234 cterm=none
+highlight CursorLine              ctermfg=none ctermbg=234
+highlight CursorLineNr            ctermfg=fg   ctermbg=234 cterm=none
+highlight Error                   ctermfg=089  ctermbg=250 cterm=bolditalicreverse
+highlight ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
+highlight Folded                  ctermfg=236  ctermbg=233 cterm=none
+highlight FoldColumn              ctermfg=236  ctermbg=233 cterm=none
+highlight GitGutterAdd            ctermfg=034
+highlight GitGutterChange         ctermfg=198
+highlight GitGutterDelete         ctermfg=160
+highlight IncSearch               ctermfg=053  ctermbg=197  cterm=bolditalic
+
+highlight clear LineNr
+highlight link LineNr FoldColumn
+
+highlight ModeMsg                                          cterm=bolditalic
+highlight Search                  ctermfg=197 ctermbg=053  cterm=none
+highlight SpecialKey              ctermfg=239
+highlight Statement                                        cterm=italic
+highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
+highlight VimSynMtchCchar         ctermfg=fg  ctermbg=bg   cterm=none
+highlight Visual                  ctermfg=197 ctermbg=053  cterm=reverse
+highlight comma                   ctermfg=087              cterm=bolditalic
+highlight makeCommands            ctermfg=246
+highlight makeTarget              ctermfg=166              cterm=bold
+highlight markdownXmlElement      ctermfg=197
+highlight markdownXmlEmptyElement ctermfg=037
+highlight perlVarPlain            ctermfg=010              cterm=none
+highlight qfFileName              ctermfg=208
+highlight qfLineNr                ctermfg=033              cterm=italicbold
+highlight qfSeparator             ctermfg=232
+highlight shCommandSub            ctermfg=181 ctermbg=none cterm=none
+highlight shDoubleQuote           ctermfg=022 ctermbg=none cterm=bold
+highlight shExprRegion            ctermfg=214 ctermbg=none cterm=bolditalic
+highlight shFunctionOne           ctermfg=230 ctermbg=bg   cterm=italic
+highlight shOperator              ctermfg=085 ctermbg=none cterm=bold
+highlight shOption                ctermfg=208 ctermbg=bg   cterm=none
+highlight shSingleQuote           ctermfg=131 ctermbg=234  cterm=none
+highlight shString                ctermfg=137 ctermbg=234  cterm=none
+highlight shVariable              ctermfg=208 ctermbg=bg   cterm=none
+highlight vimAuSyntax             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimAugroup              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimAugroupError         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimAutoCmdSfxList       ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimAutoCmdSpace         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimAutoEventList        ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimClusterName          ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimCmdSep               ctermfg=179 ctermbg=bg   cterm=none
+highlight vimCollClass            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimCollection           ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimCommentTitle         ctermfg=218 ctermbg=bg   cterm=bold
+highlight vimEcho                 ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimEscapeBrace          ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimExecute              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimExtCmd               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFBVar                ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFgBg                 ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFgBgAttrib           ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFiletype             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFilter               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFuncBlank            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFuncBody             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimFunction             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimGroupList            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimGroupName            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiBang               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiClear              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiCtermColor         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiFontname           ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiGuiFontname        ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiKeyList            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimHiLink               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimIf                   ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimIsCommand            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMapLhs               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMapRhs               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMapRhsExtend         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMenuBang             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMenuMap              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMenuPriority         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimMenuRhs              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimNormCmds             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimOperParen            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimPatRegion            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimRegion               ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSet                                           cterm=italic
+highlight vimSetEqual             ctermfg=015              cterm=none
+highlight vimSetMod               ctermfg=160              cterm=bolditalic
+highlight vimSetSep               ctermfg=161              cterm=none
+highlight vimSubstPat             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSubstRange           ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSubstRep             ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSubstRep4            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSynKeyRegion         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSynLine              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSynMatchRegion       ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSynPatMod            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSynRegion            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSyncLinebreak        ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSyncLinecont         ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSyncLines            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSyncMatch            ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimSyncRegion           ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimUserCmd              ctermfg=fg  ctermbg=bg   cterm=none
+highlight vimVar                  ctermfg=fg  ctermbg=bg   cterm=none
+highlight zshNumber               ctermfg=033 ctermbg=none cterm=italicbold
+highlight zshRedir                ctermfg=051 ctermbg=none cterm=bold
+highlight zshStringDelimiter      ctermfg=202 ctermbg=none cterm=italic
+highlight zshSubst                ctermfg=137 ctermbg=none cterm=italic
+highlight zshSubstDelim           ctermfg=125 ctermbg=none cterm=italicbold
 
 syn match shLogicalAnd '[&]\{2}'
 
-hi link shLogicalAnd shConditional
+highlight link shLogicalAnd shConditional
 
-hi link shShellVariables Identifier
-hi link zshVariableDef   Identifier
-hi link zshOperator      Operator
+highlight link shShellVariables Identifier
+highlight link zshVariableDef   Identifier
+highlight link zshOperator      Operator
 
 " our, my, local
-hi perlStatementStorage ctermfg=172 cterm=none
+highlight perlStatementStorage ctermfg=172 cterm=none
 
 " hash key
-hi perlVarSimpleMemberName ctermfg=137
+highlight perlVarSimpleMemberName ctermfg=137
 
 " warn
-hi perlStatementMisc ctermfg=172 cterm=none
+highlight perlStatementMisc ctermfg=172 cterm=none
 
 " <silent>, <expr>
-hi vimMapModKey ctermfg=208
+highlight vimMapModKey ctermfg=208
 
-hi markdownJekyllFrontMatter ctermfg=137
+highlight markdownJekyllFrontMatter ctermfg=137
 " ========== HIGHLIGHTING END ===========================
 " ========== ASKåS START ===============================
 set encoding=utf-8
-au BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
-au BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
-au BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
+autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
+autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
+autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
 
 let g:fullpath=expand('%:p')
-au BufEnter * let fullpath=expand('%:p')
-au BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-au BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
-au BufRead,BufNewFile *.md set ft=markdown nospell
+autocmd BufEnter * let fullpath=expand('%:p')
+autocmd BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
+autocmd BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
+autocmd BufRead,BufNewFile *.md set ft=markdown nospell
 
 nmap <C-b> :make<cr>
 " ========== ASKåS END =================================
 " ========== TEMPLATES START ============================
-au BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
-au BufNewFile *.c   silent! 0r $VIMRUNTIME/templates/template.c
+autocmd BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
+autocmd BufNewFile *.c   silent! 0r $VIMRUNTIME/templates/template.c
 
-au Filetype perl
+autocmd Filetype perl
   \   setl makeprg=perl\ -c\ %\ $*
   \ | setl errorformat=%f:%l:%m
   \ | setl keywordprg=perldoc\ -f
   \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
 
-au BufNewFile *.pl
+autocmd BufNewFile *.pl
   \   silent! 0r $VIMRUNTIME/templates/template.pl
   \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | call search('APP')
   \ | normal di':startinsert
 
-au BufNewFile *.PL
+autocmd BufNewFile *.PL
   \   silent! 0r ~/etc/vim/templates/template.PL
   \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | call search('__PACKAGE__')
   \ | exe 'normal dt} '
   \ | startinsert
 
-au BufNewFile *.pm
+autocmd BufNewFile *.pm
   \   silent! 0r $VIMRUNTIME/templates/template.pm
   \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | call cursor(0, 9)
   \ | exe 'normal d$A '
   \ | startinsert
 
-au BufNewFile *.t
+autocmd BufNewFile *.t
   \   silent! 0r $VIMRUNTIME/templates/template.t
   \ | source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
   \ | 6
   \ | exe 'normal o'
   \ | startinsert
 
-au BufNewFile *.md,*.markdown
+autocmd BufNewFile *.md,*.markdown
   \   silent! 0r $VIMRUNTIME/templates/template.markdown
   \ | 0
   \ | exe 'normal d$A'
   \ | startinsert
 
 " template for oneshot quick scripts using entire air stack
-au BufNewFile *.air
+autocmd BufNewFile *.air
   \   silent! 0r ~/dev/askas/utils-askas/vim/templates/air_oneshot.air
   \ | 0
   \ | exe 'normal Go'
@@ -1117,9 +1120,6 @@ ia wd warn Dumper();<left><left>
 " comment block
 ia CC ################################################################################<cr>#<cr>###############################################################################<up><backspace>
 " ========== ABBREVATIONS END ===========================
-
-
-
 " ========== COMPLETION START ===========================
 runtime plugin/smartcom.vim
 
