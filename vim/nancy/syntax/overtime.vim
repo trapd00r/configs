@@ -1,1 +1,0 @@
-/home/scp1/dev/utils/vim/syntax/overtime.vim

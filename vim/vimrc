@@ -89,6 +89,7 @@ set nobackup                                                               " no 
 set noequalalways                                                          " do not auto-equalize size of windows
 set noerrorbells                                                           " bells are for double-o 7
 set nomore                                                                 " disable the more-prompt
+set noshowmode                                                             " disable mode change messages
 set nospell spelllang=en_us                                                " no spell on, but set spelllang so I can use it if I want to
 set nostartofline                                                          " modifies some movement commands
 set noswapfile                                                             " no swaps please

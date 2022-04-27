@@ -1,1 +1,0 @@
-/home/scp1/devel/irc.vim/syntax/irc.vim
