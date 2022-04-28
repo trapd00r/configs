@@ -97,7 +97,7 @@ set noswapfile                                                             " no 
 set nowrap                                                                 " no wrapping since it changes the appearance of the data
 set nowritebackup                                                          " no backups please
 set nrformats=alpha,hex                                                    " defines what a number is for increasing/decreasing with ^a,^x
-set number                                                                 " show line numbers
+set relativenumber                                                         " show line numbers
 set numberwidth=2                                                          " width of number column
 set preserveindent                                                         " preserve indent when using <<, >> etc
 set pumheight=10                                                           " height and number of suggestions to show in completion popup
@@ -161,6 +161,9 @@ color neverland
 
 " ========== MAPPINGS START =============================
 let mapleader=','
+
+" highlight the current line
+nnoremap <leader><return> :call HighlightCurrentLine()<cr>
 
 " toggle colorcolum at cursor positions
 " unless cursor position is 1, then disable it
@@ -245,7 +248,7 @@ nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
 " remove hlsearch, hlnext, matches and highlighted yanks and redraw screen
-nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches<cr>
+nnoremap <silent> <C-l> :call DisableSearchAndYankMatches()<cr>
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
@@ -339,6 +342,45 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== FZF END ====================================
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
+
+
+function! DisableSearchAndYankMatches()
+  call HLNextOff()
+  nohlsearch
+  hi clear YankedMatches
+  hi clear CurrentLine
+endfunction
+
+" highlights the current line:
+" another call to the function will toggle the highlight
+" if the current linenr is the same as the highlighted one,
+" if it's different the new line will be highlighted while the
+" old one will be removed.
+function! HighlightCurrentLine()
+  let current_line = line('.')
+
+  " check if we have matched previously
+  try
+    let matched_already =  getmatches()[0]['pos1']
+    catch /E684/
+  endtry
+
+  if exists("matched_already")
+    " is the match on the current line?
+    if matched_already[0] == current_line
+    " then act as a toggle and clear the match
+      call clearmatches()
+      return
+    else
+      " another linenr, clear previous match and add a new one
+      call clearmatches()
+      let match = matchaddpos("CurrentLine", [current_line], 1)
+    endif
+  else
+    let match = matchaddpos("CurrentLine", [current_line], 1)
+    return
+  endif
+endfunction
 
 " display a visual aid when lining long things up
 " disable colorcolumn entirely if
@@ -860,6 +902,9 @@ let g:xf86conf_xfree86_versio      = 2
 " ========== HIGHLIGHTING START =========================
 
 highlight Normal ctermfg=white ctermbg=bg cterm=italicbold
+
+" highlight the current line
+highlight CurrentLine   ctermbg=184 ctermfg=bg cterm=bolditalic
 
 " highlight the matches that have been yanked to a register and
 " the system clipboard
