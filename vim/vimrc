@@ -238,7 +238,7 @@ vmap <unique> <C-k> <Plug>SchleppUp
 vmap <unique> <C-l> <Plug>SchleppRight
 vmap <unique> <C-d> <Plug>SchleppDup
 
-let g:Schlepp#dupTrimWS = 1
+"let g:Schlepp#dupTrimWS = 1
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
@@ -256,9 +256,9 @@ nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 " press enter or add flags to sort, i.e -n
 " this will sort _only_ what's selected and not the entire
 " lines as is default vim behaviour
-vnoremap S :Blockwise !sort<space>
+"vnoremap S :Blockwise !sort<space>
 vnoremap B :Blockwise<cr>
-"vnoremap S :SortByBlock<cr>
+vnoremap S :SortByBlock<cr>
 
 " toggle folds with Enter
 nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
@@ -591,7 +591,7 @@ autocmd BufRead,BufNewFile *.tt setf javascript
 autocmd Filetype vim  source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
 autocmd Filetype perl source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
 autocmd Filetype sh   source ~/dev/vim-after-syntax-sh/after/syntax/sh.vim
-autocmd Filetype zsh  source ~/dev/vim-after-syntax-sh/after/syntax/zsh.vim
+autocmd Filetype zsh  source ~/dev/vim-after-syntax-zsh/after/syntax/zsh.vim
 
 autocmd BufNewFile,BufRead  MANIFEST              set filetype=vidir
 autocmd BufNewFile,BufRead  vidir*                set filetype=vidir-ls
@@ -872,12 +872,10 @@ highlight default      TRACK_PERL_VAR_LOCKED      ctermfg=none   ctermbg=none  c
 highlight default      TRACK_PERL_VAR_UNDECLARED  ctermfg=196    ctermbg=bg    cterm=none
 highlight default      TRACK_PERL_VAR_UNUSED      ctermfg=116    ctermbg=bg    cterm=none
 highlight default      TRACK_PERL_VAR_BUILTIN     ctermfg=190    ctermbg=bg    cterm=none
-"highlight default link TRACK_PERL_VAR_ACTIVE      TRACK_PERL_VAR
 highlight default      TRACK_PERL_VAR_ACTIVE      ctermfg=196    ctermbg=bg    cterm=italicbold
 
 highlight link ColorColumn  CursorLine
 
-highlight CtrlPMatch              ctermfg=196              cterm=bold
 highlight CursorColumn            ctermfg=fg   ctermbg=234 cterm=none
 highlight CursorLine              ctermfg=none ctermbg=234
 highlight CursorLineNr            ctermfg=fg   ctermbg=234 cterm=none
@@ -885,31 +883,28 @@ highlight Error                   ctermfg=089  ctermbg=250 cterm=bolditalicrever
 highlight ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
 highlight Folded                  ctermfg=236  ctermbg=233 cterm=none
 highlight FoldColumn              ctermfg=236  ctermbg=233 cterm=none
-highlight GitGutterAdd            ctermfg=034
-highlight GitGutterChange         ctermfg=198
-highlight GitGutterDelete         ctermfg=160
 highlight IncSearch               ctermfg=053  ctermbg=197  cterm=bolditalic
 
-highlight clear LineNr
-highlight link LineNr FoldColumn
 
 highlight ModeMsg                                          cterm=bolditalic
 highlight Search                  ctermfg=197 ctermbg=053  cterm=none
 highlight SpecialKey              ctermfg=239
 highlight Statement                                        cterm=italic
 highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
-highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
-highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
-highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
-highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
-highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
 highlight Visual                  ctermfg=197 ctermbg=053  cterm=reverse
-highlight comma                   ctermfg=087              cterm=bolditalic
-highlight makeCommands            ctermfg=246
-highlight makeTarget              ctermfg=166              cterm=bold
+
+highlight clear LineNr
+highlight link LineNr FoldColumn
+
 highlight qfFileName              ctermfg=208
 highlight qfLineNr                ctermfg=033              cterm=italicbold
 highlight qfSeparator             ctermfg=232
+
+highlight CtrlPMatch              ctermfg=196              cterm=bold
+
+highlight GitGutterAdd            ctermfg=034
+highlight GitGutterChange         ctermfg=198
+highlight GitGutterDelete         ctermfg=160
 
 
 au filetype highlight markdownXmlElement      ctermfg=197
