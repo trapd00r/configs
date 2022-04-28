@@ -3,8 +3,9 @@
 " License:	This file is placed in the public domain.
 "
 " japh 2022-04-24
-" Modifications: added setlocal clipboard& so I can paste directly from the
-" unnamed register " with p
+" Modifications: 
+" fixed so the yanked matches are available both for pasting with p
+" and in the system clipboard
 
 if exists("loaded_delete_matches")
     finish
@@ -83,14 +84,13 @@ function! ForAllMatches (command, options)
         endif
     endfor
 
-    " reset clipboard option locally
-    setlocal clipboard&
-
     " Make yanked lines available for putting...
-    let @" = yanked
 
-    " and set it back again to its global value
-    setlocal clipboard<
+    " struggled a lot with getting the yanked matches to the system clipboard
+    " (XA_PRIMARY) as well...
+    call setreg("*", yanked, 'l' )
+    call setreg("+", yanked, 'l' )
+    call setreg("",  yanked, 'l' )
 
     " Return to original position...
     call setpos('.', orig_pos)
