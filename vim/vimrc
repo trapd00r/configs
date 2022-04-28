@@ -244,8 +244,8 @@ let g:Schlepp#dupTrimWS = 1
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
-" remove hlsearch, hlnext, matches and redraw screen
-nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch<cr>
+" remove hlsearch, hlnext, matches and highlighted yanks and redraw screen
+nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches<cr>
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
