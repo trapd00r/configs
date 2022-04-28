@@ -1,2 +1,3 @@
 follow_now_playing_lyrics = "yes"
 lyrics_directory =  ~/dev/lyrics/lyrics/
+lyrics_fetchers = genius
