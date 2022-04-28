@@ -1,5 +1,5 @@
 #!/bin/zsh
-### vim: ft=sh:fdm=marker:et:sw=2:
+### vim: ft=zsh:fdm=marker:et:sw=2:
 ###
 #      ${HOME}/etc/zsh/zshrc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
@@ -213,7 +213,7 @@ compdef _files beet
 zstyle ':completion:*:*:beet*' list-dirs-first true
 zstyle ':completion:*:*:beet*' file-patterns '
   *(D-/):local-directories:"local directory"
-  (#i)*.(mp3|flac|ogg|opus)(D-^/):media-files:"media file"
+  (#i)*.(mp3|flac|ogg|opus|m4a)(D-^/):media-files:"media file"
 '
 
 # git completion for another command
@@ -249,7 +249,7 @@ _fzf_complete_git_post() {
     awk '{print $1}'
 }
 
-export ASKAS_BUTIK=magnusw2
+export ASKAS_BUTIK=magnusw1
 
 
 
@@ -259,3 +259,10 @@ export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
 compdef _git gd=git-add
 
 
+# cursor _
+# printf "\033[6 q"
+
+trash() {
+  export TRASHCAN=${HOME}/tmp/_trashcan
+  mv -v "$@" $TRASHCAN
+}

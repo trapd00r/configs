@@ -80,3 +80,8 @@
     cmd = git rebase --abort
 [guitool "Pull with Rebase"]
     cmd = git pull --rebase
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

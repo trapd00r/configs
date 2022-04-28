@@ -154,7 +154,6 @@ smmdb-client/
 teams/
 vim/colors/lists/
 vim/colors/neverlandold.vim
-vim/pack/plugins/start/ctrlp-funky/
 vim/pack/plugins/start/fzf-to-functions.vim/
 vim/plugin/perljump.vim
 vim/syntax/askas.vim
@@ -165,3 +164,18 @@ zsh/functions/
 zsh/git.zsh
 vim/pack/plugins/start/vim-ripgrep
 ssh/
+PulseEffects/autoload/combined.json
+PulseEffects/output/conv,eq,sw.json
+VirtualBox/
+binwalk/
+clipit/
+inxi.conf
+kbct/
+lxsession
+lxsession-default-apps/
+pavucontrol-qt/
+themes/Desert-Blue-light-40/
+themes/Desert-Orange-Dark-1.3/
+themes/Desert-Yellow-1.3/
+themes/Graphite-dark-nord/
+yelp/
