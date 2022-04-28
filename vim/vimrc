@@ -145,7 +145,7 @@ set wildmode=list:longest,full                                             " com
 let &t_SI = "\<Esc>]12;#ff5f00\x7"
 
 " cursor color elsewhere
-let &t_EI = "\<Esc>]12;#ffffff\x7"
+let &t_EI = "\<Esc>]12;#ff005f\x7"
 
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
@@ -861,9 +861,13 @@ let g:xf86conf_xfree86_versio      = 2
 
 highlight Normal ctermfg=white ctermbg=bg cterm=italicbold
 
+" highlight the matches that have been yanked to a register and
+" the system clipboard
+highlight YankedMatches ctermfg=bg ctermbg=214 cterm=bolditalic
+
 " CurSearch highlighting group added so might be able to remove HLNext
 " https://github.com/vim/vim/commit/a43993897aa372159f682df37562f159994dc85c
-highlight HLNext                      ctermfg=bg  ctermbg=white cterm=underline
+highlight HLNext                      ctermfg=053  ctermbg=197 cterm=none
 
 " trackperlvars
 highlight default      TRACK_PERL_VAR             ctermfg=none   ctermbg=bg    cterm=underlinebolditalic
