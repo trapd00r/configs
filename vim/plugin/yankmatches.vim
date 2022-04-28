@@ -1,11 +1,16 @@
 " Vim global plugin for yanking or deleting all lines with a match
 " Maintainer:	Damian Conway
 " License:	This file is placed in the public domain.
+" Hacker: Magnus Woldrich
 "
-" japh 2022-04-24
-" Modifications: 
-" fixed so the yanked matches are available both for pasting with p
-" and in the system clipboard
+" MW modifications:
+" - fixed so the yanked matches are available both for pasting with p
+"   and in the system clipboard
+" - added YankedMatches highlight group to visualize what's been yanked
+"   suggested binding to turn it off:
+"
+" nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches<CR>
+
 
 if exists("loaded_delete_matches")
     finish
@@ -72,11 +77,15 @@ function! ForAllMatches (command, options)
         let matched_line_nums = reverse(inverted_line_nums)
     endif
 
+    highlight YankedMatches ctermfg=bg ctermbg=214 cterm=bolditalic
     " Filter the original lines...
     let yanked = ""
     for line_num in matched_line_nums
         " Remember yanks or deletions...
         let yanked = getline(line_num) . "\n" . yanked
+
+        " Highlight the line by number
+        silent! call matchaddpos("YankedMatches", [line_num], 1);
 
         " Delete buffer lines if necessary...
         if deleting
