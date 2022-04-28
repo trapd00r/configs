@@ -84,12 +84,13 @@ function! ForAllMatches (command, options)
         " Remember yanks or deletions...
         let yanked = getline(line_num) . "\n" . yanked
 
-        " Highlight the line by number
-        silent! call matchaddpos("YankedMatches", [line_num], 1);
 
         " Delete buffer lines if necessary...
         if deleting
             exec line_num . 'delete'
+        else
+          " Highlight the line by number
+          silent! call matchaddpos("YankedMatches", [line_num], 1);
         endif
     endfor
 
