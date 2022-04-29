@@ -97,7 +97,7 @@ set noswapfile                                                             " no 
 set nowrap                                                                 " no wrapping since it changes the appearance of the data
 set nowritebackup                                                          " no backups please
 set nrformats=alpha,hex                                                    " defines what a number is for increasing/decreasing with ^a,^x
-set relativenumber                                                         " show line numbers
+set number norelativenumber                                                " show line numbers
 set numberwidth=2                                                          " width of number column
 set preserveindent                                                         " preserve indent when using <<, >> etc
 set pumheight=10                                                           " height and number of suggestions to show in completion popup
@@ -130,6 +130,7 @@ set ttyfast                                                                " my 
 set undodir=~/var/vim/undo                                                 " where to keep the undos
 set undofile                                                               " undo file for all the undos
 set undolevels=1024                                                        " persisent undo for 1024 actions
+set updatetime=200                                                         " for CursorHold events and GitGutter signs
 set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
 set virtualedit=block                                                      " virtualedit for visual block mode
 set visualbell t_vb=                                                       " disable visual bells
@@ -187,6 +188,9 @@ nnoremap <C-t> <Esc>:DistractionsToggle<cr>
 
 " delete block
 nnoremap db da{
+
+" folding around git changed hunks, showing 3 lines of context
+nmap <silent>         zg  :GitGutterFold <bar> normal zr<cr>
 
 " folding around searches
 nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
@@ -342,7 +346,12 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== FZF END ====================================
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
-
+" git status to the statusline
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
 
 function! DisableSearchAndYankMatches()
   call HLNextOff()
@@ -362,7 +371,7 @@ function! HighlightCurrentLine()
   " check if we have matched previously
   try
     let matched_already =  getmatches()[0]['pos1']
-    catch /E684/
+    catch /E684\|E716/
   endtry
 
   if exists("matched_already")
@@ -765,13 +774,15 @@ set statusline +=%1*%=%5l%*                           " current line
 set statusline +=%1*/%L%*                             " total lines
 set statusline +=%1*%4v\ %*                           " virtual column number
 set statusline +=%1*0x%04B\ %*                        " character under cursor
+"set statusline +=%{GitStatus()}
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
 " use git diff colors for signs set with ma
-let g:SignatureMarkTextHLDynamic               = 1
-let g:gitgutter_override_sign_column_highlight = 0
-let g:gitgutter_max_signs                      = 8500
-let g:extradite_width                          = 40
+let g:SignatureMarkTextHLDynamic                = 1
+let g:gitgutter_override_sign_column_highlight  = 0
+let g:gitgutter_max_signs                       = 8500
+let g:gitgutter_show_msg_on_hunk_jumping        = 1
+let g:extradite_width                           = 40
 
 " list of things to disable when turning distractions off
 let g:distraction_free#toggle_options = [
@@ -965,7 +976,7 @@ highlight markdownJekyllFrontMatter ctermfg=137
 " ========== ASKåS START ===============================
 set encoding=utf-8
 autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
-autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
+"autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
 
@@ -1130,4 +1141,8 @@ endfunction
 " ^vB - blockwise : operations
 "
 " ga => char info
+"
+" <leader><return> - highlight the current line
+"
+" <leader>cc - toggle colorcolum at cursor positions
 " ========== NOTES END ==================================
