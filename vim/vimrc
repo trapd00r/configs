@@ -6,6 +6,19 @@
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
+" plugins in use:
+"   https://github.com/trapd00r/yankmatches.vim
+"   https://github.com/trapd00r/currentline.vim
+"   https://github.com/trapd00r/cccp.vim
+"   plugin/automkdir.vim                                                   " automkdir if it doesn't exist
+"   plugin/blockwise.vim                                                   " blockwise operations
+"   plugin/distractionFree.vim                                             " toggle distractions
+"   plugin/eqalignsimple.vim                                               " align things
+"   plugin/foldsearches.vim                                                " fold around searches
+"   plugin/fzf.vim                                                         " fuzzy things
+"   plugin/hlnext.vim                                                      " better search highlight
+"   plugin/schlepp.vim                                                     " move/dupe vblocks around
+"   plugin/smartcom.vim                                                    " smarter completion
 
 " ========== INIT START =================================
 filetype plugin indent on
@@ -252,8 +265,9 @@ vmap <unique> <C-d> <Plug>SchleppDup
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
-" remove hlsearch, hlnext, matches, highlighted yanks, highlighted lines and redraw screen
-nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches <BAR> :call HighlightCurrentLine('clear')<cr>
+" TODO clean up!
+" remove hlsearch, hlnext, matches, highlighted yanks, highlighted lines, colorcolumn and redraw screen
+nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches <BAR> :call HighlightCurrentLine('clear') <BAR> :set colorcolumn& <BAR> :redraw <CR>
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
