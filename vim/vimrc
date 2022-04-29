@@ -164,7 +164,8 @@ color neverland
 let mapleader=','
 
 " highlight the current line
-nnoremap <leader><return> :call HighlightCurrentLine('highlight')<cr>
+" https://github.com/trapd00r/currentline.vim
+nnoremap <silent> <leader><return> :call HighlightCurrentLine('♥')<cr>
 
 " toggle colorcolum at cursor positions
 " unless cursor position is 1, then disable it
@@ -358,35 +359,35 @@ endfunction
 " if the current linenr is the same as the highlighted one,
 " if it's different the new line will be highlighted while the
 " old one will be removed.
-function! HighlightCurrentLine(opt)
-  if a:opt == 'clear'
-    call clearmatches()
-    return
-  endif
-  let current_line = line('.')
-
-  " check if we have matched previously
-  try
-    let matched_already =  getmatches()[0]['pos1']
-    catch /E684\|E716/
-  endtry
-
-  if exists("matched_already")
-    " is the match on the current line?
-    if matched_already[0] == current_line
-    " then act as a toggle and clear the match
-      call clearmatches()
-      return
-    else
-      " another linenr, clear previous match and add a new one
-      call clearmatches()
-      let match = matchaddpos("CurrentLine", [current_line], 1)
-    endif
-  else
-    let match = matchaddpos("CurrentLine", [current_line], 1)
-    return
-  endif
-endfunction
+"function! HighlightCurrentLine(opt)
+"  if a:opt == 'clear'
+"    call clearmatches()
+"    return
+"  endif
+"  let current_line = line('.')
+"
+"  " check if we have matched previously
+"  try
+"    let matched_already =  getmatches()[0]['pos1']
+"    catch /E684\|E716/
+"  endtry
+"
+"  if exists("matched_already")
+"    " is the match on the current line?
+"    if matched_already[0] == current_line
+"    " then act as a toggle and clear the match
+"      call clearmatches()
+"      return
+"    else
+"      " another linenr, clear previous match and add a new one
+"      call clearmatches()
+"      let match = matchaddpos("CurrentLine", [current_line], 1)
+"    endif
+"  else
+"    let match = matchaddpos("CurrentLine", [current_line], 1)
+"    return
+"  endif
+"endfunction
 
 " display a visual aid when lining long things up
 " disable colorcolumn entirely if
