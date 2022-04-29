@@ -7,7 +7,7 @@
 " - fixed so the yanked matches are available both for pasting with p
 "   and in the system clipboard
 " - added YankedMatches highlight group to visualize what's been yanked
-"   suggested binding to turn it off:
+"   use a binding like this to turn it off:
 "
 " nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches<CR>
 
@@ -40,6 +40,7 @@ nmap <silent> <leader>dm  :     call ForAllMatches('delete', {})<CR>
 nmap <silent> <leader>DM  :     call ForAllMatches('delete', {'inverse':1})<CR>
 nmap <silent> <leader>ym  :     call ForAllMatches('yank',   {})<CR>
 nmap <silent> <leader>YM  :     call ForAllMatches('yank',   {'inverse':1})<CR>
+
 vmap <silent> <leader>dm  :<C-U>call ForAllMatches('delete', {'visual':1})<CR>
 vmap <silent> <leader>DM  :<C-U>call ForAllMatches('delete', {'visual':1, 'inverse':1})<CR>
 vmap <silent> <leader>ym  :<C-U>call ForAllMatches('yank',   {'visual':1})<CR>
@@ -77,7 +78,10 @@ function! ForAllMatches (command, options)
         let matched_line_nums = reverse(inverted_line_nums)
     endif
 
-    highlight YankedMatches ctermfg=bg ctermbg=214 cterm=bolditalic
+    highlight YankedMatches
+      \ ctermfg=bg ctermbg=214 cterm=bolditalic
+      \ guifg=bg guibg=#ffaf00 gui=none
+
     " Filter the original lines...
     let yanked = ""
     for line_num in matched_line_nums
