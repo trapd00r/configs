@@ -897,7 +897,7 @@ highlight CurrentLine   ctermbg=184 ctermfg=bg cterm=bolditalic
 
 " highlight the matches that have been yanked to a register and
 " the system clipboard
-highlight YankedMatches ctermfg=bg ctermbg=214 cterm=bolditalic
+highlight YankedMatches ctermfg=bg ctermbg=196 cterm=bolditalic
 
 " CurSearch highlighting group added so might be able to remove HLNext
 " https://github.com/vim/vim/commit/a43993897aa372159f682df37562f159994dc85c
