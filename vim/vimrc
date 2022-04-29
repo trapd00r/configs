@@ -168,7 +168,7 @@ nnoremap <leader><return> :call HighlightCurrentLine('highlight')<cr>
 
 " toggle colorcolum at cursor positions
 " unless cursor position is 1, then disable it
-nnoremap <leader>cc :call ColorColumnAtCursorPositionToggle()<cr>
+nnoremap <silent> <leader>cc :call ColorColumnAtCursorPositionToggle()<cr>
 
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
@@ -398,6 +398,9 @@ function! ColorColumnAtCursorPositionToggle()
     set colorcolumn&
   else
     let &colorcolumn = column
+    echohl ModeMsg
+    echo 'Colorcolumn set at column ' . column
+    echohl None
   endif
 endfunction
 
@@ -674,7 +677,7 @@ highlight StatusLine   ctermfg=233 ctermbg=234 cterm=none
 highlight StatusLineNC ctermfg=233 ctermbg=234 cterm=none
 
 "highlight link User1 ModeMsg
-highlight User1 ctermfg=215 ctermbg=234 cterm=bolditalic
+highlight User1 ctermfg=111 ctermbg=234 cterm=bolditalic
 highlight User2 ctermfg=106 ctermbg=234 cterm=none
 highlight User3 ctermfg=250 ctermbg=234 cterm=none
 " User4 is set to the calculated LS_COLORS for the current file below
