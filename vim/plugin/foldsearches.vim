@@ -7,6 +7,7 @@
 " Modifications:
 " - added setlocal hlsearch because I want to still see the matches highlighted even after folding
 " - adjusted foldtext
+" - fixed bug where foldmarkers were deleted after a zz + zz
 
 " If already loaded, we're done...
 if exists("loaded_foldsearch")
@@ -22,6 +23,7 @@ set cpo&vim
 let s:DEFFOLDMETHOD = &foldmethod
 let s:DEFFOLDEXPR   = &foldexpr
 let s:DEFFOLDTEXT   = &foldtext
+let s:DEFFOLDMARKER = &foldmarker
 let s:DEFFOLDLEVEL  = 1000
 
 " This is what the options are changed to...
@@ -32,7 +34,7 @@ let s:FOLDTEXT = {
 \}
 
 " folding around searches
-"nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch('context':1)
+" nmap <silent> <expr>  AA  FS_ToggleFoldAroundSearch({'context':1})
 
 " folding around use statements
 "nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;','context':1)
@@ -61,6 +63,7 @@ function! FS_ToggleFoldAroundSearch (opts)
         let &foldtext   = get(b:foldsearch, 'prevfoldtext',   s:DEFFOLDTEXT)
         let &foldlevel  = get(b:foldsearch, 'prevfoldlevel',  s:DEFFOLDLEVEL)
         let &foldexpr   = get(b:foldsearch, 'prevfoldexpr',   s:DEFFOLDEXPR)
+        let &foldmarker = get(b:foldsearch, 'prevfoldexpr',   s:DEFFOLDMARKER)
 
         " Remove autocommands for refolding for each new search...
         augroup FoldSearch
@@ -73,7 +76,8 @@ function! FS_ToggleFoldAroundSearch (opts)
         " Disable special <CR> behaviour...
         nunmap <buffer> <CR>
 
-        return 'zE'
+        " this deletes the foldmarkers, Damian!
+"        return 'zE'
 
     " Turn on, if it's off...
     else
@@ -83,6 +87,7 @@ function! FS_ToggleFoldAroundSearch (opts)
         let b:foldsearch.prevfoldexpr   = &foldexpr
         let b:foldsearch.prevfoldtext   = &foldtext
         let b:foldsearch.prevfoldlevel  = &foldlevel
+        let b:foldsearch.prevfoldmarker = &foldmarker
 
         " Set up new behaviour...
         let &foldtext   = s:FOLDTEXT[folds_visible]
