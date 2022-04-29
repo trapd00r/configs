@@ -164,7 +164,7 @@ color neverland
 let mapleader=','
 
 " highlight the current line
-nnoremap <leader><return> :call HighlightCurrentLine()<cr>
+nnoremap <leader><return> :call HighlightCurrentLine('highlight')<cr>
 
 " toggle colorcolum at cursor positions
 " unless cursor position is 1, then disable it
@@ -251,8 +251,8 @@ vmap <unique> <C-d> <Plug>SchleppDup
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
-" remove hlsearch, hlnext, matches and highlighted yanks and redraw screen
-nnoremap <silent> <C-l> :call DisableSearchAndYankMatches()<cr>
+" remove hlsearch, hlnext, matches, highlighted yanks, highlighted lines and redraw screen
+nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches <BAR> :call HighlightCurrentLine('clear')<cr>
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
@@ -346,13 +346,6 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== FZF END ====================================
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
-" git status to the statusline
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
-endfunction
-set statusline+=%{GitStatus()}
-
 function! DisableSearchAndYankMatches()
   call HLNextOff()
   nohlsearch
@@ -365,7 +358,11 @@ endfunction
 " if the current linenr is the same as the highlighted one,
 " if it's different the new line will be highlighted while the
 " old one will be removed.
-function! HighlightCurrentLine()
+function! HighlightCurrentLine(opt)
+  if a:opt == 'clear'
+    call clearmatches()
+    return
+  endif
   let current_line = line('.')
 
   " check if we have matched previously
@@ -618,12 +615,12 @@ augroup END
 
 
 " set rainbow.vim colors and attributes
-autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p0' 'cterm=bold ctermfg=231'
-autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p1' 'cterm=bold ctermfg=228'
-autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p2' 'cterm=bold ctermfg=202'
-autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p3' 'cterm=bold ctermfg=196'
-autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p4' 'cterm=bold ctermfg=178'
-autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_p5' 'cterm=bold ctermfg=172'
+"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r0' 'cterm=none ctermfg=196'
+"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r1' 'cterm=none ctermfg=220'
+"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r2' 'cterm=none ctermfg=202'
+"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r3' 'cterm=none ctermfg=031'
+"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r4' 'cterm=none ctermfg=178'
+"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r5' 'cterm=none ctermfg=112'
 
 " escape faster!
 augroup FastEscape
@@ -685,7 +682,7 @@ highlight User4 ctermfg=032 ctermbg=234 cterm=none
 highlight User5 ctermfg=245 ctermbg=234 cterm=none
 highlight User6 ctermfg=220 ctermbg=234 cterm=none
 highlight User7 ctermfg=240 ctermbg=234 cterm=none
-highlight User8 ctermfg=234 ctermbg=fg  cterm=none
+highlight User8 ctermfg=160 ctermbg=234 cterm=none
 highlight User9 ctermfg=197 ctermbg=234 cterm=none
 
 " Now, these regexes are obviously bad, but this function will only be used for
@@ -758,23 +755,51 @@ function! SetStatusLineAskasButik()
   return expand("$ASKAS_BUTIK")
 endfun
 
+" do it like so I can color a/m/r differently
+function! GitStatusStatusLine(opt)
+  let [added,modified,removed] = GitGutterGetHunkSummary()
+
+  if [added,modified,removed] == [0, 0, 0]
+    return ""
+  endif
+
+  if a:opt == 'added' && added != 0
+    return ' ' . added . ' '
+  elseif a:opt == 'modified' && modified != 0
+    return ' ' . modified . ' '
+  elseif a:opt == 'removed' && removed != 0
+    return ' ' . removed . ''
+  else
+    return ''
+  endif
+endfunction
+
+function! GitBranchStatusLine()
+  let current_branch = fugitive#head()
+  let shorter = substitute(current_branch, 'Magnus/', '', '')
+  return printf("%.25s", shorter)
+endfunction
 
 autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
 set statusline=
-"set statusline +=%1*\ %n\ %*                         " buffer number
-set statusline +=\ %5*%{&ff}%*\                       " file format
-set statusline +=%3*%y%*\                             " file type
-set statusline +=\%7*¦%9*\                            " askås butik
-set statusline +=%{SetStatusLineAskasButik()}         " askås butik
-set statusline +=\ \%7*¦%4*\ %<%F%*                   " full path
-set statusline +=%2*%m%*                              " modified flag
-set statusline +=\%7*\ ¦\ \%6*%{fugitive#head()}      " git branch
-set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()} " current function or block
-set statusline +=%1*%=%5l%*                           " current line
-set statusline +=%1*/%L%*                             " total lines
-set statusline +=%1*%4v\ %*                           " virtual column number
-set statusline +=%1*0x%04B\ %*                        " character under cursor
-"set statusline +=%{GitStatus()}
+"set statusline +=%1*\ %n\ %*                          " buffer number
+set statusline +=\ %5*%{&ff}%*\                        " file format
+set statusline +=%3*%y%*\                              " file type
+set statusline +=\%7*¦%9*\                             " askås butik
+set statusline +=%{SetStatusLineAskasButik()}          " askås butik
+set statusline +=\ \%7*¦%4*\ %<%t%*                    " basename of file
+set statusline +=%2*%m%*                               " modified flag
+set statusline +=\%7*\ ¦                               " delimiter
+set statusline +=%2*%{GitStatusStatusLine('added')}    " # added lines
+set statusline +=%9*%{GitStatusStatusLine('modified')} " # modified lines
+set statusline +=%8*%{GitStatusStatusLine('removed')}  " # removed lines
+set statusline +=\%7*\ ¦                               " delimiter
+set statusline +=\ %6*%{GitBranchStatusLine()}%5*      " shortened git branch
+set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or block
+"set statusline +=%1*%=%5l%*                            " current line
+"set statusline +=%1*/%L%*                              " total lines
+"set statusline +=%1*%4v\ %*                            " virtual column number
+"set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
 " use git diff colors for signs set with ma
@@ -1146,3 +1171,4 @@ endfunction
 "
 " <leader>cc - toggle colorcolum at cursor positions
 " ========== NOTES END ==================================
+
