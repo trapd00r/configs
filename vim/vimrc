@@ -55,6 +55,7 @@ for myplugin in [
   endif
 endfor
 
+Plug 'trapd00r/vim-scriptease'         " helper functions for developing plugins, with :Execute support
 
 Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
@@ -65,7 +66,6 @@ Plug 'kien/ctrlp.vim'                  " I don't use this but the one below depe
 Plug 'kshenoy/vim-signature'           " place, toggle, display marks
 Plug 'tacahiroy/ctrlp-funky'           " function navigator
 Plug 'tpope/vim-fugitive'              " git wrapper
-Plug 'tpope/vim-scriptease'            " helper functions for developing plugins
 Plug 'wookayin/fzf-ripgrep.vim'        " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'           " move visual selections around
 Plug 'DanielFGray/DistractionFree.vim' " toggle various things in one keystroke
