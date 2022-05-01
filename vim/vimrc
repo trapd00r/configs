@@ -37,7 +37,7 @@ else
   Plug 'trapd00r/yankmatches.vim'
 endif
 
-Plug '~/dev/LS_COLORS.vim', { 'for': 'qf' }
+Plug 'trapd00r/LS_COLORS.vim'
 "Plug '~/dev/LS_COLORS.vim'
 
 Plug 'trapd00r/currentline.vim'        " highlights the current line
