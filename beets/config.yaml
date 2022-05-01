@@ -734,26 +734,25 @@ paths:
     tag:8bitpeoples:             +game/+artists/+8bitpeoples/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:8bitcollective:          +game/+artists/+8bitcollective/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-    tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:game singleton:true:     +game/+tracks/%tcp{$artist} - %tcp{$title}
-    tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 #   beware that this path is different!
     tag:amigaost singleton:false:  +game/+ost/amiga/%tcp{$artist} [Amiga, %tcp{$album}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
-    tag:nesost   singleton:false:  +game/+ost/nes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:snesost  singleton:false:  +game/+ost/snes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:nesost   singleton:false:  +game/+ost/nes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:gbost    singleton:false:  +game/+ost/gb/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:gbcost   singleton:false:  +game/+ost/gbc/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:gameost:                   +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game albumtype:soundtrack: +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
     # crack intros
     tag:crackintro singleton:true: +game/+crack/%tcp{$artist} - %tcp{$title}
     # game intros
     tag:gameintro singleton:true:  +game/+intro/%tcp{$artist} - %tcp{$title}
 
-    tag:gamesoundtrack:            +game/+ost/+other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:game albumtype:soundtrack: +game/+ost/+other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
+    tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game singleton:true:     +game/+tracks/%tcp{$artist} - %tcp{$title}
 
     tag:mixtape:           +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
