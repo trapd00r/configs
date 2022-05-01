@@ -15,9 +15,7 @@
 "   plugin/distractionFree.vim                                             " toggle distractions
 "   plugin/eqalignsimple.vim                                               " align things
 "   plugin/foldsearches.vim                                                " fold around searches
-"   plugin/fzf.vim                                                         " fuzzy things
 "   plugin/hlnext.vim                                                      " better search highlight
-"   plugin/schlepp.vim                                                     " move/dupe vblocks around
 "   plugin/smartcom.vim                                                    " smarter completion
 
 " ========== INIT START =================================
@@ -26,11 +24,42 @@ syntax on
 
 runtime macros/matchit.vim                                                 " % on if/else
 set all&                                                                   " turn everything off, in case of evil vendor vimrcs
-let &runtimepath  = $VIMRUNTIME                                            " prefer control over my things
+let &runtimepath  = $VIMRUNTIME                                            " $XDG_CONFIG_HOME/vim
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
 set exrc                                                                   " enables the reading of vimrc in ./
 set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " for gf etc
 set path+='$HOME/dev/air8'
+
+
+call plug#begin(expand($VIMRUNTIME) . '/plugged')
+
+" load a different version of the plugin if I'm developing it
+" or not
+if expand("%:p") =~ '\vdev[/]yankmatches[.]vim[/]plugin'
+  Plug '~/dev/yankmatches.vim'
+else
+  Plug 'trapd00r/yankmatches.vim'
+endif
+
+Plug 'trapd00r/currentline.vim'        " highlights the current line
+Plug 'trapd00r/cccp.vim'               " colorcolumn at cursor position
+Plug 'junegunn/fzf'                    " fuzzy...
+Plug 'junegunn/fzf.vim'                " ... all the things
+Plug 'zirrostig/vim-schlepp'           " move visual selections around
+Plug 'junegunn/vim-peekaboo'           " peek at registers prior to pasting
+Plug 'tpope/vim-fugitive'              " git wrapper
+Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
+Plug 'DanielFGray/DistractionFree.vim' " toggle various things in one keystroke
+
+Plug 'kshenoy/vim-signature'           " place, toggle, display marks
+Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
+Plug 'wookayin/fzf-ripgrep.vim'        " grep -> fuzzyfind results
+Plug 'kien/ctrlp.vim'                  " I don't use this but the one below depends on it
+Plug 'tacahiroy/ctrlp-funky'           " function navigator
+Plug 'tpope/vim-scriptease'            " helper functions for developing plugins
+call plug#end()
+
+
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
@@ -306,7 +335,6 @@ cnoremap  <M-b> <S-Left>
 cnoremap  <M-f> <S-Right>
 
 " ========== FZF START ==================================
-source ~/etc/vim/plugin/fzf.vim
 nnoremap <C-p> :FZF<cr>
 
 " git status
@@ -547,6 +575,9 @@ endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
 
+" set quickfix window height and make it modifiable
+autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
+
 " fold this file in a nice way
 autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | let &foldmarker='START =====,END ====='
 
@@ -769,6 +800,9 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+" defaults to &clipboard setting if not specified here
+let g:YankMatches#ClipboardRegister = '*'
+
 " use git diff colors for signs set with ma
 let g:SignatureMarkTextHLDynamic                = 1
 let g:gitgutter_override_sign_column_highlight  = 0
