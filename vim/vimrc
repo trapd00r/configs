@@ -215,11 +215,15 @@ let &t_EI .= "\<Esc>[2 q"
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== OPTIONS END ================================
 
-
 color neverland
 
 " ========== MAPPINGS START =============================
 let mapleader=','
+
+" evaluate and execute lines of viml
+" needs https://github.com/trapd00r/vim-scriptease
+nnoremap <silent> E :Execute<cr>
+vnoremap <silent> E :Execute<cr>
 
 " highlight the current line
 " https://github.com/trapd00r/currentline.vim
@@ -406,6 +410,38 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== FZF END ====================================
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
+" redirect command to a new scratch buffer
+function! Redir(cmd, rng, start, end)
+  for win in range(1, winnr('$'))
+    if getwinvar(win, 'scratch')
+      execute win . 'windo close'
+    endif
+  endfor
+  if a:cmd =~ '^!'
+    let cmd = a:cmd =~' %'
+      \ ? matchstr(substitute(a:cmd, ' %', ' ' . expand('%:p'), ''), '^!\zs.*')
+      \ : matchstr(a:cmd, '^!\zs.*')
+    if a:rng == 0
+      let output = systemlist(cmd)
+    else
+      let joined_lines = join(getline(a:start, a:end), '\n')
+      let cleaned_lines = substitute(shellescape(joined_lines), "'\\\\''", "\\\\'", 'g')
+      let output = systemlist(cmd . " <<< $" . cleaned_lines)
+    endif
+  else
+    redir => output
+    execute a:cmd
+    redir END
+    let output = split(output, "\n")
+  endif
+  20new
+  let w:scratch = 1
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+  call setline(1, output)
+endfunction
+
+command! -nargs=1 -complete=command -bar -range Redir silent call Redir(<q-args>, <range>, <line1>, <line2>)
+
 function! DisableSearchAndYankMatches()
   call HLNextOff()
   nohlsearch
@@ -631,14 +667,6 @@ augroup FoldSub
 augroup END
 
 
-" set rainbow.vim colors and attributes
-"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r0' 'cterm=none ctermfg=196'
-"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r1' 'cterm=none ctermfg=220'
-"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r2' 'cterm=none ctermfg=202'
-"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r3' 'cterm=none ctermfg=031'
-"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r4' 'cterm=none ctermfg=178'
-"autocmd BufNewFile,BufRead  * exe 'highlight ' &ft . 'Rainbow_r5' 'cterm=none ctermfg=112'
-
 " escape faster!
 augroup FastEscape
   autocmd!
@@ -856,32 +884,6 @@ let g:distraction_free#toggle_options = [
   \ 'laststatus',
   \ 'foldcolumn',
 \]
-
-let g:rainbow_active = 1
-
-" rainbow.vim configuration
-let g:rainbow_conf = {
-	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-	\	'operators': '_,_',
-	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-	\	'separately': {
-	\		'*': {},
-	\		'tex': {
-	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-	\		},
-	\		'lisp': {
-	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-	\		},
-	\		'vim': {
-	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-	\		},
-	\		'html': {
-	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-	\		},
-	\		'css': 0,
-	\	}
-	\}
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
