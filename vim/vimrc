@@ -29,19 +29,32 @@ set path+='$HOME/dev/air8'
 
 call plug#begin(expand($VIMRUNTIME) . '/plugged')
 
-" load a different version of the plugin if I'm developing it
-" or not
-if expand("%:p") =~ '\vdev[/]yankmatches[.]vim[/]plugin'
-  Plug '~/dev/yankmatches.vim'
-else
-  Plug 'trapd00r/yankmatches.vim'
-endif
+" load development versions of my plugins if I'm working on them
+" else, load the stable versions
+"
+" LS_COLORS.vim   - dircolors syntax
+" cccp.vim        - colorcolumn at cursor position
+" currentline.vim - highlight the current line like a marker pen
+" yankmatches.vim - yank/delete matches from a previous search operation
 
-Plug 'trapd00r/LS_COLORS.vim'
-"Plug '~/dev/LS_COLORS.vim'
+for myplugin in [
+  \ 'LS_COLORS.vim',
+  \ 'cccp.vim',
+  \ 'currentline.vim',
+  \ 'yankmatches.vim',
+  \]
+  let path = expand("%:p:h:h")
 
-Plug 'trapd00r/currentline.vim'        " highlights the current line
-Plug 'trapd00r/cccp.vim'               " colorcolumn at cursor position
+  " developing, use dev version of plugin
+  if path =~ '\vdev[/]' . myplugin
+    Plug path
+
+  " use stable version
+  else
+    Plug 'trapd00r/' . myplugin
+  endif
+endfor
+
 
 Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
