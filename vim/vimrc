@@ -7,12 +7,8 @@
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
 " plugins in use:
-"   https://github.com/trapd00r/yankmatches.vim
-"   https://github.com/trapd00r/currentline.vim
-"   https://github.com/trapd00r/cccp.vim
 "   plugin/automkdir.vim                                                   " automkdir if it doesn't exist
 "   plugin/blockwise.vim                                                   " blockwise operations
-"   plugin/distractionFree.vim                                             " toggle distractions
 "   plugin/eqalignsimple.vim                                               " align things
 "   plugin/foldsearches.vim                                                " fold around searches
 "   plugin/hlnext.vim                                                      " better search highlight
@@ -41,22 +37,26 @@ else
   Plug 'trapd00r/yankmatches.vim'
 endif
 
+Plug '~/dev/LS_COLORS.vim', { 'for': 'qf' }
+"Plug '~/dev/LS_COLORS.vim'
+
 Plug 'trapd00r/currentline.vim'        " highlights the current line
 Plug 'trapd00r/cccp.vim'               " colorcolumn at cursor position
+
+Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
+Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
 Plug 'junegunn/fzf'                    " fuzzy...
 Plug 'junegunn/fzf.vim'                " ... all the things
-Plug 'zirrostig/vim-schlepp'           " move visual selections around
 Plug 'junegunn/vim-peekaboo'           " peek at registers prior to pasting
-Plug 'tpope/vim-fugitive'              " git wrapper
-Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
-Plug 'DanielFGray/DistractionFree.vim' " toggle various things in one keystroke
-
-Plug 'kshenoy/vim-signature'           " place, toggle, display marks
-Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
-Plug 'wookayin/fzf-ripgrep.vim'        " grep -> fuzzyfind results
 Plug 'kien/ctrlp.vim'                  " I don't use this but the one below depends on it
+Plug 'kshenoy/vim-signature'           " place, toggle, display marks
 Plug 'tacahiroy/ctrlp-funky'           " function navigator
+Plug 'tpope/vim-fugitive'              " git wrapper
 Plug 'tpope/vim-scriptease'            " helper functions for developing plugins
+Plug 'wookayin/fzf-ripgrep.vim'        " grep -> fuzzyfind results
+Plug 'zirrostig/vim-schlepp'           " move visual selections around
+
+Plug 'DanielFGray/DistractionFree.vim' " toggle various things in one keystroke
 call plug#end()
 
 
@@ -212,6 +212,7 @@ nnoremap <silent> <leader><return> :call HighlightCurrentLine('♥')<cr>
 " toggle colorcolum at cursor positions
 " unless cursor position is 1, then disable it
 nnoremap <silent> <leader>cc :call CCCP()<cr>
+
 
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
