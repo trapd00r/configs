@@ -653,6 +653,13 @@ autocmd BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     =
 autocmd BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
 " ========== AUTOCOMMANDS END ===========================
 " ========== COMMANDS START =============================
+
+" replace a few builtin commands with versions that send the
+" results elsewhere
+cabbrev scriptnames <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Scriptnames' : 'scriptnames')<cr>
+cabbrev messages    <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Messages'    : 'messages')<cr>
+cabbrev verbose     <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Verbose'     : 'verbose')<cr>
+
 " you'll need my vim fork: http://github.com/trapd00r/wim
 if v:progname == 'wim'
   comclear
