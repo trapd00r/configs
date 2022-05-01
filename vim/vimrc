@@ -68,8 +68,10 @@ Plug 'tpope/vim-fugitive'              " git wrapper
 Plug 'tpope/vim-scriptease'            " helper functions for developing plugins
 Plug 'wookayin/fzf-ripgrep.vim'        " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'           " move visual selections around
-
 Plug 'DanielFGray/DistractionFree.vim' " toggle various things in one keystroke
+
+Plug 'yggdroot/indentline'             " vertical lines as indent guides for expandtab
+
 call plug#end()
 
 
@@ -212,6 +214,7 @@ let &t_EI .= "\<Esc>[2 q"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== OPTIONS END ================================
+
 
 color neverland
 
@@ -823,6 +826,13 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+" to allow for highlighting Conceal myself
+let g:indentLine_setColors = 0
+
+" different char for different indent level
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 " defaults to &clipboard setting if not specified here
 let g:YankMatches#ClipboardRegister = '*'
 
@@ -1004,6 +1014,9 @@ highlight Visual                  ctermfg=197 ctermbg=053  cterm=reverse
 
 highlight clear LineNr
 highlight link LineNr FoldColumn
+
+highlight! clear Conceal
+highlight link Conceal FoldColumn
 
 highlight qfFileName              ctermfg=208
 highlight qfLineNr                ctermfg=033              cterm=italicbold
