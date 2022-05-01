@@ -648,8 +648,6 @@ paths:
 #    mb_trackid::^$:              +unmatched/
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %tcp{$album}/${padded_tracknr} %tcp{$artist} - %tcp{$title}
 
-#   +game/+8bitpeoples/The Gameboy Singles 2002 [Nullsleep] (2002)
-    tag:8bitpeoples:     +game/+8bitpeoples/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 #   for testing stupid things
     tag:test:            +test/%bucket{$first_artist, alpha}/%tcp{$first_artist}/%japh{$first_artist}%if{$hasyear, │${year}│} %japh{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
@@ -723,20 +721,38 @@ paths:
     tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
 
-    tag:ocremix:                 +game/+ocremix/$base_name
-    tag:8bitcollective:          +game/+8bitcollective/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-    tag:overlooked:              +game/+overlookedremix/$base_name
-    tag:amigaremix:              +game/+amigaremix/$base_name
+
+    tag:ocremix:                 +game/+remix/+ocremix/$base_name
+    tag:olremix:                 +game/+remix/+olremix/$base_name
+    tag:amigaremix:              +game/+remix/+amigaremix/$base_name
+    tag:keygen:                  +game/+keygen/$base_name
+
     tag:rosamannen:              +live/+rosamannen/$base_name
 #--
     tag:sr:                      +radio/Sveriges Radio/%tcp{$album}/%if{$hasyear, $year} %tcp{$title}
 
-    tag:gamesoundtrack:            +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:game albumtype:soundtrack: +game/+ost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:game singleton:true:       +game/+tracks/%tcp{$artist} - %tcp{$title}
-    tag:game singleton:false:      +game/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:8bitpeoples:             +game/+artists/+8bitpeoples/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:8bitcollective:          +game/+artists/+8bitcollective/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-    tag:amigaost singleton:false:  +game/+ost/%tcp{$artist} [Amiga, %tcp{$album}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game singleton:true:     +game/+tracks/%tcp{$artist} - %tcp{$title}
+    tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+
+#   beware that this path is different!
+    tag:amigaost singleton:false:  +game/+ost/amiga/%tcp{$artist} [Amiga, %tcp{$album}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+
+    tag:nesost   singleton:false:  +game/+ost/nes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:snesost  singleton:false:  +game/+ost/snes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:gbost    singleton:false:  +game/+ost/gb/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:gbcost   singleton:false:  +game/+ost/gbc/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+
+    # crack intros
+    tag:crackintro singleton:true: +game/+crack/%tcp{$artist} - %tcp{$title}
+    # game intros
+    tag:gameintro singleton:true:  +game/+intro/%tcp{$artist} - %tcp{$title}
+
+    tag:gamesoundtrack:            +game/+ost/+other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game albumtype:soundtrack: +game/+ost/+other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
     tag:mixtape:           +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
