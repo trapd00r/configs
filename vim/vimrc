@@ -576,6 +576,8 @@ endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
 
+autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
+
 " set quickfix window height and make it modifiable
 autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
 
