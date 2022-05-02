@@ -32,7 +32,8 @@ if [[ $(hostname) = 'sid' ]]; then
          --output DP-2    --rotate right --left-of DP-4  \
          --output DVI-D-0 --left-of DP-2 --rotate left
 elif [[ $(hostname) = 'tp' ]]; then
-  xrandr --output DP-3 --primary
+  xrandr --output HDMI-1 --primary      --left-of eDP-1 \
+         --output DP-3   --rotate right --left-of HDMI-1
   kbdlight&
 fi
 #fi
@@ -71,5 +72,5 @@ done
 lxsession &
 
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
-#exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
-exec sdorfehs-japh -f $HOME/dev/sdorfehs-config/sdorfehsrc
+exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+#exec sdorfehs-japh -f $HOME/dev/sdorfehs-config/sdorfehsrc
