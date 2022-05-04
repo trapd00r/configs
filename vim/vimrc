@@ -201,6 +201,9 @@ color neverland
 " ========== MAPPINGS START =============================
 let mapleader=','
 
+" jump to the next mark
+nnoremap <leader>m :normal ]`<cr>
+
 " alt+<dot> - rg *, fzf results
 nnoremap <Esc>. :RgFzf*<cr>
 
@@ -375,7 +378,7 @@ nnoremap <leader>L :BLines<cr>
 nnoremap <leader>M :Marks<cr>
 
 " all the mappings
-nnoremap <leader>m :Maps<cr>
+"nnoremap <leader>m :Maps<cr>
 
 " quickly change ft
 nnoremap <leader>ft :Filetypes<cr>
