@@ -1,0 +1,203 @@
+# vim:ft=vim:
+"set firefoxmode=always
+"set adblocker=update
+"set downloadmethod=confirm
+"set mintabwidth=250
+"set norestoretabs
+"set redirecttohttp
+"set noshowcmd
+"set noincsearch
+"set suggestexplore 9000000000000000
+"set suspendonrestore=regular
+"set tabreopenposition=previous
+"set closablepinnedtabs
+"set windowtitle=title
+
+set search=https://www.google.com/search?q=%s
+set downloadpath=~/dl
+
+set notificationposition=bottomleft
+set mapsuggestposition=bottomleft
+set devtoolsposition=split
+
+colorscheme japh
+
+" blank new tab
+set favoritepages=
+set suggesttopsites=0
+set fontsize=10
+
+set mouse+=copyselect
+
+nmap j 2<action.scrollDown>
+nmap k 2<action.scrollUp>
+
+nmap <C-l> :nohlseearch<cr>
+
+unmap J
+unmap K
+nmap J 5<action.scrollDown>
+nmap K 5<action.scrollUp>
+" Jumping to Omnibar
+nmap o <action.toExploreMode>
+nmap O <action.openNewTab><action.toExploreMode>
+" Copy current url
+nmap yy <action.pageToClipboard>
+" vimium-like duplicate tab
+nmap yt <action.openNewTabWithCurrentUrl><CR>
+" Copy links like in vimium (need to press y on the focused link to copy it)
+nmap yf <pointer.start><action.startFollowCurrentTab>
+
+map <Esc> <action.toNormalMode>
+map <C-[> <action.toNormalMode>
+
+nmap <C-e> <action.scrollDown>
+nmap <C-y> <action.scrollUp>
+nmap gg <action.scrollTop>
+nmap G <action.scrollBottom>
+nmap d <action.scrollPageDownHalf>
+nmap u <action.scrollPageUpHalf>
+nmap h <action.scrollLeft>
+nmap zH <action.scrollPageLeft>
+nmap zL <action.scrollPageRight>
+"nmap r <action.reload>
+nmap i <action.toInsertMode>
+nmap v <pointer.start><pointer.startVisualSelect>
+nmap gi <action.insertAtFirstInput>
+nmap f <action.startFollowCurrentTab>
+nmap F <action.startFollowNewTab>
+nmap T <action.toCommandMode>buffer<Space>
+nmap / <action.toSearchMode>
+nmap n <action.nextSearchMatch>
+nmap N <action.previousSearchMatch>
+nmap H <action.backInHistory>
+nmap L <action.forwardInHistory>
+nmap t <action.openNewTab>
+nmap gT <action.previousTab>
+nmap gt <action.nextTab>
+nmap g0 <:buffer 0>
+nmap g$ <:buffer 999>
+nmap ge <action.toExploreMode><End>
+nmap gE <action.openNewTab><action.toExploreMode><End>
+"nmap x <action.closeTab>
+nmap X <action.reopenTab>
+nmap <A-p> <:pin>
+nmap <A-m> <:mute>
+nmap ? <:help>
+
+vmap c <Esc><pointer.start>
+vmap b <pointer.moveFastLeft>
+vmap h <pointer.moveLeft>
+vmap j <pointer.moveDown>
+vmap k <pointer.moveUp>
+vmap l <pointer.moveRight>
+vmap w <pointer.moveFastRight>
+vmap $ <pointer.moveRightMax>
+vmap 0 <pointer.moveLeftMax>
+
+" tridactyl mode
+nmap <C-e> <action.scrollDown>
+nmap <C-y> <action.scrollUp>
+nmap yy <action.pageToClipboard>
+nmap o <action.toExploreMode>
+nmap b <action.toCommandMode>buffer<Space>
+nmap g0 <:buffer 0>
+nmap g^ <:buffer 0>
+nmap g$ <:buffer 999>
+nmap >> <action.moveTabForward>
+nmap <lt><lt> <action.moveTabBackward>
+nmap O <action.toExploreMode><End>
+nmap E <action.openNewTab><action.toExploreMode><End>
+nmap gx0 <:lclose>
+nmap gx$ <:rclose>
+nmap <A-p> <:pin>
+nmap <A-m> <:mute>
+nmap x <action.stopLoadingPage>
+nmap [c <action.decreasePageNumber>
+nmap ]c <action.increasePageNumber>
+nmap zz <action.zoomReset>
+nmap zi <action.zoomIn>
+nmap zo <action.zoomOut>
+nmap zm 5<action.zoomIn>
+nmap zr 5<action.zoomOut>
+nmap zM 5<action.zoomIn>
+nmap zR 5<action.zoomOut>
+nmap zI 7<action.zoomIn>
+nmap zO 7<action.zoomOut>
+
+
+"exaliases":{
+"		"alias":"command",
+"		"au":"autocmd",
+"		"aucon":"autocontain",
+"		"audel":"autocmddelete",
+"		"audelete":"autocmddelete",
+"		"blacklistremove":"autocmddelete DocStart",
+"		"b":"tab",
+"		"clsh":"clearsearchhighlight",
+"		"nohlsearch":"clearsearchhighlight",
+"		"noh":"clearsearchhighlight",
+"		"o":"open",
+"		"w":"winopen",
+"		"t":"tabopen",
+"		"tabnew":"tabopen",
+"		"tabm":"tabmove",
+"		"tabo":"tabonly",
+"		"tn":"tabnext_gt",
+"		"bn":"tabnext_gt",
+"		"tnext":"tabnext_gt",
+"		"bnext":"tabnext_gt",
+"		"tp":"tabprev",
+"		"tN":"tabprev",
+"		"bp":"tabprev",
+"		"bN":"tabprev",
+"		"tprev":"tabprev",
+"		"bprev":"tabprev",
+"		"tabfirst":"tab 1",
+"		"tablast":"tab 0",
+"		"bfirst":"tabfirst",
+"		"blast":"tablast",
+"		"tfirst":"tabfirst",
+"		"tlast":"tablast",
+"		"buffer":"tab",
+"		"bufferall":"taball",
+"		"bd":"tabclose",
+"		"bdelete":"tabclose",
+"		"quit":"tabclose",
+"		"q":"tabclose",
+"		"qa":"qall",
+"		"sanitize":"sanitise",
+"		"saveas!":"saveas --cleanup --overwrite",
+"		"tutorial":"tutor",
+"		"h":"help",
+"		"unmute":"mute unmute",
+"		"authors":"credits",
+"		"openwith":"hint -W",
+"		"!":"exclaim",
+"		"!s":"exclaim_quiet",
+"		"containerremove":"containerdelete",
+"		"colours":"colourscheme",
+"		"colorscheme":"colourscheme",
+"		"colors":"colourscheme",
+"		"man":"help",
+"		"!js":"fillcmdline_tmp 3000 !js is deprecated. Please use js instead",
+"		"!jsb":"fillcmdline_tmp 3000 !jsb is deprecated. Please use jsb instead",
+"		"get_current_url":"js document.location.href",
+"		"current_url":"composite get_current_url | fillcmdline_notrail ",
+"		"stop":"js window.stop()",
+"		"zo":"zoom",
+"		"installnative":"nativeinstall",
+"		"nativeupdate":"updatenative",
+"		"mkt":"mktridactylrc",
+"		"mkt!":"mktridactylrc -f",
+"		"mktridactylrc!":"mktridactylrc -f",
+"		"mpvsafe":"js -p tri.excmds.shellescape(JS_ARG).then(url => tri.excmds.exclaim_quiet('mpv ' + url))",
+"		"exto":"extoptions",
+"		"extpreferences":"extoptions",
+"		"extp":"extpreferences",
+"		"prefset":"setpref",
+"		"prefremove":"removepref",
+"		"tabclosealltoright":"tabcloseallto right",
+"		"tabclosealltoleft":"tabcloseallto left",
+"		"reibadailty":"jumble"
+"},
