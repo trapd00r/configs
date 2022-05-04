@@ -793,6 +793,20 @@ function! GitBranchStatusLine()
   return printf("%.25s", shorter)
 endfunction
 
+" display either:
+"   scp1/.vimrc
+"   Code/Module.pm
+function! FileNameStatusLine()
+  let one_dir_up = expand('%:p:h:t')
+  let basename   = expand('%:t')
+
+  if one_dir_up != '.'
+    return one_dir_up .. '/' .. basename
+  else
+    return basename
+  endif
+endfunction
+
 autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
 set statusline=
 "set statusline +=%1*\ %n\ %*                          " buffer number
@@ -800,7 +814,7 @@ set statusline +=\ %5*%{&ff}%*\                        " file format
 set statusline +=%3*%y%*\                              " file type
 set statusline +=\%7*¦%9*\                             " askås butik
 set statusline +=%{SetStatusLineAskasButik()}          " askås butik
-set statusline +=\ \%7*¦%4*\ %<%t%*                    " basename of file
+set statusline +=\ \%7*¦%4*\ %{FileNameStatusLine()}   " basename of file
 set statusline +=%2*%m%*                               " modified flag
 set statusline +=\%7*\ ¦                               " delimiter
 set statusline +=%2*%{GitStatusStatusLine('added')}    " # added lines
