@@ -1,50 +1,67 @@
 # vim:ft=vim:
-"set firefoxmode=always
-"set adblocker=update
-"set downloadmethod=confirm
-"set mintabwidth=250
-"set norestoretabs
-"set redirecttohttp
-"set noshowcmd
-"set noincsearch
-"set suggestexplore 9000000000000000
-"set suspendonrestore=regular
-"set tabreopenposition=previous
-"set closablepinnedtabs
-"set windowtitle=title
 
-set search=https://www.google.com/search?q=%s
+set adblocker=update
+set cache=full
+set cleardownloadsonquit
+set devtoolsposition=vsplit
 set downloadpath=~/dl
-
-set notificationposition=bottomleft
+set favicons=30day
+set favoritepages=
+set followchars=custom:hjkl
+set followelement=url
+set fontsize=10
+set guitabbar=never
+set incsearch
 set mapsuggestposition=bottomleft
-set devtoolsposition=split
+set menupage=elementasneeded
+set menusuggest=both
+set mintabwidth=0
+set mouse+=copyselect
+set nofollownewtabswitch
+set notificationposition=bottomleft
+set permissioncamera=ask
+set permissioncertificateerror=ask
+set permissiondisplaycapture=ask
+set permissionmediadevices=allow
+set permissionmicrophone=ask
+set permissionpersistentstorage=allow
+set redirects+=^https?://(www\.)?(reddit\.com.*)~https://old.$2
+set redirecttohttp
+set search=https://google.com/search?q=%s
+set search=https://www.google.com/search?q=%s
+set smartcase
+set splitright
+set suggestcommands=5
+set suggesttopsites=0
+set suspendonrestore=none
+set tabopenmuted=background
+set tabreopenposition=previous
+set vimcommand="urxvt -fg white -bg black -sbg +sb -fn '-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252' -e vim -c 'setf perl'"
+set windowtitle=title
 
 colorscheme japh
-
-" blank new tab
-set favoritepages=
-set suggesttopsites=0
-set fontsize=10
-
-set mouse+=copyselect
 
 nmap j 2<action.scrollDown>
 nmap k 2<action.scrollUp>
 
 nmap <C-l> :nohlseearch<cr>
+nmap <Bs>  <backInHistory>
 
 unmap J
 unmap K
 nmap J 5<action.scrollDown>
 nmap K 5<action.scrollUp>
+
 " Jumping to Omnibar
 nmap o <action.toExploreMode>
 nmap O <action.openNewTab><action.toExploreMode>
+
 " Copy current url
 nmap yy <action.pageToClipboard>
+
 " vimium-like duplicate tab
 nmap yt <action.openNewTabWithCurrentUrl><CR>
+
 " Copy links like in vimium (need to press y on the focused link to copy it)
 nmap yf <pointer.start><action.startFollowCurrentTab>
 

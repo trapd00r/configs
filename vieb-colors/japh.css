@@ -1,0 +1,132 @@
+:root {
+    --bg: #121212;
+    --fg: #ebdbb2;
+    --font-size: 80%;
+
+    --tab-background: #121212;
+    --visible-tab: #383120;
+    --tab-scrollbar: #7daea3;
+
+    --mode-normal-fg: #383838;
+    --mode-command-fg: #cc241d;
+    --mode-follow-fg: #b16286;
+    --mode-insert-fg: #8ec07c;
+    --mode-explore-fg: #859900;
+    --mode-search-fg: #d79921;
+    --mode-pointer-fg: #076678;
+    --mode-pointer-bg: none;
+    --mode-visual-fg: #83a598;
+    --mode-visual-bg: none;
+
+    --suggestions-border: #787878;
+    --suggestions-bg: #121212;
+    --suggestions-selected: #b65000;
+    --suggestions-url: #bdf8e6;
+    --suggestions-file: #fbf1c7;
+    --notification-border: #585858;
+    --notification-date: #689d6a;
+    --notification-permission: #a89984;
+    --notification-error: #fb4934;
+    --notification-warning: #f88808;
+    --notification-info: #2aa198;
+    --notification-success: #98971a;
+
+    /* follow mode */
+    --follow-text: #111;
+    --follow-url-bg: #bff;
+    --follow-url-border: #5bb;
+    --follow-click-bg: #fbb;
+    --follow-click-border: #b55;
+    --follow-insert-bg: #bfb;
+    --follow-insert-border: #5b5;
+    --follow-onclick-bg: #ffb;
+    --follow-onclick-border: #bb5;
+    --follow-other-bg: #ddd;
+    --follow-other-border: #aaa;
+
+    /* special pages */
+    --link-color: #458488;
+    --link-underline: var(--link-color);
+    --scrollbar-bg: #121212;
+    --scrollbar-thumb: #ccc;
+    --button-disabled: #777;
+    --code-fg: #ebdbb2;
+    --code-bg: #1d2021;
+    --special-page-element-bg: #383838;
+    --special-page-element-border: #928374;
+    --input-unfocused: #383838;
+    --input-focused: #999;
+    --download-progress-fg: #ebdbb2;
+    --download-progress-bg: #282828;
+    --helppage-h1: #cc241d;
+    --helppage-h2: #fb4934;
+    --helppage-h3: #689d6a;
+    --code-command: #8ec07c;
+    --helppage-countable: #b8bb26;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* general */
+#tabs .status {filter: invert(.4);}
+
+/* special pages */
+#pointer, #cookiespage img, #downloadspage img, #historypage img {filter: invert(1);}
+#historypage img.favicon {filter: none;}
+
+[current-mode=normal] {--mode-fg: var(--mode-normal-fg);}
+[current-mode=command] {--mode-fg: var(--mode-command-fg);}
+[current-mode=insert] {--mode-fg: var(--mode-insert-fg);}
+[current-mode=follow] {--mode-fg: var(--mode-follow-fg);}
+[current-mode=explore] {--mode-fg: var(--mode-explore-fg);}
+[current-mode=search] {--mode-fg: var(--mode-search-fg);}
+[current-mode=pointer] {--mode-fg: var(--mode-pointer-fg);}
+[current-mode=visual] {--mode-fg: var(--mode-visual-fg);}
+
+/* navbar && tabbar */
+#url {background: #121212; border: none .1em ;}
+
+#navbar, #tabs {background: #121212;}
+#tabs > span {color: var(--fg);}
+
+body {--mode-theme-bg: var(--mode-fg);}
+body[current-mode=normal] {--mode-theme-bg: #383838;}
+#navbar, #tabs {background: var(--mode-theme-bg);}
+
+body #mode {color: #1d2021;}
+body[current-mode=normal] #mode {color: var(--fg);}
+body[current-mode=pointer] #mode {color: var(--fg);}
+body[current-mode=follow] #mode {color: var(--fg);}
+body[current-mode=command] #mode {color: var(--fg);}
+body[current-mode=explore] #mode {color: var(--bg);}
+body[current-mode=visual] #mode {color: var(--mode-visual-fg);}
+body[current-mode=insert] #mode {color: var(--mode-insert-fg);}
+body[current-mode=search] #mode {color: var(--mode-search-fg);}
+[current-mode=normal] #url {background: #383838; color: var(--fg);}
+
+/* Single-letter mode indicators */
+#mode {position: fixed; bottom: .2em; left: .2em; width: 1ch; overflow: hidden; font-size: 150%;}
+#mode-suggestions {display: none;}
+/* Full-width navbar */
+#mode-container {width: 2.5ch;}
+
+/* hide logo */
+#logo {display: none}
+
+/*
+      Flipped
+		*/
+/* general */
+#app {flex-direction: column-reverse;}
+#url-hover {bottom: 4em;}
+#suggest-dropdown {top: auto;bottom: 2.1em;flex-direction: column-reverse;}
+.bottomright {right: .7em;bottom: 4em;;}
+.bottomleft {left: .7em;bottom: 4em;}
+.topright {right: .7em;top: .7em;}
+.topleft {left: .7em;top: .7em;}
+/* hidden bars */
+#app.tabshidden #url-hover, #app.navigationhidden #url-hover {bottom: 2em;}
+#app.tabshidden.navigationhidden #url-hover {bottom: 0;}
+#app.navigationhidden #suggest-dropdown {top: auto;bottom: .1em;}
