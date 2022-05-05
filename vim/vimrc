@@ -226,6 +226,15 @@ nnoremap <silent> <leader><return> :call HighlightCurrentLine('♥')<cr>
 " unless cursor position is 1, then disable it
 nnoremap <silent> <leader>cc :call CCCP()<cr>
 
+" change surrounding quotes
+nnoremap <leader>' :normal cs"'<cr>
+nnoremap <leader>" :normal cs'"<cr>
+
+" change the ugly q^single quoted^ to something better
+" you want to do
+"   setxkbmap se -variant nodeadkeys for the ^
+execute "nnoremap <leader>^ :normal cs^<BAR><cr>"
+
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
 vnoremap <silent> # :call ToggleBlock()<CR>
@@ -566,7 +575,7 @@ fu! Vidir_Sanitize(content)
   silent! %s/\v[ÅÄ]/A/g
   silent! %s/\v[Ö]/O/g
   silent! %s/,/./g
-  silent! %s/\v[;<>*|'&!#)([\]{}]//g
+  execute "silent! %s/\v[;<>*|'&!#)([\]{}]//g"
   silent! %s/\v_+\ze[.]|\zs[.]\ze_+//g
   silent! %s/[$]/S/g
   silent! %s/\v-{2,}/-/g
