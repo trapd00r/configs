@@ -57,6 +57,8 @@ Plug 'trapd00r/vim-scriptease'         " helper functions for developing plugins
 
 Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'machakann/vim-highlightedyank'
 Plug 'junegunn/fzf'                    " fuzzy...
 Plug 'junegunn/fzf.vim'                " ... all the things
 Plug 'junegunn/vim-peekaboo'           " peek at registers prior to pasting
@@ -199,6 +201,7 @@ set wildmode=list:longest,full                                             " com
 color neverland
 
 " ========== MAPPINGS START =============================
+" ATTENTION! <leader> #1
 let mapleader=','
 
 " search only inside a block/scope/function
@@ -219,10 +222,9 @@ vnoremap <silent> E :Execute<cr>
 " https://github.com/trapd00r/currentline.vim
 nnoremap <silent> <leader><return> :call HighlightCurrentLine('♥')<cr>
 
-" toggle colorcolum at cursor positions
+" toggle colorcolumn at cursor position
 " unless cursor position is 1, then disable it
 nnoremap <silent> <leader>cc :call CCCP()<cr>
-
 
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
@@ -305,14 +307,24 @@ vmap <unique> <C-d> <Plug>SchleppDup
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 
-" TODO clean up!
-" remove hlsearch, hlnext, matches, highlighted yanks, highlighted lines, colorcolumn and redraw screen
-nnoremap <silent> <C-l> :call HLNextOff() <BAR> :nohlsearch <BAR> :hi clear YankedMatches <BAR> :call HighlightCurrentLine('clear') <BAR> :set colorcolumn& <BAR> :redraw <CR>
+" my redraw key does a few things:
+"   - remove hlsearch
+"   - remove hlnext,
+"   - clear highlighted yanks
+"   - clear highlighted lines
+"   - reset colorcolumn
+"   - redraw screen
+nnoremap <silent> <C-l>
+  \ :call HLNextOff()                   <BAR>
+  \ :nohl                               <BAR>
+  \ :hi clear YankedMatches             <BAR>
+  \ :call HighlightCurrentLine('clear') <BAR>
+  \ :set colorcolumn&                   <BAR>
+  \ :redraw <CR>
 
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
-
 
 " sort and operate on visual block selections
 " press enter or add flags to sort, i.e -n
@@ -344,6 +356,13 @@ cnoremap  <C-n> <down>
 cnoremap  <C-p> <up>
 cnoremap  <M-b> <S-Left>
 cnoremap  <M-f> <S-Right>
+
+" ATTENTION! <LEADER> KEY NUMBER TWO
+let mapleader=';'
+
+" and back to <leader> #1
+let mapleader=','
+
 
 " ========== FZF START ==================================
 nnoremap <C-p> :FZF<cr>
@@ -595,7 +614,11 @@ endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
 
+" enable use of $LS_COLORS coloring in appropriate files
 autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
+
+" enable Rainbows everywhere
+autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
 
 " set quickfix window height and make it modifiable
 autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
@@ -835,8 +858,10 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+"
+let g:highlightedyank_highlight_duration = 1000
 
-" to allow for highlighting Conceal myself
+" to allow for highlighting of Conceal myself
 let g:indentLine_setColors = 0
 
 " different char for different indent level
@@ -962,6 +987,9 @@ highlight CurrentLine   ctermbg=184 ctermfg=bg cterm=bolditalic
 " highlight the matches that have been yanked to a register and
 " the system clipboard
 highlight YankedMatches ctermfg=bg ctermbg=196 cterm=bolditalic
+
+" highlight regular yanks
+highlight HighlightedyankRegion ctermfg=bg ctermbg=185 cterm=bolditalic
 
 " CurSearch highlighting group added so might be able to remove HLNext
 " https://github.com/vim/vim/commit/a43993897aa372159f682df37562f159994dc85c
