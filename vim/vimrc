@@ -201,6 +201,9 @@ color neverland
 " ========== MAPPINGS START =============================
 let mapleader=','
 
+" search only inside a block/scope/function
+nnoremap <leader>/ :normal vi{<esc><esc>/\%V
+
 " jump to the next mark
 nnoremap <leader>m :normal ]`<cr>
 
