@@ -16,8 +16,6 @@ XTerm*reverseVideo:      off
 
 *decTerminalID: VT420
 
-*background:                      #000
-*foreground:                      #fff
 *cursorColor:                     #FF7400
 *pointerColorBackground:          #2B2C2B
 *pointerColorForeground:          #16A085
@@ -64,95 +62,73 @@ URxvt.keysym.M-s:            perl:keyboard-select:search
 ! property since that will affect everything including printf "\033]4m"
 URxvt.matcher.rend.0:  fg5
 
-
-
 Xcursor.theme: xcursor-breeze
 Xcursor.size:  0
 
-!URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
+URxvt.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252, \
+                          xft:Symbola:minspace=True:embolden=true
 
-sid*font: -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+URxvt.boldfont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252, \
+                          xft:Symbola:minspace=True:embolden=true
 
-sid*boldfont: -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252
+URxvt.italicFont:         -schumacher-clean-medium-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
+                          xft:Symbola
 
-sid*italicFont: -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv,-misc-tamsyn-medium-r-normal--12-87-100-100-c-60-iso8859-1
-sid*boldItalicFont: -*-iris-medium-*-normal-*-10-*-*-*-*-*-*-*,-misc-tamsyn-medium-r-normal--12-87-100-100-c-60-iso8859-1
-
-!sid*font:           -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1,\
-!                    xft:TerminessTTFNerdFontMono:pixelsize=16,\
-!                    -gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1 
-!
-!sid*boldFont:       -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso10646-1,\
-!                    xft:TerminessTTFNerdFontMono,\
-!                    -gnu-unifont-medium-r-normal-sans-0-0-75-75-c-0-iso10646-1
-!
-!sid*italicFont:     -misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1,\
-!                    -schumacher-clean-bold-r-normal--14-140-75-75-c-80-iso646.1991-irv,\
-!                    xft:TerminessTTFNerdFontMono,\
-!                    -gnu-unifont-medium-r-normal-sans-0-0-75-75-c-0-iso10646-1
-!
-!sid*boldItalicFont: -misc-tamsyn-bold-r-normal--14-101-100-100-c-70-iso8859-1,\
-!                    -schumacher-clean-medium-r-normal--14-140-75-75-c-70-iso646.1991-irv,\
-!                    xft:TerminessTTFNerdFontMono,\
-!                    -gnu-unifont-medium-r-normal-sans-0-0-75-75-c-0-iso10646-1
-
-
-
+URxvt.boldItalicFont:     -schumacher-clean-bold-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
+                          xft:Symbola
 
 !URxvt*bell-command:          play -v 0.1 /home/scp1/mp3/_sounds/ding.wav && bash -c "printf '\033]708;#ff0000\007'"
 URxvt*bell-command:          /home/scp1/dev/utils/bell
 
-URxvt.insecure:              true
+URxvt.background:            black
+URxvt.borderLess:            0
+URxvt.chdir:                 /home/scp1/dev
+URxvt.cursorBlink:           false
+URxvt.cursorUnderline:       0
+URxvt.cutchars:             "()*,<>[]{}|│'"
 URxvt.depth:                 32
-URxvt.background:            [100]#000000
-URxvt*scrollBar:             false
-URxvt*mouseWheelScrollPage:  false
-URxvt*cursorBlink:           false
-URxvt*background:            black
-URxvt*foreground:            white
-URxvt*saveLines:             5000
-URxvt.reverseVideo:          0
-URxvt.jumpScroll:            0
-URxvt.skipScroll:            0
-URxvt.fading:                0
+URxvt.externalBorder:        0
 URxvt.fadeColor:             #121212
-URxvt.scrollColor:           #121212
-URxvt.troughColor:           #121212
-!URxvt.borderColor:           #121212
+URxvt.fading:                0
+URxvt.foreground:            white
+URxvt.hold:                  0
+URxvt.insecure:              true
 URxvt.intensityStyles:       0
-URxvt.mapAlert:              0
-URxvt.urgentOnBell:          1
-URxvt*visualBell:            0
+URxvt.internalBorder:        0
+URxvt.jumpScroll:            0
+URxvt.lineSpace:             0
 URxvt.loginShell:            0
+URxvt.mapAlert:              0
+URxvt.meta8:                 0
+URxvt.mouseWheelScrollPage:  false
 URxvt.multiClickTime:        500
-URxvt.scrollstyle:           plain
-!URxvt.thickness:             8
-URxvt.scrollBar_right:       1
+URxvt.pastableTabs:          0
+URxvt.pointerBlank:          1
+URxvt.pointerBlankDelay:     987654321
+URxvt.pointerColor2:         #ffffff
+URxvt.pointerColor:          #ffffff
+URxvt.pointerShape:          double_arrow
+URxvt.reverseVideo:          0
+URxvt.saveLines:             5000
+URxvt.scrollBar:             false
 URxvt.scrollBar_align:       centre
+URxvt.scrollBar_right:       1
+URxvt.scrollColor:           #121212
+URxvt.scrollTtyKeypress:     1
 URxvt.scrollTtyOutput:       0
 URxvt.scrollWithBuffer:      0
-URxvt.scrollTtyKeypress:     1
-!sid.internalBorder:        0
-!sid.externalBorder:        0
-!sid.borderLess:            0
-URxvt*skipBuiltinGlyphs:     1
-URxvt*termName:              rxvt-unicode-256color
-URxvt*lineSpace:             0
-URxvt*meta8:                 0
-URxvt*mouseWheelScrollPage:  0
-URxvt*pastableTabs:          0
-URxvt*cursorBlink:           0
-URxvt*cursorUnderline:       0
-URxvt*pointerBlank:          1
-URxvt*pointerColor:          #ffffff
-URxvt*pointerColor2:         #ffffff
-URxvt*pointerShape:          double_arrow
-URxvt*pointerBlankDelay:     987654321
-URxvt*tripleclickwords:      1
-URxvt*secondaryScreen:       1
-URxvt*secondaryScroll:       1
-URxvt*hold:                  0
-URxvt*chdir:                 /home/scp1/dev
+URxvt.scrollstyle:           plain
+URxvt.secondaryScreen:       1
+URxvt.secondaryScroll:       1
+URxvt.skipBuiltinGlyphs:     0
+URxvt.skipScroll:            0
+URxvt.termName:              rxvt-unicode-256color
+URxvt.tripleclickwords:      1
+URxvt.troughColor:           #121212
+URxvt.urgentOnBell:          1
+URxvt.visualBell:            0
+URxvt.borderColor:           #121212
+!URxvt.thickness:             8
 
 ! Normal copy-paste keybindings without perls
 !URxvt.iso14755:                   false
@@ -293,6 +269,4 @@ URxvt*chdir:                 /home/scp1/dev
 ! URxvt*tabbar-bg:                  colour
 ! URxvt*tabbar-fg:                  colour
 ! URxvt*url-launcher:               string
-
-sid*cutchars:             "()*,<>[]{}|│'"
 
