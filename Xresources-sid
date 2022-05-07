@@ -74,8 +74,11 @@ URxvt.boldfont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-m
 URxvt.italicFont:         -schumacher-clean-medium-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
                           xft:Symbola
 
-URxvt.boldItalicFont:     -schumacher-clean-bold-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
+URxvt.boldItalicFont:     xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0, \
                           xft:Symbola
+
+!URxvt.boldItalicFont:     -schumacher-clean-bold-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
+!                          xft:Symbola
 
 !URxvt*bell-command:          play -v 0.1 /home/scp1/mp3/_sounds/ding.wav && bash -c "printf '\033]708;#ff0000\007'"
 URxvt*bell-command:          /home/scp1/dev/utils/bell
