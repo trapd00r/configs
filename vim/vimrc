@@ -235,7 +235,7 @@ nnoremap <leader>" :normal cs'"<cr>
 " change the ugly q^single quoted^ to something better
 " you want to do
 "   setxkbmap se -variant nodeadkeys for the ^
-execute "nnoremap <leader>^ :normal cs^<BAR><cr>"
+nmap <leader>^ cs^<bar>
 
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
