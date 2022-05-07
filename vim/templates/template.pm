@@ -14,6 +14,8 @@ BEGIN {
   %EXPORT_TAGS = [ qw() ];
 }
 
+use v5.30;
+
 use Carp ();
 use DDP;
 
