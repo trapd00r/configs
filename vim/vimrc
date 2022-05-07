@@ -239,6 +239,14 @@ nnoremap <leader>" :normal cs'"<cr>
 "   setxkbmap se -variant nodeadkeys for the ^
 nmap <leader>^ cs^<bar>
 
+" highlight the word under the cursor in differently
+" these things are cleared with me <C-l> mapping
+nnoremap <silent> <leader>h1 :execute 'match CurrentWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h2 :execute 'match CurrentWord2 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h3 :execute 'match CurrentWord3 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h4 :execute 'match CurrentWord4 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h5 :execute 'match CurrentWord5 /\<<c-r><c-w>\>/'<cr>
+
 " toggle comments
 nmap     <silent> # :call ToggleComment()<CR>j0
 vnoremap <silent> # :call ToggleBlock()<CR>
@@ -325,6 +333,7 @@ nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 "   - remove hlnext,
 "   - clear highlighted yanks
 "   - clear highlighted lines
+"   - clear highlighted CurrentWord*
 "   - reset colorcolumn
 "   - redraw screen
 nnoremap <silent> <C-l>
@@ -999,7 +1008,7 @@ highlight CurrentLine   ctermbg=184 ctermfg=bg cterm=bolditalic
 
 " highlight the matches that have been yanked to a register and
 " the system clipboard
-  highlight YankedMatches ctermfg=bg ctermbg=196 cterm=bolditalic
+highlight YankedMatches ctermfg=bg ctermbg=196 cterm=bolditalic
 
 " highlight regular yanks
 if g:hostname == 'tp'
@@ -1011,6 +1020,13 @@ endif
 " CurSearch highlighting group added so might be able to remove HLNext
 " https://github.com/vim/vim/commit/a43993897aa372159f682df37562f159994dc85c
 highlight HLNext                      ctermfg=053  ctermbg=197 cterm=none
+
+" highlight word under the cursor in different ways
+highlight CurrentWord1 ctermfg=196 cterm=none
+highlight CurrentWord2 ctermfg=196 cterm=bold
+highlight CurrentWord3 ctermfg=196 cterm=italic
+highlight CurrentWord4 ctermfg=196 cterm=bolditalic
+highlight CurrentWord5 ctermfg=196 cterm=bolditalicunderline
 
 " trackperlvars
 highlight default      TRACK_PERL_VAR             ctermfg=none   ctermbg=bg    cterm=underlinebolditalic
