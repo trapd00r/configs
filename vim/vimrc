@@ -54,27 +54,26 @@ for myplugin in [ 'LS_COLORS.vim',
   endif
 endfor
 
-Plug 'trapd00r/vim-syntax-notes'
-Plug 'trapd00r/vim-scriptease'         " helper functions for developing plugins, with :Execute support
-
-Plug 'airblade/vim-gitgutter'          " git diff markers, git hunks
-Plug 'airblade/vim-matchquote'         " % for quotes, backticks and pipes
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'machakann/vim-highlightedyank'
-Plug 'junegunn/fzf'                    " fuzzy...
-Plug 'junegunn/fzf.vim'                " ... all the things
-Plug 'junegunn/vim-peekaboo'           " peek at registers prior to pasting
-Plug 'kien/ctrlp.vim'                  " I don't use this but the one below depends on it
-Plug 'kshenoy/vim-signature'           " place, toggle, display marks
-Plug 'tacahiroy/ctrlp-funky'           " function navigator
-Plug 'tpope/vim-fugitive'              " git wrapper
-Plug 'tpope/vim-surround'              " surround all the things
-Plug 'tpope/vim-repeat'                " repeat all the things
-Plug 'wookayin/fzf-ripgrep.vim'        " grep -> fuzzyfind results
-Plug 'zirrostig/vim-schlepp'           " move visual selections around
-Plug 'DanielFGray/DistractionFree.vim' " toggle various things in one keystroke
-
-Plug 'yggdroot/indentline'             " vertical lines as indent guides for expandtab
+Plug 'trapd00r/vim-syntax-notes'        " syntax for my notes
+Plug 'trapd00r/vim-scriptease'          " helper functions for developing plugins, with :Execute support
+Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
+Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
+Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
+Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
+Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
+Plug 'junegunn/fzf'                     " fuzzy...
+Plug 'junegunn/fzf.vim'                 " ... all the things
+Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
+Plug 'kien/ctrlp.vim'                   " I don't use this but the one below depends on it
+Plug 'kshenoy/vim-signature'            " place, toggle, display marks
+Plug 'tacahiroy/ctrlp-funky'            " function navigator
+Plug 'tpope/vim-fugitive'               " git wrapper
+Plug 'tpope/vim-surround'               " surround all the things
+Plug 'tpope/vim-repeat'                 " repeat all the things
+Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
+Plug 'zirrostig/vim-schlepp'            " move visual selections around
+Plug 'yggdroot/indentline'              " vertical lines as indent guides for expandtab
+Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 
 call plug#end()
 " ========== INIT END ===================================
