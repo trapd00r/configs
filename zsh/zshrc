@@ -29,7 +29,7 @@
 #~/dev/utils/font-12-anonymous
 
 if [[ $(hostname) = "sid" ]]; then
-  ~/dev/utils/font-monte
+#  ~/dev/utils/font-monte
 elif [[ $(hostname) = "tp" ]]; then
   ~/dev/utils/font-askas
 fi
