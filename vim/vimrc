@@ -211,6 +211,9 @@ nnoremap <leader>/ :normal vi{<esc><esc>/\%V
 " jump to the next mark
 nnoremap <leader>m :normal ]`<cr>
 
+" dont move when using *
+nnoremap <silent> * :let s=winsaveview()<cr>*:call winrestview(s)<cr>
+
 " alt+<dot> - rg *, fzf results
 nnoremap <Esc>. :RgFzf*<cr>
 
