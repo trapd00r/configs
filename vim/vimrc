@@ -506,7 +506,7 @@ function! s:infer_filetype()
   let firstline = getline(1)
 
   " perl5
-  if firstline  =~# '^#!.*/bin/perl'
+  if firstline  =~# '^#!.*perl'
     set filetype=perl
     return
 
