@@ -700,8 +700,8 @@ autocmd Filetype perl source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
 autocmd Filetype sh   source ~/dev/vim-after-syntax-sh/after/syntax/sh.vim
 autocmd Filetype zsh  source ~/dev/vim-after-syntax-zsh/after/syntax/zsh.vim
 
-autocmd BufNewFile,BufRead  MANIFEST              set filetype=vidir
-autocmd BufNewFile,BufRead  vidir*                set filetype=vidir-ls
+autocmd BufNewFile,BufRead  MANIFEST              set filetype=LS_COLORS
+autocmd BufNewFile,BufRead  vidir*                set filetype=LS_COLORS
 autocmd BufNewFile,BufRead  Changes               set filetype=changelog
 
 autocmd BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
