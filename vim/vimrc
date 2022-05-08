@@ -387,10 +387,12 @@ let mapleader=','
 
 
 " ========== FZF START ==================================
-nnoremap <C-p> :FZF<cr>
-
 " git status
 nnoremap <leader>gs :GFiles?<cr>
+
+" use :Gfiles for ctrlp if in a git repo
+" otherwise, use normal fzf
+map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
 
 " commits for the current buffer, vselect a line to track changes for it
 nnoremap <leader>gc :BCommits<cr>
