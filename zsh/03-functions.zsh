@@ -30,9 +30,9 @@ df()        {
           | perl -pe 's/^/\e[48;5;255m \e[m/'
 }
 
-hr() { # http://github.com/trapd00r/hr
-  =hr -fg 196 -c ' ' -fg 196 -bui
-}
+#hr() { # http://github.com/trapd00r/hr
+#  =hr -fg 196 -c ' ' -fg 196 -bui
+#}
 apvlv()     { /usr/bin/apvlv -c $XDG_CONFIG_HOME/apvlvrc "$@" }
 neverball() { /usr/bin/neverball --data $XDG_CONFIG_HOME/neverball/ }
 #scrot()     { cd $HOME/img/_scrots && /usr/bin/scrot -q 100 "$@" }

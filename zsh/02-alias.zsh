@@ -16,6 +16,7 @@
 ###
 ###>
 
+alias hr"=perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underline=>1,italic=>1})'"
 alias nmap='nmap -sV'
 
 alias mtree='=mtree -d'
