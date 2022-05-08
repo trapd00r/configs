@@ -61,6 +61,7 @@ Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
 Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
+Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
@@ -238,6 +239,10 @@ nnoremap <leader>" :normal cs'"<cr>
 " you want to do
 "   setxkbmap se -variant nodeadkeys for the ^
 nmap <leader>^ cs^<bar>
+
+" highlight undo/redo operations
+nmap u     <Plug>(highlightedundo-undo)
+nmap <C-r> <Plug>(highlightedundo-redo)
 
 " highlight the word under the cursor in differently
 " these things are cleared with me <C-l> mapping
@@ -638,6 +643,9 @@ endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
 
+" do whatever after text is yanked
+" au TextYankPost * :ls
+
 " enable use of $LS_COLORS coloring in appropriate files
 autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
 
@@ -1029,6 +1037,9 @@ highlight CurrentWord2 ctermfg=196 cterm=bold
 highlight CurrentWord3 ctermfg=196 cterm=italic
 highlight CurrentWord4 ctermfg=196 cterm=bolditalic
 highlight CurrentWord5 ctermfg=196 cterm=bolditalicunderline
+
+" highlight undo operations
+highlight HighlightedundoChange ctermbg=bg ctermfg=034 cterm=bold
 
 " trackperlvars
 highlight default      TRACK_PERL_VAR             ctermfg=none   ctermbg=bg    cterm=underlinebolditalic
