@@ -6,13 +6,8 @@
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
-" plugins in use:
-"   plugin/automkdir.vim                                                   " automkdir if it doesn't exist
-"   plugin/blockwise.vim                                                   " blockwise operations
-"   plugin/eqalignsimple.vim                                               " align things
-"   plugin/foldsearches.vim                                                " fold around searches
-"   plugin/hlnext.vim                                                      " better search highlight
-"   plugin/smartcom.vim                                                    " smarter completion
+" plugin/blockwise.vim
+" plugin/smartcom.vim
 
 " ========== INIT START =================================
 filetype plugin indent on
@@ -26,22 +21,37 @@ set exrc                                                                   " ena
 set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " for gf etc
 set path+='$HOME/dev/air8'
 
+" useful in various places later
 let g:hostname = hostname()
 
 call plug#begin(expand($VIMRUNTIME) . '/plugged')
 
-" load development versions of my plugins if I'm working on them
-" else, load the stable versions
-"
-" LS_COLORS.vim   - dircolors syntax
-" cccp.vim        - colorcolumn at cursor position
-" currentline.vim - highlight the current line like a marker pen
-" yankmatches.vim - yank/delete matches from a previous search operation
+" This way, I'm loading the dev versions of my plugins if it looks like
+" I'm about to work on them.
+
+" LS_COLORS.vim     - dircolors syntax
+" cccp.vim          - colorcolumn at cursor position
+" currentline.vim   - highlight the current line like a marker pen
+" yankmatches.vim   - yank/delete matches from a previous search operation
+" neverland         - my colorscheme
+" vim-syntax-notes  - only useful for me
+" foldsearches.vim  - fold around searches
+" eqalignsimple.vim - alignment magic with = and +
+" hlnext.vim'       - highlight current search result
+" automkdir.vim     - vim ~/dev/doesntexist/butthatisfine.vim
 
 for myplugin in [ 'LS_COLORS.vim',
+\                 'automkdir.vim',
 \                 'cccp.vim',
 \                 'currentline.vim',
-\                 'yankmatches.vim' ]
+\                 'eqalignsimple.vim',
+\                 'foldsearches.vim',
+\                 'hlnext.vim',
+\                 'neverland-vim-theme',
+\                 'vim-scriptease',
+\                 'vim-syntax-notes',
+\                 'yankmatches.vim']
+
   let path = expand("%:p:h:h")
 
   " developing, use dev version of plugin
@@ -54,27 +64,25 @@ for myplugin in [ 'LS_COLORS.vim',
   endif
 endfor
 
-Plug 'trapd00r/vim-syntax-notes'        " syntax for my notes
-Plug 'trapd00r/vim-scriptease'          " helper functions for developing plugins, with :Execute support
+Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
-Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
-Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
-Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
+Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
 Plug 'kien/ctrlp.vim'                   " I don't use this but the one below depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
+Plug 'machakann/vim-highlightedundo'    " highlight undo operations
+Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
 Plug 'tacahiroy/ctrlp-funky'            " function navigator
 Plug 'tpope/vim-fugitive'               " git wrapper
-Plug 'tpope/vim-surround'               " surround all the things
 Plug 'tpope/vim-repeat'                 " repeat all the things
+Plug 'tpope/vim-surround'               " surround all the things
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
-Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'yggdroot/indentline'              " vertical lines as indent guides for expandtab
-Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
+Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
 call plug#end()
 " ========== INIT END ===================================
