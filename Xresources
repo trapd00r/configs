@@ -352,7 +352,7 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 !*keysym.Control-Shift-K: ^[[23^
 sid.keysym.Control-Shift-K: \033[23@
 
-#include "/home/scp1/etc/Xcolors/nancy.Xresources"
+#include "/home/japh/etc/Xcolors/nancy.Xresources"
 
 *.color0:         #1b1d1e
 *.color1:         #f92672

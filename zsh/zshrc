@@ -20,7 +20,7 @@
 #if [[  $UID -ne 0 ]]; then
 #  umask 0077
 #  fi
-#chdir ${HOME}/dev/askas/air8
+chdir ${HOME}/dev/askas/air8
 
 
 #FIXME
@@ -31,6 +31,7 @@
 if [[ $(hostname) = "sid" ]]; then
 #  ~/dev/utils/font-monte
 elif [[ $(hostname) = "tp" ]]; then
+#  ~/dev/utils/font-monte
   ~/dev/utils/font-askas
 fi
 
@@ -151,7 +152,7 @@ eval $(dircolors -b $HOME/dev/LS_COLORS/LS_COLORS)
 
 compdef     _gnu_generic ln file vnstati lscpu lsb_release
 
-PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils_askas/bin:${HOME}/dev/askas/utils_askas/bin/selenium:$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium:$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 #PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 #PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
@@ -249,7 +250,6 @@ _fzf_complete_git_post() {
     awk '{print $1}'
 }
 
-export ASKAS_BUTIK=magnusw1
 
 
 
@@ -266,3 +266,5 @@ trash() {
   export TRASHCAN=${HOME}/tmp/_trashcan
   mv -v "$@" $TRASHCAN
 }
+
+export ASKAS_BUTIK=magnusw1

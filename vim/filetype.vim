@@ -1338,12 +1338,12 @@ au BufNewFile,BufRead *.pdf			setf pdf
 au BufNewFile,BufRead *.pcmk			setf pcmk
 
 " Perl
-if has("fname_case")
-  au BufNewFile,BufRead *.pl,*.PL		call dist#ft#FTpl()
-else
-  au BufNewFile,BufRead *.pl			call dist#ft#FTpl()
-endif
-au BufNewFile,BufRead *.plx,*.al,*.psgi		setf perl
+"if has("fname_case")
+"  au BufNewFile,BufRead *.pl,*.PL		call dist#ft#FTpl()
+"else
+"  au BufNewFile,BufRead *.pl			call dist#ft#FTpl()
+"endif
+"au BufNewFile,BufRead *.plx,*.al,*.psgi		setf perl
 
 " Perl, XPM or XPM2
 au BufNewFile,BufRead *.pm
@@ -1858,7 +1858,7 @@ au BufNewFile,BufRead squid.conf		setf squid
 au BufNewFile,BufRead *.tyb,*.typ,*.tyc,*.pkb,*.pks	setf sql
 
 " SQL
-au BufNewFile,BufRead *.sql			call dist#ft#SQL()
+au BufNewFile,BufRead *.sql			setf sql
 
 " SQLJ
 au BufNewFile,BufRead *.sqlj			setf sqlj

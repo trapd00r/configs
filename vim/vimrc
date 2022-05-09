@@ -373,7 +373,8 @@ vnoremap S :SortByBlock<cr>
 nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
 
 " search for word under cursor
-nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<cr>
+"nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<cr>
+"
 
 " better movement in ex mode
 cnoremap  <C-*> <c-a>
@@ -1065,7 +1066,7 @@ highlight CursorLine              ctermfg=none ctermbg=234
 highlight CursorLineNr            ctermfg=fg   ctermbg=234 cterm=none
 highlight Error                   ctermfg=089  ctermbg=250 cterm=bolditalicreverse
 highlight ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
-highlight Folded                  ctermfg=236  ctermbg=233 cterm=none
+highlight Folded                  ctermfg=238  ctermbg=233 cterm=none
 highlight FoldColumn              ctermfg=236  ctermbg=233 cterm=none
 highlight IncSearch               ctermfg=053  ctermbg=197  cterm=bolditalic
 
@@ -1315,3 +1316,50 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
+
+function! CustomFoldText(string)
+    "get first non-blank line
+    let fs = v:foldstart
+    if getline(fs) =~ '^\s*$'
+      let fs = nextnonblank(fs + 1)
+    endif
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+    let pat  = matchstr(&l:cms, '^\V\.\{-}\ze%s\m')
+    " remove leading comments from line
+    let line = substitute(line, '^\s*'.pat.'\s*', '', '')
+    " remove foldmarker from line
+    let pat  = '\%('. pat. '\)\?\s*'. split(&l:fmr, ',')[0]. '\s*\d\+'
+    let line = substitute(line, pat, '', '')
+
+    let line = substitute(line, split(&l:foldmarker, ',')[0], '', '')
+
+"   let line = substitute(line, matchstr(&l:cms,
+"	    \ '^.\{-}\ze%s').'\?\s*'. split(&l:fmr,',')[0].'\s*\d\+', '', '')
+
+    let w = get(g:, 'custom_foldtext_max_width', winwidth(0)) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . printf("%03d", foldSize) . " lines "
+    let foldLevelStr = '+'. v:folddashes
+    let lineCount = line("$")
+"    if has("float")
+"	try
+"	     let foldPercentage = printf("[%2.1f", (foldSize*1.0)/lineCount*100) . "%] "
+"	catch /^Vim\%((\a\+)\)\=:E806/	" E806: Using Float as String
+"	    let foldPercentage = printf("[of %d lines] ", lineCount)
+"	endtry
+"    endif
+"    if exists("*strwdith")
+"	let expansionString = repeat(a:string, w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+"    else
+"	let expansionString = repeat(a:string, w - strlen(substitute(foldSizeStr.line.foldLevelStr.foldPercentage, '.', 'x', 'g')))
+"    endif
+    let expansionString = ' '
+    return line . expansionString . foldSizeStr . foldLevelStr
+"    return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endfunction
+
+set foldtext=CustomFoldText('=')
