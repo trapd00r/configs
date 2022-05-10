@@ -84,6 +84,7 @@ Plug 'tpope/vim-surround'               " surround all the things
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'yggdroot/indentline'              " vertical lines as indent guides for expandtab
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
+Plug 'rhysd/clever-f.vim'               " keep smashing f
 
 
 call plug#end()
@@ -1048,6 +1049,10 @@ highlight CurrentWord2 ctermfg=196 cterm=bold
 highlight CurrentWord3 ctermfg=196 cterm=italic
 highlight CurrentWord4 ctermfg=196 cterm=bolditalic
 highlight CurrentWord5 ctermfg=196 cterm=bolditalicunderline
+
+" highlight next occurence of fF/tT
+highlight CleverFChar   ctermfg=184 cterm=boldunderlineitalic
+highlight CleverFCursor ctermbg=fg ctermfg=bg
 
 " highlight undo operations
 highlight HighlightedundoChange ctermbg=bg ctermfg=034 cterm=bold
