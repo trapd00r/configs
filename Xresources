@@ -23,16 +23,18 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 [3]: https://github.com/trapd00r/pickyfont
 }}}*/
 ! xft {{{
-!!Xft*dpi: 94
-!!Xft*antialias: true
-!!!Xft*hinting: true
-!!Xft*autohint: true
-!!!Xft*hintstyle: hintfull
-!!Xft*rgba: vbgr
+!Xft*dpi: 80
+!Xft*antialias: true
+!!Xft*hinting: true
+!Xft*autohint: true
+!!Xft*hintstyle: hintfull
+!Xft*rgba: vbgr
 !Xft*rgba: rgba
 !}}}
 
-!*bell-command: urxvt
+! *bell-command: dunstify -a bell ''
+
+URxvt*chdir:                /home/scp1/dev/askas/air8
 
 URxvt.perl-lib:             /home/scp1/dev/urxvt-extensions
 URxvt*perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher
@@ -371,4 +373,36 @@ sid.keysym.Control-Shift-K: \033[23@
 *.color14:        #899ca1
 *.color15:        #f8f8f2
 
-! vim: fdm=marker et sw=2 tw=0:
+xscreensaver.splash: false
+ 
+!font settings
+xscreensaver.Dialog.headingFont:  -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+xscreensaver.Dialog.bodyFont:     -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+xscreensaver.Dialog.labelFont:    -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+xscreensaver.Dialog.unameFont:    -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+xscreensaver.Dialog.buttonFont:   -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+xscreensaver.Dialog.dateFont:     -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+xscreensaver.passwd.passwdFont:   -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252
+ 
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #111111
+xscreensaver.Dialog.background:         #ffffff
+xscreensaver.Dialog.topShadowColor:     #111111
+xscreensaver.Dialog.bottomShadowColor:  #111111
+xscreensaver.Dialog.Button.foreground:  #ffffff
+xscreensaver.Dialog.Button.background:  #666666
+ 
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #ffffff
+xscreensaver.Dialog.text.background:    #666666
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
+ 
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.background:  #000000
+xscreensaver.passwd.thermometer.width:       8
+ 
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %b %d
