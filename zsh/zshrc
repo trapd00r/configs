@@ -266,5 +266,8 @@ trash() {
   export TRASHCAN=${HOME}/tmp/_trashcan
   mv -v "$@" $TRASHCAN
 }
+alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
+
+export EDIR_EDITOR='vim -c ":setf LS_COLORS | set nolist"'
 
 export ASKAS_BUTIK=magnusw1
