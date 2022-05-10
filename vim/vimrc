@@ -85,6 +85,7 @@ Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'yggdroot/indentline'              " vertical lines as indent guides for expandtab
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'rhysd/clever-f.vim'               " keep smashing f
+Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
 
 
 call plug#end()
@@ -902,7 +903,10 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
-"
+" let me map myself
+let g:conflict_marker_enable_mappings = 0
+
+" how long a yank operations will be highlighted, in ms
 let g:highlightedyank_highlight_duration = 1000
 
 " to allow for highlighting of Conceal myself
