@@ -90,6 +90,8 @@ Plug 'yggdroot/indentline'              " vertical lines as indent guides for ex
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
+Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
+Plug 'vim-scripts/AnsiEsc.vim'
 
 
 call plug#end()
@@ -303,7 +305,8 @@ map <C-s> :call ShowFuncName()<cr>
 nnoremap <C-o> :CtrlPFunky<cr>
 
 " a double <cr> to supress "Press enter to continue"
-nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
+"nnoremap <C-c> :exe '!markdown_previewer %'<cr><cr>
+nnoremap <silent> <C-c> :<C-U>PipePreview<CR>
 
 " next buffer
 nnoremap <C-n>     :bnext<cr>
@@ -907,6 +910,9 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+" preview markdown directly in vim
+let g:pipe_preview_command = 'mdv -'
+
 " let me map myself
 let g:conflict_marker_enable_mappings = 0
 
