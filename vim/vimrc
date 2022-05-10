@@ -29,28 +29,32 @@ call plug#begin(expand($VIMRUNTIME) . '/plugged')
 " This way, I'm loading the dev versions of my plugins if it looks like
 " I'm about to work on them.
 
-" LS_COLORS.vim     - dircolors syntax
-" cccp.vim          - colorcolumn at cursor position
-" currentline.vim   - highlight the current line like a marker pen
-" yankmatches.vim   - yank/delete matches from a previous search operation
-" neverland         - my colorscheme
-" vim-syntax-notes  - only useful for me
-" foldsearches.vim  - fold around searches
-" eqalignsimple.vim - alignment magic with = and +
-" hlnext.vim'       - highlight current search result
-" automkdir.vim     - vim ~/dev/doesntexist/butthatisfine.vim
+" LS_COLORS.vim      - dircolors syntax
+" LS_COLORS-edir.vim - dircolors syntax for an edir session
+" cccp.vim           - colorcolumn at cursor position
+" currentline.vim    - highlight the current line like a marker pen
+" yankmatches.vim    - yank/delete matches from a previous search operation
+" neverland          - my colorscheme
+" vim-syntax-notes   - only useful for me
+" foldsearches.vim   - fold around searches
+" eqalignsimple.vim  - alignment magic with = and +
+" hlnext.vim'        - highlight current search result
+" automkdir.vim      - vim ~/dev/doesntexist/butthatisfine.vim
 
-for myplugin in [ 'LS_COLORS.vim',
-\                 'automkdir.vim',
-\                 'cccp.vim',
-\                 'currentline.vim',
-\                 'eqalignsimple.vim',
-\                 'foldsearches.vim',
-\                 'hlnext.vim',
-\                 'neverland-vim-theme',
-\                 'vim-scriptease',
-\                 'vim-syntax-notes',
-\                 'yankmatches.vim']
+for myplugin in [
+\  'automkdir.vim',
+\  'cccp.vim',
+\  'currentline.vim',
+\  'eqalignsimple.vim',
+\  'foldsearches.vim',
+\  'hlnext.vim',
+\  'neverland-vim-theme',
+\  'vim-scriptease',
+\  'vim-syntax-notes',
+\  'yankmatches.vim',
+\  'LS_COLORS-edir.vim',
+\  'LS_COLORS.vim',
+\ ]
 
   let path = expand("%:p:h:h")
 
