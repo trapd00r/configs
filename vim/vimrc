@@ -92,6 +92,7 @@ Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
 Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
 Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'lfv89/vim-interestingwords'
 
 
 call plug#end()
@@ -358,6 +359,7 @@ nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
 "   - clear highlighted yanks
 "   - clear highlighted lines
 "   - clear highlighted CurrentWord*
+"   - clear highlighted InterestingWords
 "   - reset colorcolumn
 "   - redraw screen
 nnoremap <silent> <C-l>
