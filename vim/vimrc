@@ -254,6 +254,11 @@ nnoremap <silent> <leader>cc :call CCCP()<cr>
 nnoremap <leader>' :normal cs"'<cr>
 nnoremap <leader>" :normal cs'"<cr>
 
+" go to start of function
+nnoremap <silent> <leader>q :normal [m<cr>
+" go to end of function
+"nnoremap <silent> <leader>a :normal ]m<cr>
+
 " change the ugly q^single quoted^ to something better
 " you want to do
 "   setxkbmap se -variant nodeadkeys for the ^
@@ -456,10 +461,10 @@ nnoremap <leader>M :Marks<cr>
 " quickly change ft
 nnoremap <leader>ft :Filetypes<cr>
 
-command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
-nnoremap <leader>air :AIR8files<cr>
+"command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
+"nnoremap <leader>air :AIR8files<cr>
 
-nnoremap <leader>f :RgFzf
+"nnoremap <leader>f :RgFzf
 
 " Rg word under cursor, and filter results with fzf
 nnoremap <C-g> :RgFzf*<cr>
@@ -912,6 +917,11 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+" highlight interesting words
+let g:interestingWordsTermColors = ['161', '147', '109', '137', '186', '222']
+let g:interestingWordsRandomiseColors = 0
+
 " preview markdown directly in vim
 let g:pipe_preview_command = 'mdv -'
 
@@ -1050,7 +1060,7 @@ highlight YankedMatches ctermfg=bg ctermbg=196 cterm=bolditalic
 
 " highlight regular yanks
 if g:hostname == 'tp'
-  highlight HighlightedyankRegion ctermfg=bg ctermbg=185 cterm=none
+  highlight HighlightedyankRegion ctermfg=bg ctermbg=167 cterm=none
 else
   highlight HighlightedyankRegion ctermfg=bg ctermbg=185 cterm=bolditalic
 endif
