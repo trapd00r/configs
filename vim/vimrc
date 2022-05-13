@@ -304,6 +304,12 @@ nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 " folding around use statements
 nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
 
+" folding around warns
+nmap <silent> <expr>  zw  FS_FoldAroundTarget('^\s*warn\s\+\S.*;',{'context':1})
+
+" folding around mappings
+nmap <silent> <expr>  zm  FS_FoldAroundTarget('^[nvxo]\(nore\)\?map',{'context':1})
+
 " show the current function name
 map <C-s> :call ShowFuncName()<cr>
 
