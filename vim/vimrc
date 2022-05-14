@@ -9,6 +9,7 @@
 " plugin/blockwise.vim
 " plugin/smartcom.vim
 
+
 " ========== INIT START =================================
 filetype plugin indent on
 syntax on
@@ -59,6 +60,7 @@ for myplugin in [
   let path = expand("%:p:h:h")
 
   " developing, use dev version of plugin
+  " ~/dev/LS_COLORS.vim/
   if path =~ '\vdev[/]' . myplugin
     Plug path
 
@@ -68,6 +70,12 @@ for myplugin in [
   endif
 endfor
 
+" extra syntax rules
+Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
+Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
+Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
+
+Plug 'junegunn/vim-plug'                " self
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
@@ -91,8 +99,8 @@ Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
 Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
-Plug 'vim-scripts/AnsiEsc.vim'
-Plug 'lfv89/vim-interestingwords'
+Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
+Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 
 
 call plug#end()
@@ -748,12 +756,6 @@ augroup END
 
 " sadly there is no tt2 + html + js syntax file that works
 autocmd BufRead,BufNewFile *.tt setf javascript
-
-" more goodies for viml
-autocmd Filetype vim  source ~/dev/vim-after-syntax-vim/after/syntax/vim.vim
-autocmd Filetype perl source ~/dev/vim-after-syntax-perl/after/syntax/perl.vim
-autocmd Filetype sh   source ~/dev/vim-after-syntax-sh/after/syntax/sh.vim
-autocmd Filetype zsh  source ~/dev/vim-after-syntax-zsh/after/syntax/zsh.vim
 
 autocmd BufNewFile,BufRead  MANIFEST              set filetype=LS_COLORS
 autocmd BufNewFile,BufRead  vidir*                set filetype=LS_COLORS
