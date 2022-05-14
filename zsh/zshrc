@@ -61,39 +61,31 @@ compinit
 
 #PERIOD=5; periodic() { setbg }
 
-#tv_shortcuts() {
-#  if [[ $(pwd) == /mnt/TV_3* ]]; then
-#    hash -d 4=/mnt/TV_4
-#  fi
-#}
-
+# ssh key management
 if [[ -z $(pidof ssh-agent) && -z $(pidof gpg-agent) ]]; then
   if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_rsa_askas ]]; then
     eval `keychain --dir $HOME/.keychain -q --eval id_rsa_askas`
   fi
 fi
 
+
 if [[ $DEBUG > 0 ]]; then
   setopt source_trace
 fi
-#for r in $HOME/etc/zsh/[0-9]*.zsh; do
-#  . $r
-#done
 
+# init
 for r in $HOME/etc/zsh/[0-5]*.zsh; do
   . $r
 done
 . $HOME/etc/zsh/10-syntax.zsh
-#. $HOME/etc/zsh/10-z.zsh
-#. $HOME/etc/zsh/plugins/k.sh
-#. $HOME/etc/zsh/plugins/zsh-vimode-visual.zsh
 . $HOME/.secret_zshrc
 
+for x in ${HOME}/dev/askas/utils-askas/zsh/*.zsh; do
+  . $x; 
+done
 
-#if [[ -n ${SSH_CLIENT} ]] ; then
-#  RPROMPT="${Pfg[red]}"'['"${Pfg[cy]}%n${PNC}@${Pfg[cy]}%m${Pfg[red]}"']'"${Pfg[cy]}"
-#fi
 
+# terminal options
 stty intr    "^C"          2> /dev/null
 stty erase   "^?"          2> /dev/null
 stty eof     "^D"          2> /dev/null
@@ -117,38 +109,8 @@ stty speed   4000000       &> /dev/null
 autoload edit-command-line
 zle -N edit-command-line
 
-# XXX move/fix/make something of this
-precmd() {
-  #zle  beginning-of-line
-  #printf "% $zle_eval_context\n"
-  #printf "#### RBUF: $RBUFFER\n"
-  #print -s " $PWD"
-  #LAST_DIR=$PWD
-}
-
-#prompt_japh_setup
-#source $HOME/etc/zsh/prompt_japh_setup
-
-#zstyle ':vcs_info:*'     actionformats " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ye}|%F{red}%a%F{[ma}]%f-"
-#zstyle ':vcs_info:*'     formats       " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%b%F{ma}]%f-"
-#zstyle ':vcs_info:cvs:*' formats       " %F{ma}(%f%s%F{ma})%F{ye}-%F{ma}[%F{green}%r%F{ma}]%f-"
-#zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b%F{red}:%F{ye}%r"
-
-
-#printf "\e]12;%s\a" "#ffffff"
-#PS1='  '
+# LS_COLORS
 eval $(dircolors -b $HOME/dev/LS_COLORS/LS_COLORS)
-#export PATH=${PATH}:/usr/bin/site_perl
-#alias ls=ls++
-#alias ..="builtin cd .."
-#alias ...="builtin cd ../ && pwd"
-#alias ....="builtin cd ../.."
-#alias rm="/bin/rm -v"
-#alias cp="/bin/cp -v"
-#alias mv="/bin/mv -v"
-#alias prename="prename -v"
-
-#eval $( dircolors -b ${HOME}/dev/LS_COLORS/LS_COLORS )
 
 compdef     _gnu_generic ln file vnstati lscpu lsb_release
 
@@ -192,20 +154,17 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
   "%b%F{red}:%F{ye}%r"
 
 
-#PROMPT='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_} %f%# '
-
+# my prompt
 source ~/etc/zsh/099-prompt_japh_2022.zsh
 
-# not sure if I want this or not, trying for a while
+# fzf all the things
 source ~/etc/zsh/11-fzf-completion.zsh
 source ~/etc/zsh/11-fzf-keybindings.zsh
 
-#< completion for environment variable values
+# completion for environment variable values
+# this way I can do
+# $ export ASKAS_BUTIK=<tab>
 _comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter test1 test2 test3 test4 test5'
-
-# why completion doesn't work if script is +x
-compdef _perl_modules vafan
-compdef _perl_modules ot
 
 # the included zsh completion script in the beets dist is broken
 # this makes it easier to import:
@@ -220,17 +179,15 @@ zstyle ':completion:*:*:beet*' file-patterns '
 # git completion for another command
 # compdef g="git"
 
-batdiff() {
-  OLDPAGER=$PAGER
-  export PAGER=""
-  git diff --name-only --diff-filter=d | xargs bat --diff
-  export PAGER=$OLDPAGER
-}
+#batdiff() {
+#  OLDPAGER=$PAGER
+#  export PAGER=""
+#  git diff --name-only --diff-filter=d | xargs bat --diff
+#  export PAGER=$OLDPAGER
+#}
 
 
-for x in ${HOME}/dev/askas/utils-askas/zsh/*.zsh; do
-  . $x; 
-done
+
 
 _fzf_complete_git() {
     ARGS="$@"
