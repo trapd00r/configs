@@ -7,7 +7,6 @@
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
 " plugin/blockwise.vim
-" plugin/smartcom.vim
 
 
 " ========== INIT START =================================
@@ -41,6 +40,7 @@ call plug#begin(expand($VIMRUNTIME) . '/plugged')
 " eqalignsimple.vim  - alignment magic with = and +
 " hlnext.vim'        - highlight current search result
 " automkdir.vim      - vim ~/dev/doesntexist/butthatisfine.vim
+" smartcom.vim       - smarter completion
 
 for myplugin in [
 \  'automkdir.vim',
@@ -55,6 +55,7 @@ for myplugin in [
 \  'yankmatches.vim',
 \  'LS_COLORS-edir.vim',
 \  'LS_COLORS.vim',
+\  'smartcom.vim',
 \ ]
 
   let path = expand("%:p:h:h")
@@ -94,7 +95,6 @@ Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
-Plug 'yggdroot/indentline'              " vertical lines as indent guides for expandtab
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
