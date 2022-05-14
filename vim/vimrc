@@ -688,12 +688,13 @@ autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
 " set quickfix window height and make it modifiable
 autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
 
-" fold this file in a nice way
+" fold config files in a nice way
 autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | let &foldmarker='START =====,END ====='
+autocmd BufRead ~/.zshrc,~/etc/zsh/zshrc set foldlevel=0 | let &foldmarker='START =====,END ====='
 
 " try to figure out the filetype when there's no extension
 " often the case in my bin (~/dev/utils/) directory
-autocmd BufNewFile,BufRead  *        call s:infer_filetype()
+autocmd BufNewFile,BufRead  * call s:infer_filetype()
 
 " evaluate the comment char for the current buffer
 " now, the variable b:comment will always hold the correct
