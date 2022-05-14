@@ -1,65 +1,31 @@
 #!/bin/zsh
-### vim: ft=zsh:fdm=marker:et:sw=2:
 ###
 #      ${HOME}/etc/zsh/zshrc
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
-#         mtime  2012-09-08 19:51:23
-#   permissions  You are free to use things you may find useful here.
-#                Would my tweaks happen to give you a raise or fetch you a
-#                girlfriend, it goes without saying I'm counting on you
-#                to share with me as I've shared with you.
+#         mtime  2022-05-14 09:30:47
 #           git  http://github.com/trapd00r/configs/zsh  (up-to-date)
-#           url  http://devel.japh.se/configs/zsh
-#           irc  japh@freenode #zsh #vim #perl
+#           irc  japh@irc.libera.chat #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
-###
-###
+#
+#zmodload zsh/zprof
 
-#if [[  $UID -ne 0 ]]; then
-#  umask 0077
-#  fi
+# ========== INIT START =================================
 chdir ${HOME}/dev/askas/air8
 
+#autoload -U compinit
+#compinit
 
-#FIXME
-#~/dev/utils/font-10-anonymous-it
-#~/dev/utils/font-12-terminus
-#~/dev/utils/font-12-anonymous
+# function path
+fpath=($fpath ~/etc/zsh/functions/)
 
-if [[ $(hostname) = "sid" ]]; then
-#  ~/dev/utils/font-monte
-elif [[ $(hostname) = "tp" ]]; then
-#  ~/dev/utils/font-monte
+# FIXME
+# Terrible solution for work monitors
+# for now
+if [[ $(hostname) = "tp" ]]; then
   ~/dev/utils/font-askas
 fi
-
-fpath=($fpath ~/etc/zsh/functions/)
-# load all functions in fpath that has the executable bit set; makes it easy to
-# enable/disable things on the fly.
-#for func in $^fpath/*(N-.x:t); autoload $func
-#freload()  { while (( $# )); do; unfunction $1; autoload -U $1; shift; done }
-
-autoload -U compinit
-compinit
-
-
-# command mode thanks
-#zle-line-init() { zle -K vicmd }
-#zle -N zle-line-init
-#zle-line-finish() { print -P 'done\n' }
-
-#command_not_found_handler() {
-#  if autoload +X $1 >& /dev/null; then
-#    $1 "${(@)argv[2,-1]}"
-#  return 0
-#  else
-#    return 1
-#  fi
-#}
-
-#PERIOD=5; periodic() { setbg }
 
 # ssh key management
 if [[ -z $(pidof ssh-agent) && -z $(pidof gpg-agent) ]]; then
@@ -68,66 +34,985 @@ if [[ -z $(pidof ssh-agent) && -z $(pidof gpg-agent) ]]; then
   fi
 fi
 
+## https://github.com/trapd00r/stderred
+[[ -f ${HOME}/dev/stderred/lib64/stderred.so ]] \
+  && export LD_PRELOAD=${HOME}/dev/stderred/lib64/stderred.so:${LD_PRELOAD}
 
-if [[ $DEBUG > 0 ]]; then
-  setopt source_trace
-fi
 
-# init
-for r in $HOME/etc/zsh/[0-5]*.zsh; do
-  . $r
-done
-. $HOME/etc/zsh/10-syntax.zsh
+# source secrets
 . $HOME/.secret_zshrc
-
 for x in ${HOME}/dev/askas/utils-askas/zsh/*.zsh; do
-  . $x; 
+  . $x;
 done
 
+# my prompt
+. ~/etc/zsh/099-prompt_japh_2022.zsh
+# syntax hl
+. ~/etc/zsh/10-syntax.zsh
 
-# terminal options
-stty intr    "^C"          2> /dev/null
-stty erase   "^?"          2> /dev/null
-stty eof     "^D"          2> /dev/null
-stty start   "undef"       2> /dev/null
-stty stop    "undef"       2> /dev/null
-stty susp    "^Z"          2> /dev/null
-stty rprnt   "^R"          2> /dev/null
-stty werase  "^W"          2> /dev/null
-stty lnext   "^B"          2> /dev/null
-stty flush   "undef"       2> /dev/null
-#stty eol     "undef"       2> /dev/null
-#stty eol2    "undef"       2> /dev/null
-#stty swtch   "undef"       2> /dev/null
-#stty kill    "undef"       2> /dev/null
-#stty quit    "undef"       2> /dev/null
-stty time    0             2> /dev/null
-stty min     0             2> /dev/null
-stty line    6             2> /dev/null
-stty speed   4000000       &> /dev/null
-
-autoload edit-command-line
-zle -N edit-command-line
 
 # LS_COLORS
-eval $(dircolors -b $HOME/dev/LS_COLORS/LS_COLORS)
+#if [[ -z $LS_COLORS ]]; then
+#  if [ -f $HOME/dev/LS_COLORS/LS_COLORS ]; then
+#    eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
+#  elif [ -f $HOME/.dircolors ]; then
+#    eval $( dircolors -b $HOME/.dircolors/ )
+#  else
+#    if [ "$TERM" = "linux" ]; then
+#      export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:'
+#    else
+#      export LS_COLORS='*.m4a=38;5;137;1:*.s3m=38;5;71;1:*.S3M=38;5;71;1:*.mod=38;5;72:*.sid=38;5;71:*.mov=38;5;42:*.MOV=38;5;42:*.qcow=38;5;141:*.bak=38;5;41;1:*.signature=38;5;206:*.old=38;5;242:*.err=38;5;160;1:*.error=38;5;160;1:*.go=38;5;36;1:*.htm=38;5;125;1:*.html=38;5;125;1:*.fcm=38;5;41:*.fm2=38;5;35:*.torrent=38;5;58:*.mfasl=38;5;73:*.rdf=38;5;144:*.sqlite=38;5;60:*.tdy=38;5;214:*.ogv=38;5;94:*.out=38;5;46;1:*.un~=38;5;240:*.sample=38;5;130;1:*.example=38;5;225;1:*.enc=38;5;110;3:*.map=38;5;58;3:*.mf=38;5;220;3:*.tfm=38;5;64:*.pfb=38;5;64:*.pfm=38;5;64:*.afm=38;5;64:*.def=38;5;136:*.mtx=38;5;36;3:*.tex=38;5;172:*.etx=38;5;36;3:*.sty=38;5;58:*.cfg=1:*.properties=38;5;197;1:*.m4=38;5;196;3:*.tfnt=38;5;140:*.tcl=38;5;64;1:*.typelib=38;5;49:*.pfa=38;5;43:*.sed=38;5;130;1:*.awk=38;5;148;1:*.svg=38;5;24;1:*.ttf=38;5;69;1:*.cpp=38;5;24;1:*.cs=38;5;74;1:*.java=38;5;142;1:*.jsm=38;5;142;1:*.jad=38;5;142:*.jar=38;5;142:*.jhtm=38;5;142:*.jsp=38;5;142:*.ru=38;5;142:*.js=38;5;42:*.jsm=38;5;42:*.lisp=38;5;204;1:*.coffee=38;5;94;1:*.asm=38;5;240;1:*.mp4=38;5;124:*.flv=38;5;131:*.spl=38;5;44:*.sug=38;5;44:*.1=38;5;196;1:*.eps=38;5;192:*.xpm=38;5;32:*.gif=38;5;35:*.info=38;5;101:*.lua=38;5;34;1:*.t=38;5;028;1:*.textile=38;5;106:ln=target:*.hs=38;5;159:*.ini=38;5;122:*.part=38;5;240:*.pid=38;5;160:*.pod=38;5;172;1:*.vim=1:*.git=38;5;197:*.urlview=38;5;85:*.dump=38;5;119:*.conf=1:*.md=38;5;184:*.markdown=38;5;184:*.mkd=38;5;184:*.h=38;5;81:*.rb=38;5;192:*.c=38;5;110:*.diff=42;38:*.yml=38;5;208:*.PL=38;5;160:*.csv=38;5;78:tw=38;5;208;1:*.chm=38;5;144:*.bin=38;5;249:*.sms=38;5;33:*.pdf=38;5;203:*.cbz=38;5;140:*.cbr=38;5;140:*.nes=38;5;160:*.mpg=38;5;38:*.ts=38;5;39:*.sfv=38;5;197:*.m3u=38;5;172:*.txt=38;5;192:*.log=38;5;190:*.bash=38;5;173:*.swp=38;5;241:*.swo=38;5;236:*.theme=38;5;109:*.zsh=38;5;173:*.nfo=38;5;220:mi=38;5;124:or=38;5;160:ex=38;5;148;1:ln=target:pi=38;5;126:ow=38;5;208;1:di=38;5;30:*.pm=;38;5;197;1:*.pl=38;5;214:*.sh=38;5;113:*.patch=45;37:*.tar=38;5;118:*.tar.gz=38;5;34:*.zip=38;5;11:*.rar=38;5;106:*.tgz=38;5;11:*.7z=38;5;11:*.mp3=38;5;191:*.flac=38;5;166;1:*.mkv=38;5;202:*.avi=38;5;114:*.wmv=38;5;113:*.jpg=38;5;66:*.JPG=38;5;66:*.jpeg=38;5;67:*.png=38;5;68:*.pacnew=38;5;33:*.xz=38;5;118:*.iso=38;5;124:*.css=38;5;91:*.php=38;5;93:*.gitignore=38;5;240:*.tmp=38;5;244:*.py=38;5;41:*.rmvb=38;5;112:*.arj=38;5;11:*.a=38;5;59:*.a00=38;5;11:*.A64=38;5;82:*.pc=38;5;100:*.a52=38;5;112:*.gel=38;5;83:*.ggl=38;5;83:*.directory=38;5;83:*.a78=38;5;112:*.atr=38;5;213:*.j64=38;5;102:st=1;38;5;208:*.st=38;5;208:*.dat=38;5;165:*.db=38;5;60:*.xml=38;5;23:*.cdi=38;5;124:*.nrg=38;5;124:*.32x=38;5;137:*.gg=38;5;138:*.cue=38;5;112:*.adf=38;5;35:*.nds=38;5;193:*.gb=38;5;203:*.gbc=38;5;204:*.gba=38;5;205:*.sav=38;5;220:*.r00=38;5;233:*.r01=38;5;234:*.r02=38;5;235:*.r03=38;5;236:*.r04=38;5;237:*.r05=38;5;238:*.r06=38;5;239:*.r07=38;5;240:*.r08=38;5;241:*.r09=38;5;242:*.r10=38;5;243:*.r11=38;5;244:*.r12=38;5;245:*.r13=38;5;246:*.r14=38;5;247:*.r15=38;5;248:*.r16=38;5;249:*.r17=38;5;250:*.r18=38;5;251:*.r19=38;5;252:*.r20=38;5;253:*.r21=38;5;254:*.r22=38;5;255:*.r47=38;5;233:*.r46=38;5;234:*.r45=38;5;235:*.r44=38;5;236:*.r43=38;5;237:*.r42=38;5;238:*.r41=38;5;239:*.r40=38;5;240:*.r39=38;5;241:*.r38=38;5;242:*.r37=38;5;243:*.r36=38;5;244:*.r35=38;5;245:*.r34=38;5;246:*.r33=38;5;247:*.r32=38;5;248:*.r31=38;5;249:*.r30=38;5;250:*.r29=38;5;251:*.r28=38;5;252:*.r27=38;5;253:*.r26=38;5;254:*.r25=38;5;255:*.json=38;5;199:*.SKIP=38;5;244:*.1p=38;5;160:*.3p=38;5;160:*.r48=38;5;234:*.r49=38;5;235:*.r50=38;5;236:*.r51=38;5;237:*.r52=38;5;238:*.r53=38;5;239:*.r54=38;5;240:*.r55=38;5;241:*.r56=38;5;242:*.r57=38;5;243:*.r58=38;5;244:*.r59=38;5;245:*.r60=38;5;246:*.r61=38;5;247:*.r62=38;5;248:*.r63=38;5;249:*.r64=38;5;250:*.r65=38;5;251:*.r66=38;5;252:*.r67=38;5;253:*.r68=38;5;254:*.r69=38;5;255:*.r69=38;5;255:*.r70=38;5;254:*.r71=38;5;253:*.r72=38;5;252:*.r73=38;5;251:*.r74=38;5;250:*.r75=38;5;249:*.r76=38;5;248:*.r77=38;5;247:*.r78=38;5;246:*.r79=38;5;245:*.r80=38;5;244:*.r81=38;5;243:*.r82=38;5;242:*.r83=38;5;241:*.r84=38;5;240:*.r85=38;5;239:*.r86=38;5;238:*.r87=38;5;237:*.r88=38;5;236:*.r89=38;5;235:*.r90=38;5;234:*.r91=38;5;235:*.r92=38;5;236:*.r93=38;5;237:*.r94=38;5;238:*.r95=38;5;239:*.r96=38;5;240:*.r97=38;5;241:*.r98=38;5;242:*.r99=38;5;243:*.r100=38;5;244:*.r101=38;5;240:*.r102=38;5;241:*.r103=38;5;242:*.r104=38;5;243:*.r105=38;5;244:*.r106=38;5;245:*.r107=38;5;246:*.r108=38;5;247:*.r109=38;5;248:*.r110=38;5;249:*.r111=38;5;250:*.r112=38;5;251:*.r113=38;5;252:*.r114=38;5;253:*.r115=38;5;254:*.r116=38;5;255'
+#    fi
+#  fi
+#fi
 
-compdef     _gnu_generic ln file vnstati lscpu lsb_release
-
-PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium:$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
-#PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-#PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
+if [ "$TERM" != "linux" ]; then
+  [[ "$HOST" == 'sid'   ]] && export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;4:mc=38;5;85;1;48;5;232:ne"
+  [[ "$HOST" == 'tp'   ]]  && export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;1;7:mc=38;5;85;1;48;5;232:ne"
+fi
 
 precmd() {
   vcs_info
   askas_butik_prompt_update
 }
 
+# zsh exports
+export                LISTMAX=0
+export               HISTFILE=${XDG_DATA_HOME}/zsh/history
+export               HISTSIZE=256000
+export               SAVEHIST=250000
+export              WORDCHARS='*?_.[]~&;!#$%^(){}<>'
+export              ZSH_THEME="japhprompt"
+export             HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*:gs:gd:calc:du1:l:make"
+export             KEYTIMEOUT=100
+export          KEYBOARD_HACK=' '
+export          LISTROWSFIRST=1
+export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
+
+# XDG spec
+export       XDG_DATA_HOME=${HOME}/var
+export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
+export      XDG_CACHE_HOME=${HOME}/var/cache
+export      XDG_STATE_HOME=${XDG_DATA_HOME}
+export      XDG_VIDEOS_DIR=/mnt/mvids
+export     XDG_CONFIG_HOME=${HOME}/etc
+export     XDG_DESKTOP_DIR=${HOME}/tmp
+export    XDG_DOWNLOAD_DIR=${HOME}/dl
+export    XDG_PICTURES_DIR=${HOME}/img
+export   XDG_DOCUMENTS_DIR=${HOME}/doc
+export   XDG_DOCUMENTS_DIR=${HOME}/usr/share/doc
+export   XDG_TEMPLATES_DIR=${HOME}/tmp
+export XDG_PUBLICSHARE_DIR=${HOME}/usr/share
+
+# locale, timezone
+export            LC_ALL=""
+export              LANG=en_US.UTF-8
+export        LC_ADDRESS=en_US.UTF-8
+export        LC_COLLATE=en_US.UTF-8
+export          LC_CTYPE=en_US.UTF-8
+export LC_IDENTIFICATION=en_US.UTF-8
+export    LC_MEASUREMENT=en_US.UTF-8
+export       LC_MESSAGES=en_US.UTF-8
+export       LC_MONETARY=en_US.UTF-8
+export           LC_NAME=en_US.UTF-8
+export        LC_NUMERIC=en_US.UTF-8
+export          LC_PAPER=en_US.UTF-8
+export      LC_TELEPHONE=en_US.UTF-8
+export           LC_TIME=en_US.UTF-8
+export TZ="Europe/Stockholm"
+
+# terminal options
+#stty eol     "undef"       2> /dev/null
+#stty eol2    "undef"       2> /dev/null
+#stty kill    "undef"       2> /dev/null
+#stty quit    "undef"       2> /dev/null
+#stty swtch   "undef"       2> /dev/null
+stty eof     "^D"          2> /dev/null
+stty erase   "^?"          2> /dev/null
+stty flush   "undef"       2> /dev/null
+stty intr    "^C"          2> /dev/null
+stty line    6             2> /dev/null
+stty lnext   "^B"          2> /dev/null
+stty min     0             2> /dev/null
+stty rprnt   "^R"          2> /dev/null
+stty speed   4000000       &> /dev/null
+stty start   "undef"       2> /dev/null
+stty stop    "undef"       2> /dev/null
+stty susp    "^Z"          2> /dev/null
+stty time    0             2> /dev/null
+stty werase  "^W"          2> /dev/null
+
+# ========== INIT END ===================================
+# ========== AUTOLOAD START =============================
+autoload edit-command-line
+zle -N edit-command-line
+
+
+# ========== AUTOLOAD END ===============================
+# ========== EXPORT START ===============================
+### PATH
+#export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas/:${HOME}/.local/bin:bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:/home/scp1/dev/askas/utils-askas/bin
+export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium:$HOME/perl5/bin${PATH:+:${PATH}}"
+export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5:${HOME}/dev/askas/utils-askas/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/objects:${HOME}/dev/askas/air8/cgi-bin/ibutik/admin/
+export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
+export        GOPATH=${HOME}/lib/go
+export       AWKPATH=${HOME}/dev/lib/awk/
+export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
+### Perl
+# CPAN Pause ID
+export PAUSE_ID=WOLDRICH
+
+# Module::Build
+export PERL_MB_OPT="--install_base $HOME/lib/perl5"
+
+# ExtUtils::MakeMaker
+export PERL_MM_OPT="INSTALL_BASE=$HOME/lib/perl5"
+
+export PERL_CPANM_HOME=${HOME}/tmp/cpanm
+export PERL_CPANM_OPT='-nql~/ --reinstall --prompt --auto-cleanup 365 --mirror-only'
+
+export PERL_LOCAL_LIB_ROOT=${HOME}/lib
+export PERL_MM_USE_DEFAULT=0
+export PERL_USE_UNSAFE_INC=1
+export DATAPRINTERRC=${XDG_CONFIG_HOME}/dataprinterrc
+export HARNESS_SUMMARY_COL_FAIL=red
+export HARNESS_SUMMARY_COL_SUC=green
+
+### Editor
+export EDITOR='vim'
+export GIT_EDITOR="${EDITOR} -X"
+export VIDIR_EDITOR=${EDITOR}
+export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=LS_COLORS'
+export VIMRUNTIME=${HOME}/etc/vim
+
+export LESS=''
+export PAGER=vimpager
+
+# edir, another version of vidir
+# https://github.com/trapd00r/LS_COLORS-edir.vim
+export EDIR_EDITOR='vim -c ":setf LS_COLORS-edir | set nolist"'
+
+
+
+### gui
+export QT_XFT=1
+export GDK_USE_XFT=1
+export DESKTOP_STARTUP_ID=42
+
+### graphics
+# vulkan fix
+export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
+# export VDPAU_NVIDIA_NO_OVERLAY=1
+
+# clipbored
+# https://github.com/trapd00r/clipbored
+export      CLIPBORED_DMENU_FONT=${FONT}
+export     CLIPBORED_DMENU_LINES=30
+export  CLIPBORED_DMENU_LISTMODE=vertical
+export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
+export CLIPBORED_DMENU_NORMAL_FG='#484848'
+export CLIPBORED_DMENU_SELECT_BG='#292929'
+export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
+export CLIPBORED_X_SELECTION='clipboard'
+
+# mpd
+export MPD_HOST=0.0.0.0
+export MPD_PORT=6600
+export MPD_USER=scp1
+
+# mail
+export MAIL=${HOME}/mail/gmail/INBOX
+export MAILDIR=${HOME}/mail/gmail/INBOX
+export SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
+export DELIVERED=yes
+
+### Askås
+export ASKAS_BUTIK=magnusw1
+export ASKAS_CGIDIR=${HOME}/dev/askas/air8/cgi-bin/ibutik
+
+# Selenium
+export HOST_WEB_URL=${ASKAS_BUTIK}.cdsuperstore.se
+export HOST_WEB_PROTOCOL=https
+export TEST_JSON=
+export TEST_SKIP_RETRY=
+
+# config locations
+export SCREENRC=${XDG_CONFIG_HOME}/screenrc
+export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
+export GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
+export    MPLAYER_HOME=${XDG_CONFIG_HOME}/mplayer
+export  MPLAYER_CONFIG=${XDG_CONFIG_HOME}/mplayer/config
+
+# terminal settings
+export                  LESSKEY="${XDG_CONFIG_HOME}/lesskey"
+export                 ESCDELAY=1
+export       NCURSES_NO_PADDING=1
+export   NCURSES_ASSUMED_COLORS=3,0
+export NCURSES_NO_MAGIC_COOKIES=1
+
+### application settings
+# qbittorrent ui issues
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+# fzf
+export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd.ignorefile"
+export FZMP_FZF_OPTIONS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+
+# https://github.com/trapd00r/cgrep
+export CGREP_MATCH='38;5;196;1'
+export CGREP_NONMATCH='38;5;240'
+
+export JEKYLL_ENV='production'
+export MULLVAD_USE_GTK=yes
+
+
+export BROWSER=${HOME}/dev/utils/www
+
+# ========== EXPORT END =================================
+# ========== ALIAS START ================================
+alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
+
+# faster dir switching
+alias --  -='builtin cd -'
+alias     b='builtin cd $HOME/bin'
+alias     c='builtin cd $XDG_CONFIG_HOME/'
+alias     d='builtin cd $HOME/dev'
+alias     t='builtin cd $HOME/tmp'
+alias     u='builtin cd $HOME/dev/utils'
+alias psp="cd ${HOME}/dev/askas/air8/cgi-bin/core/lib/AIR/PSP2"
+
+# basics
+alias       R='rehash'
+alias    beet="~/dev/beets/beet"
+alias     cat="$HOME/dev/vimcat/vimcat"
+alias      cp='cp -v'
+alias    cpan='cpanm'
+alias     feh='/usr/bin/feh -FZ --cache-size 2048 --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\" "$@"
+alias      gd='GIT_PAGER="" git diff'
+alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
+alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underline=>1,italic=>1})'"
+alias      ls='perl $HOME/dev/ls--/ls++ --dereference-command-line-symlink-to-dir' 
+alias     lsr='perl $HOME/dev/ls--/ls++ --sort=time -r'
+alias     lss='perl $HOME/dev/ls--/ls++ -Sr'
+alias   mtree='=mtree -d'
+alias      mv='mv -v'
+alias    nmap='nmap -sV'
+alias  pacman='pacman --color=auto'
+alias prename='prename -v'
+alias      rg="rg -T sql -T css -T html --colors 'match:bg:255' --colors 'match:fg:196' --colors 'line:fg:32' --colors 'path:fg:208'"
+alias      rm='rm -v'
+alias     scd='/bin/screen -d'
+alias     scx='screen-start-or-attach'
+alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd --verbose --root . --port 8080'
+alias     sql='vim ./cgi-bin/ibutik/_DATABAS/_Nytt_SQLkoder.sql'
+alias    wget='wget --no-check-certificate -U=Mozilla'
+alias  yaourt='trizen'
+
+# mpd, music
+alias     mpd="mpd ~/etc/mpd.conf && mpdas"
+alias  unlove='pimpd2 --unlove'
+alias   songs='pimpd2 --songs'
+alias  albums='pimpd2 --albums'
+alias   slove='pimpd2 --slove|ls_color'
+alias ncmpcpp="ncmpcpp -b $HOME/etc/ncmpcpp/keys"
+alias mm='builtin cd /mnt/music8/+TAGGED && cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf)"'
+
+# git add
+alias ga='git ls-files -m --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add'
+# show modified files in the last commit
+alias gdd='git diff --name-only HEAD~1..HEAD | ls_color'
+# edit modified files in the last commit
+alias vimlast='vim $(git diff --name-only HEAD~1..HEAD)'
+
+# ssh hosts aliases
+# https://github.com/trapd00r/utils/blob/master/ssh
+if [[ $UID != 0 ]]
+then
+  if [ -f "$HOME/.ssh/config" ]
+  then
+    for host in $(
+      perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
+      ); do
+      alias $host="ssh $host $@"
+    done
+  fi
+fi
+
+# ========== ALIAS END ==================================
+# ========== ABBREV START ===============================
+typeset -Ag abbreviations
+abbreviations=(
+  "jj"         "!$"
+  "jk"         "!-2$"
+  "jjk"        "!-3$"
+  "jkk"        "!-4$"
+  "kk"         "!-5$"
+  "kj"         "!-6$"
+  "bb"          "/mnt/music8/+TAGGED/"
+  "ss"          "/mnt/music8/_soulseek"
+
+)
+
+magic-abbrev-expand() {
+  local MATCH
+   LBUFFER=${LBUFFER%%(#m)[-:_a-zA-Z0-9]#}
+  LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+  zle self-insert
+#printf "\b"
+}
+
+no-magic-abbrev-expand() {
+  LBUFFER+=' '
+#  LBUFFER+=''
+}
+
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+
+bindkey " "   magic-abbrev-expand
+bindkey "^x " no-magic-abbrev-expand
+# ========== ABBREV END =================================
+# ========== BINDKEY START ==============================
+# redirection
+bindkey -s "^X0" " &> /dev/null "
+bindkey -s "^X1" "  > /dev/null "
+bindkey -s "^X2" " 2> /dev/null "
+bindkey -s "^X3" " 2>&1 "
+
+bindkey "^N"      most-accessed-file
+zle -C menu-complete-files menu-complete _generic
+zstyle ':completion:menu-complete-files:*' completer _files
+bindkey -M viins '^J' menu-complete-files
+
+zle -C all-matches complete-word _generic
+bindkey -M viins '^O' all-matches
+
+zstyle ':completion:all-matches:*'   old-matches only
+zstyle ':completion:all-matches::::' completer _all_matches
+
+bindkey -M vicmd  ":"  _complete_help 
+bindkey -M vicmd   ";" _read_comp
+bindkey -M viins "^U" all-matches
+bindkey " "     magic-abbrev-expand
+bindkey "^A"    beginning-of-line
+bindkey "^B"    backward-word
+#bindkey "^E"    end-of-line
+bindkey "^H"    backward-delete-char
+bindkey "^I"    complete-word
+bindkey "^L"    clear-screen
+bindkey "^M"    accept-line
+bindkey "^Q"    vi-quoted-insert
+bindkey "^R"    history-incremental-search-backward
+bindkey "^U"    vi-kill-line
+bindkey "^W"    backward-delete-word
+#bindkey "^X^A"  all-matches
+#bindkey "^Xd"   _list_expansions
+bindkey "^["    vi-cmd-mode
+bindkey "^[OB"  down-line-or-history
+bindkey "^[OC"  vi-forward-char
+bindkey "^[OD"  vi-backward-char
+bindkey "^[[3~" delete-char
+bindkey "^[[6~" down-line-or-history
+bindkey "^[[B"  down-line-or-history
+bindkey "^[[C"  vi-forward-char
+bindkey "^[[D"  vi-backward-char
+#>
+#< vicmd
+autoload edit-command-line
+zle -N edit-command-line
+#bindkey -M vicmd "^V"     edit-command-line
+#bindkey -M viins "^V"     edit-command-line
+
+bindkey -M vicmd "ga"     what-cursor-position
+bindkey -M vicmd "g~"     vi-oper-swap-case
+bindkey -M vicmd "di"     delete-in
+bindkey -M vicmd "ci"     change-in
+bindkey -M vicmd "da"     delete-around
+bindkey -M vicmd "ca"     delete-around
+
+
+bindkey -M vicmd  "^M"    accept-line
+bindkey -M vicmd  "1"-"9" digit-argument
+bindkey -M vicmd  "^J"     down-line-or-history
+bindkey -M vicmd  "^K"     up-line-or-history
+#bindkey -M vicmd  "^[[B"  down-line-or-history
+#bindkey -M vicmd  "^[OB"  down-line-or-history
+#_complete_help -C .complete-word _complete_help
+
+bindkey -M vicmd  "="     list-choices
+bindkey -M vicmd  "^D"    list-choices
+#bindkey -M vicmd  "^G"    list-expand
+bindkey -M vicmd  "#"     pound-insert
+bindkey -M vicmd  "^R"    history-incremental-search-backward
+#bindkey -M vicmd  "^P"    up-history
+bindkey -M vicmd  "k"     up-line-or-history
+#bindkey -M vicmd  "^[[A"  up-line-or-history
+#bindkey -M vicmd  "^[[B"  down-line-or-history
+bindkey -M vicmd  "A"     vi-add-eol
+bindkey -M vicmd  "a"     vi-add-next
+bindkey -M vicmd  "B"     vi-backward-blank-word
+bindkey -M vicmd  "h"     vi-backward-char
+#bindkey -M vicmd  "^H"    vi-backward-char
+bindkey -M vicmd  "^?"    vi-backward-char
+#bindkey -M vicmd  "^[[D"  vi-backward-char
+#bindkey -M vicmd  "^[OD"  vi-backward-char
+bindkey -M vicmd  "X"     vi-backward-delete-char
+bindkey -M vicmd  "b"     vi-backward-word
+bindkey -M vicmd  "c"     vi-change
+bindkey -M vicmd  "C"     vi-change-eol
+bindkey -M vicmd  "S"     vi-change-whole-line
+bindkey -M vicmd  "d"     vi-delete
+bindkey -M vicmd  "x"     vi-delete-char
+bindkey -M vicmd  "0"     vi-digit-or-beginning-of-line
+bindkey -M vicmd  "9"     vi-digit-or-beginning-of-line
+bindkey -M vicmd  "="     vi-digit-or-beginning-of-line
+bindkey -M vicmd  "+"     vi-down-line-or-history
+bindkey -M vicmd  "\$"    vi-end-of-line
+bindkey -M vicmd  "G"     vi-fetch-history
+bindkey -M vicmd  "f"     vi-find-next-char
+bindkey -M vicmd  "t"     vi-find-next-char-skip
+bindkey -M vicmd  "F"     vi-find-prev-char
+bindkey -M vicmd  "T"     vi-find-prev-char-skip
+bindkey -M vicmd  "\^"    vi-first-non-blank
+bindkey -M vicmd  "W"     vi-forward-blank-word
+bindkey -M vicmd  "E"     vi-forward-blank-word-end
+bindkey -M vicmd  "l"     vi-forward-char
+bindkey -M vicmd  "^[[C"  vi-forward-char
+bindkey -M vicmd  "^[OC"  vi-forward-char
+bindkey -M vicmd  " "     vi-forward-char
+bindkey -M vicmd  "w"     vi-forward-word
+bindkey -M vicmd  "e"     vi-forward-word-end
+bindkey -M vicmd  "|"     vi-goto-column
+bindkey -M vicmd  "\`"    vi-goto-mark
+bindkey -M vicmd  "'"     vi-goto-mark-line
+bindkey -M vicmd  "/"     history-incremental-pattern-search-backward
+#bindkey -M vicmd  "/"     vi-history-search-backward
+bindkey -M vicmd  "?"     vi-history-search-forward
+bindkey -M vicmd  ">"     vi-indent
+bindkey -M vicmd  "i"     vi-insert
+bindkey -M vicmd  "I"     vi-insert-bol
+#bindkey -M vicmd  "J"     vi-join
+bindkey -M vicmd  "D"     vi-kill-eol
+bindkey -M vicmd  "%"     vi-match-bracket
+bindkey -M vicmd  "O"     vi-open-line-above
+bindkey -M vicmd  "o"     vi-open-line-below
+bindkey -M vicmd  "p"     vi-put-after
+bindkey -M vicmd  "P"     vi-put-before
+bindkey -M vicmd  "."     vi-repeat-change
+bindkey -M vicmd  ";"     vi-repeat-find
+bindkey -M vicmd  "n"     vi-repeat-search
+bindkey -M vicmd  "R"     vi-replace
+bindkey -M vicmd  "r"     vi-replace-chars
+bindkey -M vicmd  ","     vi-rev-repeat-find
+bindkey -M vicmd  "N"     vi-rev-repeat-search
+bindkey -M vicmd  "\""    vi-set-buffer
+bindkey -M vicmd  "m"     vi-set-mark
+bindkey -M vicmd  "s"     vi-substitute
+bindkey -M vicmd  "~"     vi-swap-case
+bindkey -M vicmd  "u"     vi-undo-change
+bindkey -M vicmd  "<"     vi-unindent
+#bindkey -M vicmd  "-"     vi-up-line-or-history
+bindkey -M vicmd  "y"     vi-yank
+bindkey -M vicmd  "Y"     vi-yank-whole-line
+#>
+#< viins
+#bindkey -s -M viins "^T"  "\\\top\n"
+bindkey -M viins "^K" up-line-or-history
+# remove everything up to the last pipe so I can pipe the previous command to
+# something new
+_up_line_remove_pipe() {
+  [[ -z $BUFFER ]] && zle up-history;
+  BUFFER=${BUFFER%|*}\|\ ;CURSOR=$#BUFFER
+}
+zle -N _up_line_remove_pipe
+bindkey -M viins '^o' _up_line_remove_pipe
+bindkey -M viins '^K' up-line-or-history
+bindkey -M viins "^J" down-line-or-history
+
+bindkey -M viins '^G' xterm-set-bg
+bindkey -M vicmd '^G' xterm-set-bg
+#bindkey -M vicmd '^S' font-711-710-rev
+#bindkey -M viins '^S' font-711-710-rev
+bindkey -M vicmd '^S' wrxvt_spawn_in_cwd
+bindkey -M viins '^S' wrxvt_spawn_in_cwd
+
+#bindkey "^V"             prepend-vim
+#bindkey -M viins "^J"    insert-last-word
+bindkey -M viins "^M"    accept-line
+#bindkey -M viins "^X^A"  all-matches
+bindkey -M viins "^?"    backward-delete-char
+bindkey -M viins "^H"    backward-delete-char
+bindkey -M viins "^W"    backward-delete-word
+bindkey -M viins "^B"    backward-word
+bindkey -M viins "^[~"   _bash_complete-word
+bindkey -M viins "^E"   _bash_list-choices
+bindkey -M viins "^[[1~" beginning-of-line
+bindkey -M viins "^A"    beginning-of-line
+bindkey -M viins "^L"    clear-screen
+bindkey -M viins "^X?"   _complete_debug
+bindkey -M viins "^Xh"   _complete_help
+bindkey -M viins "^Xt"   _complete_tag
+bindkey -M viins "^I"    complete-word
+bindkey -M viins "^XC"   _correct_filename
+bindkey -M viins "^Xc"   _correct_word
+bindkey -M viins "^[[3~" delete-char
+bindkey -M viins "^D"    delete-word
+bindkey -M viins "^[[6~" down-line-or-history
+bindkey -M viins "^[[B"  down-line-or-history
+bindkey -M viins "^[OB"  down-line-or-history
+bindkey -M viins "^[[4~" end-of-line
+#bindkey -M viins "^E"    end-of-line
+bindkey -M viins "^Xa"   _expand_alias
+bindkey -M viins "^Xe"   _expand_word
+bindkey -M viins "^F"    forward-word
+bindkey -M viins "^[,"   _history-complete-newer
+bindkey -M viins "^[/"   _history-complete-older
+bindkey -M viins "^R"    history-incremental-search-backward
+bindkey -M viins "^Xd"   _list_expansions
+bindkey -M viins " "     magic-abbrev-expand
+bindkey -M viins "^Xm"   _most_recent_file
+bindkey -M viins "^Xn"   _next_tags
+bindkey -M viins "^X "   no-magic-abbrev-expand
+bindkey -M viins "^X^P"  pids
+bindkey -M viins "^X^R"  _read_comp
+bindkey -M viins "^[[5~" up-line-or-history
+bindkey -M viins "^[[A"  up-line-or-history
+bindkey -M viins "^[OA"  up-line-or-history
+bindkey -M viins "^[[D"  vi-backward-char
+bindkey -M viins "^[OD"  vi-backward-char
+bindkey -M viins "^["    vi-cmd-mode
+bindkey -M viins "^[[C"  vi-forward-char
+bindkey -M viins "^[OC"  vi-forward-char
+bindkey -M viins "^U"    vi-kill-line
+bindkey -M viins "^Q"    vi-quoted-insert
+#>
+#< command
+#bindkey -M command "^G" send-break
+bindkey -M command "^C" send-break
+#bindkey -M command "^J" send-break
+#bindkey -M command "^M" send-break
+#>
+#< isearch
+bindkey -M isearch " " self-insert
+bindkey -M isearch "^J" self-insert
+#>
+#< menuselect
+zmodload zsh/complist
+#bindkey -M menuselect -rp '^'
+#bindkey -M menuselect '^J' down-line-or-search
+#bindkey -M menuselect  '^K' up-line-or-search
+bindkey -M menuselect '^J' down-line-or-history
+bindkey -M menuselect  '^K' up-line-or-history
+bindkey -M menuselect  '^E' accept-and-menu-complete
+#bindkey -M menuselect  '^M' accept-and-infer-next-history
+#bindkey -M menuselect  '^M' accept-line-and-down-history
+bindkey -M menuselect  '^M' magic-space
+
+# remove all key bindings starting with ESC
+bindkey -M vicmd -rp "^["
+bindkey -M viins -rp "^["
+# escape as fast as possible from insert mode
+bindkey -M viins -rp '^['
+bindkey -M viins     '^[' vi-cmd-mode
+
+
+autoload edit-command-line
+# ========== BINDKEY END ================================
+# ========== SETOPT START ===============================
+setopt \
+     aliases                \
+  no_all_export             \
+     always_last_prompt     \
+  no_always_to_end          \
+     append_history         \
+  no_auto_continue          \
+     auto_list              \
+     auto_menu              \
+  no_auto_name_dirs         \
+  no_auto_param_keys        \
+     auto_param_slash       \
+     auto_pushd             \
+     auto_remove_slash      \
+  no_auto_resume            \
+     autocd                 \
+  no_bad_pattern            \
+     bare_glob_qual         \
+  no_bash_rematch           \
+  no_bashautolist           \
+  nobeep                    \
+  no_bg_nice                \
+     brace_ccl              \
+     brace_expand           \
+  no_bsd_echo               \
+     c_bases                \
+     c_precedences          \
+     case_glob              \
+     case_match             \
+  no_cdable_vars            \
+  no_chase_dots             \
+  no_chase_links            \
+     check_jobs             \
+     clobber                \
+     complete_aliases       \
+     complete_in_word       \
+  no_correct                \
+  no_correct_all            \
+  no_csh_junkie_history     \
+  no_csh_junkie_loops       \
+  no_csh_junkie_quotes      \
+  no_csh_nullcmd            \
+  no_csh_nullglob           \
+     debug_before_cmd       \
+     dot_glob               \
+  no_dvorak                 \
+  no_emacs                  \
+     equals                 \
+  no_err_exit               \
+  no_err_return             \
+     eval_lineno            \
+     exec                   \
+     extended_glob          \
+  no_extended_history       \
+  no_flow_control           \
+     function_arg_zero      \
+     glob                   \
+  no_glob_assign            \
+  no_glob_complete          \
+  no_glob_dots              \
+  no_glob_subst             \
+  no_global_rcs             \
+     hash_cmds              \
+     hash_dirs              \
+     hash_list_all          \
+  no_hist_allow_clobber     \
+  nohistbeep                \
+  no_hist_expire_dups_first \
+     hist_find_no_dups      \
+     hist_ignore_all_dups   \
+     hist_ignore_dups       \
+     hist_ignore_space      \
+  no_hist_no_functions      \
+     hist_no_store          \
+  no_hist_reduce_blanks     \
+     hist_save_by_copy      \
+  no_hist_save_no_dups      \
+  no_hist_subst_pattern     \
+  no_hist_verify            \
+  no_hup                    \
+  no_ignore_braces          \
+  no_ignore_eof             \
+  no_inc_append_history     \
+  no_interactive_comments   \
+  no_ksh_arrays             \
+  no_ksh_autoload           \
+  no_ksh_glob               \
+  no_ksh_option_print       \
+  no_ksh_typeset            \
+  no_ksh_zero_subscript     \
+     list_ambiguous         \
+  no_list_packed            \
+  no_list_rows_first        \
+     list_types             \
+     local_options          \
+  no_local_traps            \
+     long_list_jobs         \
+  no_magic_equal_subst      \
+  no_mail_warning           \
+  no_mark_dirs              \
+  no_menu_complete          \
+     monitor                \
+     multibyte              \
+     multios                \
+  no_nomatch                \
+  no_notify                 \
+  no_nullglob               \
+  no_numeric_glob_sort      \
+     octal_zeroes           \
+  no_overstrike             \
+  no_path_dirs              \
+  no_posix_builtins         \
+  no_posix_identifiers      \
+  no_print_eight_bit        \
+  no_print_exit_value       \
+  no_privileged             \
+  no_prompt_bang            \
+  no_prompt_cr              \
+     prompt_percent         \
+  no_prompt_sp              \
+     prompt_subst           \
+     pushd_ignore_dups      \
+     pushd_minus            \
+  no_pushd_silent           \
+  no_pushd_to_home          \
+     rc_expand_param        \
+  no_rc_quotes              \
+     rec_exact              \
+     rematch_pcre           \
+  no_restricted             \
+  no_rm_star_silent         \
+  no_rm_star_wait           \
+  no_sh_file_expansion      \
+  no_sh_glob                \
+  no_sh_nullcmd             \
+  no_sh_option_letters      \
+  no_sh_word_split          \
+  share_history             \
+     short_loops            \
+  no_single_line_zle        \
+     sun_keyboard_hack      \
+     transient_rprompt      \
+  no_traps_async            \
+  no_typeset_silent         \
+     unset                  \
+  no_verbose                \
+     vi                     \
+  no_warn_create_global     \
+  no_xtrace                 \
+     zle                    \
+  no_single_command
+#>
+
+autoload -U age compinit relative
+zle -C most-accessed-file menu-complete _generic
+
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
+function _url-quote-magic() {
+  url-quote-magic;
+  _zsh_highlight-zle-buffer
+}
+
+#compinit
+autoload -U url-quote-magic
+
+zle -N bracketed-paste bracketed-paste-url-magic
+
+# stop screwing with my clipboard
+unset zle_bracketed_paste
+
+# ========== SETOPT END =================================
+# ========== WIDGET START ===============================
+prepend-vim() {
+  if [[ $BUFFER != "vim "* ]]; then
+    BUFFER="vim $BUFFER"; CURSOR+=5
+  fi
+}
+zle -N prepend-vim
+
+# deletes a block between two characters
+delete-in() {
+  local CHAR LCHAR RCHAR LSEARCH RSEARCH COUNT
+  read -k CHAR
+  if [[ $CHAR == "w" ]];then
+    zle vi-backward-word
+    LSEARCH=$CURSOR
+    zle vi-forward-word
+    RSEARCH=$CURSOR
+    RBUFFER="$BUFFER[$RSEARCH+1,${#BUFFER}]"
+    LBUFFER="$LBUFFER[1,$LSEARCH]"
+    return
+  elif [[ $CHAR == "(" ]] || [[ $CHAR == ")" ]];then
+    LCHAR="("
+    RCHAR=")"
+  elif [[ $CHAR == "[" ]] || [[ $CHAR == "]" ]];then
+    LCHAR="["
+    RCHAR="]"
+  elif [[ $CHAR == "{" ]] || [[ $CHAR == "}" ]];then
+    LCHAR="{"
+    RCHAR="}"
+  else
+    LSEARCH=${#LBUFFER}
+    while [[ $LSEARCH -gt 0 ]] && [[ "$LBUFFER[$LSEARCH]" != "$CHAR" ]]; do
+      (( LSEARCH = $LSEARCH - 1 ))
+    done
+    RSEARCH=0
+    while [[ $RSEARCH -lt (( ${#RBUFFER} + 1 )) ]] && [[ "$RBUFFER[$RSEARCH]" != "$CHAR" ]]; do
+      (( RSEARCH = $RSEARCH + 1 ))
+    done
+    RBUFFER="$RBUFFER[$RSEARCH,${#RBUFFER}]"
+    LBUFFER="$LBUFFER[1,$LSEARCH]"
+    return
+  fi
+  COUNT=1
+  LSEARCH=${#LBUFFER}
+  while [[ $LSEARCH -gt 0 ]] && [[ $COUNT -gt 0 ]]; do
+    (( LSEARCH = $LSEARCH - 1 ))
+    if [[ $LBUFFER[$LSEARCH] == "$RCHAR" ]];then
+      (( COUNT = $COUNT + 1 ))
+    fi
+    if [[ $LBUFFER[$LSEARCH] == "$LCHAR" ]];then
+      (( COUNT = $COUNT - 1 ))
+    fi
+  done
+  COUNT=1
+  RSEARCH=0
+  while [[ $RSEARCH -lt (( ${#RBUFFER} + 1 )) ]] && [[ $COUNT -gt 0 ]]; do
+    (( RSEARCH = $RSEARCH + 1 ))
+    if [[ $RBUFFER[$RSEARCH] == "$LCHAR" ]];then
+      (( COUNT = $COUNT + 1 ))
+    fi
+    if [[ $RBUFFER[$RSEARCH] == "$RCHAR" ]];then
+      (( COUNT = $COUNT - 1 ))
+    fi
+  done
+  RBUFFER="$RBUFFER[$RSEARCH,${#RBUFFER}]"
+  LBUFFER="$LBUFFER[1,$LSEARCH]"
+}
+zle -N delete-in
+
+change-in() {
+  zle delete-in
+  zle vi-insert
+}
+zle -N change-in
+
+delete-around() {
+  zle delete-in
+  zle vi-backward-char
+  zle vi-delete-char
+  zle vi-delete-char
+}
+zle -N delete-around
+
+change-around() {
+  zle delete-in
+  zle vi-backward-char
+  zle vi-delete-char
+  zle vi-delete-char
+  zle vi-insert
+}
+zle -N change-around
+
+# ========== WIDGET END =================================
+# ========== FUNCTION START =============================
+cd()        { builtin cd "$@" && ls }
+du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f }
+du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f }
+
+which() {
+  IFS="$(printf '\n\t')"
+  printf '\e[?7t'
+  builtin which "$@" \
+    && builtin type "$@" \
+    && whereis "$@" \
+    && file $(builtin type "$@" | awk '{print $3}') 2> /dev/null
+  printf '\e[?7t'
+}
+
+mplayer() {
+  /usr/bin/mplayer \
+    -identify \
+    -include $XDG_CONFIG_HOME/mplayer/config \
+    -profile sid $@
+}
+mplayer_pipe() {
+  /usr/bin/mplayer \
+    -quiet -msglevel all=0 -identify -include $XDG_CONFIG_HOME/mplayer/config \
+    -profile $HOST > $XDG_CONFIG_HOME/mplayer/log.txt
+  rm -v $XDG_CONFIG_HOME/mplayer/log.txt
+}
+mplayer_headphones() {
+  /usr/bin/mplayer \
+    -msgmodule 1 -msgcolor -include $XDG_CONFIG_HOME/mplayer/config \
+    -channels 6 -af resample=48000,hrtf "$@"
+}
+mplayer_6ch_headphones() {
+  /usr/bin/mplayer \
+    -channels 6 -af resample=48000,hrtf \
+    -include $XDG_CONFIG_HOME/mplayer/config "$@"
+}
+
+# ========== FUNCTION END ===============================
+# ========== COMPLETION START ===========================
+# add generic completion to some things
+autoload -U age compinit relative
+compinit -u
+compdef     _gnu_generic c256 cc256 ln file
+compdef     _feh         f ff
+compdef     _files       mkdir mkdr
+compdef     _mkdir       mkdr
+compdef     _mplayer     m ms mplayer_redir mplayer_delete_current_file mplayer_headphones mplayer_6ch_headphones mplayer_redir
+compdef     _hosts       ping 
+compdef  -p _rm          rmc
+compdef     _ls          vdir l ls++
+compdef     _vim         vidir wim vi
+compdef     _xterm       wxterm uxterm
+compdef     _urxvt       xvt wrxvt
+
+#() {
+#  compinit -u
+#  local -a coreutils
+#  coreutils=(
+#    # /bin
+#    cat chgrp chmod chown cp date dd df dir ln ls mkdir mknod mv readlink
+#    rm rmdir vdir sleep stty sync touch uname mktemp
+#    # /usr/bin
+#    install hostid nice who users pinky stdbuf base64 basename chcon cksum
+#    comm csplit cut dircolors dirname du env expand factor fmt fold groups
+#    head id join link logname md5sum mkfifo nl nproc nohup od paste pathchk
+#    pr printenv ptx runcon seq sha1sum sha224sum sha256sum sha384sum
+#    sha512sum shred shuf sort split stat sum tac tail tee timeout tr
+#    truncate tsort tty unexpand uniq unlink wc whoami yes arch touch
+#  )
+#  for i in $coreutils; do
+#    # all which don't already have one
+#    # at time of this writing, those are:
+#    # /bin
+#    # chgrp chmod chown cp date dd df ln ls mkdir rm rmdir stty sync
+#    # touch uname
+#    # /usr/bin
+#    # nice comm cut du env groups id join logname md5sum nohup printenv
+#    # sort stat unexpand uniq whoami
+#    (( $+_comps[$i] )) || compdef _gnu_generic $i
+#  done
+#}
+
+zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
+zstyle '*' single-ignored show
+
+zstyle ':completion:*'                          accept-exact      '*(N)'
+zstyle ':completion:*'                          list-dirs-first   true
+zstyle ':completion:*'                          matcher-list      'm:{a-z}={A-Z}'
+zstyle ':completion:*'                          menu select       auto
+zstyle ':completion:*'                          my-accounts       'm@japh.se'
+zstyle ':completion:*'                          separate-sections yes
+zstyle ':completion:*'                          squeeze-slashes   false
+zstyle ':completion:*'                          use-perl          1
+zstyle ':completion:*:(all-|)files'             ignored-patterns  '*.un~'
+zstyle ':completion:*:functions'                ignored-patterns  '_*'
+zstyle ':completion::complete:*'                cache-path        ${XDG_CONFIG_HOME}/cache/$HOST
+zstyle ':completion::complete:*'                use-cache         on
+zstyle ':completion:most-accessed-file:*'       completer         _files
+zstyle ':completion:most-accessed-file:*'       file-patterns     '*:all\ files'
+zstyle ':completion:most-accessed-file:*'       file-sort         access
+zstyle ':completion:most-accessed-file:*'       hidden            all
+zstyle ':completion:most-accessed-file:*'       match-original    both
+zstyle ':completion:*:*:*:users'                ignored-patterns \
+  avahi bin daemon dbus ftp http mail nobody
+
+zstyle ':completion:*:cd:*'                     ignored-patterns '(*/)#lost+found'
+zstyle ':completion:*:(mv|cp|file|m|mplayer):*' ignored-patterns '(#i)*.(url|mht)'
+
+# completion for environment variable values
+# this way I can do
+# $ export ASKAS_BUTIK=<tab>
+_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter test1 test2 test3 test4 test5'
+
+# the included zsh completion script in the beets dist is broken
+# this makes it easier to import:
+# Directories first, audio files later.
+compdef _files beet
+zstyle ':completion:*:*:beet*' list-dirs-first true
+zstyle ':completion:*:*:beet*' file-patterns '
+  *(D-/):local-directories:"local directory"
+  (#i)*.(mp3|flac|ogg|opus|m4a)(D-^/):media-files:"media file"
+'
+
+# git things
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-
 zstyle ':vcs_info:*' stagedstr 'M' 
 zstyle ':vcs_info:*' unstagedstr 'M' 
 zstyle ':vcs_info:*' check-for-changes true
@@ -153,41 +1038,8 @@ zstyle ':vcs_info:cvs:*'          formats       \
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat \
   "%b%F{red}:%F{ye}%r"
 
-
-# my prompt
-source ~/etc/zsh/099-prompt_japh_2022.zsh
-
-# fzf all the things
-source ~/etc/zsh/11-fzf-completion.zsh
-source ~/etc/zsh/11-fzf-keybindings.zsh
-
-# completion for environment variable values
-# this way I can do
-# $ export ASKAS_BUTIK=<tab>
-_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter test1 test2 test3 test4 test5'
-
-# the included zsh completion script in the beets dist is broken
-# this makes it easier to import:
-# Directories first, audio files later.
-compdef _files beet
-zstyle ':completion:*:*:beet*' list-dirs-first true
-zstyle ':completion:*:*:beet*' file-patterns '
-  *(D-/):local-directories:"local directory"
-  (#i)*.(mp3|flac|ogg|opus|m4a)(D-^/):media-files:"media file"
-'
-
 # git completion for another command
 # compdef g="git"
-
-#batdiff() {
-#  OLDPAGER=$PAGER
-#  export PAGER=""
-#  git diff --name-only --diff-filter=d | xargs bat --diff
-#  export PAGER=$OLDPAGER
-#}
-
-
-
 
 _fzf_complete_git() {
     ARGS="$@"
@@ -207,24 +1059,323 @@ _fzf_complete_git_post() {
     awk '{print $1}'
 }
 
-
-
-
-export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
-
 # tabcomplete git diff to modifed files
 compdef _git gd=git-add
 
+# completion madness FIXME
+#zstyle   ':completion:*:(cd):*'           group-order 'named-directories'
+#zstyle   ':completion:*:(cd):*'           ignore-parents parent pwd
+##zstyle   ':completion:*:*:(cd):*'         completer _correct 
+##zstyle ':completion:*' completer _complete _ignored
+#
+## completers in order of usefulness
+#zstyle ':completion:*' completer _expand _list _complete _match _ignored _prefix _approximate
+#zstyle ':completion:*' completer _expand _complete _ignored _approximate
+##zstyle ':completion:*' completer _complete _history
+#zstyle ':completion:*' completer _complete 
+#
+####### use caching for all completions
+######zstyle ':completion:*' use-cache on
+######zstyle ':completion:*' cache-path ${HOME}/var/zsh/
+######
+####### add '..' dirs to completions
+#######zstyle ':completion:*' special-dirs ..
+######
+####### use perl
+#zstyle ':completion:*' use-perl on
+######
+####### XXX _urls setup
+##zstyle ':completion:*' urls ~/etc/zsh/urls
+######
+#########zstyle ':completion:*' accept-exact '*(N)'
+######zstyle ':completion:*' group-name ''
+######zstyle ':completion:*' list-dirs-first true
+######zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+######
+######
+####### '-e' is needed to get the argument evaluated each time this is called
+####### this argument to max-errors allows one error in 10 characters.
+#######zstyle -e ':completion:*:approximate:*' max-errors \
+#######  'reply=( $(( ($#PREFIX + $#SUFFIX) / 10 )) )'
+######
+#######< reducing matches
+######### functions starting with '_' are completion functions by convention
+######### these are not supposed to be called by hand. no completion needed.
+######zstyle ':completion:*:(functions|parameters|association-keys)' ignored-patterns '_*'
+######
+####### normally I don't want to complete *.o and *~, so, I'll ignore them, except
+####### for rm, for obvious reasons
+######zstyle ':completion:*:(^rm):*:(all-|)files' ignored-patterns '*?.o' '*?\~'
+######
+######### in my $HOME/bin dir there are often vim backups *~,
+######### these are not to be completed...
+######### i've got ${HOME}/bin/html/ which is no command, _do_not_complete_it!
+#######zstyle ':completion:*:complete:-command-::commands' ignored-patterns '(aptitude-*|html|*\~|haskell_count)'
+######
+######### don't complete lost+found dirs for 'cd'
+zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
+######
+######### special completions for (mpg|ogg)123
+######zstyle ':completion:*:*:mpg123:*'  file-patterns '(#i)*.mp3:files:mp3\ files *(-/):directories:directories'
+######zstyle ':completion:*:*:ogg123:*'  file-patterns '(#i)*.ogg:files:ogg\ files *(-/):directories:directories'
+######zstyle ':completion:*:*:(mplayer|m|ms):*' file-patterns '(#i)*.(mkv|mp4|m4a|iso|wmv|webm|ogv|avi|mpg|mpeg|rmvb|iso|nrg):files:mplayer\ eats *(-/):directories:directories'
+######
+######### weed out uninteresting users when completing '(command) ~<TAB>'
+######zstyle ':completion:*:*:*:*:users' ignored-patterns \
+######  bin daemon mail ftp http nobody dbus avahi ntp git usbmux mysql uuid kwakd
+#######>
+#######< formats
+##zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
+##zstyle ':completion:*:messages'     format "- %{${fg[cyan]}%}%d%{${reset_color}%} -"
+##zstyle ':completion:*:corrections'  format "- %{${fg[yellow]}%}%d%{${reset_color}%} - (%{${fg[cyan]}%}errors %e%{${reset_color}%})"
+##zstyle ':completion:*:default'      \
+##  select-prompt \
+##  "%{${fg[yellow]}%}Match %{${fg_bold[cyan]}%}%m%{${fg_no_bold[yellow]}%}  Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[red]}%}  %p%{${reset_color}%}"
+##zstyle ':completion:*:default'      \
+##  list-prompt   \
+##  "%{${fg[yellow]}%}Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[yellow]}%}  Continue?%{${reset_color}%}"
+##zstyle ':completion:*:warnings'     \
+##  format        \
+##  "- %{${fg_no_bold[red]}%}no match%{${reset_color}%} - %{${fg_no_bold[yellow]}%}%d%{${reset_color}%}"
+#zstyle ':completion:*' group-name ''
+#
+## zstyle ':completion:*:descriptions' format "- %d -"
+## zstyle ':completion:*:messages'     format "- %d -"
+## zstyle ':completion:*:corrections'  format "- %d - (errors %e)"
+## zstyle ':completion:*:default'      select-prompt "Match %m  Line %l  %p"
+## zstyle ':completion:*:default'      list-prompt "Line %l  Continue?"
+## zstyle ':completion:*:warnings'     format "- no match - %d"
+# zstyle ':completion:*'              group-name ''
+#
+#######< list colorization
+######### use $LS_COLORS for general completion
+#########   Note: (s.:.) splits ${LS_COLORS} into an array
+#######zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+######
+######### highlight parameters with uncommon names
+#zstyle ':completion:*:parameters' list-colors "=[^a-zA-Z]*=$color[red]"
+######
+######### highlight aliases
+#zstyle ':completion:*:aliases' list-colors "=*=$color[green]"
+######
+######### show that _* functions are not for normal use
+######### (not needed, since I don't complete _* functions at all)
+#######zstyle ':completion:*:functions' list-colors "=_*=$color[red]"
+######
+######### highlight the original input.
+#zstyle ':completion:*:original' list-colors "=*=$color[red];$color[bold]"
+######
+######### highlight words like 'esac' or 'end'
+#zstyle ':completion:*:reserved-words' list-colors "=*=$color[red]"
+######
+######### colorize hostname completion
+#zstyle ':completion:*:*:*:*:hosts' \
+#list-colors "=*=$color[cyan];$color[bg-black]"
+######
+######### colorize username completion
+#zstyle ':completion:*:*:*:*:users' \
+#list-colors "=*=$color[red];$color[bg-black]"
+######
+######### colorize processlist for 'kill'
+#zstyle ':completion:*:*:kill:*:processes' \
+#list-colors "=(#b) #([0-9]#) #([^ ]#)*=$color[cyan]=$color[yellow]=$color[green]"
+#######>
+#######>
+#######< documentation
+######zstyle ':completion:*:manuals'       separate-sections true
+######zstyle ':completion:*:manuals.(^1*)' insert-sections   true
+#######>
+#######< menu completion/selection setup
+######
+####### enable menu completion
+#######zstyle ':completion:*' menu auto
+######
+####### enable verbose completion
+#######zstyle ':completion:*'              verbose yes
+######zstyle ':completion:*:-command-:*:' verbose no
+######
+####### default menu selection for a few commands
+##zstyle ':completion:*:*:(kill*|man):*' menu yes
+#zstyle ':completion:*:*:(kill*):*' menu yes
+#######
+######
+####### if i have 'rm file0' on the commandline
+####### i don't need "file0" in possible completions
+#zstyle ':completion:*:(rm|kill|mplayer|m|ms|f|feh|vim|file):*' ignore-line yes
+##zstyle ':completion:*:*:*'   ignore-line yes
+######
+######### $hosts for <tab> completing hostnames
+#zstyle ':completion:*:(nc|ping|ssh|nmap|*ftp|telnet|finger|mtr):*' hosts sid pi
+######
+######### i like kill <tab>, but i want more processes...
+#zstyle ':completion:*:processes' command 'ps --forest -A -o pid,user,cmd'
+#zstyle ':completion:*:*:kill:*:processes' sort false
+#zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
+#######>
+#######< sorting
+#zstyle ':completion:*:*:(gd):*' file-sort time
+#zstyle ':completion:*:*:(mplayer|m|ms|vim|feh|ls|du|file|cd):*' file-sort time
+#zstyle ':completion:*:*:(mplayer|vim|feh|ls|du|file|cd):*' file-sort time
+#zstyle ':completion:*:*:(mplayer|vim|feh|cd|ls|du|file):*' file-sort name
+#zstyle ':completion:*:*:cd:*' file-sort name
+zstyle ':completion:*:*:cd:*' file-sort time
+#######>
+######
+#######< init!
+######for i in computil complist ; do
+######    zrcmodload zsh/$i
+######done
+#######>
+######
+#######< compressed files
+#zstyle ':completion:*:*:unrar:*'        ignored-patterns 'Sample|Subs'
+#zstyle ':completion:*:*:unrar:*'        file-patterns '*.rar|*(-/):directories'
+#zstyle ':completion:*:*:unrarec:*'     '*(-/):directories'
+#######>
+#######< $ perl <anything>
+#zstyle ':completion:*:*:perl:*'         file-patterns '*'
+#######>
+#######< comics and pdfs
+#zstyle ':completion:*:*:(apvlv|xpdf):*' tag-order     files
+#zstyle ':completion:*:*:(apvlv|xpdf):*' file-patterns '(#i)*.pdf'
+#zstyle ':completion:*:*:(evince):*'     file-patterns '(#i)*.cb[rzt]'
+#######>
+#######< burning
+######zstyle ':completion:*:*:(wodim|xfburn):*'     file-patterns '(#i)*.{iso,img}'
+#######>
+#######< ssh
+#zstyle ':completion:*:*:scp:*'  ignored-patterns '*.(nfo|sfv|rar|r[0-9]|idx|srt|zip)'
+#zstyle ':completion:*:*:scp:*'  ignored-patterns '[Ss](ubs|ample|creens)[.]*'
+#zstyle ':completion:*:*:(scp):*' file-list true
+#zstyle ':completion:*:*:(scp):*' file-sort name
+#######>
+#######< chmod
+#zstyle ':completion:*:*:(chmod):*' extra-verbose true
+#######>
+#######< cd
+#zstyle ':completion:*:*:(cd):*' accept-exact-dirs false
+#zstyle ':completion:*:*:(cd):*' add-space         true
+#zstyle ':completion:*:*:(cd):*' ambiguous         true
+#zstyle ':completion:*:*:(cd):*' extra-verbose     false
+##zstyle ':completion:*:*:(cd):*' extra-verbose     true
+#zstyle ':completion:*:*:(cd):*' force-list
+#zstyle ':completion:*:*:(cd):*' format            ''
+#zstyle ':completion:*:*:(cd):*' group-order       paths path-directories  directories  directory-stack bookmarks
+#zstyle ':completion:*:*:(cd):*' completer         _list _complete _expand _match
+zstyle ':completion::complete:cd:*' tag-order \
+'named-directories:-mine:extra\ directories
+named-directories:-normal:named\ directories *'
+#zstyle ':completion::complete:cd:*:named-directories-mine' \
+#zstyle ':completion::complete:cd:*:named-directories-mine' \
+#######  ignored-patterns '*'
+######
+######
+#######>
+#######< git
+#zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+#######>
+#######< vim
+#zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*' tag-order files
+#zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*:*files' ignored-patterns \
+#'*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
+#file-sort modification
+######zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
+#######>
+#######< mplayer/ffmpeg
+#zstyle ':completion:*:*:mplayer:*'  tag-order files
+#zstyle ':completion:*:*:mplayer:*'  ignored-patterns '(#i)*.(nfo|sfv|rar|r[0-9]|idx|srt|zip)'
+#zstyle ':completion:*:*:mplayer:*'  ignored-patterns '[Ss](ubs|ample|creens)[.]*'
+#zstyle ':completion:*:*:mplayer:*'  file-patterns \
+#'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv|vob|VOB):video' \
+#'*:all-files' '*(-/):directories'
+#zstyle ':completion:*:*:ffprobe:*'           file-patterns   \
+#'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
+#'*:all-files' '*(-/):directories'
+#zstyle ':completion:*:*:seen:*'           file-patterns   \
+#'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp4|webm|iso|img|mov|ts|vob|m2v|ogv):video' \
+#'*:all-files' '*(-/):directories'
+#zstyle ':completion:*:*:mplayer_6ch_headphones:*' file-patterns '(#i)*.(dts|ac3|flac|mkv|mp4)' '*(-/):directories'
+#
+#
+#zstyle ':completion:*:*:xclip:*' file-patterns '(#i)*.(txt|pl|pm|sh|zsh|c|h|cpp|lua|vim|log|nfo)' '*:all-files' '*(-/):directories'
+#zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|zip)'
 
-# cursor _
-# printf "\033[6 q"
 
-trash() {
-  export TRASHCAN=${HOME}/tmp/_trashcan
-  mv -v "$@" $TRASHCAN
-}
-alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
+######< insert all matches
+#####zstyle ':completion:all-matches:*' old-matches true
+#####zstyle ':completion:all-matches:*' insert      true
+#####zle -C all-matches complete-word _generic
+#####bindkey '^O' all-matches
+######>
+#####
+######< XXX
+#####zstyle ':completion:*' ambiguous         true
+######zstyle ':completion:*:*:(ls):*' file-sort         modification
+######
+#######zstyle ':completion:*' completer _expand _list _complete _match _ignored _prefix _approximate
+######zstyle ':completion:*' menu select=long
+######zstyle ':completion:*' menu select=long-list
+#####zstyle ':completion:*' menu auto=15
+#####zstyle ':completion:*'  squeeze-slashes true
+######
+######zstyle ':completion:*:*:*'   ignore-line yes
+######zstyle ':completion:*:*:*:*' file-sort   reverse size
+#####
+######zstyle ':completion:*:(all-|)files'           ignored-patterns '*.un~'
+######zstyle ':completion:*:(^rmc?):*:(all-|)files' ignored-patterns '*?.o' '*?\~'
+#####
+#######zstyle ':completion:*:(cd):*' group-order 'named-directories'
+#####zstyle ':completion:*:(cd):*' ignore-parents parent pwd
+######zstyle ':completion:*:*:(cd):*' completer _history
+######zstyle ':completion:*:*:(cd):*' file-sort time
+######zstyle ':completion:*:*:(cd):*' menu select
+#######zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
+######
+######zstyle '*' single-ignored show
+######
+######zstyle ':completion:*'  menu yes select
+######zstyle ':completion:*'  force-list always
+######>
+######< most-accessed-file
+#######zstyle ':completion:most-accessed-file:*' completer _files
+#######zstyle ':completion:most-accessed-file:*' file-patterns '*:all\ files'
+#######zstyle ':completion:most-accessed-file:*' file-sort access
+#######zstyle ':completion:most-accessed-file:*' hidden all
+#######zstyle ':completion:most-accessed-file:*' match-original both
+######>
+#####
+#####
+#####
+######zstyle ':completion:*:*:(cd):*:*files' ignored-patterns '*~' file-sort access
+######zstyle ':completion:*:*:(cd):*'        file-sort access
+#####zstyle ':completion:*:*:(cd):*'        menu select
+#####zstyle ':completion:*:*:(cd):*'        completer _history
+#####
+#####zstyle ':completion:*' file-patterns '*(-/):directories:directories %p(^-/):globbed-files' '*:all-files'
+#####
+#####zstyle ':completion:*' group-order globbed-files all-files files directories
+#####_my-prev-result() {
+#####    local hstring
+#####    if [[ $WIDGET = *-all-* ]]; then
+#####        compstate[insert]=all
+#####    fi
+#####    # Run last command again, save output in hstring
+#####    hstring=$(eval $(fc -l -n -1))
+#####    # Split items on new-line into an array, quote each item
+#####    compadd - ${(@f)hstring}
+#####}
+#####
+#####zle -C my-prev-comp menu-complete _my-prev-result
+#####bindkey '\E' my-prev-comp
+#####
+#####zle -C my-all-prev-comp complete-word _my-prev-result
+#####bindkey '^E' my-all-prev-comp
+#>
 
-export EDIR_EDITOR='vim -c ":setf LS_COLORS-edir | set nolist"'
 
-export ASKAS_BUTIK=magnusw1
+# ========== COMPLETION END =============================
+#zprof
+
+# fzf all the things
+. ~/etc/zsh/11-fzf-completion.zsh
+. ~/etc/zsh/11-fzf-keybindings.zsh
