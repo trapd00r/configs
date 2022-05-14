@@ -1,11 +1,12 @@
 #!/bin/sh
 # $XDG_CONFIG_HOME/xinitrc
-
+#
 xset         +fp      /usr/share/fonts/jmk
 if [[ $(hostname) = 'sid' ]]; then
   xrdb         -merge   "$XDG_CONFIG_HOME/Xresources-sid"
 elif [[ $(hostname) = 'tp' ]]; then
   xrdb         -merge   $XDG_CONFIG_HOME/Xresources
+fi
 #xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
 setxkbmap se -variant nodeadkeys \
              -option  terminate:ctrl_alt_bksp
@@ -62,5 +63,4 @@ done
 lxsession &
 
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
-#exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 exec sdorfehs-20220514 -f $HOME/dev/sdorfehs-config/sdorfehsrc
