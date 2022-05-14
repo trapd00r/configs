@@ -1,7 +1,5 @@
 #!/bin/sh
-# vim:ft=sh:
 # $XDG_CONFIG_HOME/xinitrc
-# host: sid 2021-03-21
 
 xset         +fp      /usr/share/fonts/jmk
 if [[ $(hostname) = 'sid' ]]; then
@@ -42,12 +40,14 @@ xsetroot -solid '#242424'
 xsetroot -cursor_name left_ptr
 
 xscreensaver -no-splash &
-dunst &
-/usr/lib/kdeconnectd &
-#mullvad connect &
 
-# # start mpd unless it's already started
-# [ ! -s ~/var/mpd/pid ] && (mpd ~/etc/mpd.conf && mpdas)&
+# notifications
+dunst &
+
+# for controlling phone or the other way around
+/usr/lib/kdeconnectd &
+
+#mullvad connect &
 
 
 # gtk applications startup very slow
@@ -62,5 +62,5 @@ done
 lxsession &
 
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
-exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
-#exec sdorfehs-japh -f $HOME/dev/sdorfehs-config/sdorfehsrc
+#exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+exec sdorfehs-20220514 -f $HOME/dev/sdorfehs-config/sdorfehsrc
