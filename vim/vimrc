@@ -675,9 +675,22 @@ fu! RemoveTrailingCrap()
 endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
-
-" do whatever after text is yanked
-" au TextYankPost * :ls
+" whenever something's yanked, write it to a file
+"au TextYankPost * :call YankedToYankLog()
+"
+"function! YankedToYankLog()
+"  let yanked = getreg('*')
+"
+"  " do not want only whitespace
+"  if yanked !~ '\S'
+"    return
+"  endif
+"
+"  let yanklog = expand('~/yanklog')
+"
+"  " append yanked data to log
+"  call writefile(split(yanked, "\n", 1), yanklog, 'a')
+"endfunction
 
 " enable use of $LS_COLORS coloring in appropriate files
 autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
