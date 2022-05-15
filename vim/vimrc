@@ -90,6 +90,7 @@ Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
+Plug 'markonm/traces.vim'               " live preview of ex commands
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
 Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
