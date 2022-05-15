@@ -1,23 +1,19 @@
-" ~/.vimpagerrc or $XDG_CONFIG_HOME/vimpagerrc
+" vim:ft=vim:
+" $XDG_CONFIG_HOME/vimpagerrc
 
-runtime! macros/less.vim
+"runtime! macros/less.vim
 
-let no_plugin_maps = 1
+"let no_plugin_maps = 1
 
-set scroll=15
+"set scroll=15
 "set scrolloff=999
-set scrolljump=15
+"set scrolljump=15
+set buftype=nofile
+set bufhidden=hide
 set foldlevel=999
 set colorcolumn=0
 set tw=80
 set cursorline
 set cmdheight=1
 
-if(exists('+cc'))
-  set colorcolumn=0
-endif
-if(exists('+rnu'))
-  set norelativenumber
-endif
-
-" vim: set ft=vim:
+DistractionsOff
