@@ -43,21 +43,12 @@
 [submodule "vim/bundle/vim-arpeggio"]
 	path = vim/bundle/vim-arpeggio
 	url = git://github.com/kana/vim-arpeggio.git
-[submodule "vim/bundle/vim-x11colors"]
-	path = vim/bundle/vim-x11colors
-	url = git://github.com/trapd00r/x11colors.vim.git
 [submodule "vim/bundle/httplog.git"]
 	path = vim/bundle/httplog.git
 	url = git://github.com/vim-scripts/httplog.git
-[submodule "vim/bundle/vim-ansicolors"]
-	path = vim/bundle/vim-ansicolors
-	url = git://github.com/trapd00r/vim-ansicolors.git
 [submodule "vim/bundle/vim-colorv"]
 	path = vim/bundle/vim-colorv
 	url = git://github.com/Rykka/ColorV.git
-[submodule "vim/bundle/vim-script-runner"]
-	path = vim/bundle/vim-script-runner
-	url = git://github.com/trapd00r/vim-script-runner.git
 [submodule "vim/bundle/vim-minesweeper"]
 	path = vim/bundle/vim-minesweeper
 	url = git://github.com/mfumi/viminesweeper.git
@@ -73,12 +64,6 @@
 [submodule "vim/bundle/vim-invader"]
 	path = vim/bundle/vim-invader
 	url = git://github.com/mattn/invader-vim.git
-[submodule "vim/bundle/vim-after-syntax-perl"]
-	path = vim/bundle/vim-after-syntax-perl
-	url = git://github.com/trapd00r/vim-after-syntax-perl.git
-[submodule "vim/bundle/vim-ansiesc"]
-	path = vim/bundle/vim-ansiesc
-	url = git://github.com/vim-scripts/AnsiEsc.vim.git
 [submodule "vim/bundle/vimpoint"]
 	path = vim/bundle/vimpoint
 	url = git://github.com/trapd00r/vimpoint.git
