@@ -17,3 +17,5 @@ set cursorline
 set cmdheight=1
 
 DistractionsOff
+
+nmap q :quit<cr>
