@@ -14,6 +14,7 @@ filetype plugin indent on
 syntax on
 
 runtime macros/matchit.vim                                                 " % on if/else
+"runtime syntax/hitest.vim                                                  " dump all hi groups in a buffer
 set all&                                                                   " turn everything off, in case of evil vendor vimrcs
 let &runtimepath  = $VIMRUNTIME                                            " $XDG_CONFIG_HOME/vim
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
@@ -76,8 +77,6 @@ Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
 Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
 
-Plug 'junegunn/vim-plug'                " self
-Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
@@ -85,22 +84,24 @@ Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
 Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
+Plug 'junegunn/vim-plug'                " self
 Plug 'kien/ctrlp.vim'                   " I don't use this but the one below depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
+Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
+Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
+Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
+Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
 Plug 'tacahiroy/ctrlp-funky'            " function navigator
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
+Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
-Plug 'rhysd/clever-f.vim'               " keep smashing f
-Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
-Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
-Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
-Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
+Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 
 
 call plug#end()
@@ -715,7 +716,7 @@ autocmd BufRead ~/.zshrc,~/etc/zsh/zshrc set foldlevel=0 | let &foldmarker='STAR
 
 " try to figure out the filetype when there's no extension
 " often the case in my bin (~/dev/utils/) directory
-autocmd BufNewFile,BufRead  * call s:infer_filetype()
+autocmd BufRead  * call s:infer_filetype()
 
 " evaluate the comment char for the current buffer
 " now, the variable b:comment will always hold the correct
@@ -1182,29 +1183,34 @@ autocmd Filetype perl
 
 autocmd BufNewFile *.pl
   \   silent! 0r $VIMRUNTIME/templates/template.pl
+  \ | setf perl
   \ | call search('APP')
   \ | normal di':startinsert
 
 autocmd BufNewFile *.PL
   \   silent! 0r ~/etc/vim/templates/template.PL
+  \ | setf perl
   \ | call search('__PACKAGE__')
   \ | exe 'normal dt} '
   \ | startinsert
 
 autocmd BufNewFile *.pm
   \   silent! 0r $VIMRUNTIME/templates/template.pm
+  \ | setf perl
   \ | call cursor(0, 9)
   \ | exe 'normal d$A '
   \ | startinsert
 
 autocmd BufNewFile *.t
   \   silent! 0r $VIMRUNTIME/templates/template.t
+  \ | setf perl
   \ | 6
   \ | exe 'normal o'
   \ | startinsert
 
 autocmd BufNewFile *.md,*.markdown
   \   silent! 0r $VIMRUNTIME/templates/template.markdown
+  \ | setf markdown
   \ | 0
   \ | exe 'normal d$A'
   \ | startinsert
