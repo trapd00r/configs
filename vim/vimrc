@@ -78,6 +78,7 @@ Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
 
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
+Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
@@ -92,18 +93,16 @@ Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
 Plug 'markonm/traces.vim'               " live preview of ex commands
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
-Plug 'rhysd/conflict-marker.vim'        " dealing with conflict markers
 Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
 Plug 'tacahiroy/ctrlp-funky'            " function navigator
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
+Plug 'w0rp/ale'                         " linting
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
-Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
-
 
 call plug#end()
 " ========== INIT END ===================================
@@ -942,6 +941,12 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+" perl linting
+let g:ale_perl_perl_options = '-c -Mwarnings -Ilib -It/lib'
+let g:ale_perl_perlcritic_showrules = 1
+let g:ale_type_map = {
+\    'perlcritic': {'ES': 'WS', 'E': 'W'},
+\}
 
 " highlight interesting words
 let g:interestingWordsTermColors = ['161', '147', '109', '137', '186', '222']
