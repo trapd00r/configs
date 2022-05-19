@@ -7,6 +7,7 @@
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
 " plugin/blockwise.vim
+" plugin/smartcom.vim
 
 
 " ========== INIT START =================================
@@ -41,7 +42,6 @@ call plug#begin(expand($VIMRUNTIME) . '/plugged')
 " eqalignsimple.vim  - alignment magic with = and +
 " hlnext.vim'        - highlight current search result
 " automkdir.vim      - vim ~/dev/doesntexist/butthatisfine.vim
-" smartcom.vim       - smarter completion
 
 for myplugin in [
 \  'automkdir.vim',
@@ -56,7 +56,6 @@ for myplugin in [
 \  'yankmatches.vim',
 \  'LS_COLORS-edir.vim',
 \  'LS_COLORS.vim',
-\  'smartcom.vim',
 \ ]
 
   let path = expand("%:p:h:h")
@@ -103,6 +102,7 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
+Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
 
 
 call plug#end()
@@ -310,6 +310,7 @@ nmap <silent>         zg  :GitGutterFold <bar> normal zr<cr>
 
 " folding around searches
 nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
+nmap <silent> <expr>  z2  FS_ToggleFoldAroundSearch({'context':2})
 
 " folding around use statements
 nmap <silent> <expr>  zu  FS_FoldAroundTarget('^\s*use\s\+\S.*;',{'context':1})
