@@ -951,7 +951,7 @@ let g:ale_type_map = {
 \}
 
 " highlight interesting words
-let g:interestingWordsTermColors = ['161', '147', '109', '137', '186', '222']
+let g:interestingWordsTermColors = ['196', 'white', '109', '137', '186', '222']
 let g:interestingWordsRandomiseColors = 0
 
 " preview markdown directly in vim
