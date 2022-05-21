@@ -207,6 +207,7 @@ set synmaxcol=300                                                          " max
 set t_Co=256                                                               " terminal supports 256 colors
 set tabpagemax=4                                                           " max tab pages when using -p flag
 set tabstop=2                                                              " shouldn't modify this the help states..?
+set tags=./tags,tags,~/dev/tags,~/dev/askas/utils-askas/vim/tags           " location of tag files
 set term=rxvt-unicode-256color                                             " set terminal
 set textwidth=80                                                           " maximum width of text
 set timeout                                                                " time out on mappings
@@ -233,6 +234,10 @@ color neverland
 " ========== MAPPINGS START =============================
 " ATTENTION! <leader> #1
 let mapleader=','
+
+" go to tag definition and go back
+nnoremap <backspace> <C-]>
+nnoremap <tab>       <C-T>
 
 " search only inside a block/scope/function
 nnoremap <leader>/ :normal vi{<esc><esc>/\%V
@@ -346,10 +351,10 @@ vnoremap J  10j
 vnoremap K  10k
 
 " highlight custom text objects
-nnoremap <silent><expr> <backspace> hl#mark()
-nnoremap <silent><expr> <tab> hl#unmark('line')
-vnoremap <silent><expr> <tab> hl#unmark('block')
-highlight HL cterm=bolditalic ctermbg=fg ctermfg=bg
+"nnoremap <silent><expr> <backspace> hl#mark()
+"nnoremap <silent><expr> <tab> hl#unmark('line')
+"vnoremap <silent><expr> <tab> hl#unmark('block')
+"highlight HL cterm=bolditalic ctermbg=fg ctermfg=bg
 
 " Return to the previous cursor position
 " --------------------------------------
