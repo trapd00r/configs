@@ -1346,6 +1346,3 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
-"
-" ========== PERL HAXX START ============================
-" ========== PERL HAXX END ==============================
