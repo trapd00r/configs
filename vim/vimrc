@@ -103,6 +103,8 @@ Plug 'w0rp/ale'                         " linting
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
+Plug 'preservim/tagbar'                 " tags in window
+Plug 'preservim/nerdcommenter'          " toggle comments
 
 call plug#end()
 " ========== INIT END ===================================
@@ -291,8 +293,8 @@ nnoremap <silent> <leader>h4 :execute 'match CurrentWord4 /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent> <leader>h5 :execute 'match CurrentWord5 /\<<c-r><c-w>\>/'<cr>
 
 " toggle comments
-nmap     <silent> # :call ToggleComment()<CR>j0
-vnoremap <silent> # :call ToggleBlock()<CR>
+nmap # <Plug>NERDCommenterInvert
+vmap # <Plug>NERDCommenterInvert
 
 " close all folds
 nnoremap <leader>fc zM
@@ -505,13 +507,6 @@ function! Redir(cmd) abort
 endfunction
 command! -nargs=1 Redir silent call Redir(<f-args>)
 
-function! DisableSearchAndYankMatches()
-  call HLNextOff()
-  nohlsearch
-  hi clear YankedMatches
-  hi clear CurrentLine
-endfunction
-
 " scratch window for temp things
 " bound in my window manager like this:
 " bind Return exec urxvt -fg white -bg black -sbg +sb -e vim -c 'call Scratch()'
@@ -522,50 +517,6 @@ function! Scratch()
   setlocal ft=perl
   file scratch
   startinsert
-endfunction
-
-function! ToggleComment ()
-  let comment_char = exists('b:comment') ? b:comment: '#'
-
-  " Grab the line and work out whether it's commented...
-  let currline = getline(".")
-
-  " If so, remove it and rewrite the line...
-  if currline =~ '^' . comment_char
-    let repline = substitute(currline, '^' . comment_char, "", "")
-    call setline(".", repline)
-
-  " Otherwise, insert it...
-  else
-    let repline = substitute(currline, '^', comment_char, "")
-    call setline(".", repline)
-  endif
-endfunction
-
-" Toggle comments down an entire visual selection of lines...
-function! ToggleBlock () range
-  let comment_char = exists('b:comment') ? b:comment: '#'
-
-  " Start at the first line...
-  let linenum = a:firstline
-
-  " Get all the lines, and decide their comment state by examining the first...
-  let currline = getline(a:firstline, a:lastline)
-  if currline[0] =~ '^' . comment_char
-    " If the first line is commented, decomment all...
-    for line in currline
-      let repline = substitute(line, '^' . comment_char, "", "")
-      call setline(linenum, repline)
-      let linenum += 1
-    endfor
-  else
-    " Otherwise, encomment all...
-    for line in currline
-      let repline = substitute(line, '^\('. comment_char . '\)\?', comment_char, "")
-      call setline(linenum, repline)
-      let linenum += 1
-    endfor
-  endif
 endfunction
 
 " try to figure out the filetype when there's no extension
@@ -946,6 +897,10 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+" I map myself
+let g:NERDCreateDefaultMappings = 0
+
+
 " do not like 3-window split
 let g:committia_use_singlecolumn = 'always'
 " perl linting
@@ -1391,3 +1346,6 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
+"
+" ========== PERL HAXX START ============================
+" ========== PERL HAXX END ==============================
