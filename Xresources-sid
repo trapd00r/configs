@@ -85,7 +85,7 @@ URxvt*bell-command:          /home/scp1/dev/utils/bell
 
 URxvt.background:            black
 URxvt.borderLess:            0
-URxvt.chdir:                 /home/scp1/dev
+!URxvt.chdir:                 /home/scp1/dev
 URxvt.cursorBlink:           false
 URxvt.cursorUnderline:       0
 URxvt.cutchars:             "()*,<>[]{}|│'"

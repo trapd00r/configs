@@ -24,7 +24,7 @@ fpath=($fpath ~/etc/zsh/functions/)
 # Terrible solution for work monitors
 # for now
 if [[ $(hostname) = "tp" ]]; then
-  ~/dev/utils/font-askas
+#  ~/dev/utils/font-askas
 fi
 
 # ssh key management
@@ -1379,5 +1379,7 @@ named-directories:-normal:named\ directories *'
 # fzf all the things
 . ~/etc/zsh/11-fzf-completion.zsh
 . ~/etc/zsh/11-fzf-keybindings.zsh
+#alias rm='rm -v'
+alias rg='rg --ignore-file=~/etc/fd.ignorefile'
 
 export ASKAS_BUTIK=magnusw2

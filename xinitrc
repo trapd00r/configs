@@ -8,6 +8,12 @@ elif [[ $(hostname) = 'tp' ]]; then
   xrdb         -merge   $XDG_CONFIG_HOME/Xresources
 fi
 #xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
+#if [[ $(hostname) = 'sid' ]]; then
+#  xrdb         -merge   "$XDG_CONFIG_HOME/Xresources-sid"
+#elif [[ $(hostname) = 'tp' ]]; then
+#  xrdb         -merge   $XDG_CONFIG_HOME/Xresources
+xrdb         -merge   $XDG_CONFIG_HOME/Xresources
+xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
 setxkbmap se -variant nodeadkeys \
              -option  terminate:ctrl_alt_bksp
 xbindkeys &
@@ -64,3 +70,6 @@ lxsession &
 
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
 exec sdorfehs-20220514 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+#exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+#exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+#exec sdorfehs-japh -f $HOME/dev/sdorfehs-config/sdorfehsrc
