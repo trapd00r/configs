@@ -105,6 +105,7 @@ Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'preservim/tagbar'                 " tags in window
 Plug 'preservim/nerdcommenter'          " toggle comments
+Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 
 call plug#end()
 " ========== INIT END ===================================
@@ -498,6 +499,28 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== FZF END ====================================
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
+
+" Add code block start/end tags to vimwiki (or markdown)
+" The range keyword makes sure we run this function over the
+" entire range, instead of over each line in the range
+"
+" The filetype argument is optional with perl as a default
+"   :call VimwikiAddCodeBlock('sql') inserts sql code blocks instead
+function! VimwikiAddCodeBlock(filetype = 'perl') range
+  " Append start of code block and filetype
+  " before the visual selection
+  call append(line("'<") - 1, '{{{' .. a:filetype)
+
+  " Append end of code block after the visual selection
+  call append(line("'>") + 0, '}}}')
+
+  " Expand visual selection by one line
+  execute ':' . line("'<") - 1
+
+  " set mark
+  normal m<
+endfunction
+
 " redirect command to a new scratch buffer
 function! Redir(cmd) abort
     let output = execute(a:cmd)
@@ -1346,3 +1369,10 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
+" ========== VIMWIKI START ==============================
+let g:vimwiki_list = [
+\ {'path': '~/dev/wiki/japh.wiki'},
+\ {'path': '~/dev/wiki/askas.wiki'}
+\]
+au BufRead,BufNewFile *.wiki set filetype=vimwiki | map <C-b> :Vimwiki2HTMLBrowse<cr>
+" ========== VIMWIKI END ================================
