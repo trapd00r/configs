@@ -507,11 +507,18 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " The filetype argument is optional with perl as a default
 "   :call VimwikiAddCodeBlock('sql') inserts sql code blocks instead
 function! VimwikiAddCodeBlock(filetype = 'perl') range
+  " add google prettify syntax hl matter two lines above
+  call append(line("'<") - 1, '<pre class="prettyprint">')
+
+  " if needed, we can specify the language to use like this:
+  " call append(line("'<") - 1, '<pre class="prettyprint lang-' .. a:filetype .. '>')
+
   " Append start of code block and filetype
   " before the visual selection
   call append(line("'<") - 1, '{{{' .. a:filetype)
 
-  " Append end of code block after the visual selection
+  " Append end of code block and matter after the visual selection
+  call append(line("'>") + 0, '</pre>')
   call append(line("'>") + 0, '}}}')
 
   " Expand visual selection by one line
@@ -1370,9 +1377,23 @@ let &t_TE = "\<Esc>[>4;m"
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
 " ========== VIMWIKI START ==============================
-let g:vimwiki_list = [
-\ {'path': '~/dev/wiki/japh.wiki'},
-\ {'path': '~/dev/wiki/askas.wiki'}
-\]
+let g:vimwiki_list = [{
+  \     'path': '~/dev/wiki/japh.wiki/',
+\ }]
+
+let g:vimwiki_list = [{'path': '$HOME/dev/wiki/japh.wiki',
+  \ 'template_path': '$HOME/dev/wiki/templates',
+  \ 'template_default': 'def_template',
+  \ 'template_ext': '.html'}]
+
+" add the pre tag for inserting code snippets
+let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr, pre, script'
+
+" enable syntax highlighting in html output
+" let g:vimwiki_listing_hl = 1
+
+" conceal {{{sql
+let g:vimwiki_conceal_pre = 1
 au BufRead,BufNewFile *.wiki set filetype=vimwiki | map <C-b> :Vimwiki2HTMLBrowse<cr>
+
 " ========== VIMWIKI END ================================
