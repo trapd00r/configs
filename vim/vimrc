@@ -71,6 +71,8 @@ for myplugin in [
   endif
 endfor
 
+
+
 " extra syntax rules
 Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
@@ -106,6 +108,7 @@ Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'preservim/tagbar'                 " tags in window
 Plug 'preservim/nerdcommenter'          " toggle comments
 Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
+Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 
 call plug#end()
 " ========== INIT END ===================================
@@ -241,6 +244,9 @@ let mapleader=','
 " go to tag definition and go back
 nnoremap <backspace> <C-]>
 nnoremap <tab>       <C-T>
+
+" perldoc what's under the cursor
+nnoremap <C-k> :Perldoc<cr>
 
 " search only inside a block/scope/function
 nnoremap <leader>/ :normal vi{<esc><esc>/\%V
@@ -690,6 +696,10 @@ endfu
 
 " enable use of $LS_COLORS coloring in appropriate files
 autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
+
+" set custom options for man/perldoc (C-k etc)
+" the perldoc filetype is my own custom modified perl.vim
+autocmd FileType man set nonumber | set filetype=perldoc
 
 " enable Rainbows everywhere
 autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
