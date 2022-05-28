@@ -51,6 +51,7 @@ for myplugin in [
 \  'foldsearches.vim',
 \  'hlnext.vim',
 \  'neverland-vim-theme',
+\  'udpopup.vim',
 \  'vim-scriptease',
 \  'vim-syntax-notes',
 \  'yankmatches.vim',
