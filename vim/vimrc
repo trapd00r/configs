@@ -109,6 +109,7 @@ Plug 'preservim/tagbar'                 " tags in window
 Plug 'preservim/nerdcommenter'          " toggle comments
 Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
+Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
 
 call plug#end()
 " ========== INIT END ===================================
@@ -122,8 +123,8 @@ set clipboard=unnamed                                                      " def
 set cmdheight=2                                                            " avoid 'Press ENTER to continue' prompts
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
+set complete+=k~/dev/askas/utils-askas/vim/installed_perl_modules.txt      " complete all perl package names
 set completeopt+=menuone                                                   " use popup menu for completion even if only one match
-"set cursorline                                                             " easier to see where one's at in the buffer
 set define=[^A-Za-z_]                                                      " for macro definition
 set diffopt=filler,iwhite,context:2,vertical                               " settings for vimdiff
 set display+=lastline,uhex                                                 " changes the way text is displayed
