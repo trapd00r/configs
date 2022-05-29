@@ -33,15 +33,16 @@ call plug#begin(expand($VIMRUNTIME) . '/plugged')
 
 " LS_COLORS.vim      - dircolors syntax
 " LS_COLORS-edir.vim - dircolors syntax for an edir session
+" automkdir.vim      - vim ~/dev/doesntexist/butthatisfine.vim
 " cccp.vim           - colorcolumn at cursor position
 " currentline.vim    - highlight the current line like a marker pen
-" yankmatches.vim    - yank/delete matches from a previous search operation
-" neverland          - my colorscheme
-" vim-syntax-notes   - only useful for me
-" foldsearches.vim   - fold around searches
 " eqalignsimple.vim  - alignment magic with = and +
+" foldsearches.vim   - fold around searches
 " hlnext.vim'        - highlight current search result
-" automkdir.vim      - vim ~/dev/doesntexist/butthatisfine.vim
+" neverland          - my colorscheme
+" udpopup.vim        - custom popup menus
+" vim-syntax-notes   - only useful for me
+" yankmatches.vim    - yank/delete matches from a previous search operation
 
 for myplugin in [
 \  'automkdir.vim',
