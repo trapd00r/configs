@@ -244,6 +244,9 @@ color neverland
 " ATTENTION! <leader> #1
 let mapleader=','
 
+" toggle listchars
+map <C-q> :set list!<cr>
+
 " go to tag definition and go back
 nnoremap <backspace> <C-]>
 nnoremap <tab>       <C-T>
@@ -1171,7 +1174,7 @@ highlight markdownJekyllFrontMatter ctermfg=137
 " ========== HIGHLIGHTING END ===========================
 " ========== ASKåS START ===============================
 set encoding=utf-8
-autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1
+autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1 | set nolist
 "autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
