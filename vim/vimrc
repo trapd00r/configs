@@ -127,6 +127,7 @@ set colorcolumn&                                                           " use
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
 set complete+=k~/dev/askas/utils-askas/vim/installed_perl_modules.txt      " complete all perl package names
 set completeopt+=menuone                                                   " use popup menu for completion even if only one match
+set cursorline                                                             " only use this for CursorLineNr
 set define=[^A-Za-z_]                                                      " for macro definition
 set diffopt=filler,iwhite,context:2,vertical                               " settings for vimdiff
 set display+=lastline,uhex                                                 " changes the way text is displayed
@@ -1134,7 +1135,6 @@ highlight link ColorColumn  CursorLine
 
 highlight CursorColumn            ctermfg=fg   ctermbg=234 cterm=none
 highlight CursorLine              ctermfg=none ctermbg=234
-highlight CursorLineNr            ctermfg=fg   ctermbg=234 cterm=none
 highlight Error                   ctermfg=089  ctermbg=250 cterm=bolditalicreverse
 highlight ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
 highlight Folded                  ctermfg=238  ctermbg=233 cterm=none
@@ -1169,6 +1169,11 @@ highlight GitGutterDelete         ctermfg=160
 au filetype highlight markdownXmlElement      ctermfg=197
 highlight markdownXmlEmptyElement ctermfg=037
 highlight markdownJekyllFrontMatter ctermfg=137
+
+" highlight the current line number only
+highlight clear CursorLine
+highlight link CursorLineNr LineNr
+highlight CursorLineNr ctermfg=208
 
 
 " ========== HIGHLIGHTING END ===========================
