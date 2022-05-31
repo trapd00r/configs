@@ -307,8 +307,8 @@ nnoremap <silent> <leader>h4 :execute 'match CurrentWord4 /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent> <leader>h5 :execute 'match CurrentWord5 /\<<c-r><c-w>\>/'<cr>
 
 " toggle comments
-nmap # <Plug>NERDCommenterInvert
-vmap # <Plug>NERDCommenterInvert
+nmap # <Plug>NERDCommenterToggle
+vmap # <Plug>NERDCommenterToggle
 
 " close all folds
 nnoremap <leader>fc zM
@@ -949,6 +949,15 @@ let g:NERDCreateDefaultMappings = 0
 " place comments in first column
 let g:NERDDefaultAlign = 'start'
 
+
+" commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 0
 
 " do not like 3-window split
 let g:committia_use_singlecolumn = 'always'
