@@ -946,6 +946,8 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 " ========== PLUGIN OPTIONS START =======================
 " I map myself
 let g:NERDCreateDefaultMappings = 0
+" place comments in first column
+let g:NERDDefaultAlign = 'start'
 
 
 " do not like 3-window split
