@@ -521,7 +521,7 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 "   :call VimwikiAddCodeBlock('sql') inserts sql code blocks instead
 function! VimwikiAddCodeBlock(filetype = 'perl') range
   " add google prettify syntax hl matter two lines above
-  call append(line("'<") - 1, '<pre class="prettyprint">')
+"  call append(line("'<") - 1, '<pre class="prettyprint">')
 
   " if needed, we can specify the language to use like this:
   " call append(line("'<") - 1, '<pre class="prettyprint lang-' .. a:filetype .. '>')
@@ -531,7 +531,7 @@ function! VimwikiAddCodeBlock(filetype = 'perl') range
   call append(line("'<") - 1, '{{{' .. a:filetype)
 
   " Append end of code block and matter after the visual selection
-  call append(line("'>") + 0, '</pre>')
+"  call append(line("'>") + 0, '</pre>')
   call append(line("'>") + 0, '}}}')
 
   " Expand visual selection by one line
