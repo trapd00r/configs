@@ -1417,4 +1417,7 @@ let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr, pre, script'
 let g:vimwiki_conceal_pre = 1
 au BufRead,BufNewFile *.wiki set filetype=vimwiki | map <C-b> :Vimwiki2HTMLBrowse<cr>
 
+highlight VimwikiBold cterm=none ctermfg=172
+
+
 " ========== VIMWIKI END ================================
