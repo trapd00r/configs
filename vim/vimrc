@@ -1190,7 +1190,7 @@ highlight CursorLineNr ctermfg=208
 " ========== HIGHLIGHTING END ===========================
 " ========== ASKåS START ===============================
 set encoding=utf-8
-autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencodings=iso-8859-1 | set nolist
+autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencoding=iso-8859-1 | set nolist
 "autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
 autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
