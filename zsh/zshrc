@@ -90,6 +90,8 @@ export          LISTROWSFIRST=1
 export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 
 # XDG spec
+
+export       XDG_DATA_DIRS=/usr/share/:/usr/local/share:/home/scp1/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 export       XDG_DATA_HOME=${HOME}/var
 export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
 export      XDG_CACHE_HOME=${HOME}/var/cache
@@ -273,6 +275,12 @@ export BROWSER=${HOME}/dev/utils/www
 # ========== ALIAS START ================================
 alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
 
+if [[ $HOST = 'sid' ]]; then
+  alias rm='rmc -v'
+else
+  alias rm='rm -v'
+fi
+
 # faster dir switching
 alias --  -='builtin cd -'
 alias     b='builtin cd $HOME/bin'
@@ -301,7 +309,6 @@ alias    nmap='nmap -sV'
 alias  pacman='pacman --color=auto'
 alias prename='prename -v'
 alias      rg="rg -T sql -T css -T html --colors 'match:bg:255' --colors 'match:fg:196' --colors 'line:fg:32' --colors 'path:fg:208'"
-alias      rm='rm -v'
 alias     scd='/bin/screen -d'
 alias     scx='screen-start-or-attach'
 alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd --verbose --root . --port 8080'
@@ -1383,3 +1390,9 @@ named-directories:-normal:named\ directories *'
 alias rg='rg --ignore-file=~/etc/fd.ignorefile'
 
 export ASKAS_BUTIK=magnusw2
+export GTK_THEME=japh
+
+alias cpu_frequency_watch='watch -n.5 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
+alias performance_mode='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias schedutil_mode='echo schedutil | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+
