@@ -80,10 +80,13 @@ Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
 Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
 
+Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
+Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
+Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
 Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
@@ -94,6 +97,7 @@ Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
+Plug 'manasthakur/vim-commentor'        " the least annoying comment plugin
 Plug 'markonm/traces.vim'               " live preview of ex commands
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
@@ -103,15 +107,11 @@ Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
+Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'w0rp/ale'                         " linting
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
-Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
-Plug 'preservim/tagbar'                 " tags in window
-Plug 'preservim/nerdcommenter'          " toggle comments
-Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
-Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
-Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
+Plug 'johngrib/vim-game-code-break'     " arkanoid in my vim
 
 call plug#end()
 " ========== INIT END ===================================
@@ -307,8 +307,8 @@ nnoremap <silent> <leader>h4 :execute 'match CurrentWord4 /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent> <leader>h5 :execute 'match CurrentWord5 /\<<c-r><c-w>\>/'<cr>
 
 " toggle comments
-nmap # <Plug>NERDCommenterToggle
-vmap # <Plug>NERDCommenterToggle
+nmap # <Plug>CommentorLine
+vmap # <Plug>Commentor
 
 " close all folds
 nnoremap <leader>fc zM
@@ -944,22 +944,8 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
-" I map myself
-let g:NERDCreateDefaultMappings = 0
-" place comments in first column
-let g:NERDDefaultAlign = 'start'
 
-
-" commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 0
-
-" do not like 3-window split
+"do not like 3-window split
 let g:committia_use_singlecolumn = 'always'
 " perl linting
 let g:ale_perl_perl_options = '-c -Mwarnings -Ilib -It/lib'
