@@ -108,6 +108,7 @@ Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
 Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
+Plug 'wellle/context.vim'               " context in preview window
 Plug 'w0rp/ale'                         " linting
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
@@ -944,6 +945,13 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+" Show only function name and the current block in the context window
+hi link ContextBorder FoldColumn
+let g:context_border_char = '═'
+let g:context_highlight_border = 'ContextBorder'
+let g:context_highlight_tag = '<hide>'
+let g:context_max_height = 2
 
 "do not like 3-window split
 let g:committia_use_singlecolumn = 'always'
