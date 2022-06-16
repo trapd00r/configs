@@ -97,7 +97,6 @@ Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
-Plug 'manasthakur/vim-commentor'        " the least annoying comment plugin
 Plug 'markonm/traces.vim'               " live preview of ex commands
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
@@ -108,7 +107,6 @@ Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
 Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
-Plug 'wellle/context.vim'               " context in preview window
 Plug 'w0rp/ale'                         " linting
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
@@ -308,8 +306,8 @@ nnoremap <silent> <leader>h4 :execute 'match CurrentWord4 /\<<c-r><c-w>\>/'<cr>
 nnoremap <silent> <leader>h5 :execute 'match CurrentWord5 /\<<c-r><c-w>\>/'<cr>
 
 " toggle comments
-nmap # <Plug>CommentorLine
-vmap # <Plug>Commentor
+"nmap # <Plug>CommentorLine
+"vmap # <Plug>Commentor
 
 " close all folds
 nnoremap <leader>fc zM
@@ -701,6 +699,9 @@ endfu
 "  " append yanked data to log
 "  call writefile(split(yanked, "\n", 1), yanklog, 'a')
 "endfunction
+
+" disable automatic comment on newline
+autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " enable use of $LS_COLORS coloring in appropriate files
 autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
