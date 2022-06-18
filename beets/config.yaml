@@ -725,6 +725,7 @@ paths:
     tag:ocremix:                 +game/+remix/+ocremix/$base_name
     tag:olremix:                 +game/+remix/+olremix/$base_name
     tag:amigaremix:              +game/+remix/+amigaremix/$base_name
+    tag:vgmix:                   +game/+remix/+vgmix/%tcp{$artist} - %tcp{$title}
     tag:keygen:                  +game/+keygen/$base_name
 
     tag:rosamannen:              +live/+rosamannen/$base_name
