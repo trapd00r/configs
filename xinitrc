@@ -26,8 +26,8 @@ xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 if [[ $(hostname) = 'sid' ]]; then
   xrandr --output DP-4    --primary \
          --output HDMI-0  --rotate left  --right-of DP-4 \
-         --output DP-2    --rotate right --left-of DP-4  \
-         --output DVI-D-0 --left-of DP-2 --rotate left
+         --output DP-0    --rotate right --left-of DP-4
+#         --output DVI-D-0 --left-of DP-2 --rotate left
 # [][ ][ ]
 elif [[ $(hostname) = 'tp' ]]; then
   xrandr --output HDMI-1 --primary      --left-of eDP-1 \
@@ -67,6 +67,11 @@ for f in /etc/X11/xinit/xinitrc.d/*.sh; do
 done
 
 lxsession &
+
+mpd ~/etc/mpd.conf && [[ -z $(pgrep -xU $UID mpdas) ]] && mpdas &
+
+# disable audit messages spamming dmesg
+auditctl -e 0
 
 #exec catpoison -f $XDG_CONFIG_HOME/ratpoisonrc
 exec sdorfehs-20220514 -f $HOME/dev/sdorfehs-config/sdorfehsrc
