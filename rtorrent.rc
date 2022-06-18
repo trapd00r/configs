@@ -6,24 +6,22 @@
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2009-04-24
 #         mtime  2019-03-04 12:24:44
-#   permissions  You are free to use things you may find useful here.
-#                Would my tweaks happen to give you a raise or fetch you a
-#                girlfriend, it goes without saying I'm counting on you
-#                to share with me as I've shared with you.
 #           git  git://github.com/trapd00r/configs (up-to-date)
 #                http://github.com/trapd00r/configs
 #           irc  japh@freenode #rtorrent #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 ###
 
-dht                           = disable
+dht                           = auto
+dht_port                      = 6881
+#dht                           = disable
 # 1G by default
 pieces.memory.max             = 1G
 check_hash                    = no
 directory                     = /home/scp1/dl/
 encryption                    = allow_incoming,try_outgoing,enable_retry
 key_layout                    = qwerty
-port_range                    = 60288-60288
+port_range                    = 50000-50001
 scgi_local                    = ~/var/rtorrent/scgi
 session                       = /home/scp1/var/rtorrent/session/
 log.execute                   = ~/var/rtorrent/execute.log
@@ -33,7 +31,6 @@ encoding_list                 = utf8
 max_memory_usage              = 2400M
 network.max_open_files.set    = 512
 pieces.hash.on_completion.set = no
-
 
 trackers.alias.set_key = waffles.ch,            "waffles"
 trackers.alias.set_key = definitely.notwhat.cd, "what.cd"
@@ -55,10 +52,9 @@ schedule2 = session_save, 1200, 43200, ((session.save))
 # make scgi socket group-writable
 schedule = scgi_permission,0,0,"execute.nothrow=chmod,g+w,/home/scp1/var/rtorrent/scgi"
 
-
-schedule  = mem     ,10, 10, "load.start=/home/scp1/dl/_fx/*.torrent,d.set_directory=/mnt/music8/_new"
-schedule  = mem     ,10, 10, "load.start=/home/scp1/Downloads/*.torrent,d.set_directory=/mnt/music8/_new"
-#schedule  = nas     ,10, 10, "load.start=/home/scp1/dl/_nas/*.torrent,d.set_directory=/home/scp1/nas/_dl"
+schedule2 = watch_directory_1,5,60,"load.start=/home/scp1/dl/*.torrent,d.directory.set=/mnt/music8/_new"
+#schedule2 = watch_directory_2,5,5,"load.start=/home/wim/media/watch_music/*.torrent,d.directory.set=/home/user/media/music"
+#schedule2 = watch_directory_3,5,300,"load.start=/home/user/media/watch_movies/*.torrent,d.directory.set=/home/user/media/movies"
 
 
 system.method.set_key = event.download.inserted_new,log, "print=\"  GOT \",$d.get_name=,\" [\",$to_date=$system.time=,\"]\""
@@ -93,7 +89,7 @@ ui.color.alarm.set       = "bold 160"
 ui.color.complete.set    = "italic 106"
 ui.color.even.set        = ""
 ui.color.focus.set       = "bold italic 2 on 232"
-ui.color.footer.set      = "245 on 232"
+ui.color.footer.set      = "245 on 233"
 ui.color.incomplete.set  = "160"
 ui.color.info.set        = "137"
 ui.color.label.set       = "224"
@@ -109,7 +105,7 @@ ui.color.progress80.set  = "250"
 ui.color.queued.set      = "242"
 ui.color.seeding.set     = "100"
 ui.color.stopped.set     = "124"
-ui.color.title.set       = "243 on 232"
+ui.color.title.set       = "243 on 233"
 
 #view.collapsed.toggle
 
