@@ -92,6 +92,7 @@ Plug 'junegunn/fzf.vim'                 " ... all the things
 Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
 Plug 'junegunn/vim-plug'                " self
+Plug 'junegunn/goyo.vim'                " distractionless
 Plug 'kien/ctrlp.vim'                   " I don't use this but the one below depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
