@@ -1005,7 +1005,7 @@ zstyle ':completion:*:(mv|cp|file|m|mplayer):*' ignored-patterns '(#i)*.(url|mht
 # completion for environment variable values
 # this way I can do
 # $ export ASKAS_BUTIK=<tab>
-_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter test1 test2 test3 test4 test5'
+_comps[-value-,ASKAS_BUTIK,-default-]='compadd magnusw1 magnusw2 partner glitter test1 test2 test3 test4 test5 skr_dev'
 
 # the included zsh completion script in the beets dist is broken
 # this makes it easier to import:
@@ -1389,10 +1389,14 @@ named-directories:-normal:named\ directories *'
 #alias rm='rm -v'
 alias rg='rg --ignore-file=~/etc/fd.ignorefile'
 
-export ASKAS_BUTIK=magnusw2
+export ASKAS_BUTIK=magnusw1
 export GTK_THEME=japh
 
 alias cpu_frequency_watch='watch -n.5 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias performance_mode='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
 alias schedutil_mode='echo schedutil | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
 
+#export JULIA_LOAD_PATH=~/dev/julia-lab
+alias share="python3 -m http.server 8080"
+# preserve my environment
+alias sudo='sudo -E'
