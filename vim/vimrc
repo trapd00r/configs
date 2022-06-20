@@ -89,7 +89,7 @@ Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that 
 Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
-Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
+"Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
 Plug 'junegunn/vim-plug'                " self
 Plug 'junegunn/goyo.vim'                " distractionless
@@ -461,7 +461,7 @@ nnoremap <leader>gs :GFiles?<cr>
 
 " use :Gfiles for ctrlp if in a git repo
 " otherwise, use normal fzf
-map <expr> <C-p> fugitive#head() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+map <silent> <expr> <C-p> FugitiveHead() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
 
 " commits for the current buffer, vselect a line to track changes for it
 nnoremap <leader>gc :BCommits<cr>
@@ -712,7 +712,7 @@ autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
 autocmd FileType man set nonumber | set filetype=perldoc
 
 " enable Rainbows everywhere
-autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
+" autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
 
 " set quickfix window height and make it modifiable
 autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
@@ -906,7 +906,7 @@ function! GitStatusStatusLine(opt)
 endfunction
 
 function! GitBranchStatusLine()
-  let current_branch = fugitive#head()
+  let current_branch = FugitiveHead()
   let shorter = substitute(current_branch, 'Magnus/', '', '')
   return printf("%.25s", shorter)
 endfunction
