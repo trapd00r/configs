@@ -9,9 +9,10 @@
 " plugin/blockwise.vim
 " plugin/smartcom.vim
 
-set nocp
+let g:develop_plugin = 1
 
 " ========== INIT START =================================
+set nocp
 filetype plugin indent on
 syntax on
 
@@ -30,7 +31,7 @@ let g:hostname = hostname()
 call plug#begin(expand($VIMRUNTIME) . '/plugged')
 
 " This way, I'm loading the dev versions of my plugins if it looks like
-" I'm about to work on them.
+" I'm about to work on them, or if the develop_plugin variable is set.
 
 " LS_COLORS.vim      - dircolors syntax
 " LS_COLORS-edir.vim - dircolors syntax for an edir session
@@ -64,7 +65,7 @@ for myplugin in [
 
   " developing, use dev version of plugin
   " ~/dev/LS_COLORS.vim/
-  if path =~ '\vdev[/]' . myplugin
+  if path =~ '\vdev[/]' . myplugin || g:develop_plugin == 1
     Plug path
 
   " use stable version
