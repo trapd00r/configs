@@ -1,7 +1,7 @@
 " ${VIMRUNTIME}/vimrc
 "       owner  Magnus Woldrich <m@japh.se>
 "       btime  2009-04-24
-"       mtime  2022-04-24
+"       mtime  2022-06-29
 "         git  http://github.com/trapd00r/configs/
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
@@ -9,6 +9,7 @@
 " plugin/blockwise.vim
 " plugin/smartcom.vim
 
+set nocp
 
 " ========== INIT START =================================
 filetype plugin indent on
@@ -19,7 +20,7 @@ runtime macros/matchit.vim                                                 " % o
 set all&                                                                   " turn everything off, in case of evil vendor vimrcs
 let &runtimepath  = $VIMRUNTIME                                            " $XDG_CONFIG_HOME/vim
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
-set exrc                                                                   " enables the reading of vimrc in ./
+"set exrc                                                                   " enables the reading of vimrc in ./
 set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " for gf etc
 set path+='$HOME/dev/air8'
 
@@ -57,8 +58,7 @@ for myplugin in [
 \  'vim-syntax-notes',
 \  'yankmatches.vim',
 \  'LS_COLORS-edir.vim',
-\  'LS_COLORS.vim',
-\ ]
+\  'LS_COLORS.vim']
 
   let path = expand("%:p:h:h")
 
@@ -113,8 +113,13 @@ Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 Plug 'johngrib/vim-game-code-break'     " arkanoid in my vim
 
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
 call plug#end()
 " ========== INIT END ===================================
+
 " ========== OPTIONS START ==============================
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
 set autoindent                                                             " copy indent from previous line
@@ -383,11 +388,11 @@ map '' <nop>
 map '' ``
 
 " Move visual blocks around or dupe them
-vmap <unique> <C-h> <Plug>SchleppLeft
-vmap <unique> <C-j> <Plug>SchleppDown
-vmap <unique> <C-k> <Plug>SchleppUp
-vmap <unique> <C-l> <Plug>SchleppRight
-vmap <unique> <C-d> <Plug>SchleppDup
+vmap <C-h> <Plug>SchleppLeft
+vmap <C-j> <Plug>SchleppDown
+vmap <C-k> <Plug>SchleppUp
+vmap <C-l> <Plug>SchleppRight
+vmap <C-d> <Plug>SchleppDup
 
 "let g:Schlepp#dupTrimWS = 1
 
@@ -1428,3 +1433,7 @@ highlight VimwikiBold cterm=none ctermfg=172
 
 
 " ========== VIMWIKI END ================================
+hi perlVarPlain ctermfg=10
+"hi link podVerbatimLine Comment
+autocmd filetype perldoc hi link Normal Comment
+
