@@ -21,7 +21,6 @@ runtime macros/matchit.vim                                                 " % o
 set all&                                                                   " turn everything off, in case of evil vendor vimrcs
 let &runtimepath  = $VIMRUNTIME                                            " $XDG_CONFIG_HOME/vim
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
-"set exrc                                                                   " enables the reading of vimrc in ./
 set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " for gf etc
 set path+='$HOME/dev/air8'
 
@@ -120,7 +119,6 @@ Plug 'mattn/vim-lsp-settings'
 
 call plug#end()
 " ========== INIT END ===================================
-
 " ========== OPTIONS START ==============================
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
 set autoindent                                                             " copy indent from previous line
@@ -128,6 +126,7 @@ set autoread                                                               " rea
 set backspace=start,indent,eol                                             " what backspace, ^w etc will operate on
 set cindent                                                                " c program indenting
 set clipboard=unnamed                                                      " define clipboard registers to use
+set cdhome                                                                 " cd to ~ on :cd
 set cmdheight=2                                                            " avoid 'Press ENTER to continue' prompts
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
@@ -690,6 +689,7 @@ fu! RemoveTrailingCrap()
 endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
+autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
 " whenever something's yanked, write it to a file
 "au TextYankPost * :call YankedToYankLog()
 "
