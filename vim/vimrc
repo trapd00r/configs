@@ -64,13 +64,13 @@ for myplugin in [
 
   " developing, use dev version of plugin
   " ~/dev/LS_COLORS.vim/
-  if path =~ '\vdev[/]' . myplugin || g:develop_plugin == 1
-    Plug path
-
-  " use stable version
-  else
+"  if path =~ '\vdev[/]' . myplugin || g:develop_plugin == 1
+"    Plug path
+"
+"  " use stable version
+"  else
     Plug 'trapd00r/' . myplugin
-  endif
+"  endif
 endfor
 
 
