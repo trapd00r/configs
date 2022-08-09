@@ -1402,8 +1402,15 @@ alias share="python3 -m http.server 8080"
 # preserve my environment
 alias sudo='sudo -E'
 
-export SYSTEMD_COLORS=256
-export GEM_HOME=${HOME}/lib/ruby
-export PATH=${PATH}:${GEM_HOME}/bin
-#export LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0"
-alias vim=vim9
+#<<<<<<< Updated upstream
+#export SYSTEMD_COLORS=256
+#export GEM_HOME=${HOME}/lib/ruby
+#export PATH=${PATH}:${GEM_HOME}/bin
+##export LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0"
+#alias vim=vim9
+#=======
+
+source ~/zshrc-tp
+alias ncmpcpp='ncmpcpp -h japh.se -p 6600'
+alias mpc='mpc -h japh.se -p 6600'
+alias stream='mplayer -loop 0 http://japh.se:9999'
