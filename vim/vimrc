@@ -466,7 +466,9 @@ nnoremap <leader>gs :GFiles?<cr>
 
 " use :Gfiles for ctrlp if in a git repo
 " otherwise, use normal fzf
-map <silent> <expr> <C-p> FugitiveHead() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+map <silent> <expr> <C-p>     FugitiveHead() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+" for cases where files aren't part of a git repo
+map <silent> <expr> <leader>p FugitiveHead() != '' ? ':GFiles --cached --others <CR>' : ':Files<CR>'
 
 " commits for the current buffer, vselect a line to track changes for it
 nnoremap <leader>gc :BCommits<cr>
@@ -1377,7 +1379,7 @@ let &ro =&ro
 let &t_SI = "\e]12;#ff5f00\x7"
 
 " cursor color elsewhere
-let &t_EI = "\e]12;#ff005f\x7"
+let &t_EI = "\e]12;#ffffff\x7"
 
 " cursor solid block
 let &t_EI .= "\e[2 q"
