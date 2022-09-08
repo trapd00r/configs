@@ -1427,6 +1427,8 @@ let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr, pre, script'
 
 " enable syntax highlighting in html output
 " let g:vimwiki_listing_hl = 1
+" turn of link shortening
+let g:vimwiki_url_maxsave = 0
 
 " conceal {{{sql
 let g:vimwiki_conceal_pre = 1
