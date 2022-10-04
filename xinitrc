@@ -74,4 +74,6 @@ if [[ $(hostname) = 'sid' ]]; then
   exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'fantomen' ]]; then
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+elif [[ $(hostname) = 'tp' ]]; then
+  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 fi
