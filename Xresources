@@ -37,7 +37,7 @@ I change fonts on the fly in urxvt and xterm; see pickyfont[3]
 !URxvt*chdir:                /home/scp1/dev/askas/air8
 
 URxvt.perl-lib:             /home/scp1/dev/urxvt-extensions
-URxvt*perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher
+URxvt*perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher,-confirm-paste
 URxvt.keysym.C-u:           perl:url-select:select_next
 URxvt.perl-ext:             selection,mark-yank-urls
 URxvt.url-select.launcher:  /home/scp1/dev/utils/www-newwindow
@@ -354,7 +354,7 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 !*keysym.Control-Shift-K: ^[[23^
 sid.keysym.Control-Shift-K: \033[23@
 
-#include "/home/japh/etc/Xcolors/nancy.Xresources"
+#include "/home/scp1/etc/Xcolors/nancy.Xresources"
 
 *.color0:         #1b1d1e
 *.color1:         #f92672
