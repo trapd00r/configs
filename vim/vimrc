@@ -58,16 +58,17 @@ for myplugin in [
 \  'vim-syntax-notes',
 \  'yankmatches.vim',
 \  'LS_COLORS-edir.vim',
-\  'LS_COLORS.vim']
+\  'LS_COLORS.vim',
+\  'VimDebug']
 
   let path = expand("%:p:h:h")
 
   " developing, use dev version of plugin
   " ~/dev/LS_COLORS.vim/
-"  if path =~ '\vdev[/]' . myplugin || g:develop_plugin == 1
-"    Plug path
-"
-"  " use stable version
+" if path =~ '\vdev[/]' . myplugin || g:develop_plugin == 1
+"   Plug path
+
+  " use stable version
 "  else
     Plug 'trapd00r/' . myplugin
 "  endif
@@ -244,7 +245,7 @@ set wildmode=list:longest,full                                             " com
 
 " ========== OPTIONS END ================================
 
-color neverland
+color neverland_black_bg
 
 " ========== MAPPINGS START =============================
 " ATTENTION! <leader> #1
@@ -1148,12 +1149,12 @@ highlight default      TRACK_PERL_VAR_ACTIVE      ctermfg=196    ctermbg=bg    c
 
 highlight link ColorColumn  CursorLine
 
-highlight CursorColumn            ctermfg=fg   ctermbg=234 cterm=none
-highlight CursorLine              ctermfg=none ctermbg=234
+highlight CursorColumn            ctermfg=fg   ctermbg=233 cterm=none
+highlight CursorLine              ctermfg=none ctermbg=233
 highlight Error                   ctermfg=089  ctermbg=250 cterm=bolditalicreverse
 highlight ErrorMsg                ctermfg=137  ctermbg=bg  cterm=bolditalic
-highlight Folded                  ctermfg=238  ctermbg=233 cterm=none
-highlight FoldColumn              ctermfg=236  ctermbg=233 cterm=none
+highlight Folded                  ctermfg=238  ctermbg=232 cterm=none
+highlight FoldColumn              ctermfg=236  ctermbg=232 cterm=none
 highlight IncSearch               ctermfg=053  ctermbg=197  cterm=bolditalic
 
 
@@ -1161,7 +1162,7 @@ highlight ModeMsg                                          cterm=bolditalic
 highlight Search                  ctermfg=197 ctermbg=053  cterm=none
 highlight SpecialKey              ctermfg=239
 highlight Statement                                        cterm=italic
-highlight VertSplit               ctermfg=234 ctermbg=233  cterm=none
+highlight VertSplit               ctermfg=234 ctermbg=232  cterm=none
 highlight Visual                  ctermfg=197 ctermbg=053  cterm=reverse
 
 highlight clear LineNr

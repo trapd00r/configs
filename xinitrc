@@ -45,7 +45,7 @@ xkbset bouncekeys 50
 xbanish &
 
 # https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
-xsetroot -solid '#242424'
+xsetroot -solid '#161616'
 xsetroot -cursor_name left_ptr
 
 xscreensaver -no-splash &
