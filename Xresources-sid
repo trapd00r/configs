@@ -1,10 +1,10 @@
-Xft.dpi:       96
-Xft.antialias: true
-Xft.hinting:   true
-Xft.rgba:      rgb
-Xft.autohint:  true
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+!Xft.dpi:       96
+!Xft.antialias: true
+!Xft.hinting:   true
+!Xft.rgba:      rgb
+!Xft.autohint:  true
+!Xft.hintstyle: hintslight
+!Xft.lcdfilter: lcddefault
 
 XTerm*background:        #000
 XTerm*foreground:        #fff
@@ -48,7 +48,7 @@ dzen2.font: -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp125
 
 
 URxvt.perl-lib:              /home/scp1/dev/urxvt-extensions
-URxvt.perl-ext-common:       default,clipboard,url-select,keyboard-select,bell-command,matcher,focus
+URxvt*perl-ext-common:      default,clipboard,url-select,keyboard-select,bell-command,matcher,focus,-confirm-paste
 URxvt.keysym.C-u:            perl:url-select:select_next
 !URxvt.perl-ext:              selection,mark-yank-urls
 URxvt.url-select.launcher:   /usr/lib/firefox/firefox
