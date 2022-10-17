@@ -276,6 +276,7 @@ export BROWSER=${HOME}/dev/utils/www
 
 # ========== EXPORT END =================================
 # ========== ALIAS START ================================
+alias sshfs="sshfs -o cache=yes -o kernel_cache -o compression=no -o Ciphers=aes128-ctr  $@"
 alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
 
 if [[ $HOST = 'sid' ]]; then
@@ -912,10 +913,17 @@ which() {
 }
 
 mplayer() {
+  sdorfehs -c 'set barsticky 0'
+
   /usr/bin/mplayer \
     -identify \
     -include $XDG_CONFIG_HOME/mplayer/config \
-    -profile sid $@
+    -profile sid \
+    -heartbeat-cmd "xscreensaver-command -deactivate" \
+    $@
+    ;
+  sdorfehs -c 'set barsticky 1'
+
 }
 mplayer_pipe() {
   /usr/bin/mplayer \
