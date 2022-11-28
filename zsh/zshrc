@@ -12,7 +12,7 @@
 #zmodload zsh/zprof
 
 # ========== INIT START =================================
-chdir ${HOME}/dev/askas/air8
+chdir ${HOME}/dev/
 
 #autoload -U compinit
 #compinit
@@ -920,6 +920,8 @@ mplayer() {
     -include $XDG_CONFIG_HOME/mplayer/config \
     -profile sid \
     -heartbeat-cmd "xscreensaver-command -deactivate" \
+    -nosub \
+    -noautosub \
     $@
     ;
   sdorfehs -c 'set barsticky 1'
