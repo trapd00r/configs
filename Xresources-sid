@@ -43,7 +43,8 @@ dzen2.font: -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp125
 *color12:        #0c73c2
 *color13:        #9e6ffe
 *color14:        #899ca1
-*color15:        #f8f8f2
+!*color15:        #f8f8f2
+*color15:        #d3d2c8
 *color16:        #000000
 
 
