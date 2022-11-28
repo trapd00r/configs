@@ -27,9 +27,9 @@ if [[ $(hostname) = 'fantomen' ]]; then
          --output HDMI-0 --rotate left   --right-of DP-2 \
          --output DP-0   --rotate right  --left-of DP-2 \
          --output DP-5   --same-as DP-2  --right-of DP-0
-  xrandr --output DP-2   --primary \
-         --output HDMI-0 --rotate left --right-of DP-2 \
-         --output DP-0 --rotate right --left-of DP-2
+#  xrandr --output DP-2   --primary \
+#         --output HDMI-0 --rotate left --right-of DP-2 \
+#         --output DP-0 --rotate right --left-of DP-2
 ## [][ ][ ]
 elif [[ $(hostname) = 'tp' ]]; then
   xrandr --output HDMI-1 --primary      --left-of eDP-1 \
@@ -74,6 +74,8 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 
 # disable audit messages spamming dmesg
 auditctl -e 0
+
+#exec openbox-session
 
 if [[ $(hostname) = 'sid' ]]; then
   exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
