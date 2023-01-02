@@ -86,6 +86,7 @@ Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
+Plug 'alvan/vim-php-manual'             " documentation while learning php, K
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
 Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 Plug 'junegunn/fzf'                     " fuzzy...
@@ -94,6 +95,7 @@ Plug 'junegunn/fzf.vim'                 " ... all the things
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
 Plug 'junegunn/vim-plug'                " self
 Plug 'junegunn/goyo.vim'                " distractionless
+Plug 'ludovicchabant/vim-gutentags'     " tag management
 Plug 'kien/ctrlp.vim'                   " I don't use this but the one below depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
