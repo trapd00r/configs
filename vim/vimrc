@@ -102,6 +102,7 @@ Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific wor
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
 Plug 'markonm/traces.vim'               " live preview of ex commands
+Plug 'mhinz/vim-startify'               " dashboard
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
 Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
@@ -694,6 +695,10 @@ fu! RemoveTrailingCrap()
 endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
+" reload the current tab in chrome on :w when working on webdev
+autocmd! BufWritePost ~/dev/webbhuset/* silent !reload_chrome
+
+" fun with the USR signals
 autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
 " whenever something's yanked, write it to a file
 "au TextYankPost * :call YankedToYankLog()
@@ -958,6 +963,16 @@ set statusline +=\%7*\ ¦\ \%1*%{ContextInStatusbar()}  " current function or bl
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+" dont keep tags file in every single project dir
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+"let g:gutentags_ctags_exclude = [ \ '.git', '.svg', '.hg', \ '/tests/', \ 'build', \ 'dist', \ 'sites//files/', \ 'bin', \ 'node_modules', \ 'bower_components', \ 'cache', \ 'compiled', \ 'docs', \ 'example', \ 'bundle', \ 'vendor', \ '.md', \ '-lock.json', \ '.lock', \ 'bundle.js', \ 'build.js', \ '.rc', \ '.json', \ '.min.', \ '.map', \ '.bak', \ '.zip', \ '.pyc', \ '.class', \ '.sln', \ '.Master', \ '.csproj', \ '.tmp', \ '.csproj.user', \ '.cache', \ '.pdb', \ 'tags', \ 'cscope.', \ '.css', \ '.less', \ '.scss', \ '.exe', '.dll', \ '.mp3', '.ogg', '.flac', \ '.swp', '.swo', \ '.bmp', '.gif', '.ico', '.jpg', '.png', \ '.rar', '.zip', '.tar', '.tar.gz', '.tar.xz', '.tar.bz2', \ '.pdf', '.doc', '.docx', '.ppt', '.pptx', \ ]
+
 
 " Show only function name and the current block in the context window
 hi link ContextBorder FoldColumn
@@ -1445,3 +1460,26 @@ hi perlVarPlain ctermfg=10
 "hi link podVerbatimLine Comment
 autocmd filetype perldoc hi link Normal Comment
 
+" returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_lists = [
+        \ { 'type': 'files',     'header': ['   MRU']            },
+        \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+        \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
+        \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
+        \ { 'type': 'commands',  'header': ['   Commands']       },
+        \ ]
