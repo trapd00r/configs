@@ -80,7 +80,7 @@ auditctl -e 0
 if [[ $(hostname) = 'sid' ]]; then
   exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'fantomen' ]]; then
-  exec sdorfehs-202212 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+  exec sdorfehs-202301 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'tp' ]]; then
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 fi
