@@ -1,3 +1,114 @@
 follow_now_playing_lyrics = "yes"
 lyrics_directory =  ~/dev/lyrics/lyrics/
-lyrics_fetchers = genius
+#lyrics_fetchers = genius
+##titles_visibility = no
+##statusbar_visibility = yes
+##display_bitrate = yes
+##main_window_color = 1
+##statusbar_color = 7
+##message_delay_time = 1
+##
+##now_playing_prefix = $b
+##now_playing_suffix = $/b
+##current_item_prefix = $r
+##current_item_suffix = $/r
+##
+##playlist_display_mode = "columns" (classic/columns)
+##song_list_format = "$6%a - $6%t $R$5%l "
+##song_columns_list_format = "(20)[5]{a} (25)[5]{b} (5)[5]{y} (25)[6]{tr} (3f)[4]{n} (6f)[5]{lr}"
+##
+##progressbar_look = "─╼"
+##progressbar_color = 240
+##progressbar_elapsed_color = 245
+##
+##visualizer_in_stereo = no
+##visualizer_type = spectrum
+##visualizer_look = ●┃
+##visualizer_color = 4,5,6,7,8
+#
+#mpd_port = 6600
+#mpd_crossfade_time = 2
+#
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_output_name = "my_fifo"
+visualizer_in_stereo = yes
+##visualizer_sample_multiplier = 1
+##visualizer_sync_interval = 30
+visualizer_type = spectrum
+visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
+#visualizer_look = "▒░"
+#visualizer_look = "◈░"
+# visualizer_look = "┃┃"
+# visualizer_look = ●┃
+#visualizer_look = "█┇"
+#visualizer_look = "▒░"
+#visualizer_look = "▋▍"
+#visualizer_look = "▋█"
+#visualizer_look = "▋█"
+visualizer_look = "▋░"
+#visualizer_look = "▋▓"
+#visualizer_look = "▋☰"
+#visualizer_look = "☰⛆"
+#visualizer_look = "☰▓"
+#visualizer_look = "●▉"
+visualizer_spectrum_smooth_look = yes
+#
+## A value between 1 and 5 inclusive. Specifying a larger value makes the
+## visualizer look at a larger slice of time, which results in less jumpy
+## visualizer output.
+#
+visualizer_spectrum_dft_size = 3
+#
+#visualizer_spectrum_gain = 10
+#
+## Left-most frequency of visualizer in Hz, must be less than HZ MAX
+#
+#visualizer_spectrum_hz_min = 20
+#
+## Right-most frequency of visualizer in Hz, must be greater than HZ MIN
+#
+#visualizer_spectrum_hz_max = 20000
+#
+#
+#startup_screen = "playlist"
+#startup_slave_screen = "visualizer"
+#locked_screen_width_part = 50
+#ask_for_locked_screen_width_part = no
+#song_list_format = "$5· $5{%a}|{%D}$5 · $5%t $R $5%l"
+
+song_list_format = {%a - }{%t}|{$8%f$9}$R{$3%l$9}
+#song_status_format = "{{%a{ $6·$9 %b{, %y}} $6·$9 }{%t$/b}}|{$b%f$/b}"
+#song_library_format = {{%a - %t} (%b)}|{%f}
+#playlist_display_mode = classic
+autocenter_mode = yes
+#
+#progressbar_look = "___"
+##progressbar_look = "─╼ "
+##progressbar_look = "┅┅┄"
+##progressbar_look = "─➞─"
+##progressbar_look = "─┅─"
+##progressbar_look = "▁▁▁"
+##progressbar_look = "≈►·"
+##progressbar_look = "→→"
+#
+#header_visibility = no
+#statusbar_visibility = no
+#titles_visibility = no
+#follow_now_playing_lyrics = no
+#enable_window_title = no
+#external_editor = vis
+#colors_enabled = yes
+#empty_tag_color = red
+#header_window_color = yellow
+#volume_color = yellow
+#state_line_color = red
+#state_flags_color = yellow
+#main_window_color = default
+#color1 = red
+#color2 = red
+#progressbar_color = 5
+#progressbar_elapsed_color = 4
+#statusbar_color = black
+#alternative_ui_separator_color = magenta
+#window_border_color = yellow
+#active_window_border = magenta
