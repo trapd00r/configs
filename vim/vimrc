@@ -48,7 +48,7 @@ call plug#begin(expand($VIMRUNTIME) . '/plugged')
 for myplugin in [
 \  'automkdir.vim',
 \  'cccp.vim',
-\  'currentline.vim',
+\  'currentline.vim', 
 \  'eqalignsimple.vim',
 \  'foldsearches.vim',
 \  'hlnext.vim',
@@ -95,7 +95,7 @@ Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
 Plug 'junegunn/vim-plug'                " self
 Plug 'junegunn/goyo.vim'                " distractionless
 Plug 'ludovicchabant/vim-gutentags'     " tag management
-Plug 'kien/ctrlp.vim'                   " I don't use this but the one below depends on it
+Plug 'kien/ctrlp.vim'                   " I don't use this but ctrlp-funky depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
@@ -110,10 +110,8 @@ Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
 Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
-Plug 'w0rp/ale'                         " linting
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
-Plug 'johngrib/vim-game-code-break'     " arkanoid in my vim
 
 
 "Plug 'prabirshrestha/vim-lsp'
