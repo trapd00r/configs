@@ -1,7 +1,7 @@
 " ${VIMRUNTIME}/vimrc
 "       owner  Magnus Woldrich <m@japh.se>
 "       btime  2009-04-24
-"       mtime  2022-06-29
+"       mtime  2023-01-22 13:15:49
 "         git  http://github.com/trapd00r/configs/
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
@@ -1124,6 +1124,9 @@ let g:xf86conf_xfree86_versio      = 2
 
 highlight Normal ctermfg=white ctermbg=bg cterm=italicbold
 
+hi perlVarPlain ctermfg=10
+autocmd filetype perldoc hi link Normal Comment
+
 " highlight the current line
 highlight CurrentLine   ctermbg=184 ctermfg=bg cterm=bolditalicreverse
 
@@ -1371,25 +1374,6 @@ function! Undouble_Completions ()
 endfunction
 
 " ========== COMPLETION END =============================
-" ========== NOTES START ================================
-" zz Fold around searches
-" zu Fold around use statements
-"
-" <leader>ym - yank matches
-" <leader>yM - yank non matches
-"
-" <leader>dm - delete matches
-" <leader>dM - delete non matches
-"
-" ^vB - blockwise : operations
-"
-" ga => char info
-"
-" <leader><return> - highlight the current line
-"
-" <leader>cc - toggle colorcolum at cursor positions
-" ========== NOTES END ==================================
-
 " ========== TERMCAP START ==============================
 " force an update of the statusline
 let &ro =&ro
@@ -1457,19 +1441,21 @@ highlight VimwikiBold cterm=none ctermfg=172
 
 
 " ========== VIMWIKI END ================================
-hi perlVarPlain ctermfg=10
-autocmd filetype perldoc hi link Normal Comment
-
-" returns all modified files of the current git repo
-" `2>/dev/null` makes the command fail quietly, so that when we are not
-" in a git repo, the list will be empty
-function! s:gitModified()
-    let files = systemlist('git ls-files -m 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
-
-" same as above, but show untracked files, honouring .gitignore
-function! s:gitUntracked()
-    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-    return map(files, "{'line': v:val, 'path': v:val}")
-endfunction
+" ========== NOTES START ================================
+" zz Fold around searches
+" zu Fold around use statements
+"
+" <leader>ym - yank matches
+" <leader>yM - yank non matches
+"
+" <leader>dm - delete matches
+" <leader>dM - delete non matches
+"
+" ^vB - blockwise : operations
+"
+" ga => char info
+"
+" <leader><return> - highlight the current line
+"
+" <leader>cc - toggle colorcolum at cursor positions
+" ========== NOTES END ==================================
