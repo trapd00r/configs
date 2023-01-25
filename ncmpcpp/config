@@ -4,7 +4,6 @@ lyrics_directory =  ~/dev/lyrics/lyrics/
 ##titles_visibility = no
 ##statusbar_visibility = yes
 ##display_bitrate = yes
-##main_window_color = 1
 ##statusbar_color = 7
 ##message_delay_time = 1
 ##
@@ -14,12 +13,18 @@ lyrics_directory =  ~/dev/lyrics/lyrics/
 ##current_item_suffix = $/r
 ##
 ##playlist_display_mode = "columns" (classic/columns)
-##song_list_format = "$6%a - $6%t $R$5%l "
-##song_columns_list_format = "(20)[5]{a} (25)[5]{b} (5)[5]{y} (25)[6]{tr} (3f)[4]{n} (6f)[5]{lr}"
+#song_list_format = "$6%a - $6%t $R$5%l "
+#song_columns_list_format = "(20)[5]{a} (25)[5]{b} (5)[5]{y} (25)[6]{tr} (3f)[4]{n} (6f)[5]{lr}"
+
+song_columns_list_format = "(15)[white]{a} (25)[blue]{b} (35)[white]{t}"
+#song_columns_list_format = "(15)$(197_yellow){a} (25)[blue]{b} (35)[16]{t}"
+#song_columns_list_format = "(197)%a$(end)"
+#song_columns_list_format = "(2f)[5]{} (4f)[5]{n} (2f)[8]{} (25)[8]{t} (2f)[7]{} (20)[7]{a} (25)[7]{b} (6f)[7]{y} (7f)[5]{lr} (1f)[5]{}
+#song_columns_list_format = “(20)[5]{a} (25)[5]{b} (5)[5]{y} (25)[6]{tr} (3f)[4]{n} (6f)[5]{lr}”
+
 ##
 ##progressbar_look = "─╼"
-##progressbar_color = 240
-##progressbar_elapsed_color = 245
+progressbar_color = black
 ##
 ##visualizer_in_stereo = no
 ##visualizer_type = spectrum
@@ -70,13 +75,13 @@ visualizer_spectrum_dft_size = 3
 #visualizer_spectrum_hz_max = 20000
 #
 #
-#startup_screen = "playlist"
-#startup_slave_screen = "visualizer"
-#locked_screen_width_part = 50
+startup_screen = "playlist"
+startup_slave_screen = "visualizer"
+locked_screen_width_part = 70
 #ask_for_locked_screen_width_part = no
 #song_list_format = "$5· $5{%a}|{%D}$5 · $5%t $R $5%l"
 
-song_list_format = {%a - }{%t}|{$8%f$9}$R{$3%l$9}
+#song_list_format = "{(%l) }{%a - }{%t}|{%f}"
 #song_status_format = "{{%a{ $6·$9 %b{, %y}} $6·$9 }{%t$/b}}|{$b%f$/b}"
 #song_library_format = {{%a - %t} (%b)}|{%f}
 #playlist_display_mode = classic
@@ -92,23 +97,23 @@ autocenter_mode = yes
 ##progressbar_look = "→→"
 #
 #header_visibility = no
-#statusbar_visibility = no
-#titles_visibility = no
+statusbar_visibility = no
+titles_visibility = no
 #follow_now_playing_lyrics = no
 #enable_window_title = no
 #external_editor = vis
 #colors_enabled = yes
 #empty_tag_color = red
-#header_window_color = yellow
+header_window_color = black
 #volume_color = yellow
 #state_line_color = red
-#state_flags_color = yellow
-#main_window_color = default
+state_flags_color = black
+main_window_color = black
 #color1 = red
 #color2 = red
 #progressbar_color = 5
-#progressbar_elapsed_color = 4
-#statusbar_color = black
-#alternative_ui_separator_color = magenta
-#window_border_color = yellow
-#active_window_border = magenta
+progressbar_elapsed_color = black
+statusbar_color = black
+alternative_ui_separator_color = black:b
+window_border_color = black
+active_window_border = black
