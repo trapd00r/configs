@@ -408,6 +408,7 @@ vmap <C-d> <Plug>SchleppDup
 " resize windows like in sdorfehs
 nnoremap <C-W>J :exe 'resize ' . winheight(0) / 2<cr>
 nnoremap <C-W>K :exe 'resize ' . winheight(0) * 2<cr>
+nnoremap <C-W>Q :resize 100<cr>
 
 " my redraw key does a few things:
 "   - remove hlsearch
