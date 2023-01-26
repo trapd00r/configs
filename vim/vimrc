@@ -251,6 +251,9 @@ color neverland_black_bg
 " ATTENTION! <leader> #1
 let mapleader=','
 
+" help under the cursor (perl, php, man...)
+nnoremap <C-k> K
+
 " Github copilot
 imap <silent> <C-j> <Plug>(copilot-next)
 imap <silent> <C-k> <Plug>(copilot-previous)
@@ -264,7 +267,7 @@ nnoremap <backspace> <C-]>
 nnoremap <tab>       <C-T>
 
 " perldoc what's under the cursor
-nnoremap <C-k> :Perldoc<cr>
+"nnoremap <C-k> :Perldoc<cr>
 
 " search only inside a block/scope/function
 nnoremap <leader>/ :normal vi{<esc><esc>/\%V
@@ -1130,6 +1133,10 @@ highlight Normal ctermfg=white ctermbg=bg cterm=italicbold
 
 hi perlVarPlain ctermfg=10
 autocmd filetype perldoc hi link Normal Comment
+
+" to make me feel more at home :-)
+autocmd filetype php hi link phpIdentifier perlVarPlain
+autocmd filetype php hi phpFunctions ctermfg=white
 
 " highlight the current line
 highlight CurrentLine   ctermbg=184 ctermfg=bg cterm=bolditalicreverse
