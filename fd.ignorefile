@@ -35,3 +35,4 @@ visa.php
 yuicompressor-2.4.6.jar
 .git
 docs/Koddokumentation
+*.po
