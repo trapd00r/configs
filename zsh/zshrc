@@ -224,6 +224,9 @@ export CLIPBORED_X_SELECTION='clipboard'
 export MPD_HOST=0.0.0.0
 export MPD_PORT=6600
 export MPD_USER=scp1
+#export MPD_HOST=192.168.1.18
+#export MPD_PORT=6600
+#export MPD_USER=scp1
 
 # mail
 export MAIL=${HOME}/mail/gmail/INBOX
@@ -321,7 +324,7 @@ alias    wget='wget --no-check-certificate -U=Mozilla'
 alias  yaourt='trizen'
 
 # mpd, music
-alias     mpd="mpd ~/etc/mpd.conf && mpdas"
+alias     mpd="mpd ~/mpd-client.conf && mpdas";
 alias  unlove='pimpd2 --unlove'
 alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
@@ -1402,7 +1405,7 @@ named-directories:-normal:named\ directories *'
 #alias rm='rm -v'
 alias rg="rg --ignore-file=${XDG_CONFIG_HOME}/fd.ignorefile"
 
-export ASKAS_BUTIK=magnusw1
+export ASKAS_BUTIK=${HOST}
 export GTK_THEME=japh
 
 alias cpu_frequency_watch='watch -n.5 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
@@ -1424,3 +1427,4 @@ alias sudo='sudo -E'
 export SYSTEMD_COLORS=256
 export GEM_HOME=${HOME}/lib/ruby
 export PATH=${PATH}:${GEM_HOME}/bin
+
