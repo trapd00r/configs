@@ -48,9 +48,10 @@ pluginpath: ['/usr/lib/python3.10/site-packages/beetsplug/',
 
 
 # files matching these patterns are deleted from source after import
-clutter: ["Thumbs.DB", ".DS_Store", "*.m3u", "*.pls",
-          "*.jpg", "*.nfo", "*.txt", "*.log", "*.gif",
-         ]
+#clutter: ["Thumbs.DB", ".DS_Store", "*.m3u", "*.pls",
+#          "*.jpg", "*.nfo", "*.txt", "*.log", "*.gif",
+#         ]
+clutter: [ "Thumbs.DB", ".DS_Store", ".jpg", ".png" ]
 
 replace:
     '[\\]':         ''
@@ -90,19 +91,22 @@ va_name:               'Various Artists'
 import:
   languages:        en
   default_action:   apply
+#  default_action:   apply
 
-#  remove causes a crash: https://github.com/beetbox/beets/issues/716
-  duplicate_action: ask
+# remove causes a crash: https://github.com/beetbox/beets/issues/716
+# edit year 2023: seems to work now
+  duplicate_action: remove
 
-  non_rec_action:   ask
+  non_rec_action:   asis
+#  non_rec_action:   ask
   autotag:          yes
   write:            yes
   copy:             no
   link:             no
   move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
-#  quiet_fallback:   asis # when using the -q flag
-  quiet_fallback:   skip # when using the -q flag
+  quiet_fallback:   asis # when using the -q flag
+#  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -241,6 +245,8 @@ hook:
 #      command: ls_color_beets --ifs ' ' -k3 "Writing to {path}."
     - event: before_choose_candidate
       command: hr -c '┈' -fg 30 -s 72
+#    - event: album_removed
+#      command: perl /home/scp1/dev/beets-remove-dirs-after-remove-old/remove-dirs-after-remove-old.pl {Album.fields.path}
 
 lastfm:
   user: betbot
@@ -613,7 +619,7 @@ album_fields:
 
 # default is 0.04
 match:
-  strong_rec_thresh: 0.10
+  strong_rec_thresh: 0.15
   medium_rec_thresh: 0.25
   required: year label country
   preferred:
