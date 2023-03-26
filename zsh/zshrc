@@ -221,7 +221,7 @@ export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
 export CLIPBORED_X_SELECTION='clipboard'
 
 # mpd
-export MPD_HOST=0.0.0.0
+export MPD_HOST=192.168.1.12
 export MPD_PORT=6600
 export MPD_USER=scp1
 #export MPD_HOST=192.168.1.18
@@ -282,6 +282,8 @@ export BROWSER=${HOME}/dev/utils/www
 alias sshfs="sshfs -o cache=yes -o kernel_cache -o compression=no -o Ciphers=aes128-ctr  $@"
 alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
 
+alias sab="/usr/bin/python3 -OO /usr/lib/sabnzbd/SABnzbd.py --logging 1 --config-file /home/scp1/.sabnzbd.ini"
+
 if [[ $HOST = 'sid' ]]; then
   alias rm='rmc -v'
 else
@@ -303,7 +305,7 @@ alias    beet="~/dev/beets/beet"
 alias     cat="$HOME/dev/vimcat/vimcat"
 alias      cp='cp -v'
 alias    cpan='cpanm'
-alias     feh='/usr/bin/feh -FZ --cache-size 2048 --quiet --verbose -G -d --draw-tinted --action "cp -v '\'%f\'\" "$@"
+alias     feh='/usr/bin/feh -FZ --action "cp -v %F ." --cache-size 2048 --quiet --verbose -G -d --draw-tinted'
 alias      gd='GIT_PAGER="" git diff'
 alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underline=>1,italic=>1})'"
@@ -324,7 +326,8 @@ alias    wget='wget --no-check-certificate -U=Mozilla'
 alias  yaourt='trizen'
 
 # mpd, music
-alias     mpd="mpd ~/mpd-client.conf && mpdas";
+alias     mpd="mpd ~/etc/mpd.conf && mpdas";
+#alias     mpd="mpd ~/mpd-client.conf && mpdas";
 alias  unlove='pimpd2 --unlove'
 alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
@@ -1428,3 +1431,4 @@ export SYSTEMD_COLORS=256
 export GEM_HOME=${HOME}/lib/ruby
 export PATH=${PATH}:${GEM_HOME}/bin
 
+alias xonotic="pulsemixer --id sink-input-2743 --set-volume 80; ./mnt/games/Xonotic_old/xonotic-local-sdl"
