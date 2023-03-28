@@ -20,7 +20,7 @@ set hintfiltermode vimperator-reflow
 set hintnames numeric
 
 " showcmd
-set modeindicatorshowkeys
+set modeindicatorshowkeys true
 set modeindicator false
 set gimode nextinput
 set externalclipboardcmd xclip
@@ -53,8 +53,11 @@ bind gh open http://192.168.1.6:3000
 " faster scrolling
 unbind J
 unbind K
-bind J scrollline 30
-bind K scrollline -30
+bind --mode=normal J scrollline 30
+bind --mode=normal K scrollline -30
+
+bind --mode=normal J scrollline 30
+bind --mode=normal K scrollline -30
 
 " Only hint search results on Google
 bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
