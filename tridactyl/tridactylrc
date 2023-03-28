@@ -1,37 +1,99 @@
 " vim:ft=vim:et:
 " $XDG_CONFIG_DIR/tridactyl/tridactylrc
 
-"sanitise tridactyllocal tridactylsync
+" do not store settings in local storage
+" what I define here is what's in effect
+sanitise tridactylsync tridactyllocal
 
-set newtab http://japh.se
 
 " fix the annoying yanking issue where yanked data ends up in XA_CLIPBOARD
 set yankto both
+
 set putfrom selection
-
-guiset gui none
-guiset tabs always
-colors dark
-
-bind <BS> back
-bind h tabprev
-bind l tabnext
-" select all in cmdline
-unbind --mode=ex <C-a> 
-
+set smoothscroll true
+set viewsource default
+set newtab about:blank
+set newtabfocus page
 
 " Sane hinting mode
 set hintfiltermode vimperator-reflow
 set hintnames numeric
 
-" Make Tridactyl work on more sites at the expense of some security
-set csp clobber
-fixamo_quiet
-
-
+" showcmd
+set modeindicatorshowkeys
+set modeindicator false
 set gimode nextinput
 set externalclipboardcmd xclip
 
+set allowautofocus false
+
+guiset_quiet gui none
+guiset_quiet hoverlink left
+colors japh
+
+bind <BS> back
+bind h tabprev
+bind l tabnext
+
+bind U fillcmdline undo
+
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -?
+
+" up and down history
+bind --mode=ex <C-k> ex.prev_history
+bind --mode=ex <C-j> ex.next_history
+
+" go home
+bind gh open http://192.168.1.6:3000
+
+
+" faster scrolling
+unbind J
+unbind K
+bind J scrollline 30
+bind K scrollline -30
+
+" Only hint search results on Google
+bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
+bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
+
+" select all in cmdline
+unbind --mode=ex <C-a>
+
+" Git{Hub,Lab} git clone via SSH yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
+
+
+" The following modification allows Tridactyl to function on more pages, e.g. raw GitHub pages.
+" You may not wish to run this. Mozilla strongly feels that you shouldn't.
+" Read https://wiki.mozilla.org/Security/CSP#Goals for more information.
+"
+" Equivalent to `set csp clobber` before it was removed.
+" This weakens your defences against cross-site-scripting attacks
+" and other types of code-injection by reducing the strictness 
+" of Content Security Policy on all sites in a couple of ways.
+" 
+" We remove the sandbox directive
+" https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox
+" which allows our iframe (and anyone else's) to run on any website.
+"
+" We weaken the style-src directive
+" https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
+" to allow us to theme our elements.
+" This exposes you to 'cross site styling' attacks
+jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
+
+
+" New reddit is bad
+autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+
+" Isolate Facebook in its own container
+" set auconcreatecontainer true
+" autocontain facebook\.com facebook
+
