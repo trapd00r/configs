@@ -105,3 +105,15 @@ autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www",
 " set auconcreatecontainer true
 " autocontain facebook\.com facebook
 
+
+" searches
+set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
+
+" o music
+set searchurls.music http://192.168.1.12:8686/add/search?term=%s
+
+" o tv
+set searchurls.tv http://192.168.1.93:8989/add/new?term=%s
+
+" o movie
+set searchurls.movie http://192.168.1.93:7878/add/new?term=%s
