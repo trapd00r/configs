@@ -27,6 +27,8 @@ set externalclipboardcmd xclip
 
 set allowautofocus false
 
+set bmarkweight 9999
+
 guiset_quiet gui none
 guiset_quiet hoverlink left
 colors japh
@@ -68,6 +70,9 @@ unbind --mode=ex <C-a>
 
 " Git{Hub,Lab} git clone via SSH yank
 bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+
+" git clone github repo and cd to the directory in the terminal
+bind ,g js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd ~/tmp; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; st")
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
