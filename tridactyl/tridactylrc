@@ -117,3 +117,9 @@ set searchurls.tv http://192.168.1.93:8989/add/new?term=%s
 
 " o movie
 set searchurls.movie http://192.168.1.93:7878/add/new?term=%s
+
+" o nzbf
+set searchurls.nzbf https://nzbfinder.ws/search?search=%s
+
+" o nzbg
+set searchurls.nzbg https://nzbgeek.info/geekseek.php?moviesgeekseek=1&c=&browseincludewords=%s
