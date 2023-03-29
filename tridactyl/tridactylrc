@@ -51,6 +51,8 @@ bind --mode=ex <C-j> ex.next_history
 " go home
 bind gh open http://192.168.1.6:3000
 
+bind <C-r> reader
+
 
 " faster scrolling
 unbind J
