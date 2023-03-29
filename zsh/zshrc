@@ -12,7 +12,7 @@
 #zmodload zsh/zprof
 
 # ========== INIT START =================================
-chdir ${HOME}/dev/
+#chdir ${HOME}/dev/
 
 #autoload -U compinit
 #compinit
@@ -679,7 +679,7 @@ setopt \
   no_csh_junkie_loops       \
   no_csh_junkie_quotes      \
   no_csh_nullcmd            \
-  no_csh_nullglob           \
+     csh_nullglob           \
      debug_before_cmd       \
      dot_glob               \
   no_dvorak                 \
@@ -1432,3 +1432,7 @@ export GEM_HOME=${HOME}/lib/ruby
 export PATH=${PATH}:${GEM_HOME}/bin
 
 alias xonotic="pulsemixer --id sink-input-2743 --set-volume 80; ./mnt/games/Xonotic_old/xonotic-local-sdl"
+
+#alias firefox="firefox -no-remote -new-window"
+
+#export MOZ_NO_REMOTE=0
