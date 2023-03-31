@@ -69,6 +69,19 @@ replace:
     '″':            ''
     '‐':            '-'
 
+# only interested in duplicate albums, and use bitrate as tiebreaker
+duplicates:
+  album: yes
+  count: yes
+  delete: no
+  full: yes
+#  move: path
+  path: yes
+  strict: no
+  tiebreak:
+    # higher bitrate wins
+    items: [bitrate]
+
 
 # I wish this didn't asciify explicit unicode characters, i.e │
 #asciify_paths:         yes
@@ -91,14 +104,16 @@ va_name:               'Various Artists'
 import:
   languages:        en
   default_action:   apply
-#  default_action:   apply
 
-# remove causes a crash: https://github.com/beetbox/beets/issues/716
-# edit year 2023: seems to work now
+  # remove causes a crash: https://github.com/beetbox/beets/issues/716
+  # edit year 2023: seems to work now
+  # edit year 2023: no it doesn't.
+  # Solution:
+  # while true; do beet import -Iq .; printf "\033[48;5;196;1m=======> AGAIN....\e[m\n"; sleep 3; done
   duplicate_action: remove
 
   non_rec_action:   asis
-#  non_rec_action:   ask
+  #  non_rec_action:   ask
   autotag:          yes
   write:            yes
   copy:             no
@@ -106,7 +121,7 @@ import:
   move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
   quiet_fallback:   asis # when using the -q flag
-#  quiet_fallback:   skip # when using the -q flag
+  #  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -125,7 +140,9 @@ plugins: [
 #  'autosingleton',
   'bucket',
   'discogs',
+  'duplicates',
   'edit',
+  'embedart',
   'fetchart',
   'fromfilename',
   'ftintitle',
@@ -221,6 +238,7 @@ edit:
 
 embedart:
   auto: yes
+  ifempty: yes
 
 fetchart:
   auto:    yes
