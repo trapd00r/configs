@@ -58,7 +58,7 @@
 
 
 "(sh ~/dev/utils/shift-insert)"
-    Mod4 + p
+    Mod4 + p + Release
 
 #
 # End of xbindkeys configuration
