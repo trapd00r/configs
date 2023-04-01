@@ -79,6 +79,10 @@ endfor
 Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
 Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
+Plug 'tridactyl/vim-tridactyl'
+
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
+Plug 'trapd00r/hass-template.vim', { 'for': 'jinja' }
 
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
@@ -108,9 +112,9 @@ Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
 Plug 'tacahiroy/ctrlp-funky'            " function navigator
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
-Plug 'tpope/vim-surround'               " surround all the things
+"Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
-Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
+"Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
