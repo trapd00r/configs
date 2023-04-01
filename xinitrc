@@ -11,7 +11,7 @@ elif [[ $(hostname) = 'tp' ]]; then
 fi
 setxkbmap se -variant nodeadkeys \
              -option  terminate:ctrl_alt_bksp
-             
+
 xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
 
 xmodmap               ~/etc/xmodmaprc
@@ -48,7 +48,7 @@ xbanish &
 xsetroot -solid '#161616'
 xsetroot -cursor_name left_ptr
 
-xscreensaver -no-splash &
+#xscreensaver -no-splash &
 
 # notifications
 dunst &
@@ -75,12 +75,10 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # disable audit messages spamming dmesg
 auditctl -e 0
 
-#exec openbox-session
-
 if [[ $(hostname) = 'sid' ]]; then
   exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'fantomen' ]]; then
-  exec sdorfehs-202301 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+  exec sdorfehs-202304 -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'tp' ]]; then
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 fi
