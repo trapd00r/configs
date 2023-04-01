@@ -75,10 +75,9 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # disable audit messages spamming dmesg
 auditctl -e 0
 
-if [[ $(hostname) = 'sid' ]]; then
-  exec sdorfehs-2022 -f $HOME/dev/sdorfehs-config/sdorfehsrc
-elif [[ $(hostname) = 'fantomen' ]]; then
-  exec sdorfehs-202304 -f $HOME/dev/sdorfehs-config/sdorfehsrc
-elif [[ $(hostname) = 'tp' ]]; then
-  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
-fi
+perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
+
+# https://github.com/trapd00r/hass-mpd-ikea
+webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
+
+exec sdorfehs-202304 -f $HOME/dev/sdorfehs-config/sdorfehsrc
