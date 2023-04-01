@@ -106,11 +106,12 @@ import:
   default_action:   apply
 
   # remove causes a crash: https://github.com/beetbox/beets/issues/716
-  # edit year 2023: seems to work now
-  # edit year 2023: no it doesn't.
   # Solution:
-  # while true; do beet import -Iq .; printf "\033[48;5;196;1m=======> AGAIN....\e[m\n"; sleep 3; done
-  duplicate_action: remove
+  #   while true; do beet import -Iq .; printf "\033[48;5;196;1m=======> AGAIN....\e[m\n"; sleep 3; done
+  # when using skip, might be a good idea to check what's happening:
+  #   tail -f BEETS_IMPORTER_LOG | grep duplicate
+  duplicate_action: skip
+#  duplicate_action: remove
 
   non_rec_action:   asis
   #  non_rec_action:   ask
