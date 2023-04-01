@@ -374,7 +374,7 @@ rewrite:
   artist Retarderat Eleverade:       Organism 12
   artist Ungdumshälsan:              Organism 12
   artist Gms.*:                      GMS
-  artist (tupac|2[pP]ac).*:          2pac
+  artist (tupac|2[pP]ac|2 [pP]ac).*: 2pac
   artist .*weird Al.*:               Weird Al Yankovic
   artist .*Green Lantern.*:          DJ Green Lantern
   artist .ingenting.:                Ingenting
