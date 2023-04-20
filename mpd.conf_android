@@ -1,0 +1,34 @@
+# /storage/emulated/0/mpd.conf
+# mpd.conf for satellite setup:
+# 1. endie - main server with music library
+# 2. mpd running on android with no music library
+# 3. mpd client on android phone (MAFA)
+music_directory "nfs://192.168.1.18/mnt/music8/+TAGGED"
+
+database {
+  plugin "proxy"
+  host "192.168.1.55"
+}
+
+input_cache {
+  size "3 GB"
+}
+
+
+auto_update                       "no"
+connection_timeout                "120"
+follow_inside_symlinks            "no"
+follow_outside_symlinks           "yes"
+#gapless_mp3_playback              "yes"
+#log_level                         "default"
+log_level                         "notice"
+#max_command_list_size             "22048"
+max_command_list_size             "142048"
+max_connections                   "15"
+max_output_buffer_size            "1188192"
+max_playlist_length               "700000"
+#metadata_to_use                   "artist,album,title,name,genre,date,albumartist,label"
+#restore_paused                    "no"
+save_absolute_paths_in_playlists  "yes"
+#zeroconf_enabled                  "no"
+
