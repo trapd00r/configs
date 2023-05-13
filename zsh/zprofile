@@ -1,0 +1,188 @@
+# vim:ft=zsh:
+eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
+
+export GREP_COLORS="38;5;230:sl=38;5;137:cs=38;5;100:fn=38;5;238;3;1;48;5;232:ln=38;5;87;3:bn=38;5;232:se=38;5;232;48;5;232:cx=38;5;240:ms=48;5;231;38;5;196;1;7:mc=38;5;85;1;48;5;232:ne"
+
+# https://github.com/trapd00r/stderred
+[[ -f ${HOME}/dev/stderred/lib64/stderred.so ]] \
+  && export LD_PRELOAD=${HOME}/dev/stderred/lib64/stderred.so:${LD_PRELOAD}
+
+# XDG spec
+export NASSE=${HOME}/mnt/nasse
+
+export       XDG_DATA_DIRS=/usr/share/:/usr/local/share:/home/scp1/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+export       XDG_DATA_HOME=${HOME}/var
+export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
+export      XDG_CACHE_HOME=${HOME}/var/cache
+export      XDG_STATE_HOME=${XDG_DATA_HOME}
+export      XDG_VIDEOS_DIR=${NASSE}/mvids
+export     XDG_CONFIG_HOME=${HOME}/etc
+export     XDG_DESKTOP_DIR=${HOME}/tmp
+export    XDG_DOWNLOAD_DIR=${HOME}/tmp
+export    XDG_PICTURES_DIR=${HOME}/img
+export   XDG_DOCUMENTS_DIR=${HOME}/doc
+export   XDG_DOCUMENTS_DIR=${NASSE}/docs
+export   XDG_TEMPLATES_DIR=${HOME}/tmp
+export XDG_PUBLICSHARE_DIR=${HOME}/usr/share
+
+# zsh exports
+export                LISTMAX=0
+export               HISTFILE=${XDG_DATA_HOME}/zsh/history
+[[ -d ${XDG_DATA_HOME}/zsh ]] || mkdir -p ${XDG_DATA_HOME}/zsh ]]
+export               HISTSIZE=256000
+export               SAVEHIST=250000
+export              WORDCHARS='*?_.[]~&;!#$%^(){}<>'
+export              ZSH_THEME="japhprompt"
+export             HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*:gs:gd:calc:du1:l:make"
+export             KEYTIMEOUT=100
+export          KEYBOARD_HACK=' '
+export          LISTROWSFIRST=1
+export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
+
+
+# locale, timezone
+export            LC_ALL=""
+export              LANG=en_US.UTF-8
+export        LC_ADDRESS=en_US.UTF-8
+export        LC_COLLATE=en_US.UTF-8
+export          LC_CTYPE=en_US.UTF-8
+export LC_IDENTIFICATION=en_US.UTF-8
+export    LC_MEASUREMENT=en_US.UTF-8
+export       LC_MESSAGES=en_US.UTF-8
+export       LC_MONETARY=en_US.UTF-8
+export           LC_NAME=en_US.UTF-8
+export        LC_NUMERIC=en_US.UTF-8
+export          LC_PAPER=en_US.UTF-8
+export      LC_TELEPHONE=en_US.UTF-8
+export           LC_TIME=en_US.UTF-8
+export TZ="Europe/Stockholm"
+
+
+### PATH
+#export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas/:${HOME}/.local/bin:bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:/home/scp1/dev/askas/utils-askas/bin
+export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util"
+
+export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5:${HOME}/dev/askas/lib/:${HOME}/dev/askas/AIR-local/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/objects:${HOME}/dev/askas/air8/cgi-bin/ibutik/admin/:${HOME}/lib/perl5/lib/perl5:${HOME}/dev/askas/air8/cgi-bin/api/shared/lib
+export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
+export        GOPATH=${HOME}/lib/go
+export       AWKPATH=${HOME}/dev/lib/awk/
+export       MANPATH=${HOME}/usr/share/man:/usr/local/man:/usr/share/man
+
+# CPAN Pause ID
+export PAUSE_ID=WOLDRICH
+
+# Module::Build
+export PERL_MB_OPT="--install_base $HOME/lib/perl5"
+
+# ExtUtils::MakeMaker
+export PERL_MM_OPT="INSTALL_BASE=$HOME/lib/perl5"
+
+export PERL_CPANM_HOME=${HOME}/tmp/cpanm
+export PERL_CPANM_OPT='-nql~/ --reinstall --prompt --auto-cleanup 365 --mirror-only'
+
+export PERL_LOCAL_LIB_ROOT=${HOME}/lib
+export PERL_MM_USE_DEFAULT=0
+export PERL_USE_UNSAFE_INC=1
+export DATAPRINTERRC=${XDG_CONFIG_HOME}/dataprinterrc
+export HARNESS_SUMMARY_COL_FAIL=red
+export HARNESS_SUMMARY_COL_SUC=green
+
+### Editor
+export EDITOR='vim'
+export GIT_EDITOR="${EDITOR} -X"
+export VIDIR_EDITOR=${EDITOR}
+export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=LS_COLORS'
+export VIMRUNTIME=${HOME}/etc/vim
+
+export LESS=''
+export PAGER=vimpager
+
+# edir, another version of vidir
+# https://github.com/trapd00r/LS_COLORS-edir.vim
+export EDIR_EDITOR='vim -c ":setf LS_COLORS-edir | set nolist"'
+
+### gui
+export QT_XFT=1
+export GDK_USE_XFT=1
+export DESKTOP_STARTUP_ID=42
+
+### graphics
+# vulkan fix
+export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
+# export VDPAU_NVIDIA_NO_OVERLAY=1
+
+# clipbored
+# https://github.com/trapd00r/clipbored
+export      CLIPBORED_DMENU_FONT=${FONT}
+export     CLIPBORED_DMENU_LINES=30
+export  CLIPBORED_DMENU_LISTMODE=vertical
+export CLIPBORED_DMENU_NORMAL_BG='#1c1c1c'
+export CLIPBORED_DMENU_NORMAL_FG='#484848'
+export CLIPBORED_DMENU_SELECT_BG='#292929'
+export CLIPBORED_DMENU_SELECT_FG='#1c78ef'
+export CLIPBORED_X_SELECTION='clipboard'
+
+# mpd
+export MPD_HOST=192.168.1.12
+export MPD_PORT=6600
+export MPD_USER=scp1
+
+# mail
+export MAIL=${HOME}/mail/gmail/INBOX
+export MAILDIR=${HOME}/mail/gmail/INBOX
+export SENDMAIL='msmtp -C ~/.msmtprc -a gmail m@japh.se'
+export DELIVERED=yes
+
+### Askås
+export ASKAS_BUTIK=magnusw1
+export ASKAS_CGIDIR=${HOME}/dev/askas/air8/cgi-bin/ibutik
+
+# Selenium
+export HOST_WEB_URL=${ASKAS_BUTIK}.cdsuperstore.se
+export HOST_WEB_PROTOCOL=https
+export TEST_JSON=
+export TEST_SKIP_RETRY=
+
+# config locations
+export SCREENRC=${XDG_CONFIG_HOME}/screenrc
+export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
+export GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
+export    MPLAYER_HOME=${XDG_CONFIG_HOME}/mplayer
+export  MPLAYER_CONFIG=${XDG_CONFIG_HOME}/mplayer/config
+
+# terminal settings
+export                  LESSKEY="${XDG_CONFIG_HOME}/lesskey"
+export                 ESCDELAY=1
+export       NCURSES_NO_PADDING=1
+export   NCURSES_ASSUMED_COLORS=3,0
+export NCURSES_NO_MAGIC_COOKIES=1
+
+### application settings
+# qbittorrent ui issues
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+# fzf
+export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd.ignorefile"
+export FZMP_FZF_OPTIONS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+
+# https://github.com/trapd00r/cgrep
+export CGREP_MATCH='38;5;196;1'
+export CGREP_NONMATCH='38;5;240'
+
+export JEKYLL_ENV='production'
+export MULLVAD_USE_GTK=yes
+
+
+export BROWSER=${HOME}/dev/utils/www
+
+export ASKAS_BUTIK=${HOST}
+export GTK_THEME=japh
+export SYSTEMD_COLORS=256
+export GEM_HOME=${HOME}/lib/ruby
+export PATH=${PATH}:${GEM_HOME}/bin
+export __GL_SYNC_TO_VBLANK=1
+
+
+
+. ${HOME}/.secret_zshrc
