@@ -1,6 +1,6 @@
 follow_now_playing_lyrics = "yes"
 lyrics_directory =  ~/dev/lyrics/lyrics/
-#lyrics_fetchers = genius
+lyrics_fetchers = genius
 ##titles_visibility = no
 ##statusbar_visibility = yes
 ##display_bitrate = yes
