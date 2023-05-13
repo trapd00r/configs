@@ -50,7 +50,9 @@ xbanish &
 xsetroot -solid '#161616'
 xsetroot -cursor_name left_ptr
 
-#xscreensaver -no-splash &
+# TODO: set this up with a webhook that's called when I leave the office
+# and kills the process when I'm back
+# xscreensaver -no-splash &
 
 # notifications
 dunst &
