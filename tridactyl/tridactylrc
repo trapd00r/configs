@@ -30,7 +30,7 @@ set allowautofocus false
 set bmarkweight 9999
 
 guiset_quiet gui none
-guiset_quiet hoverlink left
+guiset_quiet statuspanel right
 colors japh
 
 bind <BS> back
@@ -128,3 +128,6 @@ set searchurls.nzbg https://nzbgeek.info/geekseek.php?moviesgeekseek=1&c=&browse
 
 " o y
 set searchurls.yt https://www.youtube.com/results?search_query=%s
+
+set searchurls.hass http://192.168.1.13:8123/dashboard-huset/kontor
+
