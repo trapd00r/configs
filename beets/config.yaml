@@ -110,7 +110,7 @@ import:
   #   while true; do beet import -Iq .; printf "\033[48;5;196;1m=======> AGAIN....\e[m\n"; sleep 3; done
   # when using skip, might be a good idea to check what's happening:
   #   tail -f BEETS_IMPORTER_LOG | grep duplicate
-  duplicate_action: skip
+  duplicate_action: ask
 #  duplicate_action: remove
 
   non_rec_action:   asis
