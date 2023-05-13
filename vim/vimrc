@@ -98,7 +98,7 @@ Plug 'junegunn/fzf.vim'                 " ... all the things
 "Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
 Plug 'junegunn/vim-plug'                " self
-Plug 'junegunn/goyo.vim'                " distractionless
+"Plug 'junegunn/goyo.vim'                " distractionless
 Plug 'ludovicchabant/vim-gutentags'     " tag management
 Plug 'kien/ctrlp.vim'                   " I don't use this but ctrlp-funky depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
