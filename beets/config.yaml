@@ -38,7 +38,8 @@
 
 include:
   - '~/.musicbrainz.yaml'
-directory:  '/mnt/music8/+TAGGED'
+#directory:  '/mnt/music8/+TAGGED'
+directory:  '~/mnt/nasse/music/'
 library:    '~/var/beets/beets202105.db'
 pluginpath: ['/usr/lib/python3.10/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
@@ -154,6 +155,7 @@ plugins: [
   'lastimport',
   'mbcollection',
   'missing',
+  'mpdupdate',
 #  'japh',
   'rewrite',
   'smartplaylist',
@@ -280,7 +282,7 @@ lyrics:
   auto: yes
 
 mpd:
-  host: localhost
+  host: 192.168.1.12
   port: 6600
 
 
