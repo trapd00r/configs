@@ -40,7 +40,8 @@ include:
   - '~/.musicbrainz.yaml'
 #directory:  '/mnt/music8/+TAGGED'
 directory:  '~/mnt/nasse/music/'
-library:    '~/var/beets/beets202105.db'
+#library:    '~/var/beets/beets202105.db'
+library:    '~/var/beets/beets20230626.db'
 pluginpath: ['/usr/lib/python3.10/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
              '/home/scp1/etc/beets/plugins/beetsplug/',
@@ -122,8 +123,8 @@ import:
   link:             no
   move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
-  quiet_fallback:   asis # when using the -q flag
-  #  quiet_fallback:   skip # when using the -q flag
+#  quiet_fallback:   asis # when using the -q flag
+  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -153,9 +154,11 @@ plugins: [
   'inline',
   'lastgenre',
   'lastimport',
+  'lyrics',
   'mbcollection',
   'missing',
-  'mpdupdate',
+#  'mpdupdate',
+  'plexupdate',
 #  'japh',
   'rewrite',
   'smartplaylist',
@@ -241,13 +244,15 @@ edit:
 
 embedart:
   auto: yes
-  ifempty: yes
+  ifempty: no
+  remove_art_file: no
 
 fetchart:
   auto:    yes
   minwidth: 500
   maxwidth: 1200
-  sources: filesystem coverart itunes amazon albumart wikipedia google
+  sources: itunes amazon fanarttv albumart coverart wikipedia google filesystem
+  store_source: yes
 
 ftintitle:
   auto: yes
@@ -280,10 +285,16 @@ lastgenre:
 
 lyrics:
   auto: yes
+  force: yes
+  sources: genius google tekstowo
 
 mpd:
   host: 192.168.1.12
   port: 6600
+
+plex:
+  host: 192.168.1.34
+  port: 32400
 
 
 mbcollection:
