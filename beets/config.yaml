@@ -363,6 +363,7 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 
+  artist 50 Cent*:                   50 Cent
   artist PippiRull:                  Pippirull
   artist Royce Da 5*:                Royce Da 5'9"
 #"'
@@ -652,8 +653,9 @@ album_fields:
 
 # default is 0.04
 match:
-  strong_rec_thresh: 0.15
-  medium_rec_thresh: 0.25
+  strong_rec_thresh: 0.30
+#  strong_rec_thresh: 0.10
+#  medium_rec_thresh: 0.25
   required: year label country
   preferred:
     media: ['CD', 'Digital Media|File', 'Vinyl']
