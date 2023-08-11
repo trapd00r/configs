@@ -1230,6 +1230,38 @@ named-directories:-normal:named\ directories *'
 # fzf all the things
 . ~/etc/zsh/11-fzf-completion.zsh
 . ~/etc/zsh/11-fzf-keybindings.zsh
+
+# fzf-tab
+. ~/etc/zsh/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# preview directory's content with exa when completing cd and ls
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:ls:*' fzf-preview 'exa -1 --color=always $realpath;file $realpath'
+
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+# accept with one key
+zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
+zstyle ':fzf-tab:*' accept-line enter
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all'
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+
+FZF_TAB_GROUP_COLORS=(
+    $'\033[38;5;30;1m' $'\033[38;5;10m' $'\033[33m' $'\033[35m' $'\033[31m' $'\033[38;5;33m' $'\033[36m' \
+    $'\033[38;5;101m' $'\033[38;5;102m' $'\033[38;5;103m' $'\033[38;5;80m' $'\033[38;5;192m' \
+    $'\033[38;5;214m' $'\033[38;5;165m' $'\033[38;5;124m' $'\033[38;5;120m'
+)
+zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
+#zstyle ':fzf-tab:*' default-color $'\033[38;5;137m'
+zstyle ':fzf-tab:*' show-group full
+#zstyle ':fzf-tab:*' show-group brief
+
 #alias rm='rm -v'
 alias rg="rg --ignore-file=${XDG_CONFIG_HOME}/fd.ignorefile"
 
@@ -1243,12 +1275,6 @@ alias share="python3 -m http.server 8080"
 # preserve my environment
 alias sudo='sudo -E'
 
-#export SYSTEMD_COLORS=256
-#export GEM_HOME=${HOME}/lib/ruby
-#export PATH=${PATH}:${GEM_HOME}/bin
-##export LD_PRELOAD="/usr/\$LIB/libgamemodeauto.so.0"
-#alias vim=vim9
-#=======
-
-
 alias romget='wget -A iso,zip,7z,chd,gba,gb,gbc,nes,smc -m -p -E -k -K -np -nd'
+
+export XDG_MUSIC_DIR=${HOME}/mnt/nasse/music
