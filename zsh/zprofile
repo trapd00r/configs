@@ -12,7 +12,7 @@ export NASSE=${HOME}/mnt/nasse
 
 export       XDG_DATA_DIRS=/usr/share/:/usr/local/share:/home/scp1/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 export       XDG_DATA_HOME=${HOME}/var
-export       XDG_MUSIC_DIR=/mnt/music8/+TAGGED/
+export       XDG_MUSIC_DIR=${HOME}/mnt/nasse/music
 export      XDG_CACHE_HOME=${HOME}/var/cache
 export      XDG_STATE_HOME=${XDG_DATA_HOME}
 export      XDG_VIDEOS_DIR=${NASSE}/mvids
