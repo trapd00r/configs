@@ -134,9 +134,19 @@ alias     feh='/usr/bin/feh -FZ --action "cp -v %F ." --cache-size 2048 --quiet 
 alias      gd='GIT_PAGER="" git diff'
 alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underline=>1,italic=>1})'"
-alias      ls='perl $HOME/dev/ls--/ls++ --dereference-command-line-symlink-to-dir' 
-alias     lsr='perl $HOME/dev/ls--/ls++ --sort=time -r'
-alias     lss='perl $HOME/dev/ls--/ls++ -Sr'
+
+#alias      ls='perl $HOME/dev/ls--/ls++ --dereference-command-line-symlink-to-dir' 
+#alias     lsr='perl $HOME/dev/ls--/ls++ --sort=time -r'
+#alias     lss='perl $HOME/dev/ls--/ls++ -Sr'
+#
+## as close as possible to ls++
+#EXA_COLORS="di=38;5;30:ur=38;5;107:gr=38;5;107:tr=38;5;107:xx=38;5;16:uw=38;5;216:gw=38;5;216:tw=38;5;216:ux=38;5;131:gx=38;5;131:tx=38;5;131:sb=38;5;216:sn=38;5;107:da=38;5;242"
+#alias ls="exa -l --group-directories-first --color-scale --no-user --sort=Name"
+
+alias ls='lsd -l --date=relative --icon=never --group-dirs=first'
+alias lsr='lsd -l --date=relative --icon=never --group-dirs=first --sort=time --reverse'
+alias lss='lsd -l --date=relative --icon=never --group-dirs=first --sort=size --reverse'
+
 alias   mtree='=mtree -d'
 alias      mv='mv -v'
 alias    nmap='nmap -sV'
@@ -193,6 +203,8 @@ abbreviations=(
   "kj"         "!-6$"
   "bb"          "~/mnt/nasse/music"
   "ss"          "/mnt/music8/_soulseek"
+  "rr"          "~/mnt/rutorrent/complete/"
+  "tv"          "~/mnt/media2/tv/"
 
 )
 
@@ -1236,16 +1248,18 @@ named-directories:-normal:named\ directories *'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # preview directory's content with exa when completing cd and ls
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'file $realpath | sed -E "s/^.+: //"; hr -fg 238 -c " " -ubi -s 40;echo; exa -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:ls:*' fzf-preview 'exa -1 --color=always $realpath;file $realpath'
+#zstyle ':fzf-tab:complete:ls:*' fzf-preview 'file $realpath | sed -E "s/^.+: //"; hr -fg 238 -c " " -ubi -s 40;echo; exa -1 --color=always $realpath'
 
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # accept with one key
 zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
-zstyle ':fzf-tab:*' accept-line enter
+#zstyle ':fzf-tab:*' accept-line enter
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all'
+zstyle ':fzf-tab:*' fzf-min-height 100
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -1259,7 +1273,7 @@ FZF_TAB_GROUP_COLORS=(
 )
 zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
 #zstyle ':fzf-tab:*' default-color $'\033[38;5;137m'
-zstyle ':fzf-tab:*' show-group full
+#zstyle ':fzf-tab:*' show-group full
 #zstyle ':fzf-tab:*' show-group brief
 
 #alias rm='rm -v'
@@ -1278,3 +1292,10 @@ alias sudo='sudo -E'
 alias romget='wget -A iso,zip,7z,chd,gba,gb,gbc,nes,smc -m -p -E -k -K -np -nd'
 
 export XDG_MUSIC_DIR=${HOME}/mnt/nasse/music
+
+export FZF_DEFAULT_OPTS=''
+export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+
+
+
+alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'

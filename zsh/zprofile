@@ -162,7 +162,7 @@ export NCURSES_NO_MAGIC_COOKIES=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 # fzf
-export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+#export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd.ignorefile"
 export FZMP_FZF_OPTIONS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
 
