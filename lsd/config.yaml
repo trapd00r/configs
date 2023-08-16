@@ -28,7 +28,7 @@ color:
   # When "classic" is set, this is set to "no-color".
   # Possible values: default, custom
   # When "custom" is set, lsd will look in the config directory for `colors.yaml`.
-  theme: /home/scp1/etc/lsd/themes/lsplusplus.yaml
+  theme: custom
 
 # == Date ==
 # This specifies the date format for the date column. The freeform format

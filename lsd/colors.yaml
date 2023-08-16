@@ -1,0 +1,39 @@
+user: 230
+group: 187
+permission:
+  read: 107
+  write: 216
+  exec: 131
+  exec-sticky: 232
+  no-access: 245
+  octal: 6
+  acl: dark_cyan
+  context: cyan
+date:
+  hour-old: 196
+  day-old: 240
+  older: 238
+size:
+  none: 245
+  small: 240
+  medium: 216
+  large: 172
+inode:
+  valid: 13
+  invalid: 245
+links:
+  valid: 13
+  invalid: 245
+tree-edge: 245
+#git-status:
+#  default: 245
+#  unmodified: 245
+#  ignored: 245
+#  new-in-index: dark_green
+#  new-in-workdir: dark_green
+#  typechange: dark_yellow
+#  deleted: dark_red
+#  renamed: dark_green
+#  modified: dark_yellow
+#  conflicted: dark_red
+#
