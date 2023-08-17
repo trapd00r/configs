@@ -10,7 +10,9 @@ permission:
   acl: dark_cyan
   context: cyan
 date:
+  hours-old: 208
   hour-old: 196
+  days-old: 244
   day-old: 240
   older: 238
 size:
