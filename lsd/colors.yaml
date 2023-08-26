@@ -10,10 +10,14 @@ permission:
   acl: dark_cyan
   context: cyan
 date:
+  # 23 hours max
   hours-old: 208
+  # 2 hours max
   hour-old: 196
-  days-old: 244
-  day-old: 240
+  # 6 days max
+  days-old: 240
+  # 2 days max
+  day-old: 244
   older: 238
 size:
   none: 245
