@@ -84,6 +84,8 @@ Plug 'tridactyl/vim-tridactyl'
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim', { 'for': 'jinja' }
 
+Plug 'fatih/vim-go', { 'for': 'go' }
+
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
@@ -736,6 +738,9 @@ autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
 " set custom options for man/perldoc (C-k etc)
 " the perldoc filetype is my own custom modified perl.vim
 autocmd FileType man set nonumber | set filetype=perldoc
+
+" do not show tabs in go files
+autocmd FileType go setlocal nolist
 
 " enable Rainbows everywhere
 " autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
