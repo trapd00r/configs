@@ -79,6 +79,8 @@ bind ,g js let uri = document.location.href.replace(/https?:\/\//,"git@").replac
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
 
+" " disable on nasse
+" autocmd DocStart http://192.168.1.34 mode ignore
 
 " The following modification allows Tridactyl to function on more pages, e.g. raw GitHub pages.
 " You may not wish to run this. Mozilla strongly feels that you shouldn't.
@@ -128,6 +130,3 @@ set searchurls.nzbg https://nzbgeek.info/geekseek.php?moviesgeekseek=1&c=&browse
 
 " o y
 set searchurls.yt https://www.youtube.com/results?search_query=%s
-
-set searchurls.hass http://192.168.1.13:8123/dashboard-huset/kontor
-
