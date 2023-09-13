@@ -21,7 +21,7 @@
 fpath=($fpath ~/etc/zsh/functions/)
 
 # FIXME
-~/dev/utils/font-monte
+#~/dev/utils/font-monte
 # Terrible solution for work monitors
 # for now
 if [[ $(hostname) = "tp" ]]; then
@@ -47,6 +47,7 @@ fi
 # my prompt
 . ~/etc/zsh/099-prompt_japh_2022.zsh
 . ~/etc/zsh/10-syntax.zsh
+. ~/.secret_zshrc
 
 #eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
 
@@ -143,9 +144,24 @@ alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underli
 #EXA_COLORS="di=38;5;30:ur=38;5;107:gr=38;5;107:tr=38;5;107:xx=38;5;16:uw=38;5;216:gw=38;5;216:tw=38;5;216:ux=38;5;131:gx=38;5;131:tx=38;5;131:sb=38;5;216:sn=38;5;107:da=38;5;242"
 #alias ls="exa -l --group-directories-first --color-scale --no-user --sort=Name"
 
-alias ls='lsd -l --date=relative --icon=never --group-dirs=first'
-alias lsr='lsd -l --date=relative --icon=never --group-dirs=first --sort=time --reverse'
-alias lss='lsd -l --date=relative --icon=never --group-dirs=first --sort=size --reverse'
+#alias ls='lsdjaph -l --date=relative --icon=never --group-dirs=first'
+#alias lsr='lsdjaph -l --date=relative --icon=never --group-dirs=first --sort=time --reverse'
+#alias lss='lsdjaph -l --date=relative --icon=never --group-dirs=first --sort=size --reverse'
+
+#alias ls='lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always | sed -E "s/ \'//g"'
+#alias lsr='lsdjaph -l --date=relative --icon=never --group-dirs=first --sort=time --reverse'
+#alias lss='lsdjaph -l --date=relative --icon=never --group-dirs=first --sort=size --reverse'
+
+
+ls() {
+  lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always "$@"| sed -E "s/ '//g"
+}
+lsr() {
+  lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=time --reverse "$@"| sed -E "s/ '//g"
+}
+lss() {
+  lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=size --reverse "$@"| sed -E "s/ '//g"
+}
 
 alias   mtree='=mtree -d'
 alias      mv='mv -v'
@@ -205,6 +221,8 @@ abbreviations=(
   "ss"          "/mnt/music8/_soulseek"
   "rr"          "~/mnt/rutorrent/complete/"
   "tv"          "~/mnt/media2/tv/"
+  "movie"       "~/mnt/media2/movies/"
+  "roms"        "~/mnt/roms"
 
 )
 
@@ -1299,3 +1317,6 @@ export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --c
 
 
 alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'
+
+# ta bort, finns i zprofile
+export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin"
