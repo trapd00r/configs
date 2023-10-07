@@ -156,13 +156,34 @@ alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underli
 
 
 ls() {
-  lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always "$@"| sed -E "s/ '//g"
+  if [[ $HOST = "fantomen" ]]; then
+    lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always "$@"| sed -E "s/ '//g"
+  else if [[ $(which ls++) ]]; then
+    ls++ --dereference-command-line-symlink-to-dir "$@"
+  else
+    ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
+  fi
+  fi
 }
 lsr() {
-  lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=time --reverse "$@"| sed -E "s/ '//g"
+  if [[ $HOST = "fantomen" ]]; then
+    lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=time --reverse "$@"| sed -E "s/ '//g"
+  else if [[ $(which ls++) ]]; then
+    ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
+  else
+    ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
+  fi
+  fi
 }
 lss() {
-  lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=size --reverse "$@"| sed -E "s/ '//g"
+  if [[ $HOST = "fantomen" ]]; then
+    lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=size --reverse "$@"| sed -E "s/ '//g"
+  else if [[ $(which ls++) ]]; then
+    ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
+  else
+    ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
+  fi
+  fi
 }
 
 alias   mtree='=mtree -d'
