@@ -158,7 +158,7 @@ alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underli
 ls() {
   if [[ $HOST = "fantomen" ]]; then
     lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always "$@"| sed -E "s/ '//g"
-  else if [[ $(which ls++) ]]; then
+  else if which ls++ &>/dev/null ; then
     ls++ --dereference-command-line-symlink-to-dir "$@"
   else
     ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
@@ -168,7 +168,7 @@ ls() {
 lsr() {
   if [[ $HOST = "fantomen" ]]; then
     lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=time --reverse "$@"| sed -E "s/ '//g"
-  else if [[ $(which ls++) ]]; then
+  else if which ls++ &>/dev/null ]]; then
     ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
   else
     ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
@@ -178,7 +178,7 @@ lsr() {
 lss() {
   if [[ $HOST = "fantomen" ]]; then
     lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=size --reverse "$@"| sed -E "s/ '//g"
-  else if [[ $(which ls++) ]]; then
+  else if which ls++ &>/dev/null ]]; then
     ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
   else
     ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
