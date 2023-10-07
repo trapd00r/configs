@@ -182,7 +182,3 @@ export SYSTEMD_COLORS=256
 export GEM_HOME=${HOME}/lib/ruby
 export PATH=${PATH}:${GEM_HOME}/bin
 export __GL_SYNC_TO_VBLANK=1
-
-
-
-. ${HOME}/.secret_zshrc
