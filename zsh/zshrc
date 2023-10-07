@@ -1344,4 +1344,6 @@ alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'
 # ta bort, finns i zprofile
 export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin"
 
-alias df='duf -hide loops'
+# alias df='duf -hide loops'
+
+export VIMRUNTIME=${HOME}/etc/vim
