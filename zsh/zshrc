@@ -30,8 +30,9 @@ fi
 
 # ssh key management
 if [[ -z $(pidof ssh-agent) && -z $(pidof gpg-agent) ]]; then
-  if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_rsa_askas ]]; then
-    eval `keychain --dir $HOME/.keychain -q --eval id_rsa_askas`
+  if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_ed25519 ]]; then
+id_ed25519
+    eval `keychain --dir $HOME/.keychain -q --eval id_ed25519`
   fi
 fi
 
@@ -1347,3 +1348,4 @@ export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-aska
 # alias df='duf -hide loops'
 
 export VIMRUNTIME=${HOME}/etc/vim
+alias pulsemixer='pulsemixer --color 1'
