@@ -108,8 +108,14 @@ export DESKTOP_STARTUP_ID=42
 
 ### graphics
 # vulkan fix
-export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
-# export VDPAU_NVIDIA_NO_OVERLAY=1
+
+if [[ $(hostname) = "fantomen" ]]; then
+  export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
+elif [[ $(hostname) = "x1" ]]; then
+  # intel iris xe
+  export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/intel_icd.x86_64.json"
+fi
+
 
 # clipbored
 # https://github.com/trapd00r/clipbored
