@@ -226,7 +226,7 @@ then
     for host in $(
       perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
       ); do
-      alias $host="ssh $host $@"
+      alias $host="setbg_sshhosts $host; ssh $host $@"
     done
   fi
 fi
@@ -801,6 +801,7 @@ mplayer() {
   sdorfehs -c 'set barsticky 0'
 
   /usr/bin/mplayer \
+    -ao pulse \
     -identify \
     -include $XDG_CONFIG_HOME/mplayer/config \
     -profile sid \
