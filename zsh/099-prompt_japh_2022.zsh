@@ -25,6 +25,8 @@ askas_butik_prompt_update() {
       ASKAS_BUTIK_PROMPT="%F{107}[%F{110}${ASKAS_BUTIK}%F{107}]%f%k"
     elif [[ $HOST = 'dockie' ]]; then
       ASKAS_BUTIK_PROMPT="%F{107}[%F{111}${ASKAS_BUTIK}%F{107}]%f%k"
+    elif [[ $HOST = 'x1' ]]; then
+      ASKAS_BUTIK_PROMPT="%F{107}[%F{208}${ASKAS_BUTIK}%F{107}]%f%k"
     else
       ASKAS_BUTIK_PROMPT="%F{107}[%F{196}${ASKAS_BUTIK}%F{107}]%f%k"
     fi
