@@ -92,4 +92,8 @@ perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
 
 xbanish&
 
+
+# sync clipboard TO primary
+autocutsel -selection CLIPBOARD -fork
+
 exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
