@@ -47,6 +47,8 @@ URxvt.urlLauncher:          /home/scp1/dev/utils/www-newwindow
 ! https://www.japh.se/2019/01/23/color-urls-in-urxvt-without-abusing-underline-property.html
 URxvt.matcher.rend.0:       fg:5
 
+Xcursor.size: 12
+
 ! control the internal border:
 ! printf '\033]708;#990000\007'
 
