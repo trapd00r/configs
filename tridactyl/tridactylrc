@@ -64,8 +64,8 @@ bind --mode=normal J scrollline 30
 bind --mode=normal K scrollline -30
 
 " Only hint search results on Google
-bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
-bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
+"bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
+"bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
 
 " select all in cmdline
 unbind --mode=ex <C-a>
