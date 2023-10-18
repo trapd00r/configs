@@ -42,7 +42,7 @@ include:
 directory:  '~/mnt/nasse/music/'
 #library:    '~/var/beets/beets202105.db'
 library:    '~/var/beets/beets20230626.db'
-pluginpath: ['/usr/lib/python3.10/site-packages/beetsplug/',
+pluginpath: ['/usr/lib/python3.11/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
              '/home/scp1/etc/beets/plugins/beetsplug/',
 #             '/home/scp1/dev/perlinpython3',
@@ -80,9 +80,9 @@ duplicates:
 #  move: path
   path: yes
   strict: no
-  tiebreak:
-    # higher bitrate wins
-    items: [bitrate]
+#  tiebreak:
+#    # higher bitrate wins
+#    items: [bitrate]
 
 
 # I wish this didn't asciify explicit unicode characters, i.e │
@@ -112,16 +112,19 @@ import:
   #   while true; do beet import -Iq .; printf "\033[48;5;196;1m=======> AGAIN....\e[m\n"; sleep 3; done
   # when using skip, might be a good idea to check what's happening:
   #   tail -f BEETS_IMPORTER_LOG | grep duplicate
-  duplicate_action: ask
+#  duplicate_action: ask
 #  duplicate_action: remove
+  duplicate_action: skip
 
   non_rec_action:   asis
   #  non_rec_action:   ask
   autotag:          yes
   write:            yes
-  copy:             no
+  copy:             yes
+#  copy:             no
   link:             no
-  move:             yes
+#  move:             yes
+  move:             no
   log:              '~/BEETS_IMPORTER_LOG'
 #  quiet_fallback:   asis # when using the -q flag
   quiet_fallback:   skip # when using the -q flag
@@ -251,7 +254,8 @@ fetchart:
   auto:    yes
   minwidth: 500
   maxwidth: 1200
-  sources: itunes amazon fanarttv albumart coverart wikipedia google filesystem
+#  sources: itunes amazon fanarttv albumart coverart wikipedia google filesystem
+  sources: coverart albumart itunes amazon fanarttv wikipedia google
   store_source: yes
 
 ftintitle:
@@ -288,9 +292,9 @@ lyrics:
   force: yes
   sources: genius google tekstowo
 
-mpd:
-  host: 192.168.1.12
-  port: 6600
+#mpd:
+#  host: 192.168.1.12
+#  port: 6600
 
 plex:
   host: 192.168.1.34
@@ -653,7 +657,8 @@ album_fields:
 
 # default is 0.04
 match:
-  strong_rec_thresh: 0.30
+#  strong_rec_thresh: 0.08
+  strong_rec_thresh: 0.14
 #  strong_rec_thresh: 0.10
 #  medium_rec_thresh: 0.25
   required: year label country
@@ -784,6 +789,7 @@ paths:
     tag:nesost   singleton:false:  +game/+ost/nes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:gbost    singleton:false:  +game/+ost/gb/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:gbcost   singleton:false:  +game/+ost/gbc/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:pcost    singleton:false:  +game/+ost/pcost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:gameost:                   +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:game albumtype:soundtrack: +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
