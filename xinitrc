@@ -6,6 +6,14 @@ if [[ $(hostname) = 'sid' ]]; then
   xrdb         -merge   "$XDG_CONFIG_HOME/Xresources"
 elif [[ $(hostname) = 'fantomen' ]]; then
   xrdb         -merge   "$XDG_CONFIG_HOME/Xresources-sid"
+  ## https://github.com/trapd00r/hass-mpd-ikea
+  webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
+elif [[ $(hostname) = 'x1' ]]; then
+  xrdb         -merge   "$XDG_CONFIG_HOME/Xresources-x1"
+  # turn off display after 10 min idle
+  xset s off
+  xset +dpms
+  xset dpms 0 600 650
 elif [[ $(hostname) = 'tp' ]]; then
   xrdb         -merge   $XDG_CONFIG_HOME/Xresources
 fi
@@ -81,7 +89,7 @@ auditctl -e 0
 
 perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
 
-# https://github.com/trapd00r/hass-mpd-ikea
-webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
 
-exec sdorfehs-202304 -f $HOME/dev/sdorfehs-config/sdorfehsrc
+xbanish&
+
+exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
