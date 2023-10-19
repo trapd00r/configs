@@ -108,6 +108,7 @@ zle -N edit-command-line
 
 # ========== AUTOLOAD END ===============================
 # ========== ALIAS START ================================
+alias pgrep='pgrep -ai'
 alias sshfs="sshfs -o cache=yes -o kernel_cache -o compression=no -o Ciphers=aes128-ctr  $@"
 alias vimrc="vim ${XDG_CONFIG_HOME}/vim/vimrc"
 
