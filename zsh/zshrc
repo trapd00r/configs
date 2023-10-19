@@ -799,7 +799,7 @@ which() {
 }
 
 mplayer() {
-  sdorfehs -c 'set barsticky 0'
+#  sdorfehs -c 'set barsticky 0'
 
   /usr/bin/mplayer \
     -ao pulse \
@@ -811,7 +811,7 @@ mplayer() {
     -noautosub \
     $@
     ;
-  sdorfehs -c 'set barsticky 1'
+#  sdorfehs -c 'set barsticky 1'
 
 }
 mplayer_pipe() {
