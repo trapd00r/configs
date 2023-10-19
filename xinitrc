@@ -2,53 +2,43 @@
 # $XDG_CONFIG_HOME/xinitrc
 
 xset         +fp      ~/.fonts
-if [[ $(hostname) = 'sid' ]]; then
-  xrdb         -merge   "$XDG_CONFIG_HOME/Xresources"
-elif [[ $(hostname) = 'fantomen' ]]; then
-  xrdb         -merge   "$XDG_CONFIG_HOME/Xresources-sid"
-  ## https://github.com/trapd00r/hass-mpd-ikea
-  webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
-elif [[ $(hostname) = 'x1' ]]; then
-  xrdb         -merge   "$XDG_CONFIG_HOME/Xresources-x1"
-  # turn off display after 10 min idle
-  xset s off
-  xset +dpms
-  xset dpms 0 600 650
-elif [[ $(hostname) = 'tp' ]]; then
-  xrdb         -merge   $XDG_CONFIG_HOME/Xresources
-fi
-setxkbmap se -variant nodeadkeys \
-             -option  terminate:ctrl_alt_bksp
 
-xbindkeys    -f       $XDG_CONFIG_HOME/xbindkeysrc
-
-xmodmap               ~/etc/xmodmaprc
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-
-# xrandr --output DP-2 --primary --output HDMI-0 --rotate left --right-of DP-2 --output DP-0 --rotate right --left-of DP-2
-
-# monitors
-##   [ ]
-## [][ ][]
-
-# nvidia-settings --assign "CurrentMetaMode=DPY-1: nvidia-auto-select @1080x1920 +0+0 {ViewPortIn=1080x1920,ViewPortOut=1920x1080+0+0, Rotation=270}, DPY-0: nvidia-auto-select @1080x1920 +3000+0 {ViewPortIn=1080x1920, ViewPortOut=1920x1080+0+0, Rotation=90},DPY-3: nvidia-auto-select @1920x1080 +1080+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0}"
 if [[ $(hostname) = 'fantomen' ]]; then
+  xrdb -merge "$XDG_CONFIG_HOME/Xresources-sid"
+
+  # monitors
+  #    [ ]
+  #  [][ ][]
+
+  # nvidia-settings --assign "CurrentMetaMode=DPY-1: nvidia-auto-select @1080x1920 +0+0 {ViewPortIn=1080x1920,ViewPortOut=1920x1080+0+0, Rotation=270}, DPY-0: nvidia-auto-select @1080x1920 +3000+0 {ViewPortIn=1080x1920, ViewPortOut=1920x1080+0+0, Rotation=90},DPY-3: nvidia-auto-select @1920x1080 +1080+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0}"
   xrandr --output DP-2   --primary \
          --output HDMI-0 --rotate left   --right-of DP-2 \
          --output DP-0   --rotate right  --left-of DP-2 \
          --output DP-5   --above DP-2
-#  xrandr --output DP-2   --primary \
-#         --output HDMI-0 --rotate left --right-of DP-2 \
-#         --output DP-0 --rotate right --left-of DP-2
-## [][ ][ ]
-elif [[ $(hostname) = 'tp' ]]; then
-  xrandr --output HDMI-1 --primary      --left-of eDP-1 \
-         --output DP-2   --rotate right --left-of HDMI-1
-  kbdlight&
+
+  # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
+  xset s off -dpms &
+
+  # https://github.com/trapd00r/hass-mpd-ikea
+  webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
+
+  perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
+
+elif [[ $(hostname) = 'x1' ]]; then
+  xrdb -merge   "$XDG_CONFIG_HOME/Xresources-x1"
+
+  # turn off display after 5 min idle
+  xset s off
+  xset +dpms
+  xset dpms 0 300 350
 fi
 
-# https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
-xset s off -dpms &
+setxkbmap se -variant nodeadkeys -option  terminate:ctrl_alt_bksp
+
+xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
+
+xmodmap ~/etc/xmodmaprc
+xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 xset r rate 280 30
 xkbset bouncekeys 50
@@ -58,40 +48,16 @@ xbanish &
 xsetroot -solid '#161616'
 xsetroot -cursor_name left_ptr
 
-# TODO: set this up with a webhook that's called when I leave the office
-# and kills the process when I'm back
-# xscreensaver -no-splash &
-
-# notifications
-dunst &
-
-# for controlling phone or the other way around
-#/usr/lib/kdeconnectd &
-
-#mullvad connect &
-
 
 # gtk applications startup very slow
 # https://bbs.archlinux.org/viewtopic.php?id=224787
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-## perhaps do this?
-#for f in /etc/X11/xinit/xinitrc.d/*.sh; do
-#  source "$f"
-#done
-#
-#lxsession &
-
-#mpd ~/etc/mpd.conf && [[ -z $(pgrep -xU $UID mpdas) ]] && mpdas &
+# notifications
+dunst &
 
 # disable audit messages spamming dmesg
 auditctl -e 0
-
-perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
-
-
-xbanish&
-
 
 # sync clipboard TO primary
 autocutsel -selection CLIPBOARD -fork
