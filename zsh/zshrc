@@ -28,13 +28,7 @@ if [[ $(hostname) = "tp" ]]; then
   ~/dev/utils/font-askas
 fi
 
-# ssh key management
-if [[ -z $(pidof ssh-agent) && -z $(pidof gpg-agent) ]]; then
-  if [[ -f /usr/bin/keychain && -f $HOME/.ssh/id_ed25519 ]]; then
-id_ed25519
-    eval `keychain --dir $HOME/.keychain -q --eval id_ed25519`
-  fi
-fi
+eval $(keychain --eval --agents ssh -Q --quiet id_ed25519 --nogui) 
 
 #### https://github.com/trapd00r/stderred
 ##[[ -f ${HOME}/dev/stderred/lib64/stderred.so ]] \
