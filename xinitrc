@@ -19,6 +19,9 @@ if [[ $(hostname) = 'fantomen' ]]; then
   # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
   xset s off -dpms &
 
+  # https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
+  xsetroot -solid '#161616'
+
   # https://github.com/trapd00r/hass-mpd-ikea
   webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
 
@@ -27,10 +30,12 @@ if [[ $(hostname) = 'fantomen' ]]; then
 elif [[ $(hostname) = 'x1' ]]; then
   xrdb -merge   "$XDG_CONFIG_HOME/Xresources-x1"
 
-  # turn off display after 5 min idle
-  xset s off
-  xset +dpms
-  xset dpms 0 300 350
+#  # turn off display after 5 min idle
+#  xset s off
+#  xset +dpms
+#  xset dpms 0 300 350
+  xset -dpms
+  feh --bg-center ~/img/wp.jpg
 fi
 
 setxkbmap se -variant nodeadkeys -option  terminate:ctrl_alt_bksp
@@ -44,8 +49,6 @@ xset r rate 280 30
 xkbset bouncekeys 50
 xbanish &
 
-# https://www.japh.se/2021/03/21/ratpoison-urxvt-and-borders.html
-xsetroot -solid '#161616'
 xsetroot -cursor_name left_ptr
 
 
@@ -61,5 +64,7 @@ auditctl -e 0
 
 # sync clipboard TO primary
 autocutsel -selection CLIPBOARD -fork
+# sync primary TO clipboard 
+autocutsel -selection PRIMARY -fork
 
 exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc

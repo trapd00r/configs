@@ -35,26 +35,26 @@
 
 
 
-"mpc prev"
-   F10
-
-"mpc next"
-   F11
-
-"sh -c 'mpd_random_playlist 1000'"
-   F12
-
-"pimpd2 -love"
-   KP_Add
-
-"mpc next"
-   KP_Subtract
-
-"mpc prev"
-   KP_Multiply
-
-"mpd_random_playlist"
-   KP_0
+# "mpc prev"
+#    F10
+# 
+# "mpc next"
+#    F11
+# 
+# "sh -c 'mpd_random_playlist 1000'"
+#    F12
+# 
+# "pimpd2 -love"
+#    KP_Add
+# 
+# "mpc next"
+#    KP_Subtract
+# 
+# "mpc prev"
+#    KP_Multiply
+# 
+# "mpd_random_playlist"
+#    KP_0
 
 
 "(sh ~/dev/utils/shift-insert)"

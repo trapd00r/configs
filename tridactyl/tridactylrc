@@ -3,19 +3,19 @@
 
 " do not store settings in local storage
 " what I define here is what's in effect
-sanitise tridactylsync tridactyllocal
+"sanitise tridactylsync tridactyllocal
 
 
 " fix the annoying yanking issue where yanked data ends up in XA_CLIPBOARD
-set yankto both
-
+"set yankto both
+"
 set putfrom selection
 set smoothscroll true
 set viewsource default
 set newtab about:blank
 set newtabfocus page
-
-" Sane hinting mode
+"
+"" Sane hinting mode
 set hintfiltermode vimperator-reflow
 set hintnames numeric
 
@@ -23,8 +23,8 @@ set hintnames numeric
 set modeindicatorshowkeys true
 set modeindicator false
 set gimode nextinput
-set externalclipboardcmd xclip
-
+""set externalclipboardcmd xclip
+"
 set allowautofocus false
 
 set bmarkweight 9999
@@ -71,7 +71,7 @@ bind --mode=normal K scrollline -30
 unbind --mode=ex <C-a>
 
 " Git{Hub,Lab} git clone via SSH yank
-bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+"bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
 " git clone github repo and cd to the directory in the terminal
 bind ,g js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd ~/tmp; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; st")
@@ -129,4 +129,4 @@ set searchurls.nzbf https://nzbfinder.ws/search?search=%s
 set searchurls.nzbg https://nzbgeek.info/geekseek.php?moviesgeekseek=1&c=&browseincludewords=%s
 
 " o y
-set searchurls.yt https://www.youtube.com/results?search_query=%s
+"set searchurls.yt https://www.youtube.com/results?search_query=%s
