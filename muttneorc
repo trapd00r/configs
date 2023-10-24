@@ -2,7 +2,7 @@
 
 source ~/etc/mutt/colors/colors.`if [ "$TERM" = "linux" ] ; then echo linux ; else echo trapd00r; fi`
 #source ~/etc/mutt/colors/colors.neomutt
-#mailboxes `find /home/scp1/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
+mailboxes `find /home/scp1/mail '(' -type d '(' -name 'cur' -o -name 'new' ')' -prune -printf '%h ' ')' -o '(' -type f -printf '%p ' ')'`
 #source ~/etc/muttrc.mailboxes
 
 #< core
@@ -165,7 +165,7 @@ unignore BCC:
 unignore X-Mailer:
 unignore User-Agent:
 
-my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
+#my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
 #>
 #< mime autoview
 auto_view text/x-diff
