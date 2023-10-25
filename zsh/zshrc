@@ -102,6 +102,8 @@ zle -N edit-command-line
 
 # ========== AUTOLOAD END ===============================
 # ========== ALIAS START ================================
+alias dl='cd /home/scp1/mnt/media2/_downloads_complete/complete && lsr'
+alias dock='cd /home/scp1/mnt/nassebackup/_media_services'
 alias mutt='neomutt -F ~/etc/muttneorc -f ~/mail/inbox'
 alias pgrep='pgrep -ai'
 alias sshfs="sshfs -o cache=yes -o kernel_cache -o compression=no -o Ciphers=aes128-ctr  $@"
