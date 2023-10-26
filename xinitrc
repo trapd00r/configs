@@ -12,7 +12,6 @@ if [[ $(hostname) = 'fantomen' ]]; then
 
   # nvidia-settings --assign "CurrentMetaMode=DPY-1: nvidia-auto-select @1080x1920 +0+0 {ViewPortIn=1080x1920,ViewPortOut=1920x1080+0+0, Rotation=270}, DPY-0: nvidia-auto-select @1080x1920 +3000+0 {ViewPortIn=1080x1920, ViewPortOut=1920x1080+0+0, Rotation=90},DPY-3: nvidia-auto-select @1920x1080 +1080+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0}"
   xrandr --output DP-2   --primary \
-         --output HDMI-0 --rotate left   --right-of DP-2 \
          --output DP-0   --rotate right  --left-of DP-2 \
          --output DP-5   --above DP-2
 
