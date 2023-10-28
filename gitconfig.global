@@ -1,8 +1,13 @@
+# vim:ft=gitconfig:
+[include]
+  path = ~/etc/delta/neverland.theme
 [user]
   name  = Magnus Woldrich
   email = magnus.woldrich@gmail.com
 [core]
-  pager = 
+  pager = delta
+[merge]
+  conflictstyle = diff3
 [color]
   branch     = auto
   diff       = 1
@@ -36,8 +41,63 @@
   commit     = 4
   whitespace = 160 bold
 
+[diff]
+  colorMoved = default
+
+[interactive]
+  diffFilter = delta --color-only --line-number
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  line-numbers = true
+  features = decorations
+  side-by-side = false
+#  line-numbers-left-format = ""
+#  line-numbers-right-format = "│ "
+#  minus-style = "#ff0000"
+#  plus-style = black "#005f00"
+
+[delta]
+    features = unobtrusive-line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "unobtrusive-line-numbers"]
+    line-numbers = true
+    line-numbers-minus-style = "#444444"
+    line-numbers-zero-style = "#444444"
+    line-numbers-plus-style = "#444444"
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-left-style = blue
+    line-numbers-right-style = blue
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
 [man]
-  viewer = motherfuckingvimpager
+#  viewer = motherfuckingvimpager
 [receive]
   denyCurrentBranch = ignore
 [core]

@@ -113,7 +113,7 @@ alias     cat="$HOME/dev/vimcat/vimcat"
 alias      cp='cp -v'
 alias    cpan='cpanm'
 alias     feh='/usr/bin/feh -FZ --action "cp -v %F ." --cache-size 2048 --quiet --verbose -G -d --draw-tinted'
-alias      gd='GIT_PAGER="" git diff'
+alias      gd='PAGER=less git diff'
 alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underline=>1,italic=>1})'"
 
@@ -1328,3 +1328,5 @@ export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-aska
 
 export VIMRUNTIME=${HOME}/etc/vim
 alias pulsemixer='pulsemixer --color 1'
+
+export GIT_PAGER=delta
