@@ -1330,3 +1330,5 @@ export VIMRUNTIME=${HOME}/etc/vim
 alias pulsemixer='pulsemixer --color 1'
 
 export GIT_PAGER=delta
+export PAGER=less
+export MANPAGER=vimpager
