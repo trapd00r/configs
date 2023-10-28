@@ -89,6 +89,7 @@ zle -N edit-command-line
 
 # ========== AUTOLOAD END ===============================
 # ========== ALIAS START ================================
+alias beetimport='beet import -q  ~/mnt/rutorrent/complete/lidarr* /mnt/music8/_soulseek ~/mnt/nasse/soulseek'
 alias dl='cd /home/scp1/mnt/media2/_downloads_complete/complete && lsr'
 alias dock='cd /home/scp1/mnt/nassebackup/_media_services'
 alias mutt='neomutt -F ~/etc/muttneorc -f ~/mail/inbox'
@@ -1296,7 +1297,7 @@ zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
 #zstyle ':fzf-tab:*' show-group full
 #zstyle ':fzf-tab:*' show-group brief
 
-#alias rm='rm -v'
+alias rm='rm -v'
 alias rg="rg --ignore-file=${XDG_CONFIG_HOME}/fd.ignorefile"
 
 
