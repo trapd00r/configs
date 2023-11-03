@@ -12,10 +12,14 @@
 # do not use mtime from the upload but rather the real mtime on disk
 --no-mtime
 
---replace-in-metadata "title" "\(Official Video\)|\(Audio\)" ""
---replace-in-metadata "title" "\[Official Video\]|\[Audio\]" ""
+--replace-in-metadata "title" "\(Official Video\)|\(Audio\)|Official Video HD\)" ""
+--replace-in-metadata "title" "\[Official Video\]|\[Audio\]|Official Video HD\]" ""
+--replace-in-metadata "title" "\(Official Music Video\)|\(Audio\)" ""
+--replace-in-metadata "title" "\[Official Music Video\]|\[Audio\]" ""
 --replace-in-metadata "title" "\(Official\)" ""
 --replace-in-metadata "title" "\(official\)" ""
+--replace-in-metadata "title" "\(HD\)" ""
+--replace-in-metadata "title" "\[HD\]" ""
 
 #--parse-metadata ":(?P<meta_>)"
 

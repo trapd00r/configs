@@ -172,7 +172,8 @@ alias  pacman='pacman --color=auto'
 alias prename='prename -v'
 alias      rg="rg -T sql -T css -T html --colors 'match:bg:255' --colors 'match:fg:196' --colors 'line:fg:32' --colors 'path:fg:208'"
 alias     scd='/bin/screen -d'
-alias     scx='screen-start-or-attach'
+alias     scx='tmux attach || tmux new'
+#alias     scx='screen-start-or-attach'
 alias   share='perl $HOME/dev/cpan-mirror-server-http/bin/cpanmirrorhttpd --verbose --root . --port 8080'
 alias     sql='vim ./cgi-bin/ibutik/_DATABAS/_Nytt_SQLkoder.sql'
 alias    wget='wget --no-check-certificate -U=Mozilla'
@@ -224,6 +225,7 @@ abbreviations=(
   "rr"          "~/mnt/rutorrent/complete/"
   "tv"          "~/mnt/media2/tv/"
   "movie"       "~/mnt/media2/movies/"
+  "mvids"       "~/mnt/media2/mvids/"
   "roms"        "~/mnt/roms"
 
 )
@@ -1332,3 +1334,16 @@ alias pulsemixer='pulsemixer --color 1'
 export GIT_PAGER=delta
 export PAGER=less
 export MANPAGER=vimpager
+
+
+
+
+#    # Write some info to terminal title.
+#    # This is seen when the shell prompts for input.
+#      print -Pn "\e]0;zsh%L %(1j,%j job%(2j|s|); ,)%~\a"
+#    # Write command and args to terminal title.
+#    # This is seen while the shell waits for a command to complete.
+#      printf "\033]0;%s\a" "$1"
+
+
+export TERM=tmux-256color

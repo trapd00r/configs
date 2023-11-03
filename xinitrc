@@ -14,6 +14,7 @@ if [[ $(hostname) = 'fantomen' ]]; then
   xrandr --output DP-2   --primary \
          --output DP-0   --rotate right  --left-of DP-2 \
          --output DP-5   --above DP-2
+#         --output HDMI-1 --below DP-2
 
   # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
   xset s off -dpms &
