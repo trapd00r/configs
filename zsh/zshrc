@@ -410,8 +410,6 @@ bindkey -M viins '^G' xterm-set-bg
 bindkey -M vicmd '^G' xterm-set-bg
 #bindkey -M vicmd '^S' font-711-710-rev
 #bindkey -M viins '^S' font-711-710-rev
-bindkey -M vicmd '^S' wrxvt_spawn_in_cwd
-bindkey -M viins '^S' wrxvt_spawn_in_cwd
 
 #bindkey "^V"             prepend-vim
 #bindkey -M viins "^J"    insert-last-word
