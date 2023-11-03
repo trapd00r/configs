@@ -36,8 +36,8 @@
 #>
 #< options->core
 
-include:
-  - '~/.musicbrainz.yaml'
+#include:
+#  - '~/.musicbrainz.yaml'
 #directory:  '/mnt/music8/+TAGGED'
 directory:  '~/mnt/nasse/music/'
 #library:    '~/var/beets/beets202105.db'
@@ -158,7 +158,7 @@ plugins: [
   'lastgenre',
   'lastimport',
   'lyrics',
-  'mbcollection',
+#  'mbcollection',
   'missing',
 #  'mpdupdate',
   'plexupdate',
