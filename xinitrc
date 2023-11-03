@@ -34,7 +34,12 @@ elif [[ $(hostname) = 'x1' ]]; then
 #  xset s off
 #  xset +dpms
 #  xset dpms 0 300 350
+
+# disable screen blanking
+  xset s off
+  xset s noblank
   xset -dpms
+  xset dpms 0 0 0
   feh --bg-center ~/img/wp.jpg
 fi
 
