@@ -207,3 +207,9 @@ calibre/
 citra-emu/
 czkawka/
 go/
+OpenRGB/
+autostart/
+gcolor3/
+lazydocker/
+pegasus-frontend/
+vim/autoload/plug.vim.old
