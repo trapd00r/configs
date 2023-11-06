@@ -234,6 +234,7 @@ abbreviations=(
   "movie"       "~/mnt/media2/movies/"
   "mvids"       "~/mnt/media2/mvids/"
   "roms"        "~/mnt/roms"
+  "utils"        "~/dev/utils"
 
 )
 
