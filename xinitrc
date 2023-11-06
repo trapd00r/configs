@@ -29,6 +29,7 @@ if [[ $(hostname) = 'fantomen' ]]; then
 
 elif [[ $(hostname) = 'x1' ]]; then
   xrdb -merge   "$XDG_CONFIG_HOME/Xresources-x1"
+  xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #  # turn off display after 5 min idle
 #  xset s off
@@ -45,10 +46,10 @@ fi
 
 setxkbmap se -variant nodeadkeys -option  terminate:ctrl_alt_bksp
 
+# mod4+p = shift-insert
 xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
 
 xmodmap ~/etc/xmodmaprc
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 xset r rate 280 30
 xkbset bouncekeys 50
