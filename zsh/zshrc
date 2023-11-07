@@ -159,9 +159,9 @@ lsr() {
 lss() {
   if [[ $HOST = "fantomen" ]]; then
 #    lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=size --reverse "$@"| sed -E "s/ '//g"
-    ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
+    ls++ --sort=size --reverse --dereference-command-line-symlink-to-dir "$@"
   else if which ls++ &>/dev/null ]]; then
-    ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
+    ls++ --sort=size --reverse --dereference-command-line-symlink-to-dir "$@"
   else
     ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
   fi
