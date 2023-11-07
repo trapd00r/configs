@@ -1,13 +1,13 @@
 ! vim: ft=xmodmap:
 !
 ! │
-keycode 38 = a A a A U2502 U2502 
-!clear   Mod4
-add     Control = Super_L Super_R
-!remove  Shift   = Shift_L
-!keysym  Shift_L = Control_L
-add     Control = Control_L
-clear   Lock
+! keycode 38 = a A a A U2502 U2502 
+! !clear   Mod4
+! add     Control = Super_L Super_R
+! !remove  Shift   = Shift_L
+! !keysym  Shift_L = Control_L
+! add     Control = Control_L
+! clear   Lock
 
 !remove      Lock = Caps_Lock
 !keysym    Escape = Caps_Lock
