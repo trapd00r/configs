@@ -1,6 +1,9 @@
 #!/bin/sh
 # $XDG_CONFIG_HOME/xinitrc
 
+#----------------------------------------
+# create a font path
+#----------------------------------------
 xset         +fp      ~/.fonts
 
 if [[ $(hostname) = 'fantomen' ]]; then
@@ -25,52 +28,61 @@ if [[ $(hostname) = 'fantomen' ]]; then
   # https://github.com/trapd00r/hass-mpd-ikea
   webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
 
-  perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
+#  perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
 
 elif [[ $(hostname) = 'x1' ]]; then
   xrdb -merge   "$XDG_CONFIG_HOME/Xresources-x1"
+  #----------------------------------------
+  # only needed on laptop keyboard
+  #----------------------------------------
   xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
-#  # turn off display after 5 min idle
-#  xset s off
-#  xset +dpms
-#  xset dpms 0 300 350
-
-# disable screen blanking
+  #----------------------------------------
+  # disable screen blanking
+  #----------------------------------------
   xset s off
   xset s noblank
   xset -dpms
   xset dpms 0 0 0
+
   feh --bg-center ~/img/wp.jpg
 fi
 
+#----------------------------------------
+# set keyboard layout and options
+#----------------------------------------
 setxkbmap se -variant nodeadkeys -option  terminate:ctrl_alt_bksp
-
-# mod4+p = shift-insert
-xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
-
-xmodmap ~/etc/xmodmaprc
-
 xset r rate 280 30
 xkbset bouncekeys 50
-xbanish &
 
+# mpd4+p = shift-insert
+xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
+
+#----------------------------------------
+# set mouse cursor and options
+#----------------------------------------
+xbanish &
 xsetroot -cursor_name left_ptr
 
+#----------------------------------------
+# setup clipboard sync
+#   clipboard -> primary
+#   primary   -> clipboard
+#----------------------------------------
+autocutsel -selection CLIPBOARD -fork
+autocutsel -selection PRIMARY -fork
+
+#----------------------------------------
+# things needed when not using a DE
+#----------------------------------------
+dunst &
+
+# for graphical authentication popups
+lxpolkit &
 
 # gtk applications startup very slow
 # https://bbs.archlinux.org/viewtopic.php?id=224787
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-# notifications
-dunst &
-
-# disable audit messages spamming dmesg
-auditctl -e 0
-
-# sync clipboard TO primary
-autocutsel -selection CLIPBOARD -fork
-# sync primary TO clipboard 
-autocutsel -selection PRIMARY -fork
 
 exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
