@@ -786,7 +786,7 @@ which() {
 mplayer() {
 #  sdorfehs -c 'set barsticky 0'
 
-  mpv "$@"
+  mpv -fs "$@"
 #  /usr/bin/mplayer \
 #    -ao pulse \
 #    -identify \
