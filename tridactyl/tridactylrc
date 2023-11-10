@@ -31,6 +31,7 @@ set bmarkweight 9999
 
 guiset_quiet gui none
 guiset_quiet statuspanel right
+guiset_quiet tabs always
 colors japh
 
 bind <BS> back
