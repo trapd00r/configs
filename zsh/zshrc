@@ -792,11 +792,11 @@ mplayer() {
 #    -identify \
 #    -include $XDG_CONFIG_HOME/mplayer/config \
 #    -profile sid \
-    -heartbeat-cmd "xscreensaver-command -deactivate" \
-    -nosub \
-    -noautosub \
-    $@
-    ;
+#    -heartbeat-cmd "xscreensaver-command -deactivate" \
+#    -nosub \
+#    -noautosub \
+#    $@
+#    ;
 #  sdorfehs -c 'set barsticky 1'
 
 }
