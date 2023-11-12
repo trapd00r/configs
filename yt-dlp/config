@@ -16,6 +16,7 @@
 --replace-in-metadata "title" "\[Official Video\]|\[Audio\]|Official Video HD\]" ""
 --replace-in-metadata "title" "\(Official Music Video\)|\(Audio\)" ""
 --replace-in-metadata "title" "\[Official Music Video\]|\[Audio\]" ""
+--replace-in-metadata "title" "\[Official HD Video\]|\[Audio\]" ""
 --replace-in-metadata "title" "\(Official\)" ""
 --replace-in-metadata "title" "\(official\)" ""
 --replace-in-metadata "title" "\(HD\)" ""
