@@ -79,6 +79,7 @@ endfor
 Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
 Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
+Plug 'pangloss/vim-javascript',        { 'for': 'javascript' }
 Plug 'tridactyl/vim-tridactyl'
 
 Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
@@ -123,6 +124,8 @@ Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'mattn/vim-lsp-settings'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 " ========== INIT END ===================================
@@ -1480,3 +1483,49 @@ highlight VimwikiBold cterm=none ctermfg=172
 "
 " <leader>cc - toggle colorcolum at cursor positions
 " ========== NOTES END ==================================
+
+
+"hi LspCodeActionLine             ctermfg=220
+"hi LspCodeActionText             ctermfg=196
+"hi LspErrorHighlight             ctermfg=196
+"hi LspErrorLine                  ctermfg=196
+"hi LspErrorText                  ctermfg=196
+"hi LspErrorVirtualText           ctermfg=196
+"hi LspHintHighlight              ctermfg=196
+"hi LspHintLine                   ctermfg=196
+"hi LspHintText                   ctermfg=208
+"hi LspHintVirtualText            ctermfg=196
+"hi LspInformationHighlight       ctermfg=196
+"hi LspInformationLine            ctermfg=196
+"hi LspInformationText            ctermfg=220
+"hi LspInformationVirtualText     ctermfg=196
+"hi LspWarningHighlight           ctermfg=196
+"hi LspWarningLine                ctermfg=196
+"hi LspWarningText                ctermfg=196
+"hi LspWarningVirtualText         ctermfg=196
+
+" reference under cursor
+hi lspReference                  cterm=underline
+
+"let g:javascript_conceal_function             = "F"
+"let g:javascript_conceal_null                 = "ø"
+"let g:javascript_conceal_this                 = "@"
+"let g:javascript_conceal_return               = "⇚"
+"let g:javascript_conceal_undefined            = "¿"
+"let g:javascript_conceal_NaN                  = "ℕ"
+"let g:javascript_conceal_prototype            = "¶"
+"let g:javascript_conceal_static               = "•"
+"let g:javascript_conceal_super                = "Ω"
+"let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_noarg_arrow_function = "🞅"
+"let g:javascript_conceal_underscore_arrow_function = "🞅"
+"set conceallevel=1
+
+"111 bold sub
+hi jsFunction ctermfg=111 cterm=bold
+hi jsFuncName ctermfg=118
+hi jsVariableDef ctermfg=10
+hi jsNull ctermfg=196
+hi jsString ctermfg=137
+"hi jsOperator ctermfg=196
+"hi jsParen cterm=bold
