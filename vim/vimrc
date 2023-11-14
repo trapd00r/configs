@@ -135,6 +135,7 @@ set autoindent                                                             " cop
 set autoread                                                               " read file again if changed outside of vim
 set backspace=start,indent,eol                                             " what backspace, ^w etc will operate on
 set cindent                                                                " c program indenting
+set cinkeys-=0#                                                            " https://stackoverflow.com/questions/354097/how-to-configure-vim-to-not-put-comments-at-the-beginning-of-lines-while-editing#comment127103383_354097
 set clipboard=unnamed                                                      " define clipboard registers to use
 set cdhome                                                                 " cd to ~ on :cd
 set cmdheight=2                                                            " avoid 'Press ENTER to continue' prompts
@@ -172,6 +173,7 @@ set ignorecase                                                             " ign
 set include=\\<\\(use\\\|require\\)\\>                                     " perl module to...
 set includeexpr=substitute(substitute(v:fname,'::','/','g'),'$','.pm','')  " ... perl module in filesystem
 set incsearch                                                              " show matches while typing
+set indentkeys-=0#                                                         " https://stackoverflow.com/questions/354097/how-to-configure-vim-to-not-put-comments-at-the-beginning-of-lines-while-editing#comment127103383_354097
 set isfname+=:                                                             " add : to filename pattern
 set iskeyword+=$                                                           " perl scalar
 set iskeyword+=%                                                           " perl hash
