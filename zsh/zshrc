@@ -1354,3 +1354,8 @@ export MANPAGER=vimpager
 
 
 export TERM=tmux-256color
+
+cd /home/scp1/dev/plexamphp/src
+
+alias note="cd /home/scp1/mnt/nassebackup/_media_services/flatnotes/notes"
+eval "$(github-copilot-cli alias -- "$0")"
