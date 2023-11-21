@@ -68,29 +68,17 @@ URxvt.matcher.rend.0:  fg5
 Xcursor.theme: xcursor-breeze
 Xcursor.size:  14
 
-URxvt.font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
-URxvt.boldFont: -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso10646-1
-URxvt.italicFont: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
-URxvt.boldItalicFont: 6x13bold
-!URxvt.boldFont: -xos4-terminus-bold-r-normal--16-140-72-72-c-80-iso10646-1
-!URxvt.boldItalicFont: -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso10646-1
-!URxvt.italicFont: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+URxvt.font: -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1, xft:Symbola
+URxvt.boldFont: -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso10646-1, xft:Symbola
+URxvt.italicFont: -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1, xft:Symbola
+URxvt.boldItalicFont: 6x13bold, xft:Symbola
 
 
-!URxvt.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252, \
-!                          xft:Symbola:minspace=True:embolden=true
-!
-!URxvt.boldfont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252, \
-!                          xft:Symbola:minspace=True:embolden=true
-!
-!URxvt.italicFont:         -schumacher-clean-medium-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
-!                          xft:Symbola
-!
-!URxvt.boldItalicFont:     xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0, \
-                          xft:Symbola
+!URxvt.font: xft:Bok MonteCarlo:pixelsize=11:style=Sans, xft:Symbola:minspace=True:embolden=true
+!URxvt.boldFont: xft:Bok MonteCarlo:pixelsize=11:style=Sans Bold, xft:Symbola:minspace=True:embolden=true
+!URxvt.italicFont:         -schumacher-clean-medium-r-normal--10-100-75-75-c-60-iso646.1991-irv, xft:Symbola
+!URxvt.boldItalicFont:     xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0, xft:Symbola
 
-!URxvt.boldItalicFont:     -schumacher-clean-bold-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
-!                          xft:Symbola
 
 !URxvt*bell-command:          play -v 0.1 /home/scp1/mp3/_sounds/ding.wav && bash -c "printf '\033]708;#ff0000\007'"
 URxvt*bell-command:          /home/scp1/dev/utils/bell
