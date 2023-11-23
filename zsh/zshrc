@@ -89,6 +89,8 @@ zle -N edit-command-line
 
 # ========== AUTOLOAD END ===============================
 # ========== ALIAS START ================================
+
+alias note="cd /home/scp1/mnt/nassebackup/_media_services/flatnotes/notes"
 alias beetimport='beet import -q  ~/mnt/nasse/soulseek/  ~/mnt/media2/_downloads_complete/complete/lidarr/'
 alias dl='cd /home/scp1/mnt/media2/_downloads_complete/complete && lsr'
 alias dock='cd /home/scp1/mnt/nassebackup/_media_services'
@@ -776,6 +778,11 @@ cd()        { builtin cd "$@" && ls }
 du1()       { du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f }
 du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f }
 
+# cd to the album directory of the currently playing song in plexamp
+cdnp() {
+  cd "$(dirname "$(curl -H 'accept: application/json' -s http://192.168.1.34:32400/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/nasse/music;")"
+}
+
 which() {
   IFS="$(printf '\n\t')"
   printf '\e[?7t'
@@ -1358,7 +1365,7 @@ export MANPAGER=vimpager
 
 export TERM=tmux-256color
 
-cd /home/scp1/dev/plexamphp/src
+#cd /home/scp1/dev/plexamphp/src
+#cd /home/scp1/dev/lastfm2sqlsync
 
-alias note="cd /home/scp1/mnt/nassebackup/_media_services/flatnotes/notes"
 eval "$(github-copilot-cli alias -- "$0")"
