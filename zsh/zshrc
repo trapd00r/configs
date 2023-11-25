@@ -232,7 +232,7 @@ abbreviations=(
   "b"          "~/bin"
   "d"          "~/dev"
   "u"          "~/dev/utils"
-  "bb"         "~/mnt/nasse/music"
+  "bb"         "~/mnt/media2/music"
   "ss"         "~/mnt/nasse/soulseek"
   "rr"         "~/mnt/rutorrent/complete/"
   "tv"         "~/mnt/media2/tv/"
@@ -780,7 +780,7 @@ du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f }
 
 # cd to the album directory of the currently playing song in plexamp
 cdnp() {
-  cd "$(dirname "$(curl -H 'accept: application/json' -s http://192.168.1.34:32400/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/nasse/music;")"
+  cd "$(dirname "$(curl -H 'accept: application/json' -s http://192.168.1.34:32400/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
 }
 
 which() {
@@ -1365,7 +1365,7 @@ export MANPAGER=vimpager
 
 export TERM=tmux-256color
 
-#cd /home/scp1/dev/plexamphp/src
+cd /home/scp1/dev/plexamphp/src
 #cd /home/scp1/dev/lastfm2sqlsync
 
 eval "$(github-copilot-cli alias -- "$0")"

@@ -996,6 +996,8 @@ set statusline +=\%7*\ \ \%1*%{ContextInStatusbar()}   " current function or blo
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
 
+let g:markdown_fenced_languages = ['html', 'js=javascript', 'bash=zsh', 'perl', 'python', 'ruby', 'sql', 'vim', 'css']
+
 " dont keep tags file in every single project dir
 let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
 
