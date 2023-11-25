@@ -230,7 +230,6 @@ abbreviations=(
   "kk"         "!-5$"
   "kj"         "!-6$"
   "b"          "~/bin"
-  "d"          "~/dev"
   "u"          "~/dev/utils"
   "bb"         "~/mnt/media2/music"
   "ss"         "~/mnt/nasse/soulseek"
@@ -780,7 +779,7 @@ du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f }
 
 # cd to the album directory of the currently playing song in plexamp
 cdnp() {
-  cd "$(dirname "$(curl -H 'accept: application/json' -s http://192.168.1.34:32400/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
+  cd "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
 }
 
 which() {
@@ -1341,7 +1340,7 @@ export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --c
 alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'
 
 # ta bort, finns i zprofile
-export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin"
+export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin"
 
 # alias df='duf -hide loops'
 
