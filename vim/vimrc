@@ -11,6 +11,7 @@
 
 let g:develop_plugin = 1
 
+
 " ========== INIT START =================================
 set nocp
 filetype plugin indent on
@@ -796,6 +797,13 @@ augroup FoldSub
     autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*','context':0, 'folds':'invisible')
 augroup END
 
+" use the altscreen for :!ls instead of it going back to the terminal
+augroup altscreen
+    autocmd!
+    autocmd VimEnter,VimResume * let &t_ti = substitute(&t_ti, '\e\[?1049[hl]', '', '') | let &t_te = substitute(&t_te, '\e\[?1049[hl]', '', '')
+    autocmd VimLeave,VimSuspend * let &t_ti = save_t_ti | let &t_te = save_t_te
+augroup END
+
 
 " escape faster!
 augroup FastEscape
@@ -1543,3 +1551,4 @@ hi jsNull ctermfg=196
 hi jsString ctermfg=137
 "hi jsOperator ctermfg=196
 "hi jsParen cterm=bold
+
