@@ -54,8 +54,8 @@ URxvt.keysym.C-u:            perl:url-select:select_next
 !URxvt.perl-ext:              selection,mark-yank-urls
 !URxvt.url-select.launcher:   /usr/bin/google-chrome-stable
 !URxvt.urlLauncher:           /usr/bin/google-chrome-stable
-URxvt.url-select.launcher:   /usr/lib/firefox/firefox
-URxvt.urlLauncher:           /usr/lib/firefox/firefox
+URxvt.url-select.launcher:   www
+URxvt.urlLauncher:           www
 URxvt.url-select.underline:  false
 URxvt.keysym.C-Up:           perl:keyboard-select:activate
 URxvt.keysym.M-s:            perl:keyboard-select:search
