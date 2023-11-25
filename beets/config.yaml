@@ -3,7 +3,7 @@
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
 #         btime  2021-05-13 10:31:39
-#         mtime  2021-07-20 11:14:12
+#         mtime  2023-11-25 13:07:00
 #   permissions  You are free to use things you may find useful here.
 #                Please improve and share.
 #           git  http://github.com/trapd00r/configs/  (up-to-date)
@@ -34,20 +34,16 @@
 #   '- 05 Wedding Song (Demo Version).mp3
 #   '- cover.jpg
 #>
-#< options->core
+# options->core
 
 #include:
 #  - '~/.musicbrainz.yaml'
-#directory:  '/mnt/music8/+TAGGED'
-directory:  '~/mnt/nasse/music/'
-#library:    '~/var/beets/beets202105.db'
-library:    '~/var/beets/beets20230626.db'
+directory:  '~/mnt/media2/music/'
+library:    '~/var/beets/beets20231124.db'
 pluginpath: ['/usr/lib/python3.11/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
              '/home/scp1/etc/beets/plugins/beetsplug/',
-#             '/home/scp1/dev/perlinpython3',
             ]
-
 
 # files matching these patterns are deleted from source after import
 #clutter: ["Thumbs.DB", ".DS_Store", "*.m3u", "*.pls",
@@ -80,9 +76,9 @@ duplicates:
 #  move: path
   path: yes
   strict: no
-#  tiebreak:
-#    # higher bitrate wins
-#    items: [bitrate]
+  tiebreak:
+    # higher bitrate wins
+    items: [bitrate]
 
 
 # I wish this didn't asciify explicit unicode characters, i.e │
@@ -100,9 +96,10 @@ sort_case_insensitive: yes
 threaded:              yes
 timeout:               5.0
 verbose:               no
+# Sets the albumartist for various-artist compilations. Defaults to 'Various
+# Artists' (the MusicBrainz standard)
 va_name:               'Various Artists'
-#>
-#< options->importer
+# options->importer
 import:
   languages:        en
   default_action:   apply
@@ -120,11 +117,9 @@ import:
   #  non_rec_action:   ask
   autotag:          yes
   write:            yes
-  copy:             yes
-#  copy:             no
+  copy:             no
   link:             no
-#  move:             yes
-  move:             no
+  move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
 #  quiet_fallback:   asis # when using the -q flag
   quiet_fallback:   skip # when using the -q flag
@@ -133,17 +128,10 @@ import:
   # and whether these recorded directories are skipped. This corresponds to
   # the -i flag to beet import.
   incremental:      yes
-#>
-#< options->plugin
-#plugins: [
-#  'fetchart',   'discogs',  'fromfilename', 'inline',     'smartplaylist',
-#  'ftintitle',  'info',     'lastgenre',    'lastimport', 'thumbnails',
-#  'mpdupdate',  'mpdstats', 'rewrite',      'duplicates', 'missing',
-#  'extrafiles', 'edit',     'lyrics',       'mpdqueue',
-#]
+
+# options->plugin
 
 plugins: [
-#  'autosingleton',
   'bucket',
   'discogs',
   'duplicates',
@@ -158,11 +146,9 @@ plugins: [
   'lastgenre',
   'lastimport',
   'lyrics',
-#  'mbcollection',
   'missing',
-#  'mpdupdate',
+  'plexsync',
   'plexupdate',
-#  'japh',
   'rewrite',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
@@ -251,11 +237,21 @@ embedart:
   remove_art_file: no
 
 fetchart:
-  auto:    yes
+  sources:
+    - coverart: release
+    - coverart: releasegroup
+    - albumart
+    - amazon
+    - google
+    - itunes
+    - fanarttv
+    - lastfm
+    - wikipedia
+  auto: yes
+  cautious: yes
   minwidth: 500
   maxwidth: 1200
-#  sources: itunes amazon fanarttv albumart coverart wikipedia google filesystem
-  sources: coverart albumart itunes amazon fanarttv wikipedia google
+  cover_format: jpeg
   store_source: yes
 
 ftintitle:
@@ -280,6 +276,7 @@ hook:
 
 lastfm:
   user: betbot
+  lastfm_key: f8b6eaaf1ef0c7e6cefd65a5114d1fd4
 
 lastgenre:
   auto:      yes
@@ -292,19 +289,10 @@ lyrics:
   force: yes
   sources: genius google tekstowo
 
-#mpd:
-#  host: 192.168.1.12
-#  port: 6600
-
 plex:
   host: 192.168.1.34
   port: 32400
-
-
-mbcollection:
-  auto: yes
-#  collection: 'music8'
-  remove: yes
+  library_name: 'Music2'
 
 musicbrainz:
   extra_tags: [year, originalyear, catalognum,
@@ -358,8 +346,6 @@ rewrite:
   album Dream Dance. Vol[.] 68:           Dream Dance 68
   album Dream Dance. Vol[.] 69:           Dream Dance 69
 
-
-
   album .*Sommar i P1:               P1 Sommar
   album .*Sommar (och|[&]) Vinter i P1.*:  P1 Sommar
   album Söndagsintervjun:            P1 Söndagsintervjun
@@ -409,47 +395,47 @@ rewrite:
   artist Sjatte Sinnet:              Sjätte Sinnet
   artist Ante Barazza:               Sjätte Sinnet
 
-setlister:
-  playlist_dir: '~/mp3/_playlists/+setlists/'
+# setlister:
+#   playlist_dir: '~/mp3/_playlists/+setlists/'
 
-smartplaylist:
-  auto:         no
-  playlist_dir: '~/mp3/_playlists/'
-  playlists:
-#    - name:  '+all.m3u'
-#      query: ''
-    - name:  '+by artist/eminem.m3u'
-      query: 'artist:Eminem'
-    - name:  '+by artist/bob dylan.m3u'
-      query: 'artist:Bob Dylan'
-    - name:  '+by concept/diss tracks.m3u'
-      query: 'title:" diss"'
-    - name:  '+by year/$year.m3u'
-      query: 'year::(199[0-9]|200[0-9]|201[0-9]|202[0-9])'
-    - name:  '+by plays/1 or more.m3u'
-      query: 'play_count:1..'
-    - name:  '+by plays/5 or more.m3u'
-      query: 'play_count:5..'
-    - name:  '+by plays/loved.m3u'
-      query: 'loved:1'
-    - name:  '+by time/last day.m3u'
-      query: 'added- added:-1d..'
-    - name:  '+by time/last 3 days.m3u'
-      query: 'added- added:-3d..'
-    - name: '+by time/last 7 days.m3u'
-      query: 'added- added:-7d..'
-    - name: '+by time/last 14 days.m3u'
-      query: 'added- added:-14d..'
-    - name: '+by time/last 30 days.m3u'
-      query: 'added- added:-30d..'
-    - name: '+by time/last 45 days.m3u'
-      query: 'added- added:-45d..'
-    - name: '+by time/last 60 days.m3u'
-      query: 'added- added:-60d..'
-    - name:  '+by genre/psychedelic.m3u'
-      query: 'genre:psychedelic'
-#>
-#< inline fun!
+# smartplaylist:
+#   auto:         no
+#   playlist_dir: '~/mp3/_playlists/'
+#   playlists:
+# #    - name:  '+all.m3u'
+# #      query: ''
+#     - name:  '+by artist/eminem.m3u'
+#       query: 'artist:Eminem'
+#     - name:  '+by artist/bob dylan.m3u'
+#       query: 'artist:Bob Dylan'
+#     - name:  '+by concept/diss tracks.m3u'
+#       query: 'title:" diss"'
+#     - name:  '+by year/$year.m3u'
+#       query: 'year::(199[0-9]|200[0-9]|201[0-9]|202[0-9])'
+#     - name:  '+by plays/1 or more.m3u'
+#       query: 'play_count:1..'
+#     - name:  '+by plays/5 or more.m3u'
+#       query: 'play_count:5..'
+#     - name:  '+by plays/loved.m3u'
+#       query: 'loved:1'
+#     - name:  '+by time/last day.m3u'
+#       query: 'added- added:-1d..'
+#     - name:  '+by time/last 3 days.m3u'
+#       query: 'added- added:-3d..'
+#     - name: '+by time/last 7 days.m3u'
+#       query: 'added- added:-7d..'
+#     - name: '+by time/last 14 days.m3u'
+#       query: 'added- added:-14d..'
+#     - name: '+by time/last 30 days.m3u'
+#       query: 'added- added:-30d..'
+#     - name: '+by time/last 45 days.m3u'
+#       query: 'added- added:-45d..'
+#     - name: '+by time/last 60 days.m3u'
+#       query: 'added- added:-60d..'
+#     - name:  '+by genre/psychedelic.m3u'
+#       query: 'genre:psychedelic'
+
+# inline fun!
 item_fields:
 
   fmt: |
@@ -458,41 +444,41 @@ item_fields:
     else:
       return None
 
-# pad track number with zero if < 10
+  # pad track number with zero if < 10
   padded_tracknr: "'{:02n}'.format(track)"
 
-# remove spaces from catalognum
+  # remove spaces from catalognum
   moh_catalog: catalognum.replace(" ", "")
 
-# capture first artist as primary artist to avoid directories like this:
-# · B/Britney Spears/
-# · B/Britney Spears feat Madonna/
-# · B/Britney Spears vs Metallica/
-# > https://github.com/beetbox/beets/issues/3176
-# > https://www.japh.se/2021/06/01/capture-primary-artist-as-a-separate-field-in-beets.html
-#
-# handles:
-# · Artist,
-# · Artist &
-# · Artist feat
-# · Artist feat.
-# · Artist featuring
-# · Artist ft.
-# · Artist vs
-# · Artist vs.
-# · Artist &
-#
-# The idea is to use $first_artist in the beginning of the path format
-# like so:
-#
-# %tcp{$first_artist}/%tcp{$albumartist}
-#
-# which will put 'Jennifer Lopez feat. Pitbull' inside the main Jennifer
-# Lopez directory, but still keep the feat. part in the directory name
-# inside it.
-#
-# J/Jennifer Lopez Feat. Pitbull/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
-# -> J/Jennifer Lopez/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
+  # capture first artist as primary artist to avoid directories like this:
+  # · B/Britney Spears/
+  # · B/Britney Spears feat Madonna/
+  # · B/Britney Spears vs Metallica/
+  # > https://github.com/beetbox/beets/issues/3176
+  # > https://www.japh.se/2021/06/01/capture-primary-artist-as-a-separate-field-in-beets.html
+  #
+  # handles:
+  # · Artist,
+  # · Artist &
+  # · Artist feat
+  # · Artist feat.
+  # · Artist featuring
+  # · Artist ft.
+  # · Artist vs
+  # · Artist vs.
+  # · Artist &
+  #
+  # The idea is to use $first_artist in the beginning of the path format
+  # like so:
+  #
+  # %tcp{$first_artist}/%tcp{$albumartist}
+  #
+  # which will put 'Jennifer Lopez feat. Pitbull' inside the main Jennifer
+  # Lopez directory, but still keep the feat. part in the directory name
+  # inside it.
+  #
+  # J/Jennifer Lopez Feat. Pitbull/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
+  # -> J/Jennifer Lopez/Jennifer Lopez Feat. Pitbull │2012│ Dance Again [Single, WEB, MP3]/01 Dance Again.mp3
 
 
   first_artist: |
@@ -668,9 +654,7 @@ match:
   ignored_media:     ['Data CD', 'DVD', 'DVD-Video', 'Blu-ray', 'HD-DVD',
                       'VCD', 'SVCD', 'UMD', 'VHS',
                      ]
-#>
 #"
-#< ui
 ui:
   color: yes
   colors:
@@ -681,9 +665,7 @@ ui:
     text_highlight_minor: '108'
     action_default:       '197'
     action:               '210'
-#>
 
-#< path setup
 aunique:
   keys: albumartist albumtype year album
   disambuguators: format mastering media label albumdisambig releasegroupdisambig
@@ -691,40 +673,23 @@ aunique:
 
 
 paths:
-#    mb_trackid::^$:              +unmatched/
+    # mb_trackid::^$:              +unmatched/
     label:"Masters of Hardcore": M/Masters of Hardcore/$moh_catalog %if{$hasyear,${year}} %tcp{$album}/${padded_tracknr} %tcp{$artist} - %tcp{$title}
 
-
-#   for testing stupid things
-    tag:test:            +test/%bucket{$first_artist, alpha}/%tcp{$first_artist}/%japh{$first_artist}%if{$hasyear, │${year}│} %japh{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-#    tag:test:            +test/%bucket{$first_artist, alpha}/%tcp{$first_artist}/%tcp{$first_artist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-
-#< Eminem
-#   import bootlegs that have no discog info as-is in +other
-#    tag:eminem: E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-
-#   +skits/1999 Eminem - I Kissed a Boy (Skit).mp3
     singleton:true tag:eminem-skits:             E/Eminem/+skits/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
-
-#   +disses/+tracks/Benzino - Don't Wanna (eminem Diss).mp3
-#   +disses/Esham │2003│ Boom (D-12 Diss) Promo CDS [MP3]
     singleton:true tag:eminem-diss:             E/Eminem/+disses/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:false tag:eminem-diss:            E/Eminem/+disses/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-
-#   +freestyles/+tracks/1999 Eminem - Mancow (freestyle).mp3
-#   +freestyles/Eminem │2004│ Invasion 3 Freestyle (Without Lloyd Banks) [MP3]
     singleton:true  tag:eminem-freestyles:      E/Eminem/+freestyles/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:false tag:eminem-freestyles:      E/Eminem/+freestyles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-
     singleton:true tag:eminem-remix:            E/Eminem/+remix/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-# Re-import with:
-# $ beet import -A --set tag=eminem
-# and everything gets placed  where it belong
-#
-# The reason why I am doing like this is because I want various Eminem-related
-# things to go in the main Eminem directory/+albumtype, regardless of
-# albumartist
+    # Re-import with:
+    # $ beet import -A --set tag=eminem
+    # and everything gets placed  where it belong
+    #
+    # The reason why I am doing like this is because I want various Eminem-related
+    # things to go in the main Eminem directory/+albumtype, regardless of
+    # albumartist
 
     tag:eminem albumtype:single:          E/Eminem/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
     tag:eminem albumtype:album:           E/Eminem/+lp/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
@@ -748,41 +713,35 @@ paths:
     tag:eminem albumtype:audiobook:       E/Eminem/+audiobook/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
     tag:eminem albumtype:other:           E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
 
-# Various singleton tracks that should go in the Eminem base dir
-# $ beet import -sA --set tag=eminem *(.)
+    # Various singleton tracks that should go in the Eminem base dir
+    # $ beet import -sA --set tag=eminem *(.)
     tag:eminem singleton:true:        E/Eminem/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-#   albums with no albumtype as of yet
+    # albums with no albumtype as of yet
     albumartist:eminem:               E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
 
-#   import bootlegs that have no discog info as-is in +other for later sorting
+    # import bootlegs that have no discog info as-is in +other for later sorting
     tag:eminem:                       E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-#>
 
-#-- These will be hard to look up and it's ok to use the basename
+    # These will be hard to look up and it's ok to use the basename
     tag:whoa singleton:true:     +hiphop-swe/whoa.nu/$base_name
     tag:frizon:                  +hiphop-swe/frizon.info/$base_name
     tag:randombastards:          +hiphop-swe/randombastards/$base_name
     tag:rimslakt:                +hiphop-swe/rimslakt/$base_name
     tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
-
-
     tag:ocremix:                 +game/+remix/+ocremix/$base_name
     tag:olremix:                 +game/+remix/+olremix/$base_name
     tag:amigaremix:              +game/+remix/+amigaremix/$base_name
     tag:vgmix:                   +game/+remix/+vgmix/%tcp{$artist} - %tcp{$title}
     tag:keygen:                  +game/+keygen/$base_name
-
     tag:rosamannen:              +live/+rosamannen/$base_name
-#--
     tag:sr:                      +radio/Sveriges Radio/%tcp{$album}/%if{$hasyear, $year} %tcp{$title}
-
     tag:8bitpeoples:             +game/+artists/+8bitpeoples/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:8bitcollective:          +game/+artists/+8bitcollective/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
 
-#   beware that this path is different!
+    # beware that this path is different!
     tag:amigaost singleton:false:  +game/+ost/amiga/%tcp{$artist} [Amiga, %tcp{$album}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
     tag:snesost  singleton:false:  +game/+ost/snes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
@@ -793,11 +752,8 @@ paths:
     tag:gameost:                   +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:game albumtype:soundtrack: +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
-    # crack intros
     tag:crackintro singleton:true: +game/+crack/%tcp{$artist} - %tcp{$title}
-    # game intros
     tag:gameintro singleton:true:  +game/+intro/%tcp{$artist} - %tcp{$title}
-
 
     tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:game singleton:true:     +game/+tracks/%tcp{$artist} - %tcp{$title}
@@ -806,10 +762,6 @@ paths:
     albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
-#    albumtype:soundtrack  ^albumartist:"Various Artists": +ost/%if{$hasyear,${year} }%tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-#    ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album}%aunique{}/${padded_tracknr} %tcp{$title}
-
-#"
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:album:      %bucket{$first_artist, alpha}/%tcp{$first_artist}/+albums/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:ep:         %bucket{$first_artist, alpha}/%tcp{$first_artist}/+eps/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
@@ -822,13 +774,12 @@ paths:
     ^albumartist:"Various Artists" albumtype:remix:      %bucket{$first_artist, alpha}/%tcp{$first_artist}/+remixes/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:interview:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+interviews/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:freestyle:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+freestyles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
-#    ^albumartist:"Various Artists" albumtype:soundtrack: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+soundtracks/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
     ^albumartist:"Various Artists" albumtype:other:      %bucket{$first_artist, alpha}/%tcp{$first_artist}/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
 
     ### add compilations and soundtrack by artist in artist dir, and
     ### other VA compilations as a special case below.
     ^albumartist:"Various Artists" albumtype:compilation: %bucket{$first_artist, alpha}/%tcp{$first_artist}/+compilations/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumtype:compilation:                                +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
+    albumtype:compilation:                                Various Artists/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
     singleton:true  tag:demo:        %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+demo/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true  tag:live:        %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+live/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
@@ -845,10 +796,9 @@ paths:
     singleton:true  tag:freestyle:   %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true:                  %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
-    albumtype:soundtrack:            +ost/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    albumtype:soundtrack:            Soundtracks/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
     # Compilation, Various artists
-    comp:                          +va/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
+    comp:                          Various Artists/%tcp{$album}%if{$hasyear, (${year})}$fmt/${padded_tracknr} $artist - %tcp{$title}
 
     default:  %bucket{$first_artist, alpha}/%tcp{$first_artist}/+albums/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
-#>
