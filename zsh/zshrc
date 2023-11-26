@@ -785,7 +785,7 @@ cdnp() {
 
 # allow for pwd, and instantly paste path elsewhere being careful to escape
 # everything that needs to be escaped (as well as some that dont)
-pwd() {
+ppwd() {
   # check if we have a DISPLAY
   if [[ -n $DISPLAY ]]; then
     # if we do, then we can use xclip
@@ -1230,6 +1230,9 @@ zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|
 
 # ========== COMPLETION END =============================
 #zprof
+
+# yank to primary
+. ~/etc/zsh/zsh-system-clipboard.zsh
 
 # fzf all the things
 . ~/etc/zsh/11-fzf-completion.zsh
