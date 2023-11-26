@@ -782,6 +782,12 @@ cdnp() {
   cd "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
 }
 
+# allow for pwd, and instantly paste path elsewhere being careful to escape
+# everything that needs to be escaped (as well as some that dont)
+pwd() {
+  builtin pwd "$@" | perl -lne 'print quotemeta $_' | xclip -f
+}
+
 which() {
   IFS="$(printf '\n\t')"
   printf '\e[?7t'
@@ -1177,7 +1183,7 @@ named-directories:-normal:named\ directories *'
 #zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
 #######>
 #######< vim
-#zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*' tag-order files
+zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*' tag-order files
 #zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*:*files' ignored-patterns \
 #'*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
 #file-sort modification
@@ -1287,17 +1293,39 @@ named-directories:-normal:named\ directories *'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # preview directory's content with exa when completing cd and ls
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'file $realpath | sed -E "s/^.+: //"; hr -fg 238 -c " " -ubi -s 40;echo; exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'file $realpath | sed -E "s/^.+: //"; hr -fg 137 -c _ -s 30;echo;exa -1 --color=always $realpath ;'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-#zstyle ':fzf-tab:complete:ls:*' fzf-preview 'file $realpath | sed -E "s/^.+: //"; hr -fg 238 -c " " -ubi -s 40;echo; exa -1 --color=always $realpath'
+
+zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat --color=always $realpath'
+
+# environment variables
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+  fzf-preview 'echo ${(P)word}'
+
+# preview systemctl status
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+
+# do not use fzf-tab for these commands
+# zstyle ':fzf-tab:complete:file:*' disabled-on any
+
+# give a preview of commandline arguments when completing kill
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+  '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
+
+# preview files, images, spreadsheets, whatever
+# zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+# export LESSOPEN='|~/dev/utils/lessfilter %s'
+
 
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
 # accept with one key
 zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
-#zstyle ':fzf-tab:*' accept-line enter
-zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all'
+#zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:accept' 'ctrl-a:toggle-all'
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-a:toggle-all'
 zstyle ':fzf-tab:*' fzf-min-height 100
 
 # disable sort when completing `git checkout`
@@ -1305,12 +1333,33 @@ zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 
+# it is an example. you can change it
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+	'git diff $word | delta'
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+	'git log --color=always $word'
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+	'git help $word | bat -plman --color=always'
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+	'case "$group" in
+	"commit tag") git show --color=always $word ;;
+	*) git show --color=always $word | delta ;;
+	esac'
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+	'case "$group" in
+	"modified file") git diff $word | delta ;;
+	"recent commit object name") git show --color=always $word | delta ;;
+	*) git log --color=always $word ;;
+	esac'
+
+
 FZF_TAB_GROUP_COLORS=(
     $'\033[38;5;30;1m' $'\033[38;5;10m' $'\033[33m' $'\033[35m' $'\033[31m' $'\033[38;5;33m' $'\033[36m' \
     $'\033[38;5;101m' $'\033[38;5;102m' $'\033[38;5;103m' $'\033[38;5;80m' $'\033[38;5;192m' \
     $'\033[38;5;214m' $'\033[38;5;165m' $'\033[38;5;124m' $'\033[38;5;120m'
 )
 zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
+
 #zstyle ':fzf-tab:*' default-color $'\033[38;5;137m'
 #zstyle ':fzf-tab:*' show-group full
 #zstyle ':fzf-tab:*' show-group brief
@@ -1333,7 +1382,7 @@ alias romget='wget -A iso,zip,7z,chd,gba,gb,gbc,nes,smc -m -p -E -k -K -np -nd'
 export XDG_MUSIC_DIR=${HOME}/mnt/nasse/music
 
 export FZF_DEFAULT_OPTS=''
-export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137'
+export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137 -i'
 
 
 
@@ -1363,8 +1412,7 @@ export MANPAGER=vimpager
 
 
 export TERM=tmux-256color
-
-cd /home/scp1/dev/plexamphp/src
-#cd /home/scp1/dev/lastfm2sqlsync
+builtin cd ~
 
 eval "$(github-copilot-cli alias -- "$0")"
+
