@@ -785,7 +785,14 @@ cdnp() {
 # allow for pwd, and instantly paste path elsewhere being careful to escape
 # everything that needs to be escaped (as well as some that dont)
 pwd() {
-  builtin pwd "$@" | perl -lne 'print quotemeta $_' | xclip -f
+  # check if we have a DISPLAY
+  if [[ -n $DISPLAY ]]; then
+    # if we do, then we can use xclip
+    builtin pwd "$@" | perl -lne 'print quotemeta $_' | xclip -f
+  else
+    # if we dont, then we can't use xclip
+    builtin pwd "$@" | perl -lne 'print quotemeta $_'
+  fi
 }
 
 which() {
