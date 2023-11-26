@@ -214,6 +214,7 @@ then
     for host in $(
       perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
       ); do
+
       alias $host="setbg_sshhosts $host; ssh $host $@"
     done
   fi
@@ -784,7 +785,7 @@ cdnp() {
 
 # allow for pwd, and instantly paste path elsewhere being careful to escape
 # everything that needs to be escaped (as well as some that dont)
-pwd() {
+ppwd() {
   # check if we have a DISPLAY
   if [[ -n $DISPLAY ]]; then
     # if we do, then we can use xclip
@@ -977,197 +978,133 @@ _fzf_complete_git_post() {
 # tabcomplete git diff to modifed files
 compdef _git gd=git-add
 
-# completion madness FIXME
-#zstyle   ':completion:*:(cd):*'           group-order 'named-directories'
-#zstyle   ':completion:*:(cd):*'           ignore-parents parent pwd
-##zstyle   ':completion:*:*:(cd):*'         completer _correct 
-##zstyle ':completion:*' completer _complete _ignored
-#
-## completers in order of usefulness
+zstyle   ':completion:*:(cd):*'           group-order 'named-directories'
+zstyle   ':completion:*:(cd):*'           ignore-parents parent pwd
+#zstyle   ':completion:*:*:(cd):*'         completer _correct
+#zstyle ':completion:*' completer _complete _ignored
+
+# completers in order of usefulness
 #zstyle ':completion:*' completer _expand _list _complete _match _ignored _prefix _approximate
 #zstyle ':completion:*' completer _expand _complete _ignored _approximate
-##zstyle ':completion:*' completer _complete _history
-#zstyle ':completion:*' completer _complete 
-#
-####### use caching for all completions
-######zstyle ':completion:*' use-cache on
-######zstyle ':completion:*' cache-path ${HOME}/var/zsh/
-######
-####### add '..' dirs to completions
-#######zstyle ':completion:*' special-dirs ..
-######
-####### use perl
-#zstyle ':completion:*' use-perl on
-######
-####### XXX _urls setup
-##zstyle ':completion:*' urls ~/etc/zsh/urls
-######
-#########zstyle ':completion:*' accept-exact '*(N)'
-######zstyle ':completion:*' group-name ''
-######zstyle ':completion:*' list-dirs-first true
-######zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-######
-######
-####### '-e' is needed to get the argument evaluated each time this is called
-####### this argument to max-errors allows one error in 10 characters.
-#######zstyle -e ':completion:*:approximate:*' max-errors \
-#######  'reply=( $(( ($#PREFIX + $#SUFFIX) / 10 )) )'
-######
-#######< reducing matches
-######### functions starting with '_' are completion functions by convention
-######### these are not supposed to be called by hand. no completion needed.
-######zstyle ':completion:*:(functions|parameters|association-keys)' ignored-patterns '_*'
-######
-####### normally I don't want to complete *.o and *~, so, I'll ignore them, except
-####### for rm, for obvious reasons
-######zstyle ':completion:*:(^rm):*:(all-|)files' ignored-patterns '*?.o' '*?\~'
-######
-######### in my $HOME/bin dir there are often vim backups *~,
-######### these are not to be completed...
-######### i've got ${HOME}/bin/html/ which is no command, _do_not_complete_it!
-#######zstyle ':completion:*:complete:-command-::commands' ignored-patterns '(aptitude-*|html|*\~|haskell_count)'
-######
-######### don't complete lost+found dirs for 'cd'
+#zstyle ':completion:*' completer _complete _history
+#zstyle ':completion:*' completer _complete
+
+# add '..' dirs to completions
+zstyle ':completion:*' special-dirs ..
+
+# use perl
+zstyle ':completion:*' use-perl on
+
+# don't complete lost+found dirs for 'cd'
 zstyle ':completion:*:cd:*' ignored-patterns '(*/)#lost+found'
-######
-######### special completions for (mpg|ogg)123
-######zstyle ':completion:*:*:mpg123:*'  file-patterns '(#i)*.mp3:files:mp3\ files *(-/):directories:directories'
-######zstyle ':completion:*:*:ogg123:*'  file-patterns '(#i)*.ogg:files:ogg\ files *(-/):directories:directories'
-######zstyle ':completion:*:*:(mplayer|m|ms):*' file-patterns '(#i)*.(mkv|mp4|m4a|iso|wmv|webm|ogv|avi|mpg|mpeg|rmvb|iso|nrg):files:mplayer\ eats *(-/):directories:directories'
-######
-######### weed out uninteresting users when completing '(command) ~<TAB>'
-######zstyle ':completion:*:*:*:*:users' ignored-patterns \
-######  bin daemon mail ftp http nobody dbus avahi ntp git usbmux mysql uuid kwakd
-#######>
-#######< formats
-##zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
-##zstyle ':completion:*:messages'     format "- %{${fg[cyan]}%}%d%{${reset_color}%} -"
-##zstyle ':completion:*:corrections'  format "- %{${fg[yellow]}%}%d%{${reset_color}%} - (%{${fg[cyan]}%}errors %e%{${reset_color}%})"
-##zstyle ':completion:*:default'      \
-##  select-prompt \
-##  "%{${fg[yellow]}%}Match %{${fg_bold[cyan]}%}%m%{${fg_no_bold[yellow]}%}  Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[red]}%}  %p%{${reset_color}%}"
-##zstyle ':completion:*:default'      \
-##  list-prompt   \
-##  "%{${fg[yellow]}%}Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[yellow]}%}  Continue?%{${reset_color}%}"
-##zstyle ':completion:*:warnings'     \
-##  format        \
-##  "- %{${fg_no_bold[red]}%}no match%{${reset_color}%} - %{${fg_no_bold[yellow]}%}%d%{${reset_color}%}"
-#zstyle ':completion:*' group-name ''
-#
-## zstyle ':completion:*:descriptions' format "- %d -"
-## zstyle ':completion:*:messages'     format "- %d -"
-## zstyle ':completion:*:corrections'  format "- %d - (errors %e)"
-## zstyle ':completion:*:default'      select-prompt "Match %m  Line %l  %p"
-## zstyle ':completion:*:default'      list-prompt "Line %l  Continue?"
-## zstyle ':completion:*:warnings'     format "- no match - %d"
-# zstyle ':completion:*'              group-name ''
-#
-#######< list colorization
-######### use $LS_COLORS for general completion
-#########   Note: (s.:.) splits ${LS_COLORS} into an array
-#######zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-######
-######### highlight parameters with uncommon names
-#zstyle ':completion:*:parameters' list-colors "=[^a-zA-Z]*=$color[red]"
-######
-######### highlight aliases
-#zstyle ':completion:*:aliases' list-colors "=*=$color[green]"
-######
-######### show that _* functions are not for normal use
-######### (not needed, since I don't complete _* functions at all)
-#######zstyle ':completion:*:functions' list-colors "=_*=$color[red]"
-######
-######### highlight the original input.
-#zstyle ':completion:*:original' list-colors "=*=$color[red];$color[bold]"
-######
-######### highlight words like 'esac' or 'end'
-#zstyle ':completion:*:reserved-words' list-colors "=*=$color[red]"
-######
-######### colorize hostname completion
-#zstyle ':completion:*:*:*:*:hosts' \
-#list-colors "=*=$color[cyan];$color[bg-black]"
-######
-######### colorize username completion
-#zstyle ':completion:*:*:*:*:users' \
-#list-colors "=*=$color[red];$color[bg-black]"
-######
-######### colorize processlist for 'kill'
-#zstyle ':completion:*:*:kill:*:processes' \
-#list-colors "=(#b) #([0-9]#) #([^ ]#)*=$color[cyan]=$color[yellow]=$color[green]"
-#######>
-#######>
-#######< documentation
-######zstyle ':completion:*:manuals'       separate-sections true
-######zstyle ':completion:*:manuals.(^1*)' insert-sections   true
-#######>
-#######< menu completion/selection setup
-######
-####### enable menu completion
-#######zstyle ':completion:*' menu auto
-######
-####### enable verbose completion
-#######zstyle ':completion:*'              verbose yes
-######zstyle ':completion:*:-command-:*:' verbose no
-######
-####### default menu selection for a few commands
-##zstyle ':completion:*:*:(kill*|man):*' menu yes
-#zstyle ':completion:*:*:(kill*):*' menu yes
-#######
-######
-####### if i have 'rm file0' on the commandline
-####### i don't need "file0" in possible completions
-#zstyle ':completion:*:(rm|kill|mplayer|m|ms|f|feh|vim|file):*' ignore-line yes
-##zstyle ':completion:*:*:*'   ignore-line yes
-######
-######### $hosts for <tab> completing hostnames
-#zstyle ':completion:*:(nc|ping|ssh|nmap|*ftp|telnet|finger|mtr):*' hosts sid pi
-######
-######### i like kill <tab>, but i want more processes...
-#zstyle ':completion:*:processes' command 'ps --forest -A -o pid,user,cmd'
-#zstyle ':completion:*:*:kill:*:processes' sort false
-#zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
-#######>
-#######< sorting
+
+# weed out uninteresting users when completing '(command) ~<TAB>'
+zstyle ':completion:*:*:*:*:users' ignored-patterns \
+bin daemon mail ftp http nobody dbus avahi ntp git usbmux mysql uuid kwakd cups
+
+# formats
+#zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
+#zstyle ':completion:*:messages'     format "- %{${fg[cyan]}%}%d%{${reset_color}%} -"
+#zstyle ':completion:*:corrections'  format "- %{${fg[yellow]}%}%d%{${reset_color}%} - (%{${fg[cyan]}%}errors %e%{${reset_color}%})"
+
+zstyle ':completion:*:default'      \
+  select-prompt \
+  "%{${fg[yellow]}%}Match %{${fg_bold[cyan]}%}%m%{${fg_no_bold[yellow]}%}  Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[red]}%}  %p%{${reset_color}%}"
+zstyle ':completion:*:default'      \
+  list-prompt   \
+  "%{${fg[yellow]}%}Line %{${fg_bold[cyan]}%}%l%{${fg_no_bold[yellow]}%}  Continue?%{${reset_color}%}"
+zstyle ':completion:*:warnings'     \
+  format        \
+  "- %{${fg_no_bold[red]}%}no match%{${reset_color}%} - %{${fg_no_bold[yellow]}%}%d%{${reset_color}%}"
+zstyle ':completion:*' group-name ''
+
+zstyle ':completion:*:descriptions' format "- %d -"
+zstyle ':completion:*:messages'     format "- %d -"
+zstyle ':completion:*:corrections'  format "- %d - (errors %e)"
+zstyle ':completion:*:default'      select-prompt "Match %m  Line %l  %p"
+zstyle ':completion:*:default'      list-prompt "Line %l  Continue?"
+zstyle ':completion:*:warnings'     format "- no match - %d"
+
+zstyle ':completion:*'              group-name ''
+
+# list colorization
+# use $LS_COLORS for general completion
+# Note: (s.:.) splits ${LS_COLORS} into an array
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# highlight parameters with uncommon names
+zstyle ':completion:*:parameters' list-colors "=[^a-zA-Z]*=$color[red]"
+
+# highlight aliases
+zstyle ':completion:*:aliases' list-colors "=*=$color[green]"
+
+# show that _* functions are not for normal use
+# (not needed, since I don't complete _* functions at all)
+# zstyle ':completion:*:functions' list-colors "=_*=$color[red]"
+
+# highlight the original input.
+zstyle ':completion:*:original' list-colors "=*=$color[red];$color[bold]"
+
+
+# highlight words like 'esac' or 'end'
+zstyle ':completion:*:reserved-words' list-colors "=*=$color[red]"
+
+# colorize hostname completion
+zstyle ':completion:*:*:*:*:hosts' \
+list-colors "=*=$color[cyan];$color[bg-black]"
+
+# colorize username completion
+zstyle ':completion:*:*:*:*:users' \
+list-colors "=*=$color[red];$color[bg-black]"
+
+# colorize processlist for 'kill'
+zstyle ':completion:*:*:kill:*:processes' \
+list-colors "=(#b) #([0-9]#) #([^ ]#)*=$color[cyan]=$color[yellow]=$color[green]"
+
+# documentation
+#zstyle ':completion:*:manuals'       separate-sections true
+#zstyle ':completion:*:manuals.(^1*)' insert-sections   true
+
+# enable menu completion
+#zstyle ':completion:*' menu auto
+
+# enable verbose completion
+zstyle ':completion:*'              verbose yes
+#zstyle ':completion:*:-command-:*:' verbose no
+
+# if i have 'vim foobar.txt' on the commandline
+# i don't need "foobar.txt" in possible completions
+zstyle ':completion:*:(rm|kill|mplayer|m|ms|f|feh|vim|file):*' ignore-line yes
+zstyle ':completion:*:*:*'   ignore-line yes
+
+# hosts for <tab> completing hostnames
+zstyle ':completion:*:(nc|ping|ssh|nmap|*ftp|telnet|finger|mtr):*' x1 debbie dockie fantomen
+
+# sorting
 #zstyle ':completion:*:*:(gd):*' file-sort time
-#zstyle ':completion:*:*:(mplayer|m|ms|vim|feh|ls|du|file|cd):*' file-sort time
-#zstyle ':completion:*:*:(mplayer|vim|feh|ls|du|file|cd):*' file-sort time
-#zstyle ':completion:*:*:(mplayer|vim|feh|cd|ls|du|file):*' file-sort name
+#zstyle ':completion:*:*:(mpv|m|ms|vim|feh|ls|du|file|cd):*' file-sort time
+#zstyle ':completion:*:*:(mpv|vim|feh|ls|du|file|cd):*' file-sort time
+zstyle ':completion:*:*:(mpv|vim|feh|cd|ls|du|file):*' file-sort name
 #zstyle ':completion:*:*:cd:*' file-sort name
-zstyle ':completion:*:*:cd:*' file-sort time
-#######>
-######
-#######< init!
-######for i in computil complist ; do
-######    zrcmodload zsh/$i
-######done
-#######>
-######
-#######< compressed files
-#zstyle ':completion:*:*:unrar:*'        ignored-patterns 'Sample|Subs'
-#zstyle ':completion:*:*:unrar:*'        file-patterns '*.rar|*(-/):directories'
-#zstyle ':completion:*:*:unrarec:*'     '*(-/):directories'
-#######>
-#######< $ perl <anything>
-#zstyle ':completion:*:*:perl:*'         file-patterns '*'
-#######>
-#######< comics and pdfs
-#zstyle ':completion:*:*:(apvlv|xpdf):*' tag-order     files
-#zstyle ':completion:*:*:(apvlv|xpdf):*' file-patterns '(#i)*.pdf'
-#zstyle ':completion:*:*:(evince):*'     file-patterns '(#i)*.cb[rzt]'
-#######>
-#######< burning
-######zstyle ':completion:*:*:(wodim|xfburn):*'     file-patterns '(#i)*.{iso,img}'
-#######>
-#######< ssh
+#zstyle ':completion:*:*:cd:*' file-sort time
+
+# compressed files
+zstyle ':completion:*:*:unrar:*'        ignored-patterns 'Sample|Subs'
+zstyle ':completion:*:*:unrar:*'        file-patterns '*.rar|*(-/):directories'
+zstyle ':completion:*:*:unrarec:*'     '*(-/):directories'
+
+# comics and pdfs
+zstyle ':completion:*:*:(apvlv|xpdf):*' tag-order     files
+zstyle ':completion:*:*:(apvlv|xpdf):*' file-patterns '(#i)*.pdf'
+zstyle ':completion:*:*:(evince):*'     file-patterns '(#i)*.cb[rzt]'
+
+# ssh
 #zstyle ':completion:*:*:scp:*'  ignored-patterns '*.(nfo|sfv|rar|r[0-9]|idx|srt|zip)'
 #zstyle ':completion:*:*:scp:*'  ignored-patterns '[Ss](ubs|ample|creens)[.]*'
 #zstyle ':completion:*:*:(scp):*' file-list true
 #zstyle ':completion:*:*:(scp):*' file-sort name
-#######>
-#######< chmod
-#zstyle ':completion:*:*:(chmod):*' extra-verbose true
-#######>
-#######< cd
+
+# cd
 #zstyle ':completion:*:*:(cd):*' accept-exact-dirs false
 #zstyle ':completion:*:*:(cd):*' add-space         true
 #zstyle ':completion:*:*:(cd):*' ambiguous         true
@@ -1177,43 +1114,46 @@ zstyle ':completion:*:*:cd:*' file-sort time
 #zstyle ':completion:*:*:(cd):*' format            ''
 #zstyle ':completion:*:*:(cd):*' group-order       paths path-directories  directories  directory-stack bookmarks
 #zstyle ':completion:*:*:(cd):*' completer         _list _complete _expand _match
+#zstyle ':completion::complete:cd:*:named-directories-mine' \
+#zstyle ':completion::complete:cd:*:named-directories-mine' \
+#ignored-patterns '*'
+
+# perl <anything>
+zstyle ':completion:*:*:perl:*'    file-patterns '*'
+zstyle ':completion:*:*:(chmod):*' extra-verbose true
+
 zstyle ':completion::complete:cd:*' tag-order \
 'named-directories:-mine:extra\ directories
 named-directories:-normal:named\ directories *'
-#zstyle ':completion::complete:cd:*:named-directories-mine' \
-#zstyle ':completion::complete:cd:*:named-directories-mine' \
-#######  ignored-patterns '*'
-######
-######
-#######>
-#######< git
-#zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
-#######>
-#######< vim
+
+zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+
+# vim completion
 zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*' tag-order files
-#zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*:*files' ignored-patterns \
-#'*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib' \
-#file-sort modification
-######zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
-#######>
-#######< mplayer/ffmpeg
-#zstyle ':completion:*:*:mplayer:*'  tag-order files
-#zstyle ':completion:*:*:mplayer:*'  ignored-patterns '(#i)*.(nfo|sfv|rar|r[0-9]|idx|srt|zip)'
-#zstyle ':completion:*:*:mplayer:*'  ignored-patterns '[Ss](ubs|ample|creens)[.]*'
-#zstyle ':completion:*:*:mplayer:*'  file-patterns \
-#'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv|vob|VOB):video' \
-#'*:all-files' '*(-/):directories'
-#zstyle ':completion:*:*:ffprobe:*'           file-patterns   \
-#'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
-#'*:all-files' '*(-/):directories'
-#zstyle ':completion:*:*:seen:*'           file-patterns   \
-#'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp4|webm|iso|img|mov|ts|vob|m2v|ogv):video' \
-#'*:all-files' '*(-/):directories'
-#zstyle ':completion:*:*:mplayer_6ch_headphones:*' file-patterns '(#i)*.(dts|ac3|flac|mkv|mp4)' '*(-/):directories'
-#
-#
+zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*:*files' ignored-patterns '*~|*.(old|bak|zwc|viminfo|rxvt-*|zcompdump)|pm_to_blib|cover_db|blib'
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(jpg|png|mp3|flac)'
+
+# do not complete directories
+zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
+
+# mpv/ffmpeg
+zstyle ':completion:*:*:mpv:*'  tag-order files
+zstyle ':completion:*:*:mpv:*'  ignored-patterns '(#i)*.(nfo|sfv|rar|r[0-9]|idx|srt|zip)'
+zstyle ':completion:*:*:mpv:*'  ignored-patterns '[Ss](ubs|ample|creens)[.]*'
+zstyle ':completion:*:*:mpv:*'  file-patterns \
+'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv|vob|VOB):video' \
+'*:all-files' '*(-/):directories'
+zstyle ':completion:*:*:ffprobe:*'           file-patterns   \
+'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp3|mp4|flac|ogg|webm|iso|img|mov|ts|vob|mov|m2v|asf|ogv):video' \
+'*:all-files' '*(-/):directories'
+zstyle ':completion:*:*:seen:*'           file-patterns   \
+'*.(rmvb|mkv|mpe|mpg|mpeg|wmv|avi|flv|mp4|webm|iso|img|mov|ts|vob|m2v|ogv):video' \
+'*:all-files' '*(-/):directories'
+
+
+# xclip completion
+zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|zip|jpg|png|zip|gz)'
 #zstyle ':completion:*:*:xclip:*' file-patterns '(#i)*.(txt|pl|pm|sh|zsh|c|h|cpp|lua|vim|log|nfo)' '*:all-files' '*(-/):directories'
-#zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|zip)'
 
 
 ######< insert all matches
@@ -1305,6 +1245,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat --color=always $realpath'
 
+
+
 # environment variables
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
   fzf-preview 'echo ${(P)word}'
@@ -1360,11 +1302,13 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 	esac'
 
 
-FZF_TAB_GROUP_COLORS=(
-    $'\033[38;5;30;1m' $'\033[38;5;10m' $'\033[33m' $'\033[35m' $'\033[31m' $'\033[38;5;33m' $'\033[36m' \
-    $'\033[38;5;101m' $'\033[38;5;102m' $'\033[38;5;103m' $'\033[38;5;80m' $'\033[38;5;192m' \
-    $'\033[38;5;214m' $'\033[38;5;165m' $'\033[38;5;124m' $'\033[38;5;120m'
-)
+#FZF_TAB_GROUP_COLORS=(
+#    $'\033[38;5;30m' $'\033[38;5;10m' $'\033[33m' $'\033[35m' $'\033[31m' $'\033[38;5;33m' $'\033[36m' \
+#    $'\033[38;5;101m' $'\033[38;5;102m' $'\033[38;5;103m' $'\033[38;5;80m' $'\033[38;5;192m' \
+#    $'\033[38;5;214m' $'\033[38;5;165m' $'\033[38;5;124m' $'\033[38;5;120m'
+#)
+FZF_TAB_GROUP_COLORS=()
+
 zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
 
 #zstyle ':fzf-tab:*' default-color $'\033[38;5;137m'
@@ -1389,7 +1333,12 @@ alias romget='wget -A iso,zip,7z,chd,gba,gb,gbc,nes,smc -m -p -E -k -K -np -nd'
 export XDG_MUSIC_DIR=${HOME}/mnt/nasse/music
 
 export FZF_DEFAULT_OPTS=''
-export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137 -i'
+#export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137 -i'
+export FZF_DEFAULT_OPTS='-i --pointer=━ --height 80% --layout=reverse --border --color=bg:232,bg+:232,info:143,border:240,spinner:108,hl:196,fg:-1,header:137,fg+:196,pointer:161,marker:168,prompt:110,hl+:196'
+
+#export FZF_DEFAULT_OPTS='-i --pointer=⬌ --height 80% --layout=reverse --border'
+# white with only highlights
+# export FZF_DEFAULT_OPTS='--color=fg:255,bg:#121212,hl:255,fg+:#ff0000,bg+:#262626,hl+:255,info:255,prompt:255,pointer:255,marker:#87ff00,spinner:255,header:255'
 
 
 
@@ -1408,18 +1357,6 @@ export PAGER=less
 export MANPAGER=vimpager
 
 
-
-
-#    # Write some info to terminal title.
-#    # This is seen when the shell prompts for input.
-#      print -Pn "\e]0;zsh%L %(1j,%j job%(2j|s|); ,)%~\a"
-#    # Write command and args to terminal title.
-#    # This is seen while the shell waits for a command to complete.
-#      printf "\033]0;%s\a" "$1"
-
-
 export TERM=tmux-256color
-builtin cd ~
 
 eval "$(github-copilot-cli alias -- "$0")"
-
