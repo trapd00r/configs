@@ -110,7 +110,7 @@ alias psp="cd ${HOME}/dev/askas/air8/cgi-bin/core/lib/AIR/PSP2"
 
 # basics
 alias       R='rehash'
-alias    beet="~/dev/beets/beet"
+#alias    beet="~/dev/beets/beet"
 alias     cat="$HOME/dev/vimcat/vimcat"
 alias      cp='cp -v'
 alias    cpan='cpanm'
@@ -785,14 +785,14 @@ cdnp() {
 
 # allow for pwd, and instantly paste path elsewhere being careful to escape
 # everything that needs to be escaped (as well as some that dont)
-ppwd() {
+pwd() {
   # check if we have a DISPLAY
   if [[ -n $DISPLAY ]]; then
     # if we do, then we can use xclip
-    builtin pwd "$@" | perl -lne 'print quotemeta $_' | xclip -f
+    builtin pwd "$@" | perl -Mopen=:std,:utf8 -lne 'print quotemeta $_' | xclip -f
   else
     # if we dont, then we can't use xclip
-    builtin pwd "$@" | perl -lne 'print quotemeta $_'
+    builtin pwd "$@" | perl -Mopen=:std,:utf8 -lne 'print quotemeta $_'
   fi
 }
 
