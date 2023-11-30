@@ -120,8 +120,8 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
 
 " completion
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -778,7 +778,7 @@ autocmd BufRead  * call s:infer_filetype()
 " char used for comments in that specific filetype
 " this is used for ToggleComment() among other things, mapped
 " to #
-autocmd BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
+autocmd BufRead,BufNewFile * silent! let b:comment=split(&commentstring, '%s')[0]
 
 
 " return to last edit position when opening files
@@ -800,11 +800,11 @@ augroup FoldSub
 augroup END
 
 " use the altscreen for :!ls instead of it going back to the terminal
-augroup altscreen
-    autocmd!
-    autocmd VimEnter,VimResume * let &t_ti = substitute(&t_ti, '\e\[?1049[hl]', '', '') | let &t_te = substitute(&t_te, '\e\[?1049[hl]', '', '')
-    autocmd VimLeave,VimSuspend * let &t_ti = save_t_ti | let &t_te = save_t_te
-augroup END
+"augroup altscreen
+"    autocmd!
+"    autocmd VimEnter,VimResume * let &t_ti = substitute(&t_ti, '\e\[?1049[hl]', '', '') | let &t_te = substitute(&t_te, '\e\[?1049[hl]', '', '')
+"    autocmd VimLeave,VimSuspend * let &t_ti = save_t_ti | let &t_te = save_t_te
+"augroup END
 
 
 " escape faster!
@@ -1262,19 +1262,9 @@ highlight CursorLineNr ctermfg=208
 
 " ========== HIGHLIGHTING END ===========================
 " ========== ASKåS START ===============================
-set encoding=utf-8
-autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencoding=iso-8859-1 | set nolist
-"autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
-autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
-autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
+"set encoding=utf-8
 
-let g:fullpath=expand('%:p')
-autocmd BufEnter * let fullpath=expand('%:p')
-autocmd BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-autocmd BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
-autocmd BufRead,BufNewFile *.md set ft=markdown nospell
-
-nmap <C-b> :make<cr>
+"nmap <C-b> :make<cr>
 " ========== ASKåS END =================================
 " ========== TEMPLATES START ============================
 autocmd BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
@@ -1463,32 +1453,6 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
-" ========== VIMWIKI START ==============================
-let g:vimwiki_list = [{
-  \     'path': '~/dev/wiki/japh.wiki/',
-\ }]
-
-let g:vimwiki_list = [{'path': '$HOME/dev/wiki/japh.wiki',
-  \ 'template_path': '$HOME/dev/wiki/templates',
-  \ 'template_default': 'def_template',
-  \ 'template_ext': '.html'}]
-
-" add the pre tag for inserting code snippets
-let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr, pre, script'
-
-" enable syntax highlighting in html output
-" let g:vimwiki_listing_hl = 1
-" turn of link shortening
-let g:vimwiki_url_maxsave = 0
-
-" conceal {{{sql
-let g:vimwiki_conceal_pre = 1
-au BufRead,BufNewFile *.wiki set filetype=vimwiki | map <C-b> :Vimwiki2HTMLBrowse<cr>
-
-highlight VimwikiBold cterm=none ctermfg=172
-
-
-" ========== VIMWIKI END ================================
 " ========== NOTES START ================================
 " zz Fold around searches
 " zu Fold around use statements
