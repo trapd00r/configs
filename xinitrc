@@ -45,7 +45,14 @@ elif [[ $(hostname) = 'x1' ]]; then
   xset -dpms
   xset dpms 0 0 0
 
-  feh --bg-center ~/img/wp.jpg
+
+  xsetroot -solid '#161616'
+
+  # kontor säffle
+  # xrandr --output HDMI-1 --primary --output eDP-1 --right-of HDMI-1
+
+  # docked at home
+  xrandr --output eDP-1 --mode 1920x1080 --pos 3000x720 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-3-1 --off --output DP-3-1-5 --primary --mode 1920x1080 --pos 1080x1080 --rotate normal --output DP-3-1-6 --mode 1920x1080 --pos 0x318 --rotate right --output DP-3-2 --mode 1920x1080 --pos 1080x0 --rotate normal --output DP-3-3 --off
 fi
 
 #----------------------------------------
@@ -85,4 +92,8 @@ lxpolkit &
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 
-exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+if [[ $(hostname) = 'fantomen' ]]; then
+  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+elif [[ $(hostname) = 'x1' ]]; then
+  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1
+fi
