@@ -134,7 +134,7 @@ import:
 plugins: [
   'bucket',
   'discogs',
-  'duplicates',
+#  'duplicates',
   'edit',
   'embedart',
   'fetchart',
@@ -146,6 +146,7 @@ plugins: [
   'lastgenre',
   'lastimport',
   'lyrics',
+  'mbsync',
   'missing',
   'plexsync',
   'plexupdate',
@@ -644,7 +645,8 @@ album_fields:
 # default is 0.04
 match:
 #  strong_rec_thresh: 0.08
-  strong_rec_thresh: 0.14
+#  strong_rec_thresh: 0.14
+  strong_rec_thresh: 0.20
 #  strong_rec_thresh: 0.10
 #  medium_rec_thresh: 0.25
   required: year label country
@@ -657,14 +659,14 @@ match:
 #"
 ui:
   color: yes
-  colors:
-    text_success:         '40'
-    text_warning:         '137'
-    text_error:           '160'
-    text_highlight:       '106'
-    text_highlight_minor: '108'
-    action_default:       '197'
-    action:               '210'
+#  colors:
+#    text_success:         '40'
+#    text_warning:         '137'
+#    text_error:           '160'
+#    text_highlight:       '106'
+#    text_highlight_minor: '108'
+#    action_default:       '197'
+#    action:               '210'
 
 aunique:
   keys: albumartist albumtype year album
@@ -713,6 +715,24 @@ paths:
     tag:eminem albumtype:audiobook:       E/Eminem/+audiobook/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
     tag:eminem albumtype:other:           E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
 
+
+    albumartist:eminem albumtype:single:          E/Eminem/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:album:           E/Eminem/+lp/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:ep:              E/Eminem/+ep/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:promo:           E/Eminem/+promo/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:bootleg:         E/Eminem/+bootleg/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:unofficial:      E/Eminem/+bootleg/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:mixtape:         E/Eminem/+mixtape/%tcp{$mixtape_album} [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} %tcp{$artist} - %tcp{$title}
+    albumartist:eminem albumtype:live:            E/Eminem/+live/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:demo:            E/Eminem/+demo/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:remix:           E/Eminem/+remix/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:soundtrack:      E/Eminem/+soundtrack/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:interview:       E/Eminem/+interview/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:compilation:     E/Eminem/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:whitelabel:      E/Eminem/+whitelabel/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:audiobook:       E/Eminem/+audiobook/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+    albumartist:eminem albumtype:other:           E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
+
     # Various singleton tracks that should go in the Eminem base dir
     # $ beet import -sA --set tag=eminem *(.)
     tag:eminem singleton:true:        E/Eminem/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
@@ -758,8 +778,8 @@ paths:
     tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:game singleton:true:     +game/+tracks/%tcp{$artist} - %tcp{$title}
 
-    tag:mixtape:           +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:mixtape:           Mixtapes/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    albumtype:mixtape:     Mixtapes/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
