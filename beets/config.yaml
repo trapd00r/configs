@@ -277,7 +277,6 @@ hook:
 
 lastfm:
   user: betbot
-  lastfm_key: f8b6eaaf1ef0c7e6cefd65a5114d1fd4
 
 lastgenre:
   auto:      yes
