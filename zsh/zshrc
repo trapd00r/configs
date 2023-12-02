@@ -90,6 +90,7 @@ zle -N edit-command-line
 # ========== AUTOLOAD END ===============================
 # ========== ALIAS START ================================
 
+alias catimg='chafa --symbols=all -c full'
 alias note="cd /home/scp1/mnt/nassebackup/_media_services/flatnotes/notes"
 alias beetimport='beet import -q  ~/mnt/nasse/soulseek/  ~/mnt/media2/_downloads_complete/complete/lidarr/'
 alias dl='cd /home/scp1/mnt/media2/_downloads_complete/complete && lsr'
@@ -1333,7 +1334,7 @@ alias sudo='sudo -E'
 
 alias romget='wget -A iso,zip,7z,chd,gba,gb,gbc,nes,smc -m -p -E -k -K -np -nd'
 
-export XDG_MUSIC_DIR=${HOME}/mnt/nasse/music
+export XDG_MUSIC_DIR=${HOME}/mnt/media2/music
 
 export FZF_DEFAULT_OPTS=''
 #export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137 -i'
