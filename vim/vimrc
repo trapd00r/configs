@@ -1303,12 +1303,12 @@ autocmd BufNewFile *.t
   \ | exe 'normal o'
   \ | startinsert
 
-autocmd BufNewFile *.md,*.markdown
-  \   silent! 0r $VIMRUNTIME/templates/template.markdown
-  \ | setf markdown
-  \ | 0
-  \ | exe 'normal d$A'
-  \ | startinsert
+"autocmd BufNewFile *.md,*.markdown
+"  \   silent! 0r $VIMRUNTIME/templates/template.markdown
+"  \ | setf markdown
+"  \ | 0
+"  \ | exe 'normal d$A'
+"  \ | startinsert
 
 " template for oneshot quick scripts using entire air stack
 autocmd BufNewFile *.air
