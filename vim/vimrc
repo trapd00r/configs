@@ -11,6 +11,7 @@
 
 let g:develop_plugin = 1
 
+
 " ========== INIT START =================================
 set nocp
 filetype plugin indent on
@@ -48,7 +49,7 @@ call plug#begin(expand($VIMRUNTIME) . '/plugged')
 for myplugin in [
 \  'automkdir.vim',
 \  'cccp.vim',
-\  'currentline.vim', 
+\  'currentline.vim',
 \  'eqalignsimple.vim',
 \  'foldsearches.vim',
 \  'hlnext.vim',
@@ -80,12 +81,10 @@ Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
 Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
 Plug 'pangloss/vim-javascript',        { 'for': 'javascript' }
+Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
+Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
+Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'tridactyl/vim-tridactyl'
-
-Plug 'Glench/Vim-Jinja2-Syntax', { 'for': 'jinja' }
-Plug 'trapd00r/hass-template.vim', { 'for': 'jinja' }
-
-Plug 'fatih/vim-go', { 'for': 'go' }
 
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
@@ -121,11 +120,24 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
-
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'mattn/vim-lsp-settings'
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" completion
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+\ 'name': 'omni',
+\ 'allowlist': ['*'],
+\ 'blocklist': ['c', 'cpp', 'html'],
+\ 'completor': function('asyncomplete#sources#omni#completor'),
+\ 'config': {
+\   'show_source_kind': 1,
+\ },
+\ }))
 
 call plug#end()
 " ========== INIT END ===================================
@@ -275,7 +287,7 @@ map <C-q> :set list!<cr>
 
 " go to tag definition and go back
 nnoremap <backspace> <C-]>
-nnoremap <tab>       <C-T>
+nnoremap <C-tab>       <C-T>
 
 " perldoc what's under the cursor
 "nnoremap <C-k> :Perldoc<cr>
@@ -766,7 +778,7 @@ autocmd BufRead  * call s:infer_filetype()
 " char used for comments in that specific filetype
 " this is used for ToggleComment() among other things, mapped
 " to #
-autocmd BufRead,BufNewFile * silent let b:comment=split(&commentstring, '%s')[0]
+autocmd BufRead,BufNewFile * silent! let b:comment=split(&commentstring, '%s')[0]
 
 
 " return to last edit position when opening files
@@ -786,6 +798,13 @@ augroup FoldSub
     autocmd BufEnter *.vim,.vimrc nmap <silent> <expr>  za  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*','context':0, 'folds':'invisible')
     autocmd BufEnter * nmap <silent> <expr>             zv  FS_FoldAroundTarget(vim_sub_pat.'\\|^\s*".*','context':0, 'folds':'invisible')
 augroup END
+
+" use the altscreen for :!ls instead of it going back to the terminal
+"augroup altscreen
+"    autocmd!
+"    autocmd VimEnter,VimResume * let &t_ti = substitute(&t_ti, '\e\[?1049[hl]', '', '') | let &t_te = substitute(&t_te, '\e\[?1049[hl]', '', '')
+"    autocmd VimLeave,VimSuspend * let &t_ti = save_t_ti | let &t_te = save_t_te
+"augroup END
 
 
 " escape faster!
@@ -986,6 +1005,8 @@ set statusline +=\%7*\ \ \%1*%{ContextInStatusbar()}   " current function or blo
 "set statusline +=%1*0x%04B\ %*                         " character under cursor
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+let g:markdown_fenced_languages = ['html', 'js=javascript', 'bash=zsh', 'perl', 'python', 'ruby', 'sql', 'vim', 'css']
 
 " dont keep tags file in every single project dir
 let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
@@ -1241,23 +1262,14 @@ highlight CursorLineNr ctermfg=208
 
 " ========== HIGHLIGHTING END ===========================
 " ========== ASKåS START ===============================
-set encoding=utf-8
-autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* silent setlocal fileencoding=iso-8859-1 | set nolist
-"autocmd BufRead,BufNewFile $HOME/dev/askas/air8/* DistractionsToggle
-autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal cc&
-autocmd BufRead,BufNewFile $HOME/dev/askas/* setlocal synmaxcol&
+"set encoding=utf-8
 
-let g:fullpath=expand('%:p')
-autocmd BufEnter * let fullpath=expand('%:p')
-autocmd BufRead,BufNewFile,BufEnter $HOME/dev/askas/* let &makeprg = 'publish_vimmake ' .. g:fullpath
-autocmd BufRead,BufNewFile,BufEnter $HOME/dev/askas/air8/* silent setlocal noexpandtab
-autocmd BufRead,BufNewFile *.md set ft=markdown nospell
-
-nmap <C-b> :make<cr>
+"nmap <C-b> :make<cr>
 " ========== ASKåS END =================================
 " ========== TEMPLATES START ============================
 autocmd BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
 autocmd BufNewFile *.c   silent! 0r $VIMRUNTIME/templates/template.c
+autocmd BufNewFile *.php silent! 0r $VIMRUNTIME/templates/template.php | :3
 
 autocmd Filetype perl
   \   setl makeprg=perl\ -c\ %\ $*
@@ -1291,12 +1303,12 @@ autocmd BufNewFile *.t
   \ | exe 'normal o'
   \ | startinsert
 
-autocmd BufNewFile *.md,*.markdown
-  \   silent! 0r $VIMRUNTIME/templates/template.markdown
-  \ | setf markdown
-  \ | 0
-  \ | exe 'normal d$A'
-  \ | startinsert
+"autocmd BufNewFile *.md,*.markdown
+"  \   silent! 0r $VIMRUNTIME/templates/template.markdown
+"  \ | setf markdown
+"  \ | 0
+"  \ | exe 'normal d$A'
+"  \ | startinsert
 
 " template for oneshot quick scripts using entire air stack
 autocmd BufNewFile *.air
@@ -1441,32 +1453,6 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
-" ========== VIMWIKI START ==============================
-let g:vimwiki_list = [{
-  \     'path': '~/dev/wiki/japh.wiki/',
-\ }]
-
-let g:vimwiki_list = [{'path': '$HOME/dev/wiki/japh.wiki',
-  \ 'template_path': '$HOME/dev/wiki/templates',
-  \ 'template_default': 'def_template',
-  \ 'template_ext': '.html'}]
-
-" add the pre tag for inserting code snippets
-let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr, pre, script'
-
-" enable syntax highlighting in html output
-" let g:vimwiki_listing_hl = 1
-" turn of link shortening
-let g:vimwiki_url_maxsave = 0
-
-" conceal {{{sql
-let g:vimwiki_conceal_pre = 1
-au BufRead,BufNewFile *.wiki set filetype=vimwiki | map <C-b> :Vimwiki2HTMLBrowse<cr>
-
-highlight VimwikiBold cterm=none ctermfg=172
-
-
-" ========== VIMWIKI END ================================
 " ========== NOTES START ================================
 " zz Fold around searches
 " zu Fold around use statements
@@ -1487,24 +1473,24 @@ highlight VimwikiBold cterm=none ctermfg=172
 " ========== NOTES END ==================================
 
 
-"hi LspCodeActionLine             ctermfg=220
-"hi LspCodeActionText             ctermfg=196
-"hi LspErrorHighlight             ctermfg=196
-"hi LspErrorLine                  ctermfg=196
-"hi LspErrorText                  ctermfg=196
-"hi LspErrorVirtualText           ctermfg=196
-"hi LspHintHighlight              ctermfg=196
-"hi LspHintLine                   ctermfg=196
-"hi LspHintText                   ctermfg=208
-"hi LspHintVirtualText            ctermfg=196
-"hi LspInformationHighlight       ctermfg=196
-"hi LspInformationLine            ctermfg=196
-"hi LspInformationText            ctermfg=220
-"hi LspInformationVirtualText     ctermfg=196
-"hi LspWarningHighlight           ctermfg=196
-"hi LspWarningLine                ctermfg=196
-"hi LspWarningText                ctermfg=196
-"hi LspWarningVirtualText         ctermfg=196
+hi LspCodeActionLine             ctermfg=220
+hi LspCodeActionText             ctermfg=196
+hi LspErrorHighlight             ctermfg=196
+hi LspErrorLine                  ctermfg=196
+hi LspErrorText                  ctermfg=196
+hi LspErrorVirtualText           ctermfg=196
+hi LspHintHighlight              ctermfg=196
+hi LspHintLine                   ctermfg=196
+hi LspHintText                   ctermfg=208
+hi LspHintVirtualText            ctermfg=196
+hi LspInformationHighlight       ctermfg=196
+hi LspInformationLine            ctermfg=196
+hi LspInformationText            ctermfg=220
+hi LspInformationVirtualText     ctermfg=196
+hi LspWarningHighlight           ctermfg=196
+hi LspWarningLine                ctermfg=196
+hi LspWarningText                ctermfg=196
+hi LspWarningVirtualText         ctermfg=196
 
 " reference under cursor
 hi lspReference                  cterm=underline
@@ -1523,6 +1509,9 @@ hi lspReference                  cterm=underline
 "let g:javascript_conceal_underscore_arrow_function = "🞅"
 "set conceallevel=1
 
+" disable everything except function defs
+let g:lsp_diagnostics_enabled = 0
+
 "111 bold sub
 hi jsFunction ctermfg=111 cterm=bold
 hi jsFuncName ctermfg=118
@@ -1531,3 +1520,4 @@ hi jsNull ctermfg=196
 hi jsString ctermfg=137
 "hi jsOperator ctermfg=196
 "hi jsParen cterm=bold
+
