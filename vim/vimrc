@@ -724,9 +724,6 @@ fu! RemoveTrailingCrap()
 endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
-" reload the current tab in chrome on :w when working on webdev
-autocmd! BufWritePost ~/dev/webbhuset/* silent !reload_chrome
-
 " fun with the USR signals
 autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
 " whenever something's yanked, write it to a file
