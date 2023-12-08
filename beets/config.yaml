@@ -121,8 +121,8 @@ import:
   link:             no
   move:             yes
   log:              '~/BEETS_IMPORTER_LOG'
-#  quiet_fallback:   asis # when using the -q flag
-  quiet_fallback:   skip # when using the -q flag
+  quiet_fallback:   asis # when using the -q flag
+#  quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
   # and whether these recorded directories are skipped. This corresponds to
@@ -149,7 +149,7 @@ plugins: [
   'mbsync',
   'missing',
   'plexsync',
-  'plexupdate',
+#  'plexupdate',
   'rewrite',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
@@ -714,24 +714,6 @@ paths:
     tag:eminem albumtype:audiobook:       E/Eminem/+audiobook/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
     tag:eminem albumtype:other:           E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
 
-
-    albumartist:eminem albumtype:single:          E/Eminem/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:album:           E/Eminem/+lp/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:ep:              E/Eminem/+ep/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:promo:           E/Eminem/+promo/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:bootleg:         E/Eminem/+bootleg/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:unofficial:      E/Eminem/+bootleg/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:mixtape:         E/Eminem/+mixtape/%tcp{$mixtape_album} [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} %tcp{$artist} - %tcp{$title}
-    albumartist:eminem albumtype:live:            E/Eminem/+live/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:demo:            E/Eminem/+demo/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:remix:           E/Eminem/+remix/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:soundtrack:      E/Eminem/+soundtrack/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:interview:       E/Eminem/+interview/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:compilation:     E/Eminem/+compilation/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:whitelabel:      E/Eminem/+whitelabel/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:audiobook:       E/Eminem/+audiobook/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-    albumartist:eminem albumtype:other:           E/Eminem/+other/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$alb_type$media_type$format]/${padded_tracknr} %tcp{$title}
-
     # Various singleton tracks that should go in the Eminem base dir
     # $ beet import -sA --set tag=eminem *(.)
     tag:eminem singleton:true:        E/Eminem/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
@@ -749,36 +731,22 @@ paths:
     tag:rimslakt:                +hiphop-swe/rimslakt/$base_name
     tag:streetfashion:           +hiphop-swe/streetfashion/$base_name
     tag:norrköping:              +hiphop-swe/Sjätte Sinnet/$base_name
-    tag:ocremix:                 +game/+remix/+ocremix/$base_name
-    tag:olremix:                 +game/+remix/+olremix/$base_name
-    tag:amigaremix:              +game/+remix/+amigaremix/$base_name
-    tag:vgmix:                   +game/+remix/+vgmix/%tcp{$artist} - %tcp{$title}
-    tag:keygen:                  +game/+keygen/$base_name
     tag:rosamannen:              +live/+rosamannen/$base_name
     tag:sr:                      +radio/Sveriges Radio/%tcp{$album}/%if{$hasyear, $year} %tcp{$title}
-    tag:8bitpeoples:             +game/+artists/+8bitpeoples/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:8bitcollective:          +game/+artists/+8bitcollective/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
+    tag:ocremix:                 Game/Remixes/ocremix/$base_name
+    tag:olremix:                 Game/Remixes/olremix/$base_name
+    tag:amigaremix:              Game/Remixes/amigaremix/$base_name
+    tag:vgmix:                   Game/Remixes/vgmix/%tcp{$artist} - %tcp{$title}
+    tag:keygen:                  Game/Keygen/$base_name
 
-    # beware that this path is different!
-    tag:amigaost singleton:false:  +game/+ost/amiga/%tcp{$artist} [Amiga, %tcp{$album}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game albumtype:soundtrack: Game/Soundtracks/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
-    tag:snesost  singleton:false:  +game/+ost/snes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:nesost   singleton:false:  +game/+ost/nes/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:gbost    singleton:false:  +game/+ost/gb/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:gbcost   singleton:false:  +game/+ost/gbc/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:pcost    singleton:false:  +game/+ost/pcost/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:gameost:                   +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:game albumtype:soundtrack: +game/+ost/other/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game singleton:false:    Game/Other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:game singleton:true:     Game/+tracks/%tcp{$artist} - %tcp{$title}
 
-    tag:crackintro singleton:true: +game/+crack/%tcp{$artist} - %tcp{$title}
-    tag:gameintro singleton:true:  +game/+intro/%tcp{$artist} - %tcp{$title}
-
-    tag:game singleton:false:    +game/+other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    tag:game singleton:true:     +game/+tracks/%tcp{$artist} - %tcp{$title}
-
-    tag:mixtape:           Mixtapes/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    albumtype:mixtape:     Mixtapes/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:mixtape:           +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
