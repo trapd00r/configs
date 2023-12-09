@@ -234,6 +234,7 @@ abbreviations=(
   "b"          "~/bin"
   "u"          "~/dev/utils"
   "bb"         "~/mnt/media2/music"
+  "cc"         "~/mnt/nasse/music"
   "ss"         "~/mnt/nasse/soulseek"
   "rr"         "~/mnt/rutorrent/complete/"
   "tv"         "~/mnt/media2/tv/"
@@ -783,6 +784,23 @@ du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f }
 cdnp() {
   cd "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
 }
+
+savecwd() {
+  symlink="${XDG_CONFIG_HOME}/zsh/cwd"
+  newcwd=$(pwd)
+
+  if [[ -e $symlink && $newcwd == $(readlink $symlink) ]]; then
+    return
+  fi
+
+  unlink $symlink
+  ln -s $newcwd $symlink
+
+  if [[ $? == 0 ]]; then
+    echo "New shells will start with cwd: $newcwd"
+  fi
+}
+
 
 # allow for pwd, and instantly paste path elsewhere being careful to escape
 # everything that needs to be escaped (as well as some that dont)
@@ -1364,3 +1382,5 @@ export MANPAGER=vimpager
 export TERM=tmux-256color
 
 eval "$(github-copilot-cli alias -- "$0")"
+
+cd ~/etc/zsh/cwd
