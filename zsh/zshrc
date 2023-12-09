@@ -1383,4 +1383,4 @@ export TERM=tmux-256color
 
 eval "$(github-copilot-cli alias -- "$0")"
 
-cd ~/etc/zsh/cwd
+cd -P ~/etc/zsh/cwd
