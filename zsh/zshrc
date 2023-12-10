@@ -807,6 +807,16 @@ savecwd() {
   fi
 }
 
+# quickly jump to artist directory
+# define a widget with the same name as the function
+zle -N fzfmusic{,}
+fzfmusic() {
+  artist_dir=$(find ${XDG_MUSIC_DIR} -maxdepth 2 -type d | fzf)
+  cd "${artist_dir}"
+}
+# ctrl+backspace
+bindkey '^H' fzfmusic
+
 
 # allow for pwd, and instantly paste path elsewhere being careful to escape
 # everything that needs to be escaped (as well as some that dont)
@@ -821,15 +831,6 @@ ppwd() {
   fi
 }
 
-which() {
-  IFS="$(printf '\n\t')"
-  printf '\e[?7t'
-  builtin which "$@" \
-    && builtin type "$@" \
-    && whereis "$@" \
-    && file $(builtin type "$@" | awk '{print $3}') 2> /dev/null
-  printf '\e[?7t'
-}
 
 mplayer() {
 #  sdorfehs -c 'set barsticky 0'
