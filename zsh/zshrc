@@ -785,13 +785,16 @@ cdnp() {
   cd "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
 }
 
+
 savecwd() {
   symlink="${XDG_CONFIG_HOME}/zsh/cwd"
   newcwd=$(pwd)
 
+  # check if the symlink exists, else create it to ~/dev
   if [[ -e $symlink && $newcwd == $(readlink $symlink) ]]; then
     return
   fi
+
 
   unlink $symlink
   ln -s $newcwd $symlink

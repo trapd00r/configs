@@ -59,7 +59,7 @@ fi
 #----------------------------------------
 # set keyboard layout and options
 #----------------------------------------
-setxkbmap se -variant nodeadkeys -option  terminate:ctrl_alt_bksp
+setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
 xset r rate 280 30
 xkbset bouncekeys 50
 
@@ -69,7 +69,7 @@ xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
 #----------------------------------------
 # set mouse cursor and options
 #----------------------------------------
-xbanish &
+#xbanish &
 xsetroot -cursor_name left_ptr
 
 #----------------------------------------
@@ -96,5 +96,5 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 if [[ $(hostname) = 'fantomen' ]]; then
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
-  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1 
+  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1
 fi
