@@ -92,10 +92,11 @@ lxpolkit &
 # https://bbs.archlinux.org/viewtopic.php?id=224787
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-polybar &
 
 if [[ $(hostname) = 'fantomen' ]]; then
+  polybar --config=$HOME/etc/polybar/config_fantomen.ini &
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
+  polybar --config=$HOME/etc/polybar/config_x1.ini &
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1
 fi
