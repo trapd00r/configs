@@ -92,6 +92,7 @@ lxpolkit &
 # https://bbs.archlinux.org/viewtopic.php?id=224787
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+polybar &
 
 if [[ $(hostname) = 'fantomen' ]]; then
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
