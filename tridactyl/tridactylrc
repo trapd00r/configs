@@ -149,7 +149,7 @@ command hinttabs js let bAllWindows=!1;if(void 0!==tri.hinttabs)tri.hinttabs.sho
 " to bind commands to keys use bind <key bind> hinttaball or bind <key bind> hinttabs, eg:
 
 unbind T
-bind T hinttaball
+bind T hinttabs
 
 "" ( default T bind is current_url tabopen )
 ""
