@@ -32,7 +32,7 @@ set bmarkweight 9999
 guiset_quiet gui none
 guiset_quiet statuspanel right
 guiset_quiet tabs always
-guiset_quiet hoverlink left
+guiset_quiet hoverlink right
 colors japh
 
 bind <BS> back
@@ -64,6 +64,9 @@ bind --mode=normal K scrollline -30
 
 bind --mode=normal J scrollline 30
 bind --mode=normal K scrollline -30
+
+" go down in suggested user/password prompts
+bind --mode=insert <C-k> !s xdotool key Down
 
 " Only hint search results on Google
 "bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
