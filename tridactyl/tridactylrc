@@ -65,8 +65,9 @@ bind --mode=normal K scrollline -30
 bind --mode=normal J scrollline 30
 bind --mode=normal K scrollline -30
 
-" go down in suggested user/password prompts
-bind --mode=insert <C-k> !s xdotool key Down
+" move in suggested user/password prompts
+bind --mode=insert <C-k> !s xdotool key Up
+bind --mode=insert <C-j> !s xdotool key Down
 
 " Only hint search results on Google
 "bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
@@ -79,7 +80,7 @@ unbind --mode=ex <C-a>
 "bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
 " git clone github repo and cd to the directory in the terminal
-bind ,g js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd ~/tmp; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; st")
+" bind ,g js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd ~/tmp; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; st")
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
@@ -104,7 +105,7 @@ js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="l
 " https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
 " to allow us to theme our elements.
 " This exposes you to 'cross site styling' attacks
-jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
+" jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
 
 
 " New reddit is bad
