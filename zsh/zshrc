@@ -809,13 +809,23 @@ savecwd() {
 
 # quickly jump to artist directory
 # define a widget with the same name as the function
-zle -N fzfmusic{,}
-fzfmusic() {
+zle -N fzfartist{,}
+fzfartist() {
   artist_dir=$(find ${XDG_MUSIC_DIR} -maxdepth 2 -type d | fzf)
   cd "${artist_dir}"
 }
 # ctrl+backspace
-bindkey '^H' fzfmusic
+bindkey '^H' fzfartist
+
+# quickly jump to album directory
+# define a widget with the same name as the function
+#zle -N fzfalbum{,}
+#fzfalbum() {
+#  album_dir=$(find ${XDG_MUSIC_DIR} -maxdepth 4 -mindepth 4 -type d | fzf)
+#  cd "${album_dir}"
+#}
+## ctrl+backspace
+#bindkey '^H' fzfalbum
 
 
 # allow for pwd, and instantly paste path elsewhere being careful to escape
