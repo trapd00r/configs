@@ -11,8 +11,14 @@
 #
 #zmodload zsh/zprof
 
+# ls $~images
+images='*.(jpg|jpeg|png)'
+video='*.(mkv|mp4|avi|mpg|mpeg|mov|wmv|flv|ogm|ogv|webm)'
+audio='*.(mp3|ogg|flac|wav|wma|aac|mpc|ape|shn|wv|tta|ofr|mp4|tak|m4a|opus)'
+archive='*.(zip|rar|tar|tgz|7z|gz|bz2|xz|lzma)'
+documents='*.(pdf|djvu|doc|docx|xls|xlsx|ppt|pptx|odt|ods|odp|rtf|txt|epub)'
+
 # ========== INIT START =================================
-#chdir ${HOME}/dev/
 
 #autoload -U compinit
 #compinit
