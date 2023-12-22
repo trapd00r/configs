@@ -88,6 +88,7 @@ Plug 'tridactyl/vim-tridactyl'
 
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
+Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
@@ -108,6 +109,7 @@ Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific wor
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
 Plug 'markonm/traces.vim'               " live preview of ex commands
+Plug 'pseewald/vim-anyfold'             " fold around anything
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
 Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
@@ -119,25 +121,24 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 "Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
-
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'mattn/vim-lsp-settings'
 
 " completion
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-\ 'name': 'omni',
-\ 'allowlist': ['*'],
-\ 'blocklist': ['c', 'cpp', 'html'],
-\ 'completor': function('asyncomplete#sources#omni#completor'),
-\ 'config': {
-\   'show_source_kind': 1,
-\ },
-\ }))
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'yami-beta/asyncomplete-omni.vim'
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+"\ 'name': 'omni',
+"\ 'allowlist': ['*'],
+"\ 'blocklist': ['c', 'cpp', 'html'],
+"\ 'completor': function('asyncomplete#sources#omni#completor'),
+"\ 'config': {
+"\   'show_source_kind': 1,
+"\ },
+"\ }))
 
 call plug#end()
 " ========== INIT END ===================================
@@ -273,9 +274,6 @@ color neverland_black_bg
 " ========== MAPPINGS START =============================
 " ATTENTION! <leader> #1
 let mapleader=','
-
-" help under the cursor (perl, php, man...)
-nnoremap <C-k> K
 
 " Github copilot
 imap <silent> <C-j> <Plug>(copilot-next)
@@ -463,7 +461,7 @@ vnoremap B :Blockwise<cr>
 vnoremap S :SortByBlock<cr>
 
 " toggle folds with Enter
-nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
+" nnoremap <silent> <C-m> @=(foldlevel('.')?'za':"\<Space>")<cr>
 
 " search for word under cursor
 "nnoremap  <silent> <C-g> :exe ":silent! Rg <C-R><C-W>"<cr>
