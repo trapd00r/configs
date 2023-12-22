@@ -92,7 +92,6 @@ Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
-Plug 'alvan/vim-php-manual'             " documentation while learning php, K
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
 Plug 'github/copilot.vim'               " AI, yo
 Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
@@ -112,6 +111,7 @@ Plug 'markonm/traces.vim'               " live preview of ex commands
 Plug 'pseewald/vim-anyfold'             " fold around anything
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
+Plug 'shawncplus/phpcomplete.vim'       " improved php completion
 Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
 Plug 'tacahiroy/ctrlp-funky'            " function navigator
 Plug 'tpope/vim-fugitive'               " git wrapper
