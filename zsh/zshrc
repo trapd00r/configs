@@ -801,15 +801,17 @@ savecwd() {
   symlink="${XDG_CONFIG_HOME}/zsh/cwd"
   newcwd=$(pwd)
 
-  if [[ -e $symlink && $newcwd == $(readlink $symlink) ]]; then
-    return
-  fi
+  if [[ $PWD == $HOME ]]; then
+    if [[ -e $symlink && $newcwd == $(readlink $symlink) ]]; then
+      return
+    fi
 
-  unlink $symlink
-  ln -s $newcwd $symlink
+    unlink $symlink
+    ln -s $newcwd $symlink
 
-  if [[ $? == 0 ]]; then
-    echo "New shells will start with cwd: $newcwd"
+    if [[ $? == 0 ]]; then
+      echo "New shells will start with cwd: $newcwd"
+    fi
   fi
 }
 
@@ -1281,7 +1283,7 @@ zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|
 . ~/etc/zsh/11-fzf-keybindings.zsh
 
 # fzf-tab
-. ~/etc/zsh/fzf-tab/fzf-tab.plugin.zsh
+#. ~/etc/zsh/fzf-tab/fzf-tab.plugin.zsh
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # preview directory's content with exa when completing cd and ls
@@ -1403,6 +1405,11 @@ export MANPAGER=vimpager
 
 
 export TERM=tmux-256color
+
+# a fix for dbeaver, firefox etc where menus are displayed on the wrong monitor 
+# or not at all
+# https://webcache.googleusercontent.com/search?q=cache:EHNoIfpjHhYJ:https://bbs.archlinux.org/viewtopic.php%3Fid%3D290030&hl=en&gl=se
+export GDK_CORE_DEVICE_EVENTS=1
 
 eval "$(github-copilot-cli alias -- "$0")"
 
