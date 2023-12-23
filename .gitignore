@@ -113,7 +113,6 @@ kiorc
 knfsshare
 mopidy/
 poe-overlay/
-polybar/
 projectM/config.inp
 trashrc
 vim/pack/plugins/start/vim-wakatime/
@@ -220,3 +219,4 @@ gtk-3.0/gtk-3.0/bookmarks
 via-nativia
 vim/templates/template.php
 gtk-3.0/
+zsh/cwd
