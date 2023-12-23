@@ -801,17 +801,20 @@ savecwd() {
   symlink="${XDG_CONFIG_HOME}/zsh/cwd"
   newcwd=$(pwd)
 
-  if [[ $PWD == $HOME ]]; then
-    if [[ -e $symlink && $newcwd == $(readlink $symlink) ]]; then
-      return
-    fi
+  # create the symlink first if it doesn't exist
+  if [[ ! -e $symlink ]]; then
+    ln -s ${HOME} $symlink
+  fi
 
-    unlink $symlink
-    ln -s $newcwd $symlink
+  if [[ -e $symlink && $newcwd == $(readlink $symlink) ]]; then
+    return
+  fi
 
-    if [[ $? == 0 ]]; then
-      echo "New shells will start with cwd: $newcwd"
-    fi
+  unlink $symlink
+  ln -s $newcwd $symlink
+
+  if [[ $? == 0 ]]; then
+    echo "New shells will start with cwd: $newcwd"
   fi
 }
 
