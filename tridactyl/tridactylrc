@@ -83,7 +83,8 @@ unbind --mode=ex <C-a>
 " bind ,g js let uri = document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git"); tri.native.run("cd ~/tmp; git clone " + uri + "; cd \"$(basename \"" + uri + "\" .git)\"; st")
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
-js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
+"js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
+js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "urxvt -e vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
 
 " " disable on nasse
 " autocmd DocStart http://192.168.1.34 mode ignore
