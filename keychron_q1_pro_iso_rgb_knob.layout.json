@@ -1,7 +1,24 @@
 {
   "name": "Keychron Q1 Pro ISO RGB Knob",
   "vendorProductId": 875824657,
-  "macros": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+  "macros": [
+    "{KC_LSFT,KC_INS}",
+    "{+KC_RSFT}===",
+    "{+KC_LCTL}{+KC_LGUI}{+KC_LALT}o{-KC_LGUI}{-KC_LALT}{-KC_LCTL}",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
   "layers": [
     [
       "KC_ESC",
@@ -213,9 +230,9 @@
       "KC_F10",
       "KC_F11",
       "KC_F12",
-      "KC_INS",
+      "MACRO(0)",
       "KC_NO",
-      "KC_MPLY",
+      "MACRO(2)",
       "KC_GRV",
       "KC_1",
       "KC_2",
@@ -376,7 +393,7 @@
       "KC_TRNS",
       "KC_NO",
       "KC_TRNS",
-      "KC_TRNS",
+      "KC_MS_UP",
       "KC_NO",
       "KC_TRNS",
       "KC_TRNS",
@@ -391,9 +408,9 @@
       "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS",
-      "KC_TRNS"
+      "KC_MS_LEFT",
+      "KC_MS_DOWN",
+      "KC_MS_RIGHT"
     ]
   ],
   "encoders": [
@@ -401,7 +418,7 @@
       ["KC_VOLD", "KC_VOLU"],
       ["RGB_VAD", "RGB_VAI"],
       ["KC_MPRV", "KC_MNXT"],
-      ["RGB_VAD", "RGB_VAI"]
+      ["KC_BRIU", "KC_BRID"]
     ]
   ]
 }
