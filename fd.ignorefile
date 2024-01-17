@@ -38,3 +38,4 @@ docs/Koddokumentation
 *.po
 *.json.php
 *.lock
+*.min.*
