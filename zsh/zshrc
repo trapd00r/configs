@@ -97,10 +97,9 @@ zle -N edit-command-line
 # ========== ALIAS START ================================
 
 alias catimg='chafa --symbols=all -c full'
-alias note="cd /home/scp1/mnt/nassebackup/_media_services/flatnotes/notes"
-alias beetimport='beet import -q  ~/mnt/nasse/soulseek/  ~/mnt/media2/_downloads_complete/complete/lidarr/'
-alias dl='cd /home/scp1/mnt/media2/_downloads_complete/complete && lsr'
-alias dock='cd /home/scp1/mnt/nassebackup/_media_services'
+alias note="cd /mnt/backup/_media_services/flatnotes/notes"
+alias dl='cd /mnt/media2/_downloads_complete/complete && lsr'
+alias dock='cd /mnt/backup/_media_services'
 alias mutt='neomutt -F ~/etc/muttneorc -f ~/mail/inbox'
 alias pgrep='pgrep -ai'
 alias sshfs="sshfs -o cache=yes -o kernel_cache -o compression=no -o Ciphers=aes128-ctr  $@"
@@ -239,14 +238,14 @@ abbreviations=(
   "kj"         "!-6$"
   "b"          "~/bin"
   "u"          "~/dev/utils"
-  "bb"         "~/mnt/media2/music"
-  "cc"         "~/mnt/nasse/music"
-  "ss"         "~/mnt/nasse/soulseek"
-  "rr"         "~/mnt/rutorrent/complete/"
-  "tv"         "~/mnt/media2/tv/"
-  "movie"      "~/mnt/media2/movies/"
-  "mvids"      "~/mnt/media2/mvids/"
-  "roms"       "~/mnt/roms"
+  "bb"         "/mnt/media2/music"
+  "cc"         "/mnt/nasse/music"
+  "ss"         "/mnt/nasse/soulseek"
+  "rr"         "/mnt/rutorrent/complete/"
+  "tv"         "/mnt/media2/tv/"
+  "movie"      "/mnt/media2/movies/"
+  "mvids"      "/mnt/media2/mvids/"
+  "roms"       "/mnt/nasse/games/roms/"
   "utils"      "~/dev/utils"
 
 )
@@ -1380,7 +1379,7 @@ alias sudo='sudo -E'
 
 alias romget='wget -A iso,zip,7z,chd,gba,gb,gbc,nes,smc -m -p -E -k -K -np -nd'
 
-export XDG_MUSIC_DIR=${HOME}/mnt/media2/music
+export XDG_MUSIC_DIR=/mnt/media2/music
 
 export FZF_DEFAULT_OPTS=''
 #export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137 -i'
