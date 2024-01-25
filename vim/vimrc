@@ -84,7 +84,21 @@ Plug 'pangloss/vim-javascript',        { 'for': 'javascript' }
 Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
+Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
 Plug 'tridactyl/vim-tridactyl'
+
+" Vdebug
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+if !exists('g:vdebug_features')
+    let g:vdebug_features = {}
+endif
+let g:vdebug_options.port = 9003
+let g:vdebug_options.path_maps = { '/srv/magento': '/home/scp1/dev/webbhuset/dermalogica/magento/' }
+let g:vdebug_options.break_on_open = 0
+let g:vdebug_features['max_children'] = 128
+
 
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
@@ -285,7 +299,7 @@ map <C-q> :set list!<cr>
 
 " go to tag definition and go back
 nnoremap <backspace> <C-]>
-nnoremap <C-tab>       <C-T>
+nnoremap <tab>       <C-T>
 
 " perldoc what's under the cursor
 "nnoremap <C-k> :Perldoc<cr>
