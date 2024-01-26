@@ -27,12 +27,14 @@ set gimode nextinput
 "
 set allowautofocus false
 
+" prefer only bookmarks suggestions
 set bmarkweight 9999
+set historyresults 10
 
 guiset_quiet gui none
-guiset_quiet statuspanel right
+"guiset_quiet statuspanel right
 guiset_quiet tabs always
-guiset_quiet hoverlink right
+"guiset_quiet hoverlink right
 colors japh
 
 bind <BS> back
@@ -49,6 +51,10 @@ bind N findnext -?
 " up and down history
 bind --mode=ex <C-k> ex.prev_history
 bind --mode=ex <C-j> ex.next_history
+
+" detach tab
+bind <C-d> composite tabdetach ; !s sdorfehs -c split
+bind d tabclose
 
 " go home
 bind gh open http://192.168.1.97:3000
