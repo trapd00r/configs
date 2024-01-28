@@ -157,11 +157,10 @@ lsr() {
   if [[ $HOST = "fantomen" ]]; then
 #    lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always --sort=time --reverse "$@"| sed -E "s/ '//g"
     ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
-  else if which ls++ &>/dev/null ]]; then
+  elif [[ $HOST = "x1" ]]; then
     ls++ --sort=time --reverse --dereference-command-line-symlink-to-dir "$@"
   else
     ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
-  fi
   fi
 }
 lss() {
@@ -802,6 +801,7 @@ savecwd() {
 
   # create the symlink first if it doesn't exist
   if [[ ! -e $symlink ]]; then
+    echo "Created initial symlink"
     ln -s ${HOME} $symlink
   fi
 
@@ -1416,3 +1416,5 @@ export GDK_CORE_DEVICE_EVENTS=1
 eval "$(github-copilot-cli alias -- "$0")"
 
 builtin cd -P ~/etc/zsh/cwd
+
+alias wh='cd ~/dev/webbhuset'

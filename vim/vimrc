@@ -99,6 +99,12 @@ let g:vdebug_options.path_maps = { '/srv/magento': '/home/scp1/dev/webbhuset/der
 let g:vdebug_options.break_on_open = 0
 let g:vdebug_features['max_children'] = 128
 
+highlight DbgBreakptLine ctermbg=160
+highlight DbgBreakptSign ctermbg=none ctermfg=196
+
+highlight DbgCurrentLine ctermbg=197
+highlight DbgCurrentSign ctermbg=none ctermfg=196
+
 
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
 Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
@@ -135,24 +141,29 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 "Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
+Plug 'dense-analysis/ale'  " Linting and syntax checking
+
+
 
 " completion
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'yami-beta/asyncomplete-omni.vim'
-"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-"autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-"\ 'name': 'omni',
-"\ 'allowlist': ['*'],
-"\ 'blocklist': ['c', 'cpp', 'html'],
-"\ 'completor': function('asyncomplete#sources#omni#completor'),
-"\ 'config': {
-"\   'show_source_kind': 1,
-"\ },
-"\ }))
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+\ 'name': 'omni',
+\ 'allowlist': ['*'],
+\ 'blocklist': ['c', 'cpp', 'html'],
+\ 'completor': function('asyncomplete#sources#omni#completor'),
+\ 'config': {
+\   'show_source_kind': 1,
+\ },
+\ }))
 
 call plug#end()
 " ========== INIT END ===================================
