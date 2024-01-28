@@ -755,6 +755,12 @@ fu! RemoveTrailingCrap()
 endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
+
+augroup NetrwSettings
+  autocmd!
+  autocmd FileType netrw setlocal filetype=LS_COLORS.vim
+augroup END
+
 " fun with the USR signals
 autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
 " whenever something's yanked, write it to a file
@@ -1161,6 +1167,7 @@ let g:lua_version                  = 5
 let g:mpc_lyrics_use_cache         = 1
 let g:netrw_http_cmd               = 'wget'
 let g:netrw_http_xcmd              = '-q -O'
+let g:netrw_special_syntax         = 1
 let g:perl_compiler_force_warnings = 0
 let g:perl_extended_vars           = 1
 let g:perl_include_pod             = 1
