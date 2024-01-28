@@ -576,6 +576,14 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 " ========== MAPPINGS END ===============================
 " ========== FUNCTIONS START ============================
 
+
+" go up, like in tridactyl
+nnoremap gu :call GoUp()<cr>
+function! GoUp()
+  let b:updir = expand('%:h')
+  execute ':Explore ' . b:updir
+endfunction
+
 " Add code block start/end tags to vimwiki (or markdown)
 " The range keyword makes sure we run this function over the
 " entire range, instead of over each line in the range
