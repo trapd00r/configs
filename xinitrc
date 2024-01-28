@@ -60,6 +60,7 @@ fi
 # set keyboard layout and options
 #----------------------------------------
 setxkbmap se -variant nodeadkeys -option terminate:ctrl_alt_bksp
+#setxkbmap se -variant us -option terminate:ctrl_alt_bksp
 xset r rate 280 30
 xkbset bouncekeys 50
 

@@ -38,7 +38,7 @@
 
 #include:
 #  - '~/.musicbrainz.yaml'
-directory:  '~/mnt/media2/music/'
+directory:  '/mnt/media2/music/'
 library:    '~/var/beets/beets20231124.db'
 pluginpath: ['/usr/lib/python3.11/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
@@ -117,9 +117,9 @@ import:
   #  non_rec_action:   ask
   autotag:          yes
   write:            yes
-  copy:             no
+  copy:             yes
   link:             no
-  move:             yes
+  move:             no
   log:              '~/BEETS_IMPORTER_LOG'
   quiet_fallback:   asis # when using the -q flag
 #  quiet_fallback:   skip # when using the -q flag
@@ -738,15 +738,17 @@ paths:
     tag:olremix:                 Game/Remixes/olremix/$base_name
     tag:amigaremix:              Game/Remixes/amigaremix/$base_name
     tag:vgmix:                   Game/Remixes/vgmix/%tcp{$artist} - %tcp{$title}
-    tag:keygen:                  Game/Keygen/$base_name
 
-    tag:game albumtype:soundtrack: Game/Soundtracks/$album%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:keygen:                  Game/Keygen/$base_name
+    tag:crack:                   Game/Crack/$base_name
+
+    tag:game albumtype:soundtrack: Game/Soundtracks/%tcp{$first_artist} [$album]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
     tag:game singleton:false:    Game/Other/%tcp{$album} [$albumartist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
     tag:game singleton:true:     Game/+tracks/%tcp{$artist} - %tcp{$title}
 
-    tag:mixtape:           +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
-    albumtype:mixtape:     +mixtape/$mixtape_album [%tcp{$albumartist}]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    tag:mixtape: Mixtapes/%tcp{$first_artist} [$album]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
+    albumtype:mixtape: Mixtapes/%tcp{$first_artist} [$album]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}
 
 
     ^albumartist:"Various Artists" albumtype:single:     %bucket{$first_artist, alpha}/%tcp{$first_artist}/+singles/%tcp{$albumartist}%if{$hasyear, │${year}│} %tcp{$album} [$media_type$format]/${padded_tracknr} %tcp{$title}
@@ -781,6 +783,8 @@ paths:
 
     singleton:true  tag:interview:   %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+interview/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
     singleton:true  tag:freestyle:   %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+freestyles/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
+
+
     singleton:true:                  %bucket{$first_artist_singleton, alpha}/%tcp{$first_artist_singleton}/+tracks/%if{$hasyear, $year} %tcp{$artist} - %tcp{$title}
 
     albumtype:soundtrack:            Soundtracks/%tcp{$album} [$first_artist]%if{$hasyear, (${year})}/${padded_tracknr} $artist - %tcp{$title}

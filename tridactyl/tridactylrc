@@ -24,7 +24,7 @@ set modeindicatorshowkeys true
 set modeindicator false
 set gimode nextinput
 ""set externalclipboardcmd xclip
-"
+
 set allowautofocus false
 
 " prefer only bookmarks suggestions
@@ -33,6 +33,10 @@ set historyresults 10
 
 guiset_quiet gui none
 "guiset_quiet statuspanel right
+"guiset_quiet statuspanel right
+
+" the statuspanel thingy makes elements on certain pages to jump around
+guiset_quiet statuspanel none
 guiset_quiet tabs always
 "guiset_quiet hoverlink right
 colors japh
@@ -62,6 +66,9 @@ bind gh open http://192.168.1.97:3000
 bind <C-p> reader
 
 
+bind --mode=normal yy clipboard yank
+
+
 " faster scrolling
 unbind J
 unbind K
@@ -74,6 +81,7 @@ bind --mode=normal K scrollline -30
 " move in suggested user/password prompts
 bind --mode=insert <C-k> !s xdotool key Up
 bind --mode=insert <C-j> !s xdotool key Down
+
 
 " Only hint search results on Google
 "bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a

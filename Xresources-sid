@@ -36,6 +36,7 @@ dzen2.font: -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp125
 *color5:         #8c54fe
 *color6:         #465457
 *color7:         #ccccc6
+
 *color8:         #505354
 *color9:         #ff5995
 *color10:        #b6e354
@@ -79,6 +80,8 @@ URxvt.italicFont:         -schumacher-clean-medium-r-normal--10-100-75-75-c-60-i
 
 URxvt.boldItalicFont:     xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0, \
                           xft:Symbola
+!URxvt.boldItalicFont:     xft:FiraMono Nerd Font:style=Bold:pixelsize=11, \
+!                          xft:Symbola
 
 !URxvt.boldItalicFont:     -schumacher-clean-bold-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
 !                          xft:Symbola
