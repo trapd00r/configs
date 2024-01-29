@@ -203,6 +203,8 @@ alias   slove='pimpd2 --slove|ls_color'
 alias ncmpcpp="ncmpcpp -b $HOME/etc/ncmpcpp/keys -s playlist -S visualizer"
 alias mm='builtin cd /mnt/music8/+TAGGED && cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf)"'
 
+alias scrobbles="php /home/scp1/dev/plexamphpoop/src/scrobbles.php"
+
 # git add
 alias ga='git ls-files -m --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add'
 # show modified files in the last commit
