@@ -788,8 +788,19 @@ du2()       { du -h --max-depth=1 "$@" | sort -k 1,1h  -k 2,2f }
 
 # cd to the album directory of the currently playing song in plexamp
 cdnp() {
-  cd "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${HOME}/mnt/media2/music;;s/music2/music/")"
+  cd "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${XDG_MUSIC_DIR};;s/music2/music/")"
 }
+
+# echo the absolute path for the currently playing song in plexamp
+npdir() {
+  echo "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${XDG_MUSIC_DIR};;s/music2/music/")"
+}
+
+# display coverart for the currently playing song in plexamp
+npcover() {
+  feh -FZr echo "$(dirname "$(curl -H 'accept: application/json' -s http://${PLEX_HOST}:${PLEX_PORT}/status/sessions | jq -r '.MediaContainer.Metadata[0].Media[0].Part[0].file')" | sed "s;/music;${XDG_MUSIC_DIR};;s/music2/music/")/"
+}
+
 
 # save the cwd as a starting working directory for new shells
 # very useful when working on a specific project or thing for 
