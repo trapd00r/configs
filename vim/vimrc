@@ -300,6 +300,18 @@ color neverland_black_bg
 " ATTENTION! <leader> #1
 let mapleader=','
 
+" up and down for stepping through the file list
+nnoremap <silent> <UP> :prev<cr>
+nnoremap <silent> <DOWN> :next<cr>
+
+" left and right to step through the quickfix list
+nnoremap <silent> <LEFT> :cprev<cr>
+nnoremap <silent> <RIGHT> :cnext<cr>
+
+" double <LEFT> and <RIGHT> to jump through the quickfix file list
+nmap <silent> <LEFT><LEFT>    :cpfile<CR><C-G>
+nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
+
 " Github copilot
 imap <silent> <C-j> <Plug>(copilot-next)
 imap <silent> <C-k> <Plug>(copilot-previous)
@@ -413,6 +425,9 @@ nnoremap <silent> <C-c> :<C-U>PipePreview<CR>
 
 " next buffer
 nnoremap <C-n>     :bnext<cr>
+
+" previous buffer
+nnoremap <C-b>     :bprev<cr>
 
 nnoremap <leader>b :Buffers<cr>
 
