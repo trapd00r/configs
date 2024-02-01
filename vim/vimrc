@@ -158,7 +158,7 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
 \ 'name': 'omni',
 \ 'allowlist': ['*'],
-\ 'blocklist': ['c', 'cpp', 'html'],
+\ 'blocklist': ['c', 'cpp', 'html', 'php'],
 \ 'completor': function('asyncomplete#sources#omni#completor'),
 \ 'config': {
 \   'show_source_kind': 1,
@@ -322,6 +322,8 @@ map <C-q> :set list!<cr>
 
 " go to tag definition and go back
 nnoremap <backspace> <C-]>
+autocmd Filetype php nnoremap <backspace> :PhpactorGotoDefinition<cr>
+"autocmd Filetype php nnoremap <backspace> :PhpactorGotoDefinitionVsplit<cr>
 nnoremap <tab>       <C-T>
 
 " perldoc what's under the cursor
@@ -537,7 +539,10 @@ nnoremap <leader>gs :GFiles?<cr>
 
 " use :Gfiles for ctrlp if in a git repo
 " otherwise, use normal fzf
-map <silent> <expr> <C-p>     FugitiveHead() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+"map <silent> <expr> <C-p>     FugitiveHead() != '' ? ':GFiles --cached --others --exclude-standard<CR>' : ':Files<CR>'
+
+" use normal :Files if in a magento directory so we can ignore vendor/ directories with fd.ignorefile
+map <silent> <expr> <C-p>     ':Files<CR>'
 " for cases where files aren't part of a git repo
 map <silent> <expr> <leader>p FugitiveHead() != '' ? ':GFiles --cached --others <CR>' : ':Files<CR>'
 
@@ -1182,7 +1187,7 @@ let g:lua_version                  = 5
 let g:mpc_lyrics_use_cache         = 1
 let g:netrw_http_cmd               = 'wget'
 let g:netrw_http_xcmd              = '-q -O'
-let g:netrw_special_syntax         = 1
+"let g:netrw_special_syntax         = 1
 let g:perl_compiler_force_warnings = 0
 let g:perl_extended_vars           = 1
 let g:perl_include_pod             = 1
@@ -1373,6 +1378,8 @@ iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
 " Data::Dumper with options
 ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
+
+autocmd Filetype php ia dd \dahbug::dump();<left><left>
 
 " input $var
 ia wd warn Dumper();<left><left>
