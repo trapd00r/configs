@@ -145,7 +145,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
 Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
-Plug 'dense-analysis/ale'  " Linting and syntax checking
+"Plug 'dense-analysis/ale'  " Linting and syntax checking
+
 
 
 
