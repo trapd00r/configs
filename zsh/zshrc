@@ -1135,8 +1135,7 @@ zstyle ':completion:*'              verbose yes
 
 # if i have 'vim foobar.txt' on the commandline
 # i don't need "foobar.txt" in possible completions
-zstyle ':completion:*:(rm|kill|mplayer|m|ms|f|feh|vim|file):*' ignore-line yes
-zstyle ':completion:*:*:*'   ignore-line yes
+zstyle ':completion:*:(rm|kill|mplayer|m|ms|f|feh|vim|file):*' ignore-line other
 
 # hosts for <tab> completing hostnames
 zstyle ':completion:*:(nc|ping|ssh|nmap|*ftp|telnet|finger|mtr):*' x1 debbie dockie fantomen
