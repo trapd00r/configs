@@ -96,6 +96,8 @@ zle -N edit-command-line
 # ========== AUTOLOAD END ===============================
 # ========== ALIAS START ================================
 
+# ignore vendor/ directories
+alias rg="rg -g '!vendor/'"
 alias catimg='chafa --symbols=all -c full'
 alias note="cd /mnt/backup/_media_services/flatnotes/notes"
 alias dl='cd /mnt/media2/_downloads_complete/complete && lsr'
@@ -1193,7 +1195,7 @@ zstyle ':completion:*:*:([vw]im|rview|vimdiff|xxd):*:*files' ignored-patterns '*
 zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.(jpg|png|mp3|flac)'
 
 # do not complete directories
-zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
+#zstyle ':completion:*:vim:*:directories'           ignored-patterns \*
 
 # mpv/ffmpeg
 zstyle ':completion:*:*:mpv:*'  tag-order files
