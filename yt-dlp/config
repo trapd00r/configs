@@ -2,7 +2,7 @@
 # --no-playlist
 
 # Save in mvids
--P ~/mnt/media2/mvids
+-P /mnt/media2/mvids
 
 # download mp4 if available, else download whatever and reencode to mp4
 -S res,ext:mp4:m4a --recode mp4
