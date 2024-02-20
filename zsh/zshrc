@@ -1438,9 +1438,33 @@ builtin cd -P ~/etc/zsh/cwd
 alias composer='composer --ignore-platform-reqs'
 
 
-# git config --global alias.root 'rev-parse --show-toplevel'
+git config --global alias.root 'rev-parse --show-toplevel'
+
+
+# tail dahbug no matter how deep in the directory structure you are
+alias dahbug='tail -F "$(git root)"/../dahbug.log'
+
+eval "$(zoxide init zsh)"
+alias cd='z'
+alias cdi='zi'
+
 # cd to the top level directory of a git repo
 alias cdroot='cd "$(git root)"'
 
-# tail dahbug no matter how deep in the directory structure you are
-alias dahbug='tail -f "$(git root)"/../dahbug.log'
+# cd to the gitroot prior to opening the absolute path of the basename of the file in vim
+# this is so that phpactor can find the classes and methods and goto definition works
+# a weird bug in phpactor and it seems vim-rooter didn't help either
+# make sure to cd back once finished editing
+function vim() {
+  # but only if the current patch matches webbhuset
+  if [[ -n "$1" && -f "$1" && $PWD == *webbhuset* ]]; then
+    oldroot=$(pwd)
+    absname=$(absname "$1")
+    cd "$(git root)"
+    /usr/bin/vim "$absname"
+    cd "$oldroot"
+  else
+    /usr/bin/vim "$1"
+  fi
+}
+
