@@ -141,30 +141,41 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 "Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
 
-Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+
 "Plug 'dense-analysis/ale'  " Linting and syntax checking
 
 
 
 
 " completion
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'yami-beta/asyncomplete-omni.vim'
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-\ 'name': 'omni',
-\ 'allowlist': ['*'],
-\ 'blocklist': ['c', 'cpp', 'html', 'php'],
-\ 'completor': function('asyncomplete#sources#omni#completor'),
-\ 'config': {
-\   'show_source_kind': 1,
-\ },
-\ }))
+
+
+
+" \ 'blocklist': ['c', 'cpp', 'html', 'php'],
+"autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+"\ 'name': 'omni',
+"\ 'allowlist': ['*'],
+"\ 'blocklist': ['c', 'cpp', 'html', 'php'],
+"\ 'completor': function('asyncomplete#sources#omni#completor'),
+"\ 'config': {
+"\   'show_source_kind': 1,
+"\ },
+"\ }))
+
+
+Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
+
+
+
 
 call plug#end()
 " ========== INIT END ===================================
@@ -180,7 +191,7 @@ set cdhome                                                                 " cd 
 set cmdheight=2                                                            " avoid 'Press ENTER to continue' prompts
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
-set complete+=k~/dev/askas/utils-askas/vim/installed_perl_modules.txt      " complete all perl package names
+"set complete+=k~/dev/askas/utils-askas/vim/installed_perl_modules.txt      " complete all perl package names
 set completeopt+=menuone                                                   " use popup menu for completion even if only one match
 set cursorline                                                             " only use this for CursorLineNr
 set define=[^A-Za-z_]                                                      " for macro definition
@@ -782,6 +793,11 @@ augroup NetrwSettings
   autocmd FileType netrw setlocal filetype=LS_COLORS.vim
 augroup END
 
+augroup WebbHuset
+  autocmd!
+  autocmd BufRead,BufNewFile ~/dev/webbhuset/* setlocal sw=4
+augroup END
+
 " fun with the USR signals
 autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
 " whenever something's yanked, write it to a file
@@ -1038,6 +1054,11 @@ function! FileNameStatusLine()
   endif
 endfunction
 
+function! FileNameStatusLineHP()
+  let name   = expand('%:.')
+  return name
+endfunction
+
 autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
 set statusline=
 "set statusline +=%1*\ %n\ %*                          " buffer number
@@ -1045,7 +1066,8 @@ set statusline +=\%5*%{&ff}%*                          " file format
 set statusline +=%3*%y%*                               " file type
 "set statusline +=\%7*¦%9*\                            " askås butik
 "set statusline +=%{SetStatusLineAskasButik()}         " askås butik
-set statusline +=\\%7*%4*\%{FileNameStatusLine()}      " basename of file
+"set statusline +=\\%7*%4*\%{FileNameStatusLine()}      " basename of file
+set statusline +=\\%7*%4*\%{FileNameStatusLineHP()}    " name of file
 set statusline +=%2*%m%*\                              " modified flag
 "set statusline +=\%7*\ ¦                              " delimiter
 set statusline +=%2*%{GitStatusStatusLine('added')}    " # added lines
@@ -1579,3 +1601,6 @@ hi jsString ctermfg=137
 "hi jsOperator ctermfg=196
 "hi jsParen cterm=bold
 
+
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
