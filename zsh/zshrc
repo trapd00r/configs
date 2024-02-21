@@ -1430,9 +1430,7 @@ export GDK_CORE_DEVICE_EVENTS=1
 eval "$(github-copilot-cli alias -- "$0")"
 alias wh='cd ~/dev/webbhuset'
 
-# FIXME
-font-tamsyn-14
-
+font-tamsyn
 builtin cd -P ~/etc/zsh/cwd
 
 alias composer='composer --ignore-platform-reqs'
@@ -1468,3 +1466,8 @@ function vim() {
   fi
 }
 
+# tail dahbug no matter how deep in the directory structure you are
+alias dahbug='tail -F "$(git root)"/../dahbug.log'
+
+eval "$(zoxide init zsh)"
+alias cd="z"

@@ -5,7 +5,7 @@
 # create a font path
 #----------------------------------------
 xset +fp      ~/.fonts
-xset +fp /usr/share/fonts/misc/
+fc-cache -f &
 
 if [[ $(hostname) = 'fantomen' ]]; then
   xrdb -merge "$XDG_CONFIG_HOME/Xresources-sid"
@@ -18,7 +18,9 @@ if [[ $(hostname) = 'fantomen' ]]; then
   xrandr --output DP-2   --primary \
          --output DP-0   --rotate right  --left-of DP-2 \
          --output DP-5   --above DP-2 \
-         --output HDMI-0 --below DP-2
+         --output HDMI-0 --below DP-2 \
+         --output DVI-I-1-1 --left-of DP-0
+#         --output DVI-I-1-1 --rotate left --left-of DP-0
 
   # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
   xset s off -dpms &
@@ -97,6 +99,7 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 
 if [[ $(hostname) = 'fantomen' ]]; then
   polybar --config=$HOME/etc/polybar/config_fantomen.ini &
+#  openbox-session
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
   polybar --config=$HOME/etc/polybar/config_x1.ini &

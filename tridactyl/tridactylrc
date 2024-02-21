@@ -31,9 +31,6 @@ set allowautofocus false
 set bmarkweight 9999
 set historyresults 10
 
-" Change this to "clobber" to ruin the "Content Security Policy" of all sites a bit and make Tridactyl run a bit better on some of them, e.g. raw.github*
-set csp clobber
-
 "Pages opened with gH.
 set homepages ["dockie:8083", "dockie:3000"]
 

@@ -1601,6 +1601,7 @@ hi jsString ctermfg=137
 "hi jsOperator ctermfg=196
 "hi jsParen cterm=bold
 
-
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
+set grepprg=rg\ --vimgrep
+"nnoremap K :grep! "\b\\\\<C-R><C-W>\b"<CR>:cw<CR>
