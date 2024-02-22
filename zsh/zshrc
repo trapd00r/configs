@@ -1457,14 +1457,30 @@ function vim() {
   # but only if the current patch matches webbhuset
   if [[ -n "$1" && -f "$1" && $PWD == *webbhuset* ]]; then
     oldroot=$(pwd)
-    absname=$(absname "$1")
+
+    # get absnames for all files on the commandline
+    local -a files
+    local -a absnames
+    files=("$@")
+
+    for file in $files; do
+      if [[ -d $file ]]; then
+        continue
+      else
+        absnames+=($(absname $file))
+      fi
+    done
+
     cd "$(git root)"
-    /usr/bin/vim "$absname"
+
+    /usr/bin/vim $absnames
+
     cd "$oldroot"
   else
-    /usr/bin/vim "$1"
+    /usr/bin/vim "$@"
   fi
 }
+
 
 # tail dahbug no matter how deep in the directory structure you are
 alias dahbug='tail -F "$(git root)"/../dahbug.log'
