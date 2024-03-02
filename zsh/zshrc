@@ -1412,7 +1412,7 @@ export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/as
 
 # alias df='duf -hide loops'
 
-export VIMRUNTIME=${HOME}/etc/vim
+#export VIMRUNTIME=${HOME}/etc/vim
 alias pulsemixer='pulsemixer --color 1'
 
 export GIT_PAGER=delta
@@ -1442,9 +1442,10 @@ git config --global alias.root 'rev-parse --show-toplevel'
 # tail dahbug no matter how deep in the directory structure you are
 alias dahbug='tail -F "$(git root)"/../dahbug.log'
 
-eval "$(zoxide init zsh)"
-alias cd='z'
+#export _ZO_EXCLUDE_DIRS='/mnt/media2/music/P/Per Gessle'
+eval "$(zoxide init --cmd cd zsh)"
 alias cdi='zi'
+alias cdedit='zoxide edit'
 
 # cd to the top level directory of a git repo
 alias cdroot='cd "$(git root)"'
@@ -1473,11 +1474,11 @@ function vim() {
 
     cd "$(git root)"
 
-    /usr/bin/vim $absnames
+    /usr/bin/nvim $absnames
 
     cd "$oldroot"
   else
-    /usr/bin/vim "$@"
+    /usr/bin/nvim "$@"
   fi
 }
 
