@@ -19,11 +19,12 @@ syntax on
 
 runtime macros/matchit.vim                                                 " % on if/else
 "runtime syntax/hitest.vim                                                  " dump all hi groups in a buffer
-set all&                                                                   " turn everything off, in case of evil vendor vimrcs
+
+if !has('nvim')
+  set all&                                                                 " turn everything off, in case of evil vendor vimrcs
+endif
 let &runtimepath  = $VIMRUNTIME                                            " $XDG_CONFIG_HOME/vim
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
-set path+='$HOME/dev/air8/cgi-bin/core/lib/'                               " for gf etc
-set path+='$HOME/dev/air8'
 
 " useful in various places later
 let g:hostname = hostname()
