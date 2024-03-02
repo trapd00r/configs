@@ -1,4 +1,4 @@
-*filetype.txt*  For Vim version 8.2.  Last change: 2022 Apr 09
+*filetype.txt*  Nvim
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -6,12 +6,9 @@
 
 Filetypes						*filetype* *file-type*
 
-1. Filetypes					|filetypes|
-2. Filetype plugin				|filetype-plugins|
-3. Docs for the default filetype plugins.	|ftplugin-docs|
-
 Also see |autocmd.txt|.
 
+                                      Type |gO| to see the table of contents.
 
 ==============================================================================
 1. Filetypes					*filetypes* *file-types*
@@ -27,20 +24,21 @@ Each time a new or existing file is edited, Vim will try to recognize the type
 of the file and set the 'filetype' option.  This will trigger the FileType
 event, which can be used to set the syntax highlighting, set options, etc.
 
-NOTE: Filetypes and 'compatible' don't work together well, since being Vi
-compatible means options are global.  Resetting 'compatible' is recommended,
-if you didn't do that already.
+Detail: The ":filetype on" command will load these files:
+		$VIMRUNTIME/filetype.lua
+		$VIMRUNTIME/filetype.vim
+	filetype.lua creates an autocommand that fires for all BufNewFile and
+	BufRead events. It tries to detect the filetype based off of the
+	file's extension or name.
 
-Detail: The ":filetype on" command will load one of these files:
-		Amiga	    $VIMRUNTIME/filetype.vim
-		Mac	    $VIMRUNTIME:filetype.vim
-		MS-Windows  $VIMRUNTIME\filetype.vim
-		Unix	    $VIMRUNTIME/filetype.vim
-		VMS	    $VIMRUNTIME/filetype.vim
-	This file is a Vim script that defines autocommands for the
-	BufNewFile and BufRead events.  If the file type is not found by the
-	name, the file $VIMRUNTIME/scripts.vim is used to detect it from the
-	contents of the file.
+	filetype.vim is a Vim script that defines autocommands for the
+	BufNewFile and BufRead events. In contrast to filetype.lua, this
+	file creates separate BufNewFile and BufRead events for each filetype
+	pattern.
+
+	If the file type is not found by the name, the file
+	$VIMRUNTIME/scripts.vim is used to detect it from the contents of the
+	file.
 	When the GUI is running or will start soon, the |menu.vim| script is
 	also sourced.  See |'go-M'| about avoiding that.
 
@@ -143,17 +141,23 @@ variables can be used to overrule the filetype used for certain extensions:
 	*.asp		g:filetype_asp	|ft-aspvbs-syntax| |ft-aspperl-syntax|
 	*.bas		g:filetype_bas	|ft-basic-syntax|
 	*.cfg		g:filetype_cfg
+	*.cls		g:filetype_cls
+	*.csh		g:filetype_csh	|ft-csh-syntax|
 	*.dat		g:filetype_dat
 	*.frm		g:filetype_frm	|ft-form-syntax|
 	*.fs		g:filetype_fs	|ft-forth-syntax|
 	*.i		g:filetype_i	|ft-progress-syntax|
 	*.inc		g:filetype_inc
+	*.lsl		g:filetype_lsl
 	*.m		g:filetype_m	|ft-mathematica-syntax|
 	*.mod		g:filetype_mod
 	*.p		g:filetype_p	|ft-pascal-syntax|
 	*.pl		g:filetype_pl
 	*.pp		g:filetype_pp	|ft-pascal-syntax|
 	*.prg		g:filetype_prg
+	*.r		g:filetype_r
+	*.sig		g:filetype_sig
+	*.sql		g:filetype_sql	|ft-sql-syntax|
 	*.src		g:filetype_src
 	*.sys		g:filetype_sys
 	*.sh		g:bash_is_sh	|ft-sh-syntax|
@@ -171,9 +175,10 @@ is used.  The default value is set like this: >
 This means that the contents of compressed files are not inspected.
 
 							*new-filetype*
-If a file type that you want to use is not detected yet, there are four ways
-to add it.  In any way, it's better not to modify the $VIMRUNTIME/filetype.vim
-file.  It will be overwritten when installing a new version of Vim.
+If a file type that you want to use is not detected yet, there are a few ways
+to add it.  The recommended way is to use |vim.filetype.add()| to add it to
+Nvim's builtin filetype detection mechanism.  If you want to handle the
+detection manually, proceed as follows:
 
 A. If you want to overrule all default file type checks.
    This works by writing one file for each filetype.  The disadvantage is that
@@ -183,8 +188,7 @@ A. If you want to overrule all default file type checks.
    1. Create your user runtime directory.  You would normally use the first
       item of the 'runtimepath' option.  Then create the directory "ftdetect"
       inside it.  Example for Unix: >
-	:!mkdir ~/.vim
-	:!mkdir ~/.vim/ftdetect
+	:!mkdir -p ~/.config/nvim/ftdetect
 <
    2. Create a file that contains an autocommand to detect the file type.
       Example: >
@@ -194,7 +198,7 @@ A. If you want to overrule all default file type checks.
       check the contents of the file to recognize it.
       Write this file as "mine.vim" in the "ftdetect" directory in your user
       runtime directory.  For example, for Unix: >
-	:w ~/.vim/ftdetect/mine.vim
+	:w ~/.config/nvim/ftdetect/mine.vim
 
 <  3. To use the new filetype detection you must restart Vim.
 
@@ -214,10 +218,10 @@ B. If you want to detect your file after the default file type checks.
 	au BufRead,BufNewFile *		if &ft == 'pascal' | set ft=mypascal
 								       | endif
 
-C. If your file type can be detected by the file name.
+C. If your file type can be detected by the file name or extension.
    1. Create your user runtime directory.  You would normally use the first
       item of the 'runtimepath' option.  Example for Unix: >
-	:!mkdir ~/.vim
+	:!mkdir -p ~/.config/nvim
 <
    2. Create a file that contains autocommands to detect the file type.
       Example: >
@@ -229,11 +233,12 @@ C. If your file type can be detected by the file name.
 	  au! BufRead,BufNewFile *.mine		setfiletype mine
 	  au! BufRead,BufNewFile *.xyz		setfiletype drawing
 	augroup END
-<     Write this file as "filetype.vim" in your user runtime directory.  For
+<
+      Write this file as "filetype.vim" in your user runtime directory.  For
       example, for Unix: >
-	:w ~/.vim/filetype.vim
+	:w ~/.config/nvim/filetype.vim
 
-<  3. To use the new filetype detection you must restart Vim.
+<   3. To use the new filetype detection you must restart Vim.
 
    Your filetype.vim will be sourced before the default FileType autocommands
    have been installed.  Your autocommands will match first, and the
@@ -245,7 +250,7 @@ D. If your filetype can only be detected by inspecting the contents of the
 
    1. Create your user runtime directory.  You would normally use the first
       item of the 'runtimepath' option.  Example for Unix: >
-	:!mkdir ~/.vim
+	:!mkdir -p ~/.config/nvim
 <
    2. Create a vim script file for doing this.  Example: >
 	if did_filetype()	" filetype already set..
@@ -259,7 +264,7 @@ D. If your filetype can only be detected by inspecting the contents of the
 <     See $VIMRUNTIME/scripts.vim for more examples.
       Write this file as "scripts.vim" in your user runtime directory.  For
       example, for Unix: >
-	:w ~/.vim/scripts.vim
+	:w ~/.config/nvim/scripts.vim
 <
    3. The detection will work right away, no need to restart Vim.
 
@@ -267,50 +272,14 @@ D. If your filetype can only be detected by inspecting the contents of the
    means that your rules override the default rules in
    $VIMRUNTIME/scripts.vim.
 
-						*remove-filetype*
-If a file type is detected that is wrong for you, install a filetype.vim or
-scripts.vim to catch it (see above).  You can set 'filetype' to a non-existing
-name to avoid that it will be set later anyway: >
-	:set filetype=ignored
+							*remove-filetype*
+If a file type is detected that is wrong for you, you can set 'filetype' to
+a non-existing name such as `ignored` to avoid that it will be set later anyway.
 
-If you are setting up a system with many users, and you don't want each user
-to add/remove the same filetypes, consider writing the filetype.vim and
-scripts.vim files in a runtime directory that is used for everybody.  Check
-the 'runtimepath' for a directory to use.  If there isn't one, set
-'runtimepath' in the |system-vimrc|.  Be careful to keep the default
-directories!
-
-
-						*autocmd-osfiletypes*
-NOTE: this code is currently disabled, as the RISC OS implementation was
-removed.  In the future this will use the 'filetype' option.
-
-On operating systems which support storing a file type with the file, you can
-specify that an autocommand should only be executed if the file is of a
-certain type.
-
-The actual type checking depends on which platform you are running Vim
-on; see your system's documentation for details.
-
-To use osfiletype checking in an autocommand you should put a list of types to
-match in angle brackets in place of a pattern, like this: >
-
-	:au BufRead *.html,<&faf;HTML>  runtime! syntax/html.vim
-
-This will match:
-
-- Any file whose name ends in ".html"
-- Any file whose type is "&faf" or "HTML", where the meaning of these types
-  depends on which version of Vim you are using.
-  Unknown types are considered NOT to match.
-
-You can also specify a type and a pattern at the same time (in which case they
-must both match): >
-
-	:au BufRead <&fff>diff*
-
-This will match files of type "&fff" whose names start with "diff".
-
+						     *g:did_load_filetypes*
+The builtin filetype detection provided by Nvim can be disabled by setting
+the `did_load_filetypes` global variable. If this variable exists, the default
+`$VIMRUNTIME/filetype.lua` will not run.
 
 							*plugin-details*
 The "plugin" directory can be in any of the directories in the 'runtimepath'
@@ -321,19 +290,19 @@ all loaded.  For example, if this command: >
 
 produces this output:
 
-	runtimepath=/etc/vim,~/.vim,/usr/local/share/vim/vim82 ~
+	runtimepath=/etc/vim,~/.config/nvim,/usr/local/share/vim/vim82 ~
 
 then Vim will load all plugins in these directories and below:
 
 	/etc/vim/plugin/  ~
-	~/.vim/plugin/  ~
+	~/.config/nvim/plugin/  ~
 	/usr/local/share/vim/vim82/plugin/  ~
 
 Note that the last one is the value of $VIMRUNTIME which has been expanded.
 
 Note that when using a plugin manager or |packages| many directories will be
 added to 'runtimepath'.  These plugins each require their own directory, don't
-put them directly in ~/.vim/plugin.
+put them directly in ~/.config/nvim/plugin.
 
 What if it looks like your plugin is not being loaded?  You can find out what
 happens when Vim starts up by using the |-V| argument: >
@@ -386,7 +355,7 @@ ways to change this:
 1. Add a few settings.
    You must create a new filetype plugin in a directory early in
    'runtimepath'.  For Unix, for example you could use this file: >
-	vim ~/.vim/ftplugin/fortran.vim
+	vim ~/.config/nvim/ftplugin/fortran.vim
 <  You can set those settings and mappings that you would like to add.  Note
    that the global plugin will be loaded after this, it may overrule the
    settings that you do here.  If this is the case, you need to use one of the
@@ -395,7 +364,7 @@ ways to change this:
 2. Make a copy of the plugin and change it.
    You must put the copy in a directory early in 'runtimepath'.  For Unix, for
    example, you could do this: >
-	cp $VIMRUNTIME/ftplugin/fortran.vim ~/.vim/ftplugin/fortran.vim
+	cp $VIMRUNTIME/ftplugin/fortran.vim ~/.config/nvim/ftplugin/fortran.vim
 <  Then you can edit the copied file to your liking.  Since the b:did_ftplugin
    variable will be set, the global plugin will not be loaded.
    A disadvantage of this method is that when the distributed plugin gets
@@ -404,7 +373,7 @@ ways to change this:
 3. Overrule the settings after loading the global plugin.
    You must create a new filetype plugin in a directory from the end of
    'runtimepath'.  For Unix, for example, you could use this file: >
-	vim ~/.vim/after/ftplugin/fortran.vim
+	vim ~/.config/nvim/after/ftplugin/fortran.vim
 <  In this file you can change just those settings that you want to change.
 
 ==============================================================================
@@ -440,7 +409,7 @@ Global mappings:
 			NOTE: The global mappings are accessed by sourcing the
 			ftplugin/changelog.vim file first, e.g. with >
 				runtime ftplugin/changelog.vim
-<			in your |.vimrc|.
+<			in your |init.vim|.
 <Leader>o		Switches to the ChangeLog buffer opened for the
 			current directory, or opens it in a new buffer if it
 			exists in the current directory.  Then it does the
@@ -542,7 +511,7 @@ FORTRAN							*ft-fortran-plugin*
 
 Options:
 'expandtab'	is switched on to avoid tabs as required by the Fortran
-		standards unless the user has set fortran_have_tabs in .vimrc.
+		standards unless the user has set fortran_have_tabs in vimrc.
 'textwidth'	is set to 72 for fixed source format as required by the
 		Fortran standards and to 80 for free source format.
 'formatoptions' is set to break code and comment lines and to preserve long
@@ -551,11 +520,29 @@ For further discussion of fortran_have_tabs and the method used for the
 detection of source format see |ft-fortran-syntax|.
 
 
+FREEBASIC						*ft-freebasic-plugin*
+
+This plugin aims to treat the four FreeBASIC dialects, "fb", "qb", "fblite"
+and "deprecated", as distinct languages.
+
+The dialect will be set to the first name found in g:freebasic_forcelang, any
+#lang directive or $lang metacommand in the file being edited, or finally
+g:freebasic_lang.  These global variables conceptually map to the fbc options
+-forcelang and -lang.  If no dialect is explicitly specified "fb" will be
+used.
+
+For example, to set the dialect to a default of "fblite" but still allow for
+any #lang directive overrides, use the following command: >
+
+	let g:freebasic_lang = "fblite"
+
+
 GIT COMMIT                                              *ft-gitcommit-plugin*
 
 One command, :DiffGitCached, is provided to show a diff of the current commit
 in the preview window.  It is equivalent to calling "git diff --cached" plus
 any arguments given to the command.
+
 
 GPROF							*ft-gprof-plugin*
 
@@ -566,6 +553,7 @@ to the details of that function in the call graph.
 The mapping can be disabled with: >
 	let g:no_gprof_maps = 1
 
+
 MAIL							*ft-mail-plugin*
 
 Options:
@@ -573,7 +561,7 @@ Options:
 		avoid that a Subject line with "Vim:" in it will cause an
 		error message.
 'textwidth'	is set to 72.  This is often recommended for e-mail.
-'formatoptions'  is set to break text lines and to repeat the comment leader
+'formatoptions'	is set to break text lines and to repeat the comment leader
 		in new lines, so that a leading ">" for quotes is repeated.
 		You can also format quoted text with |gq|.
 
@@ -583,78 +571,73 @@ Local mappings:
 	to the end of the file in Normal mode.  This means "> " is inserted in
 	each line.
 
-MAN					*ft-man-plugin* *:Man* *man.vim*
+MAN					*ft-man-plugin* *:Man* *man.lua*
 
-This plugin displays a manual page in a nice way.  See |find-manpage| in the
-user manual for more information.
+View manpages in Nvim. Supports highlighting, completion, locales, and
+navigation. Also see |find-manpage|.
 
-To start using the |:Man| command before any manual page has been loaded,
-source this script from your startup |vimrc| file: >
-	runtime ftplugin/man.vim
+man.lua will always attempt to reuse the closest man window (above/left) but
+otherwise create a split.
 
-Options:
-'iskeyword'	The '.' character is added to support the use of CTRL-] on the
-		manual page name.
+The case sensitivity of completion is controlled by 'fileignorecase'.
 
 Commands:
-Man {name}	Display the manual page for {name} in a window.
-Man {number} {name}
-		Display the manual page for {name} in a section {number}.
+Man {name}                Display the manpage for {name}.
+Man {sect} {name}         Display the manpage for {name} and section {sect}.
+Man {name}({sect})        Same as above.
+Man {sect} {name}({sect}) Used during completion to show the real section of
+                          when the provided section is a prefix, e.g. 1m vs 1.
+Man {path}                Open the manpage at {path}. Prepend "./" if {path}
+                          is relative to the current directory.
+Man                       Open the manpage for the <cWORD> (man buffers)
+                          or <cword> (non-man buffers) under the cursor.
+Man!                      Display the current buffer contents as a manpage.
 
-Global mapping:
-<Leader>K	Displays the manual page for the word under the cursor.
-<Plug>ManPreGetPage
-		idem, allows for using a mapping: >
-			nmap <F1> <Plug>ManPreGetPage
+|:Man| accepts command modifiers. For example, to use a vertical split: >
+     :vertical Man printf
 
 Local mappings:
-CTRL-]		Jump to the manual page for the word under the cursor.
-CTRL-T		Jump back to the previous manual page.
-q		Same as the |:quit| command.
+K or CTRL-]               Jump to the manpage for the <cWORD> under the
+                          cursor. Takes a count for the section.
+CTRL-T                    Jump back to the location that the manpage was
+                          opened from.
+gO                        Show the manpage outline. |gO|
+q                         :quit if invoked as $MANPAGER, otherwise :close.
 
-To use a vertical split instead of horizontal: >
-	let g:ft_man_open_mode = 'vert'
-To use a new tab: >
-	let g:ft_man_open_mode = 'tab'
+Variables:
+*g:no_man_maps*             Do not create mappings in manpage buffers.
+*g:ft_man_folding_enable*   Fold manpages with foldmethod=indent foldnestmax=1.
+*b:man_default_sects*       Comma-separated, ordered list of preferred sections.
+                          For example in C one usually wants section 3 or 2: >
+                               :let b:man_default_sections = '3,2'
+*g:man_hardwrap*            Hard-wrap to $MANWIDTH or window width if $MANWIDTH is
+                          empty. Enabled by default. Set |FALSE| to enable soft
+                          wrapping.
 
-To enable |folding|, use this: >
-	let g:ft_man_folding_enable = 1
-If you do not like the default folding, use an |autocommand| to add your desired
-folding style instead.  For example: >
-	autocmd FileType man setlocal foldmethod=indent foldenable
+To use Nvim as a manpager: >
+     export MANPAGER='nvim +Man!'
 
-If you would like :Man {number} {name} to behave like man {number} {name} by
-not running man {name} if no page is found, then use this: >
-	let g:ft_man_no_sect_fallback = 1
+Note that when running `man` from the shell and with that `MANPAGER` in your
+environment, `man` will pre-format the manpage using `groff`. Thus, Neovim
+will inevitably display the manual page as it was passed to it from stdin. One
+of the caveats of this is that the width will _always_ be hard-wrapped and not
+soft wrapped as with `g:man_hardwrap=0`. You can set in your environment: >
+     export MANWIDTH=999
 
-You may also want to set 'keywordprg' to make the |K| command open a manual
-page in a Vim window: >
-	set keywordprg=:Man
+So `groff`'s pre-formatting output will be the same as with `g:man_hardwrap=0` i.e soft-wrapped.
 
-
-MANPAGER				      *manpager.vim*
-
-The |:Man| command allows you to turn Vim into a manpager (that syntax highlights
-manpages and follows linked manpages on hitting CTRL-]).
-
-For bash,zsh,ksh or dash, add to the config file (.bashrc,.zshrc, ...)
-
-	export MANPAGER="vim -M +MANPAGER -"
-
-For (t)csh, add to the config file
-
-	setenv MANPAGER "vim -M +MANPAGER -"
-
-For fish, add to the config file
-
-	set -x MANPAGER "vim -M +MANPAGER -"
+To disable bold highlighting: >
+     :highlight link manBold Normal
 
 
 MARKDOWN                                                *ft-markdown-plugin*
 
 To enable folding use this: >
 	let g:markdown_folding = 1
-<
+
+'expandtab' will be set by default.  If you do not want that use this: >
+	let g:markdown_recommended_style = 0
+
 
 PDF							*ft-pdf-plugin*
 
@@ -724,6 +707,149 @@ RPM SPEC						*ft-spec-plugin*
 
 Since the text for this plugin is rather long it has been put in a separate
 file: |pi_spec.txt|.
+
+
+SHADA							*ft-shada*
+
+Allows editing binary |shada-file|s in a nice way.  Opened binary files are 
+displayed in the following format: >
+
+    Type with timestamp YYYY-mm-ddTHH:MM:SS:
+      % Key__  Description___  Value
+      + fooba  foo bar baz fo  {msgpack-value}
+      + abcde  abc def ghi jk  {msgpack-value}
+    Other type with timestamp YYYY-mm-ddTHH:MM:SS:
+      @ Description__  Value
+      - foo bar baz t  {msgpack-value}
+      # Expected more elements in list
+    Some other type with timestamp YYYY-mm-ddTHH:MM:SS:
+      # Unexpected type: type instead of map
+      = {msgpack-value}
+
+Filetype plugin defines all |Cmd-event|s.  Defined |SourceCmd| event makes 
+"source file.shada" be equivalent to "|:rshada| file.shada".  |BufWriteCmd|, 
+|FileWriteCmd| and |FileAppendCmd| events are affected by the following 
+settings:
+
+*g:shada#keep_old_header*	Boolean, if set to false all header entries 
+				are ignored when writing.  Defaults to 1.
+*g:shada#add_own_header*	Boolean, if set to true first written entry 
+				will always be header entry with two values in 
+				a map with attached data: |v:version| attached 
+				to "version" key and "shada.vim" attached to 
+				"generator" key.  Defaults to 1.
+
+Format description:
+
+1. `#` starts a comment.  Lines starting with space characters and then `#` 
+   are ignored.  Plugin may only add comment lines to indicate some errors in 
+   ShaDa format.  Lines containing no non-whitespace characters are also 
+   ignored.
+2. Each entry starts with line that has format "{type} with timestamp 
+   {timestamp}:". {timestamp} is |strftime()|-formatted string representing 
+   actual Unix timestamp value. First strftime() argument is equal to
+   `%Y-%m-%dT%H:%M:%S`.  When writing this timestamp is parsed using 
+   |msgpack#strptime()|, with caching (it remembers which timestamp produced 
+   particular strftime() output and uses this value if you did not change 
+   timestamp). {type} is one of
+    1 - Header
+    2 - Search pattern
+    3 - Replacement string
+    4 - History entry
+    5 - Register
+    6 - Variable
+    7 - Global mark
+    8 - Jump
+    9 - Buffer list
+   10 - Local mark
+   11 - Change
+    * - Unknown (0x{type-hex})
+
+   Each type may be represented using Unknown entry: "Jump with timestamp ..." 
+   is the same as "Unknown (0x8) with timestamp ....".
+3. After header there is one of the following lines:
+   1. "  % Key__  Description__  Value": map header.  After mapping header 
+      follows a table which may contain comments and lines consisting of 
+      "  +", key, description and |{msgpack-value}|.  Key is separated by at 
+      least two spaces with description, description is separated by at least 
+      two spaces with the value.  Each key in the map must be at most as wide 
+      as "Key__" header: "Key" allows at most 3-byte keys, "Key__" allows at 
+      most 5-byte keys.  If keys actually occupy less bytes then the rest is 
+      filled with spaces.  Keys cannot be empty, end with spaces, contain two 
+      consequent spaces inside of them or contain multibyte characters (use 
+      "=" format if you need this).  Descriptions have the same restrictions 
+      on width and contents, except that empty descriptions are allowed.  
+      Description column may be omitted.
+
+      When writing description is ignored.  Keys with values |msgpack#equal| 
+      to default ones are ignored.  Order of keys is preserved.  All keys are 
+      treated as strings (not binary strings).
+
+      Note: specifically for buffer list entries it is allowed to have more 
+      then one map header.  Each map header starts a new map entry inside 
+      buffer list because ShaDa buffer list entry is an array of maps.  I.e. >
+
+        Buffer list with timestamp 1970-01-01T00:00:00:
+          % Key  Description  Value
+          + f    file name    "/foo"
+          + l    line number  1
+          + c    column       10
+<
+      is equivalent to >
+
+        Buffer list with timestamp 1970-01-01T00:00:00:
+          = [{="f": "/foo", ="c": 10}]
+<
+      and >
+
+        Buffer list with timestamp 1970-01-01T00:00:00:
+          % Key  Description  Value
+          + f    file name    "/foo"
+
+          % Key  Description  Value
+          + f    file name    "/bar"
+<
+      is equivalent to >
+
+        Buffer list with timestamp 1970-01-01T00:00:00:
+          = [{="f": "/foo"}, {="f": "/bar"}]
+<
+      Note 2: specifically for register entries special syntax for arrays was 
+      designed: >
+
+        Register with timestamp 1970-01-01T00:00:00:
+          % Key  Description  Value
+          + rc   contents     @
+          | - "line1"
+          | - "line2"
+<
+      This is equivalent to >
+
+        Register with timestamp 1970-01-01T00:00:00:
+          % Key  Description  Value
+          + rc   contents     ["line1", "line2"]
+<
+      Such syntax is automatically used if array representation appears to be 
+      too lengthy.
+   2. "  @  Description__  Value": array header.  Same as map, but key is 
+      omitted and description cannot be omitted.  Array entries start with 
+      "  -". Example: >
+
+        History entry with timestamp 1970-01-01T00:00:00:
+          @ Description_  Value
+          - history type  SEARCH
+          - contents      "foo"
+          - separator     '/'
+<
+      is equivalent to >
+
+        History entry with timestamp 1970-01-01T00:00:00:
+          = [SEARCH, "foo", '/']
+<
+      Note: special array syntax for register entries is not recognized here.
+   3. "  = {msgpack-value}": raw values.  |{msgpack-value}| in this case may 
+      have absolutely any type.  Special array syntax for register entries is 
+      not recognized here as well.
 
 
 RUST							*ft-rust*

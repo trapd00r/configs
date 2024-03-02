@@ -55,6 +55,8 @@ syntax on
 runtime macros/matchit.vim                                                 " % on if/else
 "runtime syntax/hitest.vim                                                  " dump all hi groups in a buffer
 
+set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
+
 if !has('nvim')
   set all&
   let &runtimepath = $VIMRUNTIME                                                                 " turn everything off, in case of evil vendor vimrcs
@@ -63,7 +65,6 @@ else
   let &runtimepath .= ',' . '/usr/share/nvim/runtime'
 endif
                                             " $XDG_CONFIG_HOME/vim
-set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
 
 " useful in various places later
 let g:hostname = hostname()
@@ -126,6 +127,7 @@ Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
 Plug 'tridactyl/vim-tridactyl'
+Plug 'chrisbra/Colorizer'
 
 " Vdebug
 if !exists('g:vdebug_options')
@@ -185,6 +187,9 @@ if has('nvim')
   Plug 'nvim-lualine/lualine.nvim'       " statusline
   Plug 'SmiteshP/nvim-navic'             " context
   Plug 'fgheng/winbar.nvim'              " window bar
+
+  " magento
+  Plug 'pbogut/magento2-ls'
 
   " completion
   Plug 'neovim/nvim-lspconfig'

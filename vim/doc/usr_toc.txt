@@ -1,11 +1,11 @@
-*usr_toc.txt*	For Vim version 8.2.  Last change: 2020 Jun 15
+*usr_toc.txt*	Nvim
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
 			      Table Of Contents			*user-manual*
 
 ==============================================================================
-Overview ~
+Overview
 
 Getting Started
 |usr_01.txt|  About the manuals
@@ -43,21 +43,16 @@ Tuning Vim
 |usr_43.txt|  Using filetypes
 |usr_44.txt|  Your own syntax highlighted
 |usr_45.txt|  Select your language (locale)
-|usr_46.txt|  Write plugins using Vim9 script
-
-Making Vim Run
-|usr_90.txt|  Installing Vim
 
 
 Reference manual
 |reference_toc|     More detailed information for all commands
 
-The user manual is available as a single, ready to print HTML and PDF file
-here:
-	http://vimdoc.sf.net
+The user manual is online:
+	https://neovim.io/doc/user
 
 ==============================================================================
-Getting Started ~
+Getting Started
 
 Read this from start to end to learn the essential commands.
 
@@ -104,21 +99,19 @@ Read this from start to end to learn the essential commands.
 |usr_05.txt|  Set your settings
 		|05.1|	The vimrc file
 		|05.2|	The example vimrc file explained
-		|05.3|	The defaults.vim file explained
-		|05.4|	Simple mappings
-		|05.5|	Adding a package
-		|05.6|	Adding a plugin
-		|05.7|	Adding a help file
-		|05.8|	The option window
-		|05.9|	Often used options
+		|05.3|	Simple mappings
+		|05.4|	Adding a package
+		|05.5|	Adding a plugin
+		|05.6|	Adding a help file
+		|05.7|	The option window
+		|05.8|	Often used options
 
 |usr_06.txt|  Using syntax highlighting
 		|06.1|	Switching it on
 		|06.2|	No or wrong colors?
 		|06.3|	Different colors
 		|06.4|	With colors or without colors
-		|06.5|	Printing with colors
-		|06.6|	Further reading
+		|06.5|	Further reading
 
 |usr_07.txt|  Editing more than one file
 		|07.1|	Edit another file
@@ -136,7 +129,7 @@ Read this from start to end to learn the essential commands.
 		|08.4|	Vertical splits
 		|08.5|	Moving windows
 		|08.6|	Commands for all windows
-		|08.7|	Viewing differences with vimdiff
+		|08.7|	Viewing differences with diff mode
 		|08.8|	Various
 
 |usr_09.txt|  Using the GUI
@@ -173,7 +166,7 @@ Read this from start to end to learn the essential commands.
 		|12.8|	Find where a word is used
 
 ==============================================================================
-Editing Effectively ~
+Editing Effectively
 
 Subjects that can be read independently.
 
@@ -187,7 +180,7 @@ Subjects that can be read independently.
 |usr_21.txt|  Go away and come back
 		|21.1|	Suspend and resume
 		|21.2|	Executing shell commands
-		|21.3|	Remembering information; viminfo
+		|21.3|	Remembering information; ShaDa
 		|21.4|	Sessions
 		|21.5|	Views
 		|21.6|	Modelines
@@ -201,9 +194,8 @@ Subjects that can be read independently.
 |usr_23.txt|  Editing other files
 		|23.1|	DOS, Mac and Unix files
 		|23.2|	Files on the internet
-		|23.3|	Encryption
-		|23.4|	Binary files
-		|23.5|	Compressed files
+		|23.3|	Binary files
+		|23.4|	Compressed files
 
 |usr_24.txt|  Inserting quickly
 		|24.1|	Making corrections
@@ -282,7 +274,7 @@ Subjects that can be read independently.
 		|32.4|	Time travelling
 
 ==============================================================================
-Tuning Vim ~
+Tuning Vim
 
 Make Vim work as you like it.
 
@@ -339,24 +331,6 @@ Make Vim work as you like it.
 		|45.3|	Using another encoding
 		|45.4|	Editing files with a different encoding
 		|45.5|	Entering language text
-
-|usr_46.txt|  Write plugins using Vim9 script
-		|46.1|	Introduction
-		|46.2|	Variable declarations
-		|46.3|	Functions and types
-		|46.?|	Using a Vim9 script from legacy script
-
-==============================================================================
-Making Vim Run ~
-
-Before you can use Vim.
-
-|usr_90.txt|  Installing Vim
-		|90.1|	Unix
-		|90.2|	MS-Windows
-		|90.3|	Upgrading
-		|90.4|	Common installation issues
-		|90.5|	Uninstalling Vim
 
 ==============================================================================
 

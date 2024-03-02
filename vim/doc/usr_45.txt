@@ -1,4 +1,4 @@
-*usr_45.txt*	For Vim version 8.2.  Last change: 2020 Jun 11
+*usr_45.txt*	Nvim
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -15,8 +15,7 @@ in various languages is explained.
 |45.4|	Editing files with a different encoding
 |45.5|	Entering language text
 
-     Next chapter: |usr_46.txt|  Write plugins using Vim9 script
- Previous chapter: |usr_44.txt|  Your own syntax highlighted
+Previous chapter: |usr_44.txt|  Your own syntax highlighted
 Table of contents: |usr_toc.txt|
 
 ==============================================================================
@@ -31,13 +30,6 @@ this command: >
 
 If it replies with "C", this means the default is being used, which is
 English.
-
-	Note:
-	Using different languages only works when Vim was compiled to handle
-	it.  To find out if it works, use the ":version" command and check the
-	output for "+gettext" and "+multi_lang".  If they are there, you are
-	OK.  If you see "-gettext" or "-multi_lang" you will have to find
-	another Vim.
 
 What if you would like your messages in a different language?  There are
 several ways.  Which one you should use depends on the capabilities of your
@@ -79,8 +71,8 @@ directory src/po/README.txt.
 programmer.  You must know both English and the language you are translating
 to, of course.
    When you are satisfied with the translation, consider making it available
-to others.  Upload it at vim-online (http://vim.sf.net) or e-mail it to
-the Vim maintainer <maintainer@vim.org>.  Or both.
+to others.  Upload it to https://github.com/vim/vim or e-mail it to the Vim
+maintainer <maintainer@vim.org>.  Or both.
 
 ==============================================================================
 *45.2*	Language for Menus
@@ -130,7 +122,7 @@ this name, but with all letters made lowercase.  Then copy the file to your
 own runtime directory, as found early in 'runtimepath'.  For example, for Unix
 you would do: >
 
-	:!cp $VIMRUNTIME/lang/menu_ko_kr.euckr.vim ~/.vim/lang/menu_nl_be.iso_8859-1.vim
+	:!cp $VIMRUNTIME/lang/menu_ko_kr.euckr.vim ~/.config/nvim/lang/menu_nl_be.iso_8859-1.vim
 
 You will find hints for the translation in "$VIMRUNTIME/lang/README.txt".
 
@@ -174,10 +166,7 @@ script files, etc.  You can regard 'encoding' as the setting for the internals
 of Vim.
    This example assumes you have this font on your system.  The name in the
 example is for the X Window System.  This font is in a package that is used to
-enhance xterm with Unicode support.  If you don't have this font, you might
-find it here:
-
-	http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz ~
+enhance xterm with Unicode support.
 
 For MS-Windows, some fonts have a limited number of Unicode characters.  Try
 using the "Courier New" font.  You can use the Edit/Select Font... menu to
@@ -186,32 +175,16 @@ though.  Example: >
 
 	:set guifont=courier_new:h12
 
-If it doesn't work well, try getting a fontpack.  If Microsoft didn't move it,
-you can find it here:
-
-	http://www.microsoft.com/typography/fonts/default.aspx ~
+If it doesn't work well, try getting a fontpack.
 
 Now you have told Vim to use Unicode internally and display text with a
-Unicode font.  Typed characters still arrive in the encoding of your original
-language.  This requires converting them to Unicode.  Tell Vim the language
-from which to convert with the 'termencoding' option.  You can do it like
-this: >
-
-	:let &termencoding = &encoding
-	:set encoding=utf-8
-
-This assigns the old value of 'encoding' to 'termencoding' before setting
-'encoding' to utf-8.  You will have to try out if this really works for your
-setup.  It should work especially well when using an input method for an Asian
-language, and you want to edit Unicode text.
-
+Unicode font.
 
 USING UNICODE IN A UNICODE TERMINAL
 
 There are terminals that support Unicode directly.  The standard xterm that
 comes with XFree86 is one of them.  Let's use that as an example.
-   First of all, the xterm must have been compiled with Unicode support.  See
-|UTF8-xterm| how to check that and how to compile it when needed.
+   First of all, the xterm must have been compiled with Unicode support.
    Start the xterm with the "-u8" argument.  You might also need so specify a
 font.  Example: >
 
@@ -226,18 +199,9 @@ USING UNICODE IN AN ORDINARY TERMINAL
 Suppose you want to work with Unicode files, but don't have a terminal with
 Unicode support.  You can do this with Vim, although characters that are not
 supported by the terminal will not be displayed.  The layout of the text
-will be preserved.  >
+will be preserved.
 
-	:let &termencoding = &encoding
-	:set encoding=utf-8
-
-This is the same as what was used for the GUI.  But it works differently: Vim
-will convert the displayed text before sending it to the terminal.  That
-avoids that the display is messed up with strange characters.
-   For this to work the conversion between 'termencoding' and 'encoding' must
-be possible.  Vim will convert from latin1 to Unicode, thus that always works.
-For other conversions the |+iconv| feature is required.
-   Try editing a file with Unicode characters in it.  You will notice that Vim
+Try editing a file with Unicode characters in it.  You will notice that Vim
 will put a question mark (or underscore or some other character) in places
 where a character should be that the terminal can't display.  Move the cursor
 to a question mark and use this command: >
@@ -251,7 +215,7 @@ actually view a file that way, if you have lots of time at hand.
 	Note:
 	Since 'encoding' is used for all text inside Vim, changing it makes
 	all non-ASCII text invalid.  You will notice this when using registers
-	and the 'viminfo' file (e.g., a remembered search pattern).  It's
+	and the |shada-file| (e.g., a remembered search pattern).  It's
 	recommended to set 'encoding' in your vimrc file, and leave it alone.
 
 ==============================================================================
@@ -330,8 +294,7 @@ can use digraphs.  This was already explained in |24.9|.
 keyboard, you will want to use an Input Method (IM).  This requires learning
 the translation from typed keys to resulting character.  When you need an IM
 you probably already have one on your system.  It should work with Vim like
-with other programs.  For details see |mbyte-XIM| for the X Window system and
-|mbyte-IME| for MS-Windows.
+with other programs.
 
 
 KEYMAPS
@@ -375,7 +338,7 @@ DO-IT-YOURSELF KEYMAPS
 You can create your own keymap file.  It's not very difficult.  Start with
 a keymap file that is similar to the language you want to use.  Copy it to the
 "keymap" directory in your runtime directory.  For example, for Unix, you
-would use the directory "~/.vim/keymap".
+would use the directory "~/.config/nvim/keymap".
    The name of the keymap file must look like this:
 
 	keymap/{name}.vim ~
@@ -407,7 +370,5 @@ If all other methods fail, you can enter any character with CTRL-V:
 Don't type the spaces.  See |i_CTRL-V_digit| for the details.
 
 ==============================================================================
-
-Next chapter: |usr_46.txt|  Write plugins using Vim9 script
 
 Copyright: see |manual-copyright|  vim:tw=78:ts=8:noet:ft=help:norl:

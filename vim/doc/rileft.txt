@@ -1,4 +1,4 @@
-*rileft.txt*    For Vim version 8.2.  Last change: 2022 Apr 03
+*rileft.txt*    Nvim
 
 
 		  VIM REFERENCE MANUAL    by Avner Lottem
@@ -12,12 +12,9 @@ These functions were originally created by Avner Lottem:
    E-mail: alottem@iil.intel.com
    Phone:  +972-4-8307322
 
-								*E26*
-{only available when compiled with the |+rightleft| feature}
-
-
+------------------------------------------------------------------------------
 Introduction
-------------
+
 Some languages such as Arabic, Farsi, Hebrew (among others) require the
 ability to display their text from right-to-left.  Files in those languages
 are stored conventionally and the right-to-left requirement is only a
@@ -36,8 +33,9 @@ as this kind of support is out of the scope of a simple addition to an
 existing editor (and it's not sanctioned by Unicode either).
 
 
+------------------------------------------------------------------------------
 Highlights
-----------
+
 o  Editing left-to-right files as in the original Vim, no change.
 
 o  Viewing and editing files in right-to-left windows.  File orientation
@@ -57,15 +55,14 @@ o  No special terminal with right-to-left capabilities is required.  The
 o  Many languages use and require right-to-left support.  These languages
    can quite easily be supported given the inclusion of their required
    keyboard mappings and some possible minor code change.  Some of the
-   current supported languages include - |arabic.txt|, |farsi.txt| and
-   |hebrew.txt|.
+   current supported languages include - |arabic.txt| and |hebrew.txt|.
 
 
+------------------------------------------------------------------------------
 Of Interest...
---------------
 
 o  Invocations
-   -----------
+
    + 'rightleft' ('rl') sets window orientation to right-to-left.
    + 'delcombine' ('deco'), boolean, if editing UTF-8 encoded languages,
      allows one to remove a composing character which gets superimposed
@@ -74,7 +71,7 @@ o  Invocations
      (such as search) to be utilized in right-to-left orientation as well.
 
 o  Typing backwards					*ins-reverse*
-   ----------------
+
    In lieu of using the full-fledged 'rightleft' option, one can opt for
    reverse insertion.  When the 'revins' (reverse insert) option is set,
    inserting happens backwards.  This can be used to type right-to-left
@@ -90,15 +87,16 @@ o  Typing backwards					*ins-reverse*
    in the status line when reverse Insert mode is active.
 
 o  Pasting when in a rightleft window
-   ----------------------------------
+
    When cutting text with the mouse and pasting it in a rightleft window
    the text will be reversed, because the characters come from the cut buffer
    from the left to the right, while inserted in the file from the right to
    the left.   In order to avoid it, toggle 'revins' before pasting.
 
 
+------------------------------------------------------------------------------
 Bugs
-----
+
 o  Does not handle CTRL-A and CTRL-X commands (add and subtract) correctly
    when in rightleft window.
 

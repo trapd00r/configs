@@ -1,4 +1,4 @@
-*usr_42.txt*	For Vim version 8.2.  Last change: 2008 May 05
+*usr_42.txt*	Nvim
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -81,7 +81,7 @@ the far right.
    The second number (340) determines the location of the item within the
 pull-down menu.  Lower numbers go on top, higher number on the bottom.  These
 are the priorities in the File menu:
-
+>
 			+-----------------+
 	    10.310	|Open...	  |
 	    10.320	|Split-Open...	  |
@@ -99,7 +99,7 @@ are the priorities in the File menu:
 	    10.610	|Save-Exit	  |
 	    10.620	|Exit		  |
 			+-----------------+
-
+<
 Notice that there is room in between the numbers.  This is where you can
 insert your own items, if you really want to (it's often better to leave the
 standard menus alone and add a new menu for your own items).
@@ -168,11 +168,11 @@ inserts a CTRL-C or CTRL-O for you.  For example, if you use this command:
 
 Then the resulting menu commands will be:
 
-	Normal mode:		*
-	Visual mode:		CTRL-C *
-	Operator-pending mode:	CTRL-C *
-	Insert mode:		CTRL-O *
-	Command-line mode:	CTRL-C *
+	Normal mode:		`*`
+	Visual mode:		CTRL-C `*`
+	Operator-pending mode:	CTRL-C `*`
+	Insert mode:		CTRL-O `*`
+	Command-line mode:	CTRL-C `*`
 
 When in Command-line mode the CTRL-C will abandon the command typed so far.
 In Visual and Operator-pending mode CTRL-C will stop the mode.  The CTRL-O in
@@ -210,8 +210,8 @@ argument: >
 	:amenu <silent> Mine.Next\ File :call <SID>NextFile()<CR>
 
 Don't use "<silent>" too often.  It is not needed for short commands.  If you
-make a menu for someone else, being able to see the executed command will give
-him a hint about what he could have typed, instead of using the mouse.
+make a menu for someone else, being able to see the executed command will
+give them a hint about what they could have typed, instead of using the mouse.
 
 
 LISTING MENUS
@@ -269,13 +269,6 @@ command like: >
 			but are completely removed.  (Does not work on all
 			systems.)
 
-	t		When removed the tearoff feature is not enabled.
-
-The dotted line at the top of a menu is not a separator line.  When you select
-this item, the menu is "teared-off": It is displayed in a separate window.
-This is called a tearoff menu.  This is useful when you use the same menu
-often.
-
 For translating menu items, see |:menutrans|.
 
 Since the mouse has to be used to select a menu item, it is a good idea to use
@@ -319,7 +312,7 @@ with the name "Compile.bmp".  For Unix XPM format is used, the file name is
 "Compile.xpm".  The size must be 18 by 18 pixels.  On MS-Windows other sizes
 can be used as well, but it will look ugly.
    Put the bitmap in the directory "bitmaps" in one of the directories from
-'runtimepath'.  E.g., for Unix "~/.vim/bitmaps/Compile.xpm".
+'runtimepath'.  E.g., for Unix "~/.config/nvim/bitmaps/Compile.xpm".
 
 You can define tooltips for the items in the toolbar.  A tooltip is a short
 text that explains what a toolbar item will do.  For example "Open file".  It

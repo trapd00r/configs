@@ -1,4 +1,4 @@
-*usr_40.txt*	For Vim version 8.2.  Last change: 2022 Jan 03
+*usr_40.txt*	Nvim
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -20,7 +20,7 @@ Table of contents: |usr_toc.txt|
 ==============================================================================
 *40.1*	Key mapping
 
-A simple mapping was explained in section |05.4|.  The principle is that one
+A simple mapping was explained in section |05.3|.  The principle is that one
 sequence of key strokes is translated into another sequence of key strokes.
 This is a simple, yet powerful mechanism.
    The simplest form is that one key is mapped to a sequence of keys.  Since
@@ -226,7 +226,7 @@ When using a space inside a mapping, use <Space> (seven characters): >
 This makes the spacebar move a blank-separated word forward.
 
 It is not possible to put a comment directly after a mapping, because the "
-character is considered to be part of the mapping.  You can use |", this
+character is considered to be part of the mapping.  You can use `|"`, this
 starts a new, empty command with a comment.  Example: >
 
 	:map <Space> W|     " Use spacebar to move forward a word
@@ -290,8 +290,8 @@ deletes the first line.
 
 	Note:
 	User-defined commands must start with a capital letter.  You cannot
-	use ":X", ":Next" and ":Print".  The underscore cannot be used!  You
-	can use digits, but this is discouraged.
+	use ":Next".  The underscore cannot be used!  You can use digits, but
+	this is discouraged.
 
 To list the user-defined commands, execute the following command: >
 
@@ -463,6 +463,17 @@ separated) that trigger the command.
 The optional [++nested] flag allows for nesting of autocommands (see below),
 and finally, {command} is the command to be executed.
 
+When adding an autocommand the already existing ones remain.  To avoid adding
+the autocommand several times you should use this form: >
+
+	:augroup updateDate
+	:  autocmd!
+	:  autocmd BufWritePre *  call DateInsert()
+	:augroup END
+
+This will delete any previously defined autocommand with `:autocmd!` before
+defining the new one.  Groups are explained later.
+
 
 EVENTS
 
@@ -478,7 +489,7 @@ for you.  This triggers the Filetype event.  Use this to do something when a
 certain type of file is edited.  For example, to load a list of abbreviations
 for text files: >
 
-	:autocmd Filetype text  source ~/.vim/abbrevs.vim
+	:autocmd Filetype text  source ~/.config/nvim/abbrevs.vim
 
 When starting to edit a new file, you could make Vim insert a skeleton: >
 
@@ -576,7 +587,7 @@ NESTING
 Generally, commands executed as the result of an autocommand event will not
 trigger any new events.  If you read a file in response to a FileChangedShell
 event, it will not trigger the autocommands that would set the syntax, for
-example.  To make the events triggered, add the "nested" argument: >
+example.  To make the events triggered, add the "++nested" flag: >
 
 	:autocmd FileChangedShell * ++nested  edit
 
@@ -646,10 +657,10 @@ To ignore all events, use the following command: >
 
 	:set eventignore=all
 
-To set it back to the normal behavior, make 'eventignore' empty: >
-
+To set it back to the normal behavior, make 'eventignore' empty:
+>
 	:set eventignore=
-
+<
 ==============================================================================
 
 Next chapter: |usr_41.txt|  Write a Vim script

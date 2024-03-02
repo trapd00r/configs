@@ -1,4 +1,4 @@
-*undo.txt*      For Vim version 8.2.  Last change: 2020 Nov 30
+*undo.txt*      Nvim
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -8,12 +8,7 @@ Undo and redo						*undo-redo*
 
 The basics are explained in section |02.5| of the user manual.
 
-1. Undo and redo commands	|undo-commands|
-2. Two ways of undo		|undo-two-ways|
-3. Undo blocks			|undo-blocks|
-4. Undo branches		|undo-branches|
-5. Undo persistence		|undo-persistence|
-6. Remarks about undo		|undo-remarks|
+                                      Type |gO| to see the table of contents.
 
 ==============================================================================
 1. Undo and redo commands				*undo-commands*
@@ -26,6 +21,14 @@ u			Undo [count] changes.
 								*E830*
 :u[ndo] {N}		Jump to after change number {N}.  See |undo-branches|
 			for the meaning of {N}.
+
+:u[ndo]!		Undo one change and remove it from undo history.
+								*E5767*
+:u[ndo]! {N}		Like ":u[ndo] {N}", but forget all changes in the
+			current undo branch up until {N}. You may only use
+			":undo! {N}" to move backwards in the same undo
+			branch, not to redo or switch to a different undo
+			branch.
 
 							*CTRL-R*
 CTRL-R			Redo [count] changes which were undone.
@@ -105,12 +108,14 @@ change again.  But you can do something like this: >
 
 After this a "u" command will undo the delete command and the previous
 change.
-
-To do the opposite, break a change into two undo blocks, in Insert mode use
-CTRL-G u.  This is useful if you want an insert command to be undoable in
+					*undo-break* *undo-close-block*
+To do the opposite, use a new undo block for the next change, in Insert mode
+use CTRL-G u.  This is useful if you want an insert command to be undoable in
 parts.  E.g., for each sentence.  |i_CTRL-G_u|
-Setting the value of 'undolevels' also breaks undo.  Even when the new value
-is equal to the old value.
+
+Setting the value of 'undolevels' also closes the undo block.  Even when the
+new value is equal to the old value: >
+	let &undolevels = &undolevels
 
 ==============================================================================
 4. Undo branches				*undo-branches* *undo-tree*
@@ -250,17 +255,8 @@ ignored if its owner differs from the owner of the edited file, except when
 the owner of the undo file is the current user.  Set 'verbose' to get a
 message about that when opening a file.
 
-Undo files are normally saved in the same directory as the file.  This can be
-changed with the 'undodir' option.
-
-When the file is encrypted, the text in the undo file is also crypted.  The
-same key and method is used. |encryption|
-
-Note that text properties are not stored in the undo file.  You can restore
-text properties so long as a buffer is loaded, but you cannot restore them
-from an undo file.  Rationale: It would require the associated text property
-types to be defined in exactly the same was as before, which cannot be
-guaranteed.
+Location of the undo files is controlled by the 'undodir' option, by default 
+they are saved to the dedicated directory in the application data folder.
 
 You can also save and restore undo histories by using ":wundo" and ":rundo"
 respectively:
@@ -322,13 +318,6 @@ Reading an existing undo file may fail for several reasons:
 	the undo file cannot be used, it would corrupt the text.  This also
 	happens when 'encoding' differs from when the undo file was written.
 *E825*  The undo file does not contain valid contents and cannot be used.
-*E826*  The undo file is encrypted but decryption failed.
-*E827*  The undo file is encrypted but this version of Vim does not support
-	encryption.  Open the file with another Vim.
-*E832*  The undo file is encrypted but 'key' is not set, the text file is not
-	encrypted.  This would happen if the text file was written by Vim
-	encrypted at first, and later overwritten by not encrypted text.
-	You probably want to delete this undo file.
 "Not reading undo file, owner differs"
 	The undo file is owned by someone else than the owner of the text
 	file.  For safety the undo file is not used.
@@ -372,10 +361,10 @@ Marks for the buffer ('a to 'z) are also saved and restored, together with the
 text.
 
 When all changes have been undone, the buffer is not considered to be changed.
-It is then possible to exit Vim with ":q" instead of ":q!".  Note
-that this is relative to the last write of the file.  Typing "u" after ":w"
-actually changes the buffer, compared to what was written, so the buffer is
-considered changed then.
+It is then possible to exit Vim with ":q" instead of ":q!".
+Note that this is relative to the last write of the file.  Typing "u" after
+":w" actually changes the buffer, compared to what was written, so the buffer
+is considered changed then.
 
 When manual |folding| is being used, the folds are not saved and restored.
 Only changes completely within a fold will keep the fold as it was, because

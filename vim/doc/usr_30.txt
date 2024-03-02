@@ -1,4 +1,4 @@
-*usr_30.txt*	For Vim version 8.2.  Last change: 2007 Nov 10
+*usr_30.txt*	Nvim
 
 		     VIM USER MANUAL - by Bram Moolenaar
 
@@ -56,7 +56,7 @@ From this you can see that you have errors in the file "main.c".  When you
 press <Enter>, Vim displays the file "main.c", with the cursor positioned on
 line 6, the first line with an error.  You did not need to specify the file or
 the line number, Vim knew where to go by looking in the error messages.
-
+>
 		+---------------------------------------------------+
 		|int main()					    |
 		|{						    |
@@ -69,7 +69,7 @@ the line number, Vim knew where to go by looking in the error messages.
 		| ~						    |
 		|(3 of 12): too many arguments to function 'do_sub' |
 		+---------------------------------------------------+
-
+<
 The following command goes to where the next error occurs: >
 
 	:cnext
@@ -324,11 +324,11 @@ the output of this command: >
 Now use the first item, the name before the first comma.  Thus if the output
 looks like this:
 
-	runtimepath=~/.vim,/usr/local/share/vim/vim60/runtime,~/.vim/after ~
+	runtimepath=~/.config/nvim,/usr/local/share/vim/vim60/runtime,~/.config/nvim/after ~
 
-You use "~/.vim" for {directory}.  Then the resulting file name is:
+You use "~/.config/nvim" for {directory}.  Then the resulting file name is:
 
-	~/.vim/indent/help.vim ~
+	~/.config/nvim/indent/help.vim ~
 
 Instead of switching the indenting off, you could write your own indent file.
 How to do that is explained here: |indent-expression|.
