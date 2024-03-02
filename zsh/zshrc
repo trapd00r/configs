@@ -1474,11 +1474,19 @@ function vim() {
 
     cd "$(git root)"
 
-    /usr/bin/nvim $absnames
+    if [[ -x /usr/bin/nvim ]]; then
+      /usr/bin/nvim $absnames
+    else
+      /usr/bin/vim $absnames
+    fi
 
     cd "$oldroot"
   else
-    /usr/bin/nvim "$@"
+    if [[ -x /usr/bin/nvim ]]; then
+      /usr/bin/nvim "$@"
+    else
+      /usr/bin/vim "$@"
+    fi
   fi
 }
 
