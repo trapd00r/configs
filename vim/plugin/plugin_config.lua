@@ -45,12 +45,17 @@ require('gitsigns').setup {
 }
 
 -- Plugin: lualine
+
+local function hello()
+  return [[hello world]]
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'auto',
-    component_separators = { left = '|', right = '|'},
-    section_separators = { left = '|', right = '|'},  
+    theme = 'ayu_dark',
+    component_separators = { left = '>', right = '<'},
+    section_separators = { left = ' ', right = ' '},  
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -65,12 +70,17 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
+--    lualine_a = {'mode'},
+--    lualine_a = {hello},
+--    lualine_a = {'searchcount'},
+--    lualine_a = {'FileNameStatusLine'},
+    lualine_a = {'filename'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+--    lualine_c = {'filename'},
+ --   lualine_c = {'FileNameStatusLine'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {'searchcount'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -220,7 +230,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'P', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
@@ -240,3 +250,39 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- php LSP 
 require'lspconfig'.intelephense.setup{}
+
+-- plugin: lazy-lsp
+require("lazy-lsp").setup {
+  -- By default all available servers are set up. Exclude unwanted or misbehaving servers.
+  excluded_servers = {
+    "ccls", "zk",
+  },
+  prefer_local = true, -- Prefer locally installed servers over nix-shell
+  -- Alternatively specify preferred servers for a filetype (others will be ignored).
+  preferred_servers = {
+    haskell = { "hls" },
+    rust = { "rust_analyzer" },
+  },
+  -- Default config passed to all servers to specify on_attach callback and other options.
+  default_config = {
+    flags = {
+      debounce_text_changes = 150,
+    },
+    -- on_attach = on_attach,
+    -- capabilities = capabilities,
+  },
+  -- Override config for specific servers that will passed down to lspconfig setup.
+  -- Note that the default_config will be merged with this specific configuration so you don't need to specify everything twice.
+  configs = {
+    lua_ls = {
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = { "vim" },
+          },
+        },
+      },
+    },
+  },
+}

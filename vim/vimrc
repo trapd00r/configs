@@ -193,6 +193,7 @@ if has('nvim')
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'dundalek/lazy-lsp.nvim'
 
 endif
 
@@ -242,6 +243,7 @@ if !has('nvim')
   set title                                                                  " send a title string to the terminal
 else
   set notitle                                                                " fixes bug in neovim where statusline is messed up
+  set mouse=""                                                               " disable mouse
 endif
 
 
