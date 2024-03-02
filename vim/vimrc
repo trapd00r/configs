@@ -11,6 +11,41 @@
 
 let g:develop_plugin = 1
 
+"  use 'wbthomason/packer.nvim'
+" 
+"    use 'neovim/nvim-lspconfig'
+"    use 'hrsh7th/cmp-nvim-lsp'
+"    use 'hrsh7th/cmp-buffer'
+"    use 'hrsh7th/nvim-cmp'
+" 
+"    use 'p00f/clangd_extensions.nvim'
+" 
+"    use 'hrsh7th/cmp-vsnip'
+"    use 'hrsh7th/vim-vsnip'
+" 
+"    use { 'nvim-treesitter/nvim-treesitter', run=':TSUpdate' }
+" 
+"    use { 'https://github.com/godlygeek/tabular.git', as='tabular' }
+"    use { 'https://github.com/tpope/vim-fugitive.git', as='vim-fugitive' }
+"    use 'tpope/vim-unimpaired'
+"    use 'schickling/vim-bufonly'
+"    use 'rbgrouleff/bclose.vim'
+" 
+
+"    use 'chentoast/marks.nvim'
+" 
+"    use 'rhysd/clever-f.vim'
+"    use 'junegunn/rainbow_parentheses.vim'
+"    use 'vim-airline/vim-airline'
+" 
+"    use 'linrongbin16/fzfx.vim'
+"    use 'nvim-treesitter/nvim-treesitter-context'
+" 
+"    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+"    use 'tenxsoydev/size-matters.nvim'
+"    use 'mg979/vim-visual-multi'
+"    use 'nanotee/zoxide.vim'
+
 
 " ========== INIT START =================================
 set nocp
@@ -104,11 +139,6 @@ let g:vdebug_options.path_maps = { '/srv/magento': '/home/scp1/dev/webbhuset/der
 let g:vdebug_options.break_on_open = 0
 let g:vdebug_features['max_children'] = 128
 
-highlight DbgBreakptLine ctermbg=160
-highlight DbgBreakptSign ctermbg=none ctermfg=196
-
-highlight DbgCurrentLine ctermbg=197
-highlight DbgCurrentSign ctermbg=none ctermfg=196
 
 
 Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
@@ -146,8 +176,27 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
+
+if has('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter' " treesitter
+  Plug 'nvim-lua/plenary.nvim'           " required for telescope
+  Plug 'nvim-telescope/telescope.nvim'   " fuzzy finder
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'nvim-lualine/lualine.nvim'       " statusline
+  Plug 'SmiteshP/nvim-navic'             " context
+  Plug 'fgheng/winbar.nvim'              " window bar
+
+  " completion
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+
+endif
+
 "Plug 'prabirshrestha/vim-lsp'
-"Plug 'mattn/vim-lsp-settings'
 
 "Plug 'dense-analysis/ale'  " Linting and syntax checking
 
@@ -190,8 +239,10 @@ if !has('nvim')
   set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
   set undodir=~/var/vim/undo                                                 " where to keep the undos
   set lazyredraw                                                             " do not redraw screen while executing macros etc
+  set title                                                                  " send a title string to the terminal
+else
+  set notitle                                                                " fixes bug in neovim where statusline is messed up
 endif
-
 
 
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
@@ -202,7 +253,7 @@ set cindent                                                                " c p
 set cinkeys-=0#                                                            " https://stackoverflow.com/questions/354097/how-to-configure-vim-to-not-put-comments-at-the-beginning-of-lines-while-editing#comment127103383_354097
 set clipboard=unnamed                                                      " define clipboard registers to use
 set cdhome                                                                 " cd to ~ on :cd
-set cmdheight=2                                                            " avoid 'Press ENTER to continue' prompts
+set cmdheight=1                                                            " avoid 'Press ENTER to continue' prompts
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
 "set complete+=k~/dev/askas/utils-askas/vim/installed_perl_modules.txt      " complete all perl package names
@@ -300,7 +351,6 @@ set tags=./tags,tags,~/dev/tags,~/dev/askas/utils-askas/vim/tags           " loc
 set textwidth=80                                                           " maximum width of text
 set timeout                                                                " time out on mappings
 set timeoutlen=3000                                                        " how long to wait prior to timeout
-set title                                                                  " send a title string to the terminal
 set ttimeoutlen=50                                                         " the same for terminal keycodes
 set ttyfast                                                                " my terminal is very fast
 set undofile                                                               " undo file for all the undos
@@ -1068,27 +1118,31 @@ function! FileNameStatusLineHP()
   return name
 endfunction
 
-autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
-set statusline=
-"set statusline +=%1*\ %n\ %*                          " buffer number
-set statusline +=\%5*%{&ff}%*                          " file format
-set statusline +=%3*%y%*                               " file type
-"set statusline +=\%7*¦%9*\                            " askås butik
-"set statusline +=%{SetStatusLineAskasButik()}         " askås butik
-"set statusline +=\\%7*%4*\%{FileNameStatusLine()}      " basename of file
-set statusline +=\\%7*%4*\%{FileNameStatusLineHP()}    " name of file
-set statusline +=%2*%m%*\                              " modified flag
-"set statusline +=\%7*\ ¦                              " delimiter
-set statusline +=%2*%{GitStatusStatusLine('added')}    " # added lines
-set statusline +=%9*%{GitStatusStatusLine('modified')} " # modified lines
-set statusline +=%8*%{GitStatusStatusLine('removed')}  " # removed lines
-"set statusline +=\%7*\ ¦                              " delimiter
-set statusline +=\ %6*%{GitBranchStatusLine()}%5*      " shortened git branch
-set statusline +=\%7*\ \ \%1*%{ContextInStatusbar()}   " current function or block
-"set statusline +=%1*%=%5l%*                            " current line
-"set statusline +=%1*/%L%*                              " total lines
-"set statusline +=%1*%4v\ %*                            " virtual column number
-"set statusline +=%1*0x%04B\ %*                         " character under cursor
+if !has('nvim')
+  autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
+  set statusline=
+  "set statusline +=%1*\ %n\ %*                          " buffer number
+  set statusline +=\%5*%{&ff}%*                          " file format
+  set statusline +=%3*%y%*                               " file type
+  "set statusline +=\%7*¦%9*\                            " askås butik
+  "set statusline +=%{SetStatusLineAskasButik()}         " askås butik
+  "set statusline +=\\%7*%4*\%{FileNameStatusLine()}      " basename of file
+  set statusline +=\\%7*%4*\%{FileNameStatusLineHP()}    " name of file
+  set statusline +=%2*%m%*\                              " modified flag
+  "set statusline +=\%7*\ ¦                              " delimiter
+  set statusline +=%2*%{GitStatusStatusLine('added')}    " # added lines
+  set statusline +=%9*%{GitStatusStatusLine('modified')} " # modified lines
+  set statusline +=%8*%{GitStatusStatusLine('removed')}  " # removed lines
+  "set statusline +=\%7*\ ¦                              " delimiter
+  set statusline +=\ %6*%{GitBranchStatusLine()}%5*      " shortened git branch
+  set statusline +=\%7*\ \ \%1*%{ContextInStatusbar()}   " current function or block
+  "set statusline +=%1*%=%5l%*                            " current line
+  set statusline +=%1*/%L%*                              " total lines
+  set statusline +=%1*%4v\ %*                            " virtual column number
+  set statusline +=%1*0x%04B\ %*                         " character under cursor
+else
+endif
+
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
 
@@ -1253,6 +1307,12 @@ let g:xf86conf_xfree86_versio      = 2
 " ========== HIGHLIGHTING START =========================
 
 highlight Normal ctermfg=white ctermbg=bg cterm=italicbold
+
+highlight DbgBreakptLine ctermbg=160
+highlight DbgBreakptSign ctermbg=none ctermfg=196
+
+highlight DbgCurrentLine ctermbg=197
+highlight DbgCurrentSign ctermbg=none ctermfg=196
 
 hi perlVarPlain ctermfg=10
 autocmd filetype perldoc hi link Normal Comment
