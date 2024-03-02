@@ -113,7 +113,7 @@ Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
-Plug 'github/copilot.vim'               " AI, yo
+"Plug 'github/copilot.vim'               " AI, yo
 Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
@@ -148,8 +148,6 @@ Plug 'zirrostig/vim-schlepp'            " move visual selections around
 "Plug 'dense-analysis/ale'  " Linting and syntax checking
 
 
-
-
 " completion
 "Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'yami-beta/asyncomplete-omni.vim'
@@ -180,6 +178,16 @@ Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
 call plug#end()
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
+
+" if neovim
+if !has('nvim')
+  set term=rxvt-unicode-256color                                             " set terminal
+  set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
+  set undodir=~/var/vim/undo                                                 " where to keep the undos
+endif
+
+
+
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
 set autoindent                                                             " copy indent from previous line
 set autoread                                                               " read file again if changed outside of vim
@@ -247,7 +255,6 @@ set matchpairs+=<:>,«:»,｢:｣                                               
 set matchtime=20                                                           " time to show the match with %
 set maxfuncdepth=1000                                                      " avoid recursive functions
 set maxmapdepth=500                                                        " avoid recursive mappings
-set maxmemtot=200000                                                       " max memory for all buffers together
 set modeline                                                               " yes I want to use modelines
 set modelines=2                                                            " number of lines to check for a modeline
 set nobackup                                                               " no backups, I have persistent undo
@@ -285,18 +292,15 @@ set t_Co=256                                                               " ter
 set tabpagemax=4                                                           " max tab pages when using -p flag
 set tabstop=2                                                              " shouldn't modify this the help states..?
 set tags=./tags,tags,~/dev/tags,~/dev/askas/utils-askas/vim/tags           " location of tag files
-set term=rxvt-unicode-256color                                             " set terminal
 set textwidth=80                                                           " maximum width of text
 set timeout                                                                " time out on mappings
 set timeoutlen=3000                                                        " how long to wait prior to timeout
 set title                                                                  " send a title string to the terminal
 set ttimeoutlen=50                                                         " the same for terminal keycodes
 set ttyfast                                                                " my terminal is very fast
-set undodir=~/var/vim/undo                                                 " where to keep the undos
 set undofile                                                               " undo file for all the undos
 set undolevels=1024                                                        " persisent undo for 1024 actions
 set updatetime=200                                                         " for CursorHold events and GitGutter signs
-set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
 set virtualedit=block                                                      " virtualedit for visual block mode
 set visualbell t_vb=                                                       " disable visual bells
 set wildchar=<Tab>                                                         " completion char in cmdline
@@ -799,7 +803,7 @@ augroup WebbHuset
 augroup END
 
 " fun with the USR signals
-autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
+"autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
 " whenever something's yanked, write it to a file
 "au TextYankPost * :call YankedToYankLog()
 "
@@ -1605,3 +1609,6 @@ hi jsString ctermfg=137
 set completeopt=noinsert,menuone,noselect
 set grepprg=rg\ --vimgrep
 "nnoremap K :grep! "\b\\\\<C-R><C-W>\b"<CR>:cw<CR>
+
+" Goto definition of class or class member under the cursor
+
