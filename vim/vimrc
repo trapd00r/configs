@@ -21,9 +21,13 @@ runtime macros/matchit.vim                                                 " % o
 "runtime syntax/hitest.vim                                                  " dump all hi groups in a buffer
 
 if !has('nvim')
-  set all&                                                                 " turn everything off, in case of evil vendor vimrcs
+  set all&
+  let &runtimepath = $VIMRUNTIME                                                                 " turn everything off, in case of evil vendor vimrcs
+else
+  let &runtimepath .= ',' . $VIMRUNTIME
+  let &runtimepath .= ',' . '/usr/share/nvim/runtime'
 endif
-let &runtimepath  = $VIMRUNTIME                                            " $XDG_CONFIG_HOME/vim
+                                            " $XDG_CONFIG_HOME/vim
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
 
 " useful in various places later
@@ -112,9 +116,8 @@ Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
 Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
-Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
-"Plug 'github/copilot.vim'               " AI, yo
+Plug 'github/copilot.vim'               " AI, yo
 Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
@@ -148,6 +151,7 @@ Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
 "Plug 'dense-analysis/ale'  " Linting and syntax checking
 
+"Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
 
 " completion
 "Plug 'prabirshrestha/asyncomplete.vim'
@@ -185,6 +189,7 @@ if !has('nvim')
   set term=rxvt-unicode-256color                                             " set terminal
   set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
   set undodir=~/var/vim/undo                                                 " where to keep the undos
+  set lazyredraw                                                             " do not redraw screen while executing macros etc
 endif
 
 
@@ -240,7 +245,6 @@ set iskeyword+=@-@                                                         " per
 set iskeyword+=:                                                           " perl colon
 set iskeyword-=,                                                           " remove , from keyword
 set laststatus=2                                                           " always how statusline
-set lazyredraw                                                             " do not redraw screen while executing macros etc
 set list                                                                   " visualize non-visual characters
 set listchars&                                                             "  '- set it to empty first
 set listchars+=conceal:⌦                                                   "  '- what to show when concealing something
