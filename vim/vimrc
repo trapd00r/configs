@@ -61,8 +61,8 @@ if !has('nvim')
   set all&
   let &runtimepath = $VIMRUNTIME                                                                 " turn everything off, in case of evil vendor vimrcs
 else
-  let &runtimepath .= ',' . $VIMRUNTIME
   let &runtimepath .= ',' . '/usr/share/nvim/runtime'
+  let &runtimepath .= ',' . $VIMRUNTIME
 endif
                                             " $XDG_CONFIG_HOME/vim
 
