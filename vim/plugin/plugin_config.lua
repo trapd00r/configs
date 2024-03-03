@@ -251,47 +251,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- php LSP 
 require'lspconfig'.intelephense.setup{}
 
--- plugin: lazy-lsp
-require("lazy-lsp").setup {
-  -- By default all available servers are set up. Exclude unwanted or misbehaving servers.
-  excluded_servers = {
-    "ccls", "zk",
-  },
-  prefer_local = true, -- Prefer locally installed servers over nix-shell
-  -- Alternatively specify preferred servers for a filetype (others will be ignored).
-  preferred_servers = {
-    haskell = { "hls" },
-    rust = { "rust_analyzer" },
-  },
-  -- Default config passed to all servers to specify on_attach callback and other options.
-  default_config = {
-    flags = {
-      debounce_text_changes = 150,
-    },
-    -- on_attach = on_attach,
-    -- capabilities = capabilities,
-  },
-  -- Override config for specific servers that will passed down to lspconfig setup.
-  -- Note that the default_config will be merged with this specific configuration so you don't need to specify everything twice.
-  configs = {
-    lua_ls = {
-      settings = {
-        Lua = {
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { "vim" },
-          },
-        },
-      },
-    },
-  },
-}
 
--- magento-lsp
---use({ 'pbogut/magento2-ls', 
---  -- Build using cargo build --release
---  --run = "require'magento2_ls'.build()" ,
---  -- Alternatively, you can download the compiled binary from the GitHub release.
---  run = "require'magento2_ls'.get_server()" ,
---  config = "require'magento2_ls'.setup()" 
---})
+-- Plugin: mason
+require("mason").setup()

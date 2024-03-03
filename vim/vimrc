@@ -198,7 +198,10 @@ if has('nvim')
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
-  Plug 'dundalek/lazy-lsp.nvim'
+
+"  Plug 'dundalek/lazy-lsp.nvim'
+
+  Plug 'williamboman/mason.nvim'
 
 endif
 
@@ -239,17 +242,6 @@ call plug#end()
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
 
-" if neovim
-if !has('nvim')
-  set term=rxvt-unicode-256color                                             " set terminal
-  set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
-  set undodir=~/var/vim/undo                                                 " where to keep the undos
-  set lazyredraw                                                             " do not redraw screen while executing macros etc
-  set title                                                                  " send a title string to the terminal
-else
-  set notitle                                                                " fixes bug in neovim where statusline is messed up
-  set mouse=""                                                               " disable mouse
-endif
 
 
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
@@ -369,6 +361,20 @@ set wildchar=<Tab>                                                         " com
 set wildignore=*.swp,*.bak,*~,blib,*.o,*.png,*.jpe?g,.git,.svn,*.so,.hg    " completion should ignore
 set wildmenu                                                               " command-line completion, enhanced mode
 set wildmode=list:longest,full                                             " completion mode
+
+" Vim only options
+if !has('nvim')
+  set term=rxvt-unicode-256color                                             " set terminal
+  set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
+  set undodir=~/var/vim/undo                                                 " where to keep the undos
+  set lazyredraw                                                             " do not redraw screen while executing macros etc
+  set title                                                                  " send a title string to the terminal
+" Neovim only options
+else
+  set notitle                                                                " fixes bug in neovim where statusline is messed up
+  set mouse=""                                                               " disable mouse
+endif
+
 
 " ========== OPTIONS END ================================
 
