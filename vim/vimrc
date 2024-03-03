@@ -141,6 +141,8 @@ if has('nvim')
   Plug 'L3MON4D3/LuaSnip'
   Plug 'rafamadriz/friendly-snippets'
 
+  Plug 'ray-x/lsp_signature.nvim'
+
   Plug 'mfussenegger/nvim-dap' " debug adapters
 
   Plug 'stevearc/dressing.nvim' " better ui dialogs
@@ -1545,3 +1547,6 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
+
+" FIXME
+hi clear Error
