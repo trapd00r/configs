@@ -185,6 +185,8 @@ if has('nvim')
   Plug 'mfussenegger/nvim-dap' " debug adapters
 
   Plug 'stevearc/dressing.nvim' " better ui dialogs
+  Plug 'kevinhwang91/nvim-ufo'  " better looking folds
+  Plug 'kevinhwang91/promise-async' " required for nvim-ufo
 endif
 
 nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
