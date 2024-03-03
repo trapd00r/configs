@@ -191,32 +191,29 @@ if has('nvim')
   " magento
   Plug 'pbogut/magento2-ls'
 
-  " completion
+
+  " lsp, completion
+  Plug 'VonHeikemen/lsp-zero.nvim'
+
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+  Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/nvim-cmp'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'hrsh7th/cmp-nvim-lua'
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'rafamadriz/friendly-snippets'
 
-"  Plug 'dundalek/lazy-lsp.nvim'
-
-  Plug 'williamboman/mason.nvim'
 
 endif
 
-"Plug 'prabirshrestha/vim-lsp'
-
-"Plug 'dense-analysis/ale'  " Linting and syntax checking
-
-"Plug 'airblade/vim-rooter'              " change to project root, good for symlinks
-
-" completion
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'yami-beta/asyncomplete-omni.vim'
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 
 
@@ -232,8 +229,8 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "\ }))
 
 
-Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
-Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
+"Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
+"Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
 
 
 
@@ -241,9 +238,6 @@ Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
 call plug#end()
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
-
-
-
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
 set autoindent                                                             " copy indent from previous line
 set autoread                                                               " read file again if changed outside of vim
@@ -255,7 +249,6 @@ set cdhome                                                                 " cd 
 set cmdheight=1                                                            " avoid 'Press ENTER to continue' prompts
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
-"set complete+=k~/dev/askas/utils-askas/vim/installed_perl_modules.txt      " complete all perl package names
 set completeopt+=menuone                                                   " use popup menu for completion even if only one match
 set cursorline                                                             " only use this for CursorLineNr
 set define=[^A-Za-z_]                                                      " for macro definition
@@ -265,7 +258,6 @@ set expandtab                                                              " use
 set fileencodings=utf-8,latin1                                             " list of fileencodings to try
 set fillchars+=fold:\                                                      " chars used for filling the folded line when folded
 set foldcolumn=2                                                           " width of foldcolumn
-"set foldclose=all                                                          " autoclose fold when jumping out of it
 set foldenable                                                             " when off, all folds are open
 set foldignore=#                                                           " lines starting with char will get their fold level from surrounding lines
 set foldlevel=99                                                           " folds with a higher level will be closed
@@ -364,15 +356,15 @@ set wildmode=list:longest,full                                             " com
 
 " Vim only options
 if !has('nvim')
-  set term=rxvt-unicode-256color                                             " set terminal
-  set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                            " what to save in the viminfo
-  set undodir=~/var/vim/undo                                                 " where to keep the undos
-  set lazyredraw                                                             " do not redraw screen while executing macros etc
-  set title                                                                  " send a title string to the terminal
+  set term=rxvt-unicode-256color                                           " set terminal
+  set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                          " what to save in the viminfo
+  set undodir=~/var/vim/undo                                               " where to keep the undos
+  set lazyredraw                                                           " do not redraw screen while executing macros etc
+  set title                                                                " send a title string to the terminal
 " Neovim only options
 else
-  set notitle                                                                " fixes bug in neovim where statusline is messed up
-  set mouse=""                                                               " disable mouse
+  set notitle                                                              " fixes bug in neovim where statusline is messed up
+  set mouse=""                                                             " disable mouse
 endif
 
 
@@ -753,8 +745,17 @@ function! s:infer_filetype()
   endif
 endfunction
 
+
 " show syntax group for item under cursor
-nmap <C-e> :call SynStack()<CR>
+if has('nvim')
+  nmap <C-e> :Inspect<cr>
+else
+  nmap <C-e> :call SynStack()<CR>
+endif
+
+
+
+
 fu! SynStack()
   if !exists("*synstack")
     return
@@ -868,6 +869,9 @@ augroup END
 augroup WebbHuset
   autocmd!
   autocmd BufRead,BufNewFile ~/dev/webbhuset/* setlocal sw=4
+  " map tab in normal mode to bdelete for php files
+  " to be used together with backspace, go to definition
+  autocmd FileType php nnoremap <buffer> <tab> :bdelete<cr>
 augroup END
 
 " fun with the USR signals
