@@ -1,12 +1,6 @@
---require('lsp-zero')
---
---
----- enable default keybindings
---local lsp_zero = require('lsp-zero')
---
---lsp_zero.on_attach(function(client, bufnr)
---  lsp_zero.default_keymaps({buffer = bufnr})
---end)
+
+-- disable diagnostics globaly
+-- vim.diagnostic.disable()
 
 
 local lsp_zero = require('lsp-zero')
@@ -82,8 +76,6 @@ require('mason-lspconfig').setup({
   },
 })
 
--- disable diagnostics globaly
-vim.diagnostic.disable()
 
 
 -- borders for popups

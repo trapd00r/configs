@@ -1,51 +1,10 @@
 " ${VIMRUNTIME}/vimrc
 "       owner  Magnus Woldrich <m@japh.se>
 "       btime  2009-04-24
-"       mtime  2023-01-22 13:15:49
+"       mtime  2024-03-03 16:43:21
 "         git  http://github.com/trapd00r/configs/
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
-
-" plugin/blockwise.vim
-" plugin/smartcom.vim
-
-let g:develop_plugin = 1
-
-"  use 'wbthomason/packer.nvim'
-" 
-"    use 'neovim/nvim-lspconfig'
-"    use 'hrsh7th/cmp-nvim-lsp'
-"    use 'hrsh7th/cmp-buffer'
-"    use 'hrsh7th/nvim-cmp'
-" 
-"    use 'p00f/clangd_extensions.nvim'
-" 
-"    use 'hrsh7th/cmp-vsnip'
-"    use 'hrsh7th/vim-vsnip'
-" 
-"    use { 'nvim-treesitter/nvim-treesitter', run=':TSUpdate' }
-" 
-"    use { 'https://github.com/godlygeek/tabular.git', as='tabular' }
-"    use { 'https://github.com/tpope/vim-fugitive.git', as='vim-fugitive' }
-"    use 'tpope/vim-unimpaired'
-"    use 'schickling/vim-bufonly'
-"    use 'rbgrouleff/bclose.vim'
-" 
-
-"    use 'chentoast/marks.nvim'
-" 
-"    use 'rhysd/clever-f.vim'
-"    use 'junegunn/rainbow_parentheses.vim'
-"    use 'vim-airline/vim-airline'
-" 
-"    use 'linrongbin16/fzfx.vim'
-"    use 'nvim-treesitter/nvim-treesitter-context'
-" 
-"    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-"    use 'tenxsoydev/size-matters.nvim'
-"    use 'mg979/vim-visual-multi'
-"    use 'nanotee/zoxide.vim'
-
 
 " ========== INIT START =================================
 set nocp
@@ -207,7 +166,6 @@ set cindent                                                                " c p
 set cinkeys-=0#                                                            " https://stackoverflow.com/questions/354097/how-to-configure-vim-to-not-put-comments-at-the-beginning-of-lines-while-editing#comment127103383_354097
 set clipboard=unnamed                                                      " define clipboard registers to use
 set cdhome                                                                 " cd to ~ on :cd
-set cmdheight=1                                                            " avoid 'Press ENTER to continue' prompts
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
 set completeopt+=menuone                                                   " use popup menu for completion even if only one match
@@ -322,8 +280,11 @@ if !has('nvim')
   set undodir=~/var/vim/undo                                               " where to keep the undos
   set lazyredraw                                                           " do not redraw screen while executing macros etc
   set title                                                                " send a title string to the terminal
+  set cmdheight=1
 " Neovim only options
 else
+  set cmdheight=0
+  set winbar=lol
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
 endif
