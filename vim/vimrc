@@ -95,24 +95,14 @@ for myplugin in [
 \  'foldsearches.vim',
 \  'hlnext.vim',
 \  'neverland-vim-theme',
-\  'udpopup.vim',
 \  'vim-scriptease',
-\  'vim-syntax-notes',
 \  'yankmatches.vim',
 \  'LS_COLORS-edir.vim',
 \  'LS_COLORS.vim']
 
   let path = expand("%:p:h:h")
 
-  " developing, use dev version of plugin
-  " ~/dev/LS_COLORS.vim/
-" if path =~ '\vdev[/]' . myplugin || g:develop_plugin == 1
-"   Plug path
-
-  " use stable version
-"  else
-    Plug 'trapd00r/' . myplugin
-"  endif
+  Plug 'trapd00r/' . myplugin
 endfor
 
 
@@ -126,8 +116,6 @@ Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
-Plug 'tridactyl/vim-tridactyl'
-Plug 'chrisbra/Colorizer'
 
 " Vdebug
 if !exists('g:vdebug_options')
@@ -158,7 +146,7 @@ Plug 'kshenoy/vim-signature'            " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
 Plug 'machakann/vim-highlightedundo'    " highlight undo operations
 Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
-Plug 'markonm/traces.vim'               " live preview of ex commands
+Plug 'markonm/traces.vim'               " live preview of ex commands like :%s
 Plug 'pseewald/vim-anyfold'             " fold around anything
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
@@ -168,6 +156,7 @@ Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
+Plug 'chrisbra/Colorizer'               " colorize hex codes etc
 
 
 if has('nvim')
@@ -176,11 +165,6 @@ if has('nvim')
   Plug 'nvim-telescope/telescope.nvim'   " fuzzy finder
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-lualine/lualine.nvim'       " statusline
-  Plug 'SmiteshP/nvim-navic'             " context
-  Plug 'fgheng/winbar.nvim'              " window bar
-
-  " magento
-  Plug 'pbogut/magento2-ls'
 
   " lsp, completion
   Plug 'VonHeikemen/lsp-zero.nvim'
@@ -197,7 +181,14 @@ if has('nvim')
   Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'rafamadriz/friendly-snippets'
+
+  Plug 'mfussenegger/nvim-dap' " debug adapters
+
+  Plug 'stevearc/dressing.nvim' " better ui dialogs
 endif
+
+nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
+nnoremap <leader>C :lua require'dap'.continue()
 
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -338,7 +329,7 @@ endif
 
 " ========== OPTIONS END ================================
 
-color neverland_black_bg
+colorscheme neverland_black_bg
 
 " ========== MAPPINGS START =============================
 " ATTENTION! <leader> #1
@@ -357,8 +348,8 @@ nmap <silent> <LEFT><LEFT>    :cpfile<CR><C-G>
 nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
 
 " Github copilot
-imap <silent> <C-j> <Plug>(copilot-next)
-imap <silent> <C-k> <Plug>(copilot-previous)
+"imap <silent> <C-j> <Plug>(copilot-next)
+"imap <silent> <C-k> <Plug>(copilot-previous)
 "imap <silent> <C-\> <Plug>(copilot-dismiss)
 
 " toggle listchars
@@ -842,40 +833,17 @@ augroup WebbHuset
   autocmd FileType php nnoremap <buffer> <tab> :bdelete<cr>
 augroup END
 
-" fun with the USR signals
-"autocmd SigUSR1 * call popup_notification('Got SIGUSR1!', {})
-" whenever something's yanked, write it to a file
-"au TextYankPost * :call YankedToYankLog()
-"
-"function! YankedToYankLog()
-"  let yanked = getreg('*')
-"
-"  " do not want only whitespace
-"  if yanked !~ '\S'
-"    return
-"  endif
-"
-"  let yanklog = expand('~/yanklog')
-"
-"  " append yanked data to log
-"  call writefile(split(yanked, "\n", 1), yanklog, 'a')
-"endfunction
-
 " disable automatic comment on newline
 autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " enable use of $LS_COLORS coloring in appropriate files
 autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
 
-" set custom options for man/perldoc (C-k etc)
-" the perldoc filetype is my own custom modified perl.vim
-autocmd FileType man set nonumber | set filetype=perldoc
-
 " do not show tabs in go files
 autocmd FileType go setlocal nolist
 
 " enable Rainbows everywhere
-" autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
+autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
 
 " set quickfix window height and make it modifiable
 autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
@@ -991,119 +959,119 @@ highlight User9 ctermfg=197 ctermbg=232 cterm=none
 " Here's an aid for generating this:
 " curl -s https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS | grep -Pv '^(?:[#*]|TERM)|^$' | perl -pe 's{^\.?(\S+)\s+(?:[34]8;5;(\d+))}{elsif(a:filename =~ "\v.+\.$1")\n  highlight User4 ctermfg=$2 ctermbg=234 cterm=none};s{;\d+$}{}' | perl -pe "s/\"/'/g"
 
-function! LsColorForStatusLine(filename)
-  if(a:filename =~ '\v.+\.sh')
-    highlight User4 ctermfg=172 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.vim')
-    highlight User4 ctermfg=106 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.txt')
-    highlight User4 ctermfg=188 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.(css|sass)')
-    highlight User4 ctermfg=125 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.csv')
-    highlight User4 ctermfg=078 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.js[mp]?')
-    highlight User4 ctermfg=074 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.json')
-    highlight User4 ctermfg=178 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.log')
-    highlight User4 ctermfg=190 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.(markdown|md)')
-    highlight User4 ctermfg=190 ctermbg=232 cterm=bold
-
-  elseif(a:filename =~ '\vREADME|CHANGES')
-    highlight User4 ctermfg=190 ctermbg=232 cterm=bold
-
-  elseif(a:filename =~ '\v.+\.php')
-    highlight User4 ctermfg=081 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\vMakefile([.]PL)?')
-    highlight User4 ctermfg=196 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.pl')
-    highlight User4 ctermfg=208 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.pm')
-    highlight User4 ctermfg=203 ctermbg=232 cterm=none
-
-
-  elseif(a:filename =~ '\v.+\.(sql|sqlite)')
-    highlight User4 ctermfg=222 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.t$')
-    highlight User4 ctermfg=114 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.tt$')
-    highlight User4 ctermfg=173 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.html?$')
-    highlight User4 ctermfg=132 ctermbg=232 cterm=none
-
-  elseif(a:filename =~ '\v.+\.php?$')
-    highlight User4 ctermfg=081 ctermbg=232 cterm=none
-
-  else
-    highlight User4 ctermfg=137 ctermbg=232 cterm=none
-  endif
-endfun
-
-function! SetStatusLineAskasButik()
-  return expand("$ASKAS_BUTIK")
-endfun
-
-" do it like so I can color a/m/r differently
-function! GitStatusStatusLine(opt)
-  let [added,modified,removed] = GitGutterGetHunkSummary()
-
-  if [added,modified,removed] == [0, 0, 0]
-    return ""
-  endif
-
-  if a:opt == 'added' && added != 0
-    return ' ' . added . ' '
-  elseif a:opt == 'modified' && modified != 0
-    return ' ' . modified . ' '
-  elseif a:opt == 'removed' && removed != 0
-    return ' ' . removed . ''
-  else
-    return ''
-  endif
-endfunction
-
-function! GitBranchStatusLine()
-  let current_branch = FugitiveHead()
-  let shorter = substitute(current_branch, 'Magnus/', '', '')
-  return printf("%.25s", shorter)
-endfunction
-
-" display either:
-"   scp1/.vimrc
-"   Code/Module.pm
-function! FileNameStatusLine()
-  let one_dir_up = expand('%:p:h:t')
-  let basename   = expand('%:t')
-
-  if one_dir_up != '.'
-    return one_dir_up .. '/' .. basename
-  else
-    return basename
-  endif
-endfunction
-
-function! FileNameStatusLineHP()
-  let name   = expand('%:.')
-  return name
-endfunction
-
 if !has('nvim')
+  function! LsColorForStatusLine(filename)
+    if(a:filename =~ '\v.+\.sh')
+      highlight User4 ctermfg=172 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.vim')
+      highlight User4 ctermfg=106 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.txt')
+      highlight User4 ctermfg=188 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.(css|sass)')
+      highlight User4 ctermfg=125 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.csv')
+      highlight User4 ctermfg=078 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.js[mp]?')
+      highlight User4 ctermfg=074 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.json')
+      highlight User4 ctermfg=178 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.log')
+      highlight User4 ctermfg=190 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.(markdown|md)')
+      highlight User4 ctermfg=190 ctermbg=232 cterm=bold
+  
+    elseif(a:filename =~ '\vREADME|CHANGES')
+      highlight User4 ctermfg=190 ctermbg=232 cterm=bold
+  
+    elseif(a:filename =~ '\v.+\.php')
+      highlight User4 ctermfg=081 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\vMakefile([.]PL)?')
+      highlight User4 ctermfg=196 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.pl')
+      highlight User4 ctermfg=208 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.pm')
+      highlight User4 ctermfg=203 ctermbg=232 cterm=none
+  
+  
+    elseif(a:filename =~ '\v.+\.(sql|sqlite)')
+      highlight User4 ctermfg=222 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.t$')
+      highlight User4 ctermfg=114 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.tt$')
+      highlight User4 ctermfg=173 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.html?$')
+      highlight User4 ctermfg=132 ctermbg=232 cterm=none
+  
+    elseif(a:filename =~ '\v.+\.php?$')
+      highlight User4 ctermfg=081 ctermbg=232 cterm=none
+  
+    else
+      highlight User4 ctermfg=137 ctermbg=232 cterm=none
+    endif
+  endfun
+  
+  function! SetStatusLineAskasButik()
+    return expand("$ASKAS_BUTIK")
+  endfun
+  
+  " do it like so I can color a/m/r differently
+  function! GitStatusStatusLine(opt)
+    let [added,modified,removed] = GitGutterGetHunkSummary()
+  
+    if [added,modified,removed] == [0, 0, 0]
+      return ""
+    endif
+  
+    if a:opt == 'added' && added != 0
+      return ' ' . added . ' '
+    elseif a:opt == 'modified' && modified != 0
+      return ' ' . modified . ' '
+    elseif a:opt == 'removed' && removed != 0
+      return ' ' . removed . ''
+    else
+      return ''
+    endif
+  endfunction
+  
+  function! GitBranchStatusLine()
+    let current_branch = FugitiveHead()
+    let shorter = substitute(current_branch, 'Magnus/', '', '')
+    return printf("%.25s", shorter)
+  endfunction
+  
+  " display either:
+  "   scp1/.vimrc
+  "   Code/Module.pm
+  function! FileNameStatusLine()
+    let one_dir_up = expand('%:p:h:t')
+    let basename   = expand('%:t')
+  
+    if one_dir_up != '.'
+      return one_dir_up .. '/' .. basename
+    else
+      return basename
+    endif
+  endfunction
+  
+  function! FileNameStatusLineHP()
+    let name   = expand('%:.')
+    return name
+  endfunction
+
   autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
   set statusline=
   "set statusline +=%1*\ %n\ %*                          " buffer number
@@ -1125,8 +1093,8 @@ if !has('nvim')
   set statusline +=%1*/%L%*                              " total lines
   set statusline +=%1*%4v\ %*                            " virtual column number
   set statusline +=%1*0x%04B\ %*                         " character under cursor
-else
 endif
+
 
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
@@ -1391,13 +1359,40 @@ highlight clear CursorLine
 highlight link CursorLineNr LineNr
 highlight CursorLineNr ctermfg=208
 
+highlight LspCodeActionLine             ctermfg=220
+highlight LspCodeActionText             ctermfg=196
+highlight LspErrorHighlight             ctermfg=196
+highlight LspErrorLine                  ctermfg=196
+highlight LspErrorText                  ctermfg=196
+highlight LspErrorVirtualText           ctermfg=196
+highlight LspHintHighlight              ctermfg=196
+highlight LspHintLine                   ctermfg=196
+highlight LspHintText                   ctermfg=208
+highlight LspHintVirtualText            ctermfg=196
+highlight LspInformationHighlight       ctermfg=196
+highlight LspInformationLine            ctermfg=196
+highlight LspInformationText            ctermfg=220
+highlight LspInformationVirtualText     ctermfg=196
+highlight LspWarningHighlight           ctermfg=196
+highlight LspWarningLine                ctermfg=196
+highlight LspWarningText                ctermfg=196
+highlight LspWarningVirtualText         ctermfg=196
+
+" reference under cursor
+highlight lspReference                  cterm=underline
+
+highlight jsFunction ctermfg=111 cterm=bold
+highlight jsFuncName ctermfg=118
+highlight jsVariableDef ctermfg=10
+highlight jsNull ctermfg=196
+highlight jsString ctermfg=137
+
+" popup windows
+hi NormalFloat ctermbg=232
+hi FloatBorder ctermbg=232 ctermfg=202
+
 
 " ========== HIGHLIGHTING END ===========================
-" ========== ASKåS START ===============================
-"set encoding=utf-8
-
-"nmap <C-b> :make<cr>
-" ========== ASKåS END =================================
 " ========== TEMPLATES START ============================
 autocmd BufNewFile *.vim silent! 0r $VIMRUNTIME/templates/template.vim
 autocmd BufNewFile *.c   silent! 0r $VIMRUNTIME/templates/template.c
@@ -1587,81 +1582,3 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
-" ========== NOTES START ================================
-" zz Fold around searches
-" zu Fold around use statements
-"
-" <leader>ym - yank matches
-" <leader>yM - yank non matches
-"
-" <leader>dm - delete matches
-" <leader>dM - delete non matches
-"
-" ^vB - blockwise : operations
-"
-" ga => char info
-"
-" <leader><return> - highlight the current line
-"
-" <leader>cc - toggle colorcolum at cursor positions
-" ========== NOTES END ==================================
-
-
-hi LspCodeActionLine             ctermfg=220
-hi LspCodeActionText             ctermfg=196
-hi LspErrorHighlight             ctermfg=196
-hi LspErrorLine                  ctermfg=196
-hi LspErrorText                  ctermfg=196
-hi LspErrorVirtualText           ctermfg=196
-hi LspHintHighlight              ctermfg=196
-hi LspHintLine                   ctermfg=196
-hi LspHintText                   ctermfg=208
-hi LspHintVirtualText            ctermfg=196
-hi LspInformationHighlight       ctermfg=196
-hi LspInformationLine            ctermfg=196
-hi LspInformationText            ctermfg=220
-hi LspInformationVirtualText     ctermfg=196
-hi LspWarningHighlight           ctermfg=196
-hi LspWarningLine                ctermfg=196
-hi LspWarningText                ctermfg=196
-hi LspWarningVirtualText         ctermfg=196
-
-" reference under cursor
-hi lspReference                  cterm=underline
-
-"let g:javascript_conceal_function             = "F"
-"let g:javascript_conceal_null                 = "ø"
-"let g:javascript_conceal_this                 = "@"
-"let g:javascript_conceal_return               = "⇚"
-"let g:javascript_conceal_undefined            = "¿"
-"let g:javascript_conceal_NaN                  = "ℕ"
-"let g:javascript_conceal_prototype            = "¶"
-"let g:javascript_conceal_static               = "•"
-"let g:javascript_conceal_super                = "Ω"
-"let g:javascript_conceal_arrow_function       = "⇒"
-"let g:javascript_conceal_noarg_arrow_function = "🞅"
-"let g:javascript_conceal_underscore_arrow_function = "🞅"
-"set conceallevel=1
-
-" disable everything except function defs
-let g:lsp_diagnostics_enabled = 0
-
-"111 bold sub
-hi jsFunction ctermfg=111 cterm=bold
-hi jsFuncName ctermfg=118
-hi jsVariableDef ctermfg=10
-hi jsNull ctermfg=196
-hi jsString ctermfg=137
-"hi jsOperator ctermfg=196
-"hi jsParen cterm=bold
-
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-set grepprg=rg\ --vimgrep
-"nnoremap K :grep! "\b\\\\<C-R><C-W>\b"<CR>:cw<CR>
-
-" Goto definition of class or class member under the cursor
-
-" popup windows
-hi NormalFloat ctermbg=232
-hi FloatBorder ctermbg=232 ctermfg=202
