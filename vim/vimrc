@@ -143,20 +143,15 @@ let g:vdebug_features['max_children'] = 128
 
 
 
-Plug 'DanielFGray/DistractionFree.vim'  " toggle various things in one keystroke
-Plug 'DanilaMihailov/vim-tips-wiki'     " tips from vim tips wiki inside :help
 Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
 Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
 Plug 'github/copilot.vim'               " AI, yo
-Plug 'hotchpotch/perldoc-vim'           " press K for perldoc
 Plug 'junegunn/fzf'                     " fuzzy...
 Plug 'junegunn/fzf.vim'                 " ... all the things
-"Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
-Plug 'junegunn/vim-peekaboo'            " peek at registers prior to pasting
+Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
 Plug 'junegunn/vim-plug'                " self
-"Plug 'junegunn/goyo.vim'                " distractionless
 Plug 'ludovicchabant/vim-gutentags'     " tag management
 Plug 'kien/ctrlp.vim'                   " I don't use this but ctrlp-funky depends on it
 Plug 'kshenoy/vim-signature'            " place, toggle, display marks
@@ -167,16 +162,12 @@ Plug 'markonm/traces.vim'               " live preview of ex commands
 Plug 'pseewald/vim-anyfold'             " fold around anything
 Plug 'rhysd/clever-f.vim'               " keep smashing f
 Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
-Plug 'shawncplus/phpcomplete.vim'       " improved php completion
-Plug 'smkent/vim-pipe-preview'          " scrollbind preview;  pip3 install mdv3
+"Plug 'shawncplus/phpcomplete.vim'       " improved php completion
 Plug 'tacahiroy/ctrlp-funky'            " function navigator
 Plug 'tpope/vim-fugitive'               " git wrapper
 Plug 'tpope/vim-repeat'                 " repeat all the things
-"Plug 'tpope/vim-surround'               " surround all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
-"Plug 'vimwiki/vimwiki'                  " wiki waka wiki waka
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
-Plug 'zirrostig/vim-schlepp'            " move visual selections around
 
 
 if has('nvim')
@@ -190,7 +181,6 @@ if has('nvim')
 
   " magento
   Plug 'pbogut/magento2-ls'
-
 
   " lsp, completion
   Plug 'VonHeikemen/lsp-zero.nvim'
@@ -207,33 +197,11 @@ if has('nvim')
   Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'rafamadriz/friendly-snippets'
-
-
 endif
 
 "inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
-
-
-" \ 'blocklist': ['c', 'cpp', 'html', 'php'],
-"autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-"\ 'name': 'omni',
-"\ 'allowlist': ['*'],
-"\ 'blocklist': ['c', 'cpp', 'html', 'php'],
-"\ 'completor': function('asyncomplete#sources#omni#completor'),
-"\ 'config': {
-"\   'show_source_kind': 1,
-"\ },
-"\ }))
-
-
-"Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
-"Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
-
-
-
 
 call plug#end()
 " ========== INIT END ===================================
@@ -1694,3 +1662,6 @@ set grepprg=rg\ --vimgrep
 
 " Goto definition of class or class member under the cursor
 
+" popup windows
+hi NormalFloat ctermbg=232
+hi FloatBorder ctermbg=232 ctermfg=202
