@@ -64,8 +64,6 @@ for myplugin in [
   Plug 'trapd00r/' . myplugin
 endfor
 
-
-
 " extra syntax rules
 Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
@@ -75,18 +73,6 @@ Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
 Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
-
-" Vdebug
-if !exists('g:vdebug_options')
-    let g:vdebug_options = {}
-endif
-if !exists('g:vdebug_features')
-    let g:vdebug_features = {}
-endif
-let g:vdebug_options.port = 9003
-let g:vdebug_options.path_maps = { '/srv/magento': '/home/scp1/dev/webbhuset/dermalogica/magento/' }
-let g:vdebug_options.break_on_open = 0
-let g:vdebug_features['max_children'] = 128
 
 
 
@@ -1063,6 +1049,18 @@ endif
 
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+" Vdebug
+if !exists('g:vdebug_options')
+    let g:vdebug_options = {}
+endif
+if !exists('g:vdebug_features')
+    let g:vdebug_features = {}
+endif
+let g:vdebug_options.port = 9003
+let g:vdebug_options.path_maps = { '/srv/magento': '/home/scp1/dev/webbhuset/dermalogica/magento/' }
+let g:vdebug_options.break_on_open = 0
+let g:vdebug_features['max_children'] = 128
 
 let g:markdown_fenced_languages = ['html', 'js=javascript', 'bash=zsh', 'perl', 'python', 'ruby', 'sql', 'vim', 'css']
 
