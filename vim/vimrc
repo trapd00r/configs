@@ -139,9 +139,9 @@ endif
 nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
 nnoremap <leader>C :lua require'dap'.continue()
 
-"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 call plug#end()
 " ========== INIT END ===================================
@@ -175,7 +175,6 @@ set foldminlines=2                                                         " clo
 set foldnestmax=4                                                          " maximum nesting when using syntax or indent foldmethods
 set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo          " actions that will open a fold
 set formatoptions=qro                                                      " options for formatting; like gq
-set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'        " much better formatting
 set grepprg=internal                                                       " what grep to use
 set helpheight=5                                                           " height of help window
 set helplang=en                                                            " language of help
@@ -269,10 +268,11 @@ if !has('nvim')
   set lazyredraw                                                           " do not redraw screen while executing macros etc
   set title                                                                " send a title string to the terminal
   set cmdheight=1
+  set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'        " much better formatting
 " Neovim only options
 else
   set cmdheight=0
-  set winbar=lol
+"  set winbar=lol
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
 endif

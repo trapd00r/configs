@@ -2,7 +2,7 @@
 
 local function FileLsColored()
   -- Get the current file name
-  local filename = vim.fn.expand('%:t')
+  local filename = vim.fn.expand('%:.')
   local extension = vim.fn.expand('%:e')
 
   HLgroup = '%#LsColorLuaLine#'
