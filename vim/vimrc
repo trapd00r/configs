@@ -72,9 +72,8 @@ Plug 'pangloss/vim-javascript',        { 'for': 'javascript' }
 Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
-Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
 
-
+"Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
 
 Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
@@ -108,6 +107,7 @@ if has('nvim')
   Plug 'nvim-treesitter/nvim-treesitter' " treesitter
   Plug 'nvim-lua/plenary.nvim'           " required for telescope
   Plug 'nvim-telescope/telescope.nvim'   " fuzzy finder
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-lualine/lualine.nvim'       " statusline
 
@@ -272,9 +272,10 @@ if !has('nvim')
 " Neovim only options
 else
   set cmdheight=0
-"  set winbar=lol
+  set winbar=\ \ \ \ \ \ %<%{getcwd()}/%f\ %m%r
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
+  highlight Winbar ctermfg=84
 endif
 
 
@@ -285,6 +286,11 @@ colorscheme neverland_black_bg
 " ========== MAPPINGS START =============================
 " ATTENTION! <leader> #1
 let mapleader=','
+
+if has('nvim')
+  nnoremap <leader>ss :Telescope lsp_document_symbols<cr>
+  nnoremap <leader>dD :Telescope diagnostics<cr>
+endif
 
 " up and down for stepping through the file list
 nnoremap <silent> <UP> :prev<cr>
@@ -306,10 +312,8 @@ nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
 " toggle listchars
 map <C-q> :set list!<cr>
 
-" go to tag definition and go back
+" go to definition and go back
 nnoremap <backspace> <C-]>
-autocmd Filetype php nnoremap <backspace> :PhpactorGotoDefinition<cr>
-"autocmd Filetype php nnoremap <backspace> :PhpactorGotoDefinitionVsplit<cr>
 nnoremap <tab>       <C-T>
 
 " perldoc what's under the cursor
@@ -543,7 +547,26 @@ nnoremap ? V:BCommits<cr>
 nnoremap <leader>Gc :Commits<cr>
 
 " most recent files
-nnoremap <space> :History<cr>
+if has('nvim') 
+  nnoremap <space> :Telescope oldfiles<cr>
+  nnoremap <leader>gr :call LiveGrepTelescopeProjectDir()<cr>
+
+
+  function! LiveGrepTelescopeProjectDir()
+    let l:dir = system('git rev-parse --show-toplevel')
+    let l:dir = substitute(l:dir, '\n$', '', '')
+    if l:dir ==# ''
+      echoerr 'Not in a git repo'
+      return
+    endif
+    execute 'Telescope live_grep search_dirs={"' . l:dir . '"}'
+  endfunction
+
+
+else
+  nnoremap <space> :History<cr>
+endif
+
 
 " commandline history
 nnoremap <leader>H :History:<cr>
@@ -662,9 +685,6 @@ if has('nvim')
 else
   nmap <C-e> :call SynStack()<CR>
 endif
-
-
-
 
 fu! SynStack()
   if !exists("*synstack")
@@ -1548,3 +1568,20 @@ autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 
 " FIXME
 hi clear Error
+hi WinBar cterm=none ctermfg=225
+
+highlight! TelescopeBorder ctermfg=238
+highlight! TelescopeNormal ctermfg=137
+"highlight! TelescopeSelection ctermfg=232 ctermbg=196
+highlight! TelescopeSelection cterm=reverse
+highlight! TelescopeSelectionCaret ctermfg=196
+highlight! TelescopeMatching ctermbg=232 ctermfg=196 cterm=reversebold
+highlight! TelescopePromptPrefix ctermfg=196
+highlight! TelescopePromptBorder ctermfg=240
+highlight! TelescopePrompt ctermfg=220
+highlight! TelescopeMultiSelection ctermfg=196
+highlight! TelescopeResultsBorder ctermfg=240
+highlight! TelescopePreviewBorder ctermfg=240
+highlight! TelescopePreview ctermfg=137
+highlight! TelescopePreviewTitle ctermfg=196
+
