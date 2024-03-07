@@ -6,12 +6,13 @@
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
+let g:loaded_matchit = 1
 " ========== INIT START =================================
 set nocp
 filetype plugin indent on
 syntax on
 
-runtime macros/matchit.vim                                                 " % on if/else
+"runtime macros/matchit.vim                                                 " % on if/else
 "runtime syntax/hitest.vim                                                  " dump all hi groups in a buffer
 
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
@@ -77,7 +78,6 @@ Plug 'fatih/vim-go',                   { 'for': 'go' }
 
 Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
 Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
-Plug 'airblade/vim-matchquote'          " % for quotes, backticks and pipes
 Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
 Plug 'github/copilot.vim'               " AI, yo
 Plug 'junegunn/fzf'                     " fuzzy...
@@ -101,6 +101,7 @@ Plug 'tpope/vim-repeat'                 " repeat all the things
 Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'chrisbra/Colorizer'               " colorize hex codes etc
+Plug 'andymass/vim-matchup'             " % for all the things
 
 
 if has('nvim')
@@ -1583,5 +1584,5 @@ highlight! TelescopeMultiSelection ctermfg=196
 highlight! TelescopeResultsBorder ctermfg=240
 highlight! TelescopePreviewBorder ctermfg=240
 highlight! TelescopePreview ctermfg=137
-highlight! TelescopePreviewTitle ctermfg=196
+highlight! TelescopePreviewTitle cterm=italicbold ctermfg=244
 
