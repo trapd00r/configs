@@ -102,10 +102,11 @@ Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its 
 Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'chrisbra/Colorizer'               " colorize hex codes etc
 Plug 'andymass/vim-matchup'             " % for all the things
+Plug 'Eandrju/cellular-automaton.nvim'  " 
 
 
 if has('nvim')
-  Plug 'Eandrju/cellular-automaton.nvim' " make it rain
+  Plug 'Eandrju/cellular-automaton.nvim' " :CellularAutomaton make_it_rain
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'kevinhwang91/nvim-ufo'         " better looking folds
   Plug 'kevinhwang91/promise-async'    " required for nvim-ufo
@@ -113,7 +114,6 @@ if has('nvim')
   Plug 'nvim-telescope/telescope.nvim' " fuzzy finder
   Plug 'lewis6991/gitsigns.nvim'       " git stuff
   Plug 'nvim-lualine/lualine.nvim'     " statusline
-
   " lsp, completion
   Plug 'VonHeikemen/lsp-zero.nvim'
   Plug 'neovim/nvim-lspconfig'

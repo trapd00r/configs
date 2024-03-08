@@ -70,16 +70,21 @@ Xcursor.theme: xcursor-breeze
 Xcursor.size:  12
 
 URxvt.font:               -windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252, \
-                          xft:Symbola:minspace=True:embolden=true
+                          xft:Symbola:minspace=True:embolden=true, \
+                          xft:Terminess Nerd Font:style=Regular
 
 URxvt.boldfont:           -windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252, \
-                          xft:Symbola:minspace=True:embolden=true
+                          xft:Symbola:minspace=True:embolden=true, \
+                          xft:Terminess Nerd Font:style=Regular
+
 
 URxvt.italicFont:         -schumacher-clean-medium-r-normal--10-100-75-75-c-60-iso646.1991-irv, \
-                          xft:Symbola
+                          xft:Symbola, \
+                          xft:Terminess Nerd Font:style=Regular
 
 URxvt.boldItalicFont:     xft:ProFont:style=Regular:pixelsize=10:antialias=0:hinting=0:hintstyle=0, \
-                          xft:Symbola
+                          xft:Symbola, \
+                          xft:Terminess Nerd Font:style=Regular
 !URxvt.boldItalicFont:     xft:FiraMono Nerd Font:style=Bold:pixelsize=11, \
 !                          xft:Symbola
 

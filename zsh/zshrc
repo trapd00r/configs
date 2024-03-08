@@ -1430,7 +1430,7 @@ export GDK_CORE_DEVICE_EVENTS=1
 eval "$(github-copilot-cli alias -- "$0")"
 alias wh='cd ~/dev/webbhuset'
 
-font-tamsyn
+#font-tamsyn
 builtin cd -P ~/etc/zsh/cwd
 
 alias composer='composer --ignore-platform-reqs'
