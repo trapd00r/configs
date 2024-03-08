@@ -4,10 +4,13 @@
 [user]
   name  = Magnus Woldrich
   email = magnus.woldrich@gmail.com
+[push]
+  autosetupremote = true
 [core]
   pager = delta
+  hooksPath = ~/.hooks/
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 [color]
   branch     = auto
   diff       = 1
