@@ -105,16 +105,17 @@ Plug 'andymass/vim-matchup'             " % for all the things
 
 
 if has('nvim')
-  Plug 'nvim-treesitter/nvim-treesitter' " treesitter
-  Plug 'nvim-lua/plenary.nvim'           " required for telescope
-  Plug 'nvim-telescope/telescope.nvim'   " fuzzy finder
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-  Plug 'lewis6991/gitsigns.nvim'
-  Plug 'nvim-lualine/lualine.nvim'       " statusline
+  Plug 'Eandrju/cellular-automaton.nvim' " make it rain
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'kevinhwang91/nvim-ufo'         " better looking folds
+  Plug 'kevinhwang91/promise-async'    " required for nvim-ufo
+  Plug 'nvim-lua/plenary.nvim'         " required for telescope
+  Plug 'nvim-telescope/telescope.nvim' " fuzzy finder
+  Plug 'lewis6991/gitsigns.nvim'       " git stuff
+  Plug 'nvim-lualine/lualine.nvim'     " statusline
 
   " lsp, completion
   Plug 'VonHeikemen/lsp-zero.nvim'
-
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/mason.nvim'
   Plug 'williamboman/mason-lspconfig.nvim'
@@ -123,18 +124,12 @@ if has('nvim')
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
-  Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'hrsh7th/cmp-nvim-lua'
-  Plug 'L3MON4D3/LuaSnip'
-  Plug 'rafamadriz/friendly-snippets'
-
   Plug 'ray-x/lsp_signature.nvim'
 
-  Plug 'mfussenegger/nvim-dap' " debug adapters
+  Plug 'mfussenegger/nvim-dap'         " debug adapters
 
-  Plug 'stevearc/dressing.nvim' " better ui dialogs
-  Plug 'kevinhwang91/nvim-ufo'  " better looking folds
-  Plug 'kevinhwang91/promise-async' " required for nvim-ufo
+  Plug 'stevearc/dressing.nvim'        " better ui dialogs
 endif
 
 nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
@@ -291,6 +286,13 @@ let mapleader=','
 if has('nvim')
   nnoremap <leader>ss :Telescope lsp_document_symbols<cr>
   nnoremap <leader>dD :Telescope diagnostics<cr>
+
+  nnoremap <F12> :call Rain()<cr>
+
+  function! Rain()
+    TSBufEnable highlight
+    CellularAutomaton make_it_rain
+  endfunction
 endif
 
 " up and down for stepping through the file list
@@ -548,8 +550,10 @@ nnoremap ? V:BCommits<cr>
 nnoremap <leader>Gc :Commits<cr>
 
 " most recent files
-if has('nvim') 
-  nnoremap <space> :Telescope oldfiles<cr>
+if has('nvim')
+"  nnoremap <space> :Telescope oldfiles sorting_strategy=ascending<cr>
+"  nnoremap <space> :Telescope frecency workspace=CWD<cr>
+  nnoremap <space> :History<cr>
   nnoremap <leader>gr :call LiveGrepTelescopeProjectDir()<cr>
 
 
@@ -935,79 +939,79 @@ if !has('nvim')
   function! LsColorForStatusLine(filename)
     if(a:filename =~ '\v.+\.sh')
       highlight User4 ctermfg=172 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.vim')
       highlight User4 ctermfg=106 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.txt')
       highlight User4 ctermfg=188 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.(css|sass)')
       highlight User4 ctermfg=125 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.csv')
       highlight User4 ctermfg=078 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.js[mp]?')
       highlight User4 ctermfg=074 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.json')
       highlight User4 ctermfg=178 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.log')
       highlight User4 ctermfg=190 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.(markdown|md)')
       highlight User4 ctermfg=190 ctermbg=232 cterm=bold
-  
+
     elseif(a:filename =~ '\vREADME|CHANGES')
       highlight User4 ctermfg=190 ctermbg=232 cterm=bold
-  
+
     elseif(a:filename =~ '\v.+\.php')
       highlight User4 ctermfg=081 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\vMakefile([.]PL)?')
       highlight User4 ctermfg=196 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.pl')
       highlight User4 ctermfg=208 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.pm')
       highlight User4 ctermfg=203 ctermbg=232 cterm=none
-  
-  
+
+
     elseif(a:filename =~ '\v.+\.(sql|sqlite)')
       highlight User4 ctermfg=222 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.t$')
       highlight User4 ctermfg=114 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.tt$')
       highlight User4 ctermfg=173 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.html?$')
       highlight User4 ctermfg=132 ctermbg=232 cterm=none
-  
+
     elseif(a:filename =~ '\v.+\.php?$')
       highlight User4 ctermfg=081 ctermbg=232 cterm=none
-  
+
     else
       highlight User4 ctermfg=137 ctermbg=232 cterm=none
     endif
   endfun
-  
+
   function! SetStatusLineAskasButik()
     return expand("$ASKAS_BUTIK")
   endfun
-  
+
   " do it like so I can color a/m/r differently
   function! GitStatusStatusLine(opt)
     let [added,modified,removed] = GitGutterGetHunkSummary()
-  
+
     if [added,modified,removed] == [0, 0, 0]
       return ""
     endif
-  
+
     if a:opt == 'added' && added != 0
       return ' ' . added . ' '
     elseif a:opt == 'modified' && modified != 0
@@ -1018,27 +1022,27 @@ if !has('nvim')
       return ''
     endif
   endfunction
-  
+
   function! GitBranchStatusLine()
     let current_branch = FugitiveHead()
     let shorter = substitute(current_branch, 'Magnus/', '', '')
     return printf("%.25s", shorter)
   endfunction
-  
+
   " display either:
   "   scp1/.vimrc
   "   Code/Module.pm
   function! FileNameStatusLine()
     let one_dir_up = expand('%:p:h:t')
     let basename   = expand('%:t')
-  
+
     if one_dir_up != '.'
       return one_dir_up .. '/' .. basename
     else
       return basename
     endif
   endfunction
-  
+
   function! FileNameStatusLineHP()
     let name   = expand('%:.')
     return name
@@ -1070,6 +1074,8 @@ endif
 
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
+
+let g:matchup_transmute_enabled = 1
 
 " Vdebug
 if !exists('g:vdebug_options')
@@ -1585,4 +1591,6 @@ highlight! TelescopeResultsBorder ctermfg=240
 highlight! TelescopePreviewBorder ctermfg=240
 highlight! TelescopePreview ctermfg=137
 highlight! TelescopePreviewTitle cterm=italicbold ctermfg=244
+
+highlight! MatchWord ctermfg=45
 
