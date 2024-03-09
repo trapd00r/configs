@@ -138,6 +138,7 @@ if has('nvim')
 
   Plug 'numToStr/Comment.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'tveskag/nvim-blame-line'
 
   Plug 'mfussenegger/nvim-dap'         " debug adapters
   Plug 'jay-babu/mason-nvim-dap.nvim'  " mason support for nvim-dap
@@ -283,10 +284,44 @@ if !has('nvim')
 " Neovim only options
 else
   set cmdheight=0
-  set winbar=\ \ \ \ \ \ %<%{getcwd()}/%f\ %m%r
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
-  highlight Winbar ctermfg=84
+
+  " git blame in winbar
+  function! GetGitBlame()
+    let lnum = line('.')
+    let filename = expand('%:p')
+    let blame_cmd = 'git blame -L ' . lnum . ',+1 --porcelain ' . filename
+    let blame_output = systemlist(blame_cmd)
+
+    let commit_msg = ''
+    let author = ''
+    let commit_date = ''
+
+    for line in blame_output
+        if line =~ '^author '
+            let author = matchstr(line, 'author \zs.\\+')
+        elseif line =~ '^author-mail '
+            let author = matchstr(line, 'author-mail <\zs[^>]\+')
+        elseif line =~ '^author-time '
+            let commit_date = strftime('%Y-%m-%d', str2nr(matchstr(line, 'author-time \zs\d\+')))
+        elseif line =~ '^summary '
+            let commit_msg = matchstr(line, '^\w\+\s\+\zs\(.*\)')
+        elseif line =~ '^Not Committed Yet'
+            let commit_msg = 'Not Committed Yet'
+            return commit_msg
+        endif
+    endfor
+
+    if commit_msg =~ 'Version of'
+        return '      Not commited yet'
+    endif
+
+    return '      ' . commit_date . ' | ' . commit_msg . ' (' . author . ')'
+  endfunction
+
+  set winbar=%{GetGitBlame()}
+
 endif
 
 
@@ -1103,6 +1138,24 @@ endif
 
 let g:matchup_transmute_enabled = 1
 
+" nvim-blame-line
+
+" Show blame info below the statusline instead of using virtual text
+let g:blameLineUseVirtualText = 0
+
+" Specify the highlight group used for the virtual text ('Comment' by default)
+let g:blameLineVirtualTextHighlight = 'Question'
+
+" Change format of virtual text ('%s' by default)
+let g:blameLineVirtualTextFormat = '/* %s */'
+
+" Customize format for git blame (Default format: '%an | %ar | %s')
+let g:blameLineGitFormat = '%an - %s'
+" Refer to 'git-show --format=' man pages for format options)
+
+" Change message when content is not committed
+let g:blameLineMessageWhenNotYetCommited = ''
+
 " Vdebug
 if !exists('g:vdebug_options')
     let g:vdebug_options = {}
@@ -1602,7 +1655,6 @@ autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 
 " FIXME
 hi clear Error
-hi WinBar cterm=none ctermfg=225
 
 highlight! TelescopeBorder ctermfg=238
 highlight! TelescopeNormal ctermfg=137
@@ -1620,4 +1672,5 @@ highlight! TelescopePreview ctermfg=137
 highlight! TelescopePreviewTitle cterm=italicbold ctermfg=244
 
 highlight! MatchWord ctermfg=45
+highlight Winbar cterm=bolditalic ctermfg=244
 
