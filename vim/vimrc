@@ -313,13 +313,14 @@ else
     endfor
 
     if commit_msg =~ 'Version of'
-        return '      Not commited yet'
+        return '      %7*Not commited yet%*'
     endif
 
-    return '      ' . commit_date . ' | ' . commit_msg . ' (' . author . ')'
+    return '%7*' . commit_date . '%* %6*' . commit_msg . '%*'
+"    return '      ' . '%7*' . commit_date . ' %6*' . commit_msg . ' %5*(%7*' . author . '%5*)%*%9*'
   endfunction
 
-  set winbar=%{GetGitBlame()}
+  set winbar=%!GetGitBlame()
 
 endif
 
@@ -985,8 +986,8 @@ highlight User3 ctermfg=250 ctermbg=232 cterm=none
 " User4 is set to the calculated LS_COLORS for the current file below
 highlight User4 ctermfg=032 ctermbg=232 cterm=none
 highlight User5 ctermfg=245 ctermbg=232 cterm=none
-highlight User6 ctermfg=220 ctermbg=232 cterm=none
-highlight User7 ctermfg=240 ctermbg=232 cterm=none
+highlight User6 ctermfg=210 ctermbg=232 cterm=none
+highlight User7 ctermfg=239 ctermbg=233 cterm=underline
 highlight User8 ctermfg=160 ctermbg=232 cterm=none
 highlight User9 ctermfg=197 ctermbg=232 cterm=none
 
