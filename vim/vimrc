@@ -131,12 +131,17 @@ if has('nvim')
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
   Plug 'hrsh7th/cmp-copilot'
+  Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
+  Plug 'rafamadriz/friendly-snippets'
   Plug 'amarakon/nvim-cmp-fonts'
   Plug 'SergioRibera/cmp-dotenv'
 
-  Plug 'mfussenegger/nvim-dap'         " debug adapters
+  Plug 'numToStr/Comment.nvim'
 
-  Plug 'stevearc/dressing.nvim'        " better ui dialogs
+  Plug 'mfussenegger/nvim-dap'         " debug adapters
+  Plug 'jay-babu/mason-nvim-dap.nvim'  " mason support for nvim-dap
+
+"  Plug 'stevearc/dressing.nvim'        " better ui dialogs
 endif
 
 nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
@@ -295,6 +300,10 @@ let mapleader=','
 if has('nvim')
   nnoremap <leader>ss :Telescope lsp_document_symbols<cr>
   nnoremap <leader>dD :Telescope diagnostics<cr>
+
+  " Comment.nvim comment/uncomment
+  nmap # gcc
+  vmap # gc
 
   " pick completion
   imap <C-J> <Down>
@@ -1588,6 +1597,7 @@ let &t_TE = "\<Esc>[>4;m"
 " reset cursor when we leave vim
 autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " ========== TERMCAP END ================================
+
 
 " FIXME
 hi clear Error
