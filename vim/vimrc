@@ -29,6 +29,8 @@ endif
 " useful in various places later
 let g:hostname = hostname()
 
+
+
 call plug#begin(expand($VIMRUNTIME) . '/plugged')
 
 " This way, I'm loading the dev versions of my plugins if it looks like
@@ -103,6 +105,7 @@ Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
 Plug 'chrisbra/Colorizer'               " colorize hex codes etc
 Plug 'andymass/vim-matchup'             " % for all the things
 Plug 'Eandrju/cellular-automaton.nvim'  " 
+Plug 'rhysd/git-messenger.vim'          " git blame in a popup
 
 
 if has('nvim')
@@ -126,6 +129,10 @@ if has('nvim')
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-nvim-lua'
   Plug 'ray-x/lsp_signature.nvim'
+  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+  Plug 'hrsh7th/cmp-copilot'
+  Plug 'amarakon/nvim-cmp-fonts'
+  Plug 'SergioRibera/cmp-dotenv'
 
   Plug 'mfussenegger/nvim-dap'         " debug adapters
 
@@ -137,7 +144,9 @@ nnoremap <leader>C :lua require'dap'.continue()
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 
 call plug#end()
 " ========== INIT END ===================================
@@ -286,6 +295,10 @@ let mapleader=','
 if has('nvim')
   nnoremap <leader>ss :Telescope lsp_document_symbols<cr>
   nnoremap <leader>dD :Telescope diagnostics<cr>
+
+  " pick completion
+  imap <C-J> <Down>
+  imap <C-K> <Up>
 
   nnoremap <F12> :call Rain()<cr>
 
@@ -544,10 +557,11 @@ nnoremap <leader>gc :BCommits<cr>
 vnoremap <leader>gc :BCommits<cr>
 
 " display commit history for the current line
-nnoremap ? V:BCommits<cr>
+" nnoremap ? V:BCommits<cr>
+nnoremap ? :GitMessenger<cr>
 
 " commits for the entire project
-nnoremap <leader>Gc :Commits<cr>
+" nnoremap <leader>Gc :Commits<cr>
 
 " most recent files
 if has('nvim')
@@ -808,6 +822,8 @@ augroup WebbHuset
   " to be used together with backspace, go to definition
   autocmd FileType php nnoremap <buffer> <tab> :bdelete<cr>
 augroup END
+
+autocmd FileType json setlocal formatprg=jq
 
 " disable automatic comment on newline
 autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
