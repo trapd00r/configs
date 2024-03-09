@@ -137,6 +137,7 @@ if has('nvim')
   Plug 'SergioRibera/cmp-dotenv'
 
   Plug 'numToStr/Comment.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
   Plug 'mfussenegger/nvim-dap'         " debug adapters
   Plug 'jay-babu/mason-nvim-dap.nvim'  " mason support for nvim-dap
