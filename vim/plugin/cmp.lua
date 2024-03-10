@@ -23,14 +23,14 @@ cmp.setup({
   })
 })
 
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-  }, {
+cmp.setup {
+  filetype = 'lua',
+  sources = {
+    { name = 'nvim_lua' },
     { name = 'buffer' },
-  })
-})
+    { name = 'nvim_lsp' }
+  }
+}
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
