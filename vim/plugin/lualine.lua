@@ -61,7 +61,7 @@ require('lualine').setup {
     icons_enabled = false,
     theme = 'ayu_dark',
     component_separators = { left = '>', right = '<'},
-    section_separators = { left = ' ', right = ' '},  
+    section_separators = { left = ' ', right = ' '},
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -105,7 +105,7 @@ require('lualine').setup {
 --    lualine_y = {},
 --    lualine_z = {}
 --  },
-  
+
   inactive_winbar = {
     lualine_a = {},
     lualine_b = {},

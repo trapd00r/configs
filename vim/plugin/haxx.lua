@@ -13,8 +13,8 @@ function _G.toggle_diagnostics()
 --    vim.lsp.diagnostic.clear(0)
     vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
   else
-    vim.g.diagnostics_active = true
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+     vim.g.diagnostics_active = true
+     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = true,
         signs = true,
@@ -25,4 +25,8 @@ function _G.toggle_diagnostics()
   end
 end
 
-vim.api.nvim_set_keymap('n', '<leader>DD', ':call v:lua.toggle_diagnostics()<CR>',  {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>DD', ':call v:lua.toggle_diagnostics()<CR>', { noremap = true, silent = true })
+
+
+-- gq using lsp
+vim.keymap.set("v", "gq", vim.lsp.buf.format, { remap = false })

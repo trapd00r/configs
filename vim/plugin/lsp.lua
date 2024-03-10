@@ -29,7 +29,6 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 
-
 -- Mason
 require("mason").setup({
     ui = {
@@ -48,6 +47,12 @@ require('mason-lspconfig').setup({
     lsp_zero.default_setup,
   },
 })
+
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({
+  -- add any options here, or leave empty to use the default settings
+})
+
 
 require'lspconfig'.lua_ls.setup {
   on_init = function(client)
@@ -73,13 +78,46 @@ require'lspconfig'.lua_ls.setup {
         -- }
         -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
         library = vim.api.nvim_get_runtime_file("", true)
+
       }
     })
   end,
   settings = {
-    Lua = {}
+    Lua = {
+      completion = {
+        callSnippet = "Replace"
+      }
+    }
   }
 }
+
+require('lspconfig').tsserver.setup({})
+require('lspconfig').eslint.setup({})
+require('lspconfig').rust_analyzer.setup({})
+require('lspconfig').bashls.setup({})
+require('lspconfig').clangd.setup({})
+require('lspconfig').cmake.setup({})
+require('lspconfig').cssls.setup({})
+require('lspconfig').html.setup({})
+require('lspconfig').marksman.setup({})
+require('lspconfig').pylsp.setup({})
+require('lspconfig').ruby_ls.setup({})
+require('lspconfig').yamlls.setup({})
+require('lspconfig').autotools_ls.setup({})
+require('lspconfig').dockerls.setup({})
+require('lspconfig').elmls.setup({})
+require('lspconfig').jsonls.setup({})
+require('lspconfig').julials.setup({})
+require('lspconfig').lemminx.setup({})
+require('lspconfig').tailwindcss.setup({})
+
+lsp_zero.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»',
+})
+
 
 
 -- Borders for popups
@@ -98,3 +136,35 @@ vim.lsp.handlers["textDocument/signatureHelp"] =
     border = "double"
   }
 )
+
+---------------------
+-- I'm using 2 language servers for perl because they have different features
+---------------------
+
+-- Perl Language Server, pls
+local config = {
+  cmd = { '/home/scp1/bin/pls' }, -- complete path to where PLS is located
+  settings = {
+    pls = {
+      inc = { '/home/scp1/lib/perl5'},  -- add list of dirs to @INC
+--      cwd = { '/my/projects' },   -- working directory for PLS
+      -- perlcritic = { enabled = true, perlcriticrc = '/my/projects/.perlcriticrc' },  -- use perlcritic and pass a non-default location for its config
+      -- syntax = { enabled = true, perl = '/usr/bin/perl', args = { 'arg1', 'arg2' } }, -- enable syntax checking and use a non-default perl binary
+      -- perltidy = { perltidyrc = '/my/projects/.perltidyrc' } -- non-default location for perltidy's config
+    }
+  }
+}
+require'lspconfig'.perlpls.setup(config)
+
+-- Perl Navigator
+require'lspconfig'.perlnavigator.setup{
+    settings = {
+      perlnavigator = {
+          perlPath = 'perl',
+          enableWarnings = true,
+          perltidyProfile = '',
+          perlcriticProfile = '',
+          perlcriticEnabled = false,
+      }
+    }
+}

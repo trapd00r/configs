@@ -95,6 +95,9 @@ if has('nvim')
   Plug 'amarakon/nvim-cmp-fonts'                                          " complete fonts from fc-list
   Plug 'mfussenegger/nvim-dap'                                            " debug adapters
   Plug 'jay-babu/mason-nvim-dap.nvim'                                     " mason support for nvim-dap
+  Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
+  Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
+  Plug 'folke/neodev.nvim'
 endif
 
 " extra syntax rules
@@ -1623,3 +1626,6 @@ highlight Winbar cterm=bolditalic ctermfg=244
 
 " argument in lsp-signature-help popup
 highlight! LspSignatureActiveParameter ctermfg=160 cterm=bold
+
+" highlight the line that starts the current block
+highlight @ibl.scope.underline.1 cterm=underline
