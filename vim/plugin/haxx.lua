@@ -40,7 +40,7 @@ local function format_current_line()
   vim.lsp.buf.format({ bufnr, bufnr }, { line, line })
 end
 
--- Set the custom key mapping for 'gq' to trigger the formatting function
+-- or do Vgq
 vim.keymap.set("n", "gq", format_current_line, { noremap = true })
 
 -- gq using lsp, visual selection
