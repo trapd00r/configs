@@ -110,6 +110,7 @@ require('lspconfig').jsonls.setup({})
 require('lspconfig').julials.setup({})
 require('lspconfig').lemminx.setup({})
 require('lspconfig').tailwindcss.setup({})
+require('lspconfig').htmx.setup({})
 
 lsp_zero.set_sign_icons({
   error = '✘',

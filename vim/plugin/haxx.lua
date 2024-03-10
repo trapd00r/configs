@@ -45,3 +45,6 @@ vim.keymap.set("n", "gq", format_current_line, { noremap = true })
 
 -- gq using lsp, visual selection
 vim.keymap.set("v", "gq", vim.lsp.buf.format, { remap = false })
+
+-- format entire buffer
+vim.keymap.set('n', 'GQ', vim.lsp.buf.format, { noremap = true })
