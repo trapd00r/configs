@@ -7,65 +7,95 @@
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 
 let g:loaded_matchit = 1
+let g:hostname = hostname()
 " ========== INIT START =================================
 set nocp
 filetype plugin indent on
 syntax on
 
-"runtime macros/matchit.vim                                                 " % on if/else
-"runtime syntax/hitest.vim                                                  " dump all hi groups in a buffer
-
-set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt                             " hlep
+set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt
 
 if !has('nvim')
   set all&
-  let &runtimepath = $VIMRUNTIME                                                                 " turn everything off, in case of evil vendor vimrcs
+  let &runtimepath = $VIMRUNTIME
 else
   let &runtimepath .= ',' . '/usr/share/nvim/runtime'
   let &runtimepath .= ',' . $VIMRUNTIME
 endif
-                                            " $XDG_CONFIG_HOME/vim
-
-" useful in various places later
-let g:hostname = hostname()
-
 
 
 call plug#begin(expand($VIMRUNTIME) . '/plugged')
 
-" This way, I'm loading the dev versions of my plugins if it looks like
-" I'm about to work on them, or if the develop_plugin variable is set.
+Plug 'trapd00r/automkdir.vim'                                             " create non-existing dirs when opening a new file
+Plug 'trapd00r/cccp.vim'                                                  " colorcolumn at cursor position
+Plug 'trapd00r/currentline.vim'                                           " highlight the current line like a marker pen
+Plug 'trapd00r/eqalignsimple.vim'                                         " alignment magic with = and +
+Plug 'trapd00r/foldsearches.vim'                                          " fold around searches
+Plug 'trapd00r/hlnext.vim'                                                " highlight current search result
+Plug 'trapd00r/neverland-vim-theme'                                       " my colorscheme
+Plug 'trapd00r/vim-scriptease'                                            " various dev tools
+Plug 'trapd00r/yankmatches.vim'                                           " yank/delete matches from a previous search operation
+Plug 'trapd00r/LS_COLORS.vim'                                             " dircolors syntax
+Plug 'arecarn/vim-fold-cycle'                                             " cycle fold status with <cr>
+Plug 'airblade/vim-gitgutter'                                             " git diff markers, git hunks
+Plug 'aymericbeaumet/vim-symlink'                                         " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
+Plug 'github/copilot.vim'                                                 " AI, yo
+Plug 'junegunn/fzf'                                                       " fuzzy...
+Plug 'junegunn/fzf.vim'                                                   " ... all the things
+Plug 'junegunn/rainbow_parentheses.vim'                                   " better rainbows
+Plug 'junegunn/vim-plug'                                                  " self
+Plug 'ludovicchabant/vim-gutentags'                                       " tag management
+Plug 'kien/ctrlp.vim'                                                     " I don't use this but ctrlp-funky depends on it
+Plug 'kshenoy/vim-signature'                                              " place, toggle, display marks
+Plug 'lfv89/vim-interestingwords'                                         " adds ability to highlight specific words
+Plug 'machakann/vim-highlightedundo'                                      " highlight undo operations
+Plug 'machakann/vim-highlightedyank'                                      " highlight regular yank operations
+Plug 'markonm/traces.vim'                                                 " live preview of ex commands like :%s
+Plug 'pseewald/vim-anyfold'                                               " fold around anything
+Plug 'rhysd/clever-f.vim'                                                 " keep smashing f
+Plug 'rhysd/committia.vim'                                                " better experience dealing with commit msg
+Plug 'tacahiroy/ctrlp-funky'                                              " function navigator
+Plug 'tpope/vim-fugitive'                                                 " git wrapper
+Plug 'tpope/vim-repeat'                                                   " repeat all the things
+Plug 'vim-scripts/AnsiEsc.vim'                                            " highlight strings with esc seq in its color
+Plug 'wookayin/fzf-ripgrep.vim'                                           " grep -> fuzzyfind results
+Plug 'chrisbra/Colorizer'                                                 " colorize hex codes etc
+Plug 'andymass/vim-matchup'                                               " % for all the things
+Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
+Plug 'joereynolds/gq.vim'                                                 " better formatting with gq
+Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 
-" LS_COLORS.vim      - dircolors syntax
-" LS_COLORS-edir.vim - dircolors syntax for an edir session
-" automkdir.vim      - vim ~/dev/doesntexist/butthatisfine.vim
-" cccp.vim           - colorcolumn at cursor position
-" currentline.vim    - highlight the current line like a marker pen
-" eqalignsimple.vim  - alignment magic with = and +
-" foldsearches.vim   - fold around searches
-" hlnext.vim'        - highlight current search result
-" neverland          - my colorscheme
-" udpopup.vim        - custom popup menus
-" vim-syntax-notes   - only useful for me
-" yankmatches.vim    - yank/delete matches from a previous search operation
+if has('nvim')
+  Plug 'Eandrju/cellular-automaton.nvim'                                  " F12, :CellularAutomaton make_it_rain
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
+  Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
+  Plug 'kevinhwang91/promise-async'                                       " required for nvim-ufo
+  Plug 'nvim-lua/plenary.nvim'                                            " required for telescope
+  Plug 'nvim-telescope/telescope.nvim'                                    " fuzzy finder
+  Plug 'lewis6991/gitsigns.nvim'                                          " git stuff
+  Plug 'nvim-lualine/lualine.nvim'                                        " statusline
+  Plug 'numToStr/Comment.nvim'                                            " (un)comment everything with #
+  Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
 
-for myplugin in [
-\  'automkdir.vim',
-\  'cccp.vim',
-\  'currentline.vim',
-\  'eqalignsimple.vim',
-\  'foldsearches.vim',
-\  'hlnext.vim',
-\  'neverland-vim-theme',
-\  'vim-scriptease',
-\  'yankmatches.vim',
-\  'LS_COLORS-edir.vim',
-\  'LS_COLORS.vim']
-
-  let path = expand("%:p:h:h")
-
-  Plug 'trapd00r/' . myplugin
-endfor
+  Plug 'VonHeikemen/lsp-zero.nvim'                                        " helper integrating lspconfig and nvim-cmp
+  Plug 'neovim/nvim-lspconfig'                                            " configs for nvim lsp client
+  Plug 'williamboman/mason.nvim'                                          " package manager for lsp, dap, linters, formatters
+  Plug 'williamboman/mason-lspconfig.nvim'                                " bridge for mason and lspconfig
+  Plug 'hrsh7th/nvim-cmp'                                                 " completion engine
+  Plug 'hrsh7th/cmp-nvim-lsp'                                             " nvim-lsp source for cmp
+  Plug 'hrsh7th/cmp-buffer'                                               " buffer source for cmp
+  Plug 'hrsh7th/cmp-path'                                                 " filesystem paths source for cmp
+  Plug 'hrsh7th/cmp-cmdline'                                              " :cmdline source for cmp
+  Plug 'hrsh7th/cmp-nvim-lua'                                             " complete neovim's Lua runtime API such vim.lsp.*
+  Plug 'ray-x/lsp_signature.nvim'                                         " Show function signature when you type
+  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'                              " lsp signature help
+  Plug 'hrsh7th/cmp-copilot'                                              " copilot in cmpmenu
+  Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " snippet engine
+  Plug 'rafamadriz/friendly-snippets'                                     " snippets repository
+  Plug 'amarakon/nvim-cmp-fonts'                                          " complete fonts from fc-list
+  Plug 'mfussenegger/nvim-dap'                                            " debug adapters
+  Plug 'jay-babu/mason-nvim-dap.nvim'                                     " mason support for nvim-dap
+endif
 
 " extra syntax rules
 Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
@@ -76,85 +106,9 @@ Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
 
-"Plug 'vim-vdebug/vdebug',              { 'for': 'php' }
-
-Plug 'arecarn/vim-fold-cycle'           " cycle fold status with <cr>
-Plug 'airblade/vim-gitgutter'           " git diff markers, git hunks
-Plug 'aymericbeaumet/vim-symlink'       " let vim auto-follow symlinks, so that vim ~/.vimrc used absolute path
-Plug 'github/copilot.vim'               " AI, yo
-Plug 'junegunn/fzf'                     " fuzzy...
-Plug 'junegunn/fzf.vim'                 " ... all the things
-Plug 'junegunn/rainbow_parentheses.vim' " better rainbows
-Plug 'junegunn/vim-plug'                " self
-Plug 'ludovicchabant/vim-gutentags'     " tag management
-Plug 'kien/ctrlp.vim'                   " I don't use this but ctrlp-funky depends on it
-Plug 'kshenoy/vim-signature'            " place, toggle, display marks
-Plug 'lfv89/vim-interestingwords'       " adds ability to highlight specific words
-Plug 'machakann/vim-highlightedundo'    " highlight undo operations
-Plug 'machakann/vim-highlightedyank'    " highlight regular yank operations
-Plug 'markonm/traces.vim'               " live preview of ex commands like :%s
-Plug 'pseewald/vim-anyfold'             " fold around anything
-Plug 'rhysd/clever-f.vim'               " keep smashing f
-Plug 'rhysd/committia.vim'              " better experience dealing with commit msg
-"Plug 'shawncplus/phpcomplete.vim'       " improved php completion
-Plug 'tacahiroy/ctrlp-funky'            " function navigator
-Plug 'tpope/vim-fugitive'               " git wrapper
-Plug 'tpope/vim-repeat'                 " repeat all the things
-Plug 'vim-scripts/AnsiEsc.vim'          " highlight strings with esc seq in its color
-Plug 'wookayin/fzf-ripgrep.vim'         " grep -> fuzzyfind results
-Plug 'chrisbra/Colorizer'               " colorize hex codes etc
-Plug 'andymass/vim-matchup'             " % for all the things
-Plug 'Eandrju/cellular-automaton.nvim'  " 
-Plug 'rhysd/git-messenger.vim'          " git blame in a popup
-
-
-if has('nvim')
-  Plug 'Eandrju/cellular-automaton.nvim' " :CellularAutomaton make_it_rain
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'kevinhwang91/nvim-ufo'         " better looking folds
-  Plug 'kevinhwang91/promise-async'    " required for nvim-ufo
-  Plug 'nvim-lua/plenary.nvim'         " required for telescope
-  Plug 'nvim-telescope/telescope.nvim' " fuzzy finder
-  Plug 'lewis6991/gitsigns.nvim'       " git stuff
-  Plug 'nvim-lualine/lualine.nvim'     " statusline
-  " lsp, completion
-  Plug 'VonHeikemen/lsp-zero.nvim'
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/mason.nvim'
-  Plug 'williamboman/mason-lspconfig.nvim'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/cmp-nvim-lua'
-  Plug 'ray-x/lsp_signature.nvim'
-  Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-  Plug 'hrsh7th/cmp-copilot'
-  Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'}
-  Plug 'rafamadriz/friendly-snippets'
-  Plug 'amarakon/nvim-cmp-fonts'
-  Plug 'SergioRibera/cmp-dotenv'
-
-  Plug 'numToStr/Comment.nvim'
-  Plug 'lukas-reineke/indent-blankline.nvim'
-
-  Plug 'mfussenegger/nvim-dap'         " debug adapters
-  Plug 'jay-babu/mason-nvim-dap.nvim'  " mason support for nvim-dap
-
-"  Plug 'stevearc/dressing.nvim'        " better ui dialogs
-endif
-
-nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
-nnoremap <leader>C :lua require'dap'.continue()
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-
 
 call plug#end()
+
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
 let &termencoding = &encoding                                              " should be utf-8; exceptions below
@@ -235,7 +189,7 @@ set nrformats=alpha,hex                                                    " def
 set number norelativenumber                                                " show line numbers
 set numberwidth=2                                                          " width of number column
 set preserveindent                                                         " preserve indent when using <<, >> etc
-set pumheight=10                                                           " height and number of suggestions to show in completion popup
+set pumheight=20                                                           " height and number of suggestions to show in completion popup
 set report=0                                                               " always show how many lines have been modified
 set ruler                                                                  " show line and column number
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)                         " format for the above
@@ -333,6 +287,13 @@ colorscheme neverland_black_bg
 " ATTENTION! <leader> #1
 let mapleader=','
 
+nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
+nnoremap <leader>C :lua require'dap'.continue()
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
 if has('nvim')
   nnoremap <leader>ss :Telescope lsp_document_symbols<cr>
   nnoremap <leader>dD :Telescope diagnostics<cr>
@@ -344,6 +305,8 @@ if has('nvim')
   " pick completion
   imap <C-J> <Down>
   imap <C-K> <Up>
+  cmap <C-J> <Down>
+  cmap <C-K> <Up>
 
   nnoremap <F12> :call Rain()<cr>
 
@@ -1643,7 +1606,6 @@ hi clear Error
 
 highlight! TelescopeBorder ctermfg=238
 highlight! TelescopeNormal ctermfg=137
-"highlight! TelescopeSelection ctermfg=232 ctermbg=196
 highlight! TelescopeSelection cterm=reverse
 highlight! TelescopeSelectionCaret ctermfg=196
 highlight! TelescopeMatching ctermbg=232 ctermfg=196 cterm=reversebold
@@ -1659,3 +1621,5 @@ highlight! TelescopePreviewTitle cterm=italicbold ctermfg=244
 highlight! MatchWord ctermfg=45
 highlight Winbar cterm=bolditalic ctermfg=244
 
+" argument in lsp-signature-help popup
+highlight! LspSignatureActiveParameter ctermfg=160 cterm=bold
