@@ -64,6 +64,9 @@ Plug 'andymass/vim-matchup'                                               " % fo
 Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
 Plug 'joereynolds/gq.vim'                                                 " better formatting with gq
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
+Plug 'tpope/vim-dadbod'                                                   " database access      
+Plug 'kristijanhusak/vim-dadbod-ui'                                       " database access ui  
+Plug 'kristijanhusak/vim-dadbod-completion'                               " completion for above
 
 if has('nvim')
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F12, :CellularAutomaton make_it_rain
@@ -98,6 +101,7 @@ if has('nvim')
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
   Plug 'folke/neodev.nvim'
+  Plug 'sindrets/diffview.nvim'                                           " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
 endif
 
 " extra syntax rules
@@ -825,6 +829,9 @@ augroup NetrwSettings
   autocmd!
   autocmd FileType netrw setlocal filetype=LS_COLORS.vim
 augroup END
+
+" completion for dadbod
+autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
 
 augroup WebbHuset
   autocmd!
@@ -1629,3 +1636,6 @@ highlight! LspSignatureActiveParameter ctermfg=160 cterm=bold
 
 " highlight the line that starts the current block
 highlight @ibl.scope.underline.1 cterm=underline
+
+highlight DiffDelete ctermbg=232 ctermfg=160
+highlight DiffAdd    ctermfg=034 ctermbg=232
