@@ -4,9 +4,9 @@
 #----------------------------------------
 # create a font path
 #----------------------------------------
+xset +fp /usr/share/fonts/misc/
 xset +fp      ~/.fonts
 fc-cache -f &
-xset +fp /usr/share/fonts/misc/
 
 if [[ $(hostname) = 'fantomen' ]]; then
   xrdb -merge "$XDG_CONFIG_HOME/Xresources-sid"

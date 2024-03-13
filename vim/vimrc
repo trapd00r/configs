@@ -1639,3 +1639,9 @@ highlight @ibl.scope.underline.1 cterm=underline
 
 highlight DiffDelete ctermbg=232 ctermfg=160
 highlight DiffAdd    ctermfg=034 ctermbg=232
+
+au FileType markdown setlocal formatprg=prettier\ --parser\ markdown
+au FileType javascript setlocal formatprg=prettier\ --parser\ typescript
+au FileType css setlocal formatprg=prettier\ --parser\ css
+au FileType html setlocal formatprg=prettier\ --parser\ html
+au FileType json setlocal formatprg=jq

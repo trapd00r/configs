@@ -1,5 +1,27 @@
 local lsp_zero = require('lsp-zero')
 
+-- Not all language servers provide the same capabilities. To ensure you only set
+-- keymaps if the language server supports a feature, you can guard the keymap
+-- calls behind capability checks:
+-- >lua
+--     vim.api.nvim_create_autocmd('LspAttach', {
+--       callback = function(args)
+--         local client = vim.lsp.get_client_by_id(args.data.client_id)
+--         if client.server_capabilities.hoverProvider then
+--           vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+--         end
+--       end,
+--     })
+-- <
+--
+-- To learn what capabilities are available you can run the following command in
+-- a buffer with a started LSP client:
+--
+-- >vim
+--     :lua =vim.lsp.get_active_clients()[1].server_capabilities
+
+
+
 lsp_zero.on_attach(function(client, bufnr)
     -- the line below disables highlights by lsp
     client.server_capabilities.semanticTokensProvider = nil
@@ -23,8 +45,11 @@ lsp_zero.on_attach(function(client, bufnr)
     end, opts)
 
     -- buffer diagnostic
+    -- vim.keymap.set("n", "<leader>DD", function()
+    --     vim.diagnostic.open_float({ scope = 'buffer' })
+    -- end, opts)
     vim.keymap.set("n", "<leader>DD", function()
-        vim.diagnostic.open_float({ scope = 'buffer' })
+        vim.cmd.Telescope('diagnostics')
     end, opts)
 end)
 
@@ -109,8 +134,9 @@ require('lspconfig').elmls.setup({})
 require('lspconfig').jsonls.setup({})
 require('lspconfig').julials.setup({})
 require('lspconfig').lemminx.setup({})
-require('lspconfig').tailwindcss.setup({})
+-- require('lspconfig').tailwindcss.setup({})
 require('lspconfig').htmx.setup({})
+-- require('lspconfig').intelephense.setup({})
 
 lsp_zero.set_sign_icons({
   error = '✘',

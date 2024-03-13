@@ -151,6 +151,9 @@ set searchurls.nzbf https://nzbfinder.ws/search?search=%s
 " o nzbg
 set searchurls.nzbg https://nzbgeek.info/geekseek.php?moviesgeekseek=1&c=&browseincludewords=%s
 
+" o gitlab
+set searchurls.gitlab https://gitlab.webbhuset.com/search?scope=issues&search=%s
+
 " o y
 "set searchurls.yt https://www.youtube.com/results?search_query=%s
 

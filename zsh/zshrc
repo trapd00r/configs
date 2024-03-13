@@ -1427,8 +1427,7 @@ export TERM=tmux-256color
 # https://webcache.googleusercontent.com/search?q=cache:EHNoIfpjHhYJ:https://bbs.archlinux.org/viewtopic.php%3Fid%3D290030&hl=en&gl=se
 export GDK_CORE_DEVICE_EVENTS=1
 
-eval "$(github-copilot-cli alias -- "$0")"
-alias wh='cd ~/dev/webbhuset'
+#eval "$(github-copilot-cli alias -- "$0")"
 
 #font-tamsyn
 builtin cd -P ~/etc/zsh/cwd
@@ -1449,6 +1448,8 @@ alias cdedit='zoxide edit'
 
 # cd to the top level directory of a git repo
 alias cdroot='cd "$(git root)"'
+
+alias cdlog='cd "$(git root)"/var/log'
 
 # cd to the gitroot prior to opening the absolute path of the basename of the file in vim
 # this is so that phpactor can find the classes and methods and goto definition works
@@ -1493,6 +1494,3 @@ function vim() {
 
 # tail dahbug no matter how deep in the directory structure you are
 alias dahbug='tail -F "$(git root)"/../dahbug.log'
-
-eval "$(zoxide init zsh)"
-alias cd="z"

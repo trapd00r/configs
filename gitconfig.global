@@ -9,8 +9,6 @@
 [core]
   pager = delta
   hooksPath = ~/.hooks/
-[merge]
-  conflictstyle = zdiff3
 [color]
   branch     = auto
   diff       = 1
@@ -93,7 +91,7 @@
   hunk-header-style = file line-number syntax
 
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 	autostash = true
 
 [diff]
