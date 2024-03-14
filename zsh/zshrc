@@ -1443,7 +1443,6 @@ alias dahbug='tail -F "$(git root)"/../dahbug.log'
 
 #export _ZO_EXCLUDE_DIRS='/mnt/media2/music/P/Per Gessle'
 eval "$(zoxide init --cmd cd zsh)"
-alias cdi='zi'
 alias cdedit='zoxide edit'
 
 # cd to the top level directory of a git repo
