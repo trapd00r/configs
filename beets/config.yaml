@@ -1,4 +1,4 @@
-# vim:synmaxcol=500:expandtab:fdm=marker:fdl=0:ft=perl:
+# vim:synmaxcol=500:expandtab:fdm=marker:fdl=0:ft=yaml:
 #      ${HOME}/etc/beets/config.yaml
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗
 #         owner  Magnus Woldrich <m@japh.se>
