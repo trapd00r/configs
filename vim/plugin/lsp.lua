@@ -20,6 +20,11 @@ local lsp_zero = require('lsp-zero')
 -- >vim
 --     :lua =vim.lsp.get_active_clients()[1].server_capabilities
 
+local win = require('lspconfig.ui.windows')
+local _default_opts = win.default_opts
+
+require('lspconfig.ui.windows').default_options.border = 'double'
+
 
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -32,7 +37,7 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "P",           function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>vd",  function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "<leader>ca",  function() vim.lsp.buf.code_action() end, opts)
+    -- vim.keymap.set("n", "<leader>ca",  function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>rr",  function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>rn",  function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>",       function() vim.lsp.buf.signature_help() end, opts)
@@ -92,6 +97,10 @@ require'lspconfig'.lua_ls.setup {
         -- (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT'
       },
+      globals = {
+        -- Include the `vim` global so the language server knows about Neovim
+        'vim'
+      },
       -- Make the server aware of Neovim runtime files
       workspace = {
         checkThirdParty = false,
@@ -136,7 +145,7 @@ require('lspconfig').julials.setup({})
 require('lspconfig').lemminx.setup({})
 -- require('lspconfig').tailwindcss.setup({})
 require('lspconfig').htmx.setup({})
--- require('lspconfig').intelephense.setup({})
+require('lspconfig').intelephense.setup({})
 
 lsp_zero.set_sign_icons({
   error = '✘',

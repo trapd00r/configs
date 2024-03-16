@@ -248,40 +248,40 @@ else
   set mouse=""                                                             " disable mouse
 
   " git blame in winbar
-  function! GetGitBlame()
-    let lnum = line('.')
-    let filename = expand('%:p')
-    let blame_cmd = 'git blame -L ' . lnum . ',+1 --porcelain ' . filename
-    let blame_output = systemlist(blame_cmd)
-
-    let commit_msg = ''
-    let author = ''
-    let commit_date = ''
-
-    for line in blame_output
-        if line =~ '^author '
-            let author = matchstr(line, 'author \zs.\\+')
-        elseif line =~ '^author-mail '
-            let author = matchstr(line, 'author-mail <\zs[^>]\+')
-        elseif line =~ '^author-time '
-            let commit_date = strftime('%Y-%m-%d', str2nr(matchstr(line, 'author-time \zs\d\+')))
-        elseif line =~ '^summary '
-            let commit_msg = matchstr(line, '^\w\+\s\+\zs\(.*\)')
-        elseif line =~ '^Not Committed Yet'
-            let commit_msg = 'Not Committed Yet'
-            return commit_msg
-        endif
-    endfor
-
-    if commit_msg =~ 'Version of'
-        return '      %7*Not commited yet%*'
-    endif
-
-    return '%7*' . commit_date . '%* %6*' . commit_msg . '%*'
-"    return '      ' . '%7*' . commit_date . ' %6*' . commit_msg . ' %5*(%7*' . author . '%5*)%*%9*'
-  endfunction
-
-  set winbar=%!GetGitBlame()
+"   function! GetGitBlame()
+"     let lnum = line('.')
+"     let filename = expand('%:p')
+"     let blame_cmd = 'git blame -L ' . lnum . ',+1 --porcelain ' . filename
+"     let blame_output = systemlist(blame_cmd)
+"
+"     let commit_msg = ''
+"     let author = ''
+"     let commit_date = ''
+"
+"     for line in blame_output
+"         if line =~ '^author '
+"             let author = matchstr(line, 'author \zs.\\+')
+"         elseif line =~ '^author-mail '
+"             let author = matchstr(line, 'author-mail <\zs[^>]\+')
+"         elseif line =~ '^author-time '
+"             let commit_date = strftime('%Y-%m-%d', str2nr(matchstr(line, 'author-time \zs\d\+')))
+"         elseif line =~ '^summary '
+"             let commit_msg = matchstr(line, '^\w\+\s\+\zs\(.*\)')
+"         elseif line =~ '^Not Committed Yet'
+"             let commit_msg = 'Not Committed Yet'
+"             return commit_msg
+"         endif
+"     endfor
+"
+"     if commit_msg =~ 'Version of'
+"         return '      %7*Not commited yet%*'
+"     endif
+"
+"     return '%7*' . commit_date . '%* %6*' . commit_msg . '%*'
+" "    return '      ' . '%7*' . commit_date . ' %6*' . commit_msg . ' %5*(%7*' . author . '%5*)%*%9*'
+"   endfunction
+"
+"   set winbar=%!GetGitBlame()
 
 endif
 
@@ -1114,6 +1114,9 @@ let g:matchup_transmute_enabled = 1
 " git-messenger
 let g:git_messenger_floating_win_opts = { 'border': 'double' }
 
+" dadbod
+let g:db_ui_winwidth = 30
+
 " Vdebug
 if !exists('g:vdebug_options')
     let g:vdebug_options = {}
@@ -1645,3 +1648,226 @@ au FileType javascript setlocal formatprg=prettier\ --parser\ typescript
 au FileType css setlocal formatprg=prettier\ --parser\ css
 au FileType html setlocal formatprg=prettier\ --parser\ html
 au FileType json setlocal formatprg=jq
+
+
+
+highlight LspInfoBorder ctermfg=160
+highlight LspInfoFiletype ctermfg=137
+highlight LspInfoList ctermfg=137
+highlight LspInfoTip ctermfg=fg cterm=bold
+highlight LspInfoTitle ctermfg=208
+
+highlight CmpItemKind ctermfg=137
+highlight CmpItemAbbrMatch ctermfg=137
+
+" add these to neverland ?
+" Grabbed by doing :Redir :hi
+"
+" CmpItemAbbr
+" CmpItemAbbrDefault
+" CmpItemAbbrDeprecated
+" CmpItemAbbrDeprecatedDefault
+" CmpItemAbbrMatch
+" CmpItemAbbrMatchDefault
+" CmpItemAbbrMatchFuzzy
+" CmpItemAbbrMatchFuzzyDefault
+" CmpItemKind
+" CmpItemKindClass
+" CmpItemKindClassDefault
+" CmpItemKindColor
+" CmpItemKindColorDefault
+" CmpItemKindConstant
+" CmpItemKindConstantDefault
+" CmpItemKindConstructor
+" CmpItemKindConstructorDefault
+" CmpItemKindDefault
+" CmpItemKindEnum
+" CmpItemKindEnumDefault
+" CmpItemKindEnumMember
+" CmpItemKindEnumMemberDefault
+" CmpItemKindEvent
+" CmpItemKindEventDefault
+" CmpItemKindField
+" CmpItemKindFieldDefault
+" CmpItemKindFile
+" CmpItemKindFileDefault
+" CmpItemKindFolder
+" CmpItemKindFolderDefault
+" CmpItemKindFunction
+" CmpItemKindFunctionDefault
+" CmpItemKindInterface
+" CmpItemKindInterfaceDefault
+" CmpItemKindKeyword
+" CmpItemKindKeywordDefault
+" CmpItemKindMethod
+" CmpItemKindMethodDefault
+" CmpItemKindModule
+" CmpItemKindModuleDefault
+" CmpItemKindOperator
+" CmpItemKindOperatorDefault
+" CmpItemKindProperty
+" CmpItemKindPropertyDefault
+" CmpItemKindReference
+" CmpItemKindReferenceDefault
+" CmpItemKindSnippet
+" CmpItemKindSnippetDefault
+" CmpItemKindStruct
+" CmpItemKindStructDefault
+" CmpItemKindText
+" CmpItemKindTextDefault
+" CmpItemKindTypeParameter
+" CmpItemKindTypeParameterDefault
+" CmpItemKindUnit
+" CmpItemKindUnitDefault
+" CmpItemKindValue
+" CmpItemKindValueDefault
+" CmpItemKindVariable
+" CmpItemKindVariableDefault
+" CmpItemMenu
+" CmpItemMenuDefault
+" DiagnosticDeprecated
+" DiagnosticError
+" DiagnosticFloatingError
+" DiagnosticFloatingHint
+" DiagnosticFloatingInfo
+" DiagnosticFloatingOk
+" DiagnosticFloatingWarn
+" DiagnosticHint
+" DiagnosticInfo
+" DiagnosticOk
+" DiagnosticSignError
+" DiagnosticSignHint
+" DiagnosticSignInfo
+" DiagnosticSignOk
+" DiagnosticSignWarn
+" DiagnosticUnderlineError
+" DiagnosticUnderlineHint
+" DiagnosticUnderlineInfo
+" DiagnosticUnderlineOk
+" DiagnosticUnderlineWarn
+" DiagnosticUnnecessary
+" DiagnosticVirtualTextError
+" DiagnosticVirtualTextHint
+" DiagnosticVirtualTextInfo
+" DiagnosticVirtualTextOk
+" DiagnosticVirtualTextWarn
+" DiagnosticWarn
+" DressingSelectIdx
+" Float
+" FloatBorder
+" FloatShadow
+" FloatShadowThrough
+" FloatTitle
+" IblIndent
+" IblScope
+" IblWhitespace
+" LspCodeActionLine
+" LspCodeActionText
+" LspErrorHighlight
+" LspErrorLine
+" LspErrorText
+" LspErrorVirtualText
+" LspHintHighlight
+" LspHintLine
+" LspHintText
+" LspHintVirtualText
+" LspInformationHighlight
+" LspInformationLine
+" LspInformationText
+" LspInformationVirtualText
+" LspSignatureActiveParameter
+" LspWarningHighlight
+" LspWarningLine
+" LspWarningText
+" LspWarningVirtualText
+" MatchBackground
+" MatchParen
+" MatchParenCur
+" MatchWord
+" ModeMsg
+" MoreMsg
+" MsgArea        ctermfg=232
+" MsgSeparator
+" Normal
+" NormalFloat
+" Pmenu
+" PmenuExtra
+" PmenuExtraSel
+" PmenuKind
+" PmenuKindSel
+" PmenuSbar
+" PmenuSel
+" PmenuThumb
+" SignatureMarkText
+" SignatureMarkerText
+" TelescopeBorder
+" TelescopeMatching
+" TelescopeMultiIcon
+" TelescopeMultiSelection
+" TelescopeNormal
+" TelescopePreview
+" TelescopePreviewBlock
+" TelescopePreviewBorder
+" TelescopePreviewCharDev
+" TelescopePreviewDate
+" TelescopePreviewDirectory
+" TelescopePreviewExecute
+" TelescopePreviewGroup
+" TelescopePreviewHyphen
+" TelescopePreviewLine
+" TelescopePreviewLink
+" TelescopePreviewMatch
+" TelescopePreviewMessage
+" TelescopePreviewMessageFillchar
+" TelescopePreviewNormal
+" TelescopePreviewPipe
+" TelescopePreviewRead
+" TelescopePreviewSize
+" TelescopePreviewSocket
+" TelescopePreviewSticky
+" TelescopePreviewTitle
+" TelescopePreviewUser
+" TelescopePreviewWrite
+" TelescopePrompt
+" TelescopePromptBorder
+" TelescopePromptCounter
+" TelescopePromptNormal
+" TelescopePromptPrefix
+" TelescopePromptTitle
+" TelescopeResultsBorder
+" TelescopeResultsClass
+" TelescopeResultsComment
+" TelescopeResultsConstant
+" TelescopeResultsDiffAdd
+" TelescopeResultsDiffChange
+" TelescopeResultsDiffDelete
+" TelescopeResultsDiffUntracked
+" TelescopeResultsField
+" TelescopeResultsFunction
+" TelescopeResultsIdentifier
+" TelescopeResultsLineNr
+" TelescopeResultsMethod
+" TelescopeResultsNormal
+" TelescopeResultsNumber
+" TelescopeResultsOperator
+" TelescopeResultsSpecialComment
+" TelescopeResultsStruct
+" TelescopeResultsTitle
+" TelescopeResultsVariable
+" TelescopeSelection
+" TelescopeSelectionCaret
+" TracesCursor
+" TracesReplace
+" TracesSearch
+" UfoCursorFoldedLine
+" UfoFoldedBg
+" UfoFoldedEllipsis
+" UfoFoldedFg
+" UfoPreviewCursorLine
+" UfoPreviewSbar
+" UfoPreviewThumb
+" UfoPreviewWinBar
+" lCursor
+" lspReference
+
+

@@ -47,4 +47,4 @@ vim.keymap.set("n", "gq", format_current_line, { noremap = true })
 vim.keymap.set("v", "gq", vim.lsp.buf.format, { remap = false })
 
 -- format entire buffer
-vim.keymap.set('n', 'GQ', vim.lsp.buf.format, { noremap = true })
+vim.keymap.set('n', '<leader>GQ', vim.lsp.buf.format, { noremap = true })
