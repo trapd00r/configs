@@ -13,3 +13,4 @@
 --
 
 require("ibl").setup()
+vim.cmd("highlight! clear @ibl.scope.underline.1")

@@ -78,11 +78,6 @@ require('mason-lspconfig').setup({
   },
 })
 
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup({
-  -- add any options here, or leave empty to use the default settings
-})
-
 
 require'lspconfig'.lua_ls.setup {
   on_init = function(client)
@@ -126,26 +121,44 @@ require'lspconfig'.lua_ls.setup {
 }
 
 require('lspconfig').tsserver.setup({})
-require('lspconfig').eslint.setup({})
-require('lspconfig').rust_analyzer.setup({})
-require('lspconfig').bashls.setup({})
-require('lspconfig').clangd.setup({})
-require('lspconfig').cmake.setup({})
-require('lspconfig').cssls.setup({})
+-- require('lspconfig').eslint.setup({})
+-- require('lspconfig').rust_analyzer.setup({})
+-- require('lspconfig').bashls.setup({})
+-- require('lspconfig').clangd.setup({})
+-- require('lspconfig').cmake.setup({})
+-- require('lspconfig').cssls.setup({})
 require('lspconfig').html.setup({})
-require('lspconfig').marksman.setup({})
-require('lspconfig').pylsp.setup({})
-require('lspconfig').ruby_ls.setup({})
-require('lspconfig').yamlls.setup({})
-require('lspconfig').autotools_ls.setup({})
-require('lspconfig').dockerls.setup({})
-require('lspconfig').elmls.setup({})
-require('lspconfig').jsonls.setup({})
-require('lspconfig').julials.setup({})
-require('lspconfig').lemminx.setup({})
+-- require('lspconfig').marksman.setup({})
+-- require('lspconfig').pylsp.setup({})
+-- require('lspconfig').ruby_ls.setup({})
+-- require('lspconfig').yamlls.setup({})
+-- require('lspconfig').autotools_ls.setup({})
+-- require('lspconfig').dockerls.setup({})
+-- require('lspconfig').elmls.setup({})
+-- require('lspconfig').jsonls.setup({})
+-- require('lspconfig').julials.setup({})
+-- require('lspconfig').lemminx.setup({})
 -- require('lspconfig').tailwindcss.setup({})
-require('lspconfig').htmx.setup({})
-require('lspconfig').intelephense.setup({})
+-- require('lspconfig').htmx.setup({})
+-- require('lspconfig').intelephense.setup({})
+-- require('lspconfig').intelephense.setup({
+--   capabilities = capabilities, -- from the local capabilities variable in the above snippet
+--   settings = {
+--     intelephense = {
+--       telemetry = {
+--         enabled = false,
+--       },
+--       completion = {
+--         fullyQualifyGlobalConstantsAndFunctions = false
+--       },
+--       phpdoc = {
+--         returnVoid = false,
+--       }
+--     },
+--   }
+-- })
+
+
 
 lsp_zero.set_sign_icons({
   error = '✘',

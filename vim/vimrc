@@ -11,7 +11,7 @@ let g:hostname = hostname()
 " ========== INIT START =================================
 set nocp
 filetype plugin indent on
-syntax on
+" syntax on
 
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt
 
@@ -44,7 +44,6 @@ Plug 'junegunn/fzf'                                                       " fuzz
 Plug 'junegunn/fzf.vim'                                                   " ... all the things
 Plug 'junegunn/rainbow_parentheses.vim'                                   " better rainbows
 Plug 'junegunn/vim-plug'                                                  " self
-Plug 'ludovicchabant/vim-gutentags'                                       " tag management
 Plug 'kien/ctrlp.vim'                                                     " I don't use this but ctrlp-funky depends on it
 Plug 'kshenoy/vim-signature'                                              " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'                                         " adds ability to highlight specific words
@@ -62,20 +61,20 @@ Plug 'wookayin/fzf-ripgrep.vim'                                           " grep
 Plug 'chrisbra/Colorizer'                                                 " colorize hex codes etc
 Plug 'andymass/vim-matchup'                                               " % for all the things
 Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
-Plug 'joereynolds/gq.vim'                                                 " better formatting with gq
+" Plug 'joereynolds/gq.vim'                                                 " better formatting with gq
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 Plug 'tpope/vim-dadbod'                                                   " database access      
 Plug 'kristijanhusak/vim-dadbod-ui'                                       " database access ui  
 Plug 'kristijanhusak/vim-dadbod-completion'                               " completion for above
 
 if has('nvim')
-  Plug 'Eandrju/cellular-automaton.nvim'                                  " F12, :CellularAutomaton make_it_rain
+  " Plug 'Eandrju/cellular-automaton.nvim'                                  " F12, :CellularAutomaton make_it_rain
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
   Plug 'kevinhwang91/promise-async'                                       " required for nvim-ufo
   Plug 'nvim-lua/plenary.nvim'                                            " required for telescope
   Plug 'nvim-telescope/telescope.nvim'                                    " fuzzy finder
-  Plug 'lewis6991/gitsigns.nvim'                                          " git stuff
+  " Plug 'lewis6991/gitsigns.nvim'                                          " git stuff
   Plug 'nvim-lualine/lualine.nvim'                                        " statusline
   Plug 'numToStr/Comment.nvim'                                            " (un)comment everything with #
   Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
@@ -96,12 +95,13 @@ if has('nvim')
   Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " snippet engine
   Plug 'rafamadriz/friendly-snippets'                                     " snippets repository
   Plug 'amarakon/nvim-cmp-fonts'                                          " complete fonts from fc-list
-  Plug 'mfussenegger/nvim-dap'                                            " debug adapters
-  Plug 'jay-babu/mason-nvim-dap.nvim'                                     " mason support for nvim-dap
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
-  Plug 'folke/neodev.nvim'
-  Plug 'sindrets/diffview.nvim'                                           " Single tabpage interface for easily cycling through diffs for all modified files for any git rev
+  Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
+  " only to enable code actions for intellephence...
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+else
+  Plug 'ludovicchabant/vim-gutentags'                                       " tag management
 endif
 
 " extra syntax rules
@@ -282,7 +282,6 @@ else
 "   endfunction
 "
 "   set winbar=%!GetGitBlame()
-
 endif
 
 
@@ -1640,14 +1639,22 @@ highlight! LspSignatureActiveParameter ctermfg=160 cterm=bold
 " highlight the line that starts the current block
 highlight @ibl.scope.underline.1 cterm=underline
 
+" hide this, since it's considered NonText
+autocmd BufReadPost * highlight @ibl.indent.char.1 ctermfg=232
+highlight EndOfBuffer ctermfg=232
+highlight NonText ctermfg=196
+highlight link CocUnusedHighlight Comment
+
+
 highlight DiffDelete ctermbg=232 ctermfg=160
 highlight DiffAdd    ctermfg=034 ctermbg=232
 
-au FileType markdown setlocal formatprg=prettier\ --parser\ markdown
-au FileType javascript setlocal formatprg=prettier\ --parser\ typescript
-au FileType css setlocal formatprg=prettier\ --parser\ css
-au FileType html setlocal formatprg=prettier\ --parser\ html
-au FileType json setlocal formatprg=jq
+" au FileType markdown setlocal formatprg=prettier\ --parser\ markdown
+" au FileType javascript setlocal formatprg=prettier\ --parser\ typescript
+" au FileType css setlocal formatprg=prettier\ --parser\ css
+" au FileType html setlocal formatprg=prettier\ --parser\ html
+" au FileType json setlocal formatprg=jq
+" au FileType php setlocal formatprg=phpcbf\ -
 
 
 
@@ -1659,6 +1666,8 @@ highlight LspInfoTitle ctermfg=208
 
 highlight CmpItemKind ctermfg=137
 highlight CmpItemAbbrMatch ctermfg=137
+
+set foldcolumn&
 
 " add these to neverland ?
 " Grabbed by doing :Redir :hi
@@ -1871,3 +1880,7 @@ highlight CmpItemAbbrMatch ctermfg=137
 " lspReference
 
 
+" nmap <silent> ga <Plug>(coc-codeaction-line)
+" xmap <silent> ga <Plug>(coc-codeaction-selected)
+" nmap <silent> <leader>a <Plug>(coc-codeaction-cursor)
+" nmap <silent> gA <Plug>(coc-codeaction)
