@@ -8,10 +8,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     -- Enable underline, use default values
     underline = true,
     virtual_text = false,
-    signs = false,
+    signs = true,
     update_in_insert = false,
+    -- virtual_text = {
+    --   spacing = 2,
+    --   severity_limit = "Error",
+    -- }
   }
 )
-
-local cmp_nvim_lsp = require "cmp_nvim_lsp"
-
