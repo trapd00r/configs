@@ -392,7 +392,7 @@ nnoremap <silent> <leader>q :normal [m<cr>
 nmap <leader>^ cs^<bar>
 
 " highlight undo/redo operations
-nmap u     <Plug>(highlightedundo-undo)
+" nmap u     <Plug>(highlightedundo-undo)
 nmap <C-r> <Plug>(highlightedundo-redo)
 
 " highlight the word under the cursor in differently
@@ -1474,11 +1474,8 @@ autocmd BufNewFile *.air
 " ========== TEMPLATES END ==============================
 " ========== ABBREVATIONS START =========================
 
-" 2022-04-24 16:36:25
-iab xnow <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-
 " Data::Dumper with options
-ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
+" ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
 
 autocmd Filetype php ia dd \dahbug::dump();<left><left>
 
