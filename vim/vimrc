@@ -436,7 +436,7 @@ nmap <silent> <expr>  zw  FS_FoldAroundTarget('^\s*warn\s\+\S.*;',{'context':1})
 nmap <silent> <expr>  zm  FS_FoldAroundTarget('^[nvxo]\(nore\)\?map',{'context':1})
 
 " show the current function name
-map <C-s> :call ShowFuncName()<cr>
+" map <C-s> :call ShowFuncName()<cr>
 
 " use quickfix list to go to func definition
 nnoremap <C-o> :CtrlPFunky<cr>
@@ -480,11 +480,11 @@ map '' <nop>
 map '' ``
 
 " Move visual blocks around or dupe them
-vmap <C-h> <Plug>SchleppLeft
-vmap <C-j> <Plug>SchleppDown
-vmap <C-k> <Plug>SchleppUp
-vmap <C-l> <Plug>SchleppRight
-vmap <C-d> <Plug>SchleppDup
+" vmap <C-h> <Plug>SchleppLeft
+" vmap <C-j> <Plug>SchleppDown
+" vmap <C-k> <Plug>SchleppUp
+" vmap <C-l> <Plug>SchleppRight
+" vmap <C-d> <Plug>SchleppDup
 
 "let g:Schlepp#dupTrimWS = 1
 
