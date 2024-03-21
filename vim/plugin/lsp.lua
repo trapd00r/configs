@@ -8,52 +8,47 @@ require('lspconfig.ui.windows').default_options.border = 'double'
 local cmp_lsp = require('cmp_nvim_lsp')
 local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>')
 
 lsp_zero.on_attach(function(client, bufnr)
-    -- the line below disables highlights by lsp
-    client.server_capabilities.semanticTokensProvider = nil
+  -- the line below disables highlights by lsp
+  client.server_capabilities.semanticTokensProvider = nil
 
-    local opts = { buffer = bufnr, remap = false }
+  local opts = { buffer = bufnr, remap = false }
 
-    -- vim.keymap.set("n", "gd",          function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "P",           function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd",  function() vim.diagnostic.open_float() end, opts)
-    -- vim.keymap.set("n", "<leader>ca",  function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>rr",  function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>rn",  function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>",       function() vim.lsp.buf.signature_help() end, opts)
-    vim.keymap.set("n", "S",           function() vim.lsp.buf.signature_help() end, opts)
+  -- vim.lsp.buf.signature_help()
+  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "P", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "S", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set('n', '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  vim.keymap.set('n', '<leader>ah', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  vim.keymap.set('n', '<leader>ai', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+  vim.keymap.set('n', '<leader>ao', '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+  vim.keymap.set('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  vim.keymap.set('n', '<leader>ee', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+  vim.keymap.set('n', '<leader>gW', '<cmd>Telescope lsp.workspace.symbols<CR>')
+  vim.keymap.set('n', '<leader>gw', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+  vim.keymap.set('n', 'P', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
+  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>')
+  vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
 
-    vim.keymap.set('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-    vim.keymap.set('n','gd','<cmd>Telescope lsp_definitions<CR>')
-    vim.keymap.set('n','P','<cmd>lua vim.lsp.buf.hover()<CR>')
-    vim.keymap.set('n','gr','<cmd>Telescope lsp_references<CR>')
-    vim.keymap.set('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    vim.keymap.set('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-    vim.keymap.set('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    vim.keymap.set('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-    vim.keymap.set('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-    vim.keymap.set('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
-    vim.keymap.set('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
-    vim.keymap.set('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
-    vim.keymap.set('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-    vim.keymap.set('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
-    vim.keymap.set('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+  -- goto next diagnostic and display all diagnostics for that line
+  vim.keymap.set("n", "<leader>dd", function()
+    -- Pass the float option directly to vim.diagnostic.goto_next
+    vim.diagnostic.goto_next({ float = { scope = 'line' } })
+  end, opts)
 
-    -- goto next diagnostic and display all diagnostics for that line
-    vim.keymap.set("n", "<leader>dd", function()
-        -- Pass the float option directly to vim.diagnostic.goto_next
-        vim.diagnostic.goto_next({ float = { scope = 'line' } })
-    end, opts)
-
-    -- buffer diagnostic
-    -- vim.keymap.set("n", "<leader>DD", function()
-    --     vim.diagnostic.open_float({ scope = 'buffer' })
-    -- end, opts)
-    vim.keymap.set("n", "<leader>DD", function()
-        vim.cmd.Telescope('diagnostics')
-    end, opts)
+  -- buffer diagnostic
+  -- vim.keymap.set("n", "<leader>DD", function()
+  --     vim.diagnostic.open_float({ scope = 'buffer' })
+  -- end, opts)
+  vim.keymap.set("n", "<leader>DD", function()
+    vim.cmd.Telescope('diagnostics')
+  end, opts)
 end)
 
 
@@ -120,6 +115,7 @@ require'lspconfig'.lua_ls.setup {
 }
 
 require('lspconfig').tsserver.setup({})
+require('lspconfig').gopls.setup({})
 -- require('lspconfig').eslint.setup({})
 -- require('lspconfig').rust_analyzer.setup({})
 -- require('lspconfig').bashls.setup({})

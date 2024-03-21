@@ -1,5 +1,5 @@
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
   snippet = {
@@ -17,20 +17,10 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
---    { name = 'copilot' },
-   {name = 'luasnip', keyword_length = 2},
-   {name = 'buffer', keyword_length = 4},
+    { name = 'luasnip', keyword_length = 2 },
+    { name = 'buffer',  keyword_length = 4 },
   })
 })
-
-cmp.setup {
-  filetype = 'lua',
-  sources = {
-    { name = 'nvim_lua' },
-    { name = 'buffer' },
-    { name = 'nvim_lsp' }
-  }
-}
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {

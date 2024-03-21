@@ -94,6 +94,7 @@ if has('nvim')
   Plug 'hrsh7th/cmp-copilot'                                              " copilot in cmpmenu
   Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " snippet engine
   Plug 'rafamadriz/friendly-snippets'                                     " snippets repository
+  Plug 'saadparwaiz1/cmp_luasnip'                                         " luasnip source for cmp
   Plug 'amarakon/nvim-cmp-fonts'                                          " complete fonts from fc-list
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
@@ -204,7 +205,8 @@ set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)                         " for
 set scrolloff=40                                                           " context above and below cursor; 999 = exactly in the middle
 set shiftwidth=2                                                           " number of spaces to use for a tab
 set shortmess=aIoOT                                                        " avoid as many hit-enter prompts as possible
-set showbreak=↳                                                            " start of lines when wrap is on
+" set showbreak=↳                                                            " start of lines when wrap is on
+set showbreak=\                                                            " start of lines when wrap is on
 set showcmd                                                                " show (partial) cmd in last line of screen
 set showmatch                                                              " briefly display match when jumping to a bracket
 set showtabline=0                                                          " hide tablines, don't use
@@ -1665,6 +1667,14 @@ highlight LspInfoTitle ctermfg=208
 highlight CmpItemKind ctermfg=137
 highlight CmpItemAbbrMatch ctermfg=137
 
+highlight CmpItemKindSnippet ctermfg=220
+highlight link CmpItemKindVariable perlVarPlain
+highlight link CmpItemKindText Comment
+highlight CmpItemKindFile ctermfg=208
+
+highlight CmpItemKindFunction ctermfg=081
+highlight CmpItemKindKeyword ctermfg=160
+
 set foldcolumn&
 
 " add these to neverland ?
@@ -1728,7 +1738,6 @@ set foldcolumn&
 " CmpItemKindUnitDefault
 " CmpItemKindValue
 " CmpItemKindValueDefault
-" CmpItemKindVariable
 " CmpItemKindVariableDefault
 " CmpItemMenu
 " CmpItemMenuDefault
