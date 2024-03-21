@@ -98,10 +98,10 @@ if has('nvim')
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
   Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
+  Plug 'ludovicchabant/vim-gutentags'                                     " tag management
   " only to enable code actions for intellephence...
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
-  Plug 'ludovicchabant/vim-gutentags'                                       " tag management
 endif
 
 " extra syntax rules
