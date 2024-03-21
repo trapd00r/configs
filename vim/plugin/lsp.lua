@@ -1,25 +1,5 @@
 local lsp_zero = require('lsp-zero')
 
--- Not all language servers provide the same capabilities. To ensure you only set
--- keymaps if the language server supports a feature, you can guard the keymap
--- calls behind capability checks:
--- >lua
---     vim.api.nvim_create_autocmd('LspAttach', {
---       callback = function(args)
---         local client = vim.lsp.get_client_by_id(args.data.client_id)
---         if client.server_capabilities.hoverProvider then
---           vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
---         end
---       end,
---     })
--- <
---
--- To learn what capabilities are available you can run the following command in
--- a buffer with a started LSP client:
---
--- >vim
---     :lua =vim.lsp.get_active_clients()[1].server_capabilities
-
 local win = require('lspconfig.ui.windows')
 local _default_opts = win.default_opts
 
@@ -29,15 +9,13 @@ local cmp_lsp = require('cmp_nvim_lsp')
 local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
-
-
 lsp_zero.on_attach(function(client, bufnr)
     -- the line below disables highlights by lsp
     client.server_capabilities.semanticTokensProvider = nil
 
     local opts = { buffer = bufnr, remap = false }
 
-    vim.keymap.set("n", "gd",          function() vim.lsp.buf.definition() end, opts)
+    -- vim.keymap.set("n", "gd",          function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "P",           function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>vd",  function() vim.diagnostic.open_float() end, opts)
@@ -46,6 +24,22 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>rn",  function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>",       function() vim.lsp.buf.signature_help() end, opts)
     vim.keymap.set("n", "S",           function() vim.lsp.buf.signature_help() end, opts)
+
+    vim.keymap.set('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+    vim.keymap.set('n','gd','<cmd>Telescope lsp_definitions<CR>')
+    vim.keymap.set('n','P','<cmd>lua vim.lsp.buf.hover()<CR>')
+    vim.keymap.set('n','gr','<cmd>Telescope lsp_references<CR>')
+    vim.keymap.set('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    vim.keymap.set('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+    vim.keymap.set('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+    vim.keymap.set('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+    vim.keymap.set('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+    vim.keymap.set('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
+    vim.keymap.set('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+    vim.keymap.set('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
+    vim.keymap.set('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+    vim.keymap.set('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+    vim.keymap.set('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
 
     -- goto next diagnostic and display all diagnostics for that line
     vim.keymap.set("n", "<leader>dd", function()
@@ -86,6 +80,7 @@ require('mason-lspconfig').setup({
 require'lspconfig'.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
+    capabilities = capabilities
     if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
       return
     end
@@ -146,7 +141,7 @@ require('lspconfig').html.setup({})
 -- require('lspconfig').htmx.setup({})
 -- require('lspconfig').intelephense.setup({})
 -- require('lspconfig').intelephense.setup({
---   capabilities = capabilities, -- from the local capabilities variable in the above snippet
+--   capabilities = capabilities,
 --   settings = {
 --     intelephense = {
 --       telemetry = {
@@ -163,7 +158,7 @@ require('lspconfig').html.setup({})
 -- })
 
 require('lspconfig').phpactor.setup({
-  capabilities = capabilities, -- from the local capabilities variable in the above snippet
+  capabilities = capabilities,
   settings = {
     phpactor = {
       enable = true,
@@ -175,6 +170,10 @@ require('lspconfig').phpactor.setup({
       }
     },
   }
+})
+
+require('lspconfig').vimls.setup({
+  capabilities = capabilities,
 })
 
 
@@ -211,6 +210,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] =
 
 -- Perl Language Server, pls
 local config = {
+  capabilities = capabilities,
   cmd = { '/home/scp1/bin/pls' }, -- complete path to where PLS is located
   settings = {
     pls = {
@@ -226,6 +226,7 @@ require'lspconfig'.perlpls.setup(config)
 
 -- Perl Navigator
 require'lspconfig'.perlnavigator.setup{
+    capabilities = capabilities,
     settings = {
       perlnavigator = {
           perlPath = 'perl',
@@ -237,19 +238,34 @@ require'lspconfig'.perlnavigator.setup{
     }
 }
 
-vim.keymap.set('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.keymap.set('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n','P','<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
-vim.keymap.set('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.keymap.set('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.keymap.set('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
-vim.keymap.set('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-vim.keymap.set('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-vim.keymap.set('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n','<leader>af','<cmd>lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
-vim.keymap.set('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
-vim.keymap.set('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-vim.keymap.set('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
-vim.keymap.set('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+
+require('magento2_ls').setup()
+
+
+-- :LspCapabilities for each active lsp server
+vim.api.nvim_create_user_command("LspCapabilities", function()
+	local curBuf = vim.api.nvim_get_current_buf()
+	local clients = vim.lsp.get_active_clients { bufnr = curBuf }
+
+	for _, client in pairs(clients) do
+		if client.name ~= "null-ls" then
+			local capAsList = {}
+			for key, value in pairs(client.server_capabilities) do
+				if value and key:find("Provider") then
+					local capability = key:gsub("Provider$", "")
+					table.insert(capAsList, "- " .. capability)
+				end
+			end
+			table.sort(capAsList) -- sorts alphabetically
+			local msg = "# " .. client.name .. "\n" .. table.concat(capAsList, "\n")
+			vim.notify(msg, "trace", {
+				on_open = function(win)
+					local buf = vim.api.nvim_win_get_buf(win)
+					vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+				end,
+				timeout = 14000,
+			})
+			fn.setreg("+", "Capabilities = " .. vim.inspect(client.server_capabilities))
+		end
+	end
+end, {})

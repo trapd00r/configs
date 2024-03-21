@@ -63,8 +63,8 @@ Plug 'andymass/vim-matchup'                                               " % fo
 Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
 " Plug 'joereynolds/gq.vim'                                                 " better formatting with gq
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
-Plug 'tpope/vim-dadbod'                                                   " database access      
-Plug 'kristijanhusak/vim-dadbod-ui'                                       " database access ui  
+Plug 'tpope/vim-dadbod'                                                   " database access
+Plug 'kristijanhusak/vim-dadbod-ui'                                       " database access ui
 Plug 'kristijanhusak/vim-dadbod-completion'                               " completion for above
 
 if has('nvim')
@@ -99,6 +99,7 @@ if has('nvim')
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
   Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
   Plug 'ludovicchabant/vim-gutentags'                                     " tag management
+  Plug 'pbogut/magento2-ls'                                               " magento2 language server
   " only to enable code actions for intellephence...
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
@@ -412,9 +413,6 @@ nnoremap <leader>u :GitGutterUndoHunk<cr>
 
 " go to next git changed hunk
 nnoremap <leader>n :GitGutterNextHunk<cr>
-
-" distractionfree
-nnoremap <C-t> <Esc>:DistractionsToggle<cr>
 
 " delete block
 nnoremap db da{
