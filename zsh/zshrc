@@ -1499,3 +1499,23 @@ alias cd="z"
 
 export EDITOR=nvim
 export VIDIR_EDITOR=nvim
+
+
+# magerun/magento completion
+. ${HOME}/etc/zsh/functions/magerun.zsh
+
+function m2() {
+  magento_root=$(git root 2>/dev/null)
+
+  if [[ -z $magento_root ]]; then
+    echo "Not in a git repo"
+    return 1
+  fi
+
+  if [[ ! -f $magento_root/bin/magerun ]]; then
+    cp -v =magerun $magento_root/bin/
+  fi
+
+  docker compose exec -u $USER php php -d memory_limit=-1 \
+    /srv/magento/bin/magerun "$@"
+}
