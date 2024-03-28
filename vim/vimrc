@@ -98,9 +98,10 @@ if has('nvim')
   Plug 'amarakon/nvim-cmp-fonts'                                          " complete fonts from fc-list
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
-  Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
+  " Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
   Plug 'ludovicchabant/vim-gutentags'                                     " tag management
   Plug 'pbogut/magento2-ls'                                               " magento2 language server
+  Plug 'kosayoda/nvim-lightbulb'                                          " show code actions lightbulb as vtext, floatwin, or in numcol
   " only to enable code actions for intellephence...
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
