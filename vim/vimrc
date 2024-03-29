@@ -101,7 +101,9 @@ if has('nvim')
   " Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
   Plug 'ludovicchabant/vim-gutentags'                                     " tag management
   Plug 'pbogut/magento2-ls'                                               " magento2 language server
-  Plug 'kosayoda/nvim-lightbulb'                                          " show code actions lightbulb as vtext, floatwin, or in numcol
+  Plug 'rcarriga/nvim-notify'                                             " notifications
+  Plug 'mikesmithgh/kitty-scrollback.nvim'
+
   " only to enable code actions for intellephence...
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
@@ -1389,27 +1391,6 @@ highlight clear CursorLine
 highlight link CursorLineNr LineNr
 highlight CursorLineNr ctermfg=208
 
-highlight LspCodeActionLine             ctermfg=220
-highlight LspCodeActionText             ctermfg=196
-highlight LspErrorHighlight             ctermfg=196
-highlight LspErrorLine                  ctermfg=196
-highlight LspErrorText                  ctermfg=196
-highlight LspErrorVirtualText           ctermfg=196
-highlight LspHintHighlight              ctermfg=196
-highlight LspHintLine                   ctermfg=196
-highlight LspHintText                   ctermfg=208
-highlight LspHintVirtualText            ctermfg=196
-highlight LspInformationHighlight       ctermfg=196
-highlight LspInformationLine            ctermfg=196
-highlight LspInformationText            ctermfg=220
-highlight LspInformationVirtualText     ctermfg=196
-highlight LspWarningHighlight           ctermfg=196
-highlight LspWarningLine                ctermfg=196
-highlight LspWarningText                ctermfg=196
-highlight LspWarningVirtualText         ctermfg=196
-
-" reference under cursor
-highlight lspReference                  cterm=underline
 
 highlight jsFunction ctermfg=111 cterm=bold
 highlight jsFuncName ctermfg=118
@@ -1478,10 +1459,10 @@ autocmd BufNewFile *.air
 " Data::Dumper with options
 " ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
 
-autocmd Filetype php ia dd \dahbug::dump();<left><left>
+" autocmd Filetype php ia dd \dahbug::dump();<left><left>
 
 " input $var
-ia wd warn Dumper();<left><left>
+" ia wd warn Dumper();<left><left>
 
 " comment block
 ia CC ################################################################################<cr>#<cr>###############################################################################<up><backspace>
@@ -1614,25 +1595,23 @@ autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " FIXME
 hi clear Error
 
-highlight! TelescopeBorder ctermfg=238
-highlight! TelescopeNormal ctermfg=137
-highlight! TelescopeSelection cterm=reverse
-highlight! TelescopeSelectionCaret ctermfg=196
-highlight! TelescopeMatching ctermbg=232 ctermfg=196 cterm=reversebold
-highlight! TelescopePromptPrefix ctermfg=196
-highlight! TelescopePromptBorder ctermfg=240
-highlight! TelescopePrompt ctermfg=220
-highlight! TelescopeMultiSelection ctermfg=196
-highlight! TelescopeResultsBorder ctermfg=240
-highlight! TelescopePreviewBorder ctermfg=240
-highlight! TelescopePreview ctermfg=137
-highlight! TelescopePreviewTitle cterm=italicbold ctermfg=244
+highlight! TelescopeBorder          ctermfg=238
+highlight! TelescopeNormal          ctermfg=137
+highlight! TelescopeSelection       cterm=reverse
+highlight! TelescopeSelectionCaret  ctermfg=196
+highlight! TelescopeMatching        ctermbg=232 ctermfg=196 cterm=reversebold
+highlight! TelescopePromptPrefix    ctermfg=196
+highlight! TelescopePromptBorder    ctermfg=240
+highlight! TelescopePrompt          ctermfg=220
+highlight! TelescopeMultiSelection  ctermfg=196
+highlight! TelescopeResultsBorder   ctermfg=240
+highlight! TelescopePreviewBorder   ctermfg=240
+highlight! TelescopePreview         ctermfg=137
+highlight! TelescopePreviewTitle    cterm=italicbold ctermfg=244
 
 highlight! MatchWord ctermfg=45
 highlight Winbar cterm=bolditalic ctermfg=244
 
-" argument in lsp-signature-help popup
-highlight! LspSignatureActiveParameter ctermfg=160 cterm=bold
 
 " highlight the line that starts the current block
 highlight @ibl.scope.underline.1 cterm=underline
@@ -1647,98 +1626,108 @@ highlight link CocUnusedHighlight Comment
 highlight DiffDelete ctermbg=232 ctermfg=160
 highlight DiffAdd    ctermfg=034 ctermbg=232
 
-" au FileType markdown setlocal formatprg=prettier\ --parser\ markdown
-" au FileType javascript setlocal formatprg=prettier\ --parser\ typescript
-" au FileType css setlocal formatprg=prettier\ --parser\ css
-" au FileType html setlocal formatprg=prettier\ --parser\ html
-" au FileType json setlocal formatprg=jq
-" au FileType php setlocal formatprg=phpcbf\ -
+highlight LspCodeActionLine           ctermfg=220
+highlight LspCodeActionText           ctermfg=196
+highlight LspErrorHighlight           ctermfg=196
+highlight LspErrorLine                ctermfg=196
+highlight LspErrorText                ctermfg=196
+highlight LspErrorVirtualText         ctermfg=196
+highlight LspHintHighlight            ctermfg=196
+highlight LspHintLine                 ctermfg=196
+highlight LspHintText                 ctermfg=208
+highlight LspHintVirtualText          ctermfg=196
+highlight LspInformationHighlight     ctermfg=196
+highlight LspInformationLine          ctermfg=196
+highlight LspInformationText          ctermfg=220
+highlight LspInformationVirtualText   ctermfg=196
+highlight LspWarningHighlight         ctermfg=196
+highlight LspWarningLine              ctermfg=196
+highlight LspWarningText              ctermfg=196
+highlight LspWarningVirtualText       ctermfg=196
+highlight LspInfoBorder               ctermfg=160
+highlight LspInfoFiletype             ctermfg=137
+highlight LspInfoList                 ctermfg=137
+highlight LspInfoTip                  ctermfg=fg cterm=bold
+highlight LspInfoTitle                ctermfg=208
+
+" reference under cursor
+highlight lspReference                cterm=underline
+
+" argument in lsp-signature-help popup
+highlight! LspSignatureActiveParameter ctermfg=160 cterm=bold
+
+highlight CmpItemKind                 ctermfg=137
+highlight CmpItemAbbrMatch            ctermfg=137
+
+" completion menu
+highlight PmenuThumb ctermfg=fg ctermbg=232
+highlight PmenuSbar ctermfg=fg ctermbg=232
 
 
+highlight CmpItemKindSnippet          ctermfg=220
+highlight CmpItemKindFile             ctermfg=208
+highlight CmpItemKindFunction         ctermfg=081
+highlight CmpItemKindKeyword          ctermfg=160
+highlight link CmpItemKindVariable    perlVarPlain
+highlight link CmpItemKindText        Comment
 
-highlight LspInfoBorder ctermfg=160
-highlight LspInfoFiletype ctermfg=137
-highlight LspInfoList ctermfg=137
-highlight LspInfoTip ctermfg=fg cterm=bold
-highlight LspInfoTitle ctermfg=208
+" vim-notify
+highlight NotifyERRORBorder ctermfg=160
+highlight NotifyWARNBorder  ctermfg=208
+highlight NotifyINFOBorder  ctermfg=137
+highlight NotifyDEBUGBorder ctermfg=244
+highlight NotifyTRACEBorder ctermfg=196
+highlight NotifyERRORIcon   ctermfg=196
+highlight NotifyWARNIcon    ctermfg=208
+highlight NotifyINFOIcon    ctermfg=137
+highlight NotifyDEBUGIcon   ctermfg=244
+highlight NotifyTRACEIcon   ctermfg=196
+highlight NotifyERRORTitle  ctermfg=160
+highlight NotifyWARNTitle   ctermfg=208
+highlight NotifyINFOTitle   ctermfg=137
+highlight NotifyDEBUGTitle  ctermfg=244
+highlight NotifyTRACETitle  ctermfg=196
+highlight link NotifyERRORBody Normal
+highlight link NotifyWARNBody Normal
+highlight link NotifyINFOBody Normal
+highlight link NotifyDEBUGBody Normal
+highlight link NotifyTRACEBody Normal
 
-highlight CmpItemKind ctermfg=137
-highlight CmpItemAbbrMatch ctermfg=137
-
-highlight CmpItemKindSnippet ctermfg=220
-highlight link CmpItemKindVariable perlVarPlain
-highlight link CmpItemKindText Comment
-highlight CmpItemKindFile ctermfg=208
-
-highlight CmpItemKindFunction ctermfg=081
-highlight CmpItemKindKeyword ctermfg=160
 
 set foldcolumn&
+
 
 " add these to neverland ?
 " Grabbed by doing :Redir :hi
 "
 " CmpItemAbbr
-" CmpItemAbbrDefault
 " CmpItemAbbrDeprecated
-" CmpItemAbbrDeprecatedDefault
-" CmpItemAbbrMatch
-" CmpItemAbbrMatchDefault
 " CmpItemAbbrMatchFuzzy
-" CmpItemAbbrMatchFuzzyDefault
-" CmpItemKind
 " CmpItemKindClass
-" CmpItemKindClassDefault
 " CmpItemKindColor
-" CmpItemKindColorDefault
 " CmpItemKindConstant
-" CmpItemKindConstantDefault
 " CmpItemKindConstructor
-" CmpItemKindConstructorDefault
-" CmpItemKindDefault
 " CmpItemKindEnum
-" CmpItemKindEnumDefault
 " CmpItemKindEnumMember
-" CmpItemKindEnumMemberDefault
 " CmpItemKindEvent
-" CmpItemKindEventDefault
 " CmpItemKindField
-" CmpItemKindFieldDefault
 " CmpItemKindFile
-" CmpItemKindFileDefault
 " CmpItemKindFolder
-" CmpItemKindFolderDefault
 " CmpItemKindFunction
-" CmpItemKindFunctionDefault
 " CmpItemKindInterface
-" CmpItemKindInterfaceDefault
 " CmpItemKindKeyword
-" CmpItemKindKeywordDefault
 " CmpItemKindMethod
-" CmpItemKindMethodDefault
 " CmpItemKindModule
-" CmpItemKindModuleDefault
 " CmpItemKindOperator
-" CmpItemKindOperatorDefault
 " CmpItemKindProperty
-" CmpItemKindPropertyDefault
 " CmpItemKindReference
-" CmpItemKindReferenceDefault
 " CmpItemKindSnippet
-" CmpItemKindSnippetDefault
 " CmpItemKindStruct
-" CmpItemKindStructDefault
 " CmpItemKindText
-" CmpItemKindTextDefault
 " CmpItemKindTypeParameter
-" CmpItemKindTypeParameterDefault
 " CmpItemKindUnit
-" CmpItemKindUnitDefault
 " CmpItemKindValue
-" CmpItemKindValueDefault
-" CmpItemKindVariableDefault
 " CmpItemMenu
-" CmpItemMenuDefault
 " DiagnosticDeprecated
 " DiagnosticError
 " DiagnosticFloatingError
@@ -1775,25 +1764,6 @@ set foldcolumn&
 " IblIndent
 " IblScope
 " IblWhitespace
-" LspCodeActionLine
-" LspCodeActionText
-" LspErrorHighlight
-" LspErrorLine
-" LspErrorText
-" LspErrorVirtualText
-" LspHintHighlight
-" LspHintLine
-" LspHintText
-" LspHintVirtualText
-" LspInformationHighlight
-" LspInformationLine
-" LspInformationText
-" LspInformationVirtualText
-" LspSignatureActiveParameter
-" LspWarningHighlight
-" LspWarningLine
-" LspWarningText
-" LspWarningVirtualText
 " MatchBackground
 " MatchParen
 " MatchParenCur
@@ -1802,8 +1772,6 @@ set foldcolumn&
 " MoreMsg
 " MsgArea        ctermfg=232
 " MsgSeparator
-" Normal
-" NormalFloat
 " Pmenu
 " PmenuExtra
 " PmenuExtraSel
