@@ -829,9 +829,8 @@ endfu
 " ========== AUTOCOMMANDS START =========================
 
 " kitty-scrollback
-" autocmd BufEnter * if &filetype == 'kitty-scrollback' | setlocal nonumber | endif
 autocmd FileType kitty-scrollback nnoremap <C-d> <Plug>(KsbQuitAll)
-autocmd FileType kitty-scrollback setlocal nonumber
+autocmd FileType kitty-scrollback setlocal nonumber nolist
 
 augroup NetrwSettings
   autocmd!
