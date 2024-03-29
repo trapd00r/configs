@@ -41,7 +41,7 @@ export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
 
 
 # locale, timezone
-export            LC_ALL=""
+export            LC_ALL=en_US.UTF-8
 export              LANG=en_US.UTF-8
 export        LC_ADDRESS=en_US.UTF-8
 export        LC_COLLATE=en_US.UTF-8

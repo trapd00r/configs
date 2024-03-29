@@ -1420,7 +1420,8 @@ export PAGER=less
 export MANPAGER=vimpager
 
 
-export TERM=tmux-256color
+# export TERM=tmux-256color
+export TERM=kitty
 
 # a fix for dbeaver, firefox etc where menus are displayed on the wrong monitor 
 # or not at all
@@ -1519,3 +1520,5 @@ function m2() {
   docker compose exec -u $USER php php -d memory_limit=-1 \
     /srv/magento/bin/magerun "$@"
 }
+
+export            LC_ALL=en_US.UTF-8

@@ -829,7 +829,9 @@ endfu
 " ========== AUTOCOMMANDS START =========================
 
 " kitty-scrollback
-autocmd BufEnter * if &filetype == 'kitty-scrollback' | setlocal nonumber | endif
+" autocmd BufEnter * if &filetype == 'kitty-scrollback' | setlocal nonumber | endif
+autocmd FileType kitty-scrollback nnoremap <C-d> <Plug>(KsbQuitAll)
+autocmd FileType kitty-scrollback setlocal nonumber
 
 augroup NetrwSettings
   autocmd!
@@ -1701,6 +1703,7 @@ highlight link NotifyTRACEBody Normal
 
 " KittyScrollback
 highlight KittyScrollbackNvimNormal ctermfg=white ctermbg=bg
+highlight KittyScrollbackNvimVisual cterm=bold ctermbg=197 ctermfg=black
 
 
 set foldcolumn&
