@@ -119,7 +119,7 @@ alias psp="cd ${HOME}/dev/askas/air8/cgi-bin/core/lib/AIR/PSP2"
 # basics
 alias       R='rehash'
 #alias    beet="~/dev/beets/beet"
-alias     cat="$HOME/dev/vimcat/vimcat"
+alias     cat="cateverything"
 alias      cp='cp -v'
 alias    cpan='cpanm'
 alias     feh='/usr/bin/feh -FZ --action "cp -v %F ." --cache-size 2048 --quiet --verbose -G -d --draw-tinted'
