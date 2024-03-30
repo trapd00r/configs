@@ -69,7 +69,7 @@ xset r rate 280 30
 xkbset bouncekeys 50
 
 # mpd4+p = shift-insert
-xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
+# xbindkeys -f $XDG_CONFIG_HOME/xbindkeysrc
 
 #----------------------------------------
 # set mouse cursor and options
