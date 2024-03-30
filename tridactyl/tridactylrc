@@ -47,6 +47,8 @@ colors japh
 bind <BS> back
 bind h tabprev
 bind l tabnext
+bind $ tablast
+bind ^ tabfirst
 
 bind U fillcmdline undo
 
