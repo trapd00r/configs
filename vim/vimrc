@@ -68,7 +68,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'                                       " data
 Plug 'kristijanhusak/vim-dadbod-completion'                               " completion for above
 
 if has('nvim')
-  " Plug 'Eandrju/cellular-automaton.nvim'                                  " F12, :CellularAutomaton make_it_rain
+  Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
   Plug 'kevinhwang91/promise-async'                                       " required for nvim-ufo
@@ -321,7 +321,7 @@ if has('nvim')
   cmap <C-J> <Down>
   cmap <C-K> <Up>
 
-  nnoremap <F12> :call Rain()<cr>
+  nnoremap <F11> :call Rain()<cr>
 
   function! Rain()
     TSBufEnable highlight
