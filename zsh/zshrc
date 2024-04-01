@@ -1521,4 +1521,6 @@ function m2() {
     /srv/magento/bin/magerun "$@"
 }
 
-export            LC_ALL=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+kitty @ create-marker iregex 3 'https?\S+'
