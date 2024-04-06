@@ -223,7 +223,8 @@ then
       perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
       ); do
 
-      alias $host="setbg_sshhosts $host; ssh $host $@"
+      # alias $host="setbg_sshhosts $host; ssh $host $@"
+      alias $host="kitten ssh $host $@"
     done
   fi
 fi
