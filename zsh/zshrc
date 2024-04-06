@@ -1523,8 +1523,10 @@ function m2() {
 
 export LC_ALL=en_US.UTF-8
 
-# if xorg is running
 if [[ -n $DISPLAY ]]; then
-  kitty @ create-marker iregex 3 'https?\S+'
-else
+  # this isn't supposed to be a valid url regex but rather to only match
+  # complete urls in the shell, and not things like:
+  # $url = 'https://'.$this->params['language'].'.wikipedia.org/';
+
+  kitty @ create-marker iregex 3 'https?://(www\.)?[A-Za-z0-9.-/?&=_!)(]+'
 fi
