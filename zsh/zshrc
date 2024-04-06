@@ -1528,5 +1528,5 @@ if [[ -n $DISPLAY ]]; then
   # complete urls in the shell, and not things like:
   # $url = 'https://'.$this->params['language'].'.wikipedia.org/';
 
-  kitty @ create-marker iregex 3 'https?://(www\.)?[A-Za-z0-9.-/?&=_!)(]+'
+  kitty @ create-marker iregex 3 'https?://(www\.)?[A-Za-z0-9.-/?&=_!)(#~+:%;,-]+'
 fi
