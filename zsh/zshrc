@@ -203,7 +203,6 @@ alias   songs='pimpd2 --songs'
 alias  albums='pimpd2 --albums'
 alias   slove='pimpd2 --slove|ls_color'
 alias ncmpcpp="ncmpcpp -b $HOME/etc/ncmpcpp/keys -s playlist -S visualizer"
-alias mm='builtin cd /mnt/music8/+TAGGED && cd "$(fd --type d --hidden --exclude .git --exclude node_module --exclude docs --exclude .cache --exclude .npm --exclude .gitlab --exclude Microsoft_NAV_Integration_Standad --exclude . | fzf)"'
 
 alias scrobbles="php /home/scp1/dev/plexamphpoop/src/scrobbles.php"
 
@@ -836,7 +835,7 @@ savecwd() {
 # define a widget with the same name as the function
 zle -N fzfartist{,}
 fzfartist() {
-  artist_dir=$(find ${XDG_MUSIC_DIR} -maxdepth 2 -type d | fzf)
+  artist_dir=$(find "${XDG_MUSIC_DIR}" -maxdepth 2 -type d \( -path '*/Various Artists*' -o -path '*/Mixtapes*' -o -path '*/Soundtracks*' \) -prune -o -print | fzf)
   cd "${artist_dir}"
 }
 # ctrl+backspace
@@ -1523,4 +1522,8 @@ function m2() {
 
 export LC_ALL=en_US.UTF-8
 
-kitty @ create-marker iregex 3 'https?\S+'
+# if xorg is running
+if [[ -n $DISPLAY ]]; then
+  kitty @ create-marker iregex 3 'https?\S+'
+else
+fi
