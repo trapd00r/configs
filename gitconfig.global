@@ -7,7 +7,7 @@
 [push]
   autosetupremote = true
 [core]
-  pager = delta
+  ; pager = delta
   hooksPath = ~/.hooks/
 [color]
   branch     = auto
@@ -46,7 +46,7 @@
   colorMoved = default
 
 [interactive]
-  diffFilter = delta --color-only --line-number
+  ; diffFilter = delta --color-only --line-number
 
 [delta]
   navigate = true    # use n and N to move between diff sections

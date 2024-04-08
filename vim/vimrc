@@ -837,6 +837,13 @@ augroup NetrwSettings
   autocmd FileType netrw setlocal filetype=LS_COLORS.vim
 augroup END
 
+
+augroup custom_nginx
+  autocmd!
+  autocmd FileType nginx setlocal iskeyword+=$
+  autocmd FileType nginx let b:coc_additional_keywords = ['$']
+augroup end
+
 " completion for dadbod
 autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
 
@@ -1868,3 +1875,5 @@ set foldcolumn&
 " xmap <silent> ga <Plug>(coc-codeaction-selected)
 " nmap <silent> <leader>a <Plug>(coc-codeaction-cursor)
 " nmap <silent> gA <Plug>(coc-codeaction)
+
+autocmd FileType *.log setlocal formatprg=jq

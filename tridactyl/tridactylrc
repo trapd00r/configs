@@ -34,7 +34,8 @@ set historyresults 10
 "Pages opened with gH.
 set homepages ["dockie:8083", "dockie:3000"]
 
-guiset_quiet gui none
+" guiset_quiet gui none
+guiset_quiet gui full
 "guiset_quiet statuspanel right
 "guiset_quiet statuspanel right
 

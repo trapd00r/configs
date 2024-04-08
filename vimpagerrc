@@ -15,11 +15,7 @@ set colorcolumn=0
 set tw=80
 set cursorline
 set cmdheight=1
+set hidden
 
 nmap q :quit<cr>
-
-source /home/scp1/etc/vim/plugged/foldsearches.vim/plugin/foldsearches.vim
-
-nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
-nmap <silent> <expr>  z2  FS_ToggleFoldAroundSearch({'context':2})
-
+nmap q :quit!<cr>

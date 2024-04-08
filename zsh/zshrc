@@ -1440,7 +1440,7 @@ git config --global alias.root 'rev-parse --show-toplevel'
 
 
 # tail dahbug no matter how deep in the directory structure you are
-alias dahbug='tail -F "$(git root)"/../dahbug.log'
+# alias dahbug='tail -F "$(git root)"/../dahbug.log'
 
 #export _ZO_EXCLUDE_DIRS='/mnt/media2/music/P/Per Gessle'
 eval "$(zoxide init --cmd cd zsh)"
@@ -1493,7 +1493,7 @@ function vim() {
 
 
 # tail dahbug no matter how deep in the directory structure you are
-alias dahbug='tail -F "$(git root)"/../dahbug.log'
+# alias dahbug='tail -F "$(git root)"/../dahbug.log'
 
 eval "$(zoxide init zsh)"
 alias cd="z"
@@ -1514,7 +1514,7 @@ function m2() {
   fi
 
   if [[ ! -f $magento_root/bin/magerun ]]; then
-    cp -v =magerun $magento_root/bin/
+    cp =magerun $magento_root/bin/
   fi
 
   docker compose exec -u $USER php php -d memory_limit=-1 \

@@ -123,6 +123,7 @@ require('lspconfig').gopls.setup({})
 -- require('lspconfig').cmake.setup({})
 -- require('lspconfig').cssls.setup({})
 require('lspconfig').html.setup({})
+require('lspconfig').nginx_language_server.setup({})
 -- require('lspconfig').marksman.setup({})
 -- require('lspconfig').pylsp.setup({})
 -- require('lspconfig').ruby_ls.setup({})
@@ -152,6 +153,18 @@ require('lspconfig').html.setup({})
 --     },
 --   }
 -- })
+
+-- clangd fix
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
+require("lspconfig").clangd.setup {
+  capabilities = cmp_nvim_lsp.default_capabilities(),
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  },
+}
+
+
 
 require('lspconfig').phpactor.setup({
   capabilities = capabilities,

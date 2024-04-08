@@ -157,7 +157,6 @@ vim/syntax/askas.vim
 "vim/syntax/ask\303\245s.vim"
 vim/syntax/notes.vim
 yuzu/
-zsh/functions/
 zsh/git.zsh
 vim/pack/plugins/start/vim-ripgrep
 ssh/
