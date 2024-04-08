@@ -45,3 +45,7 @@ cmp.setup.cmdline(':', {
 -- Only enable for certain filetypes
 require "cmp".setup.filetype({ "conf", "config", "zsh", "sh", "bash" },
   { sources = { { name = "fonts" } } })
+
+require "cmp".setup.filetype({ "conf", "config", "zsh", "sh", "bash" },
+  { sources = { { name = "artists" } } })
+

@@ -1415,7 +1415,12 @@ export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/as
 #export VIMRUNTIME=${HOME}/etc/vim
 alias pulsemixer='pulsemixer --color 1'
 
-export GIT_PAGER=delta
+# export GIT_PAGER=delta
+# export GIT_PAGER="diffr --colors refine-removed:background:232,0,0:foreground:160:bold "
+# export GIT_PAGER="diffr --colors refine-added:none:background:106,0,0:bold --colors added:none:background:64 --colors refine-removed:none:background:0x99,0x33,0x33:bold --colors removed:none:background:0x55,0x33,0x33"
+# export GIT_PAGER=diff-highlight
+export GIT_PAGER=dunk
+
 export PAGER=less
 export MANPAGER=vimpager
 

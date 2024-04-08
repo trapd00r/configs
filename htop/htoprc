@@ -1,6 +1,6 @@
 # Beware! This file is rewritten by htop when settings are changed in the interface.
 # The parser is also very primitive, and not human-friendly.
-htop_version=3.2.2
+htop_version=3.3.0
 config_reader_min_version=3
 fields=20 49 0 3 6 39 37 46 47 2 1
 hide_kernel_threads=1
@@ -36,8 +36,8 @@ hide_function_bar=0
 header_layout=two_33_67
 column_meters_0=Hostname Battery NetworkIO DiskIO Memory
 column_meter_modes_0=2 2 2 2 2
-column_meters_1=
-column_meter_modes_1=
+column_meters_1=!
+column_meter_modes_1=0
 tree_view=0
 sort_key=46
 tree_sort_key=0
@@ -48,16 +48,16 @@ all_branches_collapsed=1
 screen:Main=STARTTIME TIME PID PPID TTY M_RESIDENT PROCESSOR PERCENT_CPU PERCENT_MEM STATE Command
 .sort_key=PERCENT_CPU
 .tree_sort_key=PID
-.tree_view=0
 .tree_view_always_by_pid=0
+.tree_view=0
 .sort_direction=-1
 .tree_sort_direction=1
 .all_branches_collapsed=1
 screen:I/O=PID USER IO_PRIORITY IO_RATE IO_READ_RATE IO_WRITE_RATE PERCENT_SWAP_DELAY PERCENT_IO_DELAY Command
 .sort_key=IO_RATE
 .tree_sort_key=PID
-.tree_view=0
 .tree_view_always_by_pid=0
+.tree_view=0
 .sort_direction=-1
 .tree_sort_direction=1
 .all_branches_collapsed=0

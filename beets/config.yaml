@@ -643,9 +643,9 @@ album_fields:
 
 # default is 0.04
 match:
-#  strong_rec_thresh: 0.08
+  strong_rec_thresh: 0.08
 #  strong_rec_thresh: 0.14
-  strong_rec_thresh: 0.20
+  # strong_rec_thresh: 0.20
 #  strong_rec_thresh: 0.10
 #  medium_rec_thresh: 0.25
   required: year label country

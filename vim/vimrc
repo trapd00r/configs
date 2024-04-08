@@ -1712,7 +1712,6 @@ highlight KittyScrollbackNvimNormal ctermfg=white ctermbg=bg
 highlight KittyScrollbackNvimVisual cterm=bold ctermbg=197 ctermfg=black
 
 
-set foldcolumn&
 
 
 " add these to neverland ?
@@ -1877,3 +1876,11 @@ set foldcolumn&
 " nmap <silent> gA <Plug>(coc-codeaction)
 
 autocmd FileType *.log setlocal formatprg=jq
+" nmap <silent> gA <Plug>(coc-codeaction)
+" nmap <silent> gA <Plug>(coc-foobar)
+
+
+nnoremap <leader>gd :Git diff --word-diff=plain %<cr>
+
+
+set foldcolumn&

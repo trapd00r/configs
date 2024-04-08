@@ -1,6 +1,6 @@
 # vim:ft=gitconfig:
 [include]
-  path = ~/etc/delta/neverland.theme
+  ; path = ~/etc/delta/neverland.theme
 [user]
   name  = Magnus Woldrich
   email = magnus.woldrich@gmail.com
@@ -8,6 +8,9 @@
   autosetupremote = true
 [core]
   ; pager = delta
+  pager = delta
+	; pager = diffr | less -R
+  ; pager = diff-highlight
   hooksPath = ~/.hooks/
 [color]
   branch     = auto
@@ -42,11 +45,19 @@
   commit     = 4
   whitespace = 160 bold
 
+[color "diff-highlight"]
+  oldNormal    = 160
+  oldHighlight = 124
+  newNormal    = green
+  newHighlight = 34
+
 [diff]
   colorMoved = default
+  pager = diff-highlight
 
 [interactive]
-  ; diffFilter = delta --color-only --line-number
+  diffFilter = delta --color-only --line-number
+	; difffilter = diffr
 
 [delta]
   navigate = true    # use n and N to move between diff sections

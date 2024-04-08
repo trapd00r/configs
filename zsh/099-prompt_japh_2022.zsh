@@ -32,8 +32,8 @@ askas_butik_prompt_update() {
     fi
 #  PROMPT=$'%F{240}┌[${ASKAS_BUTIK_PROMPT}%F{220}${vcs_info_msg_0_}%F{240}]%f
 #%F{240}└[%F{30}%}%~%F{208}>%F{255} '
-  PROMPT=$'%F{240}┌[%F{30}%}%~%F{220}${vcs_info_msg_0_}%F{240}]%f
-%F{240}└${ASKAS_BUTIK_PROMPT}%F{208}>%F{255} '
+  PROMPT=$'%F{240}╔[%F{30}%}%~%F{220}${vcs_info_msg_0_}%F{240}]%f
+%F{240}╚${ASKAS_BUTIK_PROMPT}%F{208}>%F{255} '
 }
 #
 
