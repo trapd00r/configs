@@ -1513,12 +1513,31 @@ function m2() {
     return 1
   fi
 
+  # check if there is a vendor directory inside this magento root
+  # if there is, it's the proper dir
+  # if not, check alternative locations:
+  #
+  # himla: himla/magento/magento/
+
+  if [[ -d $magento_root/vendor ]]; then
+    magento_root=$magento_root
+  elif [[ -d $magento_root/magento/vendor ]]; then
+    magento_root=$magento_root/magento
+  else
+    echo "No vendor directory found in $magento_root"
+    return 1
+  fi
+
+  bin_dir=${magento_root}/bin
+  bin_dir=$(echo ${bin_dir} | perl -pe 's{.+((?:magento/)?+magento/bin)}{$1}')
+
+
   if [[ ! -f $magento_root/bin/magerun ]]; then
-    cp =magerun $magento_root/bin/
+    cp =magerun ${bin_dir}
   fi
 
   docker compose exec -u $USER php php -d memory_limit=-1 \
-    /srv/magento/bin/magerun "$@"
+    /srv/$bin_dir/magerun "$@"
 }
 
 export LC_ALL=en_US.UTF-8
