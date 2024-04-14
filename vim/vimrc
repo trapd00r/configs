@@ -1876,11 +1876,31 @@ highlight KittyScrollbackNvimVisual cterm=bold ctermbg=197 ctermfg=black
 " nmap <silent> gA <Plug>(coc-codeaction)
 
 autocmd FileType *.log setlocal formatprg=jq
-" nmap <silent> gA <Plug>(coc-codeaction)
-" nmap <silent> gA <Plug>(coc-foobar)
-
 
 nnoremap <leader>gd :Git diff --word-diff=plain %<cr>
 
-
 set foldcolumn&
+
+
+highlight SymbolUnderCursor ctermfg=202 ctermbg=none cterm=none
+
+" Define a function to highlight the symbol under the cursor
+function! HighlightSymbol()
+    " Get the symbol under the cursor
+    let l:symbol = expand('<cword>')
+
+    " Highlight the symbol
+    call matchadd('SymbolUnderCursor', '\V\<' . escape(l:symbol, '\') . '\>')
+endfunction
+
+" Remove existing highlights when the cursor is moved
+augroup ClearHighlights
+    autocmd!
+    autocmd CursorMoved * call clearmatches() | call HighlightSymbol()
+augroup END
+
+" Call HighlightSymbol when CursorHold is triggered
+augroup DelayedHighlight
+    autocmd!
+    autocmd CursorHold * call HighlightSymbol()
+augroup END
