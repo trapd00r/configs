@@ -137,22 +137,26 @@ require('lspconfig').nginx_language_server.setup({})
 -- require('lspconfig').tailwindcss.setup({})
 -- require('lspconfig').htmx.setup({})
 -- require('lspconfig').intelephense.setup({})
--- require('lspconfig').intelephense.setup({
---   capabilities = capabilities,
---   settings = {
---     intelephense = {
---       telemetry = {
---         enabled = false,
---       },
---       completion = {
---         fullyQualifyGlobalConstantsAndFunctions = false
---       },
---       phpdoc = {
---         returnVoid = false,
---       }
---     },
---   }
--- })
+require('lspconfig').intelephense.setup({
+  capabilities = capabilities,
+  root_dir = require("lspconfig").util.root_pattern(".git", "package.json"),
+  settings = {
+    intelephense = {
+      files = {
+        maxSize = 1000000000
+      },
+      telemetry = {
+        enabled = false,
+      },
+      completion = {
+        fullyQualifyGlobalConstantsAndFunctions = false
+      },
+      phpdoc = {
+        returnVoid = false,
+      }
+    },
+  }
+})
 
 -- clangd fix
 local cmp_nvim_lsp = require "cmp_nvim_lsp"

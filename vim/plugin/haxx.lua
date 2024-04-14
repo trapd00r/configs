@@ -48,3 +48,5 @@ vim.api.nvim_set_keymap('n', '<leader>DD', ':call v:lua.toggle_diagnostics()<CR>
 --
 -- -- format entire buffer
 -- vim.keymap.set('n', '<leader>GQ', vim.lsp.buf.format, { noremap = true })
+
+
