@@ -1510,39 +1510,68 @@ export VIDIR_EDITOR=nvim
 # magerun/magento completion
 . ${HOME}/etc/zsh/functions/magerun.zsh
 
+# prerequisites:
+# - set webbhuset_root to your root folder for all the projects
+# - download magerun.phar and add it somewhere in your path
+# - rename the file to only magerun and chmod +x it
 function m2() {
-  magento_root=$(git root 2>/dev/null)
+  webbhuset_root=${HOME}/dev/webbhuset/
+
+  magento_root=$(git rev-parse --show-toplevel 2>/dev/null)
 
   if [[ -z $magento_root ]]; then
     echo "Not in a git repo"
     return 1
   fi
 
+  if [[ $magento_root != *magento* ]]; then
+
+    # the client is the directory after webbhuset/
+    client=$(echo $magento_root | perl -pe "s{^$webbhuset_root}{}; s{/.*}{};")
+    client_root=${webbhuset_root}${client}
+
+    printf "\033[38;5;228m \033[m Not in a magento repo\n"
+    printf "\033[38;5;208m \033[m Trying to locate magento root for client: \033[38;5;208;1m${client}\033[m\n"
+
+    # if there is a magento dir inside the client root, use that
+    if [[ -d $client_root/magento ]]; then
+      magento_root=$client_root/magento
+      printf "\033[38;5;142m \033[m Found magento root:\n   \033[38;5;30m${magento_root}\033[m\n"
+    fi
+  fi
+
   # check if there is a vendor directory inside this magento root
   # if there is, it's the proper dir
   # if not, check alternative locations:
   #
-  # himla: himla/magento/magento/
+  # for example:
+  # - himla: himla/magento/magento/
 
   if [[ -d $magento_root/vendor ]]; then
     magento_root=$magento_root
   elif [[ -d $magento_root/magento/vendor ]]; then
     magento_root=$magento_root/magento
   else
-    echo "No vendor directory found in $magento_root"
+    printf "\033[38;5;196m \033[m No vendor directory found in \033[38;5;30m${magento_root}\033[m\n"
     return 1
   fi
 
   bin_dir=${magento_root}/bin
-  bin_dir=$(echo ${bin_dir} | perl -pe 's{.+((?:magento/)?+magento/bin)}{$1}')
-
+  bin_dir_docker=$(echo ${bin_dir} | perl -pe 's{.+((?:magento/)?+magento/bin)}{$1}')
 
   if [[ ! -f $magento_root/bin/magerun ]]; then
-    cp =magerun ${bin_dir}
+    /bin/cp =magerun ${bin_dir}
+
+    if [[ $? -ne 0 ]]; then
+      printf "\033[38;5;196m \033[m Could not copy magerun to \033[38;5;30m${bin_dir}\033[m\n"
+      return 1
+    fi
+    printf "\033[38;5;208m \033[m Copied magerun to \033[38;5;30m${bin_dir}\033[m\n"
   fi
 
+  echo
   docker compose exec -u $USER php php -d memory_limit=-1 \
-    /srv/$bin_dir/magerun "$@"
+    /srv/$bin_dir_docker/magerun "$@"
 }
 
 export LC_ALL=en_US.UTF-8
