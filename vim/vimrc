@@ -118,6 +118,7 @@ Plug 'pangloss/vim-javascript',        { 'for': 'javascript' }
 Plug 'Glench/Vim-Jinja2-Syntax',       { 'for': 'jinja' }
 Plug 'trapd00r/hass-template.vim',     { 'for': 'jinja' }
 Plug 'fatih/vim-go',                   { 'for': 'go' }
+Plug 'jparise/vim-graphql',            { 'for': 'graphql' }
 
 
 call plug#end()
