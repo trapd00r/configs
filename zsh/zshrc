@@ -45,6 +45,11 @@ fi
 
 #eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
 
+# switch node versions for make artifacts in elm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # LS_COLORS
 if [[ -z $LS_COLORS ]]; then
   if [ -f $HOME/dev/LS_COLORS/LS_COLORS ]; then
@@ -1419,7 +1424,7 @@ alias pulsemixer='pulsemixer --color 1'
 # export GIT_PAGER="diffr --colors refine-removed:background:232,0,0:foreground:160:bold "
 # export GIT_PAGER="diffr --colors refine-added:none:background:106,0,0:bold --colors added:none:background:64 --colors refine-removed:none:background:0x99,0x33,0x33:bold --colors removed:none:background:0x55,0x33,0x33"
 # export GIT_PAGER=diff-highlight
-export GIT_PAGER=dunk
+#export GIT_PAGER=dunk
 
 export PAGER=less
 export MANPAGER=vimpager
@@ -1513,10 +1518,9 @@ export VIDIR_EDITOR=nvim
 # prerequisites:
 # - set webbhuset_root to your root folder for all the projects
 # - download magerun.phar and add it somewhere in your path
-# - rename the file to only magerun and chmod +x it
+# - rename the file to magerun and chmod +x it
 function m2() {
   webbhuset_root=${HOME}/dev/webbhuset/
-
   magento_root=$(git rev-parse --show-toplevel 2>/dev/null)
 
   if [[ -z $magento_root ]]; then
@@ -1524,10 +1528,12 @@ function m2() {
     return 1
   fi
 
+  # the client is the directory after webbhuset/
+  client=$(echo $magento_root | perl -pe "s{^$webbhuset_root}{}; s{/.*}{};")
+
+  # alright try harder to find the magento root
   if [[ $magento_root != *magento* ]]; then
 
-    # the client is the directory after webbhuset/
-    client=$(echo $magento_root | perl -pe "s{^$webbhuset_root}{}; s{/.*}{};")
     client_root=${webbhuset_root}${client}
 
     printf "\033[38;5;228m \033[m Not in a magento repo\n"
@@ -1536,6 +1542,10 @@ function m2() {
     # if there is a magento dir inside the client root, use that
     if [[ -d $client_root/magento ]]; then
       magento_root=$client_root/magento
+      printf "\033[38;5;142m \033[m Found magento root:\n   \033[38;5;30m${magento_root}\033[m\n"
+    # himla
+    elif [[ -d $client_root/magento/magento ]]; then
+      magento_root=$client_root/magento/magento
       printf "\033[38;5;142m \033[m Found magento root:\n   \033[38;5;30m${magento_root}\033[m\n"
     fi
   fi
@@ -1557,10 +1567,20 @@ function m2() {
   fi
 
   bin_dir=${magento_root}/bin
-  bin_dir_docker=$(echo ${bin_dir} | perl -pe 's{.+((?:magento/)?+magento/bin)}{$1}')
+  echo $bin_dir
+
+  if [[ $client == "himla" ]]; then
+    # /srv/magento/magento/bin/
+    bin_dir_docker=$(echo ${bin_dir} | perl -pe 's{.+((?:magento/)?magento/bin)}{magento/$1}')
+  elif [[ $client == "dermalogica" ]]; then
+    bin_dir_docker="magento/bin"
+  else
+    # /srv/magento/bin/
+    bin_dir_docker=$(echo ${bin_dir} | perl -pe 's{.+((?:magento/)?magento/bin)}{$1}')
+  fi
 
   if [[ ! -f $magento_root/bin/magerun ]]; then
-    /bin/cp =magerun ${bin_dir}
+    /bin/cp $(which magerun) ${bin_dir}
 
     if [[ $? -ne 0 ]]; then
       printf "\033[38;5;196m \033[m Could not copy magerun to \033[38;5;30m${bin_dir}\033[m\n"
@@ -1569,7 +1589,6 @@ function m2() {
     printf "\033[38;5;208m \033[m Copied magerun to \033[38;5;30m${bin_dir}\033[m\n"
   fi
 
-  echo
   docker compose exec -u $USER php php -d memory_limit=-1 \
     /srv/$bin_dir_docker/magerun "$@"
 }
