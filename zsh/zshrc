@@ -1414,7 +1414,7 @@ export XDG_MUSIC_DIR=/mnt/media2/music
 
 export FZF_DEFAULT_OPTS=''
 #export FZF_DEFAULT_OPTS='--pointer=· --height 80% --layout=reverse --border --color=border:234,gutter:-1,query:197,hl+:197,hl:197,bg+:-1,fg:137 -i'
-export FZF_DEFAULT_OPTS='-i --pointer=━ --height 80% --layout=reverse --border --color=bg:232,bg+:232,info:143,border:240,spinner:108,hl:196,fg:-1,header:137,fg+:196,pointer:161,marker:168,prompt:110,hl+:196'
+export FZF_DEFAULT_OPTS='--exact -i --pointer=━ --height 80% --layout=reverse --border --color=bg:232,bg+:232,info:143,border:240,spinner:108,hl:196,fg:-1,header:137,fg+:196,pointer:161,marker:168,prompt:110,hl+:196'
 
 #export FZF_DEFAULT_OPTS='-i --pointer=⬌ --height 80% --layout=reverse --border'
 # white with only highlights
