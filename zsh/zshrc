@@ -1303,6 +1303,18 @@ zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|
 . ~/etc/zsh/11-fzf-completion.zsh
 . ~/etc/zsh/11-fzf-keybindings.zsh
 
+
+# alt+space = cd fzf
+bindkey '\e ' fzf-cd-widget
+
+zoxide_widget() { zi }
+zle -N zoxide_widget
+
+# alt+enter = zoxide
+bindkey '\e^M' zoxide_widget
+
+
+
 # fzf-tab
 #. ~/etc/zsh/fzf-tab/fzf-tab.plugin.zsh
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -1392,7 +1404,7 @@ alias performance_mode='echo performance | sudo tee /sys/devices/system/cpu/cpu*
 alias schedutil_mode='echo schedutil | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
 
 #export JULIA_LOAD_PATH=~/dev/julia-lab
-alias share="python3 -m http.server 8080"
+alias share="python3 -m http.server 43851"
 # preserve my environment
 alias sudo='sudo -E'
 
@@ -1602,3 +1614,5 @@ if [[ -n $DISPLAY ]]; then
 
   kitty @ create-marker iregex 3 'https?://(www\.)?[A-Za-z0-9.-/?&=_!)(#~+:%;,-]+'
 fi
+
+alias gif='cd /home/scp1/.local/share/Steam/steamapps/compatdata/881100/pfx/drive_c/users/steamuser/AppData/LocalLow/Nolla_Games_Noita/save_rec/screenshots_animated/'
