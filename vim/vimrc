@@ -11,7 +11,6 @@ let g:hostname = hostname()
 " ========== INIT START =================================
 set nocp
 filetype plugin indent on
-" syntax on
 
 set helpfile=$XDG_CONFIG_HOME/vim/doc/help.txt
 
@@ -44,6 +43,7 @@ Plug 'junegunn/fzf'                                                       " fuzz
 Plug 'junegunn/fzf.vim'                                                   " ... all the things
 Plug 'junegunn/rainbow_parentheses.vim'                                   " better rainbows
 Plug 'junegunn/vim-plug'                                                  " self
+Plug 'preservim/tagbar'                                                   " tagbar for ctags
 Plug 'kien/ctrlp.vim'                                                     " I don't use this but ctrlp-funky depends on it
 Plug 'kshenoy/vim-signature'                                              " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'                                         " adds ability to highlight specific words
@@ -61,11 +61,11 @@ Plug 'wookayin/fzf-ripgrep.vim'                                           " grep
 Plug 'chrisbra/Colorizer'                                                 " colorize hex codes etc
 Plug 'andymass/vim-matchup'                                               " % for all the things
 Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
-" Plug 'joereynolds/gq.vim'                                                 " better formatting with gq
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 Plug 'tpope/vim-dadbod'                                                   " database access
 Plug 'kristijanhusak/vim-dadbod-ui'                                       " database access ui
 Plug 'kristijanhusak/vim-dadbod-completion'                               " completion for above
+Plug 'lifepillar/vim-colortemplate'                                       " colorscheme toolkit for designers
 
 if has('nvim')
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
@@ -251,9 +251,10 @@ if !has('nvim')
   set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'        " much better formatting
 " Neovim only options
 else
-  set cmdheight=0
+  set cmdheight=1
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
+  set notermguicolors
 
   " git blame in winbar
 "   function! GetGitBlame()
@@ -294,6 +295,7 @@ endif
 
 
 " ========== OPTIONS END ================================
+
 
 colorscheme neverland_black_bg
 
@@ -833,6 +835,11 @@ endfu
 autocmd FileType kitty-scrollback nnoremap <C-d> <Plug>(KsbQuitAll)
 autocmd FileType kitty-scrollback setlocal nonumber nolist
 
+augroup TagbarSettings
+  autocmd!
+  autocmd FileType vim,php,perl TagbarOpen
+augroup END
+
 augroup NetrwSettings
   autocmd!
   autocmd FileType netrw setlocal filetype=LS_COLORS.vim
@@ -1125,6 +1132,11 @@ endif
 " ========== PLUGIN OPTIONS START =======================
 
 let g:matchup_transmute_enabled = 1
+
+
+" tagbar
+" Don't show the short help or the blank lines.                                                                                                                                                                                                                                     │~
+let g:tagbar_compact = 1
 
 " git-messenger
 let g:git_messenger_floating_win_opts = { 'border': 'double' }
@@ -1609,7 +1621,10 @@ autocmd VimLeave * silent !echo -ne "\033]12;gray\007"
 " FIXME
 hi clear Error
 
-highlight! TelescopeBorder          ctermfg=238
+highlight! TagBarSignature          ctermfg=106
+highlight! WinSeparator             ctermfg=234
+
+highlight! TelescopeBorder          ctermfg=234
 highlight! TelescopeNormal          ctermfg=137
 highlight! TelescopeSelection       cterm=reverse
 highlight! TelescopeSelectionCaret  ctermfg=196
