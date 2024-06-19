@@ -143,12 +143,12 @@ plugins: [
   'hook',
   'info',
   'inline',
-  'lastgenre',
-  'lastimport',
+  # 'lastgenre',
+  # 'lastimport',
   'lyrics',
   'mbsync',
   'missing',
-  'plexsync',
+  # 'plexsync',
 #  'plexupdate',
   'rewrite',
   'smartplaylist',
@@ -287,7 +287,8 @@ lastgenre:
 lyrics:
   auto: yes
   force: yes
-  sources: genius google tekstowo
+  sources: lrclib genius google tekstowo
+  synced: yes
 
 plex:
   host: 192.168.1.34
@@ -493,7 +494,7 @@ item_fields:
       myartist
     except NameError:
       import re
-      return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
+      return re.split(',|\\s+(feat(.?|uring)|&|(Vs|Ft).)', albumartist, 1, flags=re.IGNORECASE)[0]
     else:
       return myartist
 
@@ -502,7 +503,7 @@ item_fields:
       myartist
     except NameError:
       import re
-      return re.split(',|\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
+      return re.split(',|\\s+(feat(.?|uring)|&|(Vs|Ft).)', artist, 1, flags=re.IGNORECASE)[0]
     else:
       return myartist
 
