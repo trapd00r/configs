@@ -1313,6 +1313,10 @@ zle -N zoxide_widget
 # alt+enter = zoxide
 bindkey '\e^M' zoxide_widget
 
+# ctrl+space = insert file path
+bindkey '^ ' fzf-file-widget
+
+
 
 
 # fzf-tab
@@ -1324,8 +1328,6 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'file $realpath | sed -E "s/^.+: //";
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 zstyle ':fzf-tab:complete:vim:*' fzf-preview 'bat --color=always $realpath'
-
-
 
 # environment variables
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
