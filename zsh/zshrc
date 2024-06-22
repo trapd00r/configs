@@ -27,9 +27,9 @@ documents='*.(pdf|djvu|doc|docx|xls|xlsx|ppt|pptx|odt|ods|odp|rtf|txt|epub)'
 fpath=($fpath ~/etc/zsh/functions/)
 
 if [[ $HOST = 'fantomen' && -z $SSH_CLIENT ]]; then
-  eval $(keychain --eval --agents ssh -Q --quiet id_rsa --nogui) 
+  eval $(keychain --eval --agents ssh -Q --quiet id_rsa --nogui)
 elif [[ $HOST = 'x1' && -z $SSH_CLIENT ]]; then
-  eval $(keychain --eval --agents ssh -Q --quiet id_ed25519 --nogui) 
+  eval $(keychain --eval --agents ssh -Q --quiet id_ed25519 --nogui)
 fi
 
 #### https://github.com/trapd00r/stderred
@@ -132,7 +132,7 @@ alias      gd='PAGER=less git diff'
 alias    grep='grep -iI -P --exclude-dir=".git" --color=auto'
 alias      hr="perl -MTerm::hr -E 'say hr({fg=>196, char=> q[ ], bold=>1,underline=>1,italic=>1})'"
 
-#alias      ls='perl $HOME/dev/ls--/ls++ --dereference-command-line-symlink-to-dir' 
+#alias      ls='perl $HOME/dev/ls--/ls++ --dereference-command-line-symlink-to-dir'
 #alias     lsr='perl $HOME/dev/ls--/ls++ --sort=time -r'
 #alias     lss='perl $HOME/dev/ls--/ls++ -Sr'
 #
@@ -295,7 +295,7 @@ bindkey -M viins '^O' all-matches
 zstyle ':completion:all-matches:*'   old-matches only
 zstyle ':completion:all-matches::::' completer _all_matches
 
-bindkey -M vicmd  ":"  _complete_help 
+bindkey -M vicmd  ":"  _complete_help
 bindkey -M vicmd   ";" _read_comp
 bindkey -M viins "^U" all-matches
 bindkey " "     magic-abbrev-expand
@@ -810,7 +810,7 @@ npcover() {
 
 
 # save the cwd as a starting working directory for new shells
-# very useful when working on a specific project or thing for 
+# very useful when working on a specific project or thing for
 # longer periods of time
 #
 # └[fantomen]> savecwd
@@ -916,7 +916,7 @@ compdef     _feh         f ff
 compdef     _files       mkdir mkdr
 compdef     _mkdir       mkdr
 compdef     _mplayer     m ms mplayer_redir mplayer_delete_current_file mplayer_headphones mplayer_6ch_headphones mplayer_redir
-compdef     _hosts       ping 
+compdef     _hosts       ping
 compdef  -p _rm          rmc
 compdef     _ls          vdir l ls++
 compdef     _vim         vidir wim vi
@@ -995,14 +995,14 @@ zstyle ':completion:*:*:beet*' file-patterns '
 # git things
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' stagedstr 'M' 
-zstyle ':vcs_info:*' unstagedstr 'M' 
+zstyle ':vcs_info:*' stagedstr 'M'
+zstyle ':vcs_info:*' unstagedstr 'M'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 #zstyle ':vcs_info:*' formats \
 #  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-zstyle ':vcs_info:*' enable git 
+zstyle ':vcs_info:*' enable git
 +vi-git-untracked() {
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
   [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
@@ -1304,18 +1304,17 @@ zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|
 . ~/etc/zsh/11-fzf-keybindings.zsh
 
 
-# alt+space = cd fzf
-bindkey '\e ' fzf-cd-widget
+ # alt+enter = zoxide
+bindkey '\e^M' zoxide_widget
 
 zoxide_widget() { zi }
 zle -N zoxide_widget
 
-# alt+enter = zoxide
-bindkey '\e^M' zoxide_widget
+# alt+space= cd fzf
+bindkey '\e ' fzf-cd-widget
 
 # ctrl+space = insert file path
 bindkey '^ ' fzf-file-widget
-
 
 
 
@@ -1447,7 +1446,7 @@ export MANPAGER=vimpager
 # export TERM=tmux-256color
 export TERM=kitty
 
-# a fix for dbeaver, firefox etc where menus are displayed on the wrong monitor 
+# a fix for dbeaver, firefox etc where menus are displayed on the wrong monitor
 # or not at all
 # https://webcache.googleusercontent.com/search?q=cache:EHNoIfpjHhYJ:https://bbs.archlinux.org/viewtopic.php%3Fid%3D290030&hl=en&gl=se
 export GDK_CORE_DEVICE_EVENTS=1
