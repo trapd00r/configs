@@ -251,6 +251,7 @@ if !has('nvim')
   set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'        " much better formatting
 " Neovim only options
 else
+  set lazyredraw                                                           " do not redraw screen while executing macros etc
   set cmdheight=1
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
