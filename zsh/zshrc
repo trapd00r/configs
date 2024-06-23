@@ -1310,11 +1310,19 @@ bindkey '\e^M' zoxide_widget
 zoxide_widget() { zi }
 zle -N zoxide_widget
 
-# alt+space= cd fzf
+# alt+space = cd fzf
 bindkey '\e ' fzf-cd-widget
 
 # ctrl+space = insert file path
 bindkey '^ ' fzf-file-widget
+
+# alt+m =  cd to artist/album dir
+bindkey '\em' fzf-music-widget
+fzf-music-widget() {
+  builtin cd "$(=cat ~/musicdir.cache|fzf)"
+  zle reset-prompt
+}
+zle -N fzf-music-widget
 
 
 
