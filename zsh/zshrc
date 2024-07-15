@@ -1464,7 +1464,7 @@ eval "$(github-copilot-cli alias -- "$0")"
 #font-tamsyn
 builtin cd -P ~/etc/zsh/cwd
 
-alias composer='composer --ignore-platform-reqs'
+# alias composer='composer --ignore-platform-reqs'
 
 
 git config --global alias.root 'rev-parse --show-toplevel'
@@ -1610,7 +1610,7 @@ function m2() {
     printf "\033[38;5;208m \033[m Copied magerun to \033[38;5;30m${bin_dir}\033[m\n"
   fi
 
-  docker compose exec -u $USER php php -d memory_limit=-1 \
+  docker-compose exec -u $USER php php -d memory_limit=-1 \
     /srv/$bin_dir_docker/magerun "$@"
 }
 

@@ -68,6 +68,7 @@ Plug 'kristijanhusak/vim-dadbod-completion'                               " comp
 Plug 'lifepillar/vim-colortemplate'                                       " colorscheme toolkit for designers
 
 if has('nvim')
+  Plug 'debugloop/telescope-undo.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
@@ -401,7 +402,7 @@ nmap <leader>^ cs^<bar>
 
 " highlight undo/redo operations
 " nmap u     <Plug>(highlightedundo-undo)
-nmap <C-r> <Plug>(highlightedundo-redo)
+" nmap <C-r> <Plug>(highlightedundo-redo)
 
 " highlight the word under the cursor in differently
 " these things are cleared with me <C-l> mapping

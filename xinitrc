@@ -106,3 +106,14 @@ elif [[ $(hostname) = 'x1' ]]; then
   polybar --config=$HOME/etc/polybar/config_x1.ini &
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1
 fi
+
+#exec bspwm
+
+
+
+
+
+
+
+
+

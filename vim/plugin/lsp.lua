@@ -251,7 +251,6 @@ require'lspconfig'.perlnavigator.setup{
     }
 }
 
-
 require('magento2_ls').setup()
 
 

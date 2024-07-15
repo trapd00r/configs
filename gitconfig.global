@@ -8,7 +8,7 @@
   autosetupremote = true
 [core]
   ; pager = delta
-  pager = delta
+  pager = delta --relative-paths --grep-separator-symbol='a'
 	; pager = diffr | less -R
   ; pager = diff-highlight
   hooksPath = ~/.hooks/
@@ -20,6 +20,14 @@
   showbranch = auto
   status     = auto
   ui         = auto
+
+[status]
+  showuntrackedfiles = all
+
+[merge "composer_json"]
+    name = composer JSON file merge driver
+    driver = composer-git-merge-driver %O %A %B %L %P
+    recursive = binary
 
 [color "status"]
   added     = 166 bold
@@ -73,8 +81,6 @@
 #  minus-style = "#ff0000"
 #  plus-style = black "#005f00"
 
-[delta]
-
 [delta "unobtrusive-line-numbers"]
 #  line-numbers = true
 #  line-numbers-minus-style = "#444444"
@@ -107,6 +113,7 @@
 
 [diff]
   colorMoved = default
+  relative = true
 
 [man]
 #  viewer = motherfuckingvimpager
