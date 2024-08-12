@@ -1625,3 +1625,14 @@ if [[ -n $DISPLAY ]]; then
 fi
 
 alias gif='cd /home/scp1/.local/share/Steam/steamapps/compatdata/881100/pfx/drive_c/users/steamuser/AppData/LocalLow/Nolla_Games_Noita/save_rec/screenshots_animated/'
+
+# disable wifi when ethernet is connected
+enable_disable_wifi ()
+{
+   result=$(nmcli dev | grep "ethernet" | grep -w "connected")
+   if [ -n "$result" ]; then
+       nmcli radio wifi off
+   else
+       nmcli radio wifi on
+   fi
+}
