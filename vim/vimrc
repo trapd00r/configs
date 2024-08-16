@@ -70,6 +70,7 @@ Plug 'lifepillar/vim-colortemplate'                                       " colo
 if has('nvim')
   Plug 'debugloop/telescope-undo.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
+  Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
   Plug 'kevinhwang91/promise-async'                                       " required for nvim-ufo
@@ -1728,6 +1729,45 @@ highlight link NotifyTRACEBody Normal
 " KittyScrollback
 highlight KittyScrollbackNvimNormal ctermfg=white ctermbg=bg
 highlight KittyScrollbackNvimVisual cterm=bold ctermbg=197 ctermfg=black
+
+" Markdown rendering
+
+highlight RenderMarkdownH1Bg ctermbg=bg cterm=bold
+highlight RenderMarkdownH2Bg ctermbg=bg cterm=bold
+highlight RenderMarkdownH3Bg ctermbg=bg cterm=bold
+highlight RenderMarkdownH4Bg ctermbg=bg cterm=bold
+highlight RenderMarkdownH5Bg ctermbg=bg cterm=bold
+highlight RenderMarkdownH6Bg ctermbg=bg cterm=bold
+highlight RenderMarkdownCode ctermfg=234 ctermbg=208 cterm=italicreverse
+highlight RenderMarkdownCodeInline ctermfg=208  cterm=italic
+
+" Highlight Group 	Default Group 	Description
+" RenderMarkdownH1 	@markup.heading.1.markdown 	H1 icons
+" RenderMarkdownH2 	@markup.heading.2.markdown 	H2 icons
+" RenderMarkdownH3 	@markup.heading.3.markdown 	H3 icons
+" RenderMarkdownH4 	@markup.heading.4.markdown 	H4 icons
+" RenderMarkdownH5 	@markup.heading.5.markdown 	H5 icons
+" RenderMarkdownH6 	@markup.heading.6.markdown 	H6 icons
+
+
+
+" RenderMarkdownBullet 	Normal 	List item bullet points
+" RenderMarkdownQuote 	@markup.quote 	Block quote marker
+" RenderMarkdownDash 	LineNr 	Thematic break line
+" RenderMarkdownLink 	@markup.link.label.markdown_inline 	Image & hyperlink icons
+" RenderMarkdownSign 	SignColumn 	Sign column background
+" RenderMarkdownMath 	@markup.math 	LaTeX lines
+" RenderMarkdownUnchecked 	@markup.list.unchecked 	Unchecked checkbox
+" RenderMarkdownChecked 	@markup.list.checked 	Checked checkbox
+" RenderMarkdownTodo 	@markup.raw 	Todo custom checkbox
+" RenderMarkdownTableHead 	@markup.heading 	Pipe table heading rows
+" RenderMarkdownTableRow 	Normal 	Pipe table body rows
+" RenderMarkdownTableFill 	Conceal 	Pipe table inline padding
+" RenderMarkdownSuccess 	DiagnosticOk 	Success related callouts
+" RenderMarkdownInfo 	DiagnosticInfo 	Info related callouts
+" RenderMarkdownHint 	DiagnosticHint 	Hint related callouts
+" RenderMarkdownWarn 	DiagnosticWarn 	Warning related callouts
+" RenderMarkdownError 	DiagnosticError 	Error related callouts
 
 
 

@@ -251,6 +251,14 @@ require'lspconfig'.perlnavigator.setup{
     }
 }
 
+require'lspconfig'.elmls.setup {
+  capabilities = capabilities,
+}
+
+require'lspconfig'.elmls.setup{
+  capabilities = capabilities,
+}
+
 require('magento2_ls').setup()
 
 

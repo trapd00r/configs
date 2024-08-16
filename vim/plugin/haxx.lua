@@ -29,24 +29,24 @@ vim.api.nvim_set_keymap('n', '<leader>DD', ':call v:lua.toggle_diagnostics()<CR>
 
 
 -- gq using lsp, single line
--- local function format_current_line()
---   -- Get the current buffer number
---   local bufnr = vim.api.nvim_get_current_buf()
---
---   -- Get the current line number
---   local line = vim.fn.line(".")
---
---   -- Format the current line using vim.lsp.buf.format
---   vim.lsp.buf.format({ bufnr, bufnr }, { line, line })
--- end
---
+local function format_current_line()
+  -- Get the current buffer number
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  -- Get the current line number
+  local line = vim.fn.line(".")
+
+  -- Format the current line using vim.lsp.buf.format
+  vim.lsp.buf.format({ bufnr, bufnr }, { line, line })
+end
+
 -- -- or do Vgq
--- vim.keymap.set("n", "gq", format_current_line, { noremap = true })
+vim.keymap.set("n", "gq", format_current_line, { noremap = true })
 --
 -- -- gq using lsp, visual selection
--- vim.keymap.set("v", "gq", vim.lsp.buf.format, { remap = false })
+vim.keymap.set("v", "gq", vim.lsp.buf.format, { remap = false })
 --
 -- -- format entire buffer
--- vim.keymap.set('n', '<leader>GQ', vim.lsp.buf.format, { noremap = true })
+vim.keymap.set('n', '<leader>GQ', vim.lsp.buf.format, { noremap = true })
 
 
