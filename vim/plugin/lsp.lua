@@ -41,6 +41,14 @@ lsp_zero.on_attach(function(client, bufnr)
     -- Pass the float option directly to vim.diagnostic.goto_next
     vim.diagnostic.goto_next({ float = { scope = 'line' } })
   end, opts)
+  vim.keymap.set("n", "<down>", function()
+    -- Pass the float option directly to vim.diagnostic.goto_next
+    vim.diagnostic.goto_next({ float = { scope = 'line' } })
+  end, opts)
+  vim.keymap.set("n", "<up>", function()
+    -- Pass the float option directly to vim.diagnostic.goto_next
+    vim.diagnostic.goto_prev({ float = { scope = 'line' } })
+  end, opts)
 
   -- buffer diagnostic
   -- vim.keymap.set("n", "<leader>DD", function()
@@ -137,26 +145,27 @@ require('lspconfig').nginx_language_server.setup({})
 -- require('lspconfig').tailwindcss.setup({})
 -- require('lspconfig').htmx.setup({})
 -- require('lspconfig').intelephense.setup({})
-require('lspconfig').intelephense.setup({
-  capabilities = capabilities,
-  root_dir = require("lspconfig").util.root_pattern(".git", "package.json"),
-  settings = {
-    intelephense = {
-      files = {
-        maxSize = 1000000000
-      },
-      telemetry = {
-        enabled = false,
-      },
-      completion = {
-        fullyQualifyGlobalConstantsAndFunctions = false
-      },
-      phpdoc = {
-        returnVoid = false,
-      }
-    },
-  }
-})
+-- require('lspconfig').intelephense.setup({
+--   capabilities = capabilities,
+--   root_dir = require("lspconfig").util.root_pattern(".git", "package.json"),
+--   autostart = false,
+--   settings = {
+--     intelephense = {
+--       files = {
+--         maxSize = 1000000000
+--       },
+--       telemetry = {
+--         enabled = false,
+--       },
+--       completion = {
+--         fullyQualifyGlobalConstantsAndFunctions = false
+--       },
+--       phpdoc = {
+--         returnVoid = false,
+--       }
+--     },
+--   }
+-- })
 
 -- clangd fix
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
@@ -172,6 +181,7 @@ require("lspconfig").clangd.setup {
 
 require('lspconfig').phpactor.setup({
   capabilities = capabilities,
+  autostart = false,
   settings = {
     phpactor = {
       enable = true,
