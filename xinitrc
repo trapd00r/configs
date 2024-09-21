@@ -17,10 +17,10 @@ if [[ $(hostname) = 'fantomen' ]]; then
 
   # nvidia-settings --assign "CurrentMetaMode=DPY-1: nvidia-auto-select @1080x1920 +0+0 {ViewPortIn=1080x1920,ViewPortOut=1920x1080+0+0, Rotation=270}, DPY-0: nvidia-auto-select @1080x1920 +3000+0 {ViewPortIn=1080x1920, ViewPortOut=1920x1080+0+0, Rotation=90},DPY-3: nvidia-auto-select @1920x1080 +1080+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0}"
   xrandr --output DP-2   --primary \
-         --output DP-0   --rotate right  --left-of DP-2 \
+         --output DP-0   --left-of DP-2 \
          --output DP-5   --above DP-2 \
          --output HDMI-0 --below DP-2 \
-         --output DVI-I-1-1 --left-of DP-0
+         # --output DVI-I-1-1 --left-of DP-0
 #         --output DVI-I-1-1 --rotate left --left-of DP-0
 
   # https://forums.developer.nvidia.com/t/440-36-with-bumblebee-drops-to-1-fps-after-running-for-10-minutes/108431/4
@@ -97,10 +97,13 @@ lxpolkit &
 # https://bbs.archlinux.org/viewtopic.php?id=224787
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+# polybar --config=$HOME/etc/polybar/config_fantomen.ini &
+# exec bspwm
 
 if [[ $(hostname) = 'fantomen' ]]; then
   polybar --config=$HOME/etc/polybar/config_fantomen.ini &
 #  openbox-session
+  # exec i3
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
   polybar --config=$HOME/etc/polybar/config_x1.ini &
