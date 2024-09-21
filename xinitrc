@@ -56,8 +56,14 @@ elif [[ $(hostname) = 'x1' ]]; then
   # xrandr --output HDMI-1 --primary --output eDP-1 --right-of HDMI-1
 
   # docked at home
-  xrandr --output eDP-1 --mode 1920x1200 --pos 3000x720 --rotate normal --output DP-3-1-5 --primary --mode 1920x1080 --pos 1080x1080 --rotate normal --output DP-3-1-6 --mode 1920x1080 --pos 0x318 --rotate right --output DP-3-2 --mode 1920x1080 --pos 1080x0 --rotate normal --output DP-3-3 --off
-  # xrandr --output eDP-1 --mode 1920x1200 --pos 3000x720 --rotate normal --output DP-4-1-5 --primary --mode 1920x1080 --pos 1080x1080 --rotate normal --output DP-4-1-6 --mode 1920x1080 --pos 0x318 --rotate right --output DP-4-2 --mode 1920x1080 --pos 1080x0 --rotate normal --output DP-4-3 --off
+
+  # 3 monitors from dock:
+  # - HDMI
+  # - HDMI
+  # - DP
+  # 1 monitor from laptop
+  # - usb-c
+  xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-3-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-3-1-6 --mode 1920x1080 --pos 2560x720
 fi
 
 #----------------------------------------
