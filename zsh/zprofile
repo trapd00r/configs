@@ -88,7 +88,7 @@ export HARNESS_SUMMARY_COL_FAIL=red
 export HARNESS_SUMMARY_COL_SUC=green
 
 ### Editor
-export EDITOR='vim'
+export EDITOR='nvim'
 export GIT_EDITOR="${EDITOR} -X"
 export VIDIR_EDITOR=${EDITOR}
 export VIDIR_EDITOR_ARGS='-c :set nolist | :set cc=0 | set ft=LS_COLORS'
