@@ -108,9 +108,9 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 
 if [[ $(hostname) = 'fantomen' ]]; then
   polybar --config=$HOME/etc/polybar/config_fantomen.ini &
-#  openbox-session
-  # exec i3
-  exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
+  # nitrogen --restore &
+  exec i3-workspace-fix
+  # exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
   polybar --config=$HOME/etc/polybar/config_x1.ini &
   exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1
