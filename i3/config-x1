@@ -296,12 +296,13 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
 
 # better tiling
 exec_always --no-startup-id /usr/bin/i3-auto-tiling
+# exec_always --no-startup-id ~/bin/i3-auto-layout
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
