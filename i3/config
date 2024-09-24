@@ -188,7 +188,7 @@ bindsym $mod+Shift+minus move scratchpad
 # 	bindsym Return mode "default"
 # 	bindsym Escape mode "default"
 # }
-# bindsym $mod+F1 mode "screen1"
+bindsym $mod+F1 mode "screen1"
 
 
 
@@ -633,14 +633,16 @@ workspace $ws7 output $left
 workspace $ws8 output $top
 workspace $ws9 output $top
 
-# Bind key shortcuts to workspaces
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
+
+# workspace 1 on different monitors
+# in reality we switch to workspace 6,7 etc
+bindsym $mod+1 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 1
+bindsym $mod+2 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 2
+
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
+
 
 # Mod1+L to switch to the next workspace
 bindsym $mod+Shift+l workspace next

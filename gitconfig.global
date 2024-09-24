@@ -62,6 +62,15 @@
 [diff]
   colorMoved = default
   pager = diff-highlight
+  tool = kitty
+  guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitten diff $LOCAL $REMOTE
 
 [interactive]
   diffFilter = delta --color-only --line-number

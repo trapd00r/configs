@@ -43,6 +43,7 @@ library:    '~/var/beets/beets20231124.db'
 pluginpath: ['/usr/lib/python3.11/site-packages/beetsplug/',
              '/home/scp1/dev/beets-tcp',
              '/home/scp1/etc/beets/plugins/beetsplug/',
+             '/home/scp1/lib/python/lib64/python3.11/site-packages/beetsplug'
             ]
 
 # files matching these patterns are deleted from source after import
@@ -134,7 +135,6 @@ import:
 plugins: [
   'bucket',
   'discogs',
-#  'duplicates',
   'edit',
   'embedart',
   'fetchart',
@@ -143,13 +143,11 @@ plugins: [
   'hook',
   'info',
   'inline',
-  # 'lastgenre',
-  # 'lastimport',
   'lyrics',
   'mbsync',
   'missing',
   # 'plexsync',
-#  'plexupdate',
+  'plexupdate',
   'rewrite',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp

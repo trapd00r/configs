@@ -1316,6 +1316,9 @@ bindkey '\e ' fzf-cd-widget
 # ctrl+space = insert file path
 bindkey '^ ' fzf-file-widget
 
+# ctrl+enter = insert file path
+# bindkey '^M' fzf-file-widget
+
 # alt+m =  cd to artist/album dir
 bindkey '\em' fzf-music-widget
 fzf-music-widget() {
@@ -1410,7 +1413,7 @@ alias rg="rg --ignore-file=${XDG_CONFIG_HOME}/fd.ignorefile"
 
 alias cpu_frequency_watch='watch -n.5 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias performance_mode='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
-alias schedutil_mode='echo schedutil | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias powersave_mode='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
 
 #export JULIA_LOAD_PATH=~/dev/julia-lab
 alias share="python3 -m http.server 43851"
@@ -1636,3 +1639,4 @@ enable_disable_wifi ()
        nmcli radio wifi on
    fi
 }
+alias rec='cd /home/scp1/.local/share/Steam/userdata/13875249/gamerecordings'
