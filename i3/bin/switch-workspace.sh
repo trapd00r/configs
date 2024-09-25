@@ -9,34 +9,52 @@
 # Get the name of the active output
 focused_output=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).output')
 
-case "$focused_output" in
-    "DP-0")  # Left Monitor
-        case "$1" in
-            1) i3-msg workspace number 6 ;;  # Mod+1 switches to workspace 6
-            2) i3-msg workspace number 7 ;;  # Mod+2 switches to workspace 7
-        esac
-        ;;
-    "DP-5")  # Top Monitor
-        case "$1" in
-            1) i3-msg workspace number 8 ;;  # Mod+1 switches to workspace 8
-            2) i3-msg workspace number 9 ;;  # Mod+2 switches to workspace 9
-        esac
-        ;;
-    "DP-2")  # Middle Monitor
-        case "$1" in
-            1) i3-msg workspace number 1 ;;  # Mod+1 switches to workspace 1
-            2) i3-msg workspace number 2 ;;  # Mod+2 switches to workspace 2
-            3) i3-msg workspace number 3 ;;
-            4) i3-msg workspace number 4 ;;
-            5) i3-msg workspace number 5 ;;
-        esac
-        ;;
-    "HDMI-0")  # Behind Monitor
-        echo "HDMI-0 output not configured for specific workspace switches." ;;
-    *)
-        echo "No matching output for keybinding"
-        ;;
-esac
+# Define outputs for desktop and laptop
+DESKTOP_OUTPUTS=("DP-2" "DP-0" "DP-5" "HDMI-0")
+LAPTOP_OUTPUTS=("DP-3-1-5" "DP-1" "DP-3-1-6" "eDP-1")
+
+switch_workspace() {
+    case "$1" in
+        "DP-0"|"DP-1")  # Left monitor on desktop or laptop
+            case "$2" in
+                1) i3-msg workspace number 6 ;;
+                2) i3-msg workspace number 7 ;;
+            esac
+            ;;
+        "DP-5"|"DP-3-1-6")  # Top monitor on desktop or laptop
+            case "$2" in
+                1) i3-msg workspace number 8 ;;
+                2) i3-msg workspace number 9 ;;
+            esac
+            ;;
+        "DP-2"|"DP-3-1-5")  # Middle monitor on desktop or laptop
+            case "$2" in
+                1) i3-msg workspace number 1 ;;
+                2) i3-msg workspace number 2 ;;
+                3) i3-msg workspace number 3 ;;
+                4) i3-msg workspace number 4 ;;
+                5) i3-msg workspace number 5 ;;
+            esac
+            ;;
+        "HDMI-0"|"eDP-1")  # Behind monitor on desktop or laptop's built-in display
+            echo "Output not configured for specific workspace switches." ;;
+        *)
+            echo "No matching output for keybinding."
+            ;;
+    esac
+}
+
+# Check if we are on desktop or laptop based on available outputs
+if xrandr | grep -q "DP-2"; then
+    # Desktop setup
+    switch_workspace "$focused_output" "$1"
+elif xrandr | grep -q "eDP-1"; then
+    # Laptop setup
+    switch_workspace "$focused_output" "$1"
+else
+    echo "No known setup detected."
+fi
+
 
 # i3 config:
 
