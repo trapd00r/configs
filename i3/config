@@ -255,23 +255,6 @@ bindsym $mod+Shift+c reload
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -298,7 +281,7 @@ mode "resize" {
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # better tiling
 exec_always --no-startup-id /usr/bin/i3-auto-tiling
@@ -366,7 +349,7 @@ set_from_resource $term_color15    color15
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
   # client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused          #323232 #323232 #ffffff #323232
+ client.focused           #af875f #af875f #ffffff #af875f
   client.focused_inactive #121212 #121212 #1ABC9C #121212
   client.unfocused        #121212 #121212 #1ABC9C #121212
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
@@ -643,9 +626,14 @@ bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 
+bindsym $mod+0 workspace number $ws6
+
 
 # Mod1+L to switch to the next workspace
 bindsym $mod+Shift+l workspace next
 
 # Mod1+H to switch to the previous workspace
 bindsym $mod+Shift+h workspace prev
+
+
+for_window [class="Polybar"] border pixel 1
