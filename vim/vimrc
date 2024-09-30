@@ -229,6 +229,7 @@ set tabpagemax=4                                                           " max
 set tabstop=2                                                              " shouldn't modify this the help states..?
 set tags=./tags,tags,~/dev/tags,~/dev/askas/utils-askas/vim/tags           " location of tag files
 set textwidth=80                                                           " maximum width of text
+set title                                                                  " set title for the terminal
 set timeout                                                                " time out on mappings
 set timeoutlen=3000                                                        " how long to wait prior to timeout
 set ttimeoutlen=50                                                         " the same for terminal keycodes
