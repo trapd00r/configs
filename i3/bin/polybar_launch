@@ -1,0 +1,9 @@
+#!/bin/sh
+
+killall polybar
+fc-cache -f
+
+polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  middle &
+polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  left &
+polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  top &
+# polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  right &
