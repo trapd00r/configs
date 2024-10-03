@@ -70,7 +70,7 @@ Plug 'lifepillar/vim-colortemplate'                                       " colo
 if has('nvim')
   Plug 'debugloop/telescope-undo.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
-  Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
+  " Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'ja-he/heat.nvim'                                                  " git heatmap
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
@@ -82,6 +82,7 @@ if has('nvim')
   Plug 'numToStr/Comment.nvim'                                            " (un)comment everything with #
   Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
 
+  Plug 'madox2/vim-ai'
   Plug 'VonHeikemen/lsp-zero.nvim'                                        " helper integrating lspconfig and nvim-cmp
   Plug 'neovim/nvim-lspconfig'                                            " configs for nvim lsp client
   Plug 'williamboman/mason.nvim'                                          " package manager for lsp, dap, linters, formatters
@@ -342,12 +343,12 @@ nnoremap <silent> <UP> :prev<cr>
 nnoremap <silent> <DOWN> :next<cr>
 
 " left and right to step through the quickfix list
-nnoremap <silent> <LEFT> :cprev<cr>
-nnoremap <silent> <RIGHT> :cnext<cr>
+" nnoremap <silent> <LEFT> :cprev<cr>
+" nnoremap <silent> <RIGHT> :cnext<cr>
 
 " double <LEFT> and <RIGHT> to jump through the quickfix file list
-nmap <silent> <LEFT><LEFT>    :cpfile<CR><C-G>
-nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
+" nmap <silent> <LEFT><LEFT>    :cpfile<CR><C-G>
+" nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
 
 " Github copilot
 "imap <silent> <C-j> <Plug>(copilot-next)
@@ -842,7 +843,7 @@ autocmd FileType kitty-scrollback setlocal nonumber nolist
 
 augroup TagbarSettings
   autocmd!
-  autocmd FileType vim,php,perl TagbarOpen
+  " autocmd FileType vim,php,perl TagbarOpen
 augroup END
 
 augroup NetrwSettings
@@ -1648,7 +1649,10 @@ highlight Winbar cterm=bolditalic ctermfg=244
 
 
 " highlight the line that starts the current block
-highlight @ibl.scope.underline.1 cterm=underline
+" only if in neovim
+" if has('nvim')
+"   highlight @ibl.scope.underline.1 cterm=underline
+" endif
 
 " hide this, since it's considered NonText
 autocmd BufReadPost * highlight @ibl.indent.char.1 ctermfg=232
@@ -1974,3 +1978,6 @@ augroup DelayedHighlight
     autocmd!
     autocmd CursorHold * call HighlightSymbol()
 augroup END
+
+
+" autocmd filetype elm Copilot disable

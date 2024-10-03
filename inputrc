@@ -56,6 +56,10 @@ $if sdorfehsctrl
   "\C-ya": "copya\n"
 $endif
 
+set show-mode-in-prompt on
+set vi-ins-mode-string "+"
+set vi-cmd-mode-string ":"
+
 #$if re.pl
 #  "\C-e": "perldoc perlre\n"
 #  "\C-g": "perldoc perlguts\n"

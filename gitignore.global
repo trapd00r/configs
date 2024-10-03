@@ -1,16 +1,1 @@
 *~
-MYMETA.json
-MYMETA.yml
-Makefile
-Makefile.old
-blib/
-pm_to_blib
-*.tar.gz
-*/publish.pm
-test/
-_VERKTYG/
-#docs/
-CLEAN/
-# minified js...
-*min.js
-*.min.map
