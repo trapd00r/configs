@@ -1,0 +1,178 @@
+#!/usr/bin/perl
+
+# https://github.com/polybar/polybar/wiki/Formatting
+
+use strict;
+use warnings;
+use open qw(:std :utf8);
+use feature 'say';
+
+use Getopt::Long;
+Getopt::Long::Configure qw(bundling);
+
+use XML::Simple;
+use LWP::Simple;
+use Data::Dumper;
+#use Term::ExtendedColor qw(fg bold);
+use JSON;
+
+my $PLEX_HOST = '192.168.1.34';
+my $PLEX_PORT = '32400';
+my $PLEX_SESS = '/status/sessions';
+
+# the default plexamp player address
+my $PLEXAMP_HOST = '192.168.1.12';
+
+my $PLEX_URL = "http://$PLEX_HOST:$PLEX_PORT$PLEX_SESS";
+
+
+my %colors = (
+  artist => '#afd700',
+  title  => '#afaf00',
+  album  => '#87af5f',
+  year   => '#87afff',
+  file   => '#ccccc6',
+);
+
+! @ARGV and say np() and exit;
+
+GetOptions(
+  'host=s'   => \$PLEX_HOST,
+  'port=s'   => \$PLEX_PORT,
+  'n|np'     => sub { say np() },
+  'a|artist' => sub { say np('artist') },
+  't|title'  => sub { say np('title') },
+  'A|album'  => sub { say np('album') },
+  'y|year'   => sub { say np('year') },
+  'f|file'   => sub { say np('file') },
+  'j|json'   => sub {
+    my $xml_file = get($PLEX_URL);
+    my $np = XMLin($xml_file, KeyAttr => { Media => 'id' }, ForceArray => [ 'Media' ]);
+    say encode_json($np);
+  },
+
+  'address=s'  => \$PLEXAMP_HOST,
+
+  'list-clients'  => sub { list_clients() },
+
+  'h|help'   => sub {
+    say "Usage: $0 [options]
+
+  -a, --artist          Print the artist
+  -t, --title           Print the title
+  -A, --album           Print the album
+  -f, --file            Print the full path to the file
+  -y, --year            Print the year
+      --np              Print the full now playing string (default behaviour)
+      --list-clients    List all plexamp clients playing music
+
+      --host            Plex server host (default: 192.168.1.34)
+      --port            Plex server port (default: 32400)
+      --address         Plexamp client address (default: 192.168.1.12)
+
+  -h, --help        Display this help and exit";
+
+    exit;
+  },
+
+);
+
+
+sub np {
+  my $what = shift // 'np';
+  sleep 50;
+
+  my $xml_file = get($PLEX_URL);
+
+  my $np = XMLin($xml_file, KeyAttr => { Media => 'id' }, ForceArray => [ 'Media' ]);
+
+  if(! $np->{size}) {
+    return "Paused";
+  }
+
+#  use Data::Dumper;
+#  print Dumper $np;
+
+  # video playing
+  # only prefer video if there is no music playing
+  if($np->{Video}->{grandparentTitle} and ! $np->{Track}) {
+    my $tv_show = $np->{Video}->{grandparentTitle};
+    my $tv_episode = $np->{Video}->{title};
+    my $episode_no = $np->{Video}->{index};
+    my $season_no = $np->{Video}->{parentIndex};
+    printf "%s S%02dE%02d %s",
+      fg($colors{artist}, $tv_show), $season_no, $episode_no, fg($colors{title}, $tv_episode);
+    exit;
+  }
+
+
+  # nothing playing
+  if($np->{size} == 0 or !$np->{Track}) {
+    print 'paused';
+    sleep 58;
+    exit;
+  }
+
+  # music playing
+  if(ref($np->{Track}) eq 'ARRAY') {
+    # there are several sessions playing music
+
+    for my $id(sort(keys(@{ $np->{Track} }))) {
+      # we want a specific player
+      if($np->{Track}->[$id]->{Player}->{address} eq $PLEXAMP_HOST) {
+        $np->{Track} = $np->{Track}->[$id];
+        last
+      }
+    }
+  }
+  else {
+  }
+
+#  use Data::Dumper;
+#  print Dumper($np);
+  my $now_playing;
+
+  # find the performing artist(s) if albumartist is Various Artists
+  $now_playing->{artist} = $np->{Track}->{grandparentTitle} eq 'Various Artists'
+    ? $np->{Track}->{originalTitle}
+    : $np->{Track}->{grandparentTitle};
+  $now_playing->{album}  = $np->{Track}->{parentTitle};
+  $now_playing->{title}  = $np->{Track}->{title};
+  $now_playing->{year}   = $np->{Track}->{parentYear};
+
+  for my $id(keys(%{ $np->{Track}->{Media} })) {
+    $now_playing->{file} = $np->{Track}->{Media}->{$id}->{Part}->{file};
+  }
+
+  return
+    defined $now_playing->{ $what }
+      ? $now_playing->{ $what }
+      : sprintf "%s - %s on %s %s",
+          fg($colors{artist}, sprintf("%s", $now_playing->{artist})),
+          fg($colors{title}, sprintf("%s", $now_playing->{title})),
+          fg($colors{album}, $now_playing->{album}),
+          fg($colors{year}, $now_playing->{year} ? "[$now_playing->{year}]" : '');
+}
+
+sub list_clients {
+  my $xml_file = get($PLEX_URL);
+
+  my $np = XMLin($xml_file, KeyAttr => { Media => 'id' }, ForceArray => [ 'Media' ]);
+
+
+  if(ref($np->{Track}) eq 'ARRAY') {
+    # there are several sessions playing music
+
+    for my $id(sort(keys(@{ $np->{Track} }))) {
+      printf "%s  ", $np->{Track}->[$id]->{Player}->{address};
+      $PLEXAMP_HOST = $np->{Track}->[$id]->{Player}->{address};
+      printf "%{F#f00}%s\n", np();
+    }
+  }
+  exit
+}
+
+sub fg {
+  my ($color, $string) = @_;
+  return "%{F$color}" . $string . "%{F-}";
+}
