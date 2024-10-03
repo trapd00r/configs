@@ -1223,7 +1223,11 @@ zstyle ':completion:*:*:xclip:*' ignored-patterns '(#i)*.(o||rar|r[0-9]|idx|srt|
 
 
 # composer and symfony applications
-source ~/etc/zsh/composer_completion.zsh
+
+
+if [[ $HOST = 'x1' ]]; then
+  source ~/etc/zsh/composer_completion.zsh
+fi
 #compdef _symfony_complete composer
 #compdef _symfony_complete phpstan
 #compdef _symfony_complete php-cs-fixer
