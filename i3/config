@@ -71,7 +71,7 @@ mode "resize" {
 
 
 
-client.focused          #2f2f2f #2f2f2f #ffffff #af875f
+client.focused          #2f2f2f #af875f #ffffff #af875f
 client.focused_inactive #121212 #121212 #1ABC9C #121212
 client.unfocused        #121212 #121212 #1ABC9C #121212
 client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
