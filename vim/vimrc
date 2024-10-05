@@ -110,12 +110,26 @@ if has('nvim')
   Plug 'trapd00r/kitty-scrollback.nvim'                                   " using own fork cause couldn't configure away default opts
 
   " codecompanion
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'nvim-treesitter/nvim-treesitter'
+  " Plug 'hrsh7th/nvim-cmp', " Optional: For using slash commands and variables in the chat buffer
+  " Plug 'nvim-telescope/telescope.nvim', " Optional: For using slash commands
+  " Plug 'stevearc/dressing.nvim' " Optional: Improves `vim.ui.select`
+  " Plug 'olimorris/codecompanion.nvim'
+
+  " avante
+  Plug 'stevearc/dressing.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter'
-  Plug 'hrsh7th/nvim-cmp', " Optional: For using slash commands and variables in the chat buffer
-  Plug 'nvim-telescope/telescope.nvim', " Optional: For using slash commands
-  Plug 'stevearc/dressing.nvim' " Optional: Improves `vim.ui.select`
-  Plug 'olimorris/codecompanion.nvim'
+  Plug 'MunifTanjim/nui.nvim'
+  
+  " Optional deps
+  Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+  Plug 'HakonHarnes/img-clip.nvim'
+  Plug 'zbirenbaum/copilot.lua'
+
+" Yay, pass source=true if you want to build from source
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
 
   " only to enable code actions for intellephence...
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -1170,7 +1184,7 @@ let g:vdebug_options.path_maps = { '/srv/magento': '/home/scp1/dev/webbhuset/der
 let g:vdebug_options.break_on_open = 0
 let g:vdebug_features['max_children'] = 128
 
-let g:markdown_fenced_languages = ['html', 'js=javascript', 'bash=zsh', 'perl', 'python', 'ruby', 'sql', 'vim', 'css']
+let g:markdown_fenced_languages = ['html', 'js=javascript', 'bash=zsh', 'perl', 'python', 'ruby', 'sql', 'vim', 'css', 'php', 'elm']
 
 " dont keep tags file in every single project dir
 let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
@@ -1989,3 +2003,6 @@ augroup END
 
 
 " autocmd filetype elm Copilot disable
+
+
+autocmd filetype codecompanion setf markdown

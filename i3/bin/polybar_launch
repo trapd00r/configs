@@ -4,10 +4,15 @@ killall polybar
 fc-cache -f
 
 if [[ $(hostname) = 'x1' ]]; then
-  polybar --config=/home/scp1/etc/polybar/config_x1.ini  middle &
-  polybar --config=/home/scp1/etc/polybar/config_x1.ini  left &
-  polybar --config=/home/scp1/etc/polybar/config_x1.ini  top &
-  polybar --config=/home/scp1/etc/polybar/config_x1.ini  right &
+  # if we are docked, we have 4 monitors
+  if [[ $(xrandr --listactivemonitors | head -1 | awk '{print $2}') -eq 4 ]]; then
+    polybar --config=/home/scp1/etc/polybar/config_x1.ini  middle &
+    polybar --config=/home/scp1/etc/polybar/config_x1.ini  left &
+    polybar --config=/home/scp1/etc/polybar/config_x1.ini  top &
+    polybar --config=/home/scp1/etc/polybar/config_x1.ini  right &
+  else
+    polybar --config=/home/scp1/etc/polybar/config_x1.ini  middle &
+  fi
 else
   polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  middle &
   polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  left &
