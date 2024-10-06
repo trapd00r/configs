@@ -145,3 +145,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # better tiling
 exec --no-startup-id /usr/bin/i3-auto-tiling
+
+# polybar on 4 monitors
+exec --no-startup-id bash ~/etc/i3/bin/polybar_launch.sh
