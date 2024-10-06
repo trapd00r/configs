@@ -17,7 +17,8 @@ workspace_auto_back_and_forth no
 #--------------------------------------
 
 bindsym $mod+Return exec kitty -o font_family="Anonymous Pro" -o font_size=8 -o bold_font="Anonymous Pro Bold" -o italic_font="Anonymous Pro Italic" -o bold_italic_font="Anonymous Pro Bold Italic"
-bindsym $mod+Shift+1 exec --no-startup-id fzfbinselect
+# bindsym $mod+Shift+1 exec --no-startup-id fzfbinselect
+bindsym $mod+Shift+1 exec --no-startup-id ~/etc/i3/bin/rofirun
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+k kill
 bindsym $mod+f fullscreen toggle
@@ -143,4 +144,4 @@ bindsym $mod+Shift+h workspace prev
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # better tiling
-exec_always --no-startup-id /usr/bin/i3-auto-tiling
+exec --no-startup-id /usr/bin/i3-auto-tiling

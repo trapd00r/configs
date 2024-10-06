@@ -132,3 +132,14 @@ bindsym $mod+Shift+l workspace next
 
 # Mod1+H to switch to the previous workspace
 bindsym $mod+Shift+h workspace prev
+
+
+
+#--------------------------------------
+# exec
+#--------------------------------------
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# better tiling
+exec --no-startup-id /usr/bin/i3-auto-tiling

@@ -107,14 +107,11 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # exec bspwm
 
 if [[ $(hostname) = 'fantomen' ]]; then
-  # polybar --config=$HOME/etc/polybar/config_fantomen.ini &
   bash ~/etc/i3/bin/polybar_launch.sh &
-  i3-auto-tiling &
   exec i3-workspace-fix
   # exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
   bash ~/etc/i3/bin/polybar_launch.sh &
-  i3-auto-tiling &
   exec i3-workspace-fix -c ~/etc/i3/config-x1
   # exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc-x1
 fi
