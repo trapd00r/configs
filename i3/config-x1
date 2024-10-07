@@ -18,7 +18,7 @@ workspace_auto_back_and_forth no
 
 bindsym $mod+Return exec kitty -o font_family="Anonymous Pro" -o font_size=8 -o bold_font="Anonymous Pro Bold" -o italic_font="Anonymous Pro Italic" -o bold_italic_font="Anonymous Pro Bold Italic"
 # bindsym $mod+Shift+1 exec --no-startup-id fzfbinselect
-bindsym $mod+Shift+1 exec --no-startup-id rofirun
+bindsym $mod+Shift+1 exec --no-startup-id /home/scp1/etc/i3/bin/rofirun
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+k kill
 bindsym $mod+f fullscreen toggle
