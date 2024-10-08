@@ -1,6 +1,7 @@
 
 require('gen').setup({
-        model = "llama3", -- The default model to use.
+        -- model = "llama3", -- The default model to use.
+        model = "mistral", -- The default model to use.
         quit_map = "q", -- set keymap to close the response window
         retry_map = "<c-r>", -- set keymap to re-send the current prompt
         accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
@@ -45,6 +46,7 @@ require('gen').prompts['Translate'] = {
   -- extract = "```$filetype\n(.-)```"
 }
 
-vim.keymap.set({ 'n', 'v' }, '<leader>g', ':Gen<CR>')
+
+vim.keymap.set({ 'n', 'v' }, '<C-s>', ':Gen<CR>')
 
 

@@ -70,7 +70,7 @@ Plug 'lifepillar/vim-colortemplate'                                       " colo
 if has('nvim')
   Plug 'debugloop/telescope-undo.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
-  Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
+  " Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'ja-he/heat.nvim'                                                  " git heatmap
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
@@ -485,12 +485,12 @@ nnoremap <C-o> :CtrlPFunky<cr>
 nnoremap <silent> <C-c> :<C-U>PipePreview<CR>
 
 " next buffer
-nnoremap <C-n>     :bnext<cr>
+" nnoremap <C-n>     :bnext<cr>
 
 " previous buffer
-nnoremap <C-b>     :bprev<cr>
+" nnoremap <C-b>     :bprev<cr>
 
-nnoremap <leader>b :Buffers<cr>
+" nnoremap <leader>b :Buffers<cr>
 
 " replace standard :ls with fzf-powered one.
 cabbrev ls <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Buffers' : 'ls')<cr>
@@ -2008,5 +2008,4 @@ augroup END
 
 " autocmd filetype elm Copilot disable
 
-
-autocmd filetype codecompanion setf markdown
+highlight CodeBlock ctermbg=232
