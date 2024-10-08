@@ -70,7 +70,7 @@ Plug 'lifepillar/vim-colortemplate'                                       " colo
 if has('nvim')
   Plug 'debugloop/telescope-undo.nvim'
   Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
-  " Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
+  Plug 'MeanderingProgrammer/render-markdown.nvim'                        " :RenderMarkdown
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   Plug 'ja-he/heat.nvim'                                                  " git heatmap
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
@@ -82,7 +82,7 @@ if has('nvim')
   Plug 'numToStr/Comment.nvim'                                            " (un)comment everything with #
   Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
 
-  Plug 'madox2/vim-ai'
+  " Plug 'madox2/vim-ai'
   Plug 'VonHeikemen/lsp-zero.nvim'                                        " helper integrating lspconfig and nvim-cmp
   Plug 'neovim/nvim-lspconfig'                                            " configs for nvim lsp client
   Plug 'williamboman/mason.nvim'                                          " package manager for lsp, dap, linters, formatters
@@ -108,6 +108,7 @@ if has('nvim')
   Plug 'rcarriga/nvim-notify'                                             " notifications
   " Plug 'mikesmithgh/kitty-scrollback.nvim'
   Plug 'trapd00r/kitty-scrollback.nvim'                                   " using own fork cause couldn't configure away default opts
+  Plug 'lukas-reineke/headlines.nvim'
 
   " codecompanion
   " Plug 'nvim-lua/plenary.nvim'
@@ -118,14 +119,14 @@ if has('nvim')
   " Plug 'olimorris/codecompanion.nvim'
 
   " avante
-  Plug 'stevearc/dressing.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'MunifTanjim/nui.nvim'
-  
-  " Optional deps
-  Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
-  Plug 'HakonHarnes/img-clip.nvim'
-  Plug 'zbirenbaum/copilot.lua'
+  " Plug 'stevearc/dressing.nvim'
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'MunifTanjim/nui.nvim'
+  " 
+  " " Optional deps
+  " Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+  " Plug 'HakonHarnes/img-clip.nvim'
+  " Plug 'zbirenbaum/copilot.lua'
 
   " local llm
   Plug 'David-Kunz/gen.nvim'

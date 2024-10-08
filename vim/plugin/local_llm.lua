@@ -38,7 +38,13 @@ require('gen').prompts['Fix_Code'] = {
   extract = "```$filetype\n(.-)```"
 }
 
-vim.keymap.set({ 'n', 'v' }, '<leader>g', ':Gen<CR>')
 
+require('gen').prompts['Translate'] = {
+  prompt = "Translate the following to $input, keeping all the formatting and replacing the original words. Do not say anything else:\n$text",
+  replace = true,
+  -- extract = "```$filetype\n(.-)```"
+}
+
+vim.keymap.set({ 'n', 'v' }, '<leader>g', ':Gen<CR>')
 
 
