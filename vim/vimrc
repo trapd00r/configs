@@ -127,6 +127,9 @@ if has('nvim')
   Plug 'HakonHarnes/img-clip.nvim'
   Plug 'zbirenbaum/copilot.lua'
 
+  " local llm
+  Plug 'David-Kunz/gen.nvim'
+
 " Yay, pass source=true if you want to build from source
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
 
