@@ -1,7 +1,9 @@
 
 require('gen').setup({
         -- model = "llama3", -- The default model to use.
-        model = "mistral", -- The default model to use.
+        -- model = "mistral",
+        model = "codellama:13b",
+        -- model = "codellama:34b",
         quit_map = "q", -- set keymap to close the response window
         retry_map = "<c-r>", -- set keymap to re-send the current prompt
         accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
@@ -41,12 +43,47 @@ require('gen').prompts['Fix_Code'] = {
 
 
 require('gen').prompts['Translate'] = {
-  prompt = "Translate the following to $input, keeping all the formatting and replacing the original words. Do not say anything else:\n$text",
+  prompt = "Translate the following to $input, keeping all the formatting and replacing the original words. Do not say anything else. I ONLY want the translated words, replacing the original ones:\n$text",
   replace = true,
   -- extract = "```$filetype\n(.-)```"
+}
+
+require('gen').prompts['Magento - Ask'] = {
+  prompt = "You are a skilled Magento developer. You like clean code and you are very experienced with Magento. You are asked to solve the following problem. What do you do?\n$input",
+  replace = true,
+  -- extract = "```$filetype\n(.-)```"
+}
+
+require('gen').prompts['Magento - Write'] = {
+  prompt = "You are a skilled Magento developer. \
+    You like clean code and best practices.      \
+    Solve the following problem or implement asked functioanlity without any additional information. \
+    Output the result without syntax errors.     \
+    You must NEVER, ever use markdown code blocks or backticks surrounding the code. \
+    You MUST just output the code. \
+    You must import the neccessary \\Magento modules that you will use, this is very important. \
+    Before returning the response, make ABSOLUTELY SURE that there is no triple backticks or markdown code blocks surrounding the code. \
+    When you are about to return the response, make sure that the code is not surrounded by triple backticks or markdown code blocks. \
+    When you are about to return the response, first remove the first line and the last line. \
+    This is EXTREMELY important. \
+    Solve this: $input",
+  replace = false,
+  extract = "```$filetype\n(.-)```"
+}
+
+require('gen').prompts['Format - sw=2'] = {
+  prompt = "You are a skilled developer. \
+    You use spaces and not tabs \
+    You use 2 spaces for indentation \
+    Reformat the input according to instructions. \
+    Return the code as you got it, so nothing else and no backticks. \
+    Here is the code:\n $text",
+  replace = true,
+  extract = "```$filetype\n(.-)```"
 }
 
 
 vim.keymap.set({ 'n', 'v' }, '<C-s>', ':Gen<CR>')
 
+vim.keymap.set({ 'n', 'v' }, '<C-d>', ':lua require("gen").select_model()<CR>')
 
