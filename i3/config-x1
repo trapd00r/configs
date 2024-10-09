@@ -142,4 +142,4 @@ bindsym $mod+Shift+h workspace prev
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # better tiling
-exec --no-startup-id /usr/bin/i3-auto-tiling
+exec --no-startup-id ~/etc/i3/bin/i3-auto-tiling_launch.sh

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while true; do
+  i3-auto-tiling
+  sleep 1
+  echo "Restarting i3-auto-tiling"
+done
