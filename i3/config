@@ -105,6 +105,12 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 set $ws9 9
+set $ws10 10
+set $ws11 11
+set $ws12 12
+set $ws13 13
+set $ws14 14
+set $ws15 15
 
 # lock workspaces to outputs
 workspace $ws1 output $middle
@@ -112,23 +118,26 @@ workspace $ws2 output $middle
 workspace $ws3 output $middle
 workspace $ws4 output $middle
 workspace $ws5 output $middle
+
 workspace $ws6 output $left
 workspace $ws7 output $left
-workspace $ws8 output $top
-workspace $ws9 output $top
+workspace $ws8 output $left
+workspace $ws9 output $left
+workspace $ws10 output $left
 
+workspace $ws11 output $top
+workspace $ws12 output $top
+workspace $ws13 output $top
+workspace $ws14 output $top
+workspace $ws15 output $top
 
 # workspace 1 on different monitors
-# in reality we switch to workspace 6,7 etc on monitors that are not the primary
+# in reality we switch to workspace 6,7 etc
 bindsym $mod+1 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 1
 bindsym $mod+2 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 2
-
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-
-bindsym $mod+0 workspace number $ws6
-
+bindsym $mod+3 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 3
+bindsym $mod+4 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 4
+bindsym $mod+5 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 5
 
 # Mod1+L to switch to the next workspace
 bindsym $mod+Shift+l workspace next

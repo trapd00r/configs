@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # use mod+1, mod+2 etc to switch to workspaces on different monitors
-# there is 5 workspaces on the main monitor, but on the other ones there is only 2
+# there is 5 workspaces on all monitors (except laptop's built-in display)
 # workspace 6,7 on left monitor is treated like workspace 1,2 so
 # we can use the same keybindings to switch to them
 # in practice, emulating a more sane workspace setup (ratpoison, sdorfehs)
@@ -19,12 +19,18 @@ switch_workspace() {
             case "$2" in
                 1) i3-msg workspace number 6 ;;
                 2) i3-msg workspace number 7 ;;
+                3) i3-msg workspace number 8 ;;
+                4) i3-msg workspace number 9 ;;
+                5) i3-msg workspace number 10 ;;
             esac
             ;;
         "DP-5"|"DP-3-1-6")  # Top monitor on desktop or laptop
             case "$2" in
-                1) i3-msg workspace number 8 ;;
-                2) i3-msg workspace number 9 ;;
+                1) i3-msg workspace number 11 ;;
+                2) i3-msg workspace number 12 ;;
+                3) i3-msg workspace number 13 ;;
+                4) i3-msg workspace number 14 ;;
+                5) i3-msg workspace number 15 ;;
             esac
             ;;
         "DP-2"|"DP-3-1-5")  # Middle monitor on desktop or laptop
@@ -55,14 +61,20 @@ else
     echo "No known setup detected."
 fi
 
-
-# i3 config:
-
+# ########################## i3 config ##########################
+#
+# #--------------------------------------
+# # persistent workspaces on 4 monitors
+# #--------------------------------------
+#
+# # Dont forget to patch i3 first to enable persistent workspaces
+# # https://gist.github.com/trapd00r/1914f83477fb126f737fa764083a2627
+#
 # # define outputs
-# set $middle DP-2
-# set $left DP-0
-# set $top DP-5
-# set $behind HDMI-0
+# set $middle DP-3-1-5
+# set $left DP-1
+# set $top DP-3-1-6
+# set $laptop eDP-1
 #
 # set $ws1 1
 # set $ws2 2
@@ -73,6 +85,12 @@ fi
 # set $ws7 7
 # set $ws8 8
 # set $ws9 9
+# set $ws10 10
+# set $ws11 11
+# set $ws12 12
+# set $ws13 13
+# set $ws14 14
+# set $ws15 15
 #
 # # lock workspaces to outputs
 # workspace $ws1 output $middle
@@ -80,17 +98,44 @@ fi
 # workspace $ws3 output $middle
 # workspace $ws4 output $middle
 # workspace $ws5 output $middle
+#
 # workspace $ws6 output $left
 # workspace $ws7 output $left
-# workspace $ws8 output $top
-# workspace $ws9 output $top
+# workspace $ws8 output $left
+# workspace $ws9 output $left
+# workspace $ws10 output $left
 #
+# workspace $ws11 output $top
+# workspace $ws12 output $top
+# workspace $ws13 output $top
+# workspace $ws14 output $top
+# workspace $ws15 output $top
 #
 # # workspace 1 on different monitors
 # # in reality we switch to workspace 6,7 etc
 # bindsym $mod+1 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 1
 # bindsym $mod+2 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 2
+# bindsym $mod+3 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 3
+# bindsym $mod+4 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 4
+# bindsym $mod+5 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 5
 #
-# bindsym $mod+3 workspace number $ws3
-# bindsym $mod+4 workspace number $ws4
-# bindsym $mod+5 workspace number $ws5
+# # bindsym $mod+3 workspace number $ws3
+# # bindsym $mod+4 workspace number $ws4
+# # bindsym $mod+5 workspace number $ws5
+#
+# # Mod1+L to switch to the next workspace
+# bindsym $mod+Shift+l workspace next
+#
+# # Mod1+H to switch to the previous workspace
+# bindsym $mod+Shift+h workspace prev
+#
+#
+#
+# #--------------------------------------
+# # exec
+# #--------------------------------------
+#
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#
+# # better tiling
+# exec --no-startup-id ~/etc/i3/bin/i3-auto-tiling_launch.sh
