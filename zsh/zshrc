@@ -1000,7 +1000,7 @@ zstyle ':vcs_info:*' stagedstr 'M'
 zstyle ':vcs_info:*' unstagedstr 'M'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-#zstyle ':vcs_info:*' formats \
+# zstyle ':vcs_info:*' formats \
 #  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:*' enable git
@@ -1070,7 +1070,7 @@ zstyle ':completion:*:*:*:*:users' ignored-patterns \
 bin daemon mail ftp http nobody dbus avahi ntp git usbmux mysql uuid kwakd cups
 
 # formats
-#zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
+# zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
 #zstyle ':completion:*:messages'     format "- %{${fg[cyan]}%}%d%{${reset_color}%} -"
 #zstyle ':completion:*:corrections'  format "- %{${fg[yellow]}%}%d%{${reset_color}%} - (%{${fg[cyan]}%}errors %e%{${reset_color}%})"
 
@@ -1658,3 +1658,7 @@ enable_disable_wifi ()
    fi
 }
 alias rec='cd /home/scp1/.local/share/Steam/userdata/13875249/gamerecordings'
+
+
+# completion for git checkout <TAB>, ls <TAB> etc
+zstyle ':completion:*' format '%K{232}%F{137}%d:%k%f'
