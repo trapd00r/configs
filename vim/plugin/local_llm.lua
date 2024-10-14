@@ -12,7 +12,7 @@ require('gen').setup({
         display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
         show_prompt = false, -- Shows the prompt submitted to Ollama.
         show_model = true, -- Displays which model you are using at the beginning of your chat session.
-        no_auto_close = false, -- Never closes the window automatically.
+        no_auto_close = true, -- Never closes the window automatically.
         file = false, -- Write the payload to a temporary file to keep the command short.
         hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
         init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
@@ -45,7 +45,7 @@ require('gen').prompts['Fix_Code'] = {
 require('gen').prompts['Translate'] = {
   prompt = "Translate the following to $input, keeping all the formatting and replacing the original words. Do not say anything else. I ONLY want the translated words, replacing the original ones:\n$text",
   replace = true,
-  -- extract = "```$filetype\n(.-)```"
+  extract = "```$filetype\n(.-)```"
 }
 
 require('gen').prompts['Magento - Ask'] = {
@@ -84,6 +84,4 @@ require('gen').prompts['Format - sw=2'] = {
 
 
 vim.keymap.set({ 'n', 'v' }, '<C-s>', ':Gen<CR>')
-
 vim.keymap.set({ 'n', 'v' }, '<C-d>', ':lua require("gen").select_model()<CR>')
-
