@@ -106,9 +106,10 @@ if has('nvim')
   Plug 'ludovicchabant/vim-gutentags'                                     " tag management
   Plug 'pbogut/magento2-ls'                                               " magento2 language server
   Plug 'rcarriga/nvim-notify'                                             " notifications
+  " Plug 'zbirenbaum/copilot.lua'
   " Plug 'mikesmithgh/kitty-scrollback.nvim'
   Plug 'trapd00r/kitty-scrollback.nvim'                                   " using own fork cause couldn't configure away default opts
-  Plug 'lukas-reineke/headlines.nvim'
+  " Plug 'lukas-reineke/headlines.nvim'
 
   " codecompanion
   " Plug 'nvim-lua/plenary.nvim'
@@ -126,7 +127,6 @@ if has('nvim')
   " " Optional deps
   " Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
   " Plug 'HakonHarnes/img-clip.nvim'
-  " Plug 'zbirenbaum/copilot.lua'
 
   " local llm
   Plug 'David-Kunz/gen.nvim'
@@ -485,7 +485,7 @@ nnoremap <C-o> :CtrlPFunky<cr>
 nnoremap <silent> <C-c> :<C-U>PipePreview<CR>
 
 " next buffer
-" nnoremap <C-n>     :bnext<cr>
+nnoremap <C-n>     :bnext<cr>
 
 " previous buffer
 " nnoremap <C-b>     :bprev<cr>
@@ -2009,3 +2009,7 @@ augroup END
 " autocmd filetype elm Copilot disable
 
 highlight CodeBlock ctermbg=232
+highlight ColorColumn cterm=none
+
+hi HeadlineReverse ctermbg=234
+hi Headline ctermbg=235
