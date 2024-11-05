@@ -7,7 +7,7 @@ font xft:MonteCarlo Fixed 26
 
 default_border pixel 1
 default_floating_border none
-floating_modifier Ctrl
+floating_modifier $mod
 focus_follows_mouse yes
 hide_edge_borders none
 workspace_auto_back_and_forth no
