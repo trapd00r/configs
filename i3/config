@@ -87,6 +87,9 @@ for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
 # message window
 for_window [window_role="messageWindow" class="(?i)Thunderbird"] floating enable
 
+# emulationstation-de
+#for_window [class="es-de"] floating enable
+
 #--------------------------------------
 # persistent workspaces on 4 monitors
 #--------------------------------------
@@ -177,3 +180,7 @@ exec i3-layouts
 
 # polybar on 4 monitors
 exec --no-startup-id bash ~/etc/i3/bin/polybar_launch.sh
+
+
+exec --no-startup-id bash ~/bin/notify_clock_temperature
+exec --no-startup-id bash ~/bin/notify_clock2
