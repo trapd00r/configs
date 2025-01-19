@@ -205,6 +205,9 @@ require('lspconfig').vimls.setup({
   capabilities = capabilities,
 })
 
+require('lspconfig').graphql.setup({
+  capabilities = capabilities,
+})
 
 
 lsp_zero.set_sign_icons({

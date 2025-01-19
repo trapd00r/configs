@@ -2013,3 +2013,4 @@ highlight ColorColumn cterm=none
 
 hi HeadlineReverse ctermbg=234
 hi Headline ctermbg=235
+

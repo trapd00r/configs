@@ -29,8 +29,8 @@ export XDG_PUBLICSHARE_DIR=${HOME}/usr/share
 export                LISTMAX=0
 export               HISTFILE=${XDG_DATA_HOME}/zsh/history
 [[ -d ${XDG_DATA_HOME}/zsh ]] || mkdir -p ${XDG_DATA_HOME}/zsh ]]
-export               HISTSIZE=256000
-export               SAVEHIST=250000
+export               HISTSIZE=2560000000
+export               SAVEHIST=2500000000
 export              WORDCHARS='*?_.[]~&;!#$%^(){}<>'
 export              ZSH_THEME="japhprompt"
 export             HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*:gs:gd:calc:du1:l:make"

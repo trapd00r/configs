@@ -1662,3 +1662,7 @@ alias rec='cd /home/scp1/.local/share/Steam/userdata/13875249/gamerecordings'
 
 # completion for git checkout <TAB>, ls <TAB> etc
 zstyle ':completion:*' format '%K{232}%F{137}%d:%k%f'
+
+
+export               HISTSIZE=2560000000
+export               SAVEHIST=2500000000

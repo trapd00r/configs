@@ -59,9 +59,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
+
+        bindsym l resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
         bindsym h resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
@@ -100,10 +101,10 @@ for_window [window_role="messageWindow" class="(?i)Thunderbird"] floating enable
 # https://gist.github.com/trapd00r/1914f83477fb126f737fa764083a2627
 
 # define outputs
-set $middle DP-2
-set $left DP-0
-set $top DP-5
-set $behind HDMI-0
+set $middle DP-3-1-5
+set $left DP-1
+set $top DP-3-1-6
+set $laptop eDP-1
 
 # Define workspaces
 set $ws1 1
@@ -213,16 +214,16 @@ workspace 25 output $top
 workspace 26 output $top
 workspace 27 output $top
 
-# Assign workspaces 28-36 to $behind
-workspace 28 output $behind
-workspace 29 output $behind
-workspace 30 output $behind
-workspace 31 output $behind
-workspace 32 output $behind
-workspace 33 output $behind
-workspace 34 output $behind
-workspace 35 output $behind
-workspace 36 output $behind
+# Assign workspaces 28-36 to $laptop
+workspace 28 output $laptop
+workspace 29 output $laptop
+workspace 30 output $laptop
+workspace 31 output $laptop
+workspace 32 output $laptop
+workspace 33 output $laptop
+workspace 34 output $laptop
+workspace 35 output $laptop
+workspace 36 output $laptop
 
 
 # workspace 1 on different monitors
