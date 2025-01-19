@@ -1,2 +1,92 @@
 //@theme "/usr/share/rofi/themes/c64.rasi"
 @theme "/usr/share/rofi/themes/android_notification.rasi"
+
+configuration {
+  kb-accept-alt: "";
+  kb-accept-custom: "";
+  kb-accept-custom-alt: "";
+  kb-accept-entry: "";
+  kb-clear-line: "";
+  kb-custom-1: "";
+  kb-custom-10: "";
+  kb-custom-11: "";
+  kb-custom-12: "";
+  kb-custom-13: "";
+  kb-custom-14: "";
+  kb-custom-15: "";
+  kb-custom-16: "";
+  kb-custom-17: "";
+  kb-custom-18: "";
+  kb-custom-19: "";
+  kb-custom-2: "";
+  kb-custom-3: "";
+  kb-custom-4: "";
+  kb-custom-5: "";
+  kb-custom-6: "";
+  kb-custom-7: "";
+  kb-custom-8: "";
+  kb-custom-9: "";
+  kb-delete-entry: "";
+  kb-element-next: "";
+  kb-element-prev: "";
+  kb-ellipsize: "";
+  kb-entry-history-down: "";
+  kb-entry-history-up: "";
+  kb-mode-complete: "";
+  kb-mode-next: "";
+  kb-mode-previous: "";
+  kb-move-char-back: "";
+  kb-move-char-forward: "";
+  kb-move-end: "";
+  kb-move-front: "";
+  kb-move-word-back: "";
+  kb-move-word-forward: "";
+  kb-page-next: "";
+  kb-page-prev: "";
+  kb-primary-paste: "";
+  kb-remove-char-back: "";
+  kb-remove-char-forward: "";
+  kb-remove-to-eol: "";
+  kb-remove-to-sol: "";
+  kb-remove-word-back: "";
+  kb-remove-word-forward: "";
+  kb-row-down: "";
+  kb-row-first: "";
+  kb-row-last: "";
+  kb-row-left: "";
+  kb-row-right: "";
+  kb-row-select: "";
+  kb-row-tab: "";
+  kb-row-up: "";
+  kb-screenshot: "";
+  kb-secondary-copy: "";
+  kb-secondary-paste: "";
+  kb-select-1: "";
+  kb-select-10: "";
+  kb-select-2: "";
+  kb-select-3: "";
+  kb-select-4: "";
+  kb-select-5: "";
+  kb-select-6: "";
+  kb-select-7: "";
+  kb-select-8: "";
+  kb-select-9: "";
+  kb-toggle-case-sensitivity: "";
+  kb-toggle-sort: "";
+  me-accept-custom: "";
+  me-accept-entry: "";
+  me-select-entry: "";
+  ml-row-down: "";
+  ml-row-left: "";
+  ml-row-right: "";
+  ml-row-up: "";
+  kb-accept-entry: "Return";
+  kb-row-down: "Control-j";
+  kb-row-up: "Control-k";
+  kb-cancel: "Escape";
+  kb-remove-word-back: "Control+w";
+  kb-remove-char-back: "BackSpace";
+}
+
+
+
