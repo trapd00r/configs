@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # use mod+1, mod+2 etc to switch to workspaces on different monitors
-# there is 5 workspaces on all monitors (except laptop's built-in display)
+# there is 9 workspaces on all monitors (except laptop's built-in display)
 # workspace 6,7 on left monitor is treated like workspace 1,2 so
 # we can use the same keybindings to switch to them
 # in practice, emulating a more sane workspace setup (ratpoison, sdorfehs)
@@ -17,20 +17,28 @@ switch_workspace() {
     case "$1" in
         "DP-0"|"DP-1")  # Left monitor on desktop or laptop
             case "$2" in
-                1) i3-msg workspace number 6 ;;
-                2) i3-msg workspace number 7 ;;
-                3) i3-msg workspace number 8 ;;
-                4) i3-msg workspace number 9 ;;
-                5) i3-msg workspace number 10 ;;
+                1) i3-msg workspace number 10 ;;
+                2) i3-msg workspace number 11 ;;
+                3) i3-msg workspace number 12 ;;
+                4) i3-msg workspace number 13 ;;
+                5) i3-msg workspace number 14 ;;
+                6) i3-msg workspace number 15 ;;
+                7) i3-msg workspace number 16 ;;
+                8) i3-msg workspace number 17 ;;
+                9) i3-msg workspace number 18 ;;
             esac
             ;;
         "DP-5"|"DP-3-1-6")  # Top monitor on desktop or laptop
             case "$2" in
-                1) i3-msg workspace number 11 ;;
-                2) i3-msg workspace number 12 ;;
-                3) i3-msg workspace number 13 ;;
-                4) i3-msg workspace number 14 ;;
-                5) i3-msg workspace number 15 ;;
+                1) i3-msg workspace number 19 ;;
+                2) i3-msg workspace number 20 ;;
+                3) i3-msg workspace number 21 ;;
+                4) i3-msg workspace number 22 ;;
+                5) i3-msg workspace number 23 ;;
+                6) i3-msg workspace number 24 ;;
+                7) i3-msg workspace number 25 ;;
+                8) i3-msg workspace number 26 ;;
+                9) i3-msg workspace number 27 ;;
             esac
             ;;
         "DP-2"|"DP-3-1-5" | "eDP-1")  # Middle monitor on desktop or laptop, or undocked laptop screen
@@ -40,6 +48,10 @@ switch_workspace() {
                 3) i3-msg workspace number 3 ;;
                 4) i3-msg workspace number 4 ;;
                 5) i3-msg workspace number 5 ;;
+                6) i3-msg workspace number 6 ;;
+                7) i3-msg workspace number 7 ;;
+                8) i3-msg workspace number 8 ;;
+                9) i3-msg workspace number 9 ;;
             esac
             ;;
         "HDMI-0"|"eDP-1")  # Behind monitor on desktop or laptop's built-in display

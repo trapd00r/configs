@@ -103,6 +103,7 @@ set $left DP-0
 set $top DP-5
 set $behind HDMI-0
 
+# Define workspaces
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -118,6 +119,27 @@ set $ws12 12
 set $ws13 13
 set $ws14 14
 set $ws15 15
+set $ws16 16
+set $ws17 17
+set $ws18 18
+set $ws19 19
+set $ws20 20
+set $ws21 21
+set $ws22 22
+set $ws23 23
+set $ws24 24
+set $ws25 25
+set $ws26 26
+set $ws27 27
+set $ws28 28
+set $ws29 29
+set $ws30 30
+set $ws31 31
+set $ws32 32
+set $ws33 33
+set $ws34 34
+set $ws35 35
+set $ws36 36
 
 set $i3l autosplit to workspace $ws1
 set $i3l autosplit to workspace $ws2
@@ -134,25 +156,72 @@ set $i3l autosplit to workspace $ws12
 set $i3l autosplit to workspace $ws13
 set $i3l autosplit to workspace $ws14
 set $i3l autosplit to workspace $ws15
+set $i3l autosplit to workspace $ws16
+set $i3l autosplit to workspace $ws17
+set $i3l autosplit to workspace $ws18
+set $i3l autosplit to workspace $ws19
+set $i3l autosplit to workspace $ws20
+set $i3l autosplit to workspace $ws21
+set $i3l autosplit to workspace $ws22
+set $i3l autosplit to workspace $ws23
+set $i3l autosplit to workspace $ws24
+set $i3l autosplit to workspace $ws25
+set $i3l autosplit to workspace $ws26
+set $i3l autosplit to workspace $ws27
+set $i3l autosplit to workspace $ws28
+set $i3l autosplit to workspace $ws29
+set $i3l autosplit to workspace $ws30
+set $i3l autosplit to workspace $ws31
+set $i3l autosplit to workspace $ws32
+set $i3l autosplit to workspace $ws33
+set $i3l autosplit to workspace $ws34
+set $i3l autosplit to workspace $ws35
+set $i3l autosplit to workspace $ws36
 
-# lock workspaces to outputs
-workspace $ws1 output $middle
-workspace $ws2 output $middle
-workspace $ws3 output $middle
-workspace $ws4 output $middle
-workspace $ws5 output $middle
+# Assign first 9 workspaces to $middle
+workspace 1 output $middle
+workspace 2 output $middle
+workspace 3 output $middle
+workspace 4 output $middle
+workspace 5 output $middle
+workspace 6 output $middle
+workspace 7 output $middle
+workspace 8 output $middle
+workspace 9 output $middle
 
-workspace $ws6 output $left
-workspace $ws7 output $left
-workspace $ws8 output $left
-workspace $ws9 output $left
-workspace $ws10 output $left
+# Assign workspaces 10-18 to $left
+workspace 10 output $left
+workspace 11 output $left
+workspace 12 output $left
+workspace 13 output $left
+workspace 14 output $left
+workspace 15 output $left
+workspace 16 output $left
+workspace 17 output $left
+workspace 18 output $left
 
-workspace $ws11 output $top
-workspace $ws12 output $top
-workspace $ws13 output $top
-workspace $ws14 output $top
-workspace $ws15 output $top
+# Assign workspaces 19-27 to $top
+workspace 19 output $top
+workspace 20 output $top
+workspace 21 output $top
+workspace 22 output $top
+workspace 23 output $top
+workspace 24 output $top
+workspace 25 output $top
+workspace 26 output $top
+workspace 27 output $top
+
+# Assign workspaces 28-36 to $behind
+workspace 28 output $behind
+workspace 29 output $behind
+workspace 30 output $behind
+workspace 31 output $behind
+workspace 32 output $behind
+workspace 33 output $behind
+workspace 34 output $behind
+workspace 35 output $behind
+workspace 36 output $behind
+
 
 # workspace 1 on different monitors
 # in reality we switch to workspace 6,7 etc
@@ -161,6 +230,10 @@ bindsym $mod+2 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 2
 bindsym $mod+3 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 3
 bindsym $mod+4 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 4
 bindsym $mod+5 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 5
+bindsym $mod+6 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 6
+bindsym $mod+7 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 7
+bindsym $mod+8 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 8
+bindsym $mod+9 exec --no-startup-id /bin/bash ~/etc/i3/bin/switch-workspace.sh 9
 
 # Mod1+L to switch to the next workspace
 bindsym $mod+Shift+l workspace next
