@@ -254,3 +254,5 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # better tiling
 exec i3-layouts
+
+exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
