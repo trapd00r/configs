@@ -9,12 +9,17 @@ default_border pixel 1
 default_floating_border none
 floating_modifier $mod
 focus_follows_mouse yes
+focus_on_window_activation none
+show_marks yes
 hide_edge_borders none
 workspace_auto_back_and_forth no
 
 #--------------------------------------
 # mappings
 #--------------------------------------
+
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+' exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 bindsym $mod+Return exec kitty -o font_family="Anonymous Pro" -o font_size=8 -o bold_font="Anonymous Pro Bold" -o italic_font="Anonymous Pro Italic" -o bold_italic_font="Anonymous Pro Bold Italic"
 # bindsym $mod+Shift+1 exec --no-startup-id fzfbinselect
