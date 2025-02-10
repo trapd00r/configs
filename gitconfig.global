@@ -179,3 +179,5 @@
 	autoStash = true
 [pull]
 	rebase = true
+[commit]
+	verbose = true
