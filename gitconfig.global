@@ -140,6 +140,7 @@
   last = "!git log -10 HEAD --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[m \\033[32m%s\\033[m  %-.40s \\033[38;5;137m%s\\033[m\\033[34m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';"
   lastt = "!git log -76 HEAD --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[m \\033[32m%s\\033[m  %-.40s \\033[38;5;137m%s\\033[m\\033[34m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';"
   lasttt = "!git log HEAD --abbrev-commit --date=short --pretty=format:'%h%x00%cd%x00%s%x00%an%x00%d' $@ | gawk -F '\\0' '{ printf \"\\033[31m%s\\033[m \\033[32m%s\\033[m  %-.40s \\033[38;5;137m%s\\033[m\\033[34m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5 }';"
+  edits = "!f() { git log --since 12.months.ago --numstat 2> /dev/null | grep -vP 'vendor|composer|config[.]php' | awk '/^[0-9-]+/{ print $NF}' | sort | uniq -c | sort -nr | head -10; }; f"
   co   = checkout
   ci   = commit
   st   = status
