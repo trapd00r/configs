@@ -117,12 +117,15 @@
   hunk-header-style = file line-number syntax
 
 [merge]
-  conflictstyle = zdiff3
+  ; conflictstyle = zdiff3
 	autostash = true
 
 [diff]
   colorMoved = default
   relative = true
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
 
 [man]
 #  viewer = motherfuckingvimpager
@@ -177,7 +180,15 @@
 	required = true
 [rebase]
 	autoStash = true
+	updateRefs = true
+	autoSquash = true
 [pull]
 	rebase = true
 [commit]
 	verbose = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
