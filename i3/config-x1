@@ -90,6 +90,8 @@ client.background       #2B2C2B
 
 # gcolor3
 for_window [title="Color Picker"] floating enable
+
+for_window [title="scratchpad"] floating enable
 # new email window
 for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
 # message window
