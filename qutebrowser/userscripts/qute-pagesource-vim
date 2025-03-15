@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# open the page source in vim
+url="$QUTE_URL"
+timestamp=$(date "+%Y%m%d_%H%M%S")
+curl -sL "$url" -o "$HOME/tmp/page_$timestamp.html"
+notify-send "Page source downloaded" "$HOME/tmp/page_$timestamp.html"
+
+kitty -e $EDITOR "$HOME/tmp/page_$timestamp.html"
+

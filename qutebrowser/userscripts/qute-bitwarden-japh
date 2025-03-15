@@ -1,0 +1,73 @@
+#!/bin/bash
+
+source ~/.secret_zshrc
+
+url=$QUTE_URL
+
+# Extract the host and port explicitly (handling URLs with or without explicit port)
+host_port=$(echo "$url" | awk -F/ '{print $3}')
+
+# Retrieve matching items explicitly considering port number
+items=$(bw list items --session "$BW_SESSION" | jq -r --arg host_port "$host_port" '
+    .[] | select(.login.uris[]?.uri == ("http://" + $host_port) or .login.uris[]?.uri == ("https://" + $host_port)) |
+    "\(.name) | " + (
+        (.login.uris[0].uri | capture("^(?:https?://)?(?<domain>[^/:]+)(?::(?<port>[0-9]+))?") | 
+        if .port then .domain + ":" + .port else .domain end) // "N/A"
+    ) + " | \(.login.username) | \(.id)"
+')
+
+# If no exact matches, fallback to hostname without port
+if [ -z "$items" ]; then
+    domain=$(echo "$host_port" | cut -d':' -f1)
+    items=$(bw list items --session "$BW_SESSION" | jq -r --arg domain "$domain" '
+        .[] | select(.login.uris[]?.uri | contains($domain)) |
+        "\(.name) | " + (
+            (.login.uris[0].uri | capture("^(?:https?://)?(?<domain>[^/:]+)(?::(?<port>[0-9]+))?") | 
+            if .port then .domain + ":" + .port else .domain end) // "N/A"
+        ) + " | \(.login.username) | \(.id)"
+    ')
+fi
+
+# If still no matches, fallback to all items
+if [ -z "$items" ]; then
+    items=$(bw list items --session "$BW_SESSION" | jq -r '
+        .[] | "\(.name) | " + (
+            (.login.uris[0].uri | capture("^(?:https?://)?(?<domain>[^/:]+)(?::(?<port>[0-9]+))?") | 
+            if .port then .domain + ":" + .port else .domain end) // "N/A"
+        ) + " | \(.login.username) | \(.id)"
+    ')
+fi
+
+# Select item using aesthetically pleasing rofi menu
+selection=$(echo "$items" | rofi -dmenu -i -p "  Vaultwarden" -theme-str 'window {width: 1000px; border-radius: 8px;} inputbar {padding: 8px;} listview {lines: 8; padding: 6px;} element {padding: 4px;} element-icon {size: 16px;} entry {font-size: 14px;}')
+
+# Exit if nothing was selected
+[ -z "$selection" ] && exit
+
+# Retrieve selected item id (now correctly extracted)
+selected_id=$(echo "$selection" | awk -F'|' '{print $4}' | xargs)
+
+# Retrieve credentials for selected item
+credentials=$(bw get item "$selected_id" --session "$BW_SESSION")
+
+username=$(echo "$credentials" | jq -r '.login.username')
+password=$(echo "$credentials" | jq -r '.login.password')
+totp=$(echo "$credentials" | jq -r '.login.totp')
+
+# Ensure username and password are valid before sending to Qutebrowser
+if [ -z "$username" ] || [ -z "$password" ] || [ "$username" == "null" ] || [ "$password" == "null" ]; then
+    notify-send "Vaultwarden Error" "No username or password found for this entry."
+    exit 1
+fi
+
+# Send keys directly to Qutebrowser
+printf 'fake-key %s\n' "$username" > "$QUTE_FIFO"
+printf 'fake-key <Tab>\n' > "$QUTE_FIFO"
+printf 'fake-key %s\n' "$password" > "$QUTE_FIFO"
+
+# Copy TOTP code to clipboard if available
+if [ "$totp" != "null" ] && [ -n "$totp" ]; then
+    bw get totp "$selected_id" --session "$BW_SESSION" | xclip -selection clipboard
+    notify-send "TOTP Copied" "The TOTP code has been copied to clipboard."
+fi
+
