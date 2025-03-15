@@ -173,6 +173,9 @@ nmap w    :view<cr>
 nmap yd   :!echo %d | xclip %i<cr>
 nmap yf   :!echo %c:p | xclip %i<cr>
 
+nmap J 10j
+nmap K 10k
+
 nmap q :quit<cr>
 
 

@@ -1,3 +1,10 @@
+"highlight Border ctermfg=NONE ctermbg=0
+"highlight StatusLine ctermfg=3 ctermbg=0
+"highlight TopLine ctermfg=3 ctermbg=0
+"highlight Border ctermfg=NONE ctermbg=0
+
+
+
 " generic file types
 highlight BrokenLink cterm=bold ctermfg=232 ctermbg=196
 highlight Device cterm=bold ctermfg=113 ctermbg=default
