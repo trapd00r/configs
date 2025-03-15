@@ -1,7 +1,23 @@
-"highlight Border ctermfg=NONE ctermbg=0
-"highlight StatusLine ctermfg=3 ctermbg=0
-"highlight TopLine ctermfg=3 ctermbg=0
-"highlight Border ctermfg=NONE ctermbg=0
+
+highlight  Border      cterm=none               ctermfg=black    ctermbg=232
+highlight  BrokenLink  cterm=bold               ctermfg=red      ctermbg=default
+highlight  CmdLine     cterm=none               ctermfg=white    ctermbg=black
+highlight  CurrLine    cterm=bold               ctermfg=default  ctermbg=234
+highlight  Device      cterm=bold               ctermfg=red      ctermbg=default
+highlight  Directory   cterm=bold               ctermfg=12       ctermbg=default
+highlight  ErrorMsg    cterm=none               ctermfg=red      ctermbg=black
+highlight  Executable  cterm=bold               ctermfg=green    ctermbg=default
+highlight  Fifo        cterm=bold               ctermfg=cyan     ctermbg=default
+highlight  Link        cterm=bold               ctermfg=green    ctermbg=default
+highlight  OtherLine   cterm=bold               ctermfg=default  ctermbg=130
+highlight  Selected    cterm=bold               ctermfg=default  ctermbg=8
+highlight  Socket      cterm=bold               ctermfg=magenta  ctermbg=default
+highlight  StatusLine  cterm=none               ctermfg=white    ctermbg=233
+highlight  SuggestBox  cterm=none               ctermfg=white    ctermbg=black
+highlight  TopLine     cterm=none               ctermfg=15       ctermbg=233
+highlight  TopLineSel  cterm=none               ctermfg=148      ctermbg=default
+highlight  WildMenu    cterm=underline,reverse  ctermfg=white    ctermbg=black
+highlight  Win         cterm=none               ctermfg=white    ctermbg=black
 
 
 
