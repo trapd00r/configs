@@ -42,7 +42,7 @@ set   wildmenu
 set   wrap
 set   wrapscan
 
-colorscheme Default-256
+colorscheme LS_COLORS
 " :mark mark /full/directory/path [filename]
 
 mark b ~/bin/
@@ -173,3 +173,8 @@ nmap w    :view<cr>
 nmap yd   :!echo %d | xclip %i<cr>
 nmap yf   :!echo %c:p | xclip %i<cr>
 
+nmap q :quit<cr>
+
+
+" single view mode
+only
