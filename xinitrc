@@ -105,6 +105,9 @@ lxpolkit &
 # https://bbs.archlinux.org/viewtopic.php?id=224787
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+# resolves slow pass retrieval
+/usr/bin/gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
+
 # polybar --config=$HOME/etc/polybar/config_fantomen.ini &
 # exec bspwm
 

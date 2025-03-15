@@ -1975,35 +1975,35 @@ set foldcolumn&
 highlight SymbolUnderCursor ctermfg=202 ctermbg=none cterm=none
 
 " Define a function to highlight the symbol under the cursor
-function! HighlightSymbol()
-    " Get the symbol under the cursor
-    let l:symbol = expand('<cword>')
+" function! HighlightSymbol()
+"     " Get the symbol under the cursor
+"     let l:symbol = expand('<cword>')
+"
+"     " if the symbol is $this , do not highlight
+"     if l:symbol == '$this'
+"         return
+"     endif
+"
+"     " if the symbol matches the currently searched for (*, /, search() etc), do not highlight
+"     if l:symbol =~# @/
+"         return
+"     endif
+"
+"     " Highlight the symbol
+"     call matchadd('SymbolUnderCursor', '\V\<' . escape(l:symbol, '\') . '\>')
+" endfunction
 
-    " if the symbol is $this , do not highlight
-    if l:symbol == '$this'
-        return
-    endif
-
-    " if the symbol matches the currently searched for (*, /, search() etc), do not highlight
-    if l:symbol =~# @/
-        return
-    endif
-
-    " Highlight the symbol
-    call matchadd('SymbolUnderCursor', '\V\<' . escape(l:symbol, '\') . '\>')
-endfunction
-
-" Remove existing highlights when the cursor is moved
-augroup ClearHighlights
-    autocmd!
-    autocmd CursorMoved * call clearmatches() | call HighlightSymbol()
-augroup END
+" " Remove existing highlights when the cursor is moved
+" augroup ClearHighlights
+"     autocmd!
+"     autocmd CursorMoved * call clearmatches() | call HighlightSymbol()
+" augroup END
 
 " Call HighlightSymbol when CursorHold is triggered
-augroup DelayedHighlight
-    autocmd!
-    autocmd CursorHold * call HighlightSymbol()
-augroup END
+" augroup DelayedHighlight
+"     autocmd!
+"     autocmd CursorHold * call HighlightSymbol()
+" augroup END
 
 
 " autocmd filetype elm Copilot disable

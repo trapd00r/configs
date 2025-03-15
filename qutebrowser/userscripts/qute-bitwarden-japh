@@ -71,3 +71,63 @@ if [ "$totp" != "null" ] && [ -n "$totp" ]; then
     notify-send "TOTP Copied" "The TOTP code has been copied to clipboard."
 fi
 
+
+#!/bin/bash
+
+source ~/.secret_zshrc
+
+url=$QUTE_URL
+host_port=$(echo "$url" | awk -F/ '{print $3}')
+domain=$(echo "$host_port" | cut -d':' -f1)
+
+# Fetch all items only once
+bw_items=$(bw list items --session "$BW_SESSION")
+
+# Try exact URL matches first (with port)
+items=$(echo "$bw_items" | jq -r --arg host_port "$host_port" '
+    .[] | select(.login.uris[]?.uri == ("http://" + $host_port) or .login.uris[]?.uri == ("https://" + $host_port)) |
+    "\(.name) | \(.login.uris[0].uri | sub("^https?://";"")) | \(.login.username) | \(.id)"
+')
+
+# If no exact matches, fallback to hostname without port
+if [ -z "$items" ]; then
+    items=$(echo "$bw_items" | jq -r --arg domain "$domain" '
+        .[] | select(.login.uris[]?.uri | contains($domain)) |
+        "\(.name) | \(.login.uris[0].uri | sub("^https?://";"")) | \(.login.username) | \(.id)"
+    ')
+fi
+
+# If still no matches, fallback to all items
+if [ -z "$items" ]; then
+    items=$(echo "$bw_items" | jq -r '
+        .[] | "\(.name) | \(.login.uris[0].uri | sub("^https?://";"")) | \(.login.username) | \(.id)"
+    ')
+fi
+
+selection=$(echo "$items" | rofi -dmenu -i -p "  Vaultwarden" \
+    -theme-str 'window {width: 1000px; border-radius: 8px;} inputbar {padding: 8px;} listview {lines: 8; padding: 6px;} element {padding: 4px;} element-icon {size: 16px;} entry {font-size: 14px;}')
+
+[ -z "$selection" ] && exit
+
+selected_id=$(echo "$selection" | awk -F'|' '{print $4}' | xargs)
+
+# Use previously fetched bw_items to get the selected credentials without another bw call
+credentials=$(echo "$bw_items" | jq -r --arg id "$selected_id" '.[] | select(.id == $id)')
+username=$(echo "$credentials" | jq -r '.login.username')
+password=$(echo "$credentials" | jq -r '.login.password')
+totp=$(echo "$credentials" | jq -r '.login.totp')
+
+if [ -z "$username" ] || [ -z "$password" ] || [ "$username" == "null" ] || [ "$password" == "null" ]; then
+    notify-send "Vaultwarden Error" "No username or password found for this entry."
+    exit 1
+fi
+
+printf 'fake-key %s\n' "$username" > "$QUTE_FIFO"
+printf 'fake-key <Tab>\n' > "$QUTE_FIFO"
+printf 'fake-key %s\n' "$password" > "$QUTE_FIFO"
+
+# Fetch TOTP only if it's defined (requires separate bw call, as codes are dynamic)
+if [ "$totp" != "null" ] && [ -n "$totp" ]; then
+    bw get totp "$selected_id" --session "$BW_SESSION" | xclip -selection clipboard
+    notify-send "TOTP Copied" "The TOTP code has been copied to clipboard."
+fi

@@ -41,4 +41,3 @@ docs/Koddokumentation
 *.min.*
 *.css
 extjs/
-vendor/
