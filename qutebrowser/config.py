@@ -3,12 +3,43 @@ config.load_autoconfig()
 
 hostname = socket.gethostname()
 
+config.set('fileselect.handler', 'external')
+
 if hostname == "fantomen":
     monospace = "8px 'Bok MonteCarlo'"
+
+    kitty_cmd = [
+        'kitty', 
+        '-o', 'font_family=Anonymous Pro',
+        '-o', 'font_size=8',
+        '-o', 'bold_font=Anonymous Pro Bold',
+        '-o', 'italic_font=Anonymous Pro Italic',
+        '-o', 'bold_italic_font=Anonymous Pro Bold Italic',
+        '--title', 'file selector',
+        'vifm'
+    ]
+    
+    config.set('fileselect.single_file.command', kitty_cmd + ['--choose-file', '{}'])
+    config.set('fileselect.multiple_files.command', kitty_cmd + ['--choose-files', '{}'])
+    config.set('fileselect.folder.command', kitty_cmd + ['--choose-dir', '{}'])
+
 elif hostname == "x1":
     monospace = "8px 'Terminus'"
+
+    config.set('fileselect.single_file.command', [
+        'kitty', '--title', 'file selector', 'vifm', '--choose-file', '{}'
+    ])
+    config.set('fileselect.multiple_files.command', [
+        'kitty', '--title', 'file selector', 'vifm', '--choose-files', '{}'
+    ])
+
+    config.set('fileselect.folder.command', [
+        'kitty', '--title', 'file selector', 'vifm', '--choose-dir', '{}'
+    ])
 else:
     monospace = "8px 'Terminus'"
+
+
 
 
 c.colors.contextmenu.disabled.fg        = '#808080'
@@ -38,20 +69,6 @@ c.downloads.location.directory          = '/home/scp1/tmp/'
 c.downloads.position                    = "top"
 c.downloads.remove_finished             = 10000
 c.editor.command                        = ["kitty", "--title", "scratchpad", "-e", "nvim", "-f", "{}"]
-
-config.set('fileselect.handler', 'external')
-config.set('fileselect.single_file.command', [
-    'kitty', '--title', 'file selector', 'vifm', '--choose-file', '{}'
-])
-config.set('fileselect.multiple_files.command', [
-    'kitty', '--title', 'file selector', 'vifm', '--choose-files', '{}'
-])
-
-config.set('fileselect.folder.command', [
-    'kitty', '--title', 'file selector', 'vifm', '--choose-dir', '{}'
-])
-
-
 c.fonts.completion.category             = f"bold {monospace}"
 c.fonts.completion.entry                = monospace
 c.fonts.debug_console                   = monospace
