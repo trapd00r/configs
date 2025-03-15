@@ -1486,9 +1486,6 @@ builtin cd -P ~/etc/zsh/cwd
 # alias composer='composer --ignore-platform-reqs'
 
 
-git config --global alias.root 'rev-parse --show-toplevel'
-
-
 # tail dahbug no matter how deep in the directory structure you are
 # alias dahbug='tail -F "$(git root)"/../dahbug.log'
 
@@ -1666,3 +1663,10 @@ zstyle ':completion:*' format '%K{232}%F{137}%d:%k%f'
 
 export               HISTSIZE=2560000000
 export               SAVEHIST=2500000000
+
+# export HTTP_PROXY='http://192.168.1.12:8080'
+# export HTTPS_PROXY='http://192.168.1.12:8080'
+# export http_proxy='http://192.168.1.12:8080'
+# export https_proxy='http://192.168.1.12:8080'
+
+eval "$(atuin init zsh)"

@@ -50,3 +50,39 @@ vim.keymap.set("v", "gq", vim.lsp.buf.format, { remap = false })
 vim.keymap.set('n', '<leader>GQ', vim.lsp.buf.format, { noremap = true })
 
 
+
+
+-- Function to format current line using LSP or fallback to formatprg
+local function format_current_line()
+  -- Get the current buffer number
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  -- Get the current line number
+  local line = vim.fn.line(".")
+
+  -- Try LSP formatting
+  local success = pcall(vim.lsp.buf.format, { bufnr = bufnr, range = { start = { line - 1, 0 }, ["end"] = { line, 0 } } })
+
+  -- If LSP formatting fails, fallback to formatprg
+  if not success then
+    vim.cmd("normal! gqq")
+  end
+end
+
+-- Set the keymap for 'gq' in normal mode
+vim.keymap.set("n", "gq", format_current_line, { noremap = true })
+
+-- For visual mode, try LSP formatting for the selection or fallback to formatprg
+local function format_selection()
+  local success = pcall(vim.lsp.buf.format)
+  
+  if not success then
+    vim.cmd("normal! gq")
+  end
+end
+
+-- Set the keymap for 'gq' in visual mode
+vim.keymap.set("v", "gq", format_selection, { noremap = true })
+
+-- Format the entire buffer using LSP formatting
+vim.keymap.set('n', '<leader>GQ', vim.lsp.buf.format, { noremap = true })

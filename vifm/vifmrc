@@ -88,56 +88,8 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
         \ mplayer %f,
 fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
          \ ffprobe -show_files -pretty %f 2> /dev/null
+
 filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
-filetype *.o nm %f | less
-" filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-"         \ {View in sxiv}
-"         \ feh -FZ,
-" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
-filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f,
-
-" FuseZipMount
-filetype *.zip,*.jar,*.war,*.ear
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
-
-" ArchiveMount
-filetype *.tar.bz2,*.tbz2,*.tgz,*.tar.gz
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-
-" Rar2FsMount
-filetype *.rar
-       \ {Mount with rar2fs}
-       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
-
-" IsoMount
-filetype *.iso
-       \ {Mount with fuseiso}
-       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
-
-" SshMount
-filetype *.ssh
-       \ {Mount with sshfs}
-       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR,
-
-" FtpMount
-filetype *.ftp
-       \ {Mount with curlftpfs}
-       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR,
-
-" Fuse7z
-filetype *.7z
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
 
 
 " Directories
@@ -175,12 +127,12 @@ nmap yf   :!echo %c:p | xclip %i<cr>
 
 nmap J 10j
 nmap K 10k
-
-
-nnoremap yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
-nnoremap ;yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
-
 nmap q :quit<cr>
+
+
+" yank absolute path of current file
+command yankfilepath :!echo -n %c:p | xclip -selection clipboard && notify-send "%c:p is yanked"
+nnoremap ;yf :yankfilepath<cr>
 
 
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.webp
@@ -189,6 +141,14 @@ fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.webp
     \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 
+
+fileviewer *.pl,*.pm,*.php,*.elm,*.html,*.js,*.css,*.go,*.py,*.rb,*.sh,*.sql,*.xml,*.yaml,*.yml,*.json,*.md,*.markdown,*.rst,*.tex,*.txt,*.vim,*.conf,*.ini
+    \ highlight -O xterm256 -s dante %c
+
+
+
+
 " single view mode
-"only
+" only
+
 vsplit
