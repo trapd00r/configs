@@ -38,10 +38,20 @@ c.downloads.location.directory          = '/home/scp1/tmp/'
 c.downloads.position                    = "top"
 c.downloads.remove_finished             = 10000
 c.editor.command                        = ["kitty", "--title", "scratchpad", "-e", "nvim", "-f", "{}"]
-c.fileselect.folder.command             = ['qutebrowser-fileselect.sh', 'directory', '{}']
-c.fileselect.handler                    = 'external'
-c.fileselect.multiple_files.command     = ['qutebrowser-fileselect.sh', 'files', '{}']
-c.fileselect.single_file.command        = ['qutebrowser-fileselect.sh', 'file', '{}']
+
+config.set('fileselect.handler', 'external')
+config.set('fileselect.single_file.command', [
+    'kitty', '--title', 'file selector', 'vifm', '--choose-file', '{}'
+])
+config.set('fileselect.multiple_files.command', [
+    'kitty', '--title', 'file selector', 'vifm', '--choose-files', '{}'
+])
+
+config.set('fileselect.folder.command', [
+    'kitty', '--title', 'file selector', 'vifm', '--choose-dir', '{}'
+])
+
+
 c.fonts.completion.category             = f"bold {monospace}"
 c.fonts.completion.entry                = monospace
 c.fonts.debug_console                   = monospace
@@ -113,6 +123,7 @@ config.unbind('<Ctrl-d>',   mode='normal')
 config.unbind('M',          mode='normal')
 config.unbind('m',          mode='normal')
 config.unbind('D',          mode='normal')
+config.unbind('<Return>', mode='prompt')
 
 config.bind('<Ctrl-d>', 'config-cycle colors.webpage.darkmode.enabled True False')
 
@@ -122,6 +133,9 @@ config.bind('p', 'open -- {primary}')
 
 config.bind('D', 'tab-clone')
 
+
+config.bind('<Ctrl-s>',         'download')
+config.bind('<Return>',         'prompt-fileselect-external', mode='prompt')
 config.bind('<Ctrl+a>',        'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
 config.bind('gh',              'open http://192.168.1.97:3000/', mode='normal')
 config.bind('<Ctrl+m>',        'hint links spawn --detach mpv {hint-url}')

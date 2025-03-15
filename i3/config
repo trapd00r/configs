@@ -84,6 +84,8 @@ client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #2B2C2B
 
+# qutebrowser external file selector
+for_window [title="file selector"] floating enable
 
 # gcolor3
 for_window [title="Color Picker"] floating enable

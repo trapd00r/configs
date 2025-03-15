@@ -42,6 +42,8 @@ settings:
     global: null
   hints.mode:
     global: word
+  statusbar.position:
+    global: top
   tabs.favicons.scale:
     global: 2.0
   tabs.last_close:

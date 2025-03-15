@@ -35,7 +35,7 @@ set   timeoutlen=1000
 set   trash
 set   trashdir=/home/scp1/var/vifm/
 set   undolevels=400
-set   vicmd=wim
+" set   vicmd=wim
 set   vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
 "set   vixcmd=wim\ -X
 set   wildmenu
