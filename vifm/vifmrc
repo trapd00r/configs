@@ -35,7 +35,7 @@ set   timeoutlen=1000
 set   trash
 set   trashdir=/home/scp1/var/vifm/
 set   undolevels=400
-" set   vicmd=wim
+set   vicmd=nvim
 set   vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
 "set   vixcmd=wim\ -X
 set   wildmenu
@@ -90,10 +90,10 @@ fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
          \ ffprobe -show_files -pretty %f 2> /dev/null
 filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
 filetype *.o nm %f | less
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ {View in sxiv}
-        \ feh -FZ,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
+" filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+"         \ {View in sxiv}
+"         \ feh -FZ,
+" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
 filetype *.md5
        \ {Check MD5 hash sum}
        \ md5sum -c %f,
@@ -176,8 +176,19 @@ nmap yf   :!echo %c:p | xclip %i<cr>
 nmap J 10j
 nmap K 10k
 
+
+nnoremap yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+nnoremap ;yf :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
 nmap q :quit<cr>
 
 
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.webp
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
+
+
 " single view mode
-only
+"only
+vsplit
