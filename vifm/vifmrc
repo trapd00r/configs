@@ -130,6 +130,10 @@ nmap K 10k
 nmap q :quit<cr>
 
 
+nnoremap gu :cd ..<CR>
+nnoremap <BS> :cd ..<CR>
+
+
 " yank absolute path of current file
 command yankfilepath :!echo -n %c:p | xclip -selection clipboard && notify-send "%c:p is yanked"
 nnoremap ;yf :yankfilepath<cr>
