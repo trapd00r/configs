@@ -81,6 +81,7 @@ if has('nvim')
   Plug 'nvim-lualine/lualine.nvim'                                        " statusline
   Plug 'numToStr/Comment.nvim'                                            " (un)comment everything with #
   Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
+  Plug 'f-person/git-blame.nvim'                                          " git blame integration
 
   " Plug 'madox2/vim-ai'
   Plug 'VonHeikemen/lsp-zero.nvim'                                        " helper integrating lspconfig and nvim-cmp
@@ -1163,8 +1164,25 @@ endif
 " ========== STATUSLINE END =============================
 " ========== PLUGIN OPTIONS START =======================
 
-let g:matchup_transmute_enabled = 1
+" git-blame
+let g:gitblame_clear_event = 'CursorHoldI'
+let g:gitblame_clipboard_register = "+"
+let g:gitblame_date_format = '%Y%m%d %H:%M'
+let g:gitblame_delay = 1000
+let g:gitblame_display_virtual_text = 0
+let g:gitblame_enabled = 1
+let g:gitblame_highlight_group = "Comment"
+let g:gitblame_ignored_filetypes = []
+let g:gitblame_max_commit_summary_length = 0
+let g:gitblame_message_template = '🚩<summary> 🕒 <date> 👴 <author>'
+let g:gitblame_message_when_not_committed = ''
+let g:gitblame_schedule_event = 'CursorHold'
+let g:gitblame_use_blame_commit_file_urls = 'true'
+let g:gitblame_virtual_text_column = 80
 
+
+" matchup
+let g:matchup_transmute_enabled = 1
 
 " tagbar
 " Don't show the short help or the blank lines.                                                                                                                                                                                                                                     │~

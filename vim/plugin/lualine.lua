@@ -1,5 +1,18 @@
 -- Plugin: lualine
 
+
+vim.cmd('highlight BlameHighlight gui=none guifg=#808080 ctermfg=145 ctermbg=233 cterm=none')
+
+local function Blame()
+  local git_blame = require('gitblame')
+  if git_blame.is_blame_text_available() then
+    return git_blame.get_current_blame_text()
+  else
+    return ''
+  end
+end
+
+
 local function FileLsColored()
   -- Get the current file name
   local filename = vim.fn.expand('%:.')
@@ -78,12 +91,11 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {FileLsColored},
---    lualine_a = {'searchcount'},
---    lualine_a = {'FileNameStatusLine'},
---    lualine_a = {'filename'},
-    lualine_c = {'branch', 'diff', 'diagnostics'},
---    lualine_c = {'filename'},
- --   lualine_c = {'FileNameStatusLine'},
+    lualine_c = {
+      'branch', 'diff', 'diagnostics', ' | ',
+      { Blame, color = 'BlameHighlight' }
+    },
+
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'searchcount'}
@@ -97,14 +109,6 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {},
---  winbar = {
---    lualine_a = {},
---    lualine_b = {'GetGitBlame'},
---    lualine_c = {},
---    lualine_x = {},
---    lualine_y = {},
---    lualine_z = {}
---  },
 
   inactive_winbar = {
     lualine_a = {},
