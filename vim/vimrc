@@ -60,6 +60,7 @@ Plug 'vim-scripts/AnsiEsc.vim'                                            " high
 Plug 'wookayin/fzf-ripgrep.vim'                                           " grep -> fuzzyfind results
 Plug 'chrisbra/Colorizer'                                                 " colorize hex codes etc
 Plug 'andymass/vim-matchup'                                               " % for all the things
+Plug 'vifm/vifm.vim'
 " Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 
@@ -253,7 +254,7 @@ if !has('nvim')
 " Neovim only options
 else
   set lazyredraw                                                           " do not redraw screen while executing macros etc
-  set cmdheight=1
+  set cmdheight=2
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
   set notermguicolors
@@ -649,7 +650,8 @@ nnoremap <C-S-G> :RgDefFzf*<cr>
 
 
 " go up, like in tridactyl
-nnoremap gu :call GoUp()<cr>
+" nnoremap gu :call GoUp()<cr>
+nnoremap gu :Vifm<cr>
 function! GoUp()
   let b:updir = expand('%:h')
   execute ':Explore ' . b:updir
@@ -2002,5 +2004,5 @@ hi HeadlineReverse ctermbg=234
 hi Headline ctermbg=235
 
 " ugly hack to remove the path echoed in cmdline upon buffer loading
-autocmd BufEnter * echo ""
+" autocmd BufEnter * echo ""
 
