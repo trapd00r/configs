@@ -128,8 +128,8 @@ require'lspconfig'.lua_ls.setup {
   }
 }
 
-require('lspconfig').tsserver.setup({})
-require('lspconfig').gopls.setup({})
+-- require('lspconfig').tsserver.setup({})
+-- require('lspconfig').gopls.setup({})
 -- require('lspconfig').eslint.setup({})
 -- require('lspconfig').rust_analyzer.setup({})
 -- require('lspconfig').bashls.setup({})
@@ -137,7 +137,7 @@ require('lspconfig').gopls.setup({})
 -- require('lspconfig').cmake.setup({})
 -- require('lspconfig').cssls.setup({})
 require('lspconfig').html.setup({})
-require('lspconfig').nginx_language_server.setup({})
+-- require('lspconfig').nginx_language_server.setup({})
 -- require('lspconfig').marksman.setup({})
 -- require('lspconfig').pylsp.setup({})
 -- require('lspconfig').ruby_ls.setup({})
@@ -175,39 +175,39 @@ require('lspconfig').nginx_language_server.setup({})
 
 -- clangd fix
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
-require("lspconfig").clangd.setup {
-  capabilities = cmp_nvim_lsp.default_capabilities(),
-  cmd = {
-    "clangd",
-    "--offset-encoding=utf-16",
-  },
-}
+-- require("lspconfig").clangd.setup {
+--   capabilities = cmp_nvim_lsp.default_capabilities(),
+--   cmd = {
+--     "clangd",
+--     "--offset-encoding=utf-16",
+--   },
+-- }
 
 
 
-require('lspconfig').phpactor.setup({
-  capabilities = capabilities,
-  autostart = false,
-  settings = {
-    phpactor = {
-      enable = true,
-      completion = {
-        fullyQualifyGlobalConstantsAndFunctions = false
-      },
-      phpdoc = {
-        returnVoid = false,
-      }
-    },
-  }
-})
-
-require('lspconfig').vimls.setup({
-  capabilities = capabilities,
-})
-
-require('lspconfig').graphql.setup({
-  capabilities = capabilities,
-})
+-- require('lspconfig').phpactor.setup({
+--   capabilities = capabilities,
+--   autostart = false,
+--   settings = {
+--     phpactor = {
+--       enable = true,
+--       completion = {
+--         fullyQualifyGlobalConstantsAndFunctions = false
+--       },
+--       phpdoc = {
+--         returnVoid = false,
+--       }
+--     },
+--   }
+-- })
+--
+-- require('lspconfig').vimls.setup({
+--   capabilities = capabilities,
+-- })
+--
+-- require('lspconfig').graphql.setup({
+--   capabilities = capabilities,
+-- })
 
 
 lsp_zero.set_sign_icons({
@@ -270,9 +270,6 @@ require'lspconfig'.perlnavigator.setup{
     }
 }
 
-require'lspconfig'.elmls.setup {
-  capabilities = capabilities,
-}
 
 require'lspconfig'.elmls.setup{
   capabilities = capabilities,
