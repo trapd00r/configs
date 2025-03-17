@@ -140,7 +140,7 @@ config.unbind('<Ctrl-d>',   mode='normal')
 config.unbind('M',          mode='normal')
 config.unbind('m',          mode='normal')
 config.unbind('D',          mode='normal')
-config.unbind('<Return>', mode='prompt')
+# config.unbind('<Return>', mode='prompt')
 
 config.bind('<Ctrl-d>', 'config-cycle colors.webpage.darkmode.enabled True False')
 
@@ -152,7 +152,7 @@ config.bind('D', 'tab-clone')
 
 
 config.bind('<Ctrl-s>',         'download')
-config.bind('<Return>',         'prompt-fileselect-external', mode='prompt')
+# config.bind('<Return>',         'prompt-fileselect-external', mode='prompt')
 config.bind('<Ctrl+a>',        'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
 config.bind('gh',              'open http://192.168.1.97:3000/', mode='normal')
 config.bind('<Ctrl+m>',        'hint links spawn --detach mpv {hint-url}')
