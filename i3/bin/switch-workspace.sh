@@ -28,7 +28,7 @@ switch_workspace() {
                 9) i3-msg workspace number 18 ;;
             esac
             ;;
-        "DP-5"|"DP-3-1-6")  # Top monitor on desktop or laptop
+        "DP-5"|"DP-4-1-6")  # Top monitor on desktop or laptop
             case "$2" in
                 1) i3-msg workspace number 19 ;;
                 2) i3-msg workspace number 20 ;;
@@ -41,7 +41,7 @@ switch_workspace() {
                 9) i3-msg workspace number 27 ;;
             esac
             ;;
-        "DP-2"|"DP-3-1-5" | "eDP-1")  # Middle monitor on desktop or laptop, or undocked laptop screen
+        "DP-2"|"DP-4-1-5" | "eDP-1")  # Middle monitor on desktop or laptop, or undocked laptop screen
             case "$2" in
                 1) i3-msg workspace number 1 ;;
                 2) i3-msg workspace number 2 ;;
