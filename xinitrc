@@ -63,7 +63,8 @@ elif [[ $(hostname) = 'x1' ]]; then
   # - DP
   # 1 monitor from laptop
   # - usb-c
-  xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-3-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-3-1-6 --mode 1920x1080 --pos 2560x720
+  # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-3-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-3-1-6 --mode 1920x1080 --pos 2560x720
+  xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-4-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-4-1-6 --mode 1920x1080 --pos 2560x720
 fi
 
 #----------------------------------------
