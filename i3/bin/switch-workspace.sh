@@ -11,7 +11,7 @@ focused_output=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).
 
 # Define outputs for desktop and laptop
 DESKTOP_OUTPUTS=("DP-2" "DP-0" "DP-5" "HDMI-0")
-LAPTOP_OUTPUTS=("DP-3-1-5" "DP-1" "DP-3-1-6" "eDP-1")
+LAPTOP_OUTPUTS=("DP-4-1-5" "DP-1" "DP-4-1-6" "eDP-1")
 
 switch_workspace() {
     case "$1" in
