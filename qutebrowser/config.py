@@ -231,7 +231,7 @@ config.bind('<Up>',              'completion-item-focus --history prev', mode='c
 # Template author: theova
 # Commentary: Tinted Theming: (https://github.com/tinted-theming)
 
-base00 = "#1d2021"
+base00 = "#121212"
 base01 = "#3c3836"
 base02 = "#504945"
 base03 = "#665c54"

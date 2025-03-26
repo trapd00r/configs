@@ -9,9 +9,11 @@ settings:
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.algorithm:
-    global: lightness-cielab
+    global: brightness-rgb
   colors.webpage.darkmode.enabled:
     global: true
+  colors.webpage.darkmode.policy.images:
+    global: smart
   content.desktop_capture:
     https://meet.google.com: true
   content.media.audio_capture:

@@ -54,11 +54,6 @@ username=$(echo "$credentials" | jq -r '.login.username')
 password=$(echo "$credentials" | jq -r '.login.password')
 totp=$(echo "$credentials" | jq -r '.login.totp')
 
-# Ensure username and password are valid before sending to Qutebrowser
-if [ -z "$username" ] || [ -z "$password" ] || [ "$username" == "null" ] || [ "$password" == "null" ]; then
-    notify-send "Vaultwarden Error" "No username or password found for this entry."
-    exit 1
-fi
 
 # Send keys directly to Qutebrowser
 printf 'fake-key %s\n' "$username" > "$QUTE_FIFO"
