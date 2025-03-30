@@ -28,6 +28,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+k kill
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s exec flameshot gui
+bindsym $mod+o exec i3-vaultwarden-add-domain.sh
+bindsym $mod+e exec i3-vaultwarden-edit.sh
 
 
 #--------------------------------------

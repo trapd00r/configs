@@ -15,7 +15,7 @@ LAPTOP_OUTPUTS=("DP-4-1-5" "DP-1" "DP-4-1-6" "eDP-1")
 
 switch_workspace() {
     case "$1" in
-        "DP-0"|"DP-1")  # Left monitor on desktop or laptop
+        "DP-0"|"DP-3")  # Left monitor on desktop or laptop
             case "$2" in
                 1) i3-msg workspace number 10 ;;
                 2) i3-msg workspace number 11 ;;
@@ -28,7 +28,7 @@ switch_workspace() {
                 9) i3-msg workspace number 18 ;;
             esac
             ;;
-        "DP-5"|"DP-4-1-6")  # Top monitor on desktop or laptop
+        "DP-5"|"DP-2-1-6")  # Top monitor on desktop or laptop
             case "$2" in
                 1) i3-msg workspace number 19 ;;
                 2) i3-msg workspace number 20 ;;
@@ -41,7 +41,7 @@ switch_workspace() {
                 9) i3-msg workspace number 27 ;;
             esac
             ;;
-        "DP-2"|"DP-4-1-5" | "eDP-1")  # Middle monitor on desktop or laptop, or undocked laptop screen
+        "DP-2"|"DP-2-1-5" | "eDP-1")  # Middle monitor on desktop or laptop, or undocked laptop screen
             case "$2" in
                 1) i3-msg workspace number 1 ;;
                 2) i3-msg workspace number 2 ;;

@@ -43,7 +43,7 @@ configuration {
   kb-move-word-forward: "";
   kb-page-next: "";
   kb-page-prev: "";
-  kb-primary-paste: "";
+  kb-primary-paste: "Shift+Insert";
   kb-remove-char-back: "";
   kb-remove-char-forward: "";
   kb-remove-to-eol: "";
@@ -60,7 +60,7 @@ configuration {
   kb-row-up: "";
   kb-screenshot: "";
   kb-secondary-copy: "";
-  kb-secondary-paste: "";
+  kb-secondary-paste: "Control+v";
   kb-select-1: "";
   kb-select-10: "";
   kb-select-2: "";
@@ -87,6 +87,8 @@ configuration {
   kb-remove-word-back: "Control+w";
   kb-remove-char-back: "BackSpace";
 }
+
+
 
 
 
