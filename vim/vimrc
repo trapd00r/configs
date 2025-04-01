@@ -61,7 +61,7 @@ Plug 'wookayin/fzf-ripgrep.vim'                                           " grep
 Plug 'chrisbra/Colorizer'                                                 " colorize hex codes etc
 Plug 'andymass/vim-matchup'                                               " % for all the things
 Plug 'vifm/vifm.vim'
-" Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
+Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 
 if has('nvim')
@@ -306,6 +306,7 @@ colorscheme neverland_black_bg
 " ATTENTION! <leader> #1
 let mapleader=','
 
+nnoremap yg :GitBlameCopyFileURL<cr>
 nnoremap <leader>B :lua require'dap'.toggle_breakpoint()
 nnoremap <leader>C :lua require'dap'.continue()
 
@@ -1145,7 +1146,8 @@ let g:gitblame_enabled = 1
 let g:gitblame_highlight_group = "Comment"
 let g:gitblame_ignored_filetypes = []
 let g:gitblame_max_commit_summary_length = 0
-let g:gitblame_message_template = '🚩<summary> 🕒 <date> 👴 <author>'
+" let g:gitblame_message_template = '🚩<summary> 🕒 <date> 👴 <author>'
+let g:gitblame_message_template = '  <summary> | <date> | <author>'
 let g:gitblame_message_when_not_committed = ''
 let g:gitblame_schedule_event = 'CursorHold'
 let g:gitblame_use_blame_commit_file_urls = 'true'
