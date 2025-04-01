@@ -244,8 +244,8 @@ base09 = "#fe8019"
 base0A = "#fabd2f"
 base0B = "#b8bb26"
 base0C = "#8ec07c"
-base0D = "#83a598"
-base0E = "#d3869b"
+base0D = "#163428"
+base0E = "#2f030f"
 base0F = "#d65d0e"
 orange = "#bd4400"
 
@@ -401,13 +401,13 @@ c.colors.statusbar.normal.fg = base0B
 c.colors.statusbar.normal.bg = base00
 
 # Foreground color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = base00
+c.colors.statusbar.insert.fg = base05
 
 # Background color of the statusbar in insert mode.
 c.colors.statusbar.insert.bg = base0D
 
 # Foreground color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.fg = base00
+c.colors.statusbar.passthrough.fg = base05
 
 # Background color of the statusbar in passthrough mode.
 c.colors.statusbar.passthrough.bg = base0C
@@ -431,13 +431,13 @@ c.colors.statusbar.command.private.fg = base05
 c.colors.statusbar.command.private.bg = base00
 
 # Foreground color of the statusbar in caret mode.
-c.colors.statusbar.caret.fg = base00
+c.colors.statusbar.caret.fg = base05
 
 # Background color of the statusbar in caret mode.
 c.colors.statusbar.caret.bg = base0E
 
 # Foreground color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.fg = base00
+c.colors.statusbar.caret.selection.fg = base05
 
 # Background color of the statusbar in caret mode with a selection.
 c.colors.statusbar.caret.selection.bg = base0D
