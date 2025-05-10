@@ -18,7 +18,7 @@ if hostname == "fantomen":
         '--title', 'file selector',
         'vifm'
     ]
-    
+
     config.set('fileselect.single_file.command', kitty_cmd + ['--choose-file', '{}'])
     config.set('fileselect.multiple_files.command', kitty_cmd + ['--choose-files', '{}'])
     config.set('fileselect.folder.command', kitty_cmd + ['--choose-dir', '{}'])
@@ -89,9 +89,11 @@ c.hints.chars                           = "asdfghjklie"
 c.hints.leave_on_load                   = True
 c.hints.min_chars                       = 1
 c.hints.mode                            = "number"
-c.input.insert_mode.auto_enter          = True
-c.input.insert_mode.auto_leave          = True
+# c.input.insert_mode.auto_enter          = True
+# c.input.insert_mode.auto_leave          = True
+# c.input.forward_unbound_keys            = "all"
 c.input.insert_mode.auto_load           = True
+c.input.escape_quits_reporter           = True
 c.input.partial_timeout                 = 2000
 c.keyhint.blacklist                     = ["*"]
 c.new_instance_open_target              = "tab-bg"
@@ -107,11 +109,34 @@ c.tabs.new_position.related             = "last"
 c.tabs.position                         = "top"
 c.tabs.select_on_remove                 = "prev"
 c.tabs.title.format                     = "{index}.{current_title}"
-c.url.default_page                      = "about:blank"
 c.url.default_page                      = 'http://192.168.1.97:3000'
 c.url.searchengines                     = {"DEFAULT": "https://www.google.com/search?q={}"}
 c.url.start_pages                       = ['http://192.168.1.97:3000']
 c.zoom.default                          = "100%"
+
+
+# Site-specific rules
+# config.set('input.insert_mode.auto_enter', True, pattern='*example.com')
+
+
+# Handle more input types
+# c.input.insert_mode.plugins = True
+
+# Increase the sensitivity of what's considered an input element
+c.hints.selectors["inputs"] = [
+    # Standard form elements
+    "input:not([type='hidden'])",
+    "textarea",
+    "select",
+    # Common rich text editors
+    "[contenteditable='true']",
+    "[contenteditable='plaintext-only']",
+    # Common JavaScript frameworks
+    "[role='textbox']",
+    # Additional custom elements that act as inputs
+    ".monaco-editor",  # VS Code-style editors
+    "[data-slate-editor='true']",  # Slate.js editors
+]
 
 # c.bindings.commands = {
 #     'normal': {'<tab>': 'nop',},
@@ -177,12 +202,12 @@ config.bind("P",               "tab-pin ;; tab-move 1")
 
 config.bind('gu', 'jseval -q location.href = location.href.replace(/\\/[^\\/]*\\/?$/, "/")')
 
-# config.bind('<Ctrl+o>',   'spawn --userscript qute-pass -p ~/dev/passwords/ --unfiltered', mode='normal')
-# config.bind('<Ctrl+o>',   'spawn --userscript qute-pass -p ~/dev/passwords/ --unfiltered', mode='insert')
-
 
 config.bind('<Ctrl+o>',   'spawn --userscript qute-bitwarden-japh', mode='normal')
 config.bind('<Ctrl+o>',   'spawn --userscript qute-bitwarden-japh', mode='insert')
+config.bind('<Ctrl-k>',          'completion-item-focus --history prev', mode='command')
+config.bind('<Ctrl-j>',          'completion-item-focus --history next', mode='command')
+
 
 
 ## command mode
@@ -198,7 +223,6 @@ config.bind('<Ctrl-D>',          'completion-item-del', mode='command')
 config.bind('<Ctrl-E>',          'rl-end-of-line', mode='command')
 config.bind('<Ctrl-F>',          'rl-forward-char', mode='command')
 config.bind('<Ctrl-H>',          'rl-backward-delete-char', mode='command')
-config.bind('<Ctrl-K>',          'rl-kill-line', mode='command')
 config.bind('<Ctrl-N>',          'command-history-next', mode='command')
 config.bind('<Ctrl-P>',          'command-history-prev', mode='command')
 config.bind('<Ctrl-Return>',     'command-accept --rapid', mode='command')
