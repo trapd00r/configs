@@ -6,6 +6,81 @@
 
 config_version: 2
 settings:
+  bindings.commands:
+    global:
+      command:
+        <Alt+Backspace>: rl-backward-kill-word
+        <Alt+b>: rl-backward-word
+        <Alt+d>: rl-kill-word
+        <Alt+f>: rl-forward-word
+        <Ctrl+?>: rl-delete-char
+        <Ctrl+Return>: command-accept --rapid
+        <Ctrl+Shift+Tab>: completion-item-focus prev-category
+        <Ctrl+Shift+c>: completion-item-yank --sel
+        <Ctrl+Shift+w>: rl-filename-rubout
+        <Ctrl+Tab>: completion-item-focus next-category
+        <Ctrl+a>: rl-beginning-of-line
+        <Ctrl+b>: rl-backward-char
+        <Ctrl+c>: completion-item-yank
+        <Ctrl+d>: completion-item-del
+        <Ctrl+e>: rl-end-of-line
+        <Ctrl+f>: rl-forward-char
+        <Ctrl+h>: rl-backward-delete-char
+        <Ctrl+k>: rl-kill-line
+        <Ctrl+n>: command-history-next
+        <Ctrl+p>: command-history-prev
+        <Ctrl+u>: rl-unix-line-discard
+        <Ctrl+w>: rl-rubout " "
+        <Ctrl+y>: rl-yank
+        <Down>: completion-item-focus --history next
+        <Escape>: mode-leave
+        <PgDown>: completion-item-focus next-page
+        <PgUp>: completion-item-focus prev-page
+        <Return>: command-accept
+        <Shift+Del>: completion-item-del
+        <Shift+Tab>: completion-item-focus prev
+        <Tab>: completion-item-focus next
+        <Up>: completion-item-focus --history prev
+      insert:
+        <Ctrl+i>: edit-text
+        <Ctrl+o>: spawn --userscript qute-bitwarden-japh
+        <Ctrl+r>: reload
+      normal:
+        <Backspace>: back
+        <Ctrl+Shift+i>: devtools
+        <Ctrl+a>: mode-enter caret ;; selection-toggle ;; move-to-end-of-document
+        <Ctrl+b>: null
+        <Ctrl+d>: config-cycle colors.webpage.darkmode.enabled True False
+        <Ctrl+e>: edit-url
+        <Ctrl+m>: hint links spawn --detach mpv {hint-url}
+        <Ctrl+o>: spawn --userscript qute-bitwarden-japh
+        <Ctrl+r>: reload
+        <Ctrl+s>: download
+        <Tab>: nop
+        D: tab-clone
+        J: cmd-run-with-count 20 scroll down
+        K: cmd-run-with-count 20 scroll up
+        M: null
+        O: cmd-set-text -s :open {url}
+        P: tab-pin ;; tab-move 1
+        S: spawn --userscript qute-pagesource-vim
+        b: null
+        gb: null
+        gh: open http://192.168.1.97:3000/
+        gi: mode-enter insert ;; jseval --quiet var inputs = document.getElementsByTagName("input");
+          for(var i = 0; i < inputs.length; i++) { var hidden = false; for(var j =
+          0; j < inputs[i].attributes.length; j++) { hidden = hidden || inputs[i].attributes[j].value.includes("hidden");
+          }; if(!hidden) { inputs[i].focus(); break; } }
+        gu: jseval -q location.href = location.href.replace(/\/[^\/]*\/?$/, "/")
+        h: tab-prev
+        l: tab-next
+        m: null
+        p: open -- {primary}
+        q: null
+        t: cmd-set-text -s :open -t
+        yy: yank --sel
+      passthrough:
+        <Escape>: mode-leave
   colors.webpage.bg:
     global: white
   colors.webpage.darkmode.algorithm:

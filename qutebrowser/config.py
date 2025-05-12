@@ -55,6 +55,7 @@ c.completion.shrink                     = True
 c.completion.web_history.max_items      = 30
 c.content.autoplay                      = False
 c.content.blocking.enabled              = True
+c.content.blocking.whitelist             = ["https://analytics.google.com"]
 c.content.blocking.method               = "both"
 c.content.cache.size                    = 52428800
 c.content.geolocation                   = False
@@ -165,6 +166,7 @@ config.unbind('<Ctrl-d>',   mode='normal')
 config.unbind('M',          mode='normal')
 config.unbind('m',          mode='normal')
 config.unbind('D',          mode='normal')
+config.unbind('yy',          mode='normal')
 # config.unbind('<Return>', mode='prompt')
 
 config.bind('<Ctrl-d>', 'config-cycle colors.webpage.darkmode.enabled True False')
@@ -176,6 +178,7 @@ config.bind('p', 'open -- {primary}')
 config.bind('D', 'tab-clone')
 
 
+config.bind('yy',               'yank --sel')
 config.bind('<Ctrl-s>',         'download')
 # config.bind('<Return>',         'prompt-fileselect-external', mode='prompt')
 config.bind('<Ctrl+a>',        'mode-enter caret ;; selection-toggle ;; move-to-end-of-document')
