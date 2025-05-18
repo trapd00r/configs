@@ -9,7 +9,7 @@
 #           irc  japh@irc.libera.chat #zsh #vim #perl
 #   ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
 #
-#zmodload zsh/zprof
+zmodload zsh/zprof
 
 # ls $~images
 images='*.(jpg|jpeg|png)'
@@ -20,10 +20,53 @@ documents='*.(pdf|djvu|doc|docx|xls|xlsx|ppt|pptx|odt|ods|odp|rtf|txt|epub)'
 
 # ========== INIT START =================================
 
-#autoload -U compinit
-#compinit
+# Increase function nesting limit
+FUNCNEST=100
 
-# function path
+# Load vcs_info early
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' stagedstr 'M'
+zstyle ':vcs_info:*' unstagedstr 'M'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' enable git
+
+# Basic completion setup
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit -C
+else
+  compinit
+fi
+
+# Set up completion styles
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-perl on
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select=2
+
+# Disable completion for commands we don't use
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
+
+# Optimize completion for specific commands
+zstyle ':completion:*:*:(cd|ls|rm|cp|mv):*' ignore-parents parent pwd
+zstyle ':completion:*:*:(cd|ls|rm|cp|mv):*' file-sort name
+zstyle ':completion:*:*:(cd|ls|rm|cp|mv):*' group-order 'named-directories path-directories users'
+
+# Disable completion for commands that don't need it
+zstyle ':completion:*:*:(rm|kill|diff):*' ignore-line yes
+zstyle ':completion:*:*:(scp|rsync):*' file-list false
+
+# Optimize completion for git
+zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
+
+# function path - trim unnecessary paths
 fpath=($fpath ~/etc/zsh/functions/)
 
 if [[ $HOST = 'fantomen' && -z $SSH_CLIENT ]]; then
@@ -38,7 +81,19 @@ fi
 
 # my prompt
 . ~/etc/zsh/099-prompt_japh_2022.zsh
-. ~/etc/zsh/10-syntax.zsh
+# Comment out custom syntax highlighting
+# . ~/etc/zsh/10-syntax.zsh
+
+# Lazy load syntax highlighting
+_zsh_highlight_load() {
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  precmd_functions=(${precmd_functions#_zsh_highlight_load})
+}
+precmd_functions+=(_zsh_highlight_load)
+
+# Comment out system clipboard if not needed
+# . ~/etc/zsh/zsh-system-clipboard.zsh
+
 if [[ -f ~/.secret_zshrc ]]; then
   . ~/.secret_zshrc
 fi
@@ -48,8 +103,23 @@ fi
 
 # switch node versions for make artifacts in elm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Lazy load nvm using command_not_found handler
+command_not_found_handler() {
+  if [[ $1 == nvm ]]; then
+    # Load nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    # Execute nvm with all arguments
+    nvm "${@:2}"
+    return $?
+  fi
+  # If it's not nvm, return 127 to indicate command not found
+  return 127
+}
+
+# Add nvm to precmd_functions to load it on first use
+precmd_functions+=(nvm)
 
 # LS_COLORS
 if [[ -z $LS_COLORS ]]; then
@@ -1246,8 +1316,8 @@ fi
 #####
 ######< XXX
 #####zstyle ':completion:*' ambiguous         true
-######zstyle ':completion:*:*:(ls):*' file-sort         modification
-######
+#####zstyle ':completion:*:*:(ls):*' file-sort         modification
+#####
 #######zstyle ':completion:*' completer _expand _list _complete _match _ignored _prefix _approximate
 ######zstyle ':completion:*' menu select=long
 ######zstyle ':completion:*' menu select=long-list
