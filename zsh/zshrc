@@ -91,8 +91,12 @@ _zsh_highlight_load() {
 }
 precmd_functions+=(_zsh_highlight_load)
 
-# Comment out system clipboard if not needed
-# . ~/etc/zsh/zsh-system-clipboard.zsh
+# Lazy load system clipboard
+_zsh_system_clipboard_load() {
+  source ~/etc/zsh/zsh-system-clipboard.zsh
+  precmd_functions=(${precmd_functions#_zsh_system_clipboard_load})
+}
+precmd_functions+=(_zsh_system_clipboard_load)
 
 if [[ -f ~/.secret_zshrc ]]; then
   . ~/.secret_zshrc
