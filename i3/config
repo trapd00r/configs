@@ -266,7 +266,7 @@ exec i3-layouts
 exec --no-startup-id bash ~/etc/i3/bin/polybar_launch.sh
 
 
-exec --no-startup-id bash ~/bin/notify_clock_temperature
-exec --no-startup-id bash ~/bin/notify_clock2
+#exec --no-startup-id bash ~/bin/notify_clock_temperature
+#exec --no-startup-id bash ~/bin/notify_clock2
 
 exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py

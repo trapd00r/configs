@@ -26,7 +26,8 @@ settings:
         <Ctrl+e>: rl-end-of-line
         <Ctrl+f>: rl-forward-char
         <Ctrl+h>: rl-backward-delete-char
-        <Ctrl+k>: rl-kill-line
+        <Ctrl+j>: completion-item-focus --history next
+        <Ctrl+k>: completion-item-focus --history prev
         <Ctrl+n>: command-history-next
         <Ctrl+p>: command-history-prev
         <Ctrl+u>: rl-unix-line-discard
@@ -89,6 +90,9 @@ settings:
     global: true
   colors.webpage.darkmode.policy.images:
     global: smart
+  content.blocking.whitelist:
+    global:
+    - analytics.google.com
   content.desktop_capture:
     https://meet.google.com: true
   content.media.audio_capture:
@@ -102,7 +106,7 @@ settings:
     global: false
   editor.command:
     global:
-    - urxvt
+    - kitty
     - -title
     - scratchpad
     - -geometry

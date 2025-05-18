@@ -180,7 +180,7 @@ export JEKYLL_ENV='production'
 export MULLVAD_USE_GTK=yes
 
 
-export BROWSER=${HOME}/dev/utils/www
+# export BROWSER=${HOME}/dev/utils/www
 
 export ASKAS_BUTIK=${HOST}
 export GTK_THEME=japh

@@ -42,7 +42,7 @@ new_domain=$(echo "$domain" | rofi -normal-window -dmenu -p "Domain:")
 new_username=$(echo "$username" | rofi -normal-window -dmenu -p "Username:")
 [ -z "$new_username" ] && notify-send "Bitwarden" "Cancelled" && exit
 
-new_password=$(echo "$password" | rofi -normal-window -password -dmenu -p "Password:")
+new_password=$(echo "$password" | rofi -normal-window -dmenu -p "Password:")
 [ -z "$new_password" ] && notify-send "Bitwarden" "Cancelled" && exit
 
 # Build new payload
