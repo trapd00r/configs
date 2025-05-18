@@ -84,12 +84,6 @@ fi
 # Comment out custom syntax highlighting
 # . ~/etc/zsh/10-syntax.zsh
 
-# Lazy load syntax highlighting
-_zsh_highlight_load() {
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  precmd_functions=(${precmd_functions#_zsh_highlight_load})
-}
-precmd_functions+=(_zsh_highlight_load)
 
 # Lazy load system clipboard
 _zsh_system_clipboard_load() {
@@ -1747,9 +1741,27 @@ export               SAVEHIST=2500000000
 
 eval "$(atuin init zsh)"
 
+source ~/dev/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+
 
 export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/"
 
 export BROWSER=""
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+# # Configure zsh-syntax-highlighting to use LS_COLORS
+# typeset -A ZSH_HIGHLIGHT_STYLES
+# ZSH_HIGHLIGHT_STYLES[path]='fg=default'
+# ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=default'
+# ZSH_HIGHLIGHT_STYLES[globbing]='fg=default'
+# ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=default'
+# ZSH_HIGHLIGHT_STYLES[precommand]='fg=default'
+# ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=default'
+# ZSH_HIGHLIGHT_STYLES[arg0]='fg=default'
+#
+# # Use LS_COLORS for file highlighting
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*:*:*:*:hosts' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*:*:*:*:users' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*:*:*:*:processes' list-colors ${(s.:.)LS_COLORS}
