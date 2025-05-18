@@ -1,0 +1,35 @@
+# vim:ft=dosini:
+
+[plex]
+host = 192.168.1.34
+port = 32400
+session_path = /status/sessions
+
+[plexamp]
+host = 192.168.1.12
+
+[colors]
+artist = 148
+title = 142
+album = 107
+year = 111
+file = 255
+time = 33
+
+[filters]
+music_only = 1
+user = 
+
+[cover]
+width = 90
+height = 45
+
+[db]
+host = 192.168.1.7
+port = 3306
+dbname = music
+user = admin
+pass = password
+
+[plugins]
+enabled = Scrobbles
