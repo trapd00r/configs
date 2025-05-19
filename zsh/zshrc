@@ -1749,19 +1749,3 @@ export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/as
 export BROWSER=""
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
-
-# # Configure zsh-syntax-highlighting to use LS_COLORS
-# typeset -A ZSH_HIGHLIGHT_STYLES
-# ZSH_HIGHLIGHT_STYLES[path]='fg=default'
-# ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=default'
-# ZSH_HIGHLIGHT_STYLES[globbing]='fg=default'
-# ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=default'
-# ZSH_HIGHLIGHT_STYLES[precommand]='fg=default'
-# ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=default'
-# ZSH_HIGHLIGHT_STYLES[arg0]='fg=default'
-#
-# # Use LS_COLORS for file highlighting
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*:*:*:*:hosts' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*:*:*:*:users' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*:*:*:*:processes' list-colors ${(s.:.)LS_COLORS}
