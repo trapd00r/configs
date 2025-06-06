@@ -28,6 +28,7 @@ bindsym $mod+s exec flameshot gui
 bindsym $mod+o exec i3-vaultwarden-add-domain.sh
 bindsym $mod+e exec i3-vaultwarden-edit.sh
 bindsym F12 exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh pick
+bindsym $mod+BackSpace exec --no-startup-id sh -c 'xclip -o -selection primary' 
 
 
 #--------------------------------------

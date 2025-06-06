@@ -17,6 +17,10 @@ is_text() {
 add_to_stack() {
     local entry="$1"
     # Remove duplicates
+    if grep -qxF -- "$entry" "$STACK_FILE"; then
+        notify-send "Clipboard Stack" "Duplicate skipped"
+        return
+    fi
     grep -vxF -- "$entry" "$STACK_FILE" > "$STACK_FILE.tmp" || true
     mv "$STACK_FILE.tmp" "$STACK_FILE"
     # Add to top
@@ -58,12 +62,23 @@ pick() {
         notify-send "Clipboard Stack" "No entries yet!"
         exit 1
     fi
-    choice=$(cat "$STACK_FILE" | rofi -dmenu -i -p "Clipboard stack" -l 10)
+    # Add CLEAR CLIPBOARD as the last menu entry, styled with pango markup
+    choice=$( (cat "$STACK_FILE"; echo '<span background="red" foreground="white"><b>CLEAR CLIPBOARD</b></span>') | rofi -dmenu -i -markup-rows -p "Clipboard stack" -l 10)
+    if [[ "$choice" == *CLEAR\ CLIPBOARD* ]]; then
+        clear_stack
+        exit 0
+    fi
     if [[ -n "$choice" ]]; then
         echo -n "$choice" | xclip -selection clipboard
         echo -n "$choice" | xclip -selection primary
         notify-send "Clipboard Stack" "Copied to clipboard!"
     fi
+}
+
+# Clear the clipboard stack
+clear_stack() {
+    > "$STACK_FILE"
+    notify-send "Clipboard Stack" "Stack cleared!"
 }
 
 case "$1" in
@@ -73,8 +88,11 @@ case "$1" in
     pick)
         pick
         ;;
+    clear)
+        clear_stack
+        ;;
     *)
-        echo "Usage: $0 {monitor|pick}"
+        echo "Usage: $0 {monitor|pick|clear}"
         exit 1
         ;;
 esac 

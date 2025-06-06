@@ -70,6 +70,7 @@ elif xrandr | grep -q "eDP-1"; then
     # Laptop setup
     switch_workspace "$focused_output" "$1"
 else
+    notify-send "i3 workspace switch" "No known setup detected."
     echo "No known setup detected."
 fi
 
