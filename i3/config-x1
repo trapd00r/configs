@@ -27,6 +27,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s exec flameshot gui
 bindsym $mod+o exec i3-vaultwarden-add-domain.sh
 bindsym $mod+e exec i3-vaultwarden-edit.sh
+bindsym F12 exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh pick
 
 
 #--------------------------------------
@@ -59,10 +60,10 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
+        # Pressing left will shrink the window's width.
+        # Pressing right will grow the window's width.
+        # Pressing up will shrink the window's height.
+        # Pressing down will grow the window's height.
 
         bindsym l resize shrink width 5 px or 5 ppt
         bindsym k resize grow height 5 px or 5 ppt
@@ -264,3 +265,5 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec i3-layouts
 
 exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
+
+exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh monitor
