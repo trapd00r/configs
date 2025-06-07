@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Clipboard stack file
 STACK_FILE="$HOME/.cache/clipboard-stack"
 MAX_ITEMS=50
@@ -7,28 +5,34 @@ MAX_ITEMS=50
 mkdir -p "$(dirname "$STACK_FILE")"
 touch "$STACK_FILE"
 
+# Use NUL as separator for multiline safety
+SEP="\0"
+
 # Function to check if input is valid UTF-8 text
 is_text() {
-    # iconv will fail if input is not valid UTF-8
     echo -n "$1" | iconv -f UTF-8 -t UTF-8 > /dev/null 2>&1
 }
 
-# Function to add new entry to stack
+# Function to add new entry to stack (NUL-delimited)
 add_to_stack() {
     local entry="$1"
     # Remove duplicates
-    if grep -qxF -- "$entry" "$STACK_FILE"; then
+    if grep -zFxq -- "$entry" "$STACK_FILE"; then
         notify-send "Clipboard Stack" "Duplicate skipped"
         return
     fi
-    grep -vxF -- "$entry" "$STACK_FILE" > "$STACK_FILE.tmp" || true
-    mv "$STACK_FILE.tmp" "$STACK_FILE"
     # Add to top
-    echo "$entry" | cat - "$STACK_FILE" > "$STACK_FILE.tmp"
+    printf '%s' "$entry" | cat - "$STACK_FILE" > "$STACK_FILE.tmp"
     mv "$STACK_FILE.tmp" "$STACK_FILE"
     # Limit stack size
-    head -n $MAX_ITEMS "$STACK_FILE" > "$STACK_FILE.tmp"
-    mv "$STACK_FILE.tmp" "$STACK_FILE"
+    entries=$(tr '\0' '\n' < "$STACK_FILE" | head -n $MAX_ITEMS | tr '\n' '\0')
+    printf '%s' "$entries" > "$STACK_FILE"
+}
+
+# Clear the clipboard stack
+clear_stack() {
+    > "$STACK_FILE"
+    notify-send "Clipboard Stack" "Stack cleared!"
 }
 
 # Monitor clipboard and primary selection
@@ -36,7 +40,6 @@ monitor() {
     local last_clip=""
     local last_primary=""
     while true; do
-        # Clipboard
         clip=$(xclip -o -selection clipboard 2>/dev/null)
         if [[ -n "$clip" && "$clip" != "$last_clip" ]]; then
             if is_text "$clip"; then
@@ -44,7 +47,6 @@ monitor() {
                 last_clip="$clip"
             fi
         fi
-        # Primary
         primary=$(xclip -o -selection primary 2>/dev/null)
         if [[ -n "$primary" && "$primary" != "$last_primary" ]]; then
             if is_text "$primary"; then
@@ -62,8 +64,9 @@ pick() {
         notify-send "Clipboard Stack" "No entries yet!"
         exit 1
     fi
-    # Add CLEAR CLIPBOARD as the last menu entry, styled with pango markup
-    choice=$( (cat "$STACK_FILE"; echo '<span background="red" foreground="white"><b>CLEAR CLIPBOARD</b></span>') | rofi -dmenu -i -markup-rows -p "Clipboard stack" -l 10)
+    # Show stack with CLEAR CLIPBOARD at the bottom
+    entries=$(tr '\0' '\n' < "$STACK_FILE")
+    choice=$( (echo "$entries"; echo '<span background="red" foreground="white"><b>CLEAR CLIPBOARD</b></span>') | rofi -dmenu -i -markup-rows -p "Clipboard stack" -l 10)
     if [[ "$choice" == *CLEAR\ CLIPBOARD* ]]; then
         clear_stack
         exit 0
@@ -73,12 +76,6 @@ pick() {
         echo -n "$choice" | xclip -selection primary
         notify-send "Clipboard Stack" "Copied to clipboard!"
     fi
-}
-
-# Clear the clipboard stack
-clear_stack() {
-    > "$STACK_FILE"
-    notify-send "Clipboard Stack" "Stack cleared!"
 }
 
 case "$1" in
