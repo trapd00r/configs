@@ -673,7 +673,7 @@ setopt \
   no_hup                    \
   no_ignore_braces          \
   no_ignore_eof             \
-  no_inc_append_history     \
+  inc_append_history        \
   no_interactive_comments   \
   no_ksh_arrays             \
   no_ksh_autoload           \
@@ -728,7 +728,7 @@ setopt \
   no_sh_nullcmd             \
   no_sh_option_letters      \
   no_sh_word_split          \
-  share_history             \
+  no_share_history          \
      short_loops            \
   no_single_line_zle        \
      sun_keyboard_hack      \
