@@ -122,7 +122,7 @@ import:
   link:             no
   move:             no
   log:              '~/BEETS_IMPORTER_LOG'
-  #quiet_fallback:   asis # when using the -q flag
+  # quiet_fallback:   asis # when using the -q flag
   quiet_fallback:   skip # when using the -q flag
 
   # Either yes or no, controlling whether imported directories are recorded
@@ -138,7 +138,7 @@ plugins: [
   'edit',
   'embedart',
   'fetchart',
-  'fromfilename',
+  # 'fromfilename',
   'ftintitle',
   'hook',
   'info',
