@@ -107,8 +107,10 @@ c.tabs.last_close                       = "close"
 c.tabs.max_width                        = 150
 c.tabs.min_width                        = 150
 c.tabs.new_position.related             = "last"
+c.tabs.pinned.frozen                    = False
 c.tabs.position                         = "top"
-c.tabs.select_on_remove                 = "prev"
+c.tabs.select_on_remove                 = "next"
+c.tabs.new_position.related             = "last"
 c.tabs.title.format                     = "{index}.{current_title}"
 c.url.default_page                      = 'http://192.168.1.97:3000'
 c.url.searchengines                     = {"DEFAULT": "https://www.google.com/search?q={}"}
