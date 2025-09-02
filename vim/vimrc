@@ -126,7 +126,7 @@ call plug#end()
 
 " ========== INIT END ===================================
 " ========== OPTIONS START ==============================
-let &termencoding = &encoding                                              " should be utf-8; exceptions below
+" let &termencoding = &encoding                                              " should be utf-8; exceptions below
 set autoindent                                                             " copy indent from previous line
 set autoread                                                               " read file again if changed outside of vim
 set backspace=start,indent,eol                                             " what backspace, ^w etc will operate on

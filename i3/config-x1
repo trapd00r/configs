@@ -112,9 +112,9 @@ for_window [window_role="messageWindow" class="(?i)Thunderbird"] floating enable
 # https://gist.github.com/trapd00r/1914f83477fb126f737fa764083a2627
 
 # define outputs
-set $middle DP-3-1-5
-set $left DP-1
-set $top DP-3-1-6
+set $middle DP-1-1-5
+set $left DP-3
+set $top DP-1-1-6
 set $laptop eDP-1
 
 # Define workspaces

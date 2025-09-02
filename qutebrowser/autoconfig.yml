@@ -134,4 +134,4 @@ settings:
   tabs.min_width:
     global: 150
   tabs.position:
-    global: bottom
+    global: top
