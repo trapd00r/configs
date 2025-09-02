@@ -63,7 +63,11 @@ elif [[ $(hostname) = 'x1' ]]; then
   # - DP
   # 1 monitor from laptop
   # - usb-c
-  xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-3-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-3-1-6 --mode 1920x1080 --pos 2560x720
+ autorandr --load docked || autorandr --default default
+
+#xrandr --output eDP-1 --primary --mode 1920x1200 --pos 4480x1254 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --mode 2560x2880 --pos 0x0 --rotate normal --output DP-4 --off --output DP-1-1 --off --output DP-1-1-5 --mode 1920x1080 --pos 2560x1254 --rotate normal --output DP-1-1-6 --mode 1920x1080 --pos 2560x174 --rotate normal --output DP-1-2 --off --output DP-1-3 --off
+#  xrandr --output eDP-1 --primary --mode 1920x1200 --pos 4480x1080 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --mode 2560x2880 --pos 0x0 --rotate normal --output DP-4 --off --output DP-2-1 --off --output DP-2-1-5 --mode 1920x1080 --pos 2560x1080 --rotate normal --output DP-2-1-6 --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off
+  # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-3-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-3-1-6 --mode 1920x1080 --pos 2560x720
   # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x1680 --output DP-1 --mode 2560x2880 --pos 0x0  --output DP-4-1-5 --primary --mode 1920x1080 --pos 2560x1800 --output DP-4-1-6 --mode 1920x1080 --pos 2560x720
   # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x461 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --mode 2560x2880 --pos 0x0 --rotate normal --output DP-4 --off --output DP-2-1 --off --output DP-2-1-5 --primary --mode 1920x1080 --pos 2560x1080 --rotate normal --output DP-2-1-6 --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-2-2 --off --output DP-2-3 --off
   # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x643 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --mode 2560x2880 --pos 0x0 --rotate normal --output DP-4 --off --output DP-1-1 --off --output DP-1-1-5 --primary --mode 1920x1080 --pos 2560x1080 --rotate normal --output DP-1-1-6 --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-1-2 --off --output DP-1-3 --off
