@@ -41,6 +41,9 @@ else:
 
 
 
+# temporary fix for google meet
+# https://github.com/qutebrowser/qutebrowser/issues/8539#issuecomment-2784470927
+c.qt.args = ["disable-features=PermissionElement"]
 
 c.colors.contextmenu.disabled.fg        = '#808080'
 c.colors.contextmenu.menu.bg            = '#353535'
