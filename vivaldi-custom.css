@@ -138,6 +138,16 @@ margin-top: -4px !important;
 .tab.active {
   background-color: #b35a57 !important;
   color: white !important;
+  font-weight: bold !important;
+  box-shadow: inset 0 -3px 0 0 var(--colorAccentBg) !important;
+
+}
+
+.tab.inactive {
+  background-color: #242424 !important;
+  color: #bbb !important;
+  font-weight: normal !important;
+  box-shadow: none !important;
 }
 
 
