@@ -1,0 +1,147 @@
+
+/* Address Bar Tweaks */
+.UrlBar-AddressField {
+        height: 26px !important;
+width: 26vw !important;
+        margin-top: 0px !important;
+background-color: var(--colorBg) !important;
+        transition: width 0.2s ease-in-out, height 0.2s ease-in-out, margin-top 0.2s ease-in-out, right 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+
+        &:focus-within {
+            height: 26px !important;
+            margin-top: 0px !important;
+            background-color: var(--colorBg) !important;
+outline: none !important;
+            box-shadow: none !important;
+        }
+    }
+
+/* Some Fancy Tab Stuff */
+
+.tab:not(.active) .title {
+opacity: 0.5 !important;
+}
+
+.tab:not(.active) .favicon {
+    opacity: 0.5 !important;
+}
+
+.tab:hover .favicon {
+    opacity: 1 !important;
+}
+
+.tab:hover .title {
+    opacity: 1 !important;
+}
+
+.tab:hover {
+    background-color: var(--colorBg) !important;
+}
+
+.tab .close {
+    visibility: hidden !important;
+}
+
+.tab:hover .close {
+    visibility: visible !important;
+}
+
+.transparent-tabbar .tab-position .tab.active .tab-header .favicon:not(.svg),
+.theme-dark .tab-position .tab.active .tab-header .favicon:not(.svg),
+.acc-dark.color-behind-tabs-off .tab-position .tab.active .tab-header .favicon:not(.svg) {
+  filter: none;
+}
+
+/* AddressField pageload indicator */
+.UrlBar-AddressField .pageload .pageload-indicator {
+  background-color: var(--colorAccentBg) !important;
+}
+
+/* Slimmer Tabs/Title Bar */
+.tabs-top.tabs-at-edge#browser.win:not(.fullscreen, .disable-titlebar) #header {
+  v
+    min-height: calc((24px + var(--densityGap) * 2) / var(--uiZoomLevel)) !important;
+}
+
+#titlebar {
+height: 26px !important;
+}
+
+#tabbar-wrapper {
+    height: 26px !important;
+}
+
+#tabs-tabbar-container.top {
+height: 26px !important;
+}
+
+#browser.win .window-buttongroup {
+    height: 28px !important;
+    margin-top: -3px !important;
+}
+
+#browser.win .window-buttongroup button {
+max-width: 26px !important;
+}
+
+.tabs-top:not(.density-on) #tabs-tabbar-container:not(:has(#tabs-subcontainer)) #tabs-container .tab {
+    height: 26px !important;
+}
+
+.button-toolbar > button {
+border-radius: 6px !important;
+height: 26px !important;
+    min-width: 26px !important;
+}
+
+.vivaldi {
+    width: 28px !important;
+height: 26px !important;
+}
+
+.tabs-top #tabs-tabbar-container .toolbar-tabbar-before {
+margin-top: -4px !important;
+}
+
+.tab .tab-header {
+    margin-top: -2px !important;
+}
+
+.tabs-top #tabs-tabbar-container .toolbar-tabbar-after {
+    margin-top: -3px !important;
+}
+
+.SiteInfoButton {
+    max-height: 22px;
+}
+
+/* Vertically Center Speed Dials */
+.sdwrapper.has-SpeedDial .SpeedDialView {
+    grid-template-rows: none !important;
+    align-content: center !important;
+}
+
+/* Remove tab spacing in non-maximized windows */
+.win.normal #tabs-tabbar-container.top,
+.linux.normal #tabs-tabbar-container.top {
+  padding-top: 0;
+}
+
+.tabs-top#browser.win:not(.fullscreen, .disable-titlebar) #header {
+    min-height: calc((24px + var(--densityGap) * 2) / var(--uiZoomLevel));
+}
+
+/* .tabs-top .vivaldi { */
+/*   margin-top: 0; */
+/* } */
+
+.tab.active {
+  background-color: #b35a57 !important;
+  color: white !important;
+}
+
+
+.tabs-top.density-on #tabs-tabbar-container:not(:has(#tabs-subcontainer)) {
+    padding-top: 26 !important;
+    padding-bottom: 26 !important;
+  }
