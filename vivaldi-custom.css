@@ -1,157 +1,184 @@
+/* Custom Vivaldi UI Enhancements - Final Revision for Vivaldi Menu Button */
 
-/* Address Bar Tweaks */
-.UrlBar-AddressField {
-        height: 26px !important;
-width: 26vw !important;
-        margin-top: 0px !important;
-background-color: var(--colorBg) !important;
-        transition: width 0.2s ease-in-out, height 0.2s ease-in-out, margin-top 0.2s ease-in-out, right 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+/* --- 2. Vivaldi Menu Button (Hamburger) Icon Replacement FIX (FINAL) --- */
 
-        &:focus-within {
-            height: 26px !important;
-            margin-top: 0px !important;
-            background-color: var(--colorBg) !important;
-outline: none !important;
-            box-shadow: none !important;
-        }
-    }
-
-/* Some Fancy Tab Stuff */
-
-.tab:not(.active) .title {
-opacity: 0.5 !important;
+/* Target the container for the Vivaldi menu and Panel toggle */
+#tabs-tabbar-container .toolbar.toolbar-tabbar.toolbar-tabbar-before {
+    /* Retain flex properties for vertical centering */
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+    /* Crucial: Set left margin to 0 to sit flush with the window edge */
+    margin: 0 0 0 0 !important;
+    height: 100% !important;
 }
 
-.tab:not(.active) .favicon {
-    opacity: 0.5 !important;
-}
 
-.tab:hover .favicon {
-    opacity: 1 !important;
-}
+/* --- 1. Aggressive Top Bar Flush Alignment (Retained) --- */
 
-.tab:hover .title {
-    opacity: 1 !important;
+#browser {
+    padding-top: 0 !important;
 }
-
-.tab:hover {
-    background-color: var(--colorBg) !important;
-}
-
-.tab .close {
-    visibility: hidden !important;
-}
-
-.tab:hover .close {
-    visibility: visible !important;
-}
-
-.transparent-tabbar .tab-position .tab.active .tab-header .favicon:not(.svg),
-.theme-dark .tab-position .tab.active .tab-header .favicon:not(.svg),
-.acc-dark.color-behind-tabs-off .tab-position .tab.active .tab-header .favicon:not(.svg) {
-  filter: none;
-}
-
-/* AddressField pageload indicator */
-.UrlBar-AddressField .pageload .pageload-indicator {
-  background-color: var(--colorAccentBg) !important;
-}
-
-/* Slimmer Tabs/Title Bar */
-.tabs-top.tabs-at-edge#browser.win:not(.fullscreen, .disable-titlebar) #header {
-  v
-    min-height: calc((24px + var(--densityGap) * 2) / var(--uiZoomLevel)) !important;
-}
-
-#titlebar {
-height: 26px !important;
-}
-
-#tabbar-wrapper {
-    height: 26px !important;
-}
-
-#tabs-tabbar-container.top {
-height: 26px !important;
-}
-
-#browser.win .window-buttongroup {
+#header {
+    min-height: 28px !important;
     height: 28px !important;
-    margin-top: -3px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
 }
-
-#browser.win .window-buttongroup button {
-max-width: 26px !important;
+#titlebar {
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
-
-.tabs-top:not(.density-on) #tabs-tabbar-container:not(:has(#tabs-subcontainer)) #tabs-container .tab {
-    height: 26px !important;
+#tabbar-wrapper,
+#tabs-tabbar-container.top {
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
-
-.button-toolbar > button {
-border-radius: 6px !important;
-height: 26px !important;
-    min-width: 26px !important;
-}
-
-.vivaldi {
-    width: 28px !important;
-height: 26px !important;
-}
-
-.tabs-top #tabs-tabbar-container .toolbar-tabbar-before {
-margin-top: -4px !important;
-}
-
-.tab .tab-header {
-    margin-top: -2px !important;
-}
-
-.tabs-top #tabs-tabbar-container .toolbar-tabbar-after {
-    margin-top: -3px !important;
-}
-
-.SiteInfoButton {
-    max-height: 22px;
-}
-
-/* Vertically Center Speed Dials */
-.sdwrapper.has-SpeedDial .SpeedDialView {
-    grid-template-rows: none !important;
-    align-content: center !important;
-}
-
-/* Remove tab spacing in non-maximized windows */
 .win.normal #tabs-tabbar-container.top,
 .linux.normal #tabs-tabbar-container.top {
-  padding-top: 0;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.tabs-top#browser.win:not(.fullscreen, .disable-titlebar) #header {
-    min-height: calc((24px + var(--densityGap) * 2) / var(--uiZoomLevel));
+
+/* --- 3. Slimmer Tab Height and Centering (Retained) --- */
+
+.tabs-top:not(.density-on) #tabs-tabbar-container:not(:has(#tabs-subcontainer)) #tabs-container .tab {
+    height: 28px !important;
+    line-height: 28px !important;
+}
+.tab .tab-header {
+    margin: 0 !important;
+    padding: 0 5px !important;
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+}
+#browser.win .window-buttongroup {
+    height: 28px !important;
+    margin-top: 0px !important;
 }
 
-/* .tabs-top .vivaldi { */
-/*   margin-top: 0; */
-/* } */
+
+/* --- 4. Tab Appearance & Styling (Retained) --- */
 
 .tab.active {
-  background-color: #b35a57 !important;
-  color: white !important;
-  font-weight: bold !important;
-  box-shadow: inset 0 -3px 0 0 var(--colorAccentBg) !important;
+    background-color: #b35a57 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border-left: 1px solid #c76a66 !important;
+    border-right: 1px solid #9c4b48 !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid var(--colorBgDarker) !important;
+}
+.tab:not(.active) {
+    background-color: #242424 !important;
+    color: #bbb !important;
+    font-weight: normal !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.4) !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid var(--colorBgDarker) !important;
+}
+/* Retained hover/close button logic... */
 
+
+/* --- 5. Address Bar and Toolbar Tweaks (Retained) --- */
+
+.UrlBar-AddressField {
+    height: 26px !important;
+    width: 28vw !important;
+    margin-top: 1px !important;
+    background-color: var(--colorBg) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out !important;
+}
+.UrlBar-AddressField:focus-within {
+    width: 40vw !important;
+    box-shadow: 0 1px 5px var(--colorAccentBg);
+    outline: none !important;
+}
+.button-toolbar > button {
+    border-radius: 4px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    margin: 1px 2px !important;
 }
 
-.tab.inactive {
-  background-color: #242424 !important;
-  color: #bbb !important;
-  font-weight: normal !important;
-  box-shadow: none !important;
+
+/* menu  button, hamburger */
+.vivaldi span {
+	color: transparent !important;
+    height: 28px !important;
+    width: 32px !important; /* Slight increase for the Arch icon */
+    margin: 0 !important; 
+    /* Ensure internal centering of the button area */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="currentColor" d="M128 0a128 128 0 1 0 0 256 128 128 0 0 0 0-256zm-41.5 59.8c-2.3 0-4.3.8-6 2.3-1.6 1.4-2.5 3.3-2.5 5.6 0 2.3.9 4.3 2.6 5.6 1.7 1.4 3.6 2.1 6 2.1 2.4 0 4.3-.7 6-2.1 1.7-1.3 2.6-3.3 2.6-5.6 0-2.3-.9-4.2-2.6-5.6-1.7-1.5-3.6-2.1-6.1-2.1zm-32.2 26.6c-4.2-2.5-6.6-6-7.2-10.7h-36.8c.8 7.3 3.6 13.9 8.6 19.6 5 5.7 11.2 10 18.3 12.5v-21.4c-3.1-1.1-5.6-2.8-7.9-4.6zm-17.7 26.2c-1.3-1.6-2.1-3.6-2.1-6 0-2.3.8-4.2 2.1-5.7 1.3-1.4 3.2-2.1 5.4-2.1 2.3 0 4.1.7 5.4 2.1 1.3 1.5 2 3.4 2 5.7 0 2.4-.7 4.3-2 6-1.3 1.7-3.2 2.5-5.4 2.5-2.2 0-4.1-.8-5.4-2.5zm-1.1 32.2c-3.6-4.5-5.4-10.5-5.4-17.9h-38.3c.7 8.3 3.3 15.8 7.6 22.5 4.3 6.6 9.8 11.7 16.5 15.3v-20c-1.8-1.7-3.3-3.9-4.9-5.9zm17.9 26.6c-2.3 0-4.3.8-6 2.3-1.6 1.4-2.5 3.3-2.5 5.6 0 2.3.9 4.3 2.6 5.6 1.7 1.4 3.6 2.1 6 2.1 2.4 0 4.3-.7 6-2.1 1.7-1.3 2.6-3.3 2.6-5.6 0-2.3-.9-4.2-2.6-5.6-1.7-1.5-3.6-2.1-6.1-2.1zm32.2 26.6c-4.2-2.5-6.6-6-7.2-10.7h-36.8c.8 7.3 3.6 13.9 8.6 19.6 5 5.7 11.2 10 18.3 12.5v-21.4c-3.1-1.1-5.6-2.8-7.9-4.6zM128 41.5c-4.5 0-8.2 1.4-11.2 4.1-3 2.7-4.5 6.4-4.5 11.1 0 4.8 1.5 8.5 4.5 11.2 3 2.7 6.7 4 11.2 4 4.5 0 8.2-1.3 11.2-4 3-2.7 4.5-6.4 4.5-11.2 0-4.7-1.5-8.4-4.5-11.1-3-2.7-6.7-4-11.2-4zM128 85.8c-1.3 0-2.5.2-3.8.4h7.5c-1.3-.2-2.5-.4-3.7-.4zm0 25.4c-4.5 0-8.2 1.4-11.2 4.1-3 2.7-4.5 6.4-4.5 11.1 0 4.8 1.5 8.5 4.5 11.2 3 2.7 6.7 4 11.2 4 4.5 0 8.2-1.3 11.2-4 3-2.7 4.5-6.4 4.5-11.2 0-4.7-1.5-8.4-4.5-11.1-3-2.7-6.7-4-11.2-4zm-45.2 2.6c-1.3-1.6-2.1-3.6-2.1-6 0-2.3.8-4.2 2.1-5.7 1.3-1.4 3.2-2.1 5.4-2.1 2.3 0 4.1.7 5.4 2.1 1.3 1.5 2 3.4 2 5.7 0 2.4-.7 4.3-2 6-1.3 1.7-3.2 2.5-5.4 2.5-2.2 0-4.1-.8-5.4-2.5zm-1.1 32.2c-3.6-4.5-5.4-10.5-5.4-17.9h-38.3c.7 8.3 3.3 15.8 7.6 22.5 4.3 6.6 9.8 11.7 16.5 15.3v-20c-1.8-1.7-3.3-3.9-4.9-5.9zm17.9 26.6c-2.3 0-4.3.8-6 2.3-1.6 1.4-2.5 3.3-2.5 5.6 0 2.3.9 4.3 2.6 5.6 1.7 1.4 3.6 2.1 6 2.1 2.4 0 4.3-.7 6-2.1 1.7-1.3 2.6-3.3 2.6-5.6 0-2.3-.9-4.2-2.6-5.6-1.7-1.5-3.6-2.1-6.1-2.1zm32.2 26.6c-4.2-2.5-6.6-6-7.2-10.7h-36.8c.8 7.3 3.6 13.9 8.6 19.6 5 5.7 11.2 10 18.3 12.5v-21.4c-3.1-1.1-5.6-2.8-7.9-4.6zM128 214.5c4.5 0 8.2-1.4 11.2-4.1 3-2.7 4.5-6.4 4.5-11.1 0-4.8-1.5-8.5-4.5-11.2-3-2.7-6.7-4-11.2-4-4.5 0-8.2 1.3-11.2 4-3 2.7-4.5 6.4-4.5 11.2 0 4.7 1.5 8.4 4.5 11.1 3 2.7 6.7 4 11.2 4zM128 170.2c1.3 0 2.5-.2 3.8-.4h-7.5c1.3.2 2.5.4 3.7.4zm45.2-2.6c1.3 1.6 2.1 3.6 2.1 6 0 2.3-.8 4.2-2.1 5.7-1.3 1.4-3.2 2.1-5.4 2.1-2.3 0-4.1-.7-5.4-2.1-1.3-1.5-2-3.4-2-5.7 0-2.4.7-4.3 2-6 1.3-1.7 3.2-2.5 5.4-2.5 2.2 0 4.1.8 5.4 2.5zm1.1-32.2c3.6 4.5 5.4 10.5 5.4 17.9h38.3c-.7-8.3-3.3-15.8-7.6-22.5-4.3-6.6-9.8-11.7-16.5-15.3v20c1.8 1.7 3.3 3.9 4.9 5.9zm-17.9-26.6c2.3 0 4.3-.8 6-2.3 1.6-1.4 2.5-3.3 2.5-5.6 0-2.3-.9-4.3-2.6-5.6-1.7-1.4-3.6-2.1-6-2.1-2.4 0-4.3.7-6 2.1-1.7 1.3-2.6 3.3-2.6 5.6 0-2.3.9-4.2-2.6-5.6-1.7-1.5-3.6-2.1-6.1-2.1zm-32.2-26.6c4.2 2.5 6.6 6 7.2 10.7h36.8c-.8-7.3-3.6-13.9-8.6-19.6-5-5.7-11.2-10-18.3-12.5v21.4c3.1 1.1 5.6 2.8 7.9 4.6zM170.5 59.8c2.3 0 4.3.8 6 2.3 1.6 1.4 2.5 3.3 2.5 5.6 0 2.3-.9 4.3-2.6 5.6-1.7 1.4-3.6 2.1-6 2.1-2.4 0-4.3-.7-6-2.1-1.7-1.3 2.6-3.3 2.6-5.6 0-2.3.9-4.2 2.6-5.6 1.7-1.5 3.6-2.1 6.1-2.1zm32.2 26.6c4.2 2.5 6.6 6 7.2 10.7h36.8c-.8-7.3-3.6-13.9-8.6-19.6-5-5.7-11.2-10-18.3-12.5v21.4c3.1-1.1 5.6-2.8 7.9-4.6zM218.8 128c1.3 1.6 2.1 3.6 2.1 6 0 2.3-.8 4.2-2.1 5.7-1.3 1.4-3.2 2.1-5.4 2.1-2.3 0-4.1-.7-5.4-2.1-1.3-1.5-2-3.4-2-5.7 0-2.4.7-4.3 2-6 1.3-1.7 3.2-2.5 5.4-2.5 2.2 0 4.1.8 5.4 2.5zm1.1 32.2c3.6-4.5 5.4-10.5 5.4-17.9h38.3c-.7 8.3-3.3-15.8-7.6 22.5-4.3 6.6-9.8 11.7-16.5-15.3v-20c1.8-1.7 3.3 3.9 4.9 5.9zM214.5 196.2c2.3 0 4.3-.8 6-2.3 1.6-1.4 2.5-3.3 2.5-5.6 0-2.3-.9-4.3-2.6-5.6-1.7-1.4-3.6-2.1-6-2.1-2.4 0-4.3.7-6 2.1-1.7 1.3-2.6 3.3-2.6 5.6 0 2.3.9 4.2 2.6 5.6 1.7 1.5 3.6 2.1 6.1 2.1zm-32.2 26.6c4.2 2.5 6.6 6 7.2 10.7h36.8c-.8-7.3-3.6-13.9-8.6-19.6-5-5.7-11.2-10-18.3-12.5v21.4c3.1 1.1 5.6 2.8 7.9 4.6z"/></svg>') !important; */
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 22px 22px !important;
 }
 
+/* --- 6. Fix URL Status Overlay Position, Width, and Tab Layout (FINAL FLEX FIX) --- */
 
-.tabs-top.density-on #tabs-tabbar-container:not(:has(#tabs-subcontainer)) {
-    padding-top: 26 !important;
-    padding-bottom: 26 !important;
-  }
+/* 1. Reset the #tabs-container layout to fix tab scrolling and alignment */
+#tabs-container {
+    /* Remove previous flex properties that broke the tab scrolling area */
+    justify-content: unset !important;
+    align-items: unset !important; 
+    flex-grow: 1 !important;
+    flex-wrap: nowrap !important;
+    /* Re-establish flex to ensure children are inline */
+    display: flex !important;
+}
+
+/* 2. Target the Status Info element and lock its position/size/order */
+span.StatusInfo {
+    /* Set an order value (e.g., 5) to position it relative to other elements. */
+    /* It will appear before elements with a higher order (like the extensions container). */
+    order: 5 !important; 
+    
+    /* Lock the width and prevent it from shrinking */
+    flex-shrink: 0 !important; 
+    width: 180px !important; 
+    min-width: 180px !important; 
+    
+    /* Ensure text properties are correct */
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    text-align: right !important; /* Right align the URL text */
+    
+    /* Match tab bar height */
+    height: 28px !important; 
+    line-height: 28px !important;
+    
+    /* Add padding for visual balance */
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    
+    color: var(--colorFgFaded) !important;
+}
+
+/* 3. Ensure the tabs scrolling area takes the remaining space and respects its default order */
+#tabs-container .tab-scrolling {
+    order: 1 !important; /* Keep tabs on the far left */
+    flex-grow: 1 !important;
+    overflow: hidden !important;
+    min-width: 0 !important; /* Allow the area to be squashed */
+}
+
+/* 4. Ensure the container for the extensions/toolbar (usually 'toolbar-after') is on the far right */
+/* This element usually contains the window controls and extensions. */
+#tabs-container .toolbar-after {
+    order: 10 !important; /* Place after the Status Info (order 5) */
+    flex-shrink: 0 !important;
+}
