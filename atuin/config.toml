@@ -3,6 +3,10 @@
 ## windows: %USERPROFILE%/.local/share/atuin/history.db
 # db_path = "~/.history.db"
 
+
+filter_mode_shell_up_key_binding = "directory" # or global, host, directory, etc
+
+
 ## where to store your encryption key, default is your system data directory
 ## linux/mac: ~/.local/share/atuin/key
 ## windows: %USERPROFILE%/.local/share/atuin/key
