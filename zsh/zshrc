@@ -70,9 +70,9 @@ zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/
 fpath=($fpath ~/etc/zsh/functions/)
 
 if [[ $HOST = 'fantomen' && -z $SSH_CLIENT ]]; then
-  eval $(keychain --eval --agents ssh -Q --quiet id_rsa --nogui)
+  eval $(keychain --eval -Q --quiet id_rsa --nogui)
 elif [[ $HOST = 'x1' && -z $SSH_CLIENT ]]; then
-  eval $(keychain --eval --agents ssh -Q --quiet id_ed25519 --nogui)
+  eval $(keychain --eval -Q --quiet id_ed25519 --nogui)
 fi
 
 #### https://github.com/trapd00r/stderred
@@ -99,25 +99,6 @@ fi
 
 #eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
 
-# switch node versions for make artifacts in elm
-export NVM_DIR="$HOME/.nvm"
-
-# Lazy load nvm using command_not_found handler
-command_not_found_handler() {
-  if [[ $1 == nvm ]]; then
-    # Load nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    # Execute nvm with all arguments
-    nvm "${@:2}"
-    return $?
-  fi
-  # If it's not nvm, return 127 to indicate command not found
-  return 127
-}
-
-# Add nvm to precmd_functions to load it on first use
-precmd_functions+=(nvm)
 
 # LS_COLORS
 if [[ -z $LS_COLORS ]]; then
@@ -1713,7 +1694,7 @@ fi
 alias gif='cd /home/scp1/.local/share/Steam/steamapps/compatdata/881100/pfx/drive_c/users/steamuser/AppData/LocalLow/Nolla_Games_Noita/save_rec/screenshots_animated/'
 
 # disable wifi when ethernet is connected
-enable_disable_wifi ()
+wifi_enable_disable()
 {
    result=$(nmcli dev | grep "ethernet" | grep -w "connected")
    if [ -n "$result" ]; then
@@ -1741,11 +1722,70 @@ export               SAVEHIST=2500000000
 
 eval "$(atuin init zsh)"
 
+# ^[[114;6u = ctrl+shift+r
+
+
+
 source ~/dev/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
 
+export COMPOSER_FUND=0
+export COMPOSER_MAX_PARALLEL_HTTP=36
+export COMPOSER_IPRESOLVE=4
+export COMPOSER_IGNORE_PLATFORM_REQS=1
+export COMPOSER_NO_DEV=0
+
+
+export BROWSER=""
+#eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+
+export NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID="G-477X7GN98W"
 
 export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/"
 
-export BROWSER=""
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
+### NVM (lazy load, auto `.nvmrc` support)
+export NVM_DIR="$HOME/.nvm"
+
+# Lazy-load nvm only on first use
+nvm() {
+  unset -f nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  command nvm "$@"
+}
+
+# Auto-load nvm when changing directories with .nvmrc
+autoload -U add-zsh-hook
+
+load-nvm-on-cd() {
+  if [ -f .nvmrc ]; then
+    nvm use > /dev/null
+  fi
+}
+
+add-zsh-hook chpwd load-nvm-on-cd
+
+# Run it once on shell startup (in case you're already in a project dir)
+load-nvm-on-cd
+
+
+
+
+alias gcal='gcalcli --lineart fancy agenda'
+
+
+# a function that stores the current cwd, cd to git root, run the artisan command and cd back to old cwd
+artisan() {
+  # /home/scp1/dev/webbhuset/maryk/public-webshop
+  local old_cwd=$(pwd)
+  local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+  if [[ -z $git_root ]]; then
+    echo "Not in a git repo"
+    return 1
+  fi
+
+  cd "$git_root"
+  bin/backend/artisan "$@"
+  cd "$old_cwd"
+}
+
