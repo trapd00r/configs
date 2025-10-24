@@ -120,6 +120,13 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # polybar --config=$HOME/etc/polybar/config_fantomen.ini &
 # exec bspwm
 
+
+# undocked laptop uses:
+# polybar middle --config=config_x1_undocked.ini
+
+# for laptop
+setxkbmap -option caps:escape
+
 if [[ $(hostname) = 'fantomen' ]]; then
   exec i3-workspace-fix
   # exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
