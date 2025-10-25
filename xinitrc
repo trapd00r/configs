@@ -140,6 +140,20 @@ fi
 
 
 
+# for browsers (vivaldi) to use the gtk theme we must do a few things: 
+# echo "[Settings]
+# gtk-theme-name=japh
+# " > ~/.config/gtk-3.0/settings.ini
+
+# gsettings set org.gnome.desktop.interface gtk-theme "japh"
+# killall xdg-desktop-portal xdg-desktop-portal-gtk
+# /usr/lib/xdg-desktop-portal-gtk &
+# /usr/lib/xdg-desktop-portal &
+
+# NOTE. The look and settings of the file save dialog can be changed using dconf-editor.
+# BUT due to a bug in dconf-editor the changes are not saved unless dconf-editor is started like this
+# unset XDG_CONFIG_HOME && dconf-editor
+
 
 
 
