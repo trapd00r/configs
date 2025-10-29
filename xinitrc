@@ -127,6 +127,15 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 # for laptop
 setxkbmap -option caps:escape
 
+# set gtk4 theme...
+# https://github.com/ALEX11BR/ThemeChanger
+
+
+# dbus-launch --exit-with-session dconf write /org/gnome/desktop/interface/gtk-theme "'japh'"
+# gsettings set org.gnome.desktop.interface gtk-theme "japh"
+
+
+
 if [[ $(hostname) = 'fantomen' ]]; then
   exec i3-workspace-fix
   # exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
