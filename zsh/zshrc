@@ -204,7 +204,7 @@ ls() {
 #    lsdjaph -l --date=relative --icon=never --group-dirs=first --color=always "$@"| sed -E "s/ '//g"
     ls++ --dereference-command-line-symlink-to-dir "$@"
   else if which ls++ &>/dev/null ; then
-    ls++ --dereference-command-line-symlink-to-dir "$@"
+    ls++ --dereference-command-line-symlink-to-dir --hyperlink=auto "$@"
   else
     ls -Ahl --group-directories-first --color=always "$@"| sed -E "s/ '//g"
   fi
