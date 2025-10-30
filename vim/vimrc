@@ -43,7 +43,7 @@ Plug 'junegunn/fzf'                                                       " fuzz
 Plug 'junegunn/fzf.vim'                                                   " ... all the things
 Plug 'junegunn/rainbow_parentheses.vim'                                   " better rainbows
 Plug 'junegunn/vim-plug'                                                  " self
-Plug 'preservim/tagbar'                                                   " tagbar for ctags
+" Plug 'preservim/tagbar'                                                   " tagbar for ctags
 Plug 'kien/ctrlp.vim'                                                     " I don't use this but ctrlp-funky depends on it
 Plug 'kshenoy/vim-signature'                                              " place, toggle, display marks
 Plug 'lfv89/vim-interestingwords'                                         " adds ability to highlight specific words
@@ -98,7 +98,7 @@ if has('nvim')
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
   " Plug 'stevearc/conform.nvim'                                            " code actions preview with diff in telescope
-  Plug 'ludovicchabant/vim-gutentags'                                     " tag management
+  " Plug 'ludovicchabant/vim-gutentags'                                     " tag management
   Plug 'pbogut/magento2-ls'                                               " magento2 language server
   " Plug 'zbirenbaum/copilot.lua'
   Plug 'trapd00r/kitty-scrollback.nvim'                                   " using own fork cause couldn't configure away default opts
@@ -2008,3 +2008,6 @@ hi Headline ctermbg=235
 " ugly hack to remove the path echoed in cmdline upon buffer loading
 " autocmd BufEnter * echo ""
 
+
+
+" let g:copilot_settings = #{selectedCompletionModel: 'gpt-4o-copilot'}
