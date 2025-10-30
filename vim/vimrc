@@ -1514,6 +1514,8 @@ autocmd BufNewFile *.air
 " ========== TEMPLATES END ==============================
 " ========== ABBREVATIONS START =========================
 
+iabbrev <expr> xnow strftime("%Y-%m-%d %H:%M:%S")
+
 " Data::Dumper with options
 " ia DD use Data::Dumper;<cr><cr>{<cr>package Data::Dumper;<cr>no strict 'vars';<cr>$Terse = $Indent = $Useqq = $Deparse = $Sortkeys = 1;<cr>$Quotekeys = 0;<cr>}<cr>
 
