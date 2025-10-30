@@ -1,7 +1,6 @@
 " ${VIMRUNTIME}/vimrc
 "       owner  Magnus Woldrich <m@japh.se>
 "       btime  2009-04-24
-"       mtime  2024-03-03 16:43:21
 "         git  http://github.com/trapd00r/configs/
 "         irc  japh@irc.libera.chat #vim #zsh #perl
 " ‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗‗‗‗‗‗‗‗‗‗ ‗‗‗‗ ‗‗‗‗ ‗‗‗‗
@@ -65,10 +64,10 @@ Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger'] }               " git b
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 
 if has('nvim')
-  Plug 'debugloop/telescope-undo.nvim'
-  Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
+  " Plug 'debugloop/telescope-undo.nvim'
+  " Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
-  Plug 'ja-he/heat.nvim'                                                  " git heatmap
+  " Plug 'ja-he/heat.nvim'                                                  " git heatmap
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
   Plug 'kevinhwang91/promise-async'                                       " required for nvim-ufo
   Plug 'nvim-lua/plenary.nvim'                                            " required for telescope
@@ -91,9 +90,9 @@ if has('nvim')
   Plug 'ray-x/lsp_signature.nvim'                                         " Show function signature when you type
   Plug 'hrsh7th/cmp-nvim-lsp-signature-help'                              " lsp signature help
   Plug 'hrsh7th/cmp-copilot'                                              " copilot in cmpmenu
-  Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " snippet engine
-  Plug 'rafamadriz/friendly-snippets'                                     " snippets repository
-  Plug 'saadparwaiz1/cmp_luasnip'                                         " luasnip source for cmp
+  " Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} " snippet engine
+  " Plug 'rafamadriz/friendly-snippets'                                     " snippets repository
+  " Plug 'saadparwaiz1/cmp_luasnip'                                         " luasnip source for cmp
   Plug 'amarakon/nvim-cmp-fonts'                                          " complete fonts from fc-list
   Plug 'stevearc/dressing.nvim'                                           " better ui dialogs (like for lsp renames)
   Plug 'aznhe21/actions-preview.nvim'                                     " code actions preview with diff in telescope
@@ -104,7 +103,7 @@ if has('nvim')
   Plug 'trapd00r/kitty-scrollback.nvim'                                   " using own fork cause couldn't configure away default opts
 
   " local llm
-  Plug 'David-Kunz/gen.nvim'
+  " Plug 'David-Kunz/gen.nvim'
 
   " only to enable code actions for intellephence...
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
