@@ -271,9 +271,6 @@ require'lspconfig'.perlnavigator.setup{
 }
 
 
-require'lspconfig'.elmls.setup{
-  capabilities = capabilities,
-}
 
 require('magento2_ls').setup()
 
@@ -305,3 +302,17 @@ vim.api.nvim_create_user_command("LspCapabilities", function()
 		end
 	end
 end, {})
+
+-- -- Define custom capabilities
+-- -- elm-ls needs node v16 to not freak out?
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.foldingRange = {
+--   dynamicRegistration = false,
+--   lineFoldingOnly = true
+-- }
+--
+-- -- Set up elmls with custom capabilities
+-- require'lspconfig'.elmls.setup{
+--   capabilities = capabilities,
+-- }
+

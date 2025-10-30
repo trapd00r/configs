@@ -45,23 +45,23 @@ Plug 'junegunn/rainbow_parentheses.vim'                                   " bett
 Plug 'junegunn/vim-plug'                                                  " self
 " Plug 'preservim/tagbar'                                                   " tagbar for ctags
 Plug 'kien/ctrlp.vim'                                                     " I don't use this but ctrlp-funky depends on it
-Plug 'kshenoy/vim-signature'                                              " place, toggle, display marks
-Plug 'lfv89/vim-interestingwords'                                         " adds ability to highlight specific words
+Plug 'kshenoy/vim-signature', { 'on': ['SignatureListMarks', 'SignatureToggle'] }  " place, toggle, display marks - lazy load
+Plug 'lfv89/vim-interestingwords', { 'on': ['InterestingWords'] }       " adds ability to highlight specific words - lazy load
 Plug 'machakann/vim-highlightedundo'                                      " highlight undo operations
 Plug 'machakann/vim-highlightedyank'                                      " highlight regular yank operations
 Plug 'markonm/traces.vim'                                                 " live preview of ex commands like :%s
-Plug 'pseewald/vim-anyfold'                                               " fold around anything
+Plug 'pseewald/vim-anyfold', { 'on': ['AnyFoldActivate'] }               " fold around anything - lazy load
 Plug 'rhysd/clever-f.vim'                                                 " keep smashing f
-Plug 'rhysd/committia.vim'                                                " better experience dealing with commit msg
-Plug 'tacahiroy/ctrlp-funky'                                              " function navigator
+Plug 'rhysd/committia.vim', { 'for': 'gitcommit' }                      " better experience dealing with commit msg - lazy load
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                    " function navigator - lazy load
 Plug 'tpope/vim-fugitive'                                                 " git wrapper
 Plug 'tpope/vim-repeat'                                                   " repeat all the things
 Plug 'vim-scripts/AnsiEsc.vim'                                            " highlight strings with esc seq in its color
-Plug 'wookayin/fzf-ripgrep.vim'                                           " grep -> fuzzyfind results
-Plug 'chrisbra/Colorizer'                                                 " colorize hex codes etc
+Plug 'wookayin/fzf-ripgrep.vim', { 'on': ['RgFzf', 'RgDefFzf'] }        " grep -> fuzzyfind results - lazy load
+Plug 'chrisbra/Colorizer', { 'on': ['ColorToggle'] }                     " colorize hex codes etc - lazy load
 Plug 'andymass/vim-matchup'                                               " % for all the things
-Plug 'vifm/vifm.vim'
-Plug 'rhysd/git-messenger.vim'                                            " git blame in a popup
+Plug 'vifm/vifm.vim', { 'on': ['Vifm'] }                                  " vifm integration - lazy load
+Plug 'rhysd/git-messenger.vim', { 'on': ['GitMessenger'] }               " git blame in a popup - lazy load
 Plug 'ConradIrwin/vim-bracketed-paste'                                    " paste without breaking indentation
 
 if has('nvim')
@@ -111,7 +111,7 @@ if has('nvim')
 else
 endif
 
-" extra syntax rules
+" extra syntax rules - lazy load on filetype
 Plug 'trapd00r/vim-after-syntax-vim',  { 'for': 'vim' }
 Plug 'trapd00r/vim-after-syntax-perl', { 'for': 'perl' }
 Plug 'trapd00r/vim-after-syntax-zsh',  { 'for': ['zsh', 'sh'] }
@@ -221,7 +221,7 @@ set smartcase                                                              " cas
 set smarttab                                                               " insert blanks according to shiftwidth, tabstop, expandtab
 set splitbelow                                                             " preferably split below
 set ssop=buffers,folds,globals,help,localoptions,options,resize            " session options for mksession
-set synmaxcol=300                                                          " maximum column to highlight
+set synmaxcol=500                                                          " maximum column to highlight - increased for modern screens
 set t_Co=256                                                               " terminal supports 256 colors
 set tabpagemax=4                                                           " max tab pages when using -p flag
 set tabstop=2                                                              " shouldn't modify this the help states..?
@@ -234,7 +234,7 @@ set ttimeoutlen=50                                                         " the
 set ttyfast                                                                " my terminal is very fast
 set undofile                                                               " undo file for all the undos
 set undolevels=1024                                                        " persisent undo for 1024 actions
-set updatetime=200                                                         " for CursorHold events and GitGutter signs
+set updatetime=300                                                         " for CursorHold events and GitGutter signs - increased for better performance
 set virtualedit=block                                                      " virtualedit for visual block mode
 set visualbell t_vb=                                                       " disable visual bells
 set wildchar=<Tab>                                                         " completion char in cmdline
@@ -248,12 +248,14 @@ if !has('nvim')
   set viminfo=h,'100,\"100,:20,n~/var/vim/viminfo                          " what to save in the viminfo
   set undodir=~/var/vim/undo                                               " where to keep the undos
   set lazyredraw                                                           " do not redraw screen while executing macros etc
+  set redrawtime=2000                                                      " max time spent redrawing (ms) - prevents hanging on large files
   set title                                                                " send a title string to the terminal
   set cmdheight=1
   set formatprg=perl\ -MText::Autoformat\ -e'autoformat({right=>80})'        " much better formatting
 " Neovim only options
 else
   set lazyredraw                                                           " do not redraw screen while executing macros etc
+  set redrawtime=2000                                                      " max time spent redrawing (ms) - prevents hanging on large files
   set cmdheight=2
   set notitle                                                              " fixes bug in neovim where statusline is messed up
   set mouse=""                                                             " disable mouse
@@ -739,32 +741,26 @@ fu! SynStack()
 endfu
 
 " context in statusbar; function, scope or block
+" Cache context search results per buffer
+let s:context_cache = {}
 function! ContextInStatusbar()
-  let lnum = line(".")
-  let col = col(".")
-  echohl ModeMsg
-  let g:current_function = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
-  echohl None
+    let bufnum = bufnr('%')
+    let lnum = line(".")
+    " Only refresh if cursor moved significantly (10+ lines)
+    if has_key(s:context_cache, bufnum) && abs(s:context_cache[bufnum].lnum - lnum) < 10
+      return s:context_cache[bufnum].result
+    endif
 
-  "" matches and returns a str only if the lines matches any of the following:
-  "  viml: fu!, function!, function!
-  "    js: function
-  "  perl: sub
-  "     c: grab_key(KeySym keysym, unsigned int modifiers, Window grab_window)
-  "   css: .store_more_info_wrapper .store_name (a little broken..)
-  " shell: pastebin() {
-  " shell: if/elif:
-"  if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
-  if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
-    " remove sub or function keyword
-    let funcname = substitute(g:current_function, '\v(sub|fu[!]?n?(ction)?[!]?)\s*', '', '')
-    return funcname
+    let g:current_function = getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
 
-    " can also include scopes or blocks
-    " return g:current_function
-  endif
-  return ''
-endfun
+    if g:current_function =~ '\v(^fu[!]?n?[!]?|^sub|^\S+[(].+[)])|^.+[{]|(el)?if \[\[?'
+      let funcname = substitute(g:current_function, '\v(sub|fu[!]?n?(ction)?[!]?)\s*', '', '')
+      let s:context_cache[bufnum] = {'lnum': lnum, 'result': funcname}
+      return funcname
+    endif
+    let s:context_cache[bufnum] = {'lnum': lnum, 'result': ''}
+    return ''
+  endfun
 
 " show function name
 function! ShowFuncName()
@@ -837,8 +833,11 @@ endfu
 " ========== AUTOCOMMANDS START =========================
 
 " kitty-scrollback
-autocmd FileType kitty-scrollback nnoremap <C-d> <Plug>(KsbQuitAll)
-autocmd FileType kitty-scrollback setlocal nonumber nolist
+augroup KittyScrollback
+  autocmd!
+  autocmd FileType kitty-scrollback nnoremap <C-d> <Plug>(KsbQuitAll)
+  autocmd FileType kitty-scrollback setlocal nonumber nolist
+augroup END
 
 augroup TagbarSettings
   autocmd!
@@ -851,61 +850,65 @@ augroup NetrwSettings
 augroup END
 
 
-augroup custom_nginx
+augroup FileTypeSpecific
   autocmd!
   autocmd FileType nginx setlocal iskeyword+=$
   autocmd FileType nginx let b:coc_additional_keywords = ['$']
-augroup end
-
-" completion for dadbod
-autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+  " completion for dadbod
+  autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
+  autocmd FileType json setlocal formatprg=jq
+augroup END
 
 augroup WebbHuset
   autocmd!
   autocmd BufRead,BufNewFile ~/dev/webbhuset/* setlocal sw=4
   " map tab in normal mode to bdelete for php files
-  " to be used together with backspace, go to definition
   autocmd FileType php nnoremap <buffer> <tab> :bdelete<cr>
 augroup END
 
-autocmd FileType json setlocal formatprg=jq
+" Combined autocmds for better performance
+augroup FileTypeDefaults
+  autocmd!
+  " disable automatic comment on newline
+  autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  " enable use of $LS_COLORS coloring in appropriate files
+  autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
+  " do not show tabs in go files
+  autocmd FileType go setlocal nolist
+  " enable Rainbows everywhere - defer to avoid startup delay
+  if has('timers')
+    autocmd BufRead,BufNewFile * call timer_start(0, {-> execute('RainbowParentheses')})
+  else
+    autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
+  endif
+augroup END
 
-" disable automatic comment on newline
-autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+augroup WindowSettings
+  autocmd!
+  " set quickfix window height and make it modifiable
+  autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
+augroup END
 
-" enable use of $LS_COLORS coloring in appropriate files
-autocmd BufRead,BufNewFile *gitignore,fd.ignorefile,MANIFEST setf LS_COLORS
+augroup ConfigFileFolding
+  autocmd!
+  " fold config files in a nice way
+  autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | let &foldmarker='START =====,END ====='
+  autocmd BufRead ~/.zshrc,~/etc/zsh/zshrc set foldlevel=0 | let &foldmarker='START =====,END ====='
+augroup END
 
-" do not show tabs in go files
-autocmd FileType go setlocal nolist
-
-" enable Rainbows everywhere
-autocmd BufRead,BufNewFile * :RainbowParentheses<cr>
-
-" set quickfix window height and make it modifiable
-autocmd BufWinEnter quickfix setlocal winheight=40 | setlocal modifiable
-
-" fold config files in a nice way
-autocmd BufRead ~/.vimrc,~/etc/vim/vimrc set foldlevel=0 | let &foldmarker='START =====,END ====='
-autocmd BufRead ~/.zshrc,~/etc/zsh/zshrc set foldlevel=0 | let &foldmarker='START =====,END ====='
-
-" try to figure out the filetype when there's no extension
-" often the case in my bin (~/dev/utils/) directory
-autocmd BufRead  * call s:infer_filetype()
-
-" evaluate the comment char for the current buffer
-" now, the variable b:comment will always hold the correct
-" char used for comments in that specific filetype
-" this is used for ToggleComment() among other things, mapped
-" to #
-autocmd BufRead,BufNewFile * silent! let b:comment=split(&commentstring, '%s')[0]
-
-
-" return to last edit position when opening files
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+" Combined buffer setup autocmds
+augroup BufferSetup
+  autocmd!
+  " try to figure out the filetype when there's no extension
+  autocmd BufRead * call s:infer_filetype()
+  " evaluate the comment char for the current buffer
+  autocmd BufRead,BufNewFile * silent! let b:comment=split(&commentstring, '%s')[0]
+  " return to last edit position when opening files
+  autocmd BufReadPost *
+       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+       \   exe "normal! g`\"" |
+       \ endif
+augroup END
 
 " show only sub defns (and maybe comments)...
 let perl_sub_pat = '^\s*\%(sub\|func\|method\|package\)\s\+\k\+'
@@ -937,21 +940,29 @@ augroup FastEscape
   autocmd InsertLeave * set notimeout
 augroup END
 
-" sadly there is no tt2 + html + js syntax file that works
-autocmd BufRead,BufNewFile *.tt setf javascript
+" Combined filetype autocmds
+augroup FileTypeOverrides
+  autocmd!
+  " sadly there is no tt2 + html + js syntax file that works
+  autocmd BufRead,BufNewFile *.tt setf javascript
+  autocmd BufNewFile,BufRead MANIFEST set filetype=LS_COLORS
+  autocmd BufNewFile,BufRead vidir* set filetype=LS_COLORS
+  autocmd BufNewFile,BufRead Changes set filetype=changelog
+  autocmd BufRead,BufNewFile *.*htm*,*.xml setl sw=1
+  autocmd BufNewFile *.txt setl cc=
+augroup END
 
-autocmd BufNewFile,BufRead  MANIFEST              set filetype=LS_COLORS
-autocmd BufNewFile,BufRead  vidir*                set filetype=LS_COLORS
-autocmd BufNewFile,BufRead  Changes               set filetype=changelog
+augroup SpecialFiles
+  autocmd!
+  autocmd BufRead /etc/fstab,~/etc/fstab highlight fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
+augroup END
 
-autocmd BufRead,BufNewFile *.*htm*,*.xml          setl sw=1
-autocmd BufNewFile         *.txt                  setl cc=
-
-autocmd BufRead            /etc/fstab,~/etc/fstab highlight fsDeviceError ctermfg=fg ctermbg=bg cterm=italic
-
-" update modification time
-autocmd BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
-autocmd BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+augroup IrssiTemplates
+  autocmd!
+  " update modification time
+  autocmd BufWrite ~/.irssi/scripts/*.pl %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+  autocmd BufWrite ~/.irssi/*            %s/changed     => ["'].*/\="changed     => '" . strftime("%c") . "',"/e
+augroup END
 " ========== AUTOCOMMANDS END ===========================
 " ========== COMMANDS START =============================
 
@@ -997,65 +1008,48 @@ highlight User9 ctermfg=197 ctermbg=232 cterm=none
 " curl -s https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS | grep -Pv '^(?:[#*]|TERM)|^$' | perl -pe 's{^\.?(\S+)\s+(?:[34]8;5;(\d+))}{elsif(a:filename =~ "\v.+\.$1")\n  highlight User4 ctermfg=$2 ctermbg=234 cterm=none};s{;\d+$}{}' | perl -pe "s/\"/'/g"
 
 if !has('nvim')
+  " Cache extension to avoid regex matching multiple times
   function! LsColorForStatusLine(filename)
-    if(a:filename =~ '\v.+\.sh')
-      highlight User4 ctermfg=172 ctermbg=232 cterm=none
+    let ext = tolower(matchstr(a:filename, '\v\.\zs[^.]+$'))
+    let name = tolower(fnamemodify(a:filename, ':t'))
 
-    elseif(a:filename =~ '\v.+\.vim')
-      highlight User4 ctermfg=106 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.txt')
-      highlight User4 ctermfg=188 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.(css|sass)')
-      highlight User4 ctermfg=125 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.csv')
-      highlight User4 ctermfg=078 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.js[mp]?')
-      highlight User4 ctermfg=074 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.json')
-      highlight User4 ctermfg=178 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.log')
-      highlight User4 ctermfg=190 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.(markdown|md)')
+    " Handle special cases first (most common)
+    if name =~ '\v^(readme|changes)'
       highlight User4 ctermfg=190 ctermbg=232 cterm=bold
-
-    elseif(a:filename =~ '\vREADME|CHANGES')
-      highlight User4 ctermfg=190 ctermbg=232 cterm=bold
-
-    elseif(a:filename =~ '\v.+\.php')
-      highlight User4 ctermfg=081 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\vMakefile([.]PL)?')
+    elseif name =~ '\v^(makefile.*)'
       highlight User4 ctermfg=196 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.pl')
-      highlight User4 ctermfg=208 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.pm')
-      highlight User4 ctermfg=203 ctermbg=232 cterm=none
-
-
-    elseif(a:filename =~ '\v.+\.(sql|sqlite)')
-      highlight User4 ctermfg=222 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.t$')
-      highlight User4 ctermfg=114 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.tt$')
-      highlight User4 ctermfg=173 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.html?$')
-      highlight User4 ctermfg=132 ctermbg=232 cterm=none
-
-    elseif(a:filename =~ '\v.+\.php?$')
+    elseif ext ==# 'sh'
+      highlight User4 ctermfg=172 ctermbg=232 cterm=none
+    elseif ext ==# 'vim'
+      highlight User4 ctermfg=106 ctermbg=232 cterm=none
+    elseif ext ==# 'txt'
+      highlight User4 ctermfg=188 ctermbg=232 cterm=none
+    elseif ext ==# 'css' || ext ==# 'sass'
+      highlight User4 ctermfg=125 ctermbg=232 cterm=none
+    elseif ext ==# 'csv'
+      highlight User4 ctermfg=078 ctermbg=232 cterm=none
+    elseif ext ==# 'js' || ext ==# 'jsx' || ext ==# 'mjs'
+      highlight User4 ctermfg=074 ctermbg=232 cterm=none
+    elseif ext ==# 'json'
+      highlight User4 ctermfg=178 ctermbg=232 cterm=none
+    elseif ext ==# 'log'
+      highlight User4 ctermfg=190 ctermbg=232 cterm=none
+    elseif ext ==# 'md' || ext ==# 'markdown'
+      highlight User4 ctermfg=190 ctermbg=232 cterm=bold
+    elseif ext ==# 'php'
       highlight User4 ctermfg=081 ctermbg=232 cterm=none
-
+    elseif ext ==# 'pl'
+      highlight User4 ctermfg=208 ctermbg=232 cterm=none
+    elseif ext ==# 'pm'
+      highlight User4 ctermfg=203 ctermbg=232 cterm=none
+    elseif ext ==# 'sql' || ext ==# 'sqlite'
+      highlight User4 ctermfg=222 ctermbg=232 cterm=none
+    elseif ext ==# 't'
+      highlight User4 ctermfg=114 ctermbg=232 cterm=none
+    elseif ext ==# 'tt'
+      highlight User4 ctermfg=173 ctermbg=232 cterm=none
+    elseif ext ==# 'html' || ext ==# 'htm'
+      highlight User4 ctermfg=132 ctermbg=232 cterm=none
     else
       highlight User4 ctermfg=137 ctermbg=232 cterm=none
     endif
@@ -1066,8 +1060,23 @@ if !has('nvim')
   endfun
 
   " do it like so I can color a/m/r differently
+  " Cache GitGutter summary to avoid repeated calls
+  let s:git_status_cache = {'added': 0, 'modified': 0, 'removed': 0, 'time': 0}
   function! GitStatusStatusLine(opt)
-    let [added,modified,removed] = GitGutterGetHunkSummary()
+    " Only refresh cache every 500ms
+    let now = localtime()
+    if now - s:git_status_cache.time > 0
+      try
+        let [added,modified,removed] = GitGutterGetHunkSummary()
+        let s:git_status_cache = {'added': added, 'modified': modified, 'removed': removed, 'time': now}
+      catch
+        let s:git_status_cache = {'added': 0, 'modified': 0, 'removed': 0, 'time': now}
+      endtry
+    endif
+
+    let added = s:git_status_cache.added
+    let modified = s:git_status_cache.modified
+    let removed = s:git_status_cache.removed
 
     if [added,modified,removed] == [0, 0, 0]
       return ""
@@ -1109,7 +1118,8 @@ if !has('nvim')
     return name
   endfunction
 
-  autocmd BufRead,BufNewFile,BufEnter * call LsColorForStatusLine(expand('%:p'))
+  " Only update statusline color on BufEnter to avoid excessive calls
+  autocmd BufEnter * call LsColorForStatusLine(expand('%:p'))
   set statusline=
   "set statusline +=%1*\ %n\ %*                          " buffer number
   set statusline +=\%5*%{&ff}%*                          " file format
