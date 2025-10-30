@@ -17,19 +17,15 @@ setopt PROMPT_SUBST
 
 
 askas_butik_prompt_update() {
-    if [[ $HOST = 'fantomen' ]]; then
-      ASKAS_BUTIK_PROMPT="%F{107}[%F{108}${ASKAS_BUTIK}%F{107}]%f%k"
-    elif [[ $HOST = 'endie' ]]; then
-      ASKAS_BUTIK_PROMPT="%F{107}[%F{109}${ASKAS_BUTIK}%F{107}]%f%k"
-    elif [[ $HOST = 'debbie' ]]; then
-      ASKAS_BUTIK_PROMPT="%F{107}[%F{110}${ASKAS_BUTIK}%F{107}]%f%k"
-    elif [[ $HOST = 'dockie' ]]; then
-      ASKAS_BUTIK_PROMPT="%F{107}[%F{111}${ASKAS_BUTIK}%F{107}]%f%k"
-    elif [[ $HOST = 'x1' ]]; then
-      ASKAS_BUTIK_PROMPT="%F{107}[%F{208}${ASKAS_BUTIK}%F{107}]%f%k"
-    else
-      ASKAS_BUTIK_PROMPT="%F{107}[%F{196}${ASKAS_BUTIK}%F{107}]%f%k"
-    fi
+    # Use case statement instead of multiple if-elif for better performance
+    case "$HOST" in
+      fantomen) ASKAS_BUTIK_PROMPT="%F{107}[%F{108}${ASKAS_BUTIK}%F{107}]%f%k" ;;
+      endie)    ASKAS_BUTIK_PROMPT="%F{107}[%F{109}${ASKAS_BUTIK}%F{107}]%f%k" ;;
+      debbie)   ASKAS_BUTIK_PROMPT="%F{107}[%F{110}${ASKAS_BUTIK}%F{107}]%f%k" ;;
+      dockie)   ASKAS_BUTIK_PROMPT="%F{107}[%F{111}${ASKAS_BUTIK}%F{107}]%f%k" ;;
+      x1)       ASKAS_BUTIK_PROMPT="%F{107}[%F{208}${ASKAS_BUTIK}%F{107}]%f%k" ;;
+      *)        ASKAS_BUTIK_PROMPT="%F{107}[%F{196}${ASKAS_BUTIK}%F{107}]%f%k" ;;
+    esac
 #  PROMPT=$'%F{240}┌[${ASKAS_BUTIK_PROMPT}%F{220}${vcs_info_msg_0_}%F{240}]%f
 #%F{240}└[%F{30}%}%~%F{208}>%F{255} '
   PROMPT=$'%F{240}╔[%F{30}%}%~%F{220}${vcs_info_msg_0_}%F{240}]%f

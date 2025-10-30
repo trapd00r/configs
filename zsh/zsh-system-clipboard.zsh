@@ -213,12 +213,6 @@ function zsh-system-clipboard-vicmd-vi-substitue() {
 }
 zle -N zsh-system-clipboard-vicmd-vi-substitue
 
-function zsh-system-clipboard-vicmd-vi-delete-char() {
-  zle vi-delete-char
-  printf '%s' "$CUTBUFFER" | zsh-system-clipboard-set
-}
-zle -N zsh-system-clipboard-vicmd-vi-delete-char
-
 function zsh-system-clipboard-vicmd-vi-backward-delete-char() {
   zle vi-backward-delete-char
   printf '%s' "$CUTBUFFER" | zsh-system-clipboard-set

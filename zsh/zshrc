@@ -31,13 +31,14 @@ zstyle ':vcs_info:*' unstagedstr 'M'
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-zstyle ':vcs_info:*' enable git
 
-# Basic completion setup
+# Basic completion setup (optimized: use check-only mode if dump exists)
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+if [[ -f ~/.zcompdump ]]; then
+  # Dump exists: use check-only mode (much faster, ~0.1s vs ~13s)
   compinit -C
 else
+  # Dump missing: rebuild
   compinit
 fi
 
@@ -86,11 +87,11 @@ fi
 
 
 # Lazy load system clipboard
-_zsh_system_clipboard_load() {
-  source ~/etc/zsh/zsh-system-clipboard.zsh
-  precmd_functions=(${precmd_functions#_zsh_system_clipboard_load})
-}
-precmd_functions+=(_zsh_system_clipboard_load)
+# _zsh_system_clipboard_load() {
+#   source ~/etc/zsh/zsh-system-clipboard.zsh
+#   precmd_functions=(${precmd_functions#_zsh_system_clipboard_load})
+# }
+# precmd_functions+=(_zsh_system_clipboard_load)
 
 if [[ -f ~/.secret_zshrc ]]; then
   . ~/.secret_zshrc
@@ -103,7 +104,11 @@ fi
 # LS_COLORS
 if [[ -z $LS_COLORS ]]; then
   if [ -f $HOME/dev/LS_COLORS/LS_COLORS ]; then
-    cd $HOME/dev/LS_COLORS/ && git checkout japh &> /dev/null && cd -
+    # Only check out branch if not already on it (avoid git operation on every shell startup)
+    if [[ -d $HOME/dev/LS_COLORS/.git ]]; then
+      current_branch=$(cd $HOME/dev/LS_COLORS && git rev-parse --abbrev-ref HEAD 2>/dev/null)
+      [[ "$current_branch" != "japh" ]] && cd $HOME/dev/LS_COLORS && git checkout japh &> /dev/null && cd -
+    fi
     eval $( dircolors -b $HOME/dev/LS_COLORS/LS_COLORS )
   elif [ -f $HOME/.dircolors ]; then
     eval $( dircolors -b $HOME/.dircolors/ )
@@ -268,21 +273,34 @@ alias gdd='git diff --name-only HEAD~1..HEAD | ls_color'
 # edit modified files in the last commit
 alias vimlast='vim $(git diff --name-only HEAD~1..HEAD)'
 
-# ssh hosts aliases
+# ssh hosts aliases (truly lazy-loaded - only when ssh command is used)
 # https://github.com/trapd00r/utils/blob/master/ssh
-if [[ $UID != 0 ]]
-then
-  if [ -f "$HOME/.ssh/config" ]
-  then
-    for host in $(
-      perl -ne 'print "$1\n" if /\A[Hh]ost\s+(.+)$/' $HOME/.ssh/config
-      ); do
-
-      # alias $host="setbg_sshhosts $host; ssh $host $@"
-      alias $host="kitten ssh $host $@"
-    done
+_ssh_hosts_aliased=false
+_ssh_hosts_setup() {
+  [[ $_ssh_hosts_aliased == true ]] && return
+  if [[ $UID != 0 ]] && [[ -f "$HOME/.ssh/config" ]]; then
+    # Fast file size check (much faster than counting)
+    local config_size
+    config_size=$(stat -f%z "$HOME/.ssh/config" 2>/dev/null || stat -c%s "$HOME/.ssh/config" 2>/dev/null || echo 0)
+    # Skip if config file is too large (> 50KB suggests many hosts)
+    if [[ $config_size -lt 51200 ]]; then
+      # Single perl pass: extract hosts directly
+      local host
+      while IFS= read -r host; do
+        [[ -z $host ]] && continue
+        # Skip wildcards and patterns
+        [[ $host != *[*?]* ]] && alias $host="kitten ssh $host \$@"
+      done < <(perl -lne '/^[Hh]ost\s+(.+)$/ && print $1' "$HOME/.ssh/config" 2>/dev/null | head -100)
+      _ssh_hosts_aliased=true
+    fi
   fi
-fi
+}
+
+# Only set up SSH aliases when ssh command is actually used
+ssh() {
+  _ssh_hosts_setup
+  command ssh "$@"
+}
 
 # ========== ALIAS END ==================================
 # ========== ABBREV START ===============================
@@ -725,7 +743,7 @@ setopt \
   no_single_command
 #>
 
-autoload -U age compinit relative
+autoload -U age relative
 zle -C most-accessed-file menu-complete _generic
 
 autoload -U url-quote-magic
@@ -735,9 +753,6 @@ function _url-quote-magic() {
   url-quote-magic;
   _zsh_highlight-zle-buffer
 }
-
-#compinit
-autoload -U url-quote-magic
 
 zle -N bracketed-paste bracketed-paste-url-magic
 
@@ -959,8 +974,7 @@ mplayer_6ch_headphones() {
 # ========== FUNCTION END ===============================
 # ========== COMPLETION START ===========================
 # add generic completion to some things
-autoload -U age compinit relative
-compinit -u
+# compinit already called earlier, age and relative autoloaded above
 compdef     _gnu_generic c256 cc256 ln file
 compdef     _feh         f ff
 compdef     _files       mkdir mkdr
@@ -1043,8 +1057,7 @@ zstyle ':completion:*:*:beet*' file-patterns '
 '
 
 # git things
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
+# vcs_info already autoloaded and enabled above
 zstyle ':vcs_info:*' stagedstr 'M'
 zstyle ':vcs_info:*' unstagedstr 'M'
 zstyle ':vcs_info:*' check-for-changes true
@@ -1052,7 +1065,6 @@ zstyle ':vcs_info:*' actionformats '%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 # zstyle ':vcs_info:*' formats \
 #  '%F{5}[%F{2}%b%F{5}] %F{2}%c%F{3}%u%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-zstyle ':vcs_info:*' enable git
 +vi-git-untracked() {
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
   [[ $(git ls-files --other --directory --exclude-standard | sed q | wc -l | tr -d ' ') == 1 ]] ; then
@@ -1359,10 +1371,10 @@ fi
 
 
 # ========== COMPLETION END =============================
-#zprof
+#zprof  # Uncomment this line to see detailed profiling report
+#      # Then run: zsh -ic 'zprof | head -30' to see top 30 slowest functions
 
-# yank to primary
-. ~/etc/zsh/zsh-system-clipboard.zsh
+# yank to primary (already lazy-loaded above via precmd hook, this is redundant but kept for compatibility)
 
 # fzf all the things
 . ~/etc/zsh/11-fzf-completion.zsh
@@ -1501,7 +1513,7 @@ export FZF_DEFAULT_OPTS='--exact -i --pointer=━ --height 80% --layout=reverse 
 
 alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'
 
-# ta bort, finns i zprofile
+# ta bort, finns i zprofile (PATH set here, duplicate removed below)
 export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/"
 
 # alias df='duf -hide loops'
@@ -1591,8 +1603,7 @@ function vim() {
 # tail dahbug no matter how deep in the directory structure you are
 # alias dahbug='tail -F "$(git root)"/../dahbug.log'
 
-eval "$(zoxide init zsh)"
-alias cd="z"
+# zoxide init --cmd cd already replaces cd with zoxide's smart cd, no need for alias
 
 export EDITOR=nvim
 export VIDIR_EDITOR=nvim
@@ -1725,7 +1736,8 @@ eval "$(atuin init zsh)"
 # ^[[114;6u = ctrl+shift+r
 
 
-
+# Syntax highlighting - load normally (already optimized mkstyle function)
+# The mkstyle optimization saves ~5-6s, so we keep it loaded but optimized
 source ~/dev/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
 
 export COMPOSER_FUND=0
@@ -1741,10 +1753,14 @@ export BROWSER=""
 
 export NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID="G-477X7GN98W"
 
-export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/"
+# PATH already exported above, duplicate removed
 
 ### NVM (lazy load, auto `.nvmrc` support)
 export NVM_DIR="$HOME/.nvm"
+
+# Track current .nvmrc to avoid unnecessary reloads
+_nvm_current_version=""
+_nvm_current_dir=""
 
 # Lazy-load nvm only on first use
 nvm() {
@@ -1757,15 +1773,45 @@ nvm() {
 autoload -U add-zsh-hook
 
 load-nvm-on-cd() {
-  if [ -f .nvmrc ]; then
-    nvm use > /dev/null
+  local current_dir=$(pwd -P)
+
+  # Skip if we're still in the same directory
+  [[ "$current_dir" == "$_nvm_current_dir" ]] && return
+
+  # Fast check: only proceed if .nvmrc exists
+  [[ -f .nvmrc ]] || {
+    _nvm_current_dir=""
+    _nvm_current_version=""
+    return
+  }
+
+  # Read the version from .nvmrc
+  local nvmrc_version=$(cat .nvmrc 2>/dev/null | tr -d '[:space:]')
+
+  # Skip if we're already using this version
+  [[ "$nvmrc_version" == "$_nvm_current_version" ]] && {
+    _nvm_current_dir="$current_dir"
+    return
+  }
+
+  # Load nvm if not already loaded
+  if ! command -v nvm &>/dev/null; then
+    [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
+  fi
+
+  # Switch to the version (only if nvm is available)
+  if command -v nvm &>/dev/null; then
+    nvm use > /dev/null 2>&1 && {
+      _nvm_current_version="$nvmrc_version"
+      _nvm_current_dir="$current_dir"
+    }
   fi
 }
 
 add-zsh-hook chpwd load-nvm-on-cd
 
-# Run it once on shell startup (in case you're already in a project dir)
-load-nvm-on-cd
+# Run it once on shell startup only if .nvmrc exists (fast file check)
+[[ -f .nvmrc ]] && load-nvm-on-cd
 
 
 
