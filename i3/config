@@ -18,21 +18,14 @@ workspace_auto_back_and_forth no
 # mappings
 #--------------------------------------
 
-bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
-bindsym $mod+' exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
-
 bindsym $mod+Return exec kitty -o font_family="Anonymous Pro" -o font_size=8 -o bold_font="Anonymous Pro Bold" -o italic_font="Anonymous Pro Italic" -o bold_italic_font="Anonymous Pro Bold Italic"
-# bindsym $mod+Shift+1 exec --no-startup-id fzfbinselect
 bindsym $mod+Shift+1 exec --no-startup-id ~/etc/i3/bin/rofirun
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+k kill
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s exec flameshot gui
 bindsym $mod+v exec simplescreenrecorder
-bindsym $mod+o exec i3-vaultwarden-add-domain.sh
-bindsym $mod+e exec i3-vaultwarden-edit.sh
-bindsym F12 exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh pick
-bindsym $mod+BackSpace exec --no-startup-id sh -c 'xclip -o -selection primary'
+# bindsym $mod+BackSpace exec --no-startup-id sh -c 'xclip -o -selection primary'
 
 
 #--------------------------------------
@@ -88,9 +81,6 @@ client.unfocused        #121212 #121212 #1ABC9C #121212
 client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #2B2C2B
-
-# qutebrowser external file selector
-for_window [title="file selector"] floating enable
 
 # gcolor3
 for_window [title="Color Picker"] floating enable
@@ -270,6 +260,6 @@ exec --no-startup-id bash ~/etc/i3/bin/polybar_launch.sh
 #exec --no-startup-id bash ~/bin/notify_clock_temperature
 #exec --no-startup-id bash ~/bin/notify_clock2
 
-exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
+# exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
 
-exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh monitor
+# exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh monitor
