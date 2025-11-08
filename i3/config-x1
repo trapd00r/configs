@@ -99,10 +99,9 @@ for_window [title="file selector"] floating enable
 for_window [title="Color Picker"] floating enable
 
 for_window [title="scratchpad"] floating enable
-# new email window
-for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
-# message window
-for_window [window_role="messageWindow" class="(?i)Thunderbird"] floating enable
+
+for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, move position center
+
 
 #--------------------------------------
 # persistent workspaces on 4 monitors
