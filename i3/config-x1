@@ -19,16 +19,12 @@ workspace_auto_back_and_forth no
 #--------------------------------------
 
 bindsym $mod+Return exec kitty -o font_family="Anonymous Pro" -o font_size=8 -o bold_font="Anonymous Pro Bold" -o italic_font="Anonymous Pro Italic" -o bold_italic_font="Anonymous Pro Bold Italic"
-# bindsym $mod+Shift+1 exec --no-startup-id fzfbinselect
 bindsym $mod+Shift+1 exec --no-startup-id /home/scp1/etc/i3/bin/rofirun
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+k kill
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s exec flameshot gui
 bindsym $mod+v exec simplescreenrecorder
-bindsym $mod+o exec i3-vaultwarden-add-domain.sh
-bindsym $mod+e exec i3-vaultwarden-edit.sh
-bindsym F12 exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh pick
 bindsym $mod+BackSpace exec --no-startup-id sh -c 'xclip -o -selection primary' 
 
 
@@ -93,8 +89,6 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #2B2C2B
 
 
-# qutebrowser external file selector
-for_window [title="file selector"] floating enable
 # gcolor3
 for_window [title="Color Picker"] floating enable
 
@@ -111,9 +105,9 @@ for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 
 # https://gist.github.com/trapd00r/1914f83477fb126f737fa764083a2627
 
 # define outputs
-set $middle DP-1-1-5
-set $left DP-3
-set $top DP-1-1-6
+set $middle DP-3-1-5
+set $left DP-1
+set $top DP-3-1-6
 set $laptop eDP-1
 
 # Define workspaces
@@ -265,6 +259,6 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # better tiling
 exec i3-layouts
 
-exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
+# exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
 
-exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh monitor
+# exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh monitor
