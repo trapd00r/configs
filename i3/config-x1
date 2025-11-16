@@ -248,6 +248,23 @@ bindsym $mod+Shift+l workspace next
 # Mod1+H to switch to the previous workspace
 bindsym $mod+Shift+h workspace prev
 
+# Move window to workspace 1-9 on current monitor (Alt+1-9)
+bindsym Mod1+1 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 1
+bindsym Mod1+2 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 2
+bindsym Mod1+3 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 3
+bindsym Mod1+4 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 4
+bindsym Mod1+5 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 5
+bindsym Mod1+6 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 6
+bindsym Mod1+7 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 7
+bindsym Mod1+8 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 8
+bindsym Mod1+9 exec --no-startup-id /bin/bash ~/etc/i3/bin/move-to-workspace.sh 9
+
+# Move window to next workspace on same monitor (Alt+Shift+l)
+bindsym Mod1+Shift+l exec --no-startup-id /bin/bash ~/etc/i3/bin/move-workspace-next.sh
+
+# Move window to previous workspace on same monitor (Alt+Shift+h)
+bindsym Mod1+Shift+h exec --no-startup-id /bin/bash ~/etc/i3/bin/move-workspace-prev.sh
+
 
 
 #--------------------------------------
