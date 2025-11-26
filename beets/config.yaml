@@ -85,6 +85,7 @@ duplicates:
 # I wish this didn't asciify explicit unicode characters, i.e │
 #asciify_paths:         yes
 
+original_date:         yes
 art_filename:          cover # cover.*
 format_album:          $path
 format_item:           $path
@@ -135,6 +136,7 @@ import:
 plugins: [
   'bucket',
   'discogs',
+  # 'deezer',
   'edit',
   'embedart',
   'fetchart',
@@ -149,6 +151,7 @@ plugins: [
   # 'plexsync',
   'plexupdate',
   'rewrite',
+  'spotify',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
 ]
@@ -188,7 +191,31 @@ tcp:
           'XX',
   ]
 
+musicbrainz:
+  source_weight: 0.1
+  enabled: yes
+  extra_tags: [year, originalyear, catalognum,
+               country, media, label
+              ]
+
 discogs:
+  source_weight: 0.1
+
+spotify:
+  source_weight: 0.0
+  # data_source_mismatch_penalty: 0.5
+  # search_limit: 5
+  mode: list
+  region_filter:
+  show_failures: no
+  tiebreak: popularity
+  regex: []
+  search_query_ascii: no
+  # client_id: REDACTED
+  # client_secret: REDACTED
+  # tokenfile: spotify_token.json
+
+deezer:
   source_weight: 0.0
 
 bucket:
@@ -293,10 +320,6 @@ plex:
   port: 32400
   library_name: 'Music2'
 
-musicbrainz:
-  extra_tags: [year, originalyear, catalognum,
-               country, media, label
-              ]
 
 rewrite:
   album The Simpsons [(]Season I[)]:     The Simpsons Season 01
@@ -352,6 +375,8 @@ rewrite:
   album Jukeboxen i p4:              P4 Jukeboxen
   album Musikspecial i p4:           P4 Musikspecial
 
+  artist Cajsa[lL]isa*:              CajsaLisa Ejemyr
+  artist Cajsa[sS]tina*:             CajsaStina Åkerström
   artist 50 Cent*:                   50 Cent
   artist PippiRull:                  Pippirull
   artist Royce Da 5*:                Royce Da 5'9"
