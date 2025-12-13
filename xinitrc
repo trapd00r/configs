@@ -16,6 +16,12 @@ if [[ $(hostname) = 'fantomen' ]]; then
   #  [][ ][]
 
   # nvidia-settings --assign "CurrentMetaMode=DPY-1: nvidia-auto-select @1080x1920 +0+0 {ViewPortIn=1080x1920,ViewPortOut=1920x1080+0+0, Rotation=270}, DPY-0: nvidia-auto-select @1080x1920 +3000+0 {ViewPortIn=1080x1920, ViewPortOut=1920x1080+0+0, Rotation=90},DPY-3: nvidia-auto-select @1920x1080 +1080+0 {ViewPortIn=1920x1080, ViewPortOut=1920x1080+0+0}"
+#nvidia-settings --assign "CurrentMetaMode=\
+#  DPY-1: nvidia-auto-select @2560x2880 +0+1080 {Rotation=0}, \
+#  DPY-6: nvidia-auto-select @1920x1080 +2560+0 {Rotation=0}, \
+#  DPY-3: nvidia-auto-select @1920x1080 +2560+1080 {Rotation=0}, \
+#  DPY-0: nvidia-auto-select @1920x1080 +4480+1080 {Rotation=90}"
+
   xrandr --output DP-2   --primary \
          --output DP-0   --left-of DP-2 \
          --output DP-5   --above DP-2 \
@@ -31,6 +37,9 @@ if [[ $(hostname) = 'fantomen' ]]; then
 
   # https://github.com/trapd00r/hass-mpd-ikea
   webhook -hooks ${HOME}/dev/hass-mpd-ikea/hooks.json &
+
+  # NO FONTS IN VIVALDI UI!
+  xfsettingsd &
 
 #  perl ${HOME}/dev/sdorfehs-config/sdorfehs-bar.pl &
 
