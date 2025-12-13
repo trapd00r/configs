@@ -144,6 +144,9 @@ setxkbmap -option caps:escape
 # gsettings set org.gnome.desktop.interface gtk-theme "japh"
 
 
+# this is needed for geolocation in firefox and vivaldi to work
+# might not work in vivaldi anyway but
+/usr/lib/geoclue-2.0/demos/agent & 
 
 if [[ $(hostname) = 'fantomen' ]]; then
   exec i3-workspace-fix
