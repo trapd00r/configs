@@ -54,7 +54,7 @@ Plug 'rhysd/clever-f.vim'                                                 " keep
 Plug 'rhysd/committia.vim', { 'for': 'gitcommit' }                      " better experience dealing with commit msg - lazy load
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                    " function navigator - lazy load
 Plug 'tpope/vim-fugitive'                                                 " git wrapper
-Plug 'tpope/vim-repeat'                                                   " repeat all the things
+" Plug 'tpope/vim-repeat'                                                   " repeat all the things
 Plug 'vim-scripts/AnsiEsc.vim'                                            " highlight strings with esc seq in its color
 Plug 'wookayin/fzf-ripgrep.vim', { 'on': ['RgFzf', 'RgDefFzf'] }        " grep -> fuzzyfind results - lazy load
 Plug 'chrisbra/Colorizer', { 'on': ['ColorToggle'] }                     " colorize hex codes etc - lazy load
@@ -68,6 +68,7 @@ if has('nvim')
   " Plug 'Eandrju/cellular-automaton.nvim'                                  " F11, :CellularAutomaton make_it_rain
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " improved syntax hl and stuff
   " Plug 'ja-he/heat.nvim'                                                  " git heatmap
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   Plug 'kevinhwang91/nvim-ufo'                                            " better looking folds
   Plug 'kevinhwang91/promise-async'                                       " required for nvim-ufo
   Plug 'nvim-lua/plenary.nvim'                                            " required for telescope
@@ -131,7 +132,7 @@ set autoread                                                               " rea
 set backspace=start,indent,eol                                             " what backspace, ^w etc will operate on
 set cindent                                                                " c program indenting
 set cinkeys-=0#                                                            " https://stackoverflow.com/questions/354097/how-to-configure-vim-to-not-put-comments-at-the-beginning-of-lines-while-editing#comment127103383_354097
-set clipboard=unnamed                                                      " define clipboard registers to use
+set clipboard=unnamedplus                                                  " define clipboard registers to use
 set cdhome                                                                 " cd to ~ on :cd
 set colorcolumn&                                                           " useful at times but disabled by default
 set complete=.,w,b,u,d,k,kspell                                            " insert mode completion for ^n, ^p
@@ -299,7 +300,6 @@ endif
 
 
 " ========== OPTIONS END ================================
-
 
 colorscheme neverland_black_bg
 
