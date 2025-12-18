@@ -82,6 +82,10 @@ elif [[ $(hostname) = 'x1' ]]; then
   # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x643 --rotate normal --output HDMI-1 --off --output DP-1 --off --output DP-2 --off --output DP-3 --mode 2560x2880 --pos 0x0 --rotate normal --output DP-4 --off --output DP-1-1 --off --output DP-1-1-5 --primary --mode 1920x1080 --pos 2560x1080 --rotate normal --output DP-1-1-6 --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-1-2 --off --output DP-1-3 --off
   # xrandr --output eDP-1 --mode 1920x1200 --pos 4480x840 --rotate normal --output HDMI-1 --off --output DP-1 --mode 2560x2880 --pos 0x0 --rotate normal --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-4-1 --off --output DP-4-1-5 --primary --mode 1920x1080 --pos 2560x1362 --rotate normal --output DP-4-1-6 --mode 1920x1080 --pos 2560x282 --rotate normal --output DP-4-2 --off --output DP-4-3 --off
 
+ # XXX NOTE this might be needed after a system upgrade later on, for vivaldi fonts in ui
+ # xfsettingsd &
+
+
 fi
 
 #----------------------------------------
@@ -106,8 +110,8 @@ xsetroot -cursor_name left_ptr
 #   clipboard -> primary
 #   primary   -> clipboard
 #----------------------------------------
-# autocutsel -selection CLIPBOARD -fork
-# autocutsel -selection PRIMARY -fork
+#autocutsel -selection CLIPBOARD -fork
+#autocutsel -selection PRIMARY -fork
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
@@ -146,7 +150,7 @@ setxkbmap -option caps:escape
 
 # this is needed for geolocation in firefox and vivaldi to work
 # might not work in vivaldi anyway but
-/usr/lib/geoclue-2.0/demos/agent & 
+/usr/lib/geoclue-2.0/demos/agent &
 
 if [[ $(hostname) = 'fantomen' ]]; then
   exec i3-workspace-fix
