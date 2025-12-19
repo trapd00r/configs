@@ -27,6 +27,8 @@ bindsym $mod+s exec flameshot gui
 bindsym $mod+v exec simplescreenrecorder
 # bindsym $mod+BackSpace exec --no-startup-id sh -c 'xclip -o -selection primary'
 
+bindsym $mod+m exec i3lock -c 000000
+
 
 #--------------------------------------
 # window management
@@ -86,6 +88,9 @@ client.background       #2B2C2B
 for_window [title="Color Picker"] floating enable
 
 for_window [title="scratchpad"] floating enable
+
+for_window [title="flameshot"] border pixel 0, floating enable, fullscreen disable 
+
 
 for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, move position center
 
