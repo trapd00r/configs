@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 # $XDG_CONFIG_HOME/xinitrc
 
 #----------------------------------------
@@ -25,7 +25,7 @@ if [[ $(hostname) = 'fantomen' ]]; then
   xrandr --output DP-2   --primary \
          --output DP-0   --left-of DP-2 \
          --output DP-5   --above DP-2 \
-         --output HDMI-0 --below DP-2 \
+         --output HDMI-0 --below DP-2
          # --output DVI-I-1-1 --left-of DP-0
 #         --output DVI-I-1-1 --rotate left --left-of DP-0
 
@@ -144,6 +144,9 @@ setxkbmap -option caps:escape
 # https://github.com/ALEX11BR/ThemeChanger
 
 
+# win+å = clone monitor etc using xfce4-display-settings
+
+
 # dbus-launch --exit-with-session dconf write /org/gnome/desktop/interface/gtk-theme "'japh'"
 # gsettings set org.gnome.desktop.interface gtk-theme "japh"
 
@@ -152,7 +155,11 @@ setxkbmap -option caps:escape
 # might not work in vivaldi anyway but
 /usr/lib/geoclue-2.0/demos/agent &
 
+# adds tray icon to polybar for network manager
+nm-applet --indicator &
+
 if [[ $(hostname) = 'fantomen' ]]; then
+  # xrandr --output DP-2 --primary
   exec i3-workspace-fix
   # exec sdorfehs -f $HOME/dev/sdorfehs-config/sdorfehsrc
 elif [[ $(hostname) = 'x1' ]]; then
