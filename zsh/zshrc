@@ -1513,9 +1513,6 @@ export FZF_DEFAULT_OPTS='--exact -i --pointer=━ --height 80% --layout=reverse 
 
 alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'
 
-# ta bort, finns i zprofile (PATH set here, duplicate removed below)
-export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/"
-
 # alias df='duf -hide loops'
 
 #export VIMRUNTIME=${HOME}/etc/vim
@@ -1748,12 +1745,8 @@ export COMPOSER_NO_DEV=0
 
 
 export BROWSER=""
-#eval "$(rbenv init -)"
-#export PATH="$HOME/.rbenv/bin:$PATH"
 
 export NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID="G-477X7GN98W"
-
-# PATH already exported above, duplicate removed
 
 ### NVM (lazy load, auto `.nvmrc` support)
 export NVM_DIR="$HOME/.nvm"
@@ -1835,3 +1828,25 @@ artisan() {
   cd "$old_cwd"
 }
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/scp1/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/scp1/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/scp1/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/scp1/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export BROWSER=vivaldi
+
+alias hr='hr -c ━ -fg 196'
+
+# test for steam
+LD_PRELOAD=""

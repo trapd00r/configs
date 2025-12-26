@@ -60,7 +60,7 @@ export TZ="Europe/Stockholm"
 
 ### PATH
 #export          PATH=${HOME}/dev/utils:${HOME}/bin:${HOME}/dev/askas/utils-askas/:${HOME}/.local/bin:bin:/usr/local/bin:/usr/bin/core_perl:/usr/bin/core_perl/bin/:/usr/bin:${HOME}/bin/site_perl:/usr/bin/vendor_perl:/sbin:/usr/sbin:/usr/games:/usr/local/games:$HOME/lib/go/bin:$HOME/perl6/bin:$HOME/.gem/ruby/2.5.0/bin:/var/lib/snapd/snap/bin:~/.gem/ruby/2.7.0/bin:/home/scp1/dev/askas/utils-askas/bin
-export          PATH="$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/:${GEM_HOME}/bin"
+export          PATH="$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin:/home/scp1/.nvm/versions/node/v22.13.1/bin/:${GEM_HOME}/bin"
 
 export      PERL5LIB=${HOME}/perl5/lib/perl5/:${HOME}/lib/perl5:${HOME}/dev/askas/lib/:${HOME}/dev/askas/AIR-local/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/lib:${HOME}/dev/askas/air8/cgi-bin/core/objects:${HOME}/dev/askas/air8/cgi-bin/ibutik/admin/:${HOME}/lib/perl5/lib/perl5:${HOME}/dev/askas/air8/cgi-bin/api/shared/lib
 export      TERMINFO=${HOME}/usr/share/terminfo:/usr/share/terminfo
@@ -212,10 +212,6 @@ export GTK_THEME=japh
 export SYSTEMD_COLORS=256
 export GEM_HOME=${HOME}/lib/ruby
 export __GL_SYNC_TO_VBLANK=1
-
-# Initialize rbenv
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Initialize zoxide
 eval "$(zoxide init zsh)"
