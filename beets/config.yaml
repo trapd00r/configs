@@ -134,6 +134,7 @@ import:
 # options->plugin
 
 plugins: [
+  'autoalbumtype',
   'bucket',
   'discogs',
   # 'deezer',
@@ -155,6 +156,13 @@ plugins: [
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
 ]
+
+# Auto-set albumtype for asis imports based on track count
+autoalbumtype:
+  single_max: 2   # <= 2 tracks -> single
+  ep_max: 6       # 3-6 tracks  -> ep
+                  # 7+ tracks   -> unchanged (uses default path)
+
 
 # these articles should be cased exactly as stated
 tcp:
