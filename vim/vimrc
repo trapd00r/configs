@@ -2051,4 +2051,4 @@ function! ElmFormatExpr()
   endif
 endfunction
 
-autocmd FileType elm setlocal formatexpr=ElmFormatExpr()
+autocmd FileType elm setlocal formatexpr=ElmFormatExpr() textwidth=0
