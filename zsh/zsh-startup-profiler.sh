@@ -32,3 +32,4 @@ echo "For each 'source' in zshrc, wrap with:"
 echo "  time ( source ~/etc/zsh/filename.zsh )"
 echo ""
 
+

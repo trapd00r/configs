@@ -161,6 +161,10 @@ c.tabs.padding = {
 
 
 
+config.unbind('<Ctrl-f>', mode='normal')
+# config.unbind('<Ctrl-f>', mode='insert')
+config.bind('<Ctrl-f>', 'spawn --userscript autofill-form')
+
 config.unbind('gb',         mode='normal')
 config.unbind('b',          mode='normal')
 config.unbind('q',          mode='normal')

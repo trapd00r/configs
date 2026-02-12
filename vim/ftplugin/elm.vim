@@ -14,5 +14,11 @@ set cpo&vim
 setlocal comments=s1fl:{-,mb:\ ,ex:-},:--
 setlocal commentstring=--\ %s
 
+" Use elm-format for gq formatting
+if executable('elm-format')
+  setlocal formatprg=elm-format\ --stdin
+  setlocal formatexpr=
+endif
+
 let &cpo = s:cpo_save
 unlet s:cpo_save

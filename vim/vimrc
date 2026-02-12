@@ -2022,3 +2022,33 @@ hi Headline ctermbg=235
 
 
 " let g:copilot_settings = #{selectedCompletionModel: 'gpt-4o-copilot'}
+
+
+" Elm formatting with gq - strips module header that elm-format adds to snippets to make them compile
+function! ElmFormatExpr()
+  let l:start_line = v:lnum
+  let l:end_line = v:lnum + v:count - 1
+
+  let l:lines = getline(l:start_line, l:end_line)
+
+  let l:formatted = systemlist('elm-format --stdin', l:lines)
+
+  call filter(l:formatted, 'v:val !~ "^module Main exposing"')
+
+  while len(l:formatted) > 0 && l:formatted[0] =~ '^\s*$'
+    call remove(l:formatted, 0)
+  endwhile
+
+  while len(l:formatted) > 0 && l:formatted[-1] =~ '^\s*$'
+    call remove(l:formatted, -1)
+  endwhile
+
+  call setline(l:start_line, l:formatted)
+
+  let l:lines_diff = (l:end_line - l:start_line + 1) - len(l:formatted)
+  if l:lines_diff > 0
+    execute (l:start_line + len(l:formatted)) . ',' . l:end_line . 'delete'
+  endif
+endfunction
+
+autocmd FileType elm setlocal formatexpr=ElmFormatExpr()
