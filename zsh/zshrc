@@ -1851,3 +1851,24 @@ alias cat=/usr/bin/cat
 LD_PRELOAD=""
 
 alias dmesg='dmesg -Tw'
+
+
+# Brother PT-710BT label printer
+# - Install ptouch-print from aur
+# - Generate labels on https://gridfinitylabels.com
+
+# fontsize 60 is max for 12mm tape
+ptouch-text() {
+    ptouch-print --fontsize 60 --text "$@"
+}
+
+# Print image labels on 12mm tape (Optimized for technical drawings)
+ptouch-img() {
+    if [[ -f "$1" ]]; then
+        magick "$1" -resize x70 -colors 2 -colorspace gray -depth 1 -define png:bit-depth=1 /tmp/label_print.png && \
+        ptouch-print --image /tmp/label_print.png
+    else
+        echo "Error: File '$1' not found."
+    fi
+}
+
