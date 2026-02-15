@@ -112,8 +112,8 @@ xsetroot -cursor_name left_ptr
 #----------------------------------------
 #autocutsel -selection CLIPBOARD -fork
 #autocutsel -selection PRIMARY -fork
-autocutsel -fork
-autocutsel -selection PRIMARY -fork
+# autocutsel -fork
+# autocutsel -selection PRIMARY -fork
 
 #----------------------------------------
 # things needed when not using a DE
@@ -153,10 +153,19 @@ setxkbmap -option caps:escape
 
 # this is needed for geolocation in firefox and vivaldi to work
 # might not work in vivaldi anyway but
-/usr/lib/geoclue-2.0/demos/agent &
+# /usr/lib/geoclue-2.0/demos/agent &
 
 # adds tray icon to polybar for network manager
 nm-applet --indicator &
+
+# pulseaudio
+pasystray &
+
+# clipboard manager, sync
+# clipit &
+
+# do not sync primary into clipboard, but the other way around
+autocutsel -selection CLIPBOARD -fork
 
 if [[ $(hostname) = 'fantomen' ]]; then
   # xrandr --output DP-2 --primary

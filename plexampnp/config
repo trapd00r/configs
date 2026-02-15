@@ -25,7 +25,7 @@ width = 90
 height = 45
 
 [db]
-host = 192.168.1.7
+host = 192.168.1.83
 port = 3306
 dbname = music
 user = admin

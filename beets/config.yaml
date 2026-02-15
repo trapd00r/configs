@@ -152,7 +152,7 @@ plugins: [
   # 'plexsync',
   'plexupdate',
   'rewrite',
-  'spotify',
+  # 'spotify',
   'smartplaylist',
   'tcp', # https://github.com/trapd00r/beets-tcp
 ]

@@ -6,7 +6,11 @@
 -P .
 
 # download mp4 if available, else download whatever and reencode to mp4
--S res,ext:mp4:m4a --recode mp3
+#-S res,ext:mp4:m4a --recode mp3
+# -S res,ext:mp4:m4a
+
+# threads
+# -N 8
 
 #--parse-metadata=pre_process
 
@@ -18,6 +22,7 @@
 --replace-in-metadata "title" "\(Official Music Video\)|\(Audio\)" ""
 --replace-in-metadata "title" "\[Official Music Video\]|\[Audio\]" ""
 --replace-in-metadata "title" "\[Official HD Video\]|\[Audio\]" ""
+--replace-in-metadata "title" "\[Official Lyric Video\]|\[Audio\]" ""
 --replace-in-metadata "title" "\(Official\)" ""
 --replace-in-metadata "title" "\(official\)" ""
 --replace-in-metadata "title" "\(HD\)" ""

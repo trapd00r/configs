@@ -1847,3 +1847,7 @@ alias issues="cd "$(git rev-parse --show-toplevel)"/../documentation && PAGER=""
 # nvm alias default 22  # Disabled: use system node by default, only load nvm when explicitly needed
 
 alias cat=/usr/bin/cat
+# test for steam
+LD_PRELOAD=""
+
+alias dmesg='dmesg -Tw'

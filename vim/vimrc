@@ -1678,9 +1678,9 @@ highlight Winbar cterm=bolditalic ctermfg=244
 
 " highlight the line that starts the current block
 " only if in neovim
-" if has('nvim')
-"   highlight @ibl.scope.underline.1 cterm=underline
-" endif
+if has('nvim')
+  highlight @ibl.scope.underline.1 cterm=underline
+endif
 
 " hide this, since it's considered NonText
 autocmd BufReadPost * highlight @ibl.indent.char.1 ctermfg=232
