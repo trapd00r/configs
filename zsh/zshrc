@@ -1862,6 +1862,7 @@ ptouch-text() {
     ptouch-print --fontsize 60 --text "$@"
 }
 
+
 # Print image labels on 12mm tape (Optimized for technical drawings)
 ptouch-img() {
     if [[ -f "$1" ]]; then
@@ -1870,5 +1871,14 @@ ptouch-img() {
     else
         echo "Error: File '$1' not found."
     fi
+}
+
+
+ptouch-gridfinity-text() {
+   magick -background white -fill black -font Arial-Bold \
+       -size 600x200 -gravity center \
+       label:"$@"  \
+       /tmp/gridfinity_label.png && \
+       ptouch-img /tmp/gridfinity_label.png
 }
 
