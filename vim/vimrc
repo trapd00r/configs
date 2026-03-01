@@ -155,7 +155,8 @@ set foldminlines=2                                                         " clo
 set foldnestmax=4                                                          " maximum nesting when using syntax or indent foldmethods
 set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo          " actions that will open a fold
 set formatoptions=qro                                                      " options for formatting; like gq
-set grepprg=internal                                                       " what grep to use
+" set grepprg=internal                                                       " what grep to use
+set grepprg="rg --vimgrep --pcre2 --smart-case --sort path"
 set helpheight=5                                                           " height of help window
 set helplang=en                                                            " language of help
 set hidden                                                                 " better buffer handling
@@ -225,7 +226,7 @@ set synmaxcol=500                                                          " max
 set t_Co=256                                                               " terminal supports 256 colors
 set tabpagemax=4                                                           " max tab pages when using -p flag
 set tabstop=2                                                              " shouldn't modify this the help states..?
-set tags=./tags,tags,~/dev/tags,~/dev/askas/utils-askas/vim/tags           " location of tag files
+set tags=./tags,tags,~/dev/tags                                            " location of tag files
 set textwidth=80                                                           " maximum width of text
 set title                                                                  " set title for the terminal
 set timeout                                                                " time out on mappings
@@ -634,9 +635,6 @@ nnoremap <leader>M :Marks<cr>
 
 " quickly change ft
 nnoremap <leader>ft :Filetypes<cr>
-
-"command! -bang AIR8files call fzf#vim#files('~/dev/askas/air8', <bang>0)
-"nnoremap <leader>air :AIR8files<cr>
 
 "nnoremap <leader>f :RgFzf
 
@@ -1506,11 +1504,6 @@ autocmd BufNewFile *.t
 "  \ | exe 'normal d$A'
 "  \ | startinsert
 
-" template for oneshot quick scripts using entire air stack
-autocmd BufNewFile *.air
-  \   silent! 0r ~/dev/askas/utils-askas/vim/templates/air_oneshot.air
-  \ | 0
-  \ | exe 'normal Go'
 " ========== TEMPLATES END ==============================
 " ========== ABBREVATIONS START =========================
 

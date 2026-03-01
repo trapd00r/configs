@@ -174,7 +174,6 @@ alias     c='builtin cd $XDG_CONFIG_HOME/'
 alias     d='builtin cd $HOME/dev'
 alias     t='builtin cd $HOME/tmp'
 alias     u='builtin cd $HOME/dev/utils'
-alias psp="cd ${HOME}/dev/askas/air8/cgi-bin/core/lib/AIR/PSP2"
 
 # basics
 alias       R='rehash'
@@ -1514,7 +1513,7 @@ export FZF_DEFAULT_OPTS='--exact -i --pointer=━ --height 80% --layout=reverse 
 alias rmrar='rm -v **/*.r{ar,[0-9][0-9]}'
 
 # ta bort, finns i zprofile (PATH set here, duplicate removed below)
-export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin"
+# export PATH="${HOME}/lib/python/bin:$HOME/dev/sdorfehs-config/bin:${HOME}/dev/askas/utils-askas/bin:${HOME}/dev/askas/utils-askas/bin/selenium::${HOME}/dev/askas/utils-askas/:$HOME/lib/perl5/bin/:$HOME/perl5/bin:$HOME/bin:$HOME/dev/utils${PATH:+:${PATH}}:${HOME}/.php-school/bin:${HOME}/dev/hass-stupid/util:/home/scp1/lib/go/bin:/home/scp1/etc/i3/bin"
 
 # alias df='duf -hide loops'
 
@@ -1830,11 +1829,7 @@ artisan() {
   cd "$old_cwd"
 }
 
-export PATH="/opt/android-sdk/platform-tools:$PATH"
-
 alias gitshow='git show $@ --stat --color=always'
-
-alias ca="cursor-agent"
 
 
 export COMPOSER_FUND=0
@@ -1843,7 +1838,7 @@ export COMPOSER_IPRESOLVE=4
 export COMPOSER_IGNORE_PLATFORM_REQS=1
 export COMPOSER_NO_DEV=1
 
-alias issues="cd "$(git rev-parse --show-toplevel)"/../documentation && PAGER="" glab issue list"
+#alias issues="cd "$(git rev-parse --show-toplevel)"/../documentation && PAGER="" glab issue list"
 # nvm alias default 22  # Disabled: use system node by default, only load nvm when explicitly needed
 
 alias cat=/usr/bin/cat
@@ -1856,6 +1851,7 @@ alias dmesg='dmesg -Tw'
 # Brother PT-710BT label printer
 # - Install ptouch-print from aur
 # - Generate labels on https://gridfinitylabels.com
+#   - Or just use ptouch-gridfinity-text
 
 # fontsize 60 is max for 12mm tape
 ptouch-text() {
@@ -1882,3 +1878,6 @@ ptouch-gridfinity-text() {
        ptouch-img /tmp/gridfinity_label.png
 }
 
+
+# test
+alias beet='/usr/bin/beet'
