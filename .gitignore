@@ -228,3 +228,6 @@ cursor/
 steamtinkerlaunch/
 .copilot/
 GIMP/
+PrusaSlicer
+FreeCAD
+beets/spotify_token.json
