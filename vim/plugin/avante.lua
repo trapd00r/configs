@@ -1,4 +1,78 @@
 -- require('avante_lib').load()
--- require('avante').setup ({
---   -- Your config here!
+--
+-- require('avante').setup({
+--   provider = "claude",
+--   auto_suggestions_provider = "claude",
+--   
+--   -- The new structured provider block
+--   providers = {
+--     claude = {
+-- 			auth_type = "max", -- for signing in with pro subscription
+--       endpoint = "https://api.anthropic.com",
+--       model = "claude-4-6-opus",
+--       timeout = 30000, -- Timeout in milliseconds
+--       -- temperature = 0, -- Some versions allow this at top level, but extra_request_body is safer
+--       -- API-specific parameters MUST go here now:
+--       extra_request_body = {
+--         temperature = 0,
+--         max_tokens = 8192,
+--       },
+--     },
+--   },
+--
+--   behaviour = {
+--     auto_suggestions = false,
+--     auto_set_highlight_group = true,
+--     auto_set_keymaps = true,
+--     auto_apply_diff_after_generation = false,
+--     support_paste_from_clipboard = false,
+--     minimize_diff = true,
+--     enable_token_counting = true,
+--   },
+--
+--   mappings = {
+--     diff = {
+--       ours = "co",
+--       theirs = "ct",
+--       all_theirs = "ca",
+--       both = "cb",
+--       cursor = "cc",
+--       next = "]x",
+--       prev = "[x",
+--     },
+--     suggestion = {
+--       accept = "<M-l>",
+--       next = "<M-]>",
+--       prev = "<M-[>",
+--       dismiss = "<C-]>",
+--     },
+--     submit = {
+--       normal = "<CR>",
+--       insert = "<C-s>",
+--     },
+--   },
+--
+--   windows = {
+--     position = "right",
+--     wrap = true,
+--     width = 30,
+--     sidebar_header = {
+--       align = "center",
+--       rounded = true,
+--     },
+--     input = {
+--       prefix = "> ",
+--       height = 8,
+--     },
+--     edit = {
+--       border = "rounded",
+--       start_insert = true,
+--     },
+--     ask = {
+--       floating = false,
+--       start_insert = true,
+--       border = "rounded",
+--       focus_on_apply = "ours",
+--     },
+--   },
 -- })

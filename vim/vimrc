@@ -78,7 +78,6 @@ if has('nvim')
   Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
   Plug 'f-person/git-blame.nvim'                                          " git blame integration
 
-  Plug 'VonHeikemen/lsp-zero.nvim'                                        " helper integrating lspconfig and nvim-cmp
   Plug 'neovim/nvim-lspconfig'                                            " configs for nvim lsp client
   Plug 'williamboman/mason.nvim'                                          " package manager for lsp, dap, linters, formatters
   Plug 'williamboman/mason-lspconfig.nvim'                                " bridge for mason and lspconfig
