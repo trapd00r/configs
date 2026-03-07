@@ -37,7 +37,7 @@ export             HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd*:gs:gd:calc:du1:l:
 export             KEYTIMEOUT=100
 export          KEYBOARD_HACK=' '
 export          LISTROWSFIRST=1
-export ZSH_ACTIVE_COMPLETIONS="$( echo ${(kv)_comps[@]} )"
+export ZSH_ACTIVE_COMPLETIONS="${(kv)_comps[@]}"
 
 
 # locale, timezone
@@ -108,9 +108,9 @@ export DESKTOP_STARTUP_ID=42
 ### graphics
 # vulkan fix
 
-if [[ $(hostname) = "fantomen" ]]; then
+if [[ $HOST = "fantomen" ]]; then
   export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/nvidia_icd.json"
-elif [[ $(hostname) = "x1" ]]; then
+elif [[ $HOST = "x1" ]]; then
   # intel iris xe
   export VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/intel_icd.x86_64.json"
 fi
@@ -177,39 +177,14 @@ export GEM_HOME=${HOME}/lib/ruby
 export PATH=${PATH}:${GEM_HOME}/bin
 export __GL_SYNC_TO_VBLANK=1
 
-# Add these new exports
-export TERM=kitty
-export BROWSER=""
-export LC_ALL=en_US.UTF-8
-export PAGER=less
-export MANPAGER=vimpager
 export GIT_PAGER=delta
-export PULSE_CLIENTCONFIG=${XDG_CONFIG_HOME}/pulse/client.conf
-export GIMP2_DIRECTORY=${XDG_CONFIG_HOME}/gimp
-export MPLAYER_HOME=${XDG_CONFIG_HOME}/mplayer
-export MPLAYER_CONFIG=${XDG_CONFIG_HOME}/mplayer/config
-export LESSKEY="${XDG_CONFIG_HOME}/lesskey"
-export ESCDELAY=1
-export NCURSES_NO_PADDING=1
-export NCURSES_ASSUMED_COLORS=3,0
-export NCURSES_NO_MAGIC_COOKIES=1
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export JEKYLL_ENV='production'
-export MULLVAD_USE_GTK=yes
-export GTK_THEME=japh
-export SYSTEMD_COLORS=256
-export GEM_HOME=${HOME}/lib/ruby
-export __GL_SYNC_TO_VBLANK=1
 
-# Initialize rbenv
-eval "$(rbenv init -)"
+# Lazy-load rbenv - only initialize when rbenv command is used
 export PATH="$HOME/.rbenv/bin:$PATH"
+rbenv() {
+  unset -f rbenv
+  eval "$(command rbenv init -)"
+  command rbenv "$@"
+}
 
-# Initialize zoxide
-eval "$(zoxide init zsh)"
-
-# Initialize atuin
-eval "$(atuin init zsh)"
-
-# Initialize github-copilot-cli
-eval "$(github-copilot-cli alias -- "$0")"
+# zoxide, atuin, github-copilot-cli are initialized in zshrc (with caching)
