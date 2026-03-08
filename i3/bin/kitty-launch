@@ -1,0 +1,16 @@
+#!/bin/bash
+# Launch kitty with appropriate font size based on focused monitor resolution.
+# On 2560x2880 monitors the base font_size=8 is too small; use 15 instead.
+output=$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused) | .output')
+height=$(i3-msg -t get_outputs | jq -r --arg o "$output" '.[] | select(.name == $o) | .rect.height')
+
+font_size=8
+[[ "$height" == "2880" ]] && font_size=25
+
+exec kitty \
+  -o font_family="Anonymous Pro" \
+  -o bold_font="Anonymous Pro Bold" \
+  -o italic_font="Anonymous Pro Italic" \
+  -o bold_italic_font="Anonymous Pro Bold Italic" \
+  -o font_size=$font_size
+
