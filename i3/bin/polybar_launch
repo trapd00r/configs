@@ -1,20 +1,38 @@
-#!/bin/sh
+#!/bin/bash
 
-killall polybar
+# Kill previous polybar_launch wrappers and polybar instances
+killall -q polybar
+# Kill any lingering polybar_launch processes, excluding ourselves
+kill $(pgrep -f polybar_launch | grep -xv $$) 2>/dev/null || true
+# Give them a moment to die
+sleep 0.5
+
 fc-cache -f
+
+# Restart polybar if it crashes (e.g. tray client like Steam
+# causing a fatal X connection error).
+# Min 2s between restarts to avoid rapid loop.
+run_polybar() {
+  local config="$1"
+  local bar="$2"
+  while true; do
+    polybar --config="$config" "$bar" 2>&1
+    sleep 2
+  done
+}
 
 if [[ $(hostname) = 'x1' ]]; then
   # if we are docked, we have 4 monitors
   if [[ $(xrandr --listactivemonitors | head -1 | awk '{print $2}') -eq 4 ]]; then
-    polybar --config=/home/scp1/etc/polybar/config_x1.ini  middle &
-    polybar --config=/home/scp1/etc/polybar/config_x1.ini  left &
-    polybar --config=/home/scp1/etc/polybar/config_x1.ini  top &
-    polybar --config=/home/scp1/etc/polybar/config_x1.ini  right &
+    run_polybar /home/scp1/etc/polybar/config_x1.ini middle &
+    run_polybar /home/scp1/etc/polybar/config_x1.ini left &
+    run_polybar /home/scp1/etc/polybar/config_x1.ini top &
+    run_polybar /home/scp1/etc/polybar/config_x1.ini right &
   else
-    polybar --config=/home/scp1/etc/polybar/config_x1.ini  middle &
+    run_polybar /home/scp1/etc/polybar/config_x1.ini middle &
   fi
 else
-  polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  middle &
-  polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  left &
-  polybar --config=/home/scp1/etc/polybar/config_fantomen.ini  top &
+  run_polybar /home/scp1/etc/polybar/config_fantomen.ini middle &
+  run_polybar /home/scp1/etc/polybar/config_fantomen.ini left &
+  run_polybar /home/scp1/etc/polybar/config_fantomen.ini top &
 fi

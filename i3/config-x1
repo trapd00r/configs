@@ -276,6 +276,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # better tiling
 exec i3-layouts
 
+# polybar on 4 monitors
+exec --no-startup-id ~/etc/i3/bin/polybar_launch
+
 # exec_always --no-startup-id python ~/etc/i3/bin/dbeaver-fix-clipboard-sync.py
 
 # exec --no-startup-id ~/etc/i3/bin/clipboard-stack.sh monitor
