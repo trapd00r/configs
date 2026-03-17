@@ -75,7 +75,7 @@ if has('nvim')
   Plug 'nvim-telescope/telescope.nvim'                                    " fuzzy finder
   Plug 'nvim-lualine/lualine.nvim'                                        " statusline
   Plug 'numToStr/Comment.nvim'                                            " (un)comment everything with #
-  Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
+  " Plug 'lukas-reineke/indent-blankline.nvim'                              " indent guides
   Plug 'f-person/git-blame.nvim'                                          " git blame integration
 
   Plug 'neovim/nvim-lspconfig'                                            " configs for nvim lsp client
@@ -101,6 +101,7 @@ if has('nvim')
   Plug 'pbogut/magento2-ls'                                               " magento2 language server
   " Plug 'zbirenbaum/copilot.lua'
   Plug 'trapd00r/kitty-scrollback.nvim'                                   " using own fork cause couldn't configure away default opts
+  Plug '/home/scp1/dev/unified.nvim'
 
   " local llm
   " Plug 'David-Kunz/gen.nvim'
@@ -824,6 +825,16 @@ fu! RemoveTrailingCrap()
   if search( nr2char(182) . '$' )
     :execute ":%s/" . nr2char(182) . "//"
   endif
+
+  " also replace characters AI likes to use for their ascii counterparts
+  " for example, em dash should be replaced by - , and a → will be replaced by ->
+  " must use regex suitable for neovim
+  " also … should be replaced by ...
+  silent! %s/\v[→➔➙➛➜➝➞➟➠➢➣➤➥➦➧➨➩➪➫➬➭➮➯]/->/g
+  silent! %s/\v[—―─━]/-/g
+  silent! %s/\v[…‥]/.../g
+
+
 endfu
 " ========== FUNCTIONS END ==============================
 " ========== AUTOCOMMANDS START =========================
@@ -2044,3 +2055,6 @@ function! ElmFormatExpr()
 endfunction
 
 autocmd FileType elm setlocal formatexpr=ElmFormatExpr() textwidth=0
+
+hi DiffAdd    ctermbg=22
+hi DiffDelete ctermbg=52

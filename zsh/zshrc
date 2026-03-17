@@ -1846,3 +1846,27 @@ ptouch-gridfinity-text() {
 
 # test
 alias beet='/usr/bin/beet'
+
+# https://sw.kovidgoyal.net/kitty/kittens/desktop-ui/
+export QT_QPA_PLATFORMTHEME=xdgdesktopportal
+export GTK_USE_PORTAL=1
+
+
+function gD() {
+  local commit="HEAD"
+  local -a files
+
+  for arg in "$@"; do
+    if [[ -f "$arg" || -d "$arg" ]]; then
+      files+=("$arg")
+    else
+      commit="$arg"
+    fi
+  done
+
+  if (( ${#files[@]} > 0 )); then
+    vim -c "Unified $commit" "${files[@]}"
+  else
+    vim -c "Unified $commit"
+  fi
+}
