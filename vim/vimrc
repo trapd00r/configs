@@ -2058,3 +2058,7 @@ autocmd FileType elm setlocal formatexpr=ElmFormatExpr() textwidth=0
 
 hi DiffAdd    ctermbg=22
 hi DiffDelete ctermbg=52
+
+
+hi elmType ctermfg=166
+hi elmModule ctermfg=208
